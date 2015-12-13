@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!-- Created with Liquid XML Studio 2012 Starter Edition 10.1.2.4113 (http://www.liquid-technologies.com) -->
+<ExportList>
+    <Help>
+        For a simple introduction to the RTF format, read this:
+        http://search.cpan.org/~sburke/RTF-Writer/lib/RTF/Cookbook.pod
+    </Help>
+
+    <TextExport Title="Vurderingsnotat m/lab 9mnd" Default="False">
+    
+        <!-- Fargetabell er lik -->
+        
+        <TextSegment Name="Fargetabell" Comment="Ikke synlig">
+            {\colortbl;\red192\green32\blue32;\red192\green64\blue64;\red32\green32\blue64;\red0\green0\blue0;\red255\green0\blue0;}
+        </TextSegment>
+
+        <!-- Templates for data og overskrifter er like  -->
+
+        <Templates DataTemplate="{\cf4 %s\cf1}" EmptyTemplate="" HeaderTemplate="{\cf3\ul\b %s\b0\ul0\par}" ErrorTemplate="" />
+        
+        <!-- Her begynner notatet --> 
+        
+		<TextSegment Comment="Vurderingsnotat">
+	    	[SUMMARY.* ClearSkiplist FormHeaderTemplate="{\cf3\ul\b %s\b0\ul0\par}" TextFormat="RTF" MaxAge=365]
+			[SUMMARY.OvGrunnskjema]
+			[SUMMARY.OvPoliklinikk]
+		    {\par}
+		</TextSegment>
+		
+		<TextSegment Name="Meds" Header="Medikamenter">
+			[DrugList.CURRENT Output="RTF" LineBreak]{\par\par}
+	    </TextSegment>
+		
+		<TextSegment Name="Lab" Header="Labdata">
+			[LabText.Latest Output="RTF" MaxAge="270"]{\par\par}
+		</TextSegment>
+
+	</TextExport>
+	
+    <TextExport Title="Dagens notat m/lab 30d" Default="False">
+    
+        <!-- Fargetabell er lik -->
+        
+        <TextSegment Name="Fargetabell" Comment="Ikke synlig">
+            {\colortbl;\red192\green32\blue32;\red192\green64\blue64;\red32\green32\blue64;\red0\green0\blue0;\red255\green0\blue0;}
+        </TextSegment>
+
+        <!-- Templates for data og overskrifter er like  -->
+
+        <Templates DataTemplate="{\cf4 %s\cf1}" EmptyTemplate="" HeaderTemplate="{\cf3\ul\b %s\b0\ul0\par}" ErrorTemplate="" />
+        
+        <!-- Her begynner notatet --> 
+        
+		<TextSegment Comment="Dagens notat">
+	    	[SUMMARY.* ClearSkiplist FormHeaderTemplate="{\cf3\ul\b %s\b0\ul0\par}" TextFormat="RTF" MaxAge=1]
+			[SUMMARY.OvGrunnskjema]
+			[SUMMARY.OvPoliklinikk]
+		    {\par}
+		</TextSegment>
+		
+		<TextSegment Name="Meds" Header="Medikamenter">
+			[DrugList.CURRENT Output="RTF" LineBreak]{\par\par}
+	    </TextSegment>
+		
+		<TextSegment Name="Lab" Header="Labdata">
+			[LabText.Latest Output="RTF" MaxAge="30"]{\par\par}
+		</TextSegment>
+
+	</TextExport>
+	
+</ExportList>
