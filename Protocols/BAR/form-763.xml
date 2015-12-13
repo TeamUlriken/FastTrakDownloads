@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form form_id="763" form_uid="BAR_INCLUSION" title="First contact" calculate_invalid="False" rating_scale="False" status="Open" repeatable="0" >
+<instructions></instructions>
+
+<!-- Start: Form enums, generated XML -->
+
+<enumeration enumeration_uid="6168">
+  <enum_item value="1" text="Lokalsykehus" answer_id="32489" />
+  <enum_item value="2" text="Fastlege" answer_id="32490" />
+  <enum_item value="3" text="Legevakt/direkte" answer_id="32491" />
+  <enum_item value="4" text="HUS" answer_id="32492" />
+  <enum_item value="5" text="Andre" answer_id="32493" />
+</enumeration>
+
+<enumeration enumeration_uid="6242">
+  <enum_item value="1" text="Yes" answer_id="32931" />
+  <enum_item value="2" text="No" answer_id="32932" />
+</enumeration>
+
+<enumeration enumeration_uid="6243">
+  <enum_item value="1" text="Yes" answer_id="32935" />
+  <enum_item value="2" text="No" answer_id="32936" />
+</enumeration>
+
+<enumeration enumeration_uid="6245">
+  <enum_item value="1" text="Yes" answer_id="32947" />
+  <enum_item value="2" text="No" answer_id="32948" />
+</enumeration>
+
+<enumeration enumeration_uid="6246">
+  <enum_item value="1" text="Yes" answer_id="32953" />
+  <enum_item value="2" text="No" answer_id="32954" />
+</enumeration>
+
+<enumeration enumeration_uid="6247">
+  <enum_item value="1" text="Yes" answer_id="32959" />
+  <enum_item value="2" text="No" answer_id="32960" />
+</enumeration>
+
+<enumeration enumeration_uid="6248">
+  <enum_item value="1" text="Yes" answer_id="32965" />
+  <enum_item value="2" text="No" answer_id="32966" />
+</enumeration>
+
+<enumeration enumeration_uid="8091">
+  <enum_item value="1" text="Yes" answer_id="43259" />
+  <enum_item value="2" text="No" answer_id="43260" />
+</enumeration>
+
+<enumeration enumeration_uid="9319">
+  <enum_item value="1" text="Conservative treatment - imaging" answer_id="51176" />
+  <enum_item value="2" text="Treatment - Intervention" answer_id="51177" />
+  <enum_item value="3" text="No treatment" answer_id="51178" />
+  <enum_item value="4" text="Discussion with patient" answer_id="51182" />
+  <enum_item value="5" text="Referral to other" answer_id="51324" />
+</enumeration>
+
+<enumeration enumeration_uid="9321">
+  <enum_item value="1" text="Conservative treatment - imaging" answer_id="51191" />
+  <enum_item value="2" text="Treatment - Intervention" answer_id="51192" />
+  <enum_item value="3" text="No treatment" answer_id="51197" />
+  <enum_item value="4" text="Under consideration" answer_id="51229" />
+  <enum_item value="5" text="Referral to other" answer_id="51329" />
+</enumeration>
+
+<!-- Start: Form items, generated XML -->
+
+<question item_id="6169" mid="BarInclusion" datatype="DATE" page_number="1" page_title="First contact" page_introduction="First contact date is the same as form date.  Move form on the timeline to make it correct." question_text="Date of first contact" optional="0" min_value="Patient.DOB" max_value="NOW" expression="TRUNC(FORM.DATE)" help_text="Same as admission date if hospitalised" group_id="BarInclusion" />
+<question item_id="6170" mid="BarInclusionAge" datatype="QN" page_number="1" page_title="First contact" page_introduction="First contact date is the same as form date.  Move form on the timeline to make it correct." question_text="Age at first contact (years)" optional="0" carry_forward="1" units="years" decimals="1" expression="(BarInclusion - Patient.DOB ) / 365.25" group_id="BarInclusionAge" />
+<question item_id="8091" mid="VAR8091" datatype="ORD" page_number="1" page_title="First contact" page_introduction="First contact date is the same as form date.  Move form on the timeline to make it correct." question_text="Hospital admission" optional="0" enumeration_uid="8091" />
+<question item_id="9323" mid="VAR9323" datatype="MSG" page_number="2" header="First Admission" question_text="Remember to fill out the form First Admission for more details." optional="1" />
+<question item_id="6168" mid="BarReferredFrom" datatype="ORD" page_number="3" question_text="Referred from" optional="0" enumeration_uid="6168" group_id="BarReferredFrom" />
+<question item_id="6166" mid="VAR6166" datatype="NAR" page_number="4" page_title="Comments" question_text="Comment" optional="1" multiline="1" />
+<question item_id="9319" mid="VAR9319" datatype="ORD" page_number="5" page_title="Treatment plan" question_text="Initial treatment recommendation" optional="0" carry_forward="1" enumeration_uid="9319" help_text="Use Intervention if intervention is planned on ANY aneurysm." />
+<question item_id="9321" mid="VAR9321" datatype="ORD" page_number="5" page_title="Treatment plan" question_text="Treatment plan" optional="0" carry_forward="1" enumeration_uid="9321" help_text="After discussion with patient" />
+<question item_id="6242" mid="VAR6242" datatype="ORD" page_number="6" page_title="Reason no treatment" question_text="Old age" optional="0" enumeration_uid="6242" />
+<question item_id="6243" mid="VAR6243" datatype="ORD" page_number="6" page_title="Reason no treatment" question_text="Poor grade" optional="0" enumeration_uid="6243" />
+<question item_id="6245" mid="VAR6245" datatype="ORD" page_number="6" page_title="Reason no treatment" question_text="Small aneurysm" optional="0" enumeration_uid="6245" />
+<question item_id="6246" mid="VAR6246" datatype="ORD" page_number="6" page_title="Reason no treatment" question_text="Died before treatment" optional="0" enumeration_uid="6246" />
+<question item_id="6247" mid="VAR6247" datatype="ORD" page_number="6" page_title="Reason no treatment" question_text="Under consideration" optional="0" visible="-1" enumeration_uid="6247" />
+<question item_id="6248" mid="VAR6248" datatype="ORD" page_number="6" page_title="Reason no treatment" question_text="Non-consent" optional="0" enumeration_uid="6248" />
+<question item_id="9320" mid="VAR9320" datatype="MSG" page_number="7" page_introduction="This message is shown if no admission is planned." header="Aneurysm details" question_text="Your answer indicates that no hospitalization is planned.  Please complete the form Aneurysm details as well." optional="1" />
+<question item_id="9322" mid="VAR9322" datatype="MSG" page_number="8" page_introduction="This message is shown if no admission is planned AFTER discussion with patient." header="Aneurysm details" question_text="Your answer indicates that no hospitalization is planned.  Please complete the form Aneurysm details as well." optional="1" />
+
+<!-- Start: Form actions, generated XML -->
+
+<question_action master_question_mid="VAR8091" detail_question_mid="VAR9323" enum_item_value="1" activate="1" />
+<question_action master_question_mid="VAR9321" detail_question_mid="VAR6242" enum_item_value="3" activate="1" />
+<question_action master_question_mid="VAR9321" detail_question_mid="VAR6243" enum_item_value="3" activate="1" />
+<question_action master_question_mid="VAR9321" detail_question_mid="VAR6245" enum_item_value="3" activate="1" />
+<question_action master_question_mid="VAR9321" detail_question_mid="VAR6246" enum_item_value="3" activate="1" />
+<question_action master_question_mid="VAR9321" detail_question_mid="VAR6247" enum_item_value="3" activate="1" />
+<question_action master_question_mid="VAR9321" detail_question_mid="VAR6248" enum_item_value="3" activate="1" />
+<question_action master_question_mid="VAR9319" detail_question_mid="VAR9320" enum_item_value="1" activate="1" />
+<question_action master_question_mid="VAR9321" detail_question_mid="VAR9322" enum_item_value="1" activate="1" />
+<question_action master_question_mid="VAR9321" detail_question_mid="VAR9322" enum_item_value="3" activate="1" />
+</form>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form form_id="657" form_uid="BAR_DEATH" title="Death" calculate_invalid="False" rating_scale="False" status="Open" repeatable="0" >
+<instructions></instructions>
+
+<!-- Start: Form enums, generated XML -->
+
+<enumeration enumeration_uid="6273">
+  <enum_item value="1" text="Dead" answer_id="33064" />
+  <enum_item value="2" text="Vegetative state" answer_id="33065" />
+  <enum_item value="3" text="Lower severe disability" answer_id="33066" />
+  <enum_item value="4" text="Upper severe disability" answer_id="33067" />
+  <enum_item value="5" text="Lower moderate disability" answer_id="33068" />
+  <enum_item value="6" text="Upper moderate disability" answer_id="33069" />
+  <enum_item value="7" text="Lower good recovery" answer_id="33070" />
+  <enum_item value="8" text="Upper good recovery" answer_id="33071" />
+</enumeration>
+
+<enumeration enumeration_uid="6369">
+  <enum_item value="1" text="Dead" answer_id="33685" />
+  <enum_item value="2" text="Vegetative" answer_id="33686" />
+  <enum_item value="3" text="Yes" answer_id="33687" />
+</enumeration>
+
+<enumeration enumeration_uid="6373">
+  <enum_item value="1" text="Primary SAH" answer_id="33719" />
+  <enum_item value="2" text="Rebleeding before treatment" answer_id="33720" />
+  <enum_item value="3" text="Rebleeding after treatment" answer_id="33721" />
+  <enum_item value="4" text="SAH, another aneurysm rupture" answer_id="33722" />
+  <enum_item value="5" text="Brain infarction, main vessel occluded" answer_id="33723" />
+  <enum_item value="6" text="Brain infarction, spasm" answer_id="33724" />
+  <enum_item value="7" text="Post-op hematoma" answer_id="33725" />
+  <enum_item value="8" text="Other" answer_id="33726" />
+</enumeration>
+
+<enumeration enumeration_uid="8095">
+  <enum_item value="0" text="No symptoms at all" answer_id="43263" />
+  <enum_item value="1" text="No significant disability despite symptoms; able to carry out all usual duties and activities." answer_id="43264" />
+  <enum_item value="2" text="Slight disability; unable to carry out all previous activites, but able to look after own affairs without assistance." answer_id="43265" />
+  <enum_item value="3" text="Moderate disability; requiring some help, but able to walk without assistance." answer_id="43266" />
+  <enum_item value="4" text="Moderately severe disability; unable to walk without assistance and unable to attend to own bodily needs without assistance." answer_id="43267" />
+  <enum_item value="5" text="Severe disability; bedridden, incontinent and requiring constant nursing care and attention." answer_id="43268" />
+  <enum_item value="6" text="Intubated/sedate; unable to classify" answer_id="43269" />
+  <enum_item value="7" text="Dead" answer_id="43270" />
+</enumeration>
+
+<enumeration enumeration_uid="8096">
+  <enum_item value="1" text="Home" answer_id="43281" />
+  <enum_item value="2" text="Local hospital" answer_id="43282" />
+  <enum_item value="3" text="Rehabilitation center" answer_id="43283" />
+  <enum_item value="4" text="Haukeland SH" answer_id="50183" />
+  <enum_item value="8" text="Other" answer_id="43284" />
+  <enum_item value="9" text="Unknown" answer_id="43289" />
+</enumeration>
+
+<!-- Start: Form items, generated XML -->
+
+<question item_id="8094" mid="BarDeathDate" datatype="DATE" page_number="1" page_title="Date and cause of death" question_text="Date of death" optional="1" help_text="Must be same as form date, move form if necessary." group_id="BarDeathDate" />
+<question item_id="6273" mid="EGOS" datatype="ORD" page_number="2" header="GOS-E" question_text="Extended Glasgow Outcome Scale" optional="1" expression="ISPOS(BarDeathDate)" enumeration_uid="6273" group_id="EGOS" />
+<question item_id="6369" mid="BarSurvival" datatype="ORD" page_number="2" question_text="Survival" optional="1" expression="ISNULL(EGOS-1) + ISNULL(EGOS-2)*2 + ISPOS(EGOS-2)*3" enumeration_uid="6369" group_id="BarSurvival" />
+<question item_id="8095" mid="BarRankinDeath" datatype="ORD" page_number="2" question_text="Modified Rankin Scale (Death)" optional="1" expression="7*ISNULL(EGOS-1)" enumeration_uid="8095" group_id="BarRankinDeath" />
+<question item_id="6373" mid="BarCauseOfDeath" datatype="ORD" page_number="3" question_text="Cause of death" optional="1" enumeration_uid="6373" group_id="BarCauseOfDeath" />
+<question item_id="6374" mid="VAR6374" datatype="NAR" page_number="4" question_text="Comment" optional="1" multiline="1" />
+<question item_id="8096" mid="VAR8096" datatype="ORD" page_number="5" page_title="Location at death" header="Location" question_text="Where did the patient die?" optional="1" enumeration_uid="8096" />
+<question item_id="8097" mid="VAR8097" datatype="NAR" page_number="5" page_title="Location at death" question_text="Comment" optional="1" multiline="1" />
+
+<!-- Start: Form actions, generated XML -->
+
+<question_action master_question_mid="EGOS" detail_question_mid="BarCauseOfDeath" enum_item_value="1" activate="1" />
+<question_action master_question_mid="EGOS" detail_question_mid="VAR8096" enum_item_value="1" activate="1" />
+<question_action master_question_mid="EGOS" detail_question_mid="VAR8097" enum_item_value="1" activate="1" />
+</form>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form form_id="655" form_uid="BAR_ADMISSION_FIRST" title="First Admission" calculate_invalid="False" rating_scale="False" status="Open" repeatable="0" >
+<instructions></instructions>
+
+<!-- Start: Form enums, generated XML -->
+
+<enumeration enumeration_uid="6030">
+  <enum_item value="1" text="Yes" answer_id="32091" />
+  <enum_item value="2" text="No" answer_id="32092" />
+  <enum_item value="3" text="Unknown" answer_id="50177" />
+  <enum_item value="4" text="Vascular event - Possible SAH" answer_id="51855" />
+</enumeration>
+
+<enumeration enumeration_uid="6031">
+  <enum_item value="1" text="Yes" answer_id="32093" />
+  <enum_item value="2" text="No" answer_id="32094" />
+</enumeration>
+
+<enumeration enumeration_uid="6032">
+  <enum_item value="1" text="Yes" answer_id="32097" />
+  <enum_item value="2" text="No" answer_id="32098" />
+</enumeration>
+
+<enumeration enumeration_uid="6033">
+  <enum_item value="1" text="Yes" answer_id="32103" />
+  <enum_item value="2" text="No" answer_id="32104" />
+</enumeration>
+
+<enumeration enumeration_uid="6035">
+  <enum_item value="1" text="Current" answer_id="32107" />
+  <enum_item value="2" text="Former" answer_id="32108" />
+  <enum_item value="3" text="No" answer_id="32109" />
+  <enum_item value="4" text="Unknown" answer_id="32110" />
+</enumeration>
+
+<enumeration enumeration_uid="6156">
+  <enum_item value="1" text="Yes" answer_id="32428" />
+  <enum_item value="2" text="No" answer_id="32429" />
+</enumeration>
+
+<enumeration enumeration_uid="6157">
+  <enum_item value="1" text="Yes" answer_id="32432" />
+  <enum_item value="2" text="No" answer_id="32433" />
+</enumeration>
+
+<enumeration enumeration_uid="6158">
+  <enum_item value="1" text="Yes" ICD10="Q61" answer_id="32436" />
+  <enum_item value="2" text="No" answer_id="32437" />
+</enumeration>
+
+<enumeration enumeration_uid="6159">
+  <enum_item value="1" text="Yes" ICD10="E14" answer_id="32440" />
+  <enum_item value="2" text="No" answer_id="32441" />
+</enumeration>
+
+<enumeration enumeration_uid="6160">
+  <enum_item value="1" text="Yes" answer_id="32444" />
+  <enum_item value="2" text="No" answer_id="32445" />
+</enumeration>
+
+<enumeration enumeration_uid="6161">
+  <enum_item value="1" text="Yes" answer_id="32448" />
+  <enum_item value="2" text="No" answer_id="32449" />
+</enumeration>
+
+<enumeration enumeration_uid="6162">
+  <enum_item value="1" text="Yes" ICD10="I10" answer_id="32452" />
+  <enum_item value="2" text="No" answer_id="32453" />
+</enumeration>
+
+<enumeration enumeration_uid="6163">
+  <enum_item value="1" text="Yes" answer_id="32468" />
+  <enum_item value="2" text="No" answer_id="32469" />
+</enumeration>
+
+<enumeration enumeration_uid="6164">
+  <enum_item value="1" text="Yes" answer_id="32474" />
+  <enum_item value="2" text="No" answer_id="32475" />
+</enumeration>
+
+<enumeration enumeration_uid="6165">
+  <enum_item value="1" text="Yes" answer_id="32480" />
+  <enum_item value="2" text="No" answer_id="32481" />
+</enumeration>
+
+<enumeration enumeration_uid="6167">
+  <enum_item value="1" text="No" answer_id="32484" />
+  <enum_item value="2" text="Vascular risk factors" answer_id="32485" />
+  <enum_item value="3" text="Clazosentan" answer_id="32486" />
+  <enum_item value="4" text="Duplex ultrasound" answer_id="32487" />
+  <enum_item value="5" text="(for future use)" answer_id="32488" />
+</enumeration>
+
+<enumeration enumeration_uid="6168">
+  <enum_item value="1" text="Lokalsykehus" answer_id="32489" />
+  <enum_item value="2" text="Fastlege" answer_id="32490" />
+  <enum_item value="3" text="Legevakt/direkte" answer_id="32491" />
+  <enum_item value="4" text="HUS" answer_id="32492" />
+  <enum_item value="5" text="Andre" answer_id="32493" />
+</enumeration>
+
+<enumeration enumeration_uid="6171">
+  <enum_item value="1" text="Yes" answer_id="32516" />
+  <enum_item value="2" text="No" answer_id="32517" />
+</enumeration>
+
+<enumeration enumeration_uid="6173">
+  <enum_item value="1" text="Yes" answer_id="32540" />
+  <enum_item value="2" text="No" answer_id="32541" />
+</enumeration>
+
+<enumeration enumeration_uid="8091">
+  <enum_item value="1" text="Yes" answer_id="43259" />
+  <enum_item value="2" text="No" answer_id="43260" />
+</enumeration>
+
+<!-- Start: Form items, generated XML -->
+
+<question item_id="6169" mid="BarInclusion" datatype="DATE" page_number="1" page_title="Admission" question_text="Date of first contact" optional="0" carry_forward="1" read_only="1" min_value="Patient.DOB" max_value="NOW" help_text="Same as admission date if hospitalised" group_id="BarInclusion" />
+<question item_id="6170" mid="BarInclusionAge" datatype="QN" page_number="1" page_title="Admission" question_text="Age at first contact (years)" optional="1" units="years" decimals="1" expression="(BarInclusion - Patient.DOB ) / 365.25" group_id="BarInclusionAge" />
+<question item_id="8091" mid="VAR8091" datatype="ORD" page_number="1" page_title="Admission" question_text="Hospital admission" optional="1" expression="1" enumeration_uid="8091" />
+<question item_id="4210" mid="ZIP" datatype="NAR" page_number="2" question_text="Postnummer" optional="0" carry_forward="1" multiline="0" group_id="ZIP" />
+<question item_id="6168" mid="BarReferredFrom" datatype="ORD" page_number="2" question_text="Referred from" optional="0" carry_forward="1" enumeration_uid="6168" group_id="BarReferredFrom" />
+<question item_id="6167" mid="BarTrial" datatype="ORD" page_number="2" question_text="Trial" optional="0" carry_forward="1" enumeration_uid="6167" group_id="BarTrial" />
+<question item_id="3225" mid="HEIGHT" datatype="QN" page_number="3" page_title="Vitals" question_text="Height (cm)" optional="0" carry_forward="1" min_value="50" max_value="220" units="cm" help_text="Uten sko." group_id="HEIGHT" />
+<question item_id="3224" mid="WEIGHT" datatype="QN" page_number="3" page_title="Vitals" question_text="Weight (kg)" optional="0" min_value="10" max_value="400" units="kg" decimals="1" help_text="Uten sko og yttert&#248;y." group_id="WEIGHT" />
+<question item_id="3310" mid="BMI" datatype="QN" page_number="3" page_title="Vitals" question_text="BMI (kg/m2)" optional="0" min_value="5" max_value="100" units="kg/m2" decimals="1" expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" help_text="Beregnes automatisk" group_id="BMI" />
+<question item_id="6030" mid="BarFamilyHistory" datatype="ORD" page_number="4" page_title="Family" question_text="Aneurysm in family" optional="0" carry_forward="1" enumeration_uid="6030" group_id="BarFamilyHistory" />
+<question item_id="6031" mid="BarFamilySiblings" datatype="ORD" page_number="5" question_text="Sibling" optional="0" enumeration_uid="6031" group_id="BarFamilySiblings" />
+<question item_id="6032" mid="BarFamilyParents" datatype="ORD" page_number="5" question_text="Parents" optional="0" enumeration_uid="6032" group_id="BarFamilyParents" />
+<question item_id="6033" mid="BarFamilyOther" datatype="ORD" page_number="5" question_text="Andre" optional="0" enumeration_uid="6033" group_id="BarFamilyOther" />
+<question item_id="6173" mid="BarFamliyError" datatype="ORD" page_number="5" question_text="Error in family" optional="0" visible="-1" expression="2-ISNULL(BarFamilyParents-2)*ISNULL(BarFamilySiblings-2)*ISNULL(BarFamilyOther-2)*ISNULL(BarFamilyHistory-1)" enumeration_uid="6173" group_id="BarFamliyError" />
+<question item_id="6172" mid="VAR6172" datatype="MSG" page_number="6" header="Feil i data" question_text="Du har svart Ja p&#229; at det er aneurysme i familien, men Nei p&#229; alle alternativene. Kontroller svarene." optional="1" />
+<question item_id="6034" mid="VAR6034" datatype="NAR" page_number="7" question_text="Hvem?" optional="0" multiline="0" help_text="Skriv familierelasjon, alder ved debut." />
+<question item_id="6152" mid="VAR6152" datatype="QN" page_number="8" question_text="Family number" optional="0" visible="-1" min_value="1" max_value="9" help_text="Skjult variabel, skal ikke brukes." />
+<question item_id="6035" mid="VAR6035" datatype="ORD" page_number="9" page_title="Smoking" question_text="Regular smoker" optional="0" enumeration_uid="6035" />
+<question item_id="6153" mid="CigsPerDay" datatype="QN" page_number="10" question_text="Daily consumption (cigarettes)" optional="1" min_value="1" max_value="99" units="cigarettes" group_id="CigsPerDay" />
+<question item_id="6154" mid="SmokingYears" datatype="QN" page_number="10" question_text="No of years smoking (years)" optional="1" min_value="0" max_value="TRUNC(Patient.Age-10)" units="years" decimals="1" group_id="SmokingYears" />
+<question item_id="6155" mid="PackYears" datatype="QN" page_number="10" question_text="Pack years (py)" optional="1" units="py" decimals="1" expression="CigsPerDay * SmokingYears / 20" group_id="PackYears" />
+<question item_id="6156" mid="BarCardio" datatype="ORD" page_number="11" page_title="Other details" question_text="Cardiovascular" optional="0" enumeration_uid="6156" group_id="BarCardio" />
+<question item_id="6157" mid="BarAVM" datatype="ORD" page_number="11" page_title="Other details" question_text="Cerebral AVM" optional="0" enumeration_uid="6157" group_id="BarAVM" />
+<question item_id="6158" mid="BarPCKD" datatype="ORD" page_number="11" page_title="Other details" question_text="Polycystic kidney disease" optional="0" enumeration_uid="6158" group_id="BarPCKD" />
+<question item_id="6159" mid="BarDM" datatype="ORD" page_number="11" page_title="Other details" question_text="Diabetes" optional="0" enumeration_uid="6159" group_id="BarDM" />
+<question item_id="6160" mid="BarICH" datatype="ORD" page_number="11" page_title="Other details" question_text="Previous ICH" optional="0" enumeration_uid="6160" group_id="BarICH" />
+<question item_id="6161" mid="BarAlcohol" datatype="ORD" page_number="11" page_title="Other details" question_text="Alcoholism" optional="0" enumeration_uid="6161" group_id="BarAlcohol" />
+<question item_id="6162" mid="BarHypertension" datatype="ORD" page_number="11" page_title="Other details" question_text="Hypertension" optional="0" enumeration_uid="6162" group_id="BarHypertension" />
+<question item_id="6163" mid="BarAnticoagulation" datatype="ORD" page_number="11" page_title="Other details" question_text="Antithrombotic treatment" optional="0" enumeration_uid="6163" help_text="Inkluderer platehemming (Albyl-E) og antikoagulasjon (Warfarin), eller andre (Plavix)." group_id="BarAnticoagulation" />
+<question item_id="6164" mid="BarSulfaAllergy" datatype="ORD" page_number="11" page_title="Other details" question_text="Sulfa Allergy" optional="0" enumeration_uid="6164" group_id="BarSulfaAllergy" />
+<question item_id="6165" mid="BarOther" datatype="ORD" page_number="11" page_title="Other details" question_text="Other" optional="0" enumeration_uid="6165" group_id="BarOther" />
+<question item_id="6171" mid="VAR6171" datatype="ORD" page_number="11" page_title="Other details" question_text="None of the above" optional="0" visible="-1" expression="2-ISNULL(BarCardio + BarAVM + BarPCKD + BarDM + BarICH + BarAlcohol + BarHypertension + BarAnticoagulation + BarSulfaAllergy + BarOther - 20)" enumeration_uid="6171" />
+<question item_id="6166" mid="VAR6166" datatype="NAR" page_number="12" question_text="Comment" optional="0" multiline="1" />
+
+<!-- Start: Form actions, generated XML -->
+
+<question_action master_question_mid="BarFamilyHistory" detail_question_mid="BarFamilySiblings" enum_item_value="1" activate="1" />
+<question_action master_question_mid="BarFamilyHistory" detail_question_mid="BarFamilySiblings" enum_item_value="4" activate="1" />
+<question_action master_question_mid="BarFamilyHistory" detail_question_mid="BarFamilyParents" enum_item_value="1" activate="1" />
+<question_action master_question_mid="BarFamilyHistory" detail_question_mid="BarFamilyParents" enum_item_value="4" activate="1" />
+<question_action master_question_mid="BarFamilyHistory" detail_question_mid="BarFamilyOther" enum_item_value="1" activate="1" />
+<question_action master_question_mid="BarFamilyHistory" detail_question_mid="BarFamilyOther" enum_item_value="4" activate="1" />
+<question_action master_question_mid="BarFamilyHistory" detail_question_mid="BarFamliyError" enum_item_value="1" activate="1" />
+<question_action master_question_mid="BarFamilyHistory" detail_question_mid="BarFamliyError" enum_item_value="4" activate="1" />
+<question_action master_question_mid="BarFamliyError" detail_question_mid="VAR6172" enum_item_value="1" activate="1" />
+<question_action master_question_mid="BarFamilyOther" detail_question_mid="VAR6034" enum_item_value="1" activate="1" />
+<question_action master_question_mid="VAR6035" detail_question_mid="CigsPerDay" enum_item_value="1" activate="1" />
+<question_action master_question_mid="VAR6035" detail_question_mid="CigsPerDay" enum_item_value="2" activate="1" />
+<question_action master_question_mid="VAR6035" detail_question_mid="SmokingYears" enum_item_value="1" activate="1" />
+<question_action master_question_mid="VAR6035" detail_question_mid="SmokingYears" enum_item_value="2" activate="1" />
+<question_action master_question_mid="VAR6035" detail_question_mid="PackYears" enum_item_value="1" activate="1" />
+<question_action master_question_mid="VAR6035" detail_question_mid="PackYears" enum_item_value="2" activate="1" />
+<question_action master_question_mid="BarOther" detail_question_mid="VAR6166" enum_item_value="1" activate="1" />
+</form>
