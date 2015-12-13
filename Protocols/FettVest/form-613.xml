@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form form_id="613" form_uid="FVINC_LUNGE" title="Inklusjon - Lungefunksjon" calculate_invalid="False" rating_scale="False" status="Open" repeatable="0" >
+<instructions></instructions>
+
+<!-- Start: Form enums, generated XML -->
+
+<enumeration enumeration_uid="3227">
+  <enum_item value="1" text="Aldri r&#248;ykt daglig." answer_id="16138" />
+  <enum_item value="2" text="Dagligr&#248;yker." answer_id="16139" />
+  <enum_item value="3" text="Eks-dagligr&#248;yker." answer_id="16140" />
+  <enum_item value="4" text="R&#248;ykestatus ukjent.*" answer_id="16141" />
+</enumeration>
+
+<!-- Start: Form items, generated XML -->
+
+<question item_id="3227" mid="NDV_SMOKING" datatype="ORD" page_number="1" page_title="R&#248;yking" question_text="R&#248;ykestatus" optional="0" enumeration_uid="3227" help_text="Velg Dagligr&#248;yker hvis sluttet for mindre enn 3 mnd siden." group_id="NDV_SMOKING" />
+<question item_id="6153" mid="CigsPerDay" datatype="QN" page_number="2" question_text="Sigaretter per dag (sig/dag)" optional="0" min_value="1" max_value="99" units="sig/dag" group_id="CigsPerDay" />
+<question item_id="6154" mid="SmokingYears" datatype="QN" page_number="2" question_text="Antall &#229;r r&#248;ykt (&#229;r)" optional="0" min_value="1" max_value="99" units="&#229;r" decimals="1" group_id="SmokingYears" />
+<question item_id="6155" mid="PackYears" datatype="QN" page_number="2" question_text="Tobakksforbruk (pakke&#229;r)" optional="0" units="pakke&#229;r" decimals="1" expression="CigsPerDay * SmokingYears / 20" help_text="Beregnes som produktet av pakker og &#229;r." group_id="PackYears" />
+<question item_id="7581" mid="FVC" datatype="QN" page_number="3" page_title="Lungefunksjonstester" question_text="FVC (liter)" optional="1" min_value="1" max_value="10" units="liter" decimals="2" group_id="FVC" />
+<question item_id="7582" mid="FVC_RELATIVE" datatype="QN" page_number="3" page_title="Lungefunksjonstester" question_text="FVC% (%)" optional="1" min_value="10" max_value="200" units="%" decimals="1" help_text="Relativt til normalverdi" group_id="FVC_RELATIVE" />
+<question item_id="7583" mid="FEV1" datatype="QN" page_number="3" page_title="Lungefunksjonstester" question_text="FEV1 (liter)" optional="1" min_value="1" max_value="10" units="liter" decimals="2" group_id="FEV1" />
+<question item_id="7584" mid="FEV1_RELATIVE" datatype="QN" page_number="3" page_title="Lungefunksjonstester" question_text="FEV1% (%)" optional="1" min_value="10" max_value="200" units="%" decimals="1" help_text="Relativt til normalverdi" group_id="FEV1_RELATIVE" />
+<question item_id="7585" mid="FEV1FVC_RATIO_PERCENT" datatype="QN" page_number="3" page_title="Lungefunksjonstester" question_text="FEV1/FVC (%)" optional="1" min_value="1" max_value="999" units="%" decimals="1" expression="FEV1/FVC*100" group_id="FEV1FVC_RATIO_PERCENT" />
+<question item_id="7586" mid="DLCO" datatype="QN" page_number="3" page_title="Lungefunksjonstester" question_text="DLCO (%)" optional="1" min_value="1" max_value="999" units="%" decimals="1" help_text="Relativt til forventet verdi" group_id="DLCO" />
+
+<!-- Start: Form actions, generated XML -->
+
+<question_action master_question_mid="NDV_SMOKING" detail_question_mid="CigsPerDay" enum_item_value="2" activate="1" />
+<question_action master_question_mid="NDV_SMOKING" detail_question_mid="CigsPerDay" enum_item_value="3" activate="1" />
+<question_action master_question_mid="NDV_SMOKING" detail_question_mid="SmokingYears" enum_item_value="2" activate="1" />
+<question_action master_question_mid="NDV_SMOKING" detail_question_mid="SmokingYears" enum_item_value="3" activate="1" />
+<question_action master_question_mid="NDV_SMOKING" detail_question_mid="PackYears" enum_item_value="2" activate="1" />
+<question_action master_question_mid="NDV_SMOKING" detail_question_mid="PackYears" enum_item_value="3" activate="1" />
+</form>
