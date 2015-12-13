@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!-- Created with Liquid XML Studio 2012 Starter Edition 10.1.2.4113 (http://www.liquid-technologies.com) -->
+<ExportList>
+    <Help>
+        For a simple introduction to the RTF format, read this:
+        http://search.cpan.org/~sburke/RTF-Writer/lib/RTF/Cookbook.pod
+    </Help>
+    
+	<TextExport Title="Epikrise" MatchForm="DiaEpikrise">
+	
+        <!-- Fargetabell er felles -->
+        
+        <TextSegment Name="Fargetabell" Comment="Ikke synlig">
+            {\colortbl;\red192\green32\blue32;\red192\green64\blue64;\red32\green32\blue64;\red16\green16\blue16;\red255\green0\blue0;}
+        </TextSegment>
+
+        <!-- Templates er delt mellom notatene -->
+                
+        <Templates DataTemplate="{\cf4 %s\cf1}" EmptyTemplate="" HeaderTemplate="{\cf3\ul\b %s\b0\ul0\par}" ErrorTemplate="" />
+
+		<TextSegment Header="Epikrise">
+	    	[SUMMARY.* ClearSkiplist TextFormat="RTF" SkipHeader]
+			[SUMMARY.DiaEpikrise]
+    		{\par\par}
+		</TextSegment>
+	
+		<TextSegment Header="Diagnoser">
+			[Problems.Current]
+    		{\par\par}
+		</TextSegment>
+		
+		<TextSegment Header="Labdata">
+			[LabText.Latest MaxAge="30"]
+			{\par\par}
+		</TextSegment>
+
+		<TextSegment Header="Medikamenter">
+			[DrugList.Current Output="RTF" LineBreak]
+			{\par\par}
+	    </TextSegment>
+	    
+	    <TextSegment Name="Insuline" VisibilityExpression="ISNULL(ITEM.ATC_A10A.AsInteger-1)">
+	    	[SUMMARY.DIAPOL_INSULIN|INSULIN_PUMP1 HeaderBreak MaxAge="365" Exclude="NDV_TREATMENT_TYPE" FormHeader]
+	    </TextSegment>
+
+	</TextExport>
+	
+</ExportList>
+	
