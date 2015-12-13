@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html>
+  <title>Barneovervekt oversiktsbilde</title>
+
+  <!--Compatibility-->
+  <meta charset="windows-1252">
+
+  <!-- JQuery -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <!-- HighCharts -->
+  <script type="text/javascript" src="[ExePath]HighCharts/js/highcharts.js"></script>
+
+<!-- Optional theme file -->
+  <script type="text/javascript">
+	Highcharts.theme = {
+	chart: {
+		backgroundColor: {
+			linearGradient: [0, 0, 500, 500],
+			stops: [
+				[0, 'rgb(255, 255, 255)'],
+				[1, 'rgb(220, 220, 220)']
+			]
+		},
+		borderWidth: 0,
+		borderRadius: 0,
+		borderColor: '#000',
+		plotBackgroundColor: 'rgba(255, 255, 255, .9)',
+		plotShadow: false,
+		marginBottom: 44,
+		zoomType: 'x',
+		plotBorderWidth: 1
+	},
+	tooltip: { 
+	        borderRadius: 0,
+	        borderWidth: 1
+	},
+	title: {
+	        marginTop: -2,
+		style: {
+			color: '#000',
+			font: '8pt Tahoma, sans-serif'
+		}
+	},
+	subtitle: {
+		style: {
+			color: '#666666',
+			font: '7pt Tahoma, sans-serif'
+		}
+	},
+	xAxis: {
+		gridLineWidth: 1,
+		lineWidth: 2,
+		lineColor: '#000',
+		tickColor: '#000',
+		labels: {
+			style: {
+				color: '#000',
+				font: '8pt Tahoma, sans-serif'
+			}
+		},
+		title: {
+			style: {
+				color: '#000',
+				fontSize: '8pt',
+				fontFamily: 'Tahoma, sans-serif'
+
+			}
+		}
+	},
+	yAxis: {
+		minorTickInterval: 'auto',
+		lineColor: '#000',
+		lineWidth: 2,
+		tickWidth: 1,
+		tickLength: 4,
+		tickColor: '#000',
+		labels: {
+			rotation: 0,
+			style: {
+				color: '#000',
+				font: '8pt Tahoma, sans-serif'
+			}
+		},
+		title: {
+			style: {
+				color: '#000',
+				backgroundColor: '#ffffe0',
+				border: '1px solid silver',
+                                padding: '2pt',
+				font: '8pt Tahoma, sans-serif'
+			}
+		}
+	},
+	legend: {
+	        borderWidth: 0, 
+		itemStyle: {
+			font: '8pt Tahoma, sans-serif',
+			color: 'black'
+
+		},
+		itemHoverStyle: {
+			color: '#000'
+		},
+		itemHiddenStyle: {
+			color: 'gray'
+		}
+	},
+	labels: {
+		style: {
+			color: '#99b'
+		}
+	}
+};
+
+// Apply the theme
+var highchartsOptions = Highcharts.setOptions(Highcharts.theme);
+
+  </script>
+
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+
+     Highcharts.setOptions({
+	lang: {
+		months: ['Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni', 
+			'Juli', 'August', 'September', 'Oktober', 'November', 'Desember'],
+                shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 
+			'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
+		weekdays: ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag'],
+                resetZoomTitle: 'Tilbakestill til 1:1',
+                resetZoom: 'Vis alt'
+	}
+      });
+
+    var chartWeight = new Highcharts.Chart
+      ({
+          credits: { text: '' },
+          chart: { renderTo: 'Vekt' },
+          title: { text: 'Vekt og BMI-utvikling' },
+          xAxis: { type: 'datetime' },
+          yAxis: { tickInterval: 20, x: 8, title: { text: '- kg og kg/m2 -'} }, tooltip: { formatter: function() { return '<b>'+ this.series.name + '</b><br/>'+ Highcharts.dateFormat('%e. %b %Y', this.x) +': '+ this.y; } },
+          series: 
+          [ 
+            { name: 'Vekt', color: '#022F9C', timeSeries: {varName: 'ClinData.WEIGHT'} },
+            { name: 'BMI', color: '#009C00', timeSeries: {varName: 'ClinData.BMI'} }
+          ]
+        }
+      );
+
+    });
+				
+
+  </script>
+
+<style>
+  body{ font-family: "Segoe UI","Tahoma"; font-size: 9pt; }
+  .Content{ max-width: 800px; }
+  .PatientName{ font-size: 12pt; color: #011E65; border-bottom: 1px solid #011E65; margin-bottom: 8pt; }
+  .TipHeader { color: #5374C5; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<div class="Content">
+
+<div class="PatientName"><#Patient.VisualId></div>
+
+<!-- Start: Grafikk Vekt og blodtrykk -->
+  
+<div id="Vekt" style="width: 360px; height: 270px; margin: 0; float: right;"></div>
+
+<div class="TipHeader">Noen råd om veiing</div>
+
+<ul>
+<li>Ukentlige veiinger, f.eks. lørdag morgen, etter å ha vært på toalettet, før frokost.
+<li>Egenregistrering av vektutvikling
+</ul>
+<p>
+
+<div class="TipHeader">Noen råd om spising</div>
+<ul>
+<li>Spise langsomt.  
+<li>En gang på tallerken (porsjon normalt gitt av foresatte)
+<li>Hvis ønske om mer, vent 20 minutter.
+<li>Regelmessige måltider, frokost, lunsj, middag og kvelds.
+<li>Frukt som mellommåltid
+<li>Vann som tørstedrikk
+<li>Kutte helt ut sukkerholdig brus.
+<li>Ingen spising foran TV eller datamaskin.
+</ul>
+<p>
+
+<div class="TipHeader">Noen råd om TV/skjerm</div>
+<ul>
+  <li>Ingen TV på soverommet.
+  <li>TV bør normalt ikke overskride 2 timer per døgn (skolearbeid ikke inludert)
+  <li>Bra å unngå skjermtid (utenom skolearbeid) før klokken 18.00.
+</ul>
+
+</div>
+
+</body>
+</html>
