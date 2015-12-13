@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form form_id="660" form_uid="FORM660" title="Utskrivning" calculate_invalid="False" rating_scale="False" status="Open" repeatable="0" >
+<instructions></instructions>
+
+<!-- Start: Form enums, generated XML -->
+
+<enumeration enumeration_uid="8113">
+  <enum_item value="1" text="Slagenhet | Utskrevet fra slagenhet." answer_id="43443" />
+  <enum_item value="2" text="Annet sengeavdeling*" answer_id="43444" />
+</enumeration>
+
+<enumeration enumeration_uid="8114">
+  <enum_item value="1" text="egen bolig uten hjemmesykepleie/hjemmehjelp." answer_id="43454" />
+  <enum_item value="2" text="egen bolig med hjemmesykepleie/hjemmehjelp." answer_id="43455" />
+  <enum_item value="3" text="omsorgsbolig med d&#248;gnkontinuerlige tjenester og personale." answer_id="43456" />
+  <enum_item value="4" text="sykehjem." answer_id="43457" />
+  <enum_item value="5" text="annen avdeling for videre behandling." answer_id="43458" />
+  <enum_item value="6" text="annen avd. i p&#229;vente av sykehjem/rehab." answer_id="43459" />
+  <enum_item value="7" text="rehabiliteringsavd./-institusjon." answer_id="43460" />
+  <enum_item value="8" text="opptreningssenter." answer_id="43461" />
+  <enum_item value="9" text="Ukjent*" answer_id="43462" />
+  <enum_item value="10" text="D&#248;d i l&#248;pet av oppholdet." answer_id="43463" />
+  <enum_item value="11" text="Annet*" answer_id="43464" />
+</enumeration>
+
+<enumeration enumeration_uid="8117">
+  <enum_item value="1" text="Ja | Obdusert." short_code="J" answer_id="43476" />
+  <enum_item value="2" text="Nei | Ikke obdusert." short_code="N" answer_id="43477" />
+  <enum_item value="9" text="Ukjent*" short_code="U" answer_id="43478" />
+</enumeration>
+
+<enumeration enumeration_uid="8118">
+  <enum_item value="1" text="Ja" answer_id="43479" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="43480" />
+</enumeration>
+
+<enumeration enumeration_uid="8337">
+  <enum_item value="1" text="Medisinsk | Utskrevet fra medisinsk avdeling." answer_id="44904" />
+  <enum_item value="2" text="Nevrologisk | Utskrevet fra nevrologisk avdeling." answer_id="44905" />
+  <enum_item value="3" text="Nevrokirurgisk | Utskrevet fra nevrokirurgisk avdeling." answer_id="44906" />
+  <enum_item value="4" text="Intensivavdeling | Utskrevet fra intensivavdeling." answer_id="44907" />
+  <enum_item value="5" text="Observasjonsavdeling | Utskrevet fra observasjonsavdeling." answer_id="44908" />
+  <enum_item value="6" text="Annen avdeling*" answer_id="44909" />
+</enumeration>
+
+<!-- Start: Form items, generated XML -->
+
+<question item_id="8119" mid="VAR8119" datatype="DATE" page_number="1" page_title="Utskrivning" question_text="Utskrivningsdato" optional="0" help_text="Datoen pasienten ble skrevet ut etter slaget." />
+<question item_id="8113" mid="VAR8113" datatype="ORD" page_number="1" page_title="Utskrivning" question_text="Avdeling utskrevet fra" optional="0" enumeration_uid="8113" />
+<question item_id="8337" mid="VAR8337" datatype="ORD" page_number="2" question_text="Hvilken avdeling" optional="1" enumeration_uid="8337" />
+<question item_id="8114" mid="VAR8114" datatype="ORD" page_number="3" header="Utskrives til" question_text="Hvor skrives pasienten ut til?" optional="0" enumeration_uid="8114" />
+<question item_id="8118" mid="HasDied" datatype="ORD" page_number="3" question_text="D&#248;d" optional="0" visible="-1" expression="2-ISNULL(VAR8114-10)" enumeration_uid="8118" group_id="HasDied" />
+<question item_id="8115" mid="VAR8115" datatype="NAR" page_number="4" question_text="Utskrives til" optional="0" multiline="0" />
+<question item_id="8116" mid="VAR8116" datatype="DATE" page_number="5" page_title="Mors" header="D&#248;de" question_text="Morsdato" optional="0" />
+<question item_id="8117" mid="VAR8117" datatype="ORD" page_number="5" page_title="Mors" question_text="Obdusert" optional="0" enumeration_uid="8117" />
+
+<!-- Start: Form actions, generated XML -->
+
+<question_action master_question_mid="VAR8113" detail_question_mid="VAR8337" enum_item_value="2" activate="1" />
+<question_action master_question_mid="VAR8114" detail_question_mid="VAR8115" enum_item_value="11" activate="1" />
+<question_action master_question_mid="HasDied" detail_question_mid="VAR8116" enum_item_value="1" activate="1" />
+<question_action master_question_mid="HasDied" detail_question_mid="VAR8117" enum_item_value="1" activate="1" />
+</form>
