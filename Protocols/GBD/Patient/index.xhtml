@@ -1,0 +1,143 @@
+<!doctype html>
+<head>
+  <!--Compatibility-->
+  <meta http-equiv="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+  <title>Oversiktsbilde</title>
+  <style>
+    table{ text-align: left; }
+    td{ font-family: tahoma; font-size: 13px; background-color: white; }
+    h1{ font-size: 20px; margin: 0px; margin-bottom: 2px; margin-top: 2px; }
+    .screen{ background-color: white; padding: 0px; margin: 8px; }
+    .rxheader,h2{ font-size: 12px; color: steelblue; background-color: aliceblue; font-weight: bold; border-bottom: 1px solid steelblue; margin: 0px; margin-bottom: 1px; padding: 4px; }
+    .chartcell,.rowset{ padding: 8px; }
+    .headercell{ padding: 4px 8px 2px 8px; }
+    .caption{ font-weight: bold; }
+    .reportname{ font-size: 12px; text-align: right; }
+    .from,.date{ font-family: "Times New Roman"; color: blue; font-style: italic; }
+    .date,.number{ color: steelblue; text-align: right; font-size: 11px; }
+    .tiny,.tinyr,.tinyl{ font-size: 10px; color: slategray; }
+    .tiny{ vertical-align: bottom; }
+    .tinyl{ text-align: left; }
+    .tinyr{ text-align: right }
+    .value{ color: blue; font-size: 11px;}
+  </style>
+</head>
+<body class="screen">
+  <center>
+  <table summary="Oversiktsbilde" width="715px" cellpadding="16" cellspacing="1" bgcolor="silver">
+    <tr>
+      <td class="headercell" colspan="2">
+        <table width="100%" cellpadding="0" cellspacing="0">
+         <tr>
+           <td><h1>[PATIENT.VisualId]</h1></td>
+           <td class="reportname">Primærkontakt: <b>[DATA.GbdPrimaerKontakt]</b><br><span class="tinyr">(Se skjema: Administrasjon)</span></td>
+         </tr>
+        </table>
+      </td>
+    </tr>
+    <tr valign="top">
+      <td class="chartcell" width="50%">
+        <h2>Utenfor sykehjemmet</h2>
+        <img src="[PROTOCOL.PATH]images\DoctorTech48.jpg" align="right" style="margin-right: 16px"/>
+        [ITEM.BOLIGTYPE.LIST]<br/>
+        [DATA.ADDRESS]<br/>
+        [DATA.ZIP] [DATA.CITY]<br/>
+        <b>Sone:</b> [DATA.SONE_HJEMMESPL]<br/>
+        <b>Fastlege:</b> [DATA.DOCNAME] <b>Tel:</b> [DATA.DOCPHONE]
+      </td>
+      <td class="chartcell" width="50%">
+        <h2>Nærmeste pårørende</h2>
+        <img src="[PROTOCOL.PATH]images\GroupDiversity6Information48.jpg" align="right" style="margin-right: 16px"/>
+        [DATA.NEXTOFKIN_NAME] <span class="from">[ITEM.NEXTOFKIN_TYPE.LIST]</span><br/>
+        [DATA.NEXTOFKIN_ADDRESS]<br/>
+        [DATA.NEXTOFKIN_ZIP] [DATA.NEXTOFKIN_CITY]<br/>
+        <b>Tel:</b> [DATA.NEXTOFKIN_PHONE]
+      </td>
+    </tr>
+    <tr valign="top">
+      <td class="chartcell" colspan="2">
+        <h2>Diagnoser</h2>
+        [PROBLEMS.CURRENT]
+      </td>
+    </tr>
+    <tr valign="top">
+      <td class="chartcell">
+        <h2>Sanser og kognisjon</h2>
+        <table bgcolor="white" cellspacing="1" cellpadding="2" width="100%">
+          <tr valign="top"><td class="caption" valign="top">Syn</td><td>[ITEM.HULTEN_SYN.LIST] <span class="from">Hultén</span></td><td class="date">[ITEM.HULTEN_SYN.DATE]</td></tr>
+          <tr valign="top"><td class="caption" valign="top">Hørsel</td><td>[ITEM.HULTEN_HOERSEL.LIST] <span class="from">Hultén</span></td><td class="date">[ITEM.HULTEN_HOERSEL.DATE]</td></tr>
+          <tr valign="top"><td class="caption" valign="top">Berger</td><td>[ITEM.BERGER_SKALA.LIST]</td><td class="date">[ITEM.BERGER_SKALA.DATE]</td></tr>
+          <tr valign="top"><td class="caption" valign="top">MMS&nbsp;skåre</td><td><b>[DATA.MMS_SUM]</b> poeng</td><td class="date">[ITEM.MMS_SUM.DATE]</td></tr>
+        </table>
+        <p>
+        <h2>Naturlige funksjoner (alt fra Hultén)</h2>
+        <table bgcolor="white" cellspacing="1" cellpadding="2" width="100%">
+          <tr valign="top"><td class="caption" width="40" valign="top">Vannlating</td><td>[ITEM.HULTEN_URININKONTINENS.LIST]</td><td class="date">[ITEM.HULTEN_URININKONTINENS.DATE]</td></tr>
+          <tr valign="top"><td class="caption" width="40" valign="top">Urinveisinf.</td><td>[ITEM.HULTEN_UVI.LIST]</td><td class="date">[ITEM.HULTEN_UVI.DATE]</td></tr>
+          <tr valign="top"><td class="caption" valign="top">Avføring</td><td>[ITEM.HULTEN_INKONTAVFOERING.LIST]</td><td class="date">[ITEM.HULTEN_INKONTAVFOERING.DATE]</td></tr>
+          <tr valign="top"><td class="caption" valign="top">Liggesår</td><td>[ITEM.HULTEN_LIGGESAAR.LIST]</td><td class="date">[ITEM.HULTEN_LIGGESAAR.DATE]</td></tr>
+        </table>
+        <br/>
+        Fyll ut nytt skjema hvis opplysningene ikke er oppdatert.
+      </td>
+      <td class="chartcell">
+        <center>
+        <%=SVG.CHART title="Vekt og blodtrykk" variables="WEIGHT,SBP,DBP" colors="steelblue,red,maroon" labels="Vekt,SBT,DBP" units="kg og mmHg" %>
+        </center>
+      </td>
+    </tr>
+    <tr valign="top">
+      <td class="chartcell">
+        <center>
+        <%=SVG.CHART title="Hulten, MMS og Berger" variables="HULTEN_SCORE,MMS_SUM,BERGER_SKALA" colors="steelblue,limegreen,orange" labels="Hultén,MMS,Berger" units="poeng" %>
+        </center>
+        <ul>
+        <li><b>Hultén</b> Skala 0-105, høyere = mer pleietrengende.
+        <li><b>MMS</b> Skala 0-30, lavere = økende kognitiv svikt.
+        <li><b>Berger</b> Skala 1-6, høyere = økende dement.
+        </ul>
+      </td>
+      <td class="chartcell">
+        <center>
+        <%=SVG.CHART title="Nyrefunksjon" variables="CREAT,EGFR,GFR_MDRD" colors="red,limegreen,orange" labels="Kreatinin,eGFR ekstern,eGFR lokal" units="umol/l og ml/min/1.73m2" %>
+        </center>
+        eGFR ekstern kommer fra eksternt laboratorium.  Normale verdier rapporteres bare som &gt;60. eGFR lokal har også med lokale labdata. Verdier over 60 er normale og endringer trenger ikke nødvendigvis vektlegges.
+      </td>
+    </tr>
+<!-- Relasjoner til behandlere -->
+      <tr>
+        <td colspan="2" class="rowset">
+          <table summary="Relasjoner" width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+              <th colspan="6" align="left">
+                <h2>Behandlere og andre relasjoner</h2>
+              </th>
+            </tr>
+            <tr class="fieldnames">
+              <td class="tinyl">
+                Yrke
+              </td>
+              <td class="tinyl">
+                Navn
+              </td>
+              <td class="tinyl">
+                Relasjon
+              </td>
+              <td class="tinyr">
+                Fra
+              </td>
+              <td class="tinyr">
+                Til
+              </td>
+              <td class="tinyr">
+                RelId
+              </td>
+            </tr>
+            <%TABLE.ROWSET SQL="EXEC GetClinRelations [Patient.PersonId]" Fields="ProfName,FullName,RelName,CreatedAt,ExpiresAt,ClinRelId" Classes="caption,,,date,date,number"%>
+          </table>
+        </td>
+      </tr>
+  </table>
+  </center>
+</body>
+</html>

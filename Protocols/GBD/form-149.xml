@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form form_id="149" form_uid="GBD_EPIKRISE_FASTLEGE" title="Epikrise til fastlegen" calculate_invalid="False" rating_scale="False" status="Open" repeatable="1" >
+<instructions></instructions>
+
+<!-- Start: Form enums, generated XML -->
+
+<enumeration enumeration_uid="121">
+  <enum_item value="1" text="Innlagt for utredning." answer_id="168" />
+  <enum_item value="2" text="Korttidsopphold." answer_id="169" />
+  <enum_item value="3" text="Rehabiliteringsopphold." answer_id="170" />
+  <enum_item value="4" text="Rullering." answer_id="171" />
+  <enum_item value="5" text="Fast beboer." answer_id="17614" />
+</enumeration>
+
+<enumeration enumeration_uid="4318">
+  <enum_item value="1" text="Her hos oss | Vi f&#248;lger opp videre." answer_id="23134" />
+  <enum_item value="2" text="Fastlegen | Fastlegen f&#248;lger opp videre." answer_id="23135" />
+  <enum_item value="3" text="Andre*" answer_id="23136" />
+</enumeration>
+
+<enumeration enumeration_uid="6292">
+  <enum_item value="1" text="Vanlig bosted | Utskrives til hjemmet." answer_id="33228" />
+  <enum_item value="2" text="Som d&#248;d | Utskrives som d&#248;d." answer_id="33229" />
+  <enum_item value="21" text="Annen somatisk enhet her | Overflyttet annen somatisk enhet her." answer_id="33232" />
+  <enum_item value="23" text="Psykiatrisk enhet her | Overflyttet annen psykatrisk enhet her." answer_id="33236" />
+  <enum_item value="31" text="Annet somatisk sykehus i Norge" answer_id="33237" />
+  <enum_item value="34" text="Somatisk sykehus utenfor Norge" answer_id="33243" />
+  <enum_item value="35" text="Rehab. Inst. /sykehjem." answer_id="33250" />
+  <enum_item value="39" text="Annen helseinstitusjon" answer_id="33251" />
+</enumeration>
+
+<!-- Start: Form items, generated XML -->
+
+<question item_id="3428" mid="DOCNAME" datatype="NAR" page_number="1" page_title="Fastlege" header="Navn*" question_text="Fastlegens navn" optional="0" carry_forward="1" exclude_caption="1" multiline="0" group_id="DOCNAME" />
+<question item_id="3429" mid="DOCADDRESS" datatype="NAR" page_number="1" page_title="Fastlege" header="Adresse*" question_text="Fastlegens adresse" optional="0" carry_forward="1" exclude_caption="1" multiline="0" group_id="DOCADDRESS" />
+<question item_id="3430" mid="DOCZIP" datatype="NAR" page_number="1" page_title="Fastlege" header="Postnummer*" question_text="Fastlegens postnummer" optional="0" carry_forward="1" exclude_caption="1" multiline="0" group_id="DOCZIP" />
+<question item_id="3431" mid="DOCCITY" datatype="NAR" page_number="1" page_title="Fastlege" header="Poststed*" question_text="Fastlegens poststed" optional="0" carry_forward="1" exclude_caption="1" multiline="0" group_id="DOCCITY" />
+<question item_id="3432" mid="DOCPHONE" datatype="NAR" page_number="1" page_title="Fastlege" header="Telefon*" question_text="Fastlegens telefonnummer" optional="0" carry_forward="1" exclude_caption="1" multiline="0" group_id="DOCPHONE" />
+<question item_id="121" mid="OPPHOLDSTYPE" datatype="ORD" page_number="2" page_title="N&#248;kkeldata om oppholdet" question_text="Oppholdstype" optional="0" carry_forward="1" enumeration_uid="121" help_text="Husk &#229; oppdatere &quot;Statusfeltet&quot; &#248;verst p&#229; skjermen!" group_id="OPPHOLDSTYPE" />
+<question item_id="4085" mid="GBD_INNDATO" datatype="DATE" page_number="2" page_title="N&#248;kkeldata om oppholdet" question_text="Ankom sykehjemmet" optional="0" carry_forward="1" min_value="DOB" max_value="FORMDATE-1" help_text="Datoen da pasienten kom inn p&#229; sykehjemmet." group_id="GBD_INNDATO" />
+<question item_id="4086" mid="GBD_UTDATO" datatype="DATE" page_number="2" page_title="N&#248;kkeldata om oppholdet" question_text="Forlot sykehjemmet" optional="0" carry_forward="1" help_text="Dato da pasienten forlot sykehjemmet" group_id="GBD_UTDATO" />
+<question item_id="6292" mid="AdmOutcome" datatype="ORD" page_number="2" page_title="N&#248;kkeldata om oppholdet" question_text="Utskrivningsm&#229;te" optional="0" enumeration_uid="6292" group_id="AdmOutcome" />
+<question item_id="4318" mid="EPIKRISE_ANSVAR_KODE" datatype="ORD" page_number="3" page_title="Oppf&#248;lging" question_text="Ansvar for videre oppf&#248;lging" optional="0" enumeration_uid="4318" group_id="EPIKRISE_ANSVAR_KODE" />
+<question item_id="4320" mid="EPIKRISE_ANSVAR_TEKST" datatype="NAR" page_number="4" question_text="Ansvarlig videre" optional="0" multiline="0" group_id="EPIKRISE_ANSVAR_TEKST" />
+<question item_id="4321" mid="EPIKRISE_PLAN" datatype="NAR" page_number="5" question_text="Plan for videre oppf&#248;lging" optional="1" multiline="1" group_id="EPIKRISE_PLAN" />
+<question item_id="8470" mid="VAR8470" datatype="MSG" page_number="5" header="Husk Profil!" question_text="Ved sykehusinnleggelse eller utskrivning skal legemiddelkortet i Profil oppdateres, fordi det ogs&#229; g&#229;r informasjon fra Profil til sykehuset, fastlegen og hjemmesykepleien." optional="1" />
+
+<!-- Start: Form actions, generated XML -->
+
+<question_action master_question_mid="AdmOutcome" detail_question_mid="EPIKRISE_ANSVAR_KODE" enum_item_value="2" activate="6" />
+<question_action master_question_mid="EPIKRISE_ANSVAR_KODE" detail_question_mid="EPIKRISE_ANSVAR_TEKST" enum_item_value="3" activate="1" />
+<question_action master_question_mid="AdmOutcome" detail_question_mid="EPIKRISE_PLAN" enum_item_value="2" activate="6" />
+<question_action master_question_mid="AdmOutcome" detail_question_mid="VAR8470" enum_item_value="2" activate="6" />
+</form>

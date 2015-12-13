@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form form_id="844" form_uid="GBD_INFECTION" title="Infeksjonsregistrering" calculate_invalid="False" rating_scale="False" status="Open" repeatable="1" >
+<instructions></instructions>
+
+<!-- Start: Form enums, generated XML -->
+
+<enumeration enumeration_uid="769">
+  <enum_item value="1" text="Annen (ikke p&#229; listen)*" answer_id="1275" />
+  <enum_item value="2" text="Pneumoni." answer_id="1272" />
+  <enum_item value="3" text="UVI, nedre." answer_id="1273" />
+  <enum_item value="4" text="UVI, &#248;vre." answer_id="1274" />
+  <enum_item value="5" text="Gastroenteritt, Clostridium." answer_id="1276" />
+  <enum_item value="6" text="Gastroenteritt, annen." answer_id="1277" />
+  <enum_item value="7" text="Influensalignende sykdom." answer_id="1278" />
+  <enum_item value="8" text="S&#229;rinfeksjon, ikke post-operativ." answer_id="18075" />
+  <enum_item value="9" text="S&#229;rinfeksjon, postoperativ, dyp." answer_id="18076" />
+  <enum_item value="10" text="S&#229;rinfeksjon, postoperativ, overfladisk." answer_id="18096" />
+  <enum_item value="11" text="Erysipelas / cellulitt." answer_id="56352" />
+</enumeration>
+
+<enumeration enumeration_uid="777">
+  <enum_item value="1" text="Ja | Innlagt p&#229; sykehus." short_code="J" answer_id="1283" />
+  <enum_item value="2" text="Nei | Ikke innlagt." short_code="N" answer_id="1284" />
+</enumeration>
+
+<enumeration enumeration_uid="778">
+  <enum_item value="1" text="Ja | D&#248;de i forl&#248;pet." short_code="J" answer_id="1285" />
+  <enum_item value="2" text="Nei*" short_code="N" answer_id="1286" />
+</enumeration>
+
+<enumeration enumeration_uid="3498">
+  <enum_item value="1" text="Kjent agens." answer_id="18060" />
+  <enum_item value="2" text="Ukjent agens." answer_id="18061" />
+</enumeration>
+
+<enumeration enumeration_uid="3499">
+  <enum_item value="1" text="Ja | Behandling gitt." short_code="J" answer_id="18062" />
+  <enum_item value="2" text="Nei | Ubehandlet." short_code="N" answer_id="18063" />
+  <enum_item value="3" text="Ukjent" short_code="U" answer_id="18064" />
+</enumeration>
+
+<enumeration enumeration_uid="9645">
+  <enum_item value="1" text="Ja" answer_id="52918" />
+  <enum_item value="2" text="Nei" answer_id="52919" />
+</enumeration>
+
+<!-- Start: Form items, generated XML -->
+
+<question item_id="769" mid="INFECT_TYPE" datatype="ORD" page_number="1" page_title="Infeksjonstype og agens" question_text="Hvilken type infeksjon?" optional="0" carry_forward="1" enumeration_uid="769" group_id="INFECT_TYPE" />
+<question item_id="10066" mid="VAR10066" datatype="NAR" page_number="2" question_text="Infeksjonstype" optional="0" multiline="0" />
+<question item_id="3498" mid="INFECT_AGENT_KNOWN" datatype="ORD" page_number="3" question_text="Kjent infeksi&#248;st agens?" optional="0" enumeration_uid="3498" help_text="Svar ja kun ved sikkert dyrknigssvar" group_id="INFECT_AGENT_KNOWN" />
+<question item_id="771" mid="INFECT_AGENT_NAMES" datatype="NAR" page_number="4" question_text="Mikrober" optional="0" multiline="1" help_text="Skriv navnet p&#229; mikrobe(ne) som for&#229;rsaket infeksjonen" group_id="INFECT_AGENT_NAMES" />
+<question item_id="3499" mid="INFECT_DRUG_GIVEN" datatype="ORD" page_number="5" page_title="Antibakteriell/antiviral behandling" question_text="Er det gitt antibiotika eller antiviral behandling" optional="0" enumeration_uid="3499" group_id="INFECT_DRUG_GIVEN" />
+<question item_id="10067" mid="INFECT_TREAT_START" datatype="DATE" page_number="6" header="Oppstart" question_text="Startdato for behandling" optional="0" min_value="TRUNC(FORM_DATE-30)" max_value="TRUNC(NOW+1)" group_id="INFECT_TREAT_START" />
+<question item_id="9645" mid="INFECT_TREAT_IV" datatype="ORD" page_number="6" header="Intraven&#248;st" question_text="Ble antibiotikabehandlingen gitt intraven&#248;st?" optional="0" enumeration_uid="9645" group_id="INFECT_TREAT_IV" />
+<question item_id="3495" mid="INFECT_DRUG_NAMES" datatype="NAR" page_number="7" question_text="Medikamentnavn" optional="0" multiline="1" group_id="INFECT_DRUG_NAMES" />
+<question item_id="3500" mid="INFECT_DATE_START" datatype="DATE" page_number="8" page_title="Utfall av infeksjon" question_text="Startdato infeksjon" optional="0" min_value="Form.Date-720" max_value="NOW+1" help_text="Angi n&#229;r f&#248;rste symptomer/tegn p&#229; infeksjon viste seg." group_id="INFECT_DATE_START" />
+<question item_id="768" mid="INFECT_DATE_END" datatype="DATE" page_number="8" page_title="Utfall av infeksjon" question_text="Sluttdato infeksjon" optional="0" min_value="Form.Date-360" max_value="NOW+1" help_text="La st&#229; &#229;pent s&#229; lenge infeksjonen fortsatt er tilstede." group_id="INFECT_DATE_END" />
+<question item_id="777" mid="INFEKSJON_INNLEGGELSE" datatype="ORD" page_number="8" page_title="Utfall av infeksjon" question_text="Resulterte infeksjonen i innleggelse p&#229; sykehus?" optional="0" enumeration_uid="777" group_id="INFEKSJON_INNLEGGELSE" />
+<question item_id="778" mid="INFEKSJON_D&#216;D" datatype="ORD" page_number="8" page_title="Utfall av infeksjon" question_text="D&#248;de pasienten i sykdomsperioden?" optional="0" enumeration_uid="778" group_id="INFEKSJON_D&#216;D" />
+
+<!-- Start: Form actions, generated XML -->
+
+<question_action master_question_mid="INFECT_TYPE" detail_question_mid="VAR10066" enum_item_value="1" activate="1" />
+<question_action master_question_mid="INFECT_AGENT_KNOWN" detail_question_mid="INFECT_AGENT_NAMES" enum_item_value="1" activate="1" />
+<question_action master_question_mid="INFECT_DRUG_GIVEN" detail_question_mid="INFECT_TREAT_START" enum_item_value="1" activate="1" />
+<question_action master_question_mid="INFECT_DRUG_GIVEN" detail_question_mid="INFECT_TREAT_IV" enum_item_value="1" activate="1" />
+<question_action master_question_mid="INFECT_DRUG_GIVEN" detail_question_mid="INFECT_DRUG_NAMES" enum_item_value="1" activate="1" />
+</form>

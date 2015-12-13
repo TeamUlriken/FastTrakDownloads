@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form form_id="458" form_uid="MDS30L" title="Tannstatus" calculate_invalid="False" rating_scale="False" status="Open" repeatable="1" >
+<instructions></instructions>
+
+<!-- Start: Form enums, generated XML -->
+
+<enumeration enumeration_uid="5625">
+  <enum_item value="1" text="Ja | D&#229;rlig gebiss." short_code="J" answer_id="30131" />
+  <enum_item value="2" text="Nei (eller bruker ikke gebiss)*" answer_id="30132" />
+</enumeration>
+
+<enumeration enumeration_uid="5626">
+  <enum_item value="1" text="Ja | Uten egne tenner." short_code="J" answer_id="30135" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="30136" />
+</enumeration>
+
+<enumeration enumeration_uid="5627">
+  <enum_item value="1" text="Ja | Unormalt vev i munnhulen." short_code="J" answer_id="30139" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="30140" />
+</enumeration>
+
+<enumeration enumeration_uid="5628">
+  <enum_item value="1" text="Ja | Tydelige hull og/eller brukne tenner." short_code="J" answer_id="30141" />
+  <enum_item value="2" text="Nei | Ingen tydelige hull eller brukne tenner." short_code="N" answer_id="30142" />
+</enumeration>
+
+<enumeration enumeration_uid="5629">
+  <enum_item value="1" text="Ja | Irritert/bl&#248;dende tannkj&#248;tt eller l&#248;se tenner." short_code="J" answer_id="30143" />
+  <enum_item value="2" text="Nei | Ikke irritert/bl&#248;dende tannkj&#248;tt eller l&#248;se tenner." short_code="N" answer_id="30144" />
+</enumeration>
+
+<enumeration enumeration_uid="5630">
+  <enum_item value="1" text="Ja | Har smerter ved tygging." short_code="J" answer_id="30147" />
+  <enum_item value="2" text="Nei*" short_code="N" answer_id="30148" />
+</enumeration>
+
+<enumeration enumeration_uid="5631">
+  <enum_item value="1" text="Ja" answer_id="30149" />
+  <enum_item value="2" text="Nei | Ikke mulig &#229; unders&#248;ke munnhulen." short_code="N" answer_id="30150" />
+</enumeration>
+
+<enumeration enumeration_uid="5632">
+  <enum_item value="1" text="Ja" answer_id="30167" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="30168" />
+</enumeration>
+
+<!-- Start: Form items, generated XML -->
+
+<question item_id="5630" mid="MDS_L1f" datatype="ORD" page_number="1" page_title="Tannstatus" page_introduction="Svarer til MDS 3.0 Section L - Oral/Dental status" question_text="Smerter i munnen eller ansiktet" optional="1" enumeration_uid="5630" help_text="Ubehag eller problemer ved tygging" group_id="MDS_L1f" />
+<question item_id="5626" mid="MDS_L1b" datatype="ORD" page_number="1" page_title="Tannstatus" page_introduction="Svarer til MDS 3.0 Section L - Oral/Dental status" header="Tannl&#248;s" question_text="Uten egne tenner" optional="1" enumeration_uid="5626" help_text="Fullstendig mangel av egne tenner inkludert tannfragmenter" group_id="MDS_L1b" />
+<question item_id="5625" mid="MDS_L1a" datatype="ORD" page_number="1" page_title="Tannstatus" page_introduction="Svarer til MDS 3.0 Section L - Oral/Dental status" question_text="Skadet eller d&#229;rlig tilpasset gebiss" optional="1" enumeration_uid="5625" help_text="Skadet, sprukket, vanskelig &#229; rense eller d&#229;rlig tilpasset" group_id="MDS_L1a" />
+<question item_id="5631" mid="MDS_L1h" datatype="ORD" page_number="1" page_title="Tannstatus" page_introduction="Svarer til MDS 3.0 Section L - Oral/Dental status" question_text="Er det mulig &#229; unders&#248;ke pasientens munnhule?" optional="1" enumeration_uid="5631" group_id="MDS_L1h" />
+<question item_id="5627" mid="MDS_L1c" datatype="ORD" page_number="2" page_title="Unders&#248;kelse av munnhulen" question_text="Unormalt vev i munnhulen" optional="0" enumeration_uid="5627" help_text="S&#229;r, svulster eller skader, ogs&#229; under eventuelt gebiss." group_id="MDS_L1c" />
+<question item_id="5628" mid="MDS_L1d" datatype="ORD" page_number="2" page_title="Unders&#248;kelse av munnhulen" question_text="Tydelige hull eller brukne tenner" optional="0" enumeration_uid="5628" group_id="MDS_L1d" />
+<question item_id="5629" mid="MDS_L1e" datatype="ORD" page_number="2" page_title="Unders&#248;kelse av munnhulen" question_text="Irritert eller bl&#248;dende tannkj&#248;tt og/eller egne tenner er l&#248;se" optional="0" enumeration_uid="5629" group_id="MDS_L1e" />
+<question item_id="5632" mid="MDS_L1g" datatype="ORD" page_number="3" question_text="Ingen av problemene over" optional="0" exclude_from_text="1" expression="2 - ISNULL( ISNULL(MDS_L1a-1) + ISNULL(MDS_L1b-1) + ISNULL(MDS_L1c-1) + ISNULL(MDS_L1d-1) + ISNULL(MDS_L1e-1) + ISNULL(MDS_L1f-1) )" enumeration_uid="5632" group_id="MDS_L1g" />
+
+<!-- Start: Form actions, generated XML -->
+
+<question_action master_question_mid="MDS_L1h" detail_question_mid="MDS_L1c" enum_item_value="1" activate="1" />
+<question_action master_question_mid="MDS_L1h" detail_question_mid="MDS_L1d" enum_item_value="1" activate="1" />
+<question_action master_question_mid="MDS_L1h" detail_question_mid="MDS_L1e" enum_item_value="1" activate="1" />
+</form>

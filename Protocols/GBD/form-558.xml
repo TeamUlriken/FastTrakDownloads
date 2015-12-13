@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form form_id="558" form_uid="RESTURIN" title="Bestemmelse av resturin med bl&#230;rescanning v2" calculate_invalid="False" rating_scale="False" status="Open" repeatable="1" >
+<instructions></instructions>
+
+<!-- Start: Form enums, generated XML -->
+
+<enumeration enumeration_uid="5877">
+  <enum_item value="1" text="Pasienten m&#229; presse for &#229; t&#248;mme bl&#230;ren/f&#248;lelse av ikke &#229; f&#229; t&#248;mt seg" answer_id="31544" />
+  <enum_item value="2" text="Mistanke om urinvegsinfeksjon/hyppige UVI" answer_id="31545" />
+  <enum_item value="3" text="Nedre magesmerter" answer_id="31546" />
+  <enum_item value="4" text="Endring i mental tilstand (forvirring, uro, utagering)" answer_id="31547" />
+  <enum_item value="5" text="Sp&#248;rsm&#229;l om tett permanent kateter" answer_id="31548" />
+  <enum_item value="6" text="Rutinekontroll" answer_id="31549" />
+</enumeration>
+
+<enumeration enumeration_uid="5883">
+  <enum_item value="1" text="Ja" answer_id="31550" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="31551" />
+</enumeration>
+
+<enumeration enumeration_uid="5885">
+  <enum_item value="1" text="Pasienten motsetter seg kateterisering" answer_id="31552" />
+  <enum_item value="2" text="Mislykket fors&#248;k p&#229; kateterisering (vanskelig &#229; komme inn med kateter)" answer_id="31553" />
+  <enum_item value="3" text="Annen &#229;rsak" answer_id="31554" />
+</enumeration>
+
+<enumeration enumeration_uid="5886">
+  <enum_item value="1" text="Obstruksjon i urinvegene" answer_id="31555" />
+  <enum_item value="2" text="Infeksjon" answer_id="31556" />
+  <enum_item value="3" text="Bivirkning av medikament" answer_id="31557" />
+  <enum_item value="4" text="Nevrologiske &#229;rsaker" answer_id="31558" />
+  <enum_item value="5" text="Annet" answer_id="31559" />
+</enumeration>
+
+<enumeration enumeration_uid="5887">
+  <enum_item value="1" text="Ja" answer_id="31560" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="31561" />
+  <enum_item value="3" text="Vet ikke" short_code="V" answer_id="31562" />
+</enumeration>
+
+<enumeration enumeration_uid="6596">
+  <enum_item value="1" text="Ja" answer_id="35396" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="35397" />
+</enumeration>
+
+<enumeration enumeration_uid="6954">
+  <enum_item value="1" text="Ja" answer_id="38542" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="38543" />
+</enumeration>
+
+<enumeration enumeration_uid="6955">
+  <enum_item value="1" text="Ja" answer_id="38558" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="38559" />
+</enumeration>
+
+<!-- Start: Form items, generated XML -->
+
+<question item_id="5877" mid="VAR5877" datatype="ORD" page_number="1" page_title="Indikasjon" question_text="Indikasjon for bl&#230;rescanning" optional="0" enumeration_uid="5877" />
+<question item_id="5887" mid="VAR5887" datatype="ORD" page_number="1" page_title="Indikasjon" question_text="Hadde du vurdert &#229; kateterisere pasienten for bestemmelse av resturin om bl&#230;rescanner ikke var tilgjengelig" optional="0" enumeration_uid="5887" />
+<question item_id="5882" mid="UrinVol1" datatype="QN" page_number="2" page_title="Volum ved bl&#230;rescanning" page_introduction="Bl&#230;ren b&#248;r scannes to ganger for &#229; f&#229; et sikrere resultat." question_text="Bl&#230;revolum f&#248;rste scanning (mL)" optional="0" min_value="0" max_value="2000" units="mL" help_text="Resturin fortrinnsvis tatt maksimalt 15 minutter etter spontan vannlatning" group_id="UrinVol1" />
+<question item_id="5884" mid="UrinVol2" datatype="QN" page_number="2" page_title="Volum ved bl&#230;rescanning" page_introduction="Bl&#230;ren b&#248;r scannes to ganger for &#229; f&#229; et sikrere resultat." question_text="Bl&#230;revolum andre scanning (mL)" optional="0" min_value="0" max_value="2000" units="mL" help_text="Resturin fortrinnsvis tatt maksimalt 15 minutter etter spontan vannlatning" group_id="UrinVol2" />
+<question item_id="6596" mid="UrinVolOk" datatype="ORD" page_number="2" page_title="Volum ved bl&#230;rescanning" page_introduction="Bl&#230;ren b&#248;r scannes to ganger for &#229; f&#229; et sikrere resultat." question_text="Urinvolum &gt;= 150 mL ved begge m&#229;linger" optional="1" visible="-1" expression="2-ISPOS(UrinVol1-149)*ISPOS(UrinVol2-149)" enumeration_uid="6596" group_id="UrinVolOk" />
+<question item_id="6954" mid="UrineVolAbove150Once" datatype="ORD" page_number="2" page_title="Volum ved bl&#230;rescanning" page_introduction="Bl&#230;ren b&#248;r scannes to ganger for &#229; f&#229; et sikrere resultat." question_text="Urinvolum &gt;= 150 mL ved minst &#233;n m&#229;ling" optional="1" visible="-1" expression="2-ISPOS(ISPOS(UrinVol1-149)+ISPOS(UrinVol2-149))" enumeration_uid="6954" group_id="UrineVolAbove150Once" />
+<question item_id="6955" mid="UrineVolAbove150Mean" datatype="ORD" page_number="2" page_title="Volum ved bl&#230;rescanning" page_introduction="Bl&#230;ren b&#248;r scannes to ganger for &#229; f&#229; et sikrere resultat." question_text="Urinvolum &gt;= 150 mL i gjennomsnitt" optional="1" visible="-1" expression="2-ISPOS( UrinVol1 + UrinVol2 - 299 )" enumeration_uid="6955" help_text="2-ISPOS(ISPOS(UrinVol1-149)+ISPOS(UrinVol2-149))" group_id="UrineVolAbove150Mean" />
+<question item_id="5879" mid="VAR5879" datatype="MSG" page_number="3" header="B&#248;r ikke kateteriseres" question_text="Bl&#230;revolum kan v&#230;re under 150 ml. Kateterisering anbefales ikke." optional="1" />
+<question item_id="5883" mid="VAR5883" datatype="ORD" page_number="4" page_title="Kateterisering" page_introduction="Bl&#230;revolum er trolig over 150 ml. Kateterisering kan gjennomf&#248;res." question_text="Kateterisering gjennomf&#248;rt" optional="0" enumeration_uid="5883" />
+<question item_id="5878" mid="UrinVolKat" datatype="QN" page_number="5" question_text="Urinvolum ved kateterisering (mL)" optional="1" min_value="0" max_value="2000" units="mL" group_id="UrinVolKat" />
+<question item_id="5885" mid="VAR5885" datatype="ORD" page_number="6" question_text="&#197;rsak til at kateterisering ikke ble gjort" optional="1" enumeration_uid="5885" />
+<question item_id="5886" mid="VAR5886" datatype="ORD" page_number="7" page_title="&#197;rsak" question_text="Sannsynlig &#229;rsak til urinretensjon hos pasienten" optional="1" enumeration_uid="5886" />
+
+<!-- Start: Form actions, generated XML -->
+
+<question_action master_question_mid="UrineVolAbove150Once" detail_question_mid="VAR5879" enum_item_value="2" activate="1" />
+<question_action master_question_mid="UrineVolAbove150Once" detail_question_mid="VAR5883" enum_item_value="1" activate="1" />
+<question_action master_question_mid="VAR5883" detail_question_mid="UrinVolKat" enum_item_value="1" activate="1" />
+<question_action master_question_mid="VAR5883" detail_question_mid="VAR5885" enum_item_value="2" activate="1" />
+<question_action master_question_mid="UrineVolAbove150Once" detail_question_mid="VAR5886" enum_item_value="1" activate="1" />
+</form>

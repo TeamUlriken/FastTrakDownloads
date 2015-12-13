@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form form_id="169" form_uid="GBD_INNLEGGELSE" title="Sykehusinnleggelse" calculate_invalid="False" rating_scale="False" status="Closed" repeatable="1" >
+<instructions>Notat for strukturert registrering av alle sykehusinnleggelser som bakgrunn for statistikk. Dette skjema danner også avsnittet [Aktuelt] i det automatisk genererte innleggelsesskrivet (rapport).</instructions>
+
+<!-- Start: Form enums, generated XML -->
+
+<enumeration enumeration_uid="931">
+  <enum_item value="1" text="Unders&#248;kt av sykehjemmets lege" answer_id="2241" />
+  <enum_item value="2" text="Telefonkontakt med sykehjemmets lege" answer_id="2242" />
+  <enum_item value="3" text="Unders&#248;kt av legevaktslege" answer_id="2243" />
+  <enum_item value="4" text="Konferert med legevaktslege" answer_id="2244" />
+  <enum_item value="5" text="Ikke hatt kontakt med lege" answer_id="2245" />
+</enumeration>
+
+<enumeration enumeration_uid="932">
+  <enum_item value="1" text="Sykepleier p&#229; post" answer_id="2246" />
+  <enum_item value="2" text="Ambulerende sykepleier" answer_id="2247" />
+  <enum_item value="3" text="Ikke kontakt med sykepleier" answer_id="2248" />
+</enumeration>
+
+<enumeration enumeration_uid="933">
+  <enum_item value="1" text="Samme dag" answer_id="2254" />
+  <enum_item value="2" text="Innen 3 dager" answer_id="2255" />
+  <enum_item value="3" text="Etter 3 dager" answer_id="2256" />
+  <enum_item value="4" text="D&#248;de p&#229; sykehuset" answer_id="2257" />
+</enumeration>
+
+<enumeration enumeration_uid="935">
+  <enum_item value="1" text="Ja" answer_id="18247" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="18248" />
+  <enum_item value="3" text="Usikker" short_code="U" answer_id="18249" />
+</enumeration>
+
+<enumeration enumeration_uid="3553">
+  <enum_item value="1" text="V&#229;ken." answer_id="18256" />
+  <enum_item value="2" text="Vekkbar." answer_id="18257" />
+  <enum_item value="3" text="Vekkbar med smertestimuli." answer_id="18258" />
+  <enum_item value="4" text="Komat&#248;s." answer_id="18259" />
+</enumeration>
+
+<enumeration enumeration_uid="3554">
+  <enum_item value="1" text="er god." answer_id="18264" />
+  <enum_item value="2" text="er lett redusert." answer_id="18265" />
+  <enum_item value="3" text="er sv&#230;rt redusert." answer_id="18266" />
+  <enum_item value="4" text="Pasienten er moribund." answer_id="18267" />
+</enumeration>
+
+<!-- Start: Form items, generated XML -->
+
+<question item_id="3551" mid="BREV_INSTITUSJON" datatype="NAR" page_number="1" page_title="Innlegges til" question_text="Sykehus" optional="0" carry_forward="1" multiline="0" help_text="Sykehuset pasienten innlegges til" group_id="BREV_INSTITUSJON" />
+<question item_id="3552" mid="BREV_AVDELING" datatype="NAR" page_number="1" page_title="Innlegges til" question_text="Avdeling" optional="0" carry_forward="1" multiline="0" help_text="Avdelingen pasienten innlegges til" group_id="BREV_AVDELING" />
+<question item_id="3630" mid="BREV_ADRESSE" datatype="NAR" page_number="1" page_title="Innlegges til" question_text="Adresse" optional="1" carry_forward="1" multiline="0" help_text="Sykehusets adresse" group_id="BREV_ADRESSE" />
+<question item_id="3631" mid="BREV_POSTNUMMER" datatype="NAR" page_number="1" page_title="Innlegges til" question_text="Postnummer" optional="0" carry_forward="1" multiline="0" help_text="Sykehusets postnummer" group_id="BREV_POSTNUMMER" />
+<question item_id="3632" mid="BREV_POSTSTED" datatype="NAR" page_number="1" page_title="Innlegges til" question_text="Poststed" optional="0" carry_forward="1" multiline="0" help_text="Sykehusets poststed" group_id="BREV_POSTSTED" />
+<question item_id="3634" mid="BREV_KONTAKT" datatype="NAR" page_number="1" page_title="Innlegges til" question_text="Avklart med" optional="1" carry_forward="1" multiline="0" help_text="Navn p&#229; kontaktperson som innleggelsen er avklart med, f.eks. vakthavende indremedisiner." group_id="BREV_KONTAKT" />
+<question item_id="3633" mid="BREV_TELEFON" datatype="NAR" page_number="1" page_title="Innlegges til" question_text="Telefonnummer" optional="1" carry_forward="1" multiline="0" help_text="Telefonnummer til kontaktpersonen p&#229; sykehuset" group_id="BREV_TELEFON" />
+<question item_id="929" mid="OH_TIDSPUNKT" datatype="QN" page_number="2" page_title="&#216;H-innleggelse til sykehus" question_text="Forlot sykehjemmet (klokketime)" optional="0" min_value="0" max_value="23" units="klokketime" group_id="OH_TIDSPUNKT" />
+<question item_id="928" mid="OH_DIAGNOSE" datatype="NAR" page_number="2" page_title="&#216;H-innleggelse til sykehus" question_text="Problemstilling (stikkord)" optional="0" multiline="0" group_id="OH_DIAGNOSE" />
+<question item_id="931" mid="OH_LEGETILSYN" datatype="ORD" page_number="2" page_title="&#216;H-innleggelse til sykehus" question_text="Legetilsyn?" optional="0" enumeration_uid="931" group_id="OH_LEGETILSYN" />
+<question item_id="932" mid="OH_SYKEPLEIETILSYN" datatype="ORD" page_number="2" page_title="&#216;H-innleggelse til sykehus" question_text="Sykepleietilsyn?" optional="0" enumeration_uid="932" group_id="OH_SYKEPLEIETILSYN" />
+<question item_id="3553" mid="SENSORIUM" datatype="ORD" page_number="3" page_title="Kliniske n&#248;kkeldata" header="Sensorium" question_text="Pasienten er" optional="0" enumeration_uid="3553" group_id="SENSORIUM" />
+<question item_id="3554" mid="ALLMENNTILSTAND" datatype="ORD" page_number="3" page_title="Kliniske n&#248;kkeldata" header="Allmenntilstanden" question_text="Hvordan vurderer du allmenntilstanden?" optional="0" enumeration_uid="3554" group_id="ALLMENNTILSTAND" />
+<question item_id="3556" mid="SBP_UNSPEC" datatype="QN" page_number="3" page_title="Kliniske n&#248;kkeldata" question_text="Systolisk BT (mmHg)" optional="1" min_value="50" max_value="250" units="mmHg" help_text="Sittende eller liggende." group_id="SBP_UNSPEC" />
+<question item_id="3555" mid="DBP_UNSPEC" datatype="QN" page_number="3" page_title="Kliniske n&#248;kkeldata" question_text="Diastolisk BT (mmHg)" optional="1" min_value="30" max_value="130" units="mmHg" help_text="Sittende eller liggende." group_id="DBP_UNSPEC" />
+<question item_id="188" mid="BODY_TEMP" datatype="QN" page_number="3" page_title="Kliniske n&#248;kkeldata" question_text="Temperatur (&#176;C)" optional="1" min_value="32" max_value="42" units="&#176;C" decimals="1" group_id="BODY_TEMP" />
+<question item_id="273" mid="CRP" datatype="QN" page_number="3" page_title="Kliniske n&#248;kkeldata" question_text="S-CRP (mg/L)" optional="1" min_value="0" max_value="500" units="mg/L" decimals="1" help_text="H&#248;ye verdier ved aktive inflammatoriske prosesser. Bakterielle prosesser gir gjerne h&#248;yere verdier enn virusinfeksjoner. CRP er det mest f&#248;lsomme av akutt fase proteinene. Det kan stige til 2000 ganger utgangsverdien i l&#248;pet av 24 timer ved en akutt aktiv prosess. Ved tilbakegang av prosessen synker CRP fortere enn de &#248;vrige akutt fase proteinene." group_id="CRP" />
+<question item_id="3558" mid="USTIX" datatype="NAR" page_number="3" page_title="Kliniske n&#248;kkeldata" question_text="U-Stix" optional="1" multiline="0" help_text="Eks: Prot 3+, Glu: 0, Ery: 1+, Nit: 0, eventuelt &quot;Neg&quot;." group_id="USTIX" />
+<question item_id="933" mid="OH_SYKEHJEM" datatype="ORD" page_number="4" page_title="Fylles ut av overlege ved retur" header="Retur sykehjemmet" question_text="N&#229;r returnerte pasienten til sykehjemmet?" optional="0" enumeration_uid="933" group_id="OH_SYKEHJEM" />
+<question item_id="934" mid="OH_SHDIAGNOSE" datatype="NAR" page_number="4" page_title="Fylles ut av overlege ved retur" header="Sykehusets hoveddiagnose" question_text="Hva var sykehusets hoveddiagnose for innleggelsen?" optional="0" multiline="0" help_text="Husk &#229; legge til p&#229; problemlisten hvis det er aktuelt." group_id="OH_SHDIAGNOSE" />
+<question item_id="935" mid="OH_UNOEDVENDIG" datatype="ORD" page_number="4" page_title="Fylles ut av overlege ved retur" header="Un&#248;dvendig innleggelse" question_text="Burde denne innleggelsen v&#230;rt unng&#229;tt?" optional="0" enumeration_uid="935" group_id="OH_UNOEDVENDIG" />
+
+<!-- Start: Form actions, generated XML -->
+
+</form>
