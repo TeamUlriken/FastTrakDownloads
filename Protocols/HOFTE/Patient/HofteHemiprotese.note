@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<!-- Created with Liquid XML Studio 2012 Starter Edition 10.1.2.4113 (http://www.liquid-technologies.com) -->
+<ExportList>
+    <Help>
+        For a simple introduction to the RTF format, read this:
+        http://search.cpan.org/~sburke/RTF-Writer/lib/RTF/Cookbook.pod
+    </Help>
+    <TextExport Title="Hemiprotese">
+    
+        <!-- Fargetabell er felles -->
+        
+        <TextSegment Name="Fargetabell" Comment="Ikke synlig">
+            {\colortbl;\red192\green32\blue32;\red192\green64\blue64;\red32\green32\blue64;\red16\green16\blue96;\red255\green0\blue0;}
+        </TextSegment>
+
+        <!-- Templates er delt mellom operasjonsnotater, men innkomst har sin egen -->
+                
+        <Templates DataTemplate="{\cf4 %s\cf1}" EmptyTemplate="{\cf2\b %s\cf1\b0}" HeaderTemplate="{\cf3\ul\b %s\b0\ul0\par}" ErrorTemplate="{\cf5\b [%s]\b0\cf1}" />
+        
+        <!-- Bakgrunn er felles for alle -->
+        
+        <TextSegment Header="Bakgrunn" Comment="Standardavsnitt">
+            [ITEM.OID3104.OptionText Unassigned="(bosituasjon ikke angitt)"] i
+            [ITEM.OID9112.OptionText Unassigned="(boligtype ikke angitt)" Case="Lower"].
+            Hovedinntekstkilde er [ITEM.OID8416.OptionText Unassigned="(ikke angitt)" Case="Lower"].
+            ASA-klasse: [FORM.8201.AsString Unassigned="(ikke angitt)"] [FORM.8201.OptionText Format="(%s)" Case="Lower"].
+            [FORM.8500.VerboseText Format="Fast antikoagulasjon med %s"]
+            {\par\par}
+       </TextSegment>
+        
+       <TextSegment Header="Aktuelt">
+            Pasienten pådro seg den [FORM.8194.AsString Unassigned="(dato mangler)"] ved 
+            [FORM.8196.AsString Unassigned="(klokkeslett mangler)"]-tiden
+            et [FORM.8202.VerboseText Unassigned="(bruddtype mangler)" Case="Lower"] hoftebrudd på
+            [FORM.8193.OptionText Unassigned="(sideangivelse mangler)" Case="Lower"] side.
+            Det foreligger operasjonsindikasjon.\~
+        </TextSegment>
+        <TextSegment Comment="Standardavsnitt">
+            Det er gitt informasjon om inngrepets art, mulige komplikasjoner og forventet rehabiliteringsforløp.\~
+        </TextSegment>
+        <TextSegment Name="Ikke antibiotika" VisibilityExpression="ISNEG(FORM.8290.AsInteger-1)">
+            [FORM.8290.VerboseText Unassigned="Informasjon om antibiotika ikke registrert!"]\~
+        </TextSegment>
+        <TextSegment Name="Antibiotika" VisibilityExpression="ISPOS(FORM.8290.AsInteger)">
+            Antibiotikaprofylakse [FORM.8480.OptionText Unassigned="Preparat ikke angitt"]
+            [FORM.8241.OptionText][FORM.8485.AsString Unassigned="(dose ikke angitt)"] gitt
+            [FORM.8436.AsString Unassigned="(ikke angitt)"] minutter før inngrepets start.\~
+        </TextSegment>
+        <TextSegment Name="Operasjonbeskrivelse" Comment="Standardavsnitt">
+            Det gjøres den [FORM.8195.AsString Unassigned="(dato mangler)"]
+            ved [FORM.8197.AsString Unassigned="(ikke angitt)"]-tiden med relevant samtykke, i
+            [FORM.8235.OptionText Unassigned="(anestesitype mangler)" Case="Lower"] og under sterile forhold:
+            {\par\par}
+        </TextSegment>
+
+<!-- Her starter det som er forskjellig -->
+
+        <TextSegment>{\pard\cf3\li200\b</TextSegment>
+        <!-- Sementert protese -->
+        <TextSegment Name="Operasjonskode sementert" VisibilityExpression="ISPOS(FORM.8230.AsInteger-1)">
+            NFB12 IMPLANTASJON AV SEMENTERT HEMIPROTESE
+            [FORM.8193.OptionText Unassigned="(sideangivelse mangler)" Case="Upper"] HOFTE [FORM.8758.OptionText Unassigned="(type mangler)" Case="Upper"]
+        </TextSegment>
+        <!-- Usementert protese -->
+        <TextSegment Name="Operasjonskode" VisibilityExpression="ISNULL(FORM.8230.AsInteger-1)">
+            NFB02 IMPLANTASJON AV USEMENTERT HEMIPROTESE
+            [FORM.8193.OptionText Unassigned="(sideangivelse mangler)" Case="Upper"] HOFTE [FORM.8757.OptionText Unassigned="(type mangler)" Case="Upper"]
+        </TextSegment>
+        
+<!-- Operatør og assistent -->        
+
+        <TextSegment>
+        	\~([FORM.8940.AsString Case="Upper"][FORM.8941.AsString Format="/%s" Case="Upper"])
+        </TextSegment>
+
+        <TextSegment>
+        	\b0\cf1\par}
+        	{\par}
+        </TextSegment>
+        
+        <!-- Felles for sementert/usementert -->
+        
+        <TextSegment Name="Innsetting av protese" Header="Innsetting av protese">
+            Pasienten i [FORM.8622.OptionText Unassigned="(informasjon om leie mangler)" Case="Lower"].
+            [FORM.8234.OptionText Unassigned="(informasjon om tilgang mangler)" Format="%s tilgang"],
+            skarpt gjennom hud og underhud. Diatermi på blødende kar. Fascien spaltes i fiberretningen.\~
+		</TextSegment>
+		
+		<TextSegment VisibilityExpression="ISNULL(FORM.8234.AsInteger-3)">
+            Løsner gluteus medius og minimus med diatermi.  Fjerner anterolaterale deler av kapsel.\~
+        </TextSegment>	
+        
+        <TextSegment>
+            Caput ekstraheres.  Caput måles til [FORM.8501.AsString Unassigned="(caputstørrelse mangler)"] mm.
+            Gjør avsag av collumrest.
+            Benet i pose og Homan inn under proksimale femur.
+            Reamer femur gradvis opp til riktig størrelse,\~
+        </TextSegment>
+     
+        <!-- Sementert protese -->
+     
+        <TextSegment Name="Sementplugg" VisibilityExpression="ISPOS(FORM.8230.AsInteger-1)">
+            reamer nummer [FORM.8520.AsString Unassigned="(reamer nummer mangler)"].
+            Setter inn sementplugg nummer [FORM.8502.AsString Unassigned="(sementplugg nummer mangler)"].
+            Spyler og suger i femurkanalen.
+            Sementerer deretter inn stamme nummer [FORM.8521.AsString Unassigned="(stamme number mangler)"] med 
+            [FORM.8231.AsString Unassigned="(navn på sement mangler)"] sement.
+            Bruker hode med lengde [FORM.8789.AsString Unassigned="(hodelengde mangler)"] 
+            som settes inn i hemihodet med diameter [FORM.8506.AsString Unassigned="(diameter på hemihodet mangler)"] mm.
+        </TextSegment>
+        
+        <!-- Usementert protese -->
+        
+        <TextSegment Name="Usementert" VisibilityExpression="ISNULL(FORM.8230.AsInteger-1)">
+            reamer nummer [FORM.8503.AsString Unassigned="(reamer nummer mangler)"].
+            Banker inn protese nummer [FORM.8504.AsString Unassigned="(protese nummer mangler)"].
+            Bruker hodelengde [FORM.8789.AsString Unassigned="(hodelengde mangler)"] som settes
+            inn i mobilt hode med diameter [FORM.8506.AsString Unassigned="(mobilt hode mangler)"] mm.
+        </TextSegment>
+        
+        <!-- Felles for sementert/usementert -->
+        
+        <TextSegment>
+            \~Reponerer. [FORM.8625.AsString Unassigned="Tekst om stabilitetskontroll mangler"]
+            {\par\par}
+        </TextSegment>
+        
+<!-- Kun hvis fibrinolyse er anvendt -->
+        
+        <TextSegment Name="Fibrinolyse" VisibilityExpression="ISPOS(FORM.8258.AsInteger)">
+            [FORM.8258.VerboseText]
+            [FORM.8259.AsString] [FORM.8260.AsString Format="%s."]
+            {\par\par}
+        </TextSegment>
+        
+<!-- Komplikasjoner er likt -->
+
+        <TextSegment Name="Komplikasjoner" Header="Komplikasjoner" VisibilityExpression="FORM.8237.AsInteger">
+            [FORM.8237.VerboseText Unassigned="(komplikasjoner ikke oppgitt)"]
+            [FORM.8238.AsString Unassigned="Mangler tekst om komplikasjoner"]
+            {\par\par}
+        </TextSegment>
+        
+<!-- Avslutning varierer litt -->
+
+        <TextSegment Name="Avslutning" Header="Avslutning">
+            Skyller sårhulen godt.
+            Suturerer gluteus medius og minimus tilbake på trokanter med ostesutur.
+            Facie og subcutis lukkes lagvis.
+        </TextSegment>
+        
+<!-- Herfra er alt likt -->
+
+        <TextSegment Name="Adaptering" Comment="Standardavsnitt">
+            \~Adapterer hudkantene med [FORM.8799.OptionText Case="lower"] [FORM.8432.AsString].
+            Sår bandasjeres. 
+			Blødning ca [FORM.8747.AsString Unassigned="(ikke angitt)"] mL.
+            Operasjonstid [FORM.8239.AsString Unassigned="(ikke angitt)"] minutter.
+            {\par\par}
+        </TextSegment>
+
+
+<!-- Alle skal mobiliseres, men noen skal avlaste -->
+
+        <TextSegment Name="Videre plan" Header="Videre plan">
+            Pasienten kan mobiliseres umiddelbart etter at bedøvelsen har gått ut og
+            [Patient.Pronoun Unassigned="hun/han"] er våken hvis ikke annen beskjed er gitt.\~
+            [FORM.8430.OptionText Unassigned="Informasjon om belastning mangler. "]\~
+        </TextSegment>
+
+<!-- Standardtekster om kontroll til slutt -->
+        
+        <TextSegment Comment="Fjerne sting, kontroll">
+            Skal fjerne sting hos egen lege etter 14 dager.
+            [FORM.8626.OptionText Unassigned="Informasjon om kontroll mangler. "]
+            [FORM.8433.OptionText Unassigned="Informasjon om bilder mangler. "]\~
+        </TextSegment>
+        <TextSegment Name="Tromboseprofylakse" Comment="Standardavsnitt" VisibilityExpression="FORM.8250.AsInteger">
+            Tromboseprofylakse \b [FORM.8251.OptionText] [FORM.8252.AsString] \b0 operasjonsdag, deretter [FORM.8253.AsString] daglig i [FORM.8635.AsString Unassigned="(ikke angitt)"] dager.\~
+        </TextSegment>
+        <TextSegment Name="Register" Comment="Standardavsnitt">
+            Skjema til hoftebruddregisteret er fylt ut.
+            {\par\par}
+        </TextSegment>
+        
+<!-- Slutt på felles -->
+
+    </TextExport>
+
+</ExportList>

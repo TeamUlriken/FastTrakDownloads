@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Created with Liquid XML Studio 2012 Starter Edition 10.1.2.4113 (http://www.liquid-technologies.com) -->
+<ExportList>
+    <Help>
+        For a simple introduction to the RTF format, read this:
+        http://search.cpan.org/~sburke/RTF-Writer/lib/RTF/Cookbook.pod
+    </Help>
+    <Comment>
+        Basert på http://www.journalwiki.no/Journalmal.
+    </Comment>
+    <TextExport Title="Epikrise">
+        <!-- Fargetabell er felles -->
+        <TextSegment Name="Fargetabell" Comment="Ikke synlig">
+            {\colortbl;\red192\green32\blue32;\red192\green64\blue64;\red32\green32\blue64;\red16\green16\blue96;\red255\green0\blue0;}
+        </TextSegment>
+        <!-- Header template har ikke linjeskift -->
+        <Templates DataTemplate="{\cf4 %s\cf1}" EmptyTemplate="{\cf2\b %s\cf1\b0}" HeaderTemplate="{\cf3\ul\b %s\ul0\b0}{\par}" ErrorTemplate="{\cf5\b [%s]\b0\cf1}" />
+        
+        <TextSegment Header="Diagnoser">
+          	[Problems.Current Output="RTF"]
+            {\par\par}
+        </TextSegment>
+        <!-- Familie og sosialt er hentet fra operasjonsbeskrivelse, antikoagulasjon og ASA-klasse er fjernet  -->
+        <TextSegment Header="Familie/sosialt" Comment="Standardavsnitt">
+            [ITEM.OID3104.OptionText Unassigned="(bosituasjon ikke angitt)"] i
+            [ITEM.OID9112.OptionText Unassigned="(boligtype ikke angitt)" Case="Lower"].
+            Hovedinntekstkilde er [ITEM.OID8416.OptionText Unassigned="(ikke angitt)" Case="Lower"].
+            [ITEM.8797.AsString]
+            {\par\par}
+        </TextSegment>
+		<!-- Slutt på familie og sosialt -->
+		        
+        <!-- Tidligere sykdommer -->
+        <TextSegment Header="Tidligere sykdommer">
+            [ITEM.8647.AsString Comment="Hjerte/kar"]
+            [ITEM.8648.AsString Comment="Lungesykdom"]
+            [ITEM.8650.AsString Comment="Cancer"]
+            [ITEM.8651.AsString Comment="Tyroidea"]
+            [ITEM.8584.AsString Comment="Annet"]
+        </TextSegment>
+        <TextSegment Comment="Diabetes" VisibilityExpression="ISNULL(ITEM.8271.AsInteger-1)">
+            \~Diabetes [ITEM.3196.OptionText Case="lower"], diagnostisert i [ITEM.3486.AsString]. [ITEM.8649.AsString]
+        </TextSegment>
+        <TextSegment Comment="Demens" VisibilityExpression="ISPOS(HrDemens)">
+            \~[ITEM.8200.VerboseText] [ITEM.8652.AsString Format="%s."] [ITEM.874.Text Format="(Berger skala: %s)"]
+        </TextSegment>
+        <TextSegment>
+            {\par\par}
+		</TextSegment>
+		<!-- Slutt på tidligere sykdommer -->
+		
+        <!-- Aktuelt -->
+        <TextSegment Header="Aktuelt" Comment="Standardavsnitt">
+            Pasienten var innlagt fra [FORM.9695.AsString] til [FORM.8753.AsString] for hoftebrudd.
+            Hendelsesforløp ved skade: [FORM.8276.AsString Format="%s." Unassigned="Hendelsesforløp mangler]
+            Skadetidspunkt [ITEM.8194.AsString Unassigned="(dato mangler)"] ved
+            [ITEM.8196.AsString Unassigned="(klokkeslett mangler)"]-tiden.
+        </TextSegment>
+        <TextSegment VisibilityExpression="0" Comment="Klassifikasjon">
+            Skadested (ICD-10):
+            [ITEM.8267.OptionText Unassigned="(ikke angitt)"].
+            Traumeenergi vurdert som [ITEM.8268.OptionText Unassigned="(traumeenergi ikke angitt)" case="lower"].\~
+        </TextSegment>
+        <TextSegment Comment="Røntgen">
+            \~Røntgen tatt ved innkomst viste [ITEM.8202.VerboseText Case="Lower" ] hoftebrudd på [ITEM.8193.OptionText case="Lower"] side.
+        </TextSegment>
+        <TextSegment Comment="Operasjon">
+            \~Pasienten ble operert [ITEM.8195.AsString] med [ITEM.8204.OptionText Case="Lower" Unassigned="(operasjonstype mangler)"]
+            [ITEM.8237.VerboseText][ITEM.8238.AsString Format="\~%s"]
+            Postoperativt kan pasienten\~ 
+        </TextSegment>
+        <TextSegment VisibilityExpression="ISNULL(FORM.9713.AsInteger-1)">
+             mobiliseres med [FORM.9713.OptionText Case="Lower"]
+        </TextSegment>
+        <TextSegment VisibilityExpression="ISNULL(FORM.9713.AsInteger-2)">
+          	avlaste med krykker i [FORM.9714.AsString] uker.
+        </TextSegment>
+        <TextSegment>
+            \~[FORM.9715.VerboseText]\~Suturer/agraffer kan fjernes etter 2-3 uker hos egen lege eller annet helsepersonell.
+            [FORM.9024.AsString Format="Hemoglobin ved utreise %sg/dL."] [FORM.9021.VerboseText][FORM.9022.AsString Format="\~Totalt %s SAG-enheter."]
+            [FORM.9023.AsString Format="Annen behandling: %s"]
+            {\par\par}
+        </TextSegment>
+        
+        <!-- Slutt på aktuelt -->
+        
+        <!-- Komplikasjoner -->
+        <TextSegment Header="Komplikasjoner" VisibilityExpression="ISPOS(HofteKompAntall)">
+        	[FORM.9722.AsString Comment="Blødning"] 
+        	[FORM.9706.AsString Comment="Hjerteinfarkt"] 
+        	[FORM.9707.AsString Comment="Rytmeforstyrrelse"]
+        	[FORM.9708.AsString Comment="Hjerneslag"]
+        	[FORM.9709.AsString Comment="DVT"]
+        	[FORM.9710.AsString Comment="Lungeemboli"]
+        	[FORM.9705.AsString Comment="Andre kardiovaskulære hendelser"]
+        	[FORM.9716.AsString Comment="Nytt fall"]
+        	[FORM.9717.AsString Comment="Pneumoni"]
+        	[FORM.9718.AsString Comment="Delir"]
+        	[FORM.9719.AsString Comment="UVI"]
+        	[FORM.9720.AsString Comment="Sårinfeksjon"]
+        	[FORM.8748.AsString Comment="Andre komplikasjoner"]
+            {\par\par}
+        </TextSegment>
+        <!-- Slutt på komplikasjoner -->
+        
+        <!-- Mobilitet -->
+        <TextSegment Header="Mobilitet ved utreise" VisibilityExpression="ISPOS(FORM.8755.AsInteger)">
+            [FORM.9020.VerboseText]
+            [FORM.4337.OptionText Format="Forflytning seng/stol: %s"]
+            [FORM.4335.OptionText Format="Toalettbesøk: %s"]
+            {\par\par}
+        </TextSegment>
+        <!-- Slutt på mobilitet -->
+        
+        <!-- Plan -->
+        <TextSegment Header="Plan" VisibilityExpression="ISPOS(FORM.8755.AsInteger)">
+            Pasienten utskrives til [FORM.8754.OptionText Case="Lower"]. [FORM.8756.AsString Format="%s."]
+        </TextSegment>
+        <TextSegment VisibilityExpression="ISNULL(FORM.9713.AsInteger-1)">
+             \~Mobiliseres med [FORM.9713.OptionText Case="Lower"]
+        </TextSegment>
+        <TextSegment VisibilityExpression="ISNULL(FORM.9713.AsInteger-2)">
+          	\~Avlaste med krykker i [FORM.9714.AsString] uker.
+        </TextSegment>
+        <TextSegment>
+            \~[FORM.8626.OptionText Comment="Kontroll"][FORM.8788.AsString]
+        </TextSegment>
+        <TextSegment>
+            \~Hvis pasienten skulle vise tegn til sårinfeksjon ber vi om rehenvisning uten at det ordineres 
+            antibiotika før vi har tatt stilling til det.
+            {\par\par}
+        </TextSegment>
+        <!-- Slutt på plan -->
+        
+        <!-- Medisiner -->
+        <TextSegment Header="Medisiner" VisibilityExpression="ISPOS(FORM.HofteDischargedAlive.AsInteger)">
+            [FORM.9711.VerboseText]
+            [FORM.9712.AsString Format="Endringer i medisinlisten: %s"] 
+            Bruker nå [FORM.8591.AsString]
+            {\par\par}
+        </TextSegment>
+        <!-- Slutt på medisiner -->
+        
+		<!-- Labprøver -->
+		<TextSegment Header="Labprøver ved utreise">
+			[LabText.Latest MaxAge="2"]{\par\par}
+		</TextSegment>
+
+        
+    </TextExport>
+</ExportList>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form form_id="728" form_uid="StatusPresens" title="Status presens (test)" calculate_invalid="False" rating_scale="False" status="Closed" repeatable="1" >
+<instructions></instructions>
+
+<!-- Start: Form enums, generated XML -->
+
+<enumeration enumeration_uid="187">
+  <enum_item value="1" text="Regelmessig puls." short_code="R" answer_id="288" />
+  <enum_item value="2" text="Uregelmessig puls som ved atrieflimmer." short_code="AF" answer_id="289" />
+  <enum_item value="3" text="Uregelmessig puls som ved ekstrasystoli." short_code="ES" answer_id="290" />
+</enumeration>
+
+<enumeration enumeration_uid="199">
+  <enum_item value="1" text="Ingen dyspnoe." answer_id="317" />
+  <enum_item value="2" text="Lett dyspnoe." answer_id="318" />
+  <enum_item value="3" text="Sv&#230;r dyspnoe." answer_id="319" />
+</enumeration>
+
+<enumeration enumeration_uid="4255">
+  <enum_item value="1" text="Mann" short_code="M" answer_id="22860" />
+  <enum_item value="2" text="Kvinne" short_code="K" answer_id="22861" />
+</enumeration>
+
+<enumeration enumeration_uid="8285">
+  <enum_item value="1" text="Ja | R&#248;ntgen thorax er tatt." short_code="J" answer_id="44334" />
+  <enum_item value="2" text="Nei | R&#248;ntgen thorax er ikke tatt." short_code="N" answer_id="44335" />
+</enumeration>
+
+<enumeration enumeration_uid="8286">
+  <enum_item value="1" text="Ja | Blodpr&#248;ver er bestilt." short_code="J" answer_id="44338" />
+  <enum_item value="2" text="Nei | Blodpr&#248;ver er ikke bestilt." short_code="N" answer_id="44339" />
+</enumeration>
+
+<enumeration enumeration_uid="8952">
+  <enum_item value="1" text="Ja" answer_id="50132" />
+  <enum_item value="2" text="Nei" answer_id="50133" />
+</enumeration>
+
+<!-- Start: Form items, generated XML -->
+
+<question item_id="4255" mid="SEX" datatype="ORD" page_number="1" page_title="Fremtoning" question_text="Kj&#248;nn" optional="0" read_only="1" expression="Patient.GenderId" enumeration_uid="4255" help_text="Skjult" group_id="SEX" />
+<question item_id="8939" mid="SP_FREMTONING" datatype="NAR" page_number="1" page_title="Fremtoning" header="Generelt*" question_text="Generell beskrivelse av pasientens fremtoning" optional="0" exclude_caption="1" multiline="1" help_text="Kommer g&#229;ende til unders&#248;kelsen? V&#229;ken, klar og orientert? Gj&#248;r greit rede for seg? Samarbeider godt? God allmenntilstand? Normalt hold og hydreringstilstand? Ingen plager i &#248;yeblikket? T&#248;rr og varm i huden? Intet utslett, cyanose, ikterus, generell lymfeknuteforst&#248;rrelse eller generelle &#248;demer?" group_id="SP_FREMTONING" />
+<question item_id="3556" mid="SBP_UNSPEC" datatype="QN" page_number="2" page_title="Vitale data" question_text="Systolisk BT (mmHg)" optional="0" min_value="50" max_value="250" units="mmHg" help_text="Sittende eller liggende." group_id="SBP_UNSPEC" />
+<question item_id="3555" mid="DBP_UNSPEC" datatype="QN" page_number="2" page_title="Vitale data" question_text="Diastolisk BT (mmHg)" optional="0" min_value="30" max_value="130" units="mmHg" help_text="Sittende eller liggende." group_id="DBP_UNSPEC" />
+<question item_id="186" mid="PULSE_RATE" datatype="QN" page_number="2" page_title="Vitale data" question_text="Puls (slag/min)" optional="0" min_value="30" max_value="200" units="slag/min" group_id="PULSE_RATE" />
+<question item_id="187" mid="PULSE_QUALITY" datatype="ORD" page_number="2" page_title="Vitale data" question_text="Pulskvalitet" optional="0" enumeration_uid="187" group_id="PULSE_QUALITY" />
+<question item_id="8943" mid="SP_RESP_FREKVENS" datatype="QN" page_number="2" page_title="Vitale data" question_text="Respirasjonsfrekvens (per minutt)" optional="0" min_value="3" max_value="60" units="per minutt" group_id="SP_RESP_FREKVENS" />
+<question item_id="199" mid="LUNG_DYSPNOEA" datatype="ORD" page_number="2" page_title="Vitale data" question_text="Dyspnoe" optional="0" enumeration_uid="199" group_id="LUNG_DYSPNOEA" />
+<question item_id="188" mid="BODY_TEMP" datatype="QN" page_number="2" page_title="Vitale data" question_text="Temperatur (&#176;C)" optional="1" min_value="32" max_value="42" units="&#176;C" decimals="1" group_id="BODY_TEMP" />
+<question item_id="3225" mid="HEIGHT" datatype="QN" page_number="3" page_title="H&#248;yde/vekt" question_text="H&#248;yde (cm)" optional="0" min_value="50" max_value="220" units="cm" help_text="Uten sko." group_id="HEIGHT" />
+<question item_id="3224" mid="WEIGHT" datatype="QN" page_number="3" page_title="H&#248;yde/vekt" question_text="Vekt (kg)" optional="0" min_value="10" max_value="400" units="kg" decimals="1" help_text="Uten sko og yttert&#248;y." group_id="WEIGHT" />
+<question item_id="3310" mid="BMI" datatype="QN" page_number="3" page_title="H&#248;yde/vekt" question_text="BMI (kg/m2)" optional="1" min_value="5" max_value="100" units="kg/m2" decimals="1" expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" help_text="Beregnes automatisk" group_id="BMI" />
+<question item_id="8944" mid="SP_PUPILLER" datatype="NAR" page_number="4" page_title="Hode/hals" question_text="Pupiller" optional="0" multiline="1" help_text="Runde og sidelike, med normal reaksjon p&#229; lys?" group_id="SP_PUPILLER" />
+<question item_id="4468" mid="FAUCES" datatype="NAR" page_number="4" page_title="Hode/hals" question_text="Cavum oris" optional="0" multiline="1" help_text="Egne tenner? Bleke, fuktige og rene slimhinner?" group_id="FAUCES" />
+<question item_id="4469" mid="COLLUM" datatype="NAR" page_number="4" page_title="Hode/hals" question_text="Collum" optional="0" multiline="1" help_text="Ingen venestuvning? Ingen hovne eller &#248;mme lymfeknuter? Glandula thyreoidea ikke palpatorisk forst&#248;rret? Ingen stenoselyd over carotidene?" group_id="COLLUM" />
+<question item_id="8953" mid="SP_THORAX" datatype="NAR" page_number="5" page_title="Truncus" question_text="Thorax" optional="1" multiline="1" help_text="Symmetrisk i form og bevegelighet? Ingen palpable kuler i bryster eller aksiller?" group_id="SP_THORAX" />
+<question item_id="8945" mid="SP_COR" datatype="NAR" page_number="5" page_title="Truncus" question_text="Cor" optional="0" multiline="1" help_text="Rene toner? regelmessig aksjon? ingen bilyd?" group_id="SP_COR" />
+<question item_id="8946" mid="SP_PULM" datatype="NAR" page_number="5" page_title="Truncus" question_text="Pulm" optional="0" multiline="1" help_text="Normal respirasjonslyd? ingen fremmedlyder?" group_id="SP_PULM" />
+<question item_id="8954" mid="SP_COLUMNA" datatype="NAR" page_number="5" page_title="Truncus" question_text="Columna" optional="1" multiline="1" help_text="Normale kurvaturer? Normal bevegelighet? Ingen smerter eller palpasjons&#248;mhet?" group_id="SP_COLUMNA" />
+<question item_id="8942" mid="SP_ABDOMEN" datatype="NAR" page_number="5" page_title="Truncus" question_text="Abdomen" optional="0" multiline="1" help_text="Normale respirasjonsbevegelser? Normalkonfigurert, ingen arr eller brokk? Normale tarmlyder? Bl&#248;t og u&#248;m? Ikke slipp&#248;m? Ikke palpabel lever eller milt? Ingen palpable oppfylninger? Ikke banke&#248;m over nyrelosjene? God puls i begge lysker? Ingen stenoselyder?" group_id="SP_ABDOMEN" />
+<question item_id="8947" mid="SP_REKTAL_US" datatype="NAR" page_number="5" page_title="Truncus" question_text="Rektaleksplorasjon" optional="1" multiline="1" help_text="Normal sfinktertonus? Ingen oppfylninger? Brun avf&#248;ring p&#229; hansken? (Hemofec negativ?)
+Menn: Prostata normalstor, velavgrenset, jevn overflate og fast elastisk konsistens? Bevart midtfure?
+Kvinner: Uterus palperes u&#248;m?" group_id="SP_REKTAL_US" />
+<question item_id="8948" mid="SP_GENITALIA" datatype="NAR" page_number="6" page_introduction="Feltet viser bare for menn" question_text="Genitalia eksterna" optional="1" multiline="1" help_text="Up&#229;fallende scrotum og testes?" group_id="SP_GENITALIA" />
+<question item_id="8949" mid="SP_GYNEKOLOGI" datatype="NAR" page_number="7" page_introduction="Feltet viser bare for kvinner" question_text="Gynekologisk unders&#248;kelse" optional="1" multiline="1" help_text="Vulva, vagina og portio up&#229;fallende? Frie adnexa? Ikke rugge&#248;m uterus? Normal utflod/blod (ved menstruasjon)? Ingen p&#229;fallende lukt?" group_id="SP_GYNEKOLOGI" />
+<question item_id="8950" mid="SP_EKSTREMITETER" datatype="NAR" page_number="8" page_title="Ekstremiteter/nevrologi" question_text="Ekstremiteter" optional="0" multiline="1" help_text="Ingen &#248;demer? God puls i a. dorsalis pedis bilateralt?" group_id="SP_EKSTREMITETER" />
+<question item_id="8951" mid="SP_NEVROLOGI" datatype="NAR" page_number="8" page_title="Ekstremiteter/nevrologi" question_text="Orienterende nevrologi" optional="0" multiline="1" help_text="Patellar- og achillesreflekser 2+ bilateralt? Plantarreflekser nedadvendte, sidelikt? Koordinerte bevegelser av armer og ben, god kraft, ingen sensibilitetsutfall? Ingen p&#229;fallende skjevhet?" group_id="SP_NEVROLOGI" />
+<question item_id="8955" mid="SP_STATUS_LOCALIS" datatype="NAR" page_number="8" page_title="Ekstremiteter/nevrologi" question_text="Status localis" optional="1" multiline="1" help_text="Angis f.eks. ved s&#229;r/sykdom i annen lokalisasjon enn de ovenfornevnte, slik at det blir unaturlig &#229; beskrive det under et av de &#248;vrige punktene." group_id="SP_STATUS_LOCALIS" />
+<question item_id="8956" mid="SP_RESYME" datatype="NAR" page_number="9" page_title="Resyme" question_text="Resyme" optional="0" multiline="1" help_text="Resymeet skal inneholde det aller vesentligste fra b&#229;de anamnese og status presens. Forel&#248;pige pr&#248;vesvar, tentativ diagnose og differensialdiagnose." group_id="SP_RESYME" />
+<question item_id="8285" mid="SP_TATT_RTG_THORAX" datatype="ORD" page_number="10" page_title="Tiltak" question_text="R&#248;ntgen thorax tatt" optional="0" enumeration_uid="8285" group_id="SP_TATT_RTG_THORAX" />
+<question item_id="8286" mid="SP_BESTILT_BLODPR" datatype="ORD" page_number="10" page_title="Tiltak" question_text="Blodpr&#248;ver bestilt" optional="0" enumeration_uid="8286" group_id="SP_BESTILT_BLODPR" />
+<question item_id="8592" mid="SP_TILTAK" datatype="NAR" page_number="10" page_title="Tiltak" header="Andre tiltak*" question_text="Beskriv andre tiltak" optional="0" exclude_caption="1" multiline="1" group_id="SP_TILTAK" />
+<question item_id="8952" mid="SP_OP_KANDIDAT" datatype="ORD" page_number="10" page_title="Tiltak" question_text="Aktuell for operasjon" optional="0" exclude_from_text="1" enumeration_uid="8952" group_id="SP_OP_KANDIDAT" />
+<question item_id="8284" mid="FasteDato" datatype="DATE" page_number="11" page_title="Fastende" question_text="Dato" optional="0" min_value="TRUNC(FORM_DATE-7)" max_value="NOW" help_text="Tips: &quot;TD&quot; = dagens dato, &quot;-1&quot; er i g&#229;r." group_id="FasteDato" />
+<question item_id="8282" mid="FasteTime" datatype="QN" page_number="11" page_title="Fastende" question_text="Time" optional="0" min_value="0" max_value="23" group_id="FasteTime" />
+<question item_id="8283" mid="FasteMinutt" datatype="QN" page_number="11" page_title="Fastende" question_text="Minutt" optional="0" min_value="0" max_value="59" group_id="FasteMinutt" />
+
+<!-- Start: Form actions, generated XML -->
+
+<question_action master_question_mid="SEX" detail_question_mid="SP_GENITALIA" enum_item_value="1" activate="1" />
+<question_action master_question_mid="SEX" detail_question_mid="SP_GYNEKOLOGI" enum_item_value="2" activate="1" />
+<question_action master_question_mid="SP_OP_KANDIDAT" detail_question_mid="FasteDato" enum_item_value="1" activate="1" />
+<question_action master_question_mid="SP_OP_KANDIDAT" detail_question_mid="FasteTime" enum_item_value="1" activate="1" />
+<question_action master_question_mid="SP_OP_KANDIDAT" detail_question_mid="FasteMinutt" enum_item_value="1" activate="1" />
+</form>

@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<!-- Created with Liquid XML Studio 2012 Starter Edition 10.1.2.4113 (http://www.liquid-technologies.com) -->
+<ExportList>
+    <Help>
+        For a simple introduction to the RTF format, read this:
+        http://search.cpan.org/~sburke/RTF-Writer/lib/RTF/Cookbook.pod
+    </Help>
+    <Comment>
+    Basert på http://www.journalwiki.no/Journalmal.
+    </Comment>
+    <TextExport Title="Innkomstjournal">
+    
+        <!-- Fargetabell er felles -->
+        
+        <TextSegment Name="Fargetabell" Comment="Ikke synlig">
+            {\colortbl;\red192\green32\blue32;\red192\green64\blue64;\red32\green32\blue64;\red16\green16\blue96;\red255\green0\blue0;}
+        </TextSegment>
+        
+        <!-- Header template har ikke linjeskift -->
+
+        <Templates DataTemplate="{\cf4 %s\cf1}" EmptyTemplate="{\cf2\b %s\cf1\b0}" HeaderTemplate="{\cf3\b %s:\b0} " ErrorTemplate="{\cf5\b [%s]\b0\cf1}" />
+
+		<TextSegment>
+			{\b\fs28\ul Anamnese\b0\pard}
+			{\par}
+       </TextSegment>        
+
+        <!-- Problemstilling skal være kort -->
+
+
+		<TextSegment Header="Problemstilling" Comment="Standardavsnitt">
+    		Pasienten er en [Patient.YearsOld] år gammel [Patient.SexStr Case="lower"] som innlegges som øyeblikkelig hjelp med mistanke om hoftebrudd.
+            {\par}
+		</TextSegment>
+
+		<!-- Familie og sosialt er hentet fra operasjonsbeskrivelse, antikoagulasjon og ASA-klasse er fjernet  -->
+    
+		<TextSegment Header="Familie/sosialt" Comment="Standardavsnitt">
+            [FORM.OID3104.OptionText Unassigned="(bosituasjon ikke angitt)"] i
+            [FORM.OID9112.OptionText Unassigned="(boligtype ikke angitt)" Case="Lower"].
+            Hovedinntekstkilde er [ITEM.OID8416.OptionText Unassigned="(ikke angitt)" Case="Lower"].
+            [FORM.8797.AsString]
+            {\par}
+		</TextSegment>
+
+		<!-- Tidligere sykdommer -->
+       
+		<TextSegment Header="Tidligere sykdommer">
+         [FORM.8647.AsString Comment="Hjerte/kar"]
+         [FORM.8648.AsString Comment="Lungesykdom"]
+         [FORM.8650.AsString Comment="Cancer"]
+         [FORM.8651.AsString Comment="Tyroidea"]
+         [FORM.8584.AsString Comment="Annet"]
+		</TextSegment>
+		
+		<TextSegment Comment="Diabetes" VisibilityExpression="ISNULL(FORM.8271.AsInteger-1)">
+			\~Diabetes [FORM.3196.OptionText Case="lower"], diagnostisert i [FORM.3486.AsString]. [FORM.8649.AsString]
+		</TextSegment>
+
+		<TextSegment Comment="Demens" VisibilityExpression="ISPOS(HrDemens)">
+			\~[FORM.8200.VerboseText] [FORM.8652.AsString Format="%s."] [FORM.874.Text Format="(Berger skala: %s)"]
+		</TextSegment>
+
+		<!-- Aktuelt -->
+		
+		<TextSegment Comment="Avsnitt">
+            {\par}
+		</TextSegment>
+
+        <TextSegment Header="Aktuelt">
+			[FORM.8276.AsString Format="%s."]
+            Skadetidspunkt [FORM.8194.AsString Unassigned="(dato mangler)"] ved 
+            [FORM.8196.AsString Unassigned="(klokkeslett mangler)"]-tiden.
+            Skadested (ICD-10):
+            [FORM.8267.OptionText Unassigned="(ikke angitt)"].
+            Traumeenergi vurdert som [FORM.8268.OptionText Unassigned="(traumeenergi ikke angitt)" case="lower"].\~
+            {\par}
+        </TextSegment>
+		
+		<!-- Naturlige funksjoner -->
+		<TextSegment Header="Naturlige funksjoner">
+			[FORM.8590.Text Unassigned="(naturlige funksjoner mangler)"]
+            {\par}
+		</TextSegment>
+
+		<!-- Medikamenter -->
+		<TextSegment Header="Medikamenter" Comment="Antikoagulasjon antas å være med i tekstfeltet">
+			[FORM.8591.AsString]
+			{\par}
+		</TextSegment>
+
+		<!-- Stimulantia -->
+		<TextSegment Header="Stimulantia">
+			[FORM.1492.OptionText] [FORM.8798.AsString Format="%s."]
+            {\par}
+		</TextSegment>
+
+		<!-- Allergier -->
+		<TextSegment Header="Allergier">
+			[FORM.8792.Text] [FORM.8793.AsString Format="%s."]
+			[FORM.8795.Text] [FORM.3473.AsString Format="%s."]
+			[FORM.8794.Text] [FORM.8796.AsString Format="%s."]
+            {\par}
+		</TextSegment>
+				
+		<TextSegment Comment="Avsnitt">
+            {\par}
+		</TextSegment>
+
+	<!-- Slutt på anamnese -->
+
+       <TextSegment>
+       {\b\fs28\ul Status presens\b0\pard}
+       {\par}
+       </TextSegment>        
+	<!-- Start Status Presens -->
+
+		<TextSegment Header="Generelt">
+			[FORM.8939.AsString Unassigned="(beskrivelse mangler)"] 
+			[FORM.3225.Text Format="Er %s høy,"] [FORM.3224.Text Format="veier %s"] [FORM.3310.Text Format="(BMI %s)"].
+			Blodtrykk [FORM.3556.AsInteger]/[FORM.3555.AsInteger] mmHg. 
+			[FORM.188.Text Format="Temperatur %s"] [FORM.187.Text] [FORM.186.Text Format="Frekvens %s"].
+            {\par}
+		</TextSegment>
+		
+		<TextSegment Header="Cavum oris">
+			[FORM.4468.AsString Format="%s."]
+            {\par}
+		</TextSegment>
+		
+		<TextSegment Header="Collum">
+			[FORM.4469.AsString Format="%s."]
+            {\par}
+		</TextSegment>
+
+		<TextSegment Header="Hjerte">
+			[FORM.205.Text] [FORM.210.Text] [FORM.3420.AsString Format="%s."] 
+            {\par}
+		</TextSegment>
+
+		<TextSegment Header="Lunge">
+			[FORM.199.Text] [FORM.203.Text] [FORM.200.Text] [FORM.202.Text] [FORM.3421.AsString Format="%s."]
+            {\par}
+		</TextSegment>
+
+		<TextSegment Header="Abdomen">
+			[FORM.8942.AsString Format="%s."]
+            {\par}
+		</TextSegment>
+
+		<TextSegment Header="Status lokalis">
+			[FORM.8193.Text Unassigned="(side ikke angitt)"]
+			[FORM.8589.AsString Format="%s."]
+			[FORM.8278.VerboseText] [FORM.8279.Text] [FORM.8280.Text] [FORM.8281.Text]
+            {\par}
+		</TextSegment>
+		
+		<TextSegment Header="EKG" VisibilityExpression="ISPOS(EKG_SINUS)">
+			[FORM.226.Text] 
+			[FORM.4227.Text] [FORM.4228.Text] [FORM.4229.Text]
+			[FORM.4230.Text] [FORM.4635.Text] [FORM.4231.Text]
+			[FORM.4634.Text]\~
+		</TextSegment>
+		
+		<TextSegment Comment="Infarkttegn" VisibilityExpression="ISNULL(VAR8475-1)">
+			[FORM.229.Text] [FORM.230.Text] [FORM.231.Text] [FORM.232.Text] [FORM.233.Text]\~
+		</TextSegment>
+
+		<TextSegment Comment="EKG kommentar">
+			[FORM.8476.AsString]
+		</TextSegment>
+		
+		<TextSegment Comment="Avsnitt">
+            {\par\par}
+		</TextSegment>
+
+       <TextSegment>
+       {\b\fs28\ul Tiltak\b0\pard}
+       {\par}
+       </TextSegment>        
+	<!-- Tiltak -->
+
+		<TextSegment Header="Plan">
+			[FORM.8285.Text]
+			[FORM.8286.Text]
+			[FORM.8592.Text]
+            {\par}
+		</TextSegment>
+
+		<TextSegment Header="Faste">
+			Kan regnes som fastende fra [FORM.8284.Text Unassigned="(fastedato mangler)"] klokken [FORM.8282.Text][FORM.8283.AsInteger Format=".%.2d"].
+		</TextSegment>
+		
+    </TextExport>
+</ExportList>

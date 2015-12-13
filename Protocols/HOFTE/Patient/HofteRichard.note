@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<!-- Created with Liquid XML Studio 2012 Starter Edition 10.1.2.4113 (http://www.liquid-technologies.com) -->
+<ExportList>
+    <Help>
+        For a simple introduction to the RTF format, read this:
+        http://search.cpan.org/~sburke/RTF-Writer/lib/RTF/Cookbook.pod
+    </Help>
+    <TextExport Title="Richardskruer">
+    
+        <!-- Fargetabell er felles -->
+        
+        <TextSegment Name="Fargetabell" Comment="Ikke synlig">
+            {\colortbl;\red192\green32\blue32;\red192\green64\blue64;\red32\green32\blue64;\red16\green16\blue96;\red255\green0\blue0;}
+        </TextSegment>
+
+        <!-- Templates er delt mellom operasjonsnotater, men innkomst har sin egen -->
+                
+        <Templates DataTemplate="{\cf4 %s\cf1}" EmptyTemplate="{\cf2\b %s\cf1\b0}" HeaderTemplate="{\cf3\ul\b %s\b0\ul0\par}" ErrorTemplate="{\cf5\b [%s]\b0\cf1}" />
+        
+        <!-- Bakgrunn er felles for alle -->
+        
+        <TextSegment Header="Bakgrunn" Comment="Standardavsnitt">
+            [ITEM.OID3104.OptionText Unassigned="(bosituasjon ikke angitt)"] i
+            [ITEM.OID9112.OptionText Unassigned="(boligtype ikke angitt)" Case="Lower"].
+            Hovedinntekstkilde er [ITEM.OID8416.OptionText Unassigned="(ikke angitt)" Case="Lower"].
+            ASA-klasse: [FORM.8201.AsString Unassigned="(ikke angitt)"] [FORM.8201.OptionText Format="(%s)" Case="Lower"].
+            [FORM.8500.VerboseText Format="Fast antikoagulasjon med %s"]
+            {\par\par}
+       </TextSegment>
+        
+        <TextSegment Header="Aktuelt">
+            Pasienten pådro seg den [FORM.8194.AsString Unassigned="(dato mangler)"] ved 
+            [FORM.8196.AsString Unassigned="(klokkeslett mangler)"]-tiden
+            et [FORM.8202.VerboseText Unassigned="(bruddtype mangler)" Case="Lower"] hoftebrudd på
+            [FORM.8193.OptionText Unassigned="(sideangivelse mangler)" Case="Lower"] side.
+            Det foreligger operasjonsindikasjon.\~
+        </TextSegment>
+        <TextSegment Comment="Standardavsnitt">
+            Det er gitt informasjon om inngrepets art, mulige komplikasjoner og forventet rehabiliteringsforløp.\~
+        </TextSegment>
+        <TextSegment Name="Ikke antibiotika" VisibilityExpression="ISNEG(FORM.8290.AsInteger-1)">
+            [FORM.8290.VerboseText Unassigned="Informasjon om antibiotika ikke registrert!"]\~
+        </TextSegment>
+        <TextSegment Name="Antibiotika" VisibilityExpression="ISPOS(FORM.8290.AsInteger)">
+            Antibiotikaprofylakse [FORM.8480.OptionText Unassigned="Preparat ikke angitt"]
+            [FORM.8241.OptionText][FORM.8485.AsString Unassigned="(dose ikke angitt)"] gitt
+            [FORM.8436.AsString Unassigned="(ikke angitt)"] minutter før inngrepets start.\~
+        </TextSegment>
+        <TextSegment Name="Operasjonbeskrivelse" Comment="Standardavsnitt">
+            Det gjøres den [FORM.8195.AsString Unassigned="(dato mangler)"]
+            ved [FORM.8197.AsString Unassigned="(ikke angitt)"]-tiden med relevant samtykke, i
+            [FORM.8235.OptionText Unassigned="(anestesitype mangler)" Case="Lower"] og under sterile forhold:
+            {\par\par}
+        </TextSegment>
+        
+<!-- Slutt på felles innledning -->
+
+<!-- Prosedyrekoder varierer med reposisjon og type brudd -->
+
+        <TextSegment>
+            {\pard\cf3\li200\b
+        </TextSegment>
+        
+        <TextSegment Name="Operasjonskode" VisibilityExpression="ISNULL(FORM.8586.AsInteger-1)" >
+            NFJ70 OSTEOSYNTESE AV\~
+        </TextSegment>
+       
+        <TextSegment Name="Operasjonskode" VisibilityExpression="ISNULL(FORM.8586.AsInteger-2)">
+            NFJ02/NFJ70 LUKKET REPOSISJON OG OSTEOSYNTESE AV\~
+        </TextSegment>
+
+        <TextSegment Name="Operasjonskode" VisibilityExpression="ISNULL(FORM.8586.AsInteger-3)">
+            NFJ12/NFJ70 ÅPEN REPOSISJON OG OSTEOSYNTESE AV\~
+        </TextSegment>
+
+       <TextSegment VisibilityExpression="ISPOS(FORM.8586.AsInteger)">
+            [FORM.8202.VerboseText Unassigned="(bruddtype mangler)" Case="Upper"] HOFTEBRUDD 
+            [FORM.8193.OptionText Unassigned="(sideangivelse mangler)" Case="Upper"] SIDE MED RICHARD HIP PINS
+        </TextSegment>
+
+<!-- Operatør og assistent -->        
+
+        <TextSegment>
+        	\~([FORM.8940.AsString Case="Upper"][FORM.8941.AsString Format="/%s" Case="Upper"])
+        </TextSegment>
+
+        <TextSegment>
+            \b0\cf1\par}
+            {\par}
+        </TextSegment>
+        
+<!-- Operasjonsbeskrivelse -->
+
+        <TextSegment Name="Pinning" Header="Pinning">
+            I perkutan teknikk og under gjennomlysningskontroll settes ledepinnene til skruene slik at distale skrue hviler mot calcar,
+            og den proksimale settes parallelt med denne i to plan.
+            Aksepterer posisjonen og måler lengden på skruene til 
+            [FORM.8588.AsString Unassigned="(mangler)"] mm distalt og
+            [FORM.8587.AsString Unassigned="(mangler)"] mm proksimalt.
+            Borer opp til frakturspalte over ledepinnene.  Skrur inn skruene og får akseptabelt feste.
+            Sikrer med gjennomlysning at skruene ikke går i ledd.
+            {\par\par}
+        </TextSegment>
+        
+<!-- Kun hvis fibrinolyse er anvendt -->
+        
+        <TextSegment Name="Fibrinolyse" VisibilityExpression="ISPOS(FORM.8258.AsInteger)">
+            [FORM.8258.VerboseText]
+            [FORM.8259.AsString] [FORM.8260.AsString Format="%s."]
+            {\par\par}
+        </TextSegment>
+
+<!-- Komplikasjoner er likt -->
+
+        <TextSegment Name="Komplikasjoner" Header="Komplikasjoner" VisibilityExpression="FORM.8237.AsInteger">
+            [FORM.8237.VerboseText Unassigned="(komplikasjoner ikke oppgitt)"]
+            [FORM.8238.AsString Unassigned="Mangler tekst om komplikasjoner"]
+            {\par\par}
+        </TextSegment>
+        
+<!-- Avslutning varierer litt -->
+        
+        <TextSegment Name="Avslutning" Header="Avslutning">
+            Skyller sår.
+            Lukker fascien med resorberbare suturer.
+        </TextSegment>
+
+<!-- Herfra er alt likt -->
+
+        <TextSegment Name="Adaptering" Comment="Standardavsnitt">
+            \~Adapterer hudkantene med [FORM.8799.OptionText Case="lower"] [FORM.8432.AsString].
+            Sår bandasjeres. 
+			Blødning ca [FORM.8747.AsString Unassigned="(ikke angitt)"] mL.
+            Operasjonstid [FORM.8239.AsString Unassigned="(ikke angitt)"] minutter.
+            {\par\par}
+        </TextSegment>
+
+<!-- Alle skal mobiliseres, men noen skal avlaste -->
+
+        <TextSegment Name="Videre plan" Header="Videre plan">
+            Pasienten kan mobiliseres umiddelbart etter at bedøvelsen har gått ut og
+            [Patient.Pronoun Unassigned="hun/han"] er våken hvis ikke annen beskjed er gitt.\~
+            [FORM.8430.OptionText Unassigned="Informasjon om belastning mangler. "]\~
+        </TextSegment>
+
+<!-- Standardtekster om kontroll til slutt -->
+        
+        <TextSegment Comment="Fjerne sting, kontroll">
+            Skal fjerne sting hos egen lege etter 14 dager.
+            [FORM.8626.OptionText Unassigned="Informasjon om kontroll mangler. "]
+            [FORM.8433.OptionText Unassigned="Informasjon om bilder mangler. "]\~
+        </TextSegment>
+        <TextSegment Name="Tromboseprofylakse" Comment="Standardavsnitt" VisibilityExpression="FORM.8250.AsInteger">
+            Tromboseprofylakse \b [FORM.8251.OptionText] [FORM.8252.AsString] \b0 operasjonsdag, deretter [FORM.8253.AsString] daglig i [FORM.8635.AsString Unassigned="(ikke angitt)"] dager.\~
+        </TextSegment>
+        
+        <TextSegment Name="Register" Comment="Standardavsnitt">
+            Skjema til hoftebruddregisteret er fylt ut.
+            {\par\par}
+        </TextSegment>
+<!-- Slutt på felles -->
+
+    </TextExport>
+
+</ExportList>
