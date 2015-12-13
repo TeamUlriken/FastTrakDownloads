@@ -1,0 +1,312 @@
+<html>
+<head>
+<style>
+  td{ font-family: Segoe UI; font-size: 11px; }
+  .explanation{ color: gray; }
+  .unassigned{ color: red; }
+  .blue{ background-color: aliceblue; }
+  .label25,.label50,.data{ border-bottom: 1px solid silver;}
+  .label25,.label50{ font-weight: bold; } 
+  .label25{ width: 25% }
+  .label50{ width: 50% }
+  .data{ color: blue; text-align: right; }
+  h2{ margin: 0px; padding: 0px; font-size: 13px; font-weight: bold; background-color: lightyellow; }
+</style>
+</head>
+
+<!-- Første rad begynner her -->
+<table width="100%">
+<tr><td class="header" colspan="2"><h2>Shorthand variables</h2></td><td width="40%"><h2>Explanation</h2></td><td width="10%"><h2>Type</h2></td></tr>
+<tr><td class="label25">Age</td><td class="data"><#AGE Unassigned="(mangler)"></td><td class="explanation">The patient's age on the timeline for the current form</td><td>double</td></tr>
+<tr><td class="label25">AgeNow</td><td class="data"><#AGENOW Unassigned="(mangler)"></td><td class="explanation">Patient age now, same as Patient.Age</td><td>double</td></tr>
+<tr><td class="label25">Date</td><td class="data"><#DATE Unassigned="(mangler)"></td><td class="explanation">Today's date. Handled by FastReport in ^.FR3 files.</td><td>TDate</td></tr>
+<tr><td class="label25">Dob</td><td class="data"><#DOB Unassigned="(mangler)"></td><td class="explanation">Same as Patient.DOB</td><td>TDate</td></tr>
+<tr><td class="label25">DOB_YYYY</td><td class="data"><#DOB_YYYY Unassigned="(mangler)"></td><td class="explanation">The year part of Patient.DOB</td><td>integer</td></tr>
+<tr><td class="label25">FormDate</td><td class="data"><#FORMDATE Unassigned="(mangler)"></td><td class="explanation">Same as ClinForm.FormDate</td><td>TDate</td></tr>
+<tr><td class="label25">FORM_DATE</td><td class="data"><#FORM_DATE Unassigned="(mangler)"></td><td class="explanation">See above</td><td>TDate</td></tr>
+<tr><td class="label25">Now</td><td class="data"><#NOW Unassigned="(mangler)"></td><td class="explanation">The current moment</td><td>TDateTime</td></tr>
+<tr><td class="label25">NOW_YYYY</td><td class="data"><#NOW_YYYY Unassigned="(mangler)"></td><td class="explanation">The year part of NOW</td><td>integer</td></tr>
+<tr><td class="label25">Sex</td><td class="data"><#SEX Unassigned="(mangler)"></td><td class="explanation">Same as Patient.GenderId</td><td>integer</td></tr>
+<tr><td class="label25">StudyId</td><td class="data"><#StudyId Unassigned="(mangler)"></td><td class="explanation">Same as Session.StudyId</td><td>integer</td></tr>
+<tr><td class="label25">StudyName</td><td class="data"><#StudyName Unassigned="(mangler)"></td><td class="explanation">Same as Session.StudyName</td><td>string</td></tr>
+<tr><td class="label25">PersonId</td><td class="data"><#PersonId Unassigned="(mangler)"></td><td class="explanation">Same as Patient.PersonId</td><td>integer</td></tr>
+</table>
+
+<!-- Første rad slutter her -->
+
+<!-- Andre rad begynner her -->
+
+<table width="100%">
+
+<tr valign="top">
+
+<td width="50%">
+
+<table width="100%">
+<tr><td colspan="2"><h2>User object</h2></td></tr>
+<!-- Blå "overskrift" -->
+<tr><td class="blue" colspan="2">Fra TStoredListItem</td></tr>
+<tr><td class="label50">User.PK</td><td class="data"><#User.PK></td></tr>
+<!-- Blå "overskrift" -->
+<tr><td class="blue" colspan="2">Fra TCRFPerson</td></tr>
+<tr><td class="label50">User.Age</td><td class="data"><#User.Age></td></tr>
+<tr><td class="label50">User.BestId</td><td class="data"><#User.BestId></td></tr>
+<tr><td class="label50">User.DOB</td><td class="data"><#User.DOB></td></tr>
+<tr><td class="label50">User.DOBStr</td><td class="data"><#User.DOBStr></td></tr>
+<tr><td class="label50">User.DOBYMD</td><td class="data"><#User.DOBYMD></td></tr>
+<tr><td class="label50">User.FirstName</td><td class="data"><#User.FirstName></td></tr>
+<tr><td class="label50">User.FullName</td><td class="data"><#User.FullName></td></tr>
+<tr><td class="label50">User.GenderId</td><td class="data"><#User.GenderId></td></tr>
+<tr><td class="label50">User.GSM</td><td class="data"><#User.GSM></td></tr>
+<tr><td class="label50">User.Initials</td><td class="data"><#User.Initials></td></tr>
+<tr><td class="label50">User.LastName</td><td class="data"><#User.LastName></td></tr>
+<tr><td class="label50">User.NationalId</td><td class="data"><#User.NationalId></td></tr>
+<tr><td class="label50">User.PersonId</td><td class="data"><#User.PersonId></td></tr>
+<tr><td class="label50">User.ReverseName</td><td class="data"><#User.ReverseName></td></tr>
+<tr><td class="label50">User.Pronoun</td><td class="data"><#User.Pronoun></td></tr>
+<tr><td class="label50">User.SexStr</td><td class="data"><#User.SexStr></td></tr>
+<tr><td class="label50">User.Telecom</td><td class="data"><#User.Telecom></td></tr>
+<tr><td class="label50">User.VisualId</td><td class="data"><#User.VisualId></td></tr>
+<tr><td class="label50">User.YOB</td><td class="data"><#User.YOB></td></tr>
+
+<tr><td class="blue" colspan="2">Fra TCustomStudyPerson</td></tr>
+<tr><td class="label50">User.CenterAddress</td><td class="data"><#User.CenterAddress></td></tr>
+<tr><td class="label50">User.CenterCity</td><td class="data"><#User.CenterCity></td></tr>
+<tr><td class="label50">User.CenterId</td><td class="data"><#User.CenterId></td></tr>
+<tr><td class="label50">User.CenterName</td><td class="data"><#User.CenterName></td></tr>
+<tr><td class="label50">User.CenterPhone</td><td class="data"><#User.CenterPhone></td></tr>
+<tr><td class="label50">User.CenterPostcode</td><td class="data"><#User.CenterPostcode></td></tr>
+<tr><td class="label50">User.GroupId</td><td class="data"><#User.GroupId></td></tr>
+<tr><td class="label50">User.GroupName</td><td class="data"><#User.GroupName></td></tr>
+<tr><td class="label50">User.StudyId</td><td class="data"><#User.StudyId></td></tr>
+<tr><td class="label50">User.StudyGroupId</td><td class="data"><#User.StudyGroupId></td></tr>
+<!-- Blå "overskrift" -->
+<tr><td class="blue" colspan="2">Fra TStudyUser</td></tr>
+<tr><td class="label50">User.CaseList</td><td class="data"><#User.CaseList></td></tr>
+<tr><td class="label50">User.HPRNo</td><td class="data"><#User.HPRNo></td></tr>
+<tr><td class="label50">User.OID9060</td><td class="data"><#User.OID9060></td></tr>
+<tr><td class="label50">User.Profession</td><td class="data"><#User.Profession></td></tr>
+<tr><td class="label50">User.ProfessionId</td><td class="data"><#User.ProfessionId></td></tr>
+<tr><td class="label50">User.ProfId</td><td class="data"><#User.ProfId></td></tr>
+<tr><td class="label50">User.ProfName</td><td class="data"><#User.ProfName></td></tr>
+<tr><td class="label50">User.ProfType</td><td class="data"><#User.ProfType></td></tr>
+<tr><td class="label50">User.Signature</td><td class="data"><#User.Signature></td></tr>
+<tr><td class="label50">User.UserId</td><td class="data"><#User.UserId></td></tr>
+<tr><td class="label50">User.UserName</td><td class="data"><#User.UserName></td></tr>
+<!-- Blå "overskrift" -->
+<tr><td class="blue" colspan="2">Fra TCRFMyUser</td></tr>
+<tr><td class="label50">User.BlockRules</td><td class="data"><#User.BlockRules></td></tr>
+<tr><td class="label50">User.ShowMyGroup</td><td class="data"><#User.ShowMyGroup></td></tr>
+<!-- Rød tekst -->
+</table>
+
+</td>
+
+<td width="50%">
+
+<table width="100%">
+<tr><td colspan="2"><h2>Patient object</h2></td></tr>
+<!-- Blå "overskrift" -->
+<tr><td class="blue" colspan="2">Fra TStoredListItem</td></tr>
+<tr><td class="label50">Patient.PK</td><td class="data"><#Patient.PK></td></tr>
+<!-- Blå "overskrift" -->
+<tr><td class="blue" colspan="2">Fra TCRFPerson</td></tr>
+<tr><td class="label50">Patient.Age</td><td class="data"><#Patient.Age></td></tr>
+<tr><td class="label50">Patient.BestId</td><td class="data"><#Patient.BestId></td></tr>
+<tr><td class="label50">Patient.DOB</td><td class="data"><#Patient.DOB></td></tr>
+<tr><td class="label50">Patient.DOBStr</td><td class="data"><#Patient.DOBStr></td></tr>
+<tr><td class="label50">Patient.DOBYMD</td><td class="data"><#Patient.DOBYMD></td></tr>
+<tr><td class="label50">Patient.FirstName</td><td class="data"><#Patient.FirstName></td></tr>
+<tr><td class="label50">Patient.FullName</td><td class="data"><#Patient.FullName></td></tr>
+<tr><td class="label50">Patient.GenderId</td><td class="data"><#Patient.GenderId></td></tr>
+<tr><td class="label50">Patient.GSM</td><td class="data"><#Patient.GSM></td></tr>
+<tr><td class="label50">Patient.Initials</td><td class="data"><#Patient.Initials></td></tr>
+<tr><td class="label50">Patient.LastName</td><td class="data"><#Patient.LastName></td></tr>
+<tr><td class="label50">Patient.NationalId</td><td class="data"><#Patient.NationalId></td></tr>
+<tr><td class="label50">Patient.PersonId</td><td class="data"><#Patient.PersonId></td></tr>
+<tr><td class="label50">Patient.Pronoun</td><td class="data"><#Patient.Pronoun></td></tr>
+<tr><td class="label50">Patient.ReverseName</td><td class="data"><#Patient.ReverseName></td></tr>
+<tr><td class="label50">Patient.SexStr</td><td class="data"><#Patient.SexStr></td></tr>
+<tr><td class="label50">Patient.TeleCom</td><td class="data"><#Patient.TeleCom></td></tr>
+<tr><td class="label50">Patient.VisualId</td><td class="data"><#Patient.VisualId></td></tr>
+<tr><td class="label50">Patient.YOB</td><td class="data"><#Patient.YOB></td></tr>
+<!-- Blå "overskrift" -->
+<tr><td class="blue" colspan="2">Fra TCustomStudyPerson</td></tr>
+<tr><td class="label50">Patient.CenterAddress</td><td class="data"><#Patient.CenterAddress></td></tr>
+<tr><td class="label50">Patient.CenterCity</td><td class="data"><#Patient.CenterCity></td></tr>
+<tr><td class="label50">Patient.CenterId</td><td class="data"><#Patient.CenterId></td></tr>
+<tr><td class="label50">Patient.CenterName</td><td class="data"><#Patient.CenterName></td></tr>
+<tr><td class="label50">Patient.CenterPhone</td><td class="data"><#Patient.CenterPhone></td></tr>
+<tr><td class="label50">Patient.CenterPostcode</td><td class="data"><#Patient.CenterPostcode></td></tr>
+<tr><td class="label50">Patient.GroupId</td><td class="data"><#Patient.GroupId></td></tr>
+<tr><td class="label50">Patient.GroupName</td><td class="data"><#Patient.GroupName></td></tr>
+<tr><td class="label50">Patient.StudyId</td><td class="data"><#Patient.StudyId></td></tr>
+<tr><td class="label50">Patient.StudyGroupId</td><td class="data"><#Patient.StudyGroupId></td></tr>
+<!-- Blå "overskrift" -->
+<tr><td class="blue" colspan="2">Fra TStudyCase</td></tr>
+<tr><td class="label50">Patient.FinState</td><td class="data"><#Patient.FinState></td></tr>
+<tr><td class="label50">Patient.Id</td><td class="data"><#Patient.Id></td></tr>
+<tr><td class="label50">Patient.HandledBy</td><td class="data"><#Patient.HandledBy></td></tr>
+<tr><td class="label50">Patient.RelationName</td><td class="data"><#Patient.RelationName></td></tr>
+<tr><td class="label50">Patient.PrimaryContactName</td><td class="data"><#Patient.PrimaryContactName></td></tr>
+<tr><td class="label50">Patient.PrimaryContactSign</td><td class="data"><#Patient.PrimaryContactSign></td></tr>
+<tr><td class="label50">Patient.PrimaryContactUserId</td><td class="data"><#Patient.PrimaryContactUserId></td></tr>
+<tr><td class="label50">Patient.StatusActive</td><td class="data"><#Patient.StatusActive></td></tr>
+<tr><td class="label50">Patient.StatusId</td><td class="data"><#Patient.StatusId></td></tr>
+<tr><td class="label50">Patient.StatusText</td><td class="data"><#Patient.StatusText></td></tr>
+<!-- Rød tekst -->
+
+</td>
+
+</tr>
+
+</table>
+
+<!-- Andre rad slutter her -->
+
+<!-- Tredje rad begynner her -->
+
+<tr valign="top">
+
+<td width="50%">
+
+<table width="100%">
+<tr><td colspan="2"><h2>Important object</h2></td></tr>
+<tr><td class="label50">Important.Allergy</td><td class="data"><#Important.Allergy></td></tr>
+<tr><td class="label50">Important.CAVE</td><td class="data"><#Important.CAVE></td></tr>
+<tr><td class="label50">Important.ClientId</td><td class="data"><#Important.ClientId></td></tr>
+<tr><td class="label50">Important.DocumentCount</td><td class="data"><#Important.DocumentCount></td></tr>
+<tr><td class="label50">Important.HasData</td><td class="data"><#Important.HasData></td></tr>
+<tr><td class="label50">Important.Modified</td><td class="data"><#Important.Modified></td></tr>
+<tr><td class="label50">Important.NB</td><td class="data"><#Important.NB></td></tr>
+<tr><td class="label50">Important.Reservations</td><td class="data"><#Important.Reservations></td></tr>
+
+</table>
+
+</td>
+<td width="50%">
+<table width="100%">
+<tr><td colspan="2"><h2>VMR object</h2></td></tr>
+<tr><td class="label50">VMR.Count</td><td class="data"><#VMR.Count></td></tr>
+</table>
+</td>
+</tr>
+
+<!-- Tredje rad slutter her -->
+
+<!-- Fjerde rad begynner her -->
+
+<tr valign="top">
+
+<td width="50%">
+
+<table width="100%">
+<tr><td colspan="2"><h2>App object</h2></td></tr>
+<!-- Blå "overskrift" -->
+<tr><td class="label50">App.CurrDir</td><td class="data"><#App.CurrDir></td></tr>
+<tr><td class="label50">App.CurrentYear</td><td class="data"><#App.CurrentYear></td></tr>
+<tr><td class="label50">App.Date</td><td class="data"><#App.Date></td></tr>
+<tr><td class="label50">App.ExeName</td><td class="data"><#App.ExeName></td></tr>
+<tr><td class="label50">App.ExePath</td><td class="data"><#App.ExePath></td></tr>
+<tr><td class="label50">App.ImageDir</td><td class="data"><#App.ImageDir></td></tr>
+<tr><td class="label50">App.Now</td><td class="data"><#App.Now></td></tr>
+<tr><td class="label50">App.Title</td><td class="data"><#App.Title></td></tr>
+<tr><td class="label50">App.Version</td><td class="data"><#App.Version></td></tr>
+<!-- Blå "overskrift" -->
+<tr><td colspan="2"><h2>DbInfo object</h2></td></tr>
+<tr><td class="label50">DbInfo.DbName</td><td class="data"><#DbInfo.DbName></td></tr>
+<tr><td class="label50">DbInfo.DbVersion</td><td class="data"><#DbInfo.DbVersion></td></tr>
+<tr><td class="label50">DbInfo.ServerType</td><td class="data"><#DbInfo.ServerType></td></tr>
+<!-- Blå "overskrift" -->
+<tr><td colspan="2"><h2>EventMap object</h2></td></tr>
+<tr><td class="label50">EventMap.DateOffset</td><td class="data"><#EventMap.DateOffset></td></tr>
+<tr><td class="label50">EventMap.EventScale</td><td class="data"><#EventMap.EventScale></td></tr>
+
+</table>
+
+</td>
+
+<td width="50%">
+<table width="100%">
+<!-- Blå "overskrift" -->
+<tr><td colspan="2"><h2>Screen object</h2></td></tr>
+<tr><td class="label50">Screen.Height</td><td class="data"><#Screen.Height></td></tr>
+<tr><td class="label50">Screen.MonitorCount</td><td class="data"><#Screen.MonitorCount></td></tr>
+<tr><td class="label50">Screen.PixelsPerInch</td><td class="data"><#Screen.PixelsPerInch></td></tr>
+<tr><td class="label50">Screen.Width</td><td class="data"><#Screen.Width></td></tr>
+<!-- Blå "overskrift" -->
+<tr><td colspan="2"><h2>ColorScheme object</h2></td></tr>
+<tr><td class="label50">ColorScheme.Code</td><td class="data"><#ColorScheme.Code></td></tr>
+<tr><td class="label50">ColorScheme.Dark</td><td class="data"><#ColorScheme.Dark></td></tr>
+<tr><td class="label50">ColorScheme.Light</td><td class="data"><#ColorScheme.Light></td></tr>
+<tr><td class="label50">ColorScheme.Medium</td><td class="data"><#ColorScheme.Medium></td></tr>
+<tr><td class="label50">ColorScheme.StatusText</td><td class="data"><#ColorScheme.StatusText></td></tr>
+<tr><td class="label50">ColorScheme.VeryLight</td><td class="data"><#ColorScheme.VeryLight></td></tr>
+<tr><td class="label50">ColorScheme.FontName</td><td class="data"><#ColorScheme.FontName></td></tr>
+</table>
+
+</td>
+</tr>
+
+<tr valign="top">
+
+  <td>
+    <table width="100%">
+    <!-- Blå "overskrift" -->
+    <tr><td colspan="2"><h2>Protocol object</h2></td></tr>
+    <tr><td class="label25">Protocol.Id</td><td class="data"><#Protocol.Id></td></tr>
+    <tr><td class="label25">Protocol.LogoFile</td><td class="data"><#Protocol.LogoFile></td></tr>
+    <tr><td class="label25">Protocol.Path</td><td class="data"><#Protocol.Path></td></tr>
+    <tr><td class="label25">Protocol.Root</td><td class="data"><#Protocol.Root></td></tr>
+    <tr><td class="label25">Protocol.StudyId</td><td class="data"><#Protocol.StudyId></td></tr>
+    <tr><td class="label25">Protocol.StudyName</td><td class="data"><#Protocol.StudyName></td></tr>
+    <tr><td class="label25">Protocol.UDL</td><td class="data"><#Protocol.UDL></td></tr>
+    <tr><td class="label25">Protocol.VisitsFile</td><td class="data"><#Protocol.VisitsFile></td></tr>
+    <tr><td class="label25">Protocol.VisitsURL</td><td class="data"><#Protocol.VisitsURL></td></tr>
+    <tr><td colspan="2"><h2>CaseList object</h2></td></tr>
+    <tr><td class="label25">CaseList.Count</td><td class="data"><#CaseList.Count></td></tr>
+    <tr><td class="label25">CaseList.FilterText</td><td class="data"><#CaseList.FilterText></td></tr>
+    <tr><td class="label25">CaseList.InfoCaption</td><td class="data"><#CaseList.InfoCaption></td></tr>
+    <tr><td class="label25">CaseList.ProcName</td><td class="data"><#CaseList.ProcName></td></tr>
+    <tr><td class="label25">CaseList.QueryText</td><td class="data"><#CaseList.QueryText></td></tr>
+    <tr><td class="label25">CaseList.Title</td><td class="data"><#CaseList.Title></td></tr>
+    </table>
+  </td>
+
+  <td>
+    <table width="100%">
+    <!-- Blå "overskrift" -->
+    <tr><td colspan="2"><h2>ClinForm object</h2></td></tr>
+    <tr><td class="label25">ClinForm.ClinFormId</td><td class="data"><#ClinForm.ClinFormId></td></tr>
+    <tr><td class="label25">ClinForm.Comment</td><td class="data"><#ClinForm.Comment></td></tr>
+    <tr><td class="label25">ClinForm.CreatedAt</td><td class="data"><#ClinForm.CreatedAt></td></tr>
+    <tr><td class="label25">ClinForm.CreatedAtStr</td><td class="data"><#ClinForm.CreatedAtStr></td></tr>
+    <tr><td class="label25">ClinForm.CreatedBy</td><td class="data"><#ClinForm.CreatedBy></td></tr>
+    <tr><td class="label25">ClinForm.CreatedByProfId</td><td class="data"><#ClinForm.CreatedByProfId></td></tr>
+    <tr><td class="label25">ClinForm.CreatedBySign</td><td class="data"><#ClinForm.CreatedBySign></td></tr>
+    <tr><td class="label25">ClinForm.EventId</td><td class="data"><#ClinForm.EventId></td></tr>
+    <tr><td class="label25">ClinForm.EventTime</td><td class="data"><#ClinForm.EventTime></td></tr>
+    <tr><td class="label25">ClinForm.EventTimeStr</td><td class="data"><#ClinForm.EventTimeStr></td></tr>
+    <tr><td class="label25">ClinForm.FormComplete</td><td class="data"><#ClinForm.FormComplete></td></tr>
+    <tr><td class="label25">ClinForm.FormDate</td><td class="data"><#ClinForm.FormDate></td></tr>
+    <tr><td class="label25">ClinForm.FormId</td><td class="data"><#ClinForm.FormId></td></tr>
+    <tr><td class="label25">ClinForm.FormStatus</td><td class="data"><#ClinForm.FormStatus></td></tr>
+    <tr><td class="label25">ClinForm.FormTitle</td><td class="data"><#ClinForm.FormTitle></td></tr>
+    <tr><td class="label25">ClinForm.Name</td><td class="data"><#ClinForm.Name></td></tr>
+    <tr><td class="label25">ClinForm.PK</td><td class="data"><#ClinForm.PK></td></tr>
+    <tr><td class="label25">ClinForm.SignedAt</td><td class="data"><#ClinForm.SignedAt></td></tr>
+    <tr><td class="label25">ClinForm.SignedAtStr</td><td class="data"><#ClinForm.SignedAtStr></td></tr>
+    <tr><td class="label25">ClinForm.SignedBy</td><td class="data"><#ClinForm.SignedBy></td></tr>
+    <tr><td class="label25">ClinForm.SignedByProfId</td><td class="data"><#ClinForm.SignedAtStr></td></tr>
+    <tr><td class="label25">ClinForm.SignedBySign</td><td class="data"><#ClinForm.SignedBySign></td></tr>
+    <tr><td class="label25">ClinForm.StatusText</td><td class="data"><#ClinForm.StatusText></td></tr>
+    </table>
+  </td>
+
+</tr>
+
+<!-- Fjerde rad slutter her -->
+</table>
+
+
+</html>
