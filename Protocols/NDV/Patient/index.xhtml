@@ -1,0 +1,359 @@
+<!doctype html>
+<head>
+  <!--Compatibility-->
+  <meta http-equiv="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+  <title>Diabetes oversiktsbilde</title>
+  <style type="text/css">
+/*<![CDATA[*/
+      body{ text-align: center; font-family: 'Segoe UI',Arial; }
+    h1,h2,h3{ font-weight: bold; padding: 0px; }
+    h1{ font-size: 14px; }
+    h2{ font-size: 13px; }
+    h3{ font-size: 12px; }
+    table{ vertical-align: top; text-align: left; margin: 0px; padding: 0px; }
+    td{ font-size: 12px; padding: 2px; }
+    tr{ vertical-align: top; }
+    th{ background-color: lavender; color: black; font-weight: bold; text-align:left; font-size: 12px; padding: 4px; margin: 0px; }
+    .plan{ font-size: 13px; }
+    .caption{ color: MidnightBlue; }
+    .chartleft{ border-right: 1px solid lavender; padding: 0px;  }
+    .chartright{ padding: 0px;  }
+    .date,.number{ color: steelblue; text-align: right; font-size: 11px; }
+    .dosecode{ font-size: 11px; text-align: right; color: maroon; vertical-align: bottom; }
+    .druglist,.drugname,.dosecode{ font-size: 11px; }
+    .drugname{ font-weight: bold; }
+    .error { background-color: mistyrose; color: red; border: 1px solid maroon; }
+    .fieldleft, .fieldright{ font-style: italic; }
+    .fieldright { text-align: right; }
+    .info,.fieldnames{ background-color: lightyellow; }
+    .left { text-align: left; }
+    .page{ background-color: white; border: 1px solid lavender; margin-top: 4px; margin-bottom: 4px;  }
+    .pagefooter{ border-top: 1px solid black; vertical-align: top; }
+    .pageheader{ border-bottom: 1px solid black; }
+    .params{ background-color: white; margin: 0px; }
+    .patientname{ font-size: 16px; font-weight: bold;}
+    .reportname{ font-size: 14px; font-weight: bold; text-align: right; vertical-align: bottom; }
+    .startreason{ font-style: italic; }
+    .subheader { font-weight: bold; background-color: aliceblue; }
+    .tiny,.tinyr,.tinyl{ font-size: 10px; color: slategray; }
+    .tiny{ vertical-align: bottom; }
+    .tinyl{ text-align: left; }
+    .tinyr{ text-align: right }
+    .value{ color: blue; font-size: 11px;}
+  /*]]>*/
+  </style>
+</head>
+
+<body>
+  <table summary="Oversiktsprapport" width="715" cellpadding="0"
+  cellspacing="0">
+    <tr>
+      <td colspan="2">
+        <table class="pageheader" summary="pageheader" width=
+        "100%">
+          <tr valign="bottom">
+            <td class="patientname">[PATIENT.VisualId]</td>
+
+            <td class="reportname">Statusrapport</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <table summary="Page" cellspacing="0" cellpadding="0" class="page" width="715">
+    <tr valign="top">
+      <td class="chartleft" width="50%">
+        <table summary="parameters" class="params" width="100%"
+        cellspacing="0" cellpadding="0">
+          <tr>
+            <th>Historikk</th>
+
+            <th>Status</th>
+
+            <th class="date">Registrert</th>
+          </tr>
+
+          <tr>
+            <td class="caption">Diabetes type</td>
+
+            <td class="value">[ITEM.NDV_TYPE.LIST]</td>
+
+            <td class="date">[ITEM.NDV_TYPE.DATE]</td>
+          </tr>
+
+          <tr>
+            <td class="caption">Diabetes diagnose siden</td>
+
+            <td class="value">[ITEM.NDV_DIAGNOSE_YYYY.VALUE]</td>
+
+            <td class="date">[ITEM.NDV_DIAGNOSE_YYYY.DATE]</td>
+          </tr>
+
+          <tr>
+            <td class="caption">Hjertesykdom i familien</td>
+
+            <td class="value">
+            [ITEM.NDV_FAM_CHD.LIST Unassigned="(ukjent)"]</td>
+
+            <td class="date">[ITEM.NDV_FAM_CHD.DATE]</td>
+          </tr>
+
+          <tr>
+            <th colspan="3">Livsstil</th>
+          </tr>
+
+          <tr>
+            <td class="caption">R&oslash;ykevaner</td>
+
+            <td class="value">[ITEM.NDV_SMOKING.LIST]</td>
+
+            <td class="date">[ITEM.NDV_SMOKING.DATE]</td>
+          </tr>
+
+          <tr>
+            <td class="caption">Mosjon</td>
+
+            <td class="value">
+            [ITEM.NDV_EXERCISE_DAYS.VALUE Unassigned="(ukjent)"]</td>
+
+            <td class="date">[ITEM.NDV_EXERCISE_DAYS.DATE]</td>
+          </tr>
+
+          <tr>
+            <th colspan="3">&Oslash;yne og f&oslash;tter</th>
+          </tr>
+
+          <tr>
+            <td class="caption">Hos &oslash;yelege</td>
+
+            <td class="value">
+            <%ITEM.NDV_EYECHECK_DATE.DATA Unassigned="[ITEM.NDV_EYECHECK.LIST]"%></td>
+
+            <td class="date">[ITEM.NDV_EYECHECK.DATE]</td>
+          </tr>
+
+          <tr>
+            <td class="caption">Fotpuls</td>
+
+            <td class="value">
+            [ITEM.NDV_FOOT_PULSE.LIST Unassigned="(ukjent)"]</td>
+
+            <td class="date">[ITEM.NDV_FOOT_PULSE.DATE]</td>
+          </tr>
+        </table>
+      </td>
+
+      <td class="chartright" align="right">
+        <table summary="Complications" class="params" width="100%"
+        cellspacing="0" cellpadding="0">
+          <tr>
+            <th>Komplikasjoner</th>
+
+            <th>Status</th>
+
+            <th class="date">Registrert</th>
+          </tr>
+
+          <tr>
+            <td class="caption">&Oslash;yne</td>
+
+            <td class="value">
+            [ITEM.NDV_RETINOPATHY.LIST Unassigned="-"]</td>
+
+            <td class="date">[ITEM.NDV_RETINOPATHY.DATE]</td>
+          </tr>
+
+          <tr>
+            <td class="caption">Nyrer</td>
+
+            <td class="value">
+            [ITEM.NDV_NEPHROPATHY.LIST Unassigned="-"]</td>
+
+            <td class="date">[ITEM.NDV_NEPHROPATHY.DATE]</td>
+          </tr>
+
+          <tr>
+            <td class="caption">Perifer nevropati</td>
+
+            <td class="value">
+            [ITEM.NEVROPATI_KLINISK.LIST Unassigned="-"]</td>
+
+            <td class="date">[ITEM.NEVROPATI_KLINISK.DATE]</td>
+          </tr>
+
+          <tr>
+            <td class="caption">Koronarsykdom</td>
+
+            <td class="value">
+            [ITEM.NDV_CHD.LIST Unassigned="-"]</td>
+
+            <td class="date">[ITEM.NDV_CHD.DATE]</td>
+          </tr>
+
+          <tr>
+            <th colspan="3">Behandling</th>
+          </tr>
+
+          <tr>
+            <td class="caption">Mot diabetes</td>
+
+            <td class="value">[ITEM.NDV_TREATMENT_TYPE.LIST]</td>
+
+            <td class="date">[ITEM.NDV_TREATMENT_TYPE.DATE]</td>
+          </tr>
+
+          <tr>
+            <td class="caption">Lipidsenkende</td>
+
+            <td class="value">
+            [ITEM.ATC_C10A.LIST Unassigned="(ukjent)"]</td>
+
+            <td class="date">[ITEM.ATC_C10A.DATE]</td>
+          </tr>
+
+          <tr>
+            <td class="caption">Platehemmer</td>
+
+            <td class="value">
+            [ITEM.ATC_B01AC.LIST Unassigned="(ukjent)"]</td>
+
+            <td class="date">[ITEM.ATC_B01AC.DATE]</td>
+          </tr>
+
+          <tr>
+            <td class="caption">Blodtrykksmidler</td>
+
+            <td class="value">
+            [ITEM.NDV_BPDRUGS.VALUE Unassigned="(ukjent)"]</td>
+
+            <td class="date">[ITEM.NDV_BPDRUGS.DATE]</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <th>Blodsukkerkontroll</th>
+
+      <th>Medikamenter</th>
+    </tr><!-- HbA1c og medikamenter -->
+
+    <tr>
+      <td class="chartleft">
+        <%SVG.CHART title="HbA1c" variables="HBA1C" colors="tomato" units="%" min="3"%><br />
+
+
+        <table width="100%" summary="HbA1c">
+          <tr class="info">
+            <td class="caption">M&aring;l for HbA1c:</td>
+
+            <td>
+            <b>[Item.ActualHbA1cGoal.Value]&nbsp;</b></td>
+
+            <td>
+            [ITEM.HBA1C_GOAL_REACHED.LIST Unassigned="Ukjent" Template="Status: %s"]&nbsp;</td>
+
+            <td class="date">[Item.ActualHbA1cGoal.Date]</td>
+          </tr>
+        </table>
+      </td>
+
+      <td class="druglist" style="padding: 0px;">
+        <table width="100%" style="margin: 0px; padding: 0px;"
+        summary="Drugs">
+          <tr>
+            <td class="subheader" colspan="3">Insulindosering</td>
+          </tr>
+
+          <tr>
+            <td colspan="3" class="druglist" style="padding: 4px;">
+            [SUMMARY.DIAPOL_INSULIN TextFormat="Simple" AddBreak FormHeader="" Unassigned="(skjema ikke registrert)"]</td>
+          </tr>
+
+          <tr class="subheader">
+            <td>Aktuelle medisiner</td>
+
+            <td class="tinyl">Indikasjon</td>
+
+            <td class="tinyr">Dose</td>
+          </tr>[DRUGS.CURRENT.ROWSET]
+        </table>
+      </td>
+    </tr><!-- Lipider og vekt -->
+
+    <tr>
+      <th>Lipidstatus</th>
+
+      <th>Blodtrykk og vekt</th>
+    </tr>
+
+    <tr>
+      <td class="chartleft">
+        <%SVG.CHART title="Lipidstatus" variables="CHOL,LDL,HDL,TG" colors="tomato,orange,limegreen,steelblue" labels="Totalkolest.,LDL-kolest.,HDL-kolest.,Triglyserid" units="mmol/l" %><!-- Mål LDL-kolesterol: <b>[ITEM.GOAL_LDL.DATA]</b> mmol/l (lipidsenkende: [ITEM.ATC_C10A.LIST]) -->
+
+        <table width="100%" summary="Lipids">
+          <tr class="info">
+            <td class="caption">M&aring;l LDL-kol:</td>
+
+            <td>
+            <b>[Item.ActualLDLGoal.Value]&nbsp;</b></td>
+
+            <td>[ITEM.LDL_GOAL_REACHED.LIST Unassigned="Ukjent" Template="Status: %s"]&nbsp;</td>
+            <td class="date">[Item.ActualLDLGoal.Date]&nbsp;</td>
+          </tr>
+        </table>
+      </td>
+
+      <td class="chartright" align="right">
+        <%SVG.CHART title="BT/Vekt" variables="SBP,DBP,WEIGHT" colors="tomato,limegreen,blue" labels="Syst BT,Diast BT,Vekt" units="mmHg og kg" %>
+
+        <table width="100%" summary="Blood pressure">
+          <tr class="info">
+            <td class="caption">M&aring;l blodtrykk:</td>
+
+            <td>
+            <b><%ITEM.GOAL_SYSBP.VALUE Unassigned="[ITEM.STDGOAL_SYSBP.VALUE]"%></b></td>
+
+            <td>
+            [ITEM.SYSBP_GOAL_REACHED.LIST Template="Status: %s"]</td>
+
+            <td class="date">[ITEM.STDGOAL_SYSBP.DATE]</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+<!-- Avtaler og neste kontroll -->
+
+    <tr>
+      <th colspan="2">Avtaler og neste kontroll</th>
+    </tr>
+
+    <tr>
+      <td colspan="2" class="plan">
+      <b>Neste kontroll: </b> [ITEM.DP_NESTE_KONTROLL.VALUE Unassigned="(ikke registrert)"]</br>
+      <b>Avtaler: </b> [ITEM.DP_AVTALER.VALUE Unassigned="(ingen avtaler)"]
+      </td>
+    </tr>
+
+<!-- Page footer -->
+
+  </table>
+
+  <table summary="Pagefooter" width="715" cellpadding="0"
+  cellspacing="0">
+    <tr>
+      <td class="pagefooter" width="33%"><a href=
+      "[PROTOCOL.PATH]Patient/Samtykke.pdf">Skriv ut
+      samtykkeskjema...</a></td>
+
+      <td class="pagefooter" width="33%" align="center"><b>NOKLUS
+      Diabetes</b></td>
+
+      <td class="pagefooter" width="34%" align="right">Rapport per
+      [NOW]</td>
+    </tr>
+  </table>
+</body>
+</html>

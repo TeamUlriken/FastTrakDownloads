@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form form_id="255" form_uid="DIAPOL_EYE" title="&#216;yestatus" copyright="Norsk diabetesregister for Voksne" calculate_invalid="False" rating_scale="False" status="Open" repeatable="1" >
+<instructions></instructions>
+
+<!-- Start: Form enums, generated XML -->
+
+<enumeration enumeration_uid="3276">
+  <enum_item value="1" text="Ingen retinopati h&#248;yre &#248;ye." answer_id="16309" />
+  <enum_item value="2" text="ikke laserbehandlet." answer_id="16310" />
+  <enum_item value="3" text="laserbehandlet" answer_id="16311" />
+  <enum_item value="4" text="ukjent." answer_id="16312" />
+</enumeration>
+
+<enumeration enumeration_uid="3277">
+  <enum_item value="1" text="Ingen retinopati venstre &#248;ye." answer_id="16316" />
+  <enum_item value="2" text="ikke laserbehandlet" answer_id="16317" />
+  <enum_item value="3" text="laserbehandlet" answer_id="16318" />
+  <enum_item value="4" text="ukjent." answer_id="16319" />
+</enumeration>
+
+<enumeration enumeration_uid="3404">
+  <enum_item value="1" text="Ja | Sterkt synshemmet." short_code="J" answer_id="16926" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="16927" />
+  <enum_item value="3" text="Vet ikke" short_code="V" answer_id="16928" />
+</enumeration>
+
+<enumeration enumeration_uid="4294">
+  <enum_item value="1" text="Ja" answer_id="23077" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="23078" />
+</enumeration>
+
+<!-- Start: Form items, generated XML -->
+
+<question item_id="3354" mid="NDV_EYECHECK_DATE" datatype="DATE" page_number="1" page_title="Sist hos &#248;yelege" question_text="Siste bes&#248;k hos &#248;yelege" optional="0" carry_forward="1" min_value="DOB" max_value="NOW" highlight="1" help_text="Beste estimat ved usikker dato." group_id="NDV_EYECHECK_DATE" />
+<question item_id="3274" mid="VISUS_RIGHT" datatype="QN" page_number="2" page_title="Beste visus" question_text="Visus h&#248;yre (visus)" optional="0" min_value="0" max_value="1.5" units="visus" decimals="1" highlight="1" help_text="Evt. med egen brille" group_id="VISUS_RIGHT" />
+<question item_id="3275" mid="VISUS_LEFT" datatype="QN" page_number="2" page_title="Beste visus" question_text="Visus venstre (visus)" optional="0" min_value="0" max_value="1.5" units="visus" decimals="1" highlight="1" help_text="Evt. med egen brille" group_id="VISUS_LEFT" />
+<question item_id="4294" mid="VISUS_CORRECTED" datatype="ORD" page_number="2" page_title="Beste visus" question_text="Brukes korreksjon?" optional="1" exclude_from_text="1" enumeration_uid="4294" group_id="VISUS_CORRECTED" />
+<question item_id="4296" mid="CORR_RIGHT" datatype="NAR" page_number="3" page_title="Korreksjon" question_text="Korreksjon h&#248;yre" optional="1" multiline="0" help_text="F.eks. +10, -5" group_id="CORR_RIGHT" />
+<question item_id="4295" mid="CORR_LEFT" datatype="NAR" page_number="3" page_title="Korreksjon" question_text="Korreksjon venstre" optional="1" multiline="0" help_text="F.eks. +10, -5" group_id="CORR_LEFT" />
+<question item_id="4292" mid="VISUS_UNCORR_RIGHT" datatype="QN" page_number="3" page_title="Korreksjon" question_text="Ukorrigert visus h&#248;yre" optional="1" min_value="0" max_value="1.5" decimals="1" group_id="VISUS_UNCORR_RIGHT" />
+<question item_id="4293" mid="VISUS_UNCORR_LEFT" datatype="QN" page_number="3" page_title="Korreksjon" question_text="Ukorrigert visus venstre" optional="1" min_value="0" max_value="1.5" decimals="1" group_id="VISUS_UNCORR_LEFT" />
+<question item_id="3276" mid="RETINA_RIGHT" datatype="ORD" page_number="4" page_title="Retinopati" question_text="Retinopati h&#248;yre &#248;ye" optional="0" enumeration_uid="3276" help_text="Glass&#248;ye ol.l. kodes som ukjent." group_id="RETINA_RIGHT" />
+<question item_id="3277" mid="RETINA_LEFT" datatype="ORD" page_number="4" page_title="Retinopati" question_text="Retinopati venstre &#248;ye" optional="0" enumeration_uid="3277" help_text="Glass&#248;ye ol.l. kodes som ukjent." group_id="RETINA_LEFT" />
+<question item_id="3404" mid="NDV_EYESIGHT" datatype="ORD" page_number="5" question_text="Sterkt synshemmet" optional="0" visible="0" highlight="1" expression="1+ISPOS(ISPOS(VISUS_LEFT-0.299) + ISPOS(VISUS_RIGHT-0.299))" enumeration_uid="3404" help_text="d&#229;rligere enn 6/18 (0.33) p&#229; beste &#248;ye evt. med egen brille" group_id="NDV_EYESIGHT" />
+
+<!-- Start: Form actions, generated XML -->
+
+<question_action master_question_mid="VISUS_CORRECTED" detail_question_mid="CORR_RIGHT" enum_item_value="1" activate="1" />
+<question_action master_question_mid="VISUS_CORRECTED" detail_question_mid="CORR_LEFT" enum_item_value="1" activate="1" />
+<question_action master_question_mid="VISUS_CORRECTED" detail_question_mid="VISUS_UNCORR_RIGHT" enum_item_value="1" activate="1" />
+<question_action master_question_mid="VISUS_CORRECTED" detail_question_mid="VISUS_UNCORR_LEFT" enum_item_value="1" activate="1" />
+</form>

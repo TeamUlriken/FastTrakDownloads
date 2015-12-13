@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form form_id="819" form_uid="DIAPOL_GRAVIDE" title="Svangerskapskontroll diabetes" calculate_invalid="True" rating_scale="False" status="Open" repeatable="1" >
+<instructions></instructions>
+
+<!-- Start: Form enums, generated XML -->
+
+<enumeration enumeration_uid="3196">
+  <enum_item value="1" text="Type 1 (inkl. LADA) | Type 1 diabetes." ICD10="E10" short_code="1" answer_id="15986" />
+  <enum_item value="2" text="Type 2 | Type 2 diabetes." ICD10="E11" short_code="2" answer_id="15987" />
+  <enum_item value="3" text="Annen diabetestype (inkl. pankreatitt, MODY)." short_code="A" answer_id="15988" />
+  <enum_item value="4" text="er ikke avklart." ICD10="E14" short_code="U" answer_id="16137" />
+  <enum_item value="5" text="Svangerskapsdiabetes." ICD10="O24" short_code="S" answer_id="40942" />
+</enumeration>
+
+<enumeration enumeration_uid="3322">
+  <enum_item value="1" text="Kun kost/aktivitet." answer_id="16425" />
+  <enum_item value="2" text="Perorale antidiabetika." answer_id="16426" />
+  <enum_item value="3" text="Kun insulinbehandlet." answer_id="16427" />
+  <enum_item value="4" text="Insulin pluss andre blodsukkersenkende midler." answer_id="16479" />
+  <enum_item value="5" text="Ukjent" answer_id="16480" />
+</enumeration>
+
+<enumeration enumeration_uid="4087">
+  <enum_item value="1" text="Nei*" short_code="N" answer_id="21836" />
+  <enum_item value="2" text="Retinopati, ikke-laserbehandlet." answer_id="21837" />
+  <enum_item value="3" text="Laserbehandlet retinopati." answer_id="21838" />
+  <enum_item value="4" text="Ukjent*" answer_id="21839" />
+</enumeration>
+
+<enumeration enumeration_uid="4224">
+  <enum_item value="1" text="Ja | Planlagt i samr&#229;d med diabetesr&#229;dgiver." short_code="J" answer_id="22647" />
+  <enum_item value="2" text="Nei | Ikke planlagt i samr&#229;d med diabetesr&#229;dgiver." short_code="N" answer_id="22648" />
+</enumeration>
+
+<enumeration enumeration_uid="4527">
+  <enum_item value="1" text="Ja*" short_code="J" answer_id="24022" />
+  <enum_item value="2" text="Nei | Ingen kjente komplikasjoner." short_code="N" answer_id="24023" />
+</enumeration>
+
+<enumeration enumeration_uid="7517">
+  <enum_item value="1" text="Nei*" short_code="N" answer_id="40495" />
+  <enum_item value="2" text="Redusert nyrefunksjon." short_code="R" answer_id="40496" />
+  <enum_item value="3" text="Dialysebehandlet (ikke transplantert)." short_code="D" answer_id="40497" />
+  <enum_item value="4" text="Nyretransplantert." short_code="T" answer_id="40566" />
+</enumeration>
+
+<enumeration enumeration_uid="7519">
+  <enum_item value="1" text="Nei" short_code="N" answer_id="40509" />
+  <enum_item value="2" text="Tidligere | Tidligere mikroalbuminuri." short_code="T" answer_id="40510" />
+  <enum_item value="3" text="Ja | Mikroalbuminuri." short_code="J" answer_id="40511" />
+  <enum_item value="4" text="Ukjent" short_code="U" answer_id="40512" />
+</enumeration>
+
+<enumeration enumeration_uid="7520">
+  <enum_item value="1" text="Ja | Makroalbuminuri." short_code="J" answer_id="40536" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="40537" />
+  <enum_item value="3" text="Ukjent" answer_id="40539" />
+</enumeration>
+
+<enumeration enumeration_uid="7641">
+  <enum_item value="1" text="Ja" answer_id="41017" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="41018" />
+</enumeration>
+
+<enumeration enumeration_uid="9356">
+  <enum_item value="1" text="Ja" answer_id="51428" />
+  <enum_item value="2" text="Nei" answer_id="51429" />
+</enumeration>
+
+<enumeration enumeration_uid="9357">
+  <enum_item value="1" text="Ja" short_code="J" answer_id="51434" />
+  <enum_item value="2" text="Nei | Ingen tidligere svangerskapskomplikasjoner." short_code="N" answer_id="51435" />
+</enumeration>
+
+<enumeration enumeration_uid="9476">
+  <enum_item value="1" text="Ja" answer_id="51949" />
+  <enum_item value="2" text="Nei" answer_id="51950" />
+</enumeration>
+
+<!-- Start: Form items, generated XML -->
+
+<question item_id="3196" mid="NDV_TYPE" datatype="ORD" page_number="1" page_title="Grunndata" question_text="Diabetes type" optional="0" carry_forward="1" highlight="1" enumeration_uid="3196" group_id="NDV_TYPE" />
+<question item_id="9355" mid="GRAV_GRAVIDA" datatype="QN" page_number="2" page_title="Svangerskapshistorie" header="Gravida" question_text="Antall graviditeter" optional="0" carry_forward="1" min_value="1" max_value="15" help_text="Inkluderer aktuell graviditet" group_id="GRAV_GRAVIDA" />
+<question item_id="9356" mid="MULTIGRAVIDA" datatype="ORD" page_number="2" page_title="Svangerskapshistorie" question_text="Multigravida" optional="1" visible="-1" expression="2-ISPOS(GRAV_GRAVIDA-1)" enumeration_uid="9356" group_id="MULTIGRAVIDA" />
+<question item_id="7640" mid="GRAV_PARA" datatype="QN" page_number="3" page_introduction="Tidligere f&#248;dsler og komplikasjoner, hvis multigravida." header="Para" question_text="Antall tidligere f&#248;dsler" optional="0" carry_forward="1" min_value="0" max_value="15" group_id="GRAV_PARA" />
+<question item_id="9357" mid="VAR9357" datatype="ORD" page_number="3" page_introduction="Tidligere f&#248;dsler og komplikasjoner, hvis multigravida." header="Svangerskapskomplikasjoner" question_text="Komplikasjoner i tidligere svangerskap?" optional="1" carry_forward="1" enumeration_uid="9357" />
+<question item_id="9358" mid="VAR9358" datatype="NAR" page_number="4" page_introduction="Kun synlig vis 9357 Komplikasjoner = Ja" header="Beskrivelse*" question_text="Beskriv komplikasjoner" optional="1" carry_forward="1" exclude_caption="1" multiline="1" />
+<question item_id="3225" mid="HEIGHT" datatype="QN" page_number="5" page_title="F&#248;r svangerskapet" question_text="H&#248;yde (cm)" optional="0" carry_forward="1" min_value="50" max_value="220" units="cm" highlight="1" help_text="Uten sko." group_id="HEIGHT" />
+<question item_id="7645" mid="GRAV_NORMALVEKT" datatype="QN" page_number="5" page_title="F&#248;r svangerskapet" question_text="Pregravid vekt (kg)" optional="0" carry_forward="1" min_value="10" max_value="400" units="kg" decimals="1" group_id="GRAV_NORMALVEKT" />
+<question item_id="9352" mid="PREGRAVID_BMI" datatype="QN" page_number="5" page_title="F&#248;r svangerskapet" question_text="Pregravid BMI (kg/m2)" optional="1" units="kg/m2" decimals="1" expression="GRAV_NORMALVEKT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(GRAV_NORMALVEKT)*ISPOS(HEIGHT)" group_id="PREGRAVID_BMI" />
+<question item_id="3392" mid="DP_DIAGNOSER_TEKST" datatype="NAR" page_number="5" page_title="F&#248;r svangerskapet" header="Kronisk sykdom*" question_text="Andre kroniske sykdommer" optional="1" carry_forward="1" exclude_caption="1" multiline="1" group_id="DP_DIAGNOSER_TEKST" />
+<question item_id="4224" mid="DP_PLANLAGT_GRAVID" datatype="ORD" page_number="6" question_text="Prekonsepsjonell veiledning med diabetesr&#229;dgiver" optional="0" carry_forward="1" enumeration_uid="4224" group_id="DP_PLANLAGT_GRAVID" />
+<question item_id="9351" mid="VAR9351" datatype="DATE" page_number="7" page_title="Glukosebelastning" header="Dato utf&#248;rt" question_text="Dato for glukosebelastning" optional="1" carry_forward="1" />
+<question item_id="7646" mid="VAR7646" datatype="QN" page_number="7" page_title="Glukosebelastning" question_text="Fastende glukoseverdi (mmol/L)" optional="1" carry_forward="1" min_value="2" max_value="9" units="mmol/L" decimals="1" help_text="Fastende f&#248;r glukosebelastning" />
+<question item_id="7647" mid="VAR7647" datatype="QN" page_number="7" page_title="Glukosebelastning" header="S-Glukose 1t" question_text="Glukoseverdi etter 1 time (mmol/L)" optional="1" carry_forward="1" min_value="2" max_value="40" units="mmol/L" decimals="1" help_text="I forbindelse med glukosebelastning" />
+<question item_id="7648" mid="VAR7648" datatype="QN" page_number="7" page_title="Glukosebelastning" header="S-Glukose 2t" question_text="Glukoseverdi etter 2 timer (mmol/L)" optional="1" carry_forward="1" min_value="2" max_value="40" units="mmol/L" decimals="1" help_text="I forbindelse med glukosebelastning" />
+<question item_id="4222" mid="DP_SISTE_MENS" datatype="DATE" page_number="8" page_title="Om svangerskapet" question_text="Siste menstruasjon" optional="1" carry_forward="1" min_value="DOB+3650" max_value="NOW" group_id="DP_SISTE_MENS" />
+<question item_id="4221" mid="DP_TERMIN_UL" datatype="DATE" page_number="8" page_title="Om svangerskapet" question_text="Termin ultralyd" optional="1" carry_forward="1" min_value="DOB" max_value="NOW+280" help_text="Skriv 0 hvis ukjent." group_id="DP_TERMIN_UL" />
+<question item_id="4223" mid="DP_SVANGERSKAPUKE" datatype="QN" page_number="8" page_title="Om svangerskapet" question_text="Svangerskapsuke (uker)" optional="1" units="uker" expression="(40+(TRUNC(FORM.DATE)-DP_TERMIN_UL)/7)*ISPOS(DP_TERMIN_UL) + (TRUNC(FORM.DATE)-DP_SISTE_MENS)/7*(1-ISPOS(DP_TERMIN_UL))*ISPOS(DP_SISTE_MENS)" help_text="Termin ultralyd har prioritet i beregningen" group_id="DP_SVANGERSKAPUKE" />
+<question item_id="7649" mid="DP_SVANGERSKAPDAG" datatype="QN" page_number="8" page_title="Om svangerskapet" question_text="Svangerskapslengde (dager)" optional="1" units="dager" expression="(280-(DP_TERMIN_UL-FORM.DATE))*ISPOS(DP_TERMIN_UL) + (FORM.DATE-DP_SISTE_MENS)*(1-ISPOS(DP_TERMIN_UL))*ISPOS(DP_SISTE_MENS)" help_text="Termin ultralyd har prioritet i beregningen" group_id="DP_SVANGERSKAPDAG" />
+<question item_id="7641" mid="PassertUke32" datatype="ORD" page_number="8" page_title="Om svangerskapet" question_text="Passert uke 28" optional="1" visible="-1" read_only="1" expression="2-ISPOS(DP_SVANGERSKAPUKE-28)" enumeration_uid="7641" group_id="PassertUke32" />
+<question item_id="3354" mid="NDV_EYECHECK_DATE" datatype="DATE" page_number="9" page_title="Komplikasjoner" question_text="Siste bes&#248;k hos &#248;yelege" optional="0" carry_forward="1" min_value="DOB" max_value="NOW" highlight="1" help_text="Beste estimat ved usikker dato." group_id="NDV_EYECHECK_DATE" />
+<question item_id="4527" mid="DIABETESKOMPLIKASJONER" datatype="ORD" page_number="10" header="Diabeteskomplikasjoner" question_text="Kjente diabetes senkomplikasjoner" optional="0" carry_forward="1" highlight="1" enumeration_uid="4527" help_text="Nefropati, retinopati, nevropati, koronarsykdom, hjerneslag, arteriell karkirurgi, amputasjon, diabetisk fots&#229;r, erektil dysfunksjon." group_id="DIABETESKOMPLIKASJONER" />
+<question item_id="4087" mid="NDV_RETINOPATHY" datatype="ORD" page_number="11" question_text="Retinopati" optional="0" carry_forward="1" highlight="1" enumeration_uid="4087" group_id="NDV_RETINOPATHY" />
+<question item_id="4205" mid="NDV_LASER_FIRST" datatype="QN" page_number="12" question_text="&#197;rstall for f&#248;rste laserbehandling" optional="0" carry_forward="1" min_value="DOB_YYYY" max_value="NOW_YYYY" highlight="1" group_id="NDV_LASER_FIRST" />
+<question item_id="7520" mid="NDV_MACROALBUMINURIA" datatype="ORD" page_number="13" question_text="Makroalbuminuri" optional="0" carry_forward="1" enumeration_uid="7520" help_text="For diagnose kreves kvantifisering dvs. alb/kreatininratio &gt; 30 mg/mmol (eller U-albumin &gt;200 &#181;g/min, eller &gt; 300 mg/24t)" group_id="NDV_MACROALBUMINURIA" />
+<question item_id="7519" mid="NDV_MICROALBUMINURIA" datatype="ORD" page_number="15" question_text="Mikroalbuminuri" optional="0" carry_forward="1" enumeration_uid="7519" help_text="For diagnose kreves kvantifisering der to av tre pr&#248;ver skal v&#230;re positive dvs. alb/kreatininratio 3-30 mg/mmol (eller U-albumin 20-200 &#181;g/min, eller 20-300 mg/24t)." group_id="NDV_MICROALBUMINURIA" />
+<question item_id="7517" mid="NDV_RENAL_FUNCTION" datatype="ORD" page_number="16" header="Nedsatt nyrefunksjon" question_text="Er nyrefunksjonen redusert?" optional="0" carry_forward="1" enumeration_uid="7517" help_text="Velg &quot;Redusert nyrefunksjon&quot; ved eGFR &lt; 60 ml/min/1.73m2. Velg &quot;Nyretransplantert&quot; ogs&#229; ved dialysebehandling etter transplantasjon." group_id="NDV_RENAL_FUNCTION" />
+<question item_id="3224" mid="WEIGHT" datatype="QN" page_number="17" page_title="Unders&#248;kelse" question_text="Vekt (kg)" optional="0" min_value="10" max_value="400" units="kg" decimals="1" highlight="1" help_text="Uten sko og yttert&#248;y." group_id="WEIGHT" />
+<question item_id="3230" mid="SYSBP" datatype="QN" page_number="17" page_title="Unders&#248;kelse" question_text="Systolisk blodtrykk (mmHg)" optional="0" min_value="50" max_value="250" units="mmHg" highlight="1" help_text="Standard BT-m&#229;ling, dvs. gj.snittet av de to siste av tre m&#229;linger med 1 min. mellom." group_id="SYSBP" />
+<question item_id="3231" mid="DIABP" datatype="QN" page_number="17" page_title="Unders&#248;kelse" question_text="Diastolisk blodtrykk (mmHg)" optional="0" min_value="30" max_value="150" units="mmHg" highlight="1" help_text="Standard BT-m&#229;ling, dvs. gj.snittet av de to siste av tre m&#229;linger med 1 min. mellom." group_id="DIABP" />
+<question item_id="7639" mid="GRAV_HYPOGLYKEMI" datatype="QN" page_number="18" page_title="Glukosekontroll" header="Hypoglykemi" question_text="Antall alvorlige hypoglykemier SIDEN SISTE KONTROLL (ggr siden sist)" optional="1" min_value="0" max_value="20" units="ggr siden sist" group_id="GRAV_HYPOGLYKEMI" />
+<question item_id="527" mid="HBA1C" datatype="QN" page_number="18" page_title="Glukosekontroll" question_text="Aktuell HbA1c (%)" optional="1" min_value="3" max_value="25" units="%" decimals="1" highlight="1" help_text="Kun hvis tatt i tilknytning til denne kontrollen, alts&#229; p&#229; skjemaets dato." group_id="HBA1C" />
+<question item_id="6384" mid="VMR_LAB_HBA1C" datatype="QN" page_number="18" page_title="Glukosekontroll" question_text="Siste HbA1c (%)" optional="1" read_only="1" exclude_from_text="1" min_value="3" max_value="15" units="%" decimals="1" expression="VMR.LAB.HBA1C" help_text="Hentes inn automatisk fra labarket, kan ikke redigeres her." group_id="VMR_LAB_HBA1C" />
+<question item_id="9354" mid="LastHbA1cDate" datatype="DATE" page_number="18" page_title="Glukosekontroll" header="M&#229;lt" question_text="Dato for siste HbA1c-m&#229;ling" optional="1" carry_forward="1" group_id="LastHbA1cDate" />
+<question item_id="7643" mid="VAR7643" datatype="QN" page_number="19" page_title="Behandlingsm&#229;l" header="F&#248;r m&#229;ltid" question_text="M&#229;l for glukose f&#248;r m&#229;ltid (mmol/L)" optional="1" carry_forward="1" min_value="4.5" max_value="9" units="mmol/L" decimals="1" />
+<question item_id="7644" mid="VAR7644" datatype="QN" page_number="19" page_title="Behandlingsm&#229;l" header="To timer etter m&#229;ltid" question_text="M&#229;l for glukose to timer etter m&#229;ltid (mmol/L)" optional="1" carry_forward="1" min_value="6.0" max_value="12" units="mmol/L" decimals="1" />
+<question item_id="4088" mid="DP_AVTALER" datatype="NAR" page_number="20" page_title="Plan" header="Vurdering*" question_text="Vurdering og plan videre" optional="0" exclude_caption="1" multiline="1" help_text="Inkludert eventuelle avtaler gjort med pasienten, unntatt timeavtale som er eget punkt." group_id="DP_AVTALER" />
+<question item_id="3322" mid="NDV_TREATMENT_TYPE" datatype="ORD" page_number="20" page_title="Plan" header="Behandlingsstrategi" question_text="Diabetes behandles ved hjelp av" optional="0" carry_forward="1" highlight="1" enumeration_uid="3322" group_id="NDV_TREATMENT_TYPE" />
+<question item_id="9476" mid="VAR9476" datatype="ORD" page_number="21" header="Insulinplan" question_text="Vil du registrere insulinplan ved f&#248;dsel?" optional="1" carry_forward="1" exclude_from_text="1" enumeration_uid="9476" />
+<question item_id="7642" mid="VAR7642" datatype="NAR" page_number="22" header="Insulinplan ved f&#248;dsel:" question_text="Forslag til insulinbehandling under og umiddelbart etter f&#248;dsel" optional="1" carry_forward="1" multiline="1" />
+<question item_id="4089" mid="DP_NESTE_KONTROLL" datatype="NAR" page_number="23" page_title="Neste kontroll" header="Neste kontroll" question_text="Avtale og evt tidspunkt for neste kontroll" optional="1" multiline="0" group_id="DP_NESTE_KONTROLL" />
+
+<!-- Start: Form actions, generated XML -->
+
+<question_action master_question_mid="MULTIGRAVIDA" detail_question_mid="GRAV_PARA" enum_item_value="1" activate="1" />
+<question_action master_question_mid="MULTIGRAVIDA" detail_question_mid="VAR9357" enum_item_value="1" activate="1" />
+<question_action master_question_mid="VAR9357" detail_question_mid="VAR9358" enum_item_value="1" activate="1" />
+<question_action master_question_mid="NDV_TYPE" detail_question_mid="DP_PLANLAGT_GRAVID" enum_item_value="5" activate="6" />
+<question_action master_question_mid="NDV_TYPE" detail_question_mid="VAR9351" enum_item_value="5" activate="1" />
+<question_action master_question_mid="NDV_TYPE" detail_question_mid="VAR7646" enum_item_value="5" activate="1" />
+<question_action master_question_mid="NDV_TYPE" detail_question_mid="VAR7647" enum_item_value="5" activate="1" />
+<question_action master_question_mid="NDV_TYPE" detail_question_mid="VAR7648" enum_item_value="5" activate="1" />
+<question_action master_question_mid="NDV_TYPE" detail_question_mid="NDV_EYECHECK_DATE" enum_item_value="5" activate="6" />
+<question_action master_question_mid="NDV_TYPE" detail_question_mid="DIABETESKOMPLIKASJONER" enum_item_value="5" activate="6" />
+<question_action master_question_mid="DIABETESKOMPLIKASJONER" detail_question_mid="NDV_RETINOPATHY" enum_item_value="1" activate="1" />
+<question_action master_question_mid="NDV_RETINOPATHY" detail_question_mid="NDV_LASER_FIRST" enum_item_value="3" activate="1" />
+<question_action master_question_mid="DIABETESKOMPLIKASJONER" detail_question_mid="NDV_MACROALBUMINURIA" enum_item_value="1" activate="1" />
+<question_action master_question_mid="NDV_MACROALBUMINURIA" detail_question_mid="NDV_MICROALBUMINURIA" enum_item_value="1" activate="6" />
+<question_action master_question_mid="DIABETESKOMPLIKASJONER" detail_question_mid="NDV_RENAL_FUNCTION" enum_item_value="1" activate="1" />
+<question_action master_question_mid="PassertUke32" detail_question_mid="VAR9476" enum_item_value="1" activate="1" />
+<question_action master_question_mid="VAR9476" detail_question_mid="VAR7642" enum_item_value="1" activate="1" />
+</form>
