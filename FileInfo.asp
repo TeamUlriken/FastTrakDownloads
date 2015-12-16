@@ -1,4 +1,4 @@
 <%@ Language=VBScript %>
 <%
-   Response.Redirect("http://binaries.dips.no/FileInfo.asp")
+   Response.Redirect("http://binaries.fasttrak.no/FileInfo.asp")
 %>
