@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<form form_id="811" form_uid="HofteregisterV2" title="Hoftebruddregister" calculate_invalid="True" rating_scale="False" status="Open" repeatable="1" >
+<form form_id="811" form_uid="HofteregisterV2" title="Hoftebruddregister" calculate_invalid="True" rating_scale="False" status="Closed" repeatable="1" >
 <instructions></instructions>
 
 <!-- Start: Form enums, generated XML -->
@@ -28,9 +28,9 @@
 </enumeration>
 
 <enumeration enumeration_uid="8200">
-  <enum_item value="0" text="Nei | Ikke demens." short_code="N" answer_id="43891" />
-  <enum_item value="1" text="Ja | Dement." ICD10="F0[0123]*" short_code="J" answer_id="43892" />
-  <enum_item value="2" text="Usikker | Mulig demens." short_code="U" answer_id="43893" />
+  <enum_item value="0" text="Nei | Ikke kognitiv svikt." short_code="N" answer_id="43891" />
+  <enum_item value="1" text="Ja | Kognitiv svikt." ICD10="F0[0123]*" short_code="J" answer_id="43892" />
+  <enum_item value="2" text="Usikker | Mulig kognitiv svikt." short_code="U" answer_id="43893" />
 </enumeration>
 
 <enumeration enumeration_uid="8201">
@@ -333,7 +333,7 @@
 </enumeration>
 
 <enumeration enumeration_uid="8499">
-  <enum_item value="0" text="Ingen | Ingen tromboseprofylakse." short_code="N" answer_id="47185" />
+  <enum_item value="0" text="Ingen | Ingen (ekstra) tromboseprofylakse." short_code="N" answer_id="47185" />
   <enum_item value="1" text="Ett*" short_code="1" answer_id="47186" />
   <enum_item value="2" text="To eller flere*" short_code="2+" answer_id="47187" />
 </enumeration>
@@ -360,7 +360,7 @@
 <question item_id="8195" mid="HrOprDato" datatype="DATE" page_number="5" header="Dato" question_text="Dato for operasjon" optional="0" carry_forward="1" group_id="HrOprDato" />
 <question item_id="8197" mid="HrOprTidspunkt" datatype="QN" page_number="5" question_text="Tidspunkt (klokketime)" optional="0" carry_forward="1" min_value="0" max_value="23" units="klokketime" group_id="HrOprTidspunkt" />
 <question item_id="8199" mid="VAR8199" datatype="ORD" page_number="6" question_text="Tid fra brudd til operasjon i timer" optional="0" carry_forward="1" enumeration_uid="8199" />
-<question item_id="8200" mid="HrDemens" datatype="ORD" page_number="7" page_title="Komorbiditet" question_text="Demens" optional="0" carry_forward="1" enumeration_uid="8200" group_id="HrDemens" />
+<question item_id="8200" mid="HrDemens" datatype="ORD" page_number="7" page_title="Komorbiditet" question_text="Kognitiv svikt" optional="0" carry_forward="1" enumeration_uid="8200" group_id="HrDemens" />
 <question item_id="8201" mid="ASA_ANESTESI" datatype="ORD" page_number="7" page_title="Komorbiditet" question_text="ASA-klasse" optional="0" carry_forward="1" enumeration_uid="8201" group_id="ASA_ANESTESI" />
 <question item_id="8202" mid="VAR8202" datatype="ORD" page_number="8" page_title="Prim&#230;rbrudd" question_text="Type prim&#230;rbrudd" optional="0" carry_forward="1" enumeration_uid="8202" />
 <question item_id="8203" mid="HrPriOprTypeAnnet" datatype="NAR" page_number="9" header="Bruddtype" question_text="Spesifiser bruddtype" optional="0" carry_forward="1" multiline="0" group_id="HrPriOprTypeAnnet" />
@@ -424,7 +424,7 @@
 <question item_id="8487" mid="HrAbMed3Dose" datatype="NAR" page_number="39" header="Dssn" question_text="Doseringstekst for medikament 3" optional="0" carry_forward="1" multiline="0" help_text="Eks: 500mg x 3" group_id="HrAbMed3Dose" />
 <question item_id="9906" mid="HrAbMed3Hours" datatype="QN" page_number="39" question_text="Varighet (timer)" optional="0" carry_forward="1" min_value="1" max_value="999" units="timer" group_id="HrAbMed3Hours" />
 <question item_id="8249" mid="HrAbMed3Days" datatype="QN" page_number="39" question_text="Varighet (d&#248;gn)" optional="0" visible="-1" min_value="0.1" max_value="365" units="d&#248;gn" decimals="1" expression="HrAbMed3Hours/24" group_id="HrAbMed3Days" />
-<question item_id="8499" mid="ctrHrAtPrepCount" datatype="ORD" page_number="40" page_title="Tromboseprofylakse" page_introduction="Hentes fra operasjonsskjema" question_text="Antall antitrombotiske medikamenter" optional="0" carry_forward="1" exclude_from_text="1" enumeration_uid="8499" help_text="Utenom fast antikoagulasjon" group_id="ctrHrAtPrepCount" />
+<question item_id="8499" mid="ctrHrAtPrepCount" datatype="ORD" page_number="40" page_title="Tromboseprofylakse" page_introduction="Hentes fra operasjonsskjema" question_text="Antall antitrombotiske medikamenter" optional="0" carry_forward="1" exclude_from_text="1" enumeration_uid="8499" help_text="Utenom fast tromboseprofylakse" group_id="ctrHrAtPrepCount" />
 <question item_id="8250" mid="HrTrombProfylakse" datatype="ORD" page_number="40" page_title="Tromboseprofylakse" page_introduction="Hentes fra operasjonsskjema" question_text="Tromboseprofylakse" optional="0" visible="-1" carry_forward="1" exclude_from_text="1" expression="ISPOS(ctrHrAtPrepCount)" enumeration_uid="8250" group_id="HrTrombProfylakse" />
 <question item_id="8288" mid="VAR8288" datatype="ORD" page_number="41" question_text="F&#248;rste dose" optional="0" carry_forward="1" enumeration_uid="8288" />
 <question item_id="8251" mid="HrTrombo1" datatype="ORD" page_number="42" question_text="Medikament 1" optional="0" carry_forward="1" enumeration_uid="8251" help_text="Lokal liste utarbeides av Helge" group_id="HrTrombo1" />
@@ -435,12 +435,12 @@
 <question item_id="8255" mid="VAR8255" datatype="NAR" page_number="43" question_text="Dosering operasjonsdag" optional="0" carry_forward="1" multiline="0" help_text="Variablen er ikke med p&#229; registerskjemaet." />
 <question item_id="8256" mid="VAR8256" datatype="NAR" page_number="43" question_text="Dosering videre" optional="0" carry_forward="1" multiline="0" />
 <question item_id="8636" mid="VAR8636" datatype="QN" page_number="43" question_text="Varighet (d&#248;gn)" optional="1" carry_forward="1" min_value="1" max_value="60" units="d&#248;gn" />
-<question item_id="8500" mid="HrAntiKoag" datatype="ORD" page_number="44" question_text="Fast antikoagulasjon" optional="0" carry_forward="1" enumeration_uid="8500" group_id="HrAntiKoag" />
+<question item_id="8500" mid="HrAntiKoag" datatype="ORD" page_number="44" question_text="Fast tromboseprofylakse" optional="0" carry_forward="1" enumeration_uid="8500" group_id="HrAntiKoag" />
 <question item_id="8257" mid="HrAntiKoagAnnet" datatype="NAR" page_number="45" question_text="Hvilke" optional="0" carry_forward="1" multiline="0" group_id="HrAntiKoagAnnet" />
 <question item_id="8258" mid="VAR8258" datatype="ORD" page_number="46" page_title="Fibrinolysehemmer" page_introduction="Hentes fra operasjonsskjema" header="Fibrinolysehemmer" question_text="Er det gitt fibrinolysehemmer i forbindelse med operasjonen?" optional="0" carry_forward="1" enumeration_uid="8258" help_text="Eks. Cyklopkapron." />
 <question item_id="8259" mid="VAR8259" datatype="NAR" page_number="47" question_text="Medikament" optional="0" carry_forward="1" multiline="0" help_text="Det vil bli utarbeidet en liste" />
 <question item_id="8260" mid="VAR8260" datatype="NAR" page_number="47" question_text="Dosering" optional="0" carry_forward="1" multiline="0" />
-<question item_id="8261" mid="HrOprErfaring" datatype="ORD" page_number="48" page_title="Operat&#248;rerfaring" page_introduction="Hentes fra operasjonsskjema" header="Erfaring" question_text="Har en av operat&#248;rene mer enn 3 &#229;rs erfaring i bruddbehandling" optional="0" carry_forward="1" enumeration_uid="8261" group_id="HrOprErfaring" />
+<question item_id="8261" mid="HrOprErfaring" datatype="ORD" page_number="48" page_title="Operat&#248;rerfaring" page_introduction="Hentes fra operasjonsskjema" header="Erfaring" question_text="Har en av operat&#248;rene mer enn 3 &#229;rs erfaring i hoftebruddkirurgi" optional="0" carry_forward="1" enumeration_uid="8261" group_id="HrOprErfaring" />
 
 <!-- Start: Form actions, generated XML -->
 

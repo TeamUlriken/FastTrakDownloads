@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<form form_id="667" form_uid="Hofteregister" title="Hoftebruddregister" calculate_invalid="True" rating_scale="False" status="Closed" repeatable="1" >
+<form form_id="876" form_uid="HofteregisterV3" title="Hoftebruddregister" calculate_invalid="True" rating_scale="False" status="Open" repeatable="1" >
 <instructions></instructions>
 
 <!-- Start: Form enums, generated XML -->
@@ -207,11 +207,6 @@
   <enum_item value="1" text="Ja | Det oppstod peroperative komplikasjoner." short_code="J" answer_id="44076" />
 </enumeration>
 
-<enumeration enumeration_uid="8240">
-  <enum_item value="0" text="Nei | Ikke gitt systemisk antibiotika." short_code="N" answer_id="44077" />
-  <enum_item value="1" text="Ja*" short_code="J" answer_id="44078" />
-</enumeration>
-
 <enumeration enumeration_uid="8250">
   <enum_item value="0" text="Nei" short_code="N" answer_id="44081" />
   <enum_item value="1" text="Ja" short_code="J" answer_id="44082" />
@@ -247,11 +242,6 @@
 <enumeration enumeration_uid="8290">
   <enum_item value="0" text="Nei | Antiotikaprofylakse ikke gitt." short_code="N" answer_id="44387" />
   <enum_item value="1" text="Ja | Antibiotikaprofylakse gitt." short_code="J" answer_id="44388" />
-</enumeration>
-
-<enumeration enumeration_uid="8291">
-  <enum_item value="0" text="Nei*" short_code="N" answer_id="44399" />
-  <enum_item value="1" text="Ja | Antibiotika gitt som behandling." short_code="J" answer_id="44400" />
 </enumeration>
 
 <enumeration enumeration_uid="8292">
@@ -293,13 +283,6 @@
   <enum_item value="7" text="Cefotaksim (Claforan) | Cefotaksim" answer_id="47045" />
   <enum_item value="8" text="Ampicillin (Pentrexyl, Pondocollin, Doktacillin) | Ampicillin" answer_id="47046" />
   <enum_item value="99" text="Annet*" answer_id="47047" />
-</enumeration>
-
-<enumeration enumeration_uid="8488">
-  <enum_item value="0" text="Ingen" answer_id="47050" />
-  <enum_item value="1" text="Ett" short_code="1" answer_id="47051" />
-  <enum_item value="2" text="To" short_code="2" answer_id="47052" />
-  <enum_item value="3" text="Tre eller flere" short_code="3+" answer_id="47059" />
 </enumeration>
 
 <enumeration enumeration_uid="8489">
@@ -344,6 +327,13 @@
   <enum_item value="2" text="Acetylsalisylsyre (Albyl-E) | Acetylsalicylsyre." short_code="ASA" answer_id="47266" />
   <enum_item value="3" text="Klopidogrel (Plavix) | Klopidogrel." short_code="Klo" answer_id="47267" />
   <enum_item value="9" text="Annet eller kombinasjoner*" short_code="Ann" answer_id="47268" />
+</enumeration>
+
+<enumeration enumeration_uid="10317">
+  <enum_item value="0" text="Ingen" answer_id="57867" />
+  <enum_item value="1" text="Ett" answer_id="57868" />
+  <enum_item value="2" text="To" answer_id="57869" />
+  <enum_item value="3" text="Tre eller flere" answer_id="57870" />
 </enumeration>
 
 <!-- Start: Form items, generated XML -->
@@ -402,22 +392,26 @@
 <question item_id="8237" mid="VAR8237" datatype="ORD" page_number="25" question_text="Peroperative komplikasjoner" optional="0" carry_forward="1" enumeration_uid="8237" />
 <question item_id="8238" mid="VAR8238" datatype="NAR" page_number="26" header="Beskrivelse*" question_text="Beskriv komplikasjonene" optional="0" carry_forward="1" exclude_caption="1" multiline="1" help_text="Tips: Avslutt med punktum for et bedre notat." />
 <question item_id="8239" mid="VAR8239" datatype="QN" page_number="27" question_text="Operasjonstid (minutter)" optional="0" carry_forward="1" min_value="5" max_value="300" units="minutter" help_text="(hud til hud)" />
-<question item_id="8488" mid="ctrHrAbPrepCount" datatype="ORD" page_number="28" page_title="Systemisk antibiotika" question_text="Antall preparater totalt" optional="0" carry_forward="1" exclude_from_text="1" enumeration_uid="8488" help_text="Antall ulike preparater, profylakse og behandling til sammen" group_id="ctrHrAbPrepCount" />
-<question item_id="8240" mid="HrSystAb" datatype="ORD" page_number="28" page_title="Systemisk antibiotika" question_text="Systemisk antibiotika" optional="0" visible="-1" carry_forward="1" expression="ISPOS(ctrHrAbPrepCount)" enumeration_uid="8240" group_id="HrSystAb" />
-<question item_id="8290" mid="HrAbProfylakse" datatype="ORD" page_number="29" question_text="Antibiotika som profylakse" optional="0" carry_forward="1" enumeration_uid="8290" group_id="HrAbProfylakse" />
-<question item_id="8291" mid="HrAbBehandling" datatype="ORD" page_number="29" question_text="Antibiotika som behandling" optional="0" carry_forward="1" enumeration_uid="8291" group_id="HrAbBehandling" />
-<question item_id="8480" mid="HrAbMed1" datatype="ORD" page_number="30" page_title="Antibiotikum 1" page_introduction="Profylaktisk behandling skal registreres som f&#248;rste preparat" question_text="Preparatnavn 1" optional="0" carry_forward="1" enumeration_uid="8480" group_id="HrAbMed1" />
-<question item_id="8489" mid="tmpAbMed1Besvart" datatype="ORD" page_number="30" page_title="Antibiotikum 1" page_introduction="Profylaktisk behandling skal registreres som f&#248;rste preparat" question_text="Valgt medisin 1" optional="1" visible="-1" expression="2-ISPOS(HrAbMed1)" enumeration_uid="8489" group_id="tmpAbMed1Besvart" />
+<question item_id="8290" mid="HrAbProfylakse" datatype="ORD" page_number="28" page_title="Antibiotika" question_text="Antibiotika som profylakse" optional="0" carry_forward="1" enumeration_uid="8290" group_id="HrAbProfylakse" />
+<question item_id="10317" mid="ctrHrAbProfCount" datatype="ORD" page_number="29" question_text="Antall preparater totalt" optional="0" carry_forward="1" enumeration_uid="10317" help_text="Antall ulike preparater gitt som profylakse" group_id="ctrHrAbProfCount" />
+<question item_id="8480" mid="HrAbMed1" datatype="ORD" page_number="30" page_title="Antibiotikum 1" question_text="Preparatnavn 1" optional="0" carry_forward="1" enumeration_uid="8480" group_id="HrAbMed1" />
+<question item_id="8489" mid="tmpAbMed1Besvart" datatype="ORD" page_number="30" page_title="Antibiotikum 1" question_text="Valgt medisin 1" optional="1" visible="-1" expression="2-ISPOS(HrAbMed1)" enumeration_uid="8489" group_id="tmpAbMed1Besvart" />
 <question item_id="8241" mid="HrAbMed1Annet" datatype="NAR" page_number="31" header="Preparat" question_text="Oppgi preparatnavn for Annet" optional="0" carry_forward="1" multiline="0" group_id="HrAbMed1Annet" />
-<question item_id="8243" mid="HrAbMed1Days" datatype="QN" page_number="32" question_text="Varighet (d&#248;gn)" optional="0" carry_forward="1" min_value="0.1" max_value="365" units="d&#248;gn" decimals="1" group_id="HrAbMed1Days" />
+<question item_id="8485" mid="HrAbMed1Dose" datatype="NAR" page_number="32" header="Dssn" question_text="Doseringstekst for medikament 1" optional="0" carry_forward="1" multiline="0" help_text="Eks: 500mg x 1" group_id="HrAbMed1Dose" />
+<question item_id="9904" mid="HrAbMed1Hours" datatype="QN" page_number="32" question_text="Varighet (timer)" optional="0" carry_forward="1" min_value="1" max_value="999" units="timer" group_id="HrAbMed1Hours" />
+<question item_id="8243" mid="HrAbMed1Days" datatype="QN" page_number="32" question_text="Varighet (d&#248;gn)" optional="0" visible="-1" min_value="0.1" max_value="365" units="d&#248;gn" decimals="1" expression="HrAbMed1Hours/24" group_id="HrAbMed1Days" />
 <question item_id="8481" mid="HrAbMed2" datatype="ORD" page_number="33" page_title="Antibiotikum 2" question_text="Preparatnavn 2" optional="0" carry_forward="1" enumeration_uid="8481" group_id="HrAbMed2" />
 <question item_id="8490" mid="tmpAbMed2Besvart" datatype="ORD" page_number="33" page_title="Antibiotikum 2" question_text="Valgt medisin 2" optional="1" visible="-1" expression="2-ISPOS(HrAbMed2)" enumeration_uid="8490" group_id="tmpAbMed2Besvart" />
 <question item_id="8244" mid="HrAbMed2Annet" datatype="NAR" page_number="34" header="Preparat" question_text="Oppgi preparatnavn for Annet" optional="0" carry_forward="1" multiline="0" group_id="HrAbMed2Annet" />
-<question item_id="8246" mid="HrAbMed2Days" datatype="QN" page_number="35" question_text="Varighet (d&#248;gn)" optional="0" carry_forward="1" min_value="0.1" max_value="365" units="d&#248;gn" decimals="1" group_id="HrAbMed2Days" />
+<question item_id="8486" mid="HrAbMed2Dose" datatype="NAR" page_number="35" header="Dssn" question_text="Doseringstekst for medikament 2" optional="0" carry_forward="1" multiline="0" help_text="Eks: 500mg x 2" group_id="HrAbMed2Dose" />
+<question item_id="9905" mid="HrAbMed2Hours" datatype="QN" page_number="35" question_text="Varighet (timer)" optional="0" carry_forward="1" min_value="1" max_value="999" units="timer" group_id="HrAbMed2Hours" />
+<question item_id="8246" mid="HrAbMed2Days" datatype="QN" page_number="35" question_text="Varighet (d&#248;gn)" optional="0" visible="-1" min_value="0.1" max_value="365" units="d&#248;gn" decimals="1" expression="HrAbMed2Hours/24" group_id="HrAbMed2Days" />
 <question item_id="8482" mid="HrAbMed3" datatype="ORD" page_number="36" page_title="Antibiotikum 3" question_text="Preparatnavn 3" optional="0" carry_forward="1" enumeration_uid="8482" group_id="HrAbMed3" />
 <question item_id="8491" mid="tmpAbMed3Besvart" datatype="ORD" page_number="36" page_title="Antibiotikum 3" question_text="Valgt medisin 3" optional="1" visible="-1" expression="2-ISPOS(HrAbMed3)" enumeration_uid="8491" group_id="tmpAbMed3Besvart" />
 <question item_id="8247" mid="HrAbMed3Annet" datatype="NAR" page_number="37" header="Preparat" question_text="Oppgi preparatnavn for Annet" optional="0" carry_forward="1" multiline="0" group_id="HrAbMed3Annet" />
-<question item_id="8249" mid="HrAbMed3Days" datatype="QN" page_number="38" question_text="Varighet (d&#248;gn)" optional="0" carry_forward="1" min_value="0.1" max_value="365" units="d&#248;gn" decimals="1" group_id="HrAbMed3Days" />
+<question item_id="8487" mid="HrAbMed3Dose" datatype="NAR" page_number="38" header="Dssn" question_text="Doseringstekst for medikament 3" optional="0" carry_forward="1" multiline="0" help_text="Eks: 500mg x 3" group_id="HrAbMed3Dose" />
+<question item_id="9906" mid="HrAbMed3Hours" datatype="QN" page_number="38" question_text="Varighet (timer)" optional="0" carry_forward="1" min_value="1" max_value="999" units="timer" group_id="HrAbMed3Hours" />
+<question item_id="8249" mid="HrAbMed3Days" datatype="QN" page_number="38" question_text="Varighet (d&#248;gn)" optional="0" visible="-1" min_value="0.1" max_value="365" units="d&#248;gn" decimals="1" expression="HrAbMed3Hours/24" group_id="HrAbMed3Days" />
 <question item_id="8499" mid="ctrHrAtPrepCount" datatype="ORD" page_number="39" page_title="Tromboseprofylakse" page_introduction="Hentes fra operasjonsskjema" question_text="Antall antitrombotiske medikamenter" optional="0" carry_forward="1" exclude_from_text="1" enumeration_uid="8499" help_text="Utenom fast tromboseprofylakse" group_id="ctrHrAtPrepCount" />
 <question item_id="8250" mid="HrTrombProfylakse" datatype="ORD" page_number="39" page_title="Tromboseprofylakse" page_introduction="Hentes fra operasjonsskjema" question_text="Tromboseprofylakse" optional="0" visible="-1" carry_forward="1" exclude_from_text="1" expression="ISPOS(ctrHrAtPrepCount)" enumeration_uid="8250" group_id="HrTrombProfylakse" />
 <question item_id="8288" mid="VAR8288" datatype="ORD" page_number="40" question_text="F&#248;rste dose" optional="0" carry_forward="1" enumeration_uid="8288" />
@@ -428,7 +422,7 @@
 <question item_id="8254" mid="HrTrombo2" datatype="ORD" page_number="42" question_text="Medikament 2" optional="0" carry_forward="1" enumeration_uid="8254" help_text="Lokal liste utarbeides av Helge" group_id="HrTrombo2" />
 <question item_id="8255" mid="VAR8255" datatype="NAR" page_number="42" question_text="Dosering operasjonsdag" optional="0" carry_forward="1" multiline="0" help_text="Variablen er ikke med p&#229; registerskjemaet." />
 <question item_id="8256" mid="VAR8256" datatype="NAR" page_number="42" question_text="Dosering videre" optional="0" carry_forward="1" multiline="0" />
-<question item_id="8636" mid="VAR8636" datatype="QN" page_number="42" question_text="Varighet (d&#248;gn)" optional="1" min_value="1" max_value="60" units="d&#248;gn" />
+<question item_id="8636" mid="VAR8636" datatype="QN" page_number="42" question_text="Varighet (d&#248;gn)" optional="1" carry_forward="1" min_value="1" max_value="60" units="d&#248;gn" />
 <question item_id="8500" mid="HrAntiKoag" datatype="ORD" page_number="43" question_text="Fast tromboseprofylakse" optional="0" carry_forward="1" enumeration_uid="8500" group_id="HrAntiKoag" />
 <question item_id="8257" mid="HrAntiKoagAnnet" datatype="NAR" page_number="44" question_text="Hvilke" optional="0" carry_forward="1" multiline="0" group_id="HrAntiKoagAnnet" />
 <question item_id="8258" mid="VAR8258" datatype="ORD" page_number="45" page_title="Fibrinolysehemmer" page_introduction="Hentes fra operasjonsskjema" header="Fibrinolysehemmer" question_text="Er det gitt fibrinolysehemmer i forbindelse med operasjonen?" optional="0" carry_forward="1" enumeration_uid="8258" help_text="Eks. Cyklopkapron." />
@@ -474,25 +468,23 @@
 <question_action master_question_mid="HrHemiTilgang" detail_question_mid="VAR8287" enum_item_value="5" activate="1" />
 <question_action master_question_mid="VAR8235" detail_question_mid="VAR8236" enum_item_value="3" activate="1" />
 <question_action master_question_mid="VAR8237" detail_question_mid="VAR8238" enum_item_value="1" activate="1" />
-<question_action master_question_mid="HrSystAb" detail_question_mid="HrAbProfylakse" enum_item_value="1" activate="1" />
-<question_action master_question_mid="HrSystAb" detail_question_mid="HrAbBehandling" enum_item_value="1" activate="1" />
-<question_action master_question_mid="ctrHrAbPrepCount" detail_question_mid="HrAbMed1" enum_item_value="1" activate="1" />
-<question_action master_question_mid="ctrHrAbPrepCount" detail_question_mid="HrAbMed1" enum_item_value="2" activate="1" />
-<question_action master_question_mid="ctrHrAbPrepCount" detail_question_mid="HrAbMed1" enum_item_value="3" activate="1" />
-<question_action master_question_mid="ctrHrAbPrepCount" detail_question_mid="tmpAbMed1Besvart" enum_item_value="1" activate="1" />
-<question_action master_question_mid="ctrHrAbPrepCount" detail_question_mid="tmpAbMed1Besvart" enum_item_value="2" activate="1" />
-<question_action master_question_mid="ctrHrAbPrepCount" detail_question_mid="tmpAbMed1Besvart" enum_item_value="3" activate="1" />
+<question_action master_question_mid="ctrHrAbProfCount" detail_question_mid="HrAbMed1" enum_item_value="1" activate="5" />
+<question_action master_question_mid="ctrHrAbProfCount" detail_question_mid="tmpAbMed1Besvart" enum_item_value="1" activate="5" />
 <question_action master_question_mid="HrAbMed1" detail_question_mid="HrAbMed1Annet" enum_item_value="99" activate="1" />
+<question_action master_question_mid="tmpAbMed1Besvart" detail_question_mid="HrAbMed1Dose" enum_item_value="1" activate="1" />
+<question_action master_question_mid="tmpAbMed1Besvart" detail_question_mid="HrAbMed1Hours" enum_item_value="1" activate="1" />
 <question_action master_question_mid="tmpAbMed1Besvart" detail_question_mid="HrAbMed1Days" enum_item_value="1" activate="1" />
-<question_action master_question_mid="ctrHrAbPrepCount" detail_question_mid="HrAbMed2" enum_item_value="2" activate="1" />
-<question_action master_question_mid="ctrHrAbPrepCount" detail_question_mid="HrAbMed2" enum_item_value="3" activate="1" />
-<question_action master_question_mid="ctrHrAbPrepCount" detail_question_mid="tmpAbMed2Besvart" enum_item_value="2" activate="1" />
-<question_action master_question_mid="ctrHrAbPrepCount" detail_question_mid="tmpAbMed2Besvart" enum_item_value="3" activate="1" />
+<question_action master_question_mid="ctrHrAbProfCount" detail_question_mid="HrAbMed2" enum_item_value="2" activate="5" />
+<question_action master_question_mid="ctrHrAbProfCount" detail_question_mid="tmpAbMed2Besvart" enum_item_value="2" activate="5" />
 <question_action master_question_mid="HrAbMed2" detail_question_mid="HrAbMed2Annet" enum_item_value="99" activate="1" />
+<question_action master_question_mid="tmpAbMed2Besvart" detail_question_mid="HrAbMed2Dose" enum_item_value="1" activate="1" />
+<question_action master_question_mid="tmpAbMed2Besvart" detail_question_mid="HrAbMed2Hours" enum_item_value="1" activate="1" />
 <question_action master_question_mid="tmpAbMed2Besvart" detail_question_mid="HrAbMed2Days" enum_item_value="1" activate="1" />
-<question_action master_question_mid="ctrHrAbPrepCount" detail_question_mid="HrAbMed3" enum_item_value="3" activate="1" />
-<question_action master_question_mid="ctrHrAbPrepCount" detail_question_mid="tmpAbMed3Besvart" enum_item_value="3" activate="1" />
+<question_action master_question_mid="ctrHrAbProfCount" detail_question_mid="HrAbMed3" enum_item_value="3" activate="5" />
+<question_action master_question_mid="ctrHrAbProfCount" detail_question_mid="tmpAbMed3Besvart" enum_item_value="3" activate="5" />
 <question_action master_question_mid="HrAbMed3" detail_question_mid="HrAbMed3Annet" enum_item_value="99" activate="1" />
+<question_action master_question_mid="tmpAbMed3Besvart" detail_question_mid="HrAbMed3Dose" enum_item_value="1" activate="1" />
+<question_action master_question_mid="tmpAbMed3Besvart" detail_question_mid="HrAbMed3Hours" enum_item_value="1" activate="1" />
 <question_action master_question_mid="tmpAbMed3Besvart" detail_question_mid="HrAbMed3Days" enum_item_value="1" activate="1" />
 <question_action master_question_mid="ctrHrAtPrepCount" detail_question_mid="VAR8288" enum_item_value="1" activate="1" />
 <question_action master_question_mid="ctrHrAtPrepCount" detail_question_mid="VAR8288" enum_item_value="2" activate="1" />
