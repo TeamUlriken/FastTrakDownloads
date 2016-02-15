@@ -62,8 +62,8 @@
 
 <enumeration enumeration_uid="4087">
   <enum_item value="1" text="Nei*" short_code="N" answer_id="21836" />
-  <enum_item value="2" text="Retinopati, ikke-laserbehandlet." answer_id="21837" />
-  <enum_item value="3" text="Laserbehandlet retinopati." answer_id="21838" />
+  <enum_item value="2" text="Retinopati, ubehandlet." answer_id="21837" />
+  <enum_item value="3" text="Behandlet retinopati." answer_id="21838" />
   <enum_item value="4" text="Ukjent*" answer_id="21839" />
 </enumeration>
 
@@ -151,7 +151,7 @@
 <question item_id="4527" mid="DIABETESKOMPLIKASJONER" datatype="ORD" page_number="2" header="Diabeteskomplikasjoner" question_text="Kjente diabetes senkomplikasjoner" optional="0" carry_forward="1" highlight="1" enumeration_uid="4527" help_text="Nefropati, retinopati, nevropati, koronarsykdom, hjerneslag, arteriell karkirurgi, amputasjon, diabetisk fots&#229;r, erektil dysfunksjon." group_id="DIABETESKOMPLIKASJONER" />
 <question item_id="3415" mid="NDV_NEPHROPATHY" datatype="ORD" page_number="3" page_title="Komplikasjoner" header="Nyrestatus" question_text="Albuminuri eller nefropati?" optional="0" carry_forward="1" highlight="1" enumeration_uid="3415" group_id="NDV_NEPHROPATHY" />
 <question item_id="4845" mid="ICPC_Y07" datatype="ORD" page_number="4" question_text="Erektil dysfunksjon" optional="1" enumeration_uid="4845" group_id="ICPC_Y07" />
-<question item_id="4087" mid="NDV_RETINOPATHY" datatype="ORD" page_number="5" question_text="Retinopati" optional="0" carry_forward="1" highlight="1" enumeration_uid="4087" group_id="NDV_RETINOPATHY" />
+<question item_id="4087" mid="NDV_RETINOPATHY" datatype="ORD" page_number="5" question_text="Retinopati" optional="0" carry_forward="1" highlight="1" enumeration_uid="4087" help_text="Behandling inkluderer laserbehandling, injeksjonsbehandling og kirurgi." group_id="NDV_RETINOPATHY" />
 <question item_id="4521" mid="NEVROPATI_KLINISK" datatype="ORD" page_number="5" header="Nevropati" question_text="Perifer eller autonom nevropati" optional="0" carry_forward="1" enumeration_uid="4521" help_text="Behandlende leges vurdering" group_id="NEVROPATI_KLINISK" />
 <question item_id="3397" mid="NDV_CHD" datatype="ORD" page_number="5" question_text="Koronarsykdom" optional="0" carry_forward="1" highlight="1" enumeration_uid="3397" help_text="angina, hjerteinfarkt eller PCI/bypass" group_id="NDV_CHD" />
 <question item_id="3398" mid="NDV_STROKE" datatype="ORD" page_number="5" question_text="Hjerneslag" optional="0" carry_forward="1" highlight="1" enumeration_uid="3398" help_text="Unntatt TIA" group_id="NDV_STROKE" />
@@ -159,14 +159,14 @@
 <question item_id="3414" mid="NDV_AMPUTATION" datatype="ORD" page_number="5" header="Amputasjon" question_text="Amputasjon (ikke traumatisk)" optional="0" carry_forward="1" highlight="1" enumeration_uid="3414" help_text="Dersom amputasjon p&#229; begge f&#248;tter, velg h&#248;yeste niv&#229;." group_id="NDV_AMPUTATION" />
 <question item_id="3218" mid="NDV_FOOT_ULCER" datatype="ORD" page_number="5" header="Diabetisk fots&#229;r" question_text="Har noen gang hatt diabetess&#229;r nedenfor ankelen?" optional="0" carry_forward="1" highlight="1" enumeration_uid="3218" group_id="NDV_FOOT_ULCER" />
 <question item_id="6898" mid="VAR6898" datatype="ORD" page_number="6" page_title="Aktuelt" question_text="Tilbud herfra" optional="1" visible="-1" enumeration_uid="6898" />
-<question item_id="4237" mid="DP_PROBLEMSTILLING" datatype="NAR" page_number="6" page_title="Aktuelt" question_text="Dagens problemstilling" optional="1" multiline="1" group_id="DP_PROBLEMSTILLING" />
+<question item_id="4237" mid="DP_PROBLEMSTILLING" datatype="NAR" page_number="6" page_title="Aktuelt" header="Aktuelt" question_text="Dagens problemstilling" optional="1" multiline="1" group_id="DP_PROBLEMSTILLING" />
 <question item_id="6377" mid="ChildBearingAge" datatype="ORD" page_number="6" page_title="Aktuelt" question_text="Kvinne i fertil alder" optional="1" visible="-1" exclude_from_text="1" expression="2-ISNULL(Patient.GenderId-2)*ISPOS(Patient.Age-15)*ISNEG(Patient.Age-55)" enumeration_uid="6377" group_id="ChildBearingAge" />
 <question item_id="6376" mid="VAR6376" datatype="ORD" page_number="7" header="Graviditet" question_text="Er pasienten gravid n&#229;?" optional="1" carry_forward="1" enumeration_uid="6376" />
 <question item_id="6378" mid="ICD10_O24" datatype="ORD" page_number="8" question_text="Klassifikasjon etter ICD-10, O24.X" optional="0" carry_forward="1" enumeration_uid="6378" group_id="ICD10_O24" />
 <question item_id="4221" mid="DP_TERMIN_UL" datatype="DATE" page_number="8" question_text="Termin ultralyd" optional="1" carry_forward="1" min_value="DOB" max_value="NOW+280" help_text="Skriv 0 hvis ukjent." group_id="DP_TERMIN_UL" />
 <question item_id="3225" mid="HEIGHT" datatype="QN" page_number="9" page_title="Kontroll" question_text="H&#248;yde (cm)" optional="0" carry_forward="1" min_value="50" max_value="220" units="cm" highlight="1" help_text="Uten sko." group_id="HEIGHT" />
 <question item_id="3224" mid="WEIGHT" datatype="QN" page_number="9" page_title="Kontroll" question_text="Vekt (kg)" optional="0" min_value="10" max_value="400" units="kg" decimals="1" highlight="1" help_text="Uten sko og yttert&#248;y." group_id="WEIGHT" />
-<question item_id="3310" mid="BMI" datatype="QN" page_number="9" page_title="Kontroll" question_text="BMI (kg/m2)" optional="1" min_value="5" max_value="100" units="kg/m2" decimals="1" highlight="1" expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" help_text="Beregnes automatisk" group_id="BMI" />
+<question item_id="3310" mid="BMI" datatype="QN" page_number="9" page_title="Kontroll" question_text="BMI (kg/m2)" optional="1" min_value="5" max_value="150" units="kg/m2" decimals="1" highlight="1" expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" help_text="Beregnes automatisk" group_id="BMI" />
 <question item_id="3230" mid="SYSBP" datatype="QN" page_number="9" page_title="Kontroll" question_text="Systolisk blodtrykk (mmHg)" optional="0" min_value="50" max_value="250" units="mmHg" highlight="1" help_text="Standard BT-m&#229;ling, dvs. gj.snittet av de to siste av tre m&#229;linger med 1 min. mellom." group_id="SYSBP" />
 <question item_id="3231" mid="DIABP" datatype="QN" page_number="9" page_title="Kontroll" question_text="Diastolisk blodtrykk (mmHg)" optional="0" min_value="30" max_value="150" units="mmHg" highlight="1" help_text="Standard BT-m&#229;ling, dvs. gj.snittet av de to siste av tre m&#229;linger med 1 min. mellom." group_id="DIABP" />
 <question item_id="5712" mid="BP_UPRIGHT" datatype="ORD" page_number="9" page_title="Kontroll" header="St&#229;ende blodtrykk" question_text="Vil du ogs&#229; registrere st&#229;ende blodtrykk?" optional="1" exclude_from_text="1" enumeration_uid="5712" group_id="BP_UPRIGHT" />
@@ -196,7 +196,7 @@ kun til vurdering av m&#229;loppn&#229;else.  Skal ikke lagres i database.  Hidd
 <question item_id="4213" mid="SYSBP_GOAL_REACHED" datatype="ORD" page_number="18" question_text="Blodtrykksm&#229;l n&#229;dd" optional="1" visible="0" exclude_from_text="1" expression="ISPOS(SYSBP) * ( 1+ ISNEG(STDGOAL_SYSBP-SYSBP)*ISNULL(INDIVIDUAL_GOALS+1)+ ISNEG(GOAL_SYSBP-SYSBP)*ISNULL(INDIVIDUAL_GOALS-1)+ ISNEG(STDGOAL_SYSBP-SYSBP)*ISNULL(INDIVIDUAL_GOALS-2) ) + ISNEG(SYSBP) * 3" enumeration_uid="4213" group_id="SYSBP_GOAL_REACHED" />
 <question item_id="4225" mid="LDL_GOAL_REACHED" datatype="ORD" page_number="18" question_text="LDL-m&#229;l n&#229;dd" optional="1" visible="-1" exclude_from_text="1" expression="ISPOS( VMR.LAB.LDL ) * ( 1 + ISNEG( ActualLDLGoal - VMR.LAB.LDL ) ) + 3 * ( 1 - ISPOS( VMR.LAB.LDL ) )" enumeration_uid="4225" group_id="LDL_GOAL_REACHED" />
 <question item_id="4088" mid="DP_AVTALER" datatype="NAR" page_number="19" page_title="Oppsummering" header="Vurdering*" question_text="Vurdering og plan videre" optional="1" exclude_caption="1" multiline="1" help_text="Inkludert eventuelle avtaler gjort med pasienten, unntatt timeavtale som er eget punkt." group_id="DP_AVTALER" />
-<question item_id="4089" mid="DP_NESTE_KONTROLL" datatype="NAR" page_number="20" page_title="Neste kontroll" header="Neste kontroll" question_text="Avtale og evt tidspunkt for neste kontroll" optional="1" multiline="0" group_id="DP_NESTE_KONTROLL" />
+<question item_id="4089" mid="DP_NESTE_KONTROLL" datatype="NAR" page_number="20" page_title="Neste kontroll" header="Neste avtale" question_text="Avtale og evt tidspunkt for neste konsultasjon" optional="1" multiline="0" group_id="DP_NESTE_KONTROLL" />
 
 <!-- Start: Form actions, generated XML -->
 

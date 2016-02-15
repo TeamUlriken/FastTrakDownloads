@@ -227,7 +227,7 @@
 
 <question item_id="4255" mid="SEX" datatype="ORD" page_number="1" question_text="Kj&#248;nn" optional="0" visible="-1" read_only="1" expression="Patient.GenderId" enumeration_uid="4255" help_text="Skjult" group_id="SEX" />
 <question item_id="6377" mid="ChildBearingAge" datatype="ORD" page_number="1" question_text="Kvinne i fertil alder" optional="1" visible="-1" expression="2-ISNULL(Patient.GenderId-2)*ISPOS(Patient.Age-15)*ISNEG(Patient.Age-55)" enumeration_uid="6377" group_id="ChildBearingAge" />
-<question item_id="4237" mid="DP_PROBLEMSTILLING" datatype="NAR" page_number="2" page_title="Aktuelt" question_text="Dagens problemstilling" optional="1" multiline="1" group_id="DP_PROBLEMSTILLING" />
+<question item_id="4237" mid="DP_PROBLEMSTILLING" datatype="NAR" page_number="2" page_title="Aktuelt" header="Aktuelt" question_text="Dagens problemstilling" optional="1" multiline="1" group_id="DP_PROBLEMSTILLING" />
 <question item_id="10241" mid="VAR10241" datatype="ORD" page_number="3" page_introduction="Viser kun for kvinner i fertil alder" question_text="Kronisk bruk av perorale &#248;strogener" optional="0" carry_forward="1" enumeration_uid="10241" />
 <question item_id="6376" mid="VAR6376" datatype="ORD" page_number="3" page_introduction="Viser kun for kvinner i fertil alder" header="Graviditet" question_text="Er pasienten gravid n&#229;?" optional="1" enumeration_uid="6376" />
 <question item_id="10240" mid="VAR10240" datatype="ORD" page_number="4" page_title="Bakgrunn" question_text="Kronisk bruk av glukokortikoider" optional="0" carry_forward="1" enumeration_uid="10240" help_text="Omfatter peroral bruk, dermatologiske preparater, &#248;yedr&#229;per og inhalasjonsbehandling." />
@@ -246,7 +246,7 @@
 <question item_id="3224" mid="WEIGHT" datatype="QN" page_number="13" page_title="Kliniske funn" question_text="Vekt (kg)" optional="0" min_value="10" max_value="400" units="kg" decimals="1" help_text="Uten sko og yttert&#248;y." group_id="WEIGHT" />
 <question item_id="7499" mid="PreCushWeight" datatype="QN" page_number="13" page_title="Kliniske funn" question_text="Vekt f&#248;r sykdomdebut (kg)" optional="1" carry_forward="1" min_value="30" max_value="300" units="kg" help_text="Vekt f&#248;r symptomdebut for Cushings syndrom" group_id="PreCushWeight" />
 <question item_id="7502" mid="CushWeightChange" datatype="QN" page_number="13" page_title="Kliniske funn" question_text="Vektendring siden sykdomsdebut (kg)" optional="1" min_value="-300" max_value="300" units="kg" expression="WEIGHT - PreCushWeight * ISPOS(PreCushWeight)" group_id="CushWeightChange" />
-<question item_id="3310" mid="BMI" datatype="QN" page_number="13" page_title="Kliniske funn" question_text="BMI (kg/m2)" optional="1" min_value="5" max_value="100" units="kg/m2" decimals="1" expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" help_text="Beregnes automatisk" group_id="BMI" />
+<question item_id="3310" mid="BMI" datatype="QN" page_number="13" page_title="Kliniske funn" question_text="BMI (kg/m2)" optional="1" min_value="5" max_value="150" units="kg/m2" decimals="1" expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" help_text="Beregnes automatisk" group_id="BMI" />
 <question item_id="3230" mid="SYSBP" datatype="QN" page_number="13" page_title="Kliniske funn" question_text="Systolisk blodtrykk (mmHg)" optional="0" min_value="50" max_value="250" units="mmHg" help_text="Standard BT-m&#229;ling, dvs. gj.snittet av de to siste av tre m&#229;linger med 1 min. mellom." group_id="SYSBP" />
 <question item_id="3231" mid="DIABP" datatype="QN" page_number="13" page_title="Kliniske funn" question_text="Diastolisk blodtrykk (mmHg)" optional="0" min_value="30" max_value="150" units="mmHg" help_text="Standard BT-m&#229;ling, dvs. gj.snittet av de to siste av tre m&#229;linger med 1 min. mellom." group_id="DIABP" />
 <question item_id="6977" mid="VAR6977" datatype="ORD" page_number="13" page_title="Kliniske funn" question_text="Cushingoid habitus" optional="1" enumeration_uid="6977" help_text="Abdominal overvekt og slanke ekstremiteter" />
@@ -297,7 +297,7 @@
 <question item_id="7030" mid="VAR7030" datatype="ORD" page_number="39" question_text="Str&#229;leknivbehandlet" optional="1" carry_forward="1" enumeration_uid="7030" />
 <question item_id="7031" mid="VAR7031" datatype="DATE" page_number="40" header="Dato" question_text="Str&#229;leknivbehandlet" optional="1" carry_forward="1" />
 <question item_id="4088" mid="DP_AVTALER" datatype="NAR" page_number="41" page_title="Plan" header="Vurdering*" question_text="Vurdering og plan videre" optional="1" exclude_caption="1" multiline="1" help_text="Inkludert eventuelle avtaler gjort med pasienten, unntatt timeavtale som er eget punkt." group_id="DP_AVTALER" />
-<question item_id="4089" mid="DP_NESTE_KONTROLL" datatype="NAR" page_number="41" page_title="Plan" header="Neste kontroll" question_text="Avtale og evt tidspunkt for neste kontroll" optional="1" multiline="0" group_id="DP_NESTE_KONTROLL" />
+<question item_id="4089" mid="DP_NESTE_KONTROLL" datatype="NAR" page_number="41" page_title="Plan" header="Neste avtale" question_text="Avtale og evt tidspunkt for neste konsultasjon" optional="1" multiline="0" group_id="DP_NESTE_KONTROLL" />
 
 <!-- Start: Form actions, generated XML -->
 

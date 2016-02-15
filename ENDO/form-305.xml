@@ -22,8 +22,8 @@
 
 <enumeration enumeration_uid="4087">
   <enum_item value="1" text="Nei*" short_code="N" answer_id="21836" />
-  <enum_item value="2" text="Retinopati, ikke-laserbehandlet." answer_id="21837" />
-  <enum_item value="3" text="Laserbehandlet retinopati." answer_id="21838" />
+  <enum_item value="2" text="Retinopati, ubehandlet." answer_id="21837" />
+  <enum_item value="3" text="Behandlet retinopati." answer_id="21838" />
   <enum_item value="4" text="Ukjent*" answer_id="21839" />
 </enumeration>
 
@@ -94,7 +94,7 @@
 <question item_id="4223" mid="DP_SVANGERSKAPUKE" datatype="QN" page_number="8" page_title="Om svangerskapet" question_text="Svangerskapsuke (uker)" optional="1" units="uker" expression="(40+(TRUNC(FORM.DATE)-DP_TERMIN_UL)/7)*ISPOS(DP_TERMIN_UL) + (TRUNC(FORM.DATE)-DP_SISTE_MENS)/7*(1-ISPOS(DP_TERMIN_UL))*ISPOS(DP_SISTE_MENS)" help_text="Termin ultralyd har prioritet i beregningen" group_id="DP_SVANGERSKAPUKE" />
 <question item_id="7649" mid="DP_SVANGERSKAPDAG" datatype="QN" page_number="8" page_title="Om svangerskapet" question_text="Svangerskapslengde (dager)" optional="1" units="dager" expression="(280-(DP_TERMIN_UL-FORM.DATE))*ISPOS(DP_TERMIN_UL) + (FORM.DATE-DP_SISTE_MENS)*(1-ISPOS(DP_TERMIN_UL))*ISPOS(DP_SISTE_MENS)" help_text="Termin ultralyd har prioritet i beregningen" group_id="DP_SVANGERSKAPDAG" />
 <question item_id="7641" mid="PassertUke32" datatype="ORD" page_number="8" page_title="Om svangerskapet" question_text="Passert uke 28" optional="1" visible="-1" read_only="1" expression="2-ISPOS(DP_SVANGERSKAPUKE-28)" enumeration_uid="7641" group_id="PassertUke32" />
-<question item_id="4087" mid="NDV_RETINOPATHY" datatype="ORD" page_number="9" page_title="Komplikasjoner" question_text="Retinopati" optional="0" carry_forward="1" highlight="1" enumeration_uid="4087" group_id="NDV_RETINOPATHY" />
+<question item_id="4087" mid="NDV_RETINOPATHY" datatype="ORD" page_number="9" page_title="Komplikasjoner" question_text="Retinopati" optional="0" carry_forward="1" highlight="1" enumeration_uid="4087" help_text="Behandling inkluderer laserbehandling, injeksjonsbehandling og kirurgi." group_id="NDV_RETINOPATHY" />
 <question item_id="3354" mid="NDV_EYECHECK_DATE" datatype="DATE" page_number="9" page_title="Komplikasjoner" question_text="Siste bes&#248;k hos &#248;yelege" optional="0" carry_forward="1" min_value="DOB" max_value="NOW" highlight="1" help_text="Beste estimat ved usikker dato." group_id="NDV_EYECHECK_DATE" />
 <question item_id="7520" mid="NDV_MACROALBUMINURIA" datatype="ORD" page_number="10" question_text="Makroalbuminuri" optional="0" carry_forward="1" enumeration_uid="7520" help_text="For diagnose kreves kvantifisering dvs. alb/kreatininratio &gt; 30 mg/mmol (eller U-albumin &gt;200 &#181;g/min, eller &gt; 300 mg/24t)" group_id="NDV_MACROALBUMINURIA" />
 <question item_id="7519" mid="NDV_MICROALBUMINURIA" datatype="ORD" page_number="11" question_text="Mikroalbuminuri" optional="0" carry_forward="1" enumeration_uid="7519" help_text="For diagnose kreves kvantifisering der to av tre pr&#248;ver skal v&#230;re positive dvs. alb/kreatininratio 3-30 mg/mmol (eller U-albumin 20-200 &#181;g/min, eller 20-300 mg/24t)." group_id="NDV_MICROALBUMINURIA" />
@@ -102,7 +102,7 @@
 <question item_id="3224" mid="WEIGHT" datatype="QN" page_number="13" page_title="Unders&#248;kelse" question_text="Vekt (kg)" optional="0" min_value="10" max_value="400" units="kg" decimals="1" highlight="1" help_text="Uten sko og yttert&#248;y." group_id="WEIGHT" />
 <question item_id="3230" mid="SYSBP" datatype="QN" page_number="13" page_title="Unders&#248;kelse" question_text="Systolisk blodtrykk (mmHg)" optional="0" min_value="50" max_value="250" units="mmHg" highlight="1" help_text="Standard BT-m&#229;ling, dvs. gj.snittet av de to siste av tre m&#229;linger med 1 min. mellom." group_id="SYSBP" />
 <question item_id="3231" mid="DIABP" datatype="QN" page_number="13" page_title="Unders&#248;kelse" question_text="Diastolisk blodtrykk (mmHg)" optional="0" min_value="30" max_value="150" units="mmHg" highlight="1" help_text="Standard BT-m&#229;ling, dvs. gj.snittet av de to siste av tre m&#229;linger med 1 min. mellom." group_id="DIABP" />
-<question item_id="7639" mid="GRAV_HYPOGLYKEMI" datatype="QN" page_number="14" page_title="Glukosekontroll" header="Hypoglykemi" question_text="Antall alvorlige hypoglykemier SIDEN SISTE KONTROLL (ggr siden sist)" optional="1" min_value="0" max_value="20" units="ggr siden sist" group_id="GRAV_HYPOGLYKEMI" />
+<question item_id="7639" mid="GRAV_HYPOGLYKEMI" datatype="QN" page_number="14" page_title="Glukosekontroll" header="Hypoglykemi" question_text="Antall alvorlige hypoglykemier SIDEN SISTE KONSULTASJON (ggr siden sist)" optional="1" min_value="0" max_value="20" units="ggr siden sist" group_id="GRAV_HYPOGLYKEMI" />
 <question item_id="527" mid="HBA1C" datatype="QN" page_number="14" page_title="Glukosekontroll" question_text="Aktuell HbA1c (%)" optional="1" min_value="3" max_value="25" units="%" decimals="1" highlight="1" help_text="Kun hvis tatt i tilknytning til denne kontrollen, alts&#229; p&#229; skjemaets dato." group_id="HBA1C" />
 <question item_id="6384" mid="VMR_LAB_HBA1C" datatype="QN" page_number="14" page_title="Glukosekontroll" question_text="Siste HbA1c (%)" optional="1" read_only="1" exclude_from_text="1" min_value="3" max_value="15" units="%" decimals="1" expression="VMR.LAB.HBA1C" help_text="Hentes inn automatisk fra labarket, kan ikke redigeres her." group_id="VMR_LAB_HBA1C" />
 <question item_id="9354" mid="LastHbA1cDate" datatype="DATE" page_number="14" page_title="Glukosekontroll" header="M&#229;lt" question_text="Dato for siste HbA1c-m&#229;ling" optional="0" carry_forward="1" group_id="LastHbA1cDate" />
@@ -112,7 +112,7 @@
 <question item_id="3322" mid="NDV_TREATMENT_TYPE" datatype="ORD" page_number="16" page_title="Plan" header="Behandlingsstrategi" question_text="Diabetes behandles ved hjelp av" optional="0" carry_forward="1" highlight="1" enumeration_uid="3322" group_id="NDV_TREATMENT_TYPE" />
 <question item_id="9476" mid="VAR9476" datatype="ORD" page_number="17" header="Insulinplan" question_text="Vil du registrere insulinplan ved f&#248;dsel?" optional="1" visible="-1" carry_forward="1" exclude_from_text="1" enumeration_uid="9476" />
 <question item_id="7642" mid="VAR7642" datatype="NAR" page_number="18" header="Insulinplan ved f&#248;dsel:" question_text="Forslag til insulinbehandling under og umiddelbart etter f&#248;dsel" optional="1" carry_forward="1" multiline="1" />
-<question item_id="4089" mid="DP_NESTE_KONTROLL" datatype="NAR" page_number="19" page_title="Neste kontroll" header="Neste kontroll" question_text="Avtale og evt tidspunkt for neste kontroll" optional="1" multiline="0" group_id="DP_NESTE_KONTROLL" />
+<question item_id="4089" mid="DP_NESTE_KONTROLL" datatype="NAR" page_number="19" page_title="Neste kontroll" header="Neste avtale" question_text="Avtale og evt tidspunkt for neste konsultasjon" optional="1" multiline="0" group_id="DP_NESTE_KONTROLL" />
 
 <!-- Start: Form actions, generated XML -->
 

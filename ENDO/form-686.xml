@@ -62,8 +62,8 @@
 <enumeration enumeration_uid="3389">
   <enum_item value="1" text="Ja | Samtykke gitt til diabetesregisteret." short_code="J" answer_id="16869" />
   <enum_item value="2" text="Nei | Ikke samtykke til diabetesregisteret." short_code="N" answer_id="16870" />
-  <enum_item value="3" text="Trukket tilbake | Samtykke til diabetesregisteret trukket tilbake." answer_id="19223" />
-  <enum_item value="4" text="Ukjent*" answer_id="20850" />
+  <enum_item value="3" text="Trukket tilbake | Samtykke til diabetesregisteret trukket tilbake." short_code="Tr" answer_id="19223" />
+  <enum_item value="4" text="Ukjent*" short_code="U" answer_id="20850" />
 </enumeration>
 
 <enumeration enumeration_uid="3397">
@@ -133,8 +133,8 @@
 
 <enumeration enumeration_uid="4087">
   <enum_item value="1" text="Nei*" short_code="N" answer_id="21836" />
-  <enum_item value="2" text="Retinopati, ikke-laserbehandlet." answer_id="21837" />
-  <enum_item value="3" text="Laserbehandlet retinopati." answer_id="21838" />
+  <enum_item value="2" text="Retinopati, ubehandlet." answer_id="21837" />
+  <enum_item value="3" text="Behandlet retinopati." answer_id="21838" />
   <enum_item value="4" text="Ukjent*" answer_id="21839" />
 </enumeration>
 
@@ -219,7 +219,7 @@
 <question item_id="3486" mid="NDV_DIAGNOSE_YYYY" datatype="QN" page_number="3" page_title="Bakgrunn" header="Debut" question_text="Diabetes diagnostisert &#229;r" optional="0" carry_forward="1" min_value="DOB_YYYY" max_value="NOW_YYYY" highlight="1" help_text="Angi &#229;rstall.  Svangerskapsdiabetes unntas." group_id="NDV_DIAGNOSE_YYYY" />
 <question item_id="4527" mid="DIABETESKOMPLIKASJONER" datatype="ORD" page_number="4" header="Diabeteskomplikasjoner" question_text="Kjente diabetes senkomplikasjoner" optional="0" carry_forward="1" highlight="1" enumeration_uid="4527" help_text="Nefropati, retinopati, nevropati, koronarsykdom, hjerneslag, arteriell karkirurgi, amputasjon, diabetisk fots&#229;r, erektil dysfunksjon." group_id="DIABETESKOMPLIKASJONER" />
 <question item_id="3415" mid="NDV_NEPHROPATHY" datatype="ORD" page_number="5" header="Nyrestatus" question_text="Albuminuri eller nefropati?" optional="0" carry_forward="1" highlight="1" enumeration_uid="3415" group_id="NDV_NEPHROPATHY" />
-<question item_id="4087" mid="NDV_RETINOPATHY" datatype="ORD" page_number="6" question_text="Retinopati" optional="0" carry_forward="1" highlight="1" enumeration_uid="4087" group_id="NDV_RETINOPATHY" />
+<question item_id="4087" mid="NDV_RETINOPATHY" datatype="ORD" page_number="6" question_text="Retinopati" optional="0" carry_forward="1" highlight="1" enumeration_uid="4087" help_text="Behandling inkluderer laserbehandling, injeksjonsbehandling og kirurgi." group_id="NDV_RETINOPATHY" />
 <question item_id="4521" mid="NEVROPATI_KLINISK" datatype="ORD" page_number="7" header="Nevropati" question_text="Perifer eller autonom nevropati" optional="0" carry_forward="1" enumeration_uid="4521" help_text="Behandlende leges vurdering" group_id="NEVROPATI_KLINISK" />
 <question item_id="3397" mid="NDV_CHD" datatype="ORD" page_number="7" question_text="Koronarsykdom" optional="0" carry_forward="1" highlight="1" enumeration_uid="3397" help_text="angina, hjerteinfarkt eller PCI/bypass" group_id="NDV_CHD" />
 <question item_id="4055" mid="NDV_CHD_DEBUT" datatype="QN" page_number="8" question_text="Debut av koronar hjertesykdom" optional="0" carry_forward="1" min_value="DOB_YYYY" max_value="NOW_YYYY" highlight="1" help_text="&#197;rstall for f&#248;rste tilfelle av enten angina/hjerteinfarkt/bypass /PCI" group_id="NDV_CHD_DEBUT" />
@@ -251,7 +251,7 @@
 <question item_id="4059" mid="NDV_SELFMON_COUNT" datatype="QN" page_number="27" header="Egenm&#229;ling hyppighet" question_text="Antall egenm&#229;linger per uke (ganger/uke)" optional="0" min_value="0" max_value="140" units="ganger/uke" highlight="1" group_id="NDV_SELFMON_COUNT" />
 <question item_id="3225" mid="HEIGHT" datatype="QN" page_number="28" page_title="Status presens" question_text="H&#248;yde (cm)" optional="0" carry_forward="1" min_value="50" max_value="220" units="cm" highlight="1" help_text="Uten sko." group_id="HEIGHT" />
 <question item_id="3224" mid="WEIGHT" datatype="QN" page_number="28" page_title="Status presens" question_text="Vekt (kg)" optional="0" min_value="10" max_value="400" units="kg" decimals="1" highlight="1" help_text="Uten sko og yttert&#248;y." group_id="WEIGHT" />
-<question item_id="3310" mid="BMI" datatype="QN" page_number="28" page_title="Status presens" question_text="BMI (kg/m2)" optional="1" min_value="5" max_value="100" units="kg/m2" decimals="1" highlight="1" expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" help_text="Beregnes automatisk" group_id="BMI" />
+<question item_id="3310" mid="BMI" datatype="QN" page_number="28" page_title="Status presens" question_text="BMI (kg/m2)" optional="1" min_value="5" max_value="150" units="kg/m2" decimals="1" highlight="1" expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" help_text="Beregnes automatisk" group_id="BMI" />
 <question item_id="3230" mid="SYSBP" datatype="QN" page_number="28" page_title="Status presens" question_text="Systolisk blodtrykk (mmHg)" optional="0" min_value="50" max_value="250" units="mmHg" highlight="1" help_text="Standard BT-m&#229;ling, dvs. gj.snittet av de to siste av tre m&#229;linger med 1 min. mellom." group_id="SYSBP" />
 <question item_id="3231" mid="DIABP" datatype="QN" page_number="28" page_title="Status presens" question_text="Diastolisk blodtrykk (mmHg)" optional="0" min_value="30" max_value="150" units="mmHg" highlight="1" help_text="Standard BT-m&#229;ling, dvs. gj.snittet av de to siste av tre m&#229;linger med 1 min. mellom." group_id="DIABP" />
 <question item_id="3226" mid="WAIST" datatype="QN" page_number="29" question_text="Midjem&#229;l (cm)" optional="1" visible="-1" min_value="40" max_value="250" units="cm" highlight="1" help_text="Midt mellom ribbensbue og hoftekam, m&#229;lt etter ekspirasjon" group_id="WAIST" />
