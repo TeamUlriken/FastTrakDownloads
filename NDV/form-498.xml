@@ -46,8 +46,8 @@
 <enumeration enumeration_uid="3389">
   <enum_item value="1" text="Ja | Samtykke gitt til diabetesregisteret." short_code="J" answer_id="16869" />
   <enum_item value="2" text="Nei | Ikke samtykke til diabetesregisteret." short_code="N" answer_id="16870" />
-  <enum_item value="3" text="Trukket tilbake | Samtykke til diabetesregisteret trukket tilbake." answer_id="19223" />
-  <enum_item value="4" text="Ukjent*" answer_id="20850" />
+  <enum_item value="3" text="Trukket tilbake | Samtykke til diabetesregisteret trukket tilbake." short_code="Tr" answer_id="19223" />
+  <enum_item value="4" text="Ukjent*" short_code="U" answer_id="20850" />
 </enumeration>
 
 <enumeration enumeration_uid="3397">
@@ -70,8 +70,8 @@
 
 <enumeration enumeration_uid="4087">
   <enum_item value="1" text="Nei*" short_code="N" answer_id="21836" />
-  <enum_item value="2" text="Retinopati, ikke-laserbehandlet." answer_id="21837" />
-  <enum_item value="3" text="Laserbehandlet retinopati." answer_id="21838" />
+  <enum_item value="2" text="Retinopati, ubehandlet." answer_id="21837" />
+  <enum_item value="3" text="Behandlet retinopati." answer_id="21838" />
   <enum_item value="4" text="Ukjent*" answer_id="21839" />
 </enumeration>
 
@@ -124,7 +124,7 @@
 <question item_id="3486" mid="NDV_DIAGNOSE_YYYY" datatype="QN" page_number="1" page_title="Grunndata" question_text="Diagnosen stilt, &#229;rstall" optional="0" min_value="DOB_YYYY" max_value="NOW_YYYY" highlight="1" help_text="Angi &#229;rstall.  Svangerskapsdiabetes unntas." group_id="NDV_DIAGNOSE_YYYY" />
 <question item_id="3225" mid="HEIGHT" datatype="QN" page_number="2" page_title="Funn og resultater" question_text="H&#248;yde (cm)" optional="0" min_value="50" max_value="220" units="cm" highlight="1" help_text="Uten sko." group_id="HEIGHT" />
 <question item_id="3224" mid="WEIGHT" datatype="QN" page_number="2" page_title="Funn og resultater" question_text="Vekt (kg)" optional="0" min_value="10" max_value="400" units="kg" decimals="1" highlight="1" help_text="Uten sko og yttert&#248;y." group_id="WEIGHT" />
-<question item_id="3310" mid="BMI" datatype="QN" page_number="2" page_title="Funn og resultater" question_text="KMI (kg/m2)" optional="0" min_value="5" max_value="100" units="kg/m2" decimals="1" highlight="1" expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" help_text="beregnet fra h&#248;yde og vekt" group_id="BMI" />
+<question item_id="3310" mid="BMI" datatype="QN" page_number="2" page_title="Funn og resultater" question_text="KMI (kg/m2)" optional="0" min_value="5" max_value="150" units="kg/m2" decimals="1" highlight="1" expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" help_text="beregnet fra h&#248;yde og vekt" group_id="BMI" />
 <question item_id="3230" mid="SYSBP" datatype="QN" page_number="2" page_title="Funn og resultater" question_text="Systolisk blodtrykk (mmHg)" optional="0" min_value="50" max_value="250" units="mmHg" highlight="1" help_text="Standard BT-m&#229;ling, dvs. gj.snittet av de to siste av tre m&#229;linger med 1 min. mellom." group_id="SYSBP" />
 <question item_id="3231" mid="DIABP" datatype="QN" page_number="2" page_title="Funn og resultater" question_text="Diastolisk blodtrykk (mmHg)" optional="0" min_value="30" max_value="150" units="mmHg" highlight="1" help_text="Standard BT-m&#229;ling, dvs. gj.snittet av de to siste av tre m&#229;linger med 1 min. mellom." group_id="DIABP" />
 <question item_id="3227" mid="NDV_SMOKING" datatype="ORD" page_number="2" page_title="Funn og resultater" question_text="R&#248;ykestatus" optional="0" highlight="1" enumeration_uid="3227" help_text="Velg Dagligr&#248;yker hvis sluttet for mindre enn 3 mnd siden." group_id="NDV_SMOKING" />
@@ -139,11 +139,11 @@
 <question item_id="3339" mid="ATC_C09" datatype="ORD" page_number="6" question_text="ACE hemmer/AII blokker" optional="0" highlight="1" enumeration_uid="3339" help_text="Aprovel&amp;reg;, Atacand&amp;reg;, Capoten&amp;reg;, Captopril, CoAprovel&amp;reg;, Cozaar&amp;reg;, Diovan&amp;reg;, Enalapril, Gopten&amp;reg;, Lisinopril, Losartan, Micardis&amp;reg;, MicardisPlus&amp;reg;, Olmetec&amp;reg;, Ramipril, Renitec&amp;reg;, Teveten&amp;reg;, Triatec&amp;reg;, Vivatec&amp;reg;, Zestoretic&amp;reg;, Zestril&amp;reg; (pluss alle comp/mite varianter)" group_id="ATC_C09" />
 <question item_id="5309" mid="PHT_BPDRUGS" datatype="ORD" page_number="6" question_text="Totalt antall BT medikamenter" optional="0" enumeration_uid="5309" group_id="PHT_BPDRUGS" />
 <question item_id="3397" mid="NDV_CHD" datatype="ORD" page_number="7" page_title="Viktige komplikasjoner" question_text="Koronar hjertesykdom" optional="0" highlight="1" enumeration_uid="3397" help_text="angina, hjerteinfarkt eller PCI/bypass" group_id="NDV_CHD" />
-<question item_id="4055" mid="NDV_CHD_DEBUT" datatype="QN" page_number="8" question_text="- f&#248;rste tilfelle, &#229;rstall" optional="0" min_value="DOB_YYYY" max_value="NOW_YYYY" highlight="1" help_text="&#197;rstall for f&#248;rste tilfelle av enten angina/hjerteinfarkt/bypass /PCI" group_id="NDV_CHD_DEBUT" />
+<question item_id="4055" mid="NDV_CHD_DEBUT" datatype="QN" page_number="8" question_text=" - f&#248;rste tilfelle, &#229;rstall" optional="0" min_value="DOB_YYYY" max_value="NOW_YYYY" highlight="1" help_text="&#197;rstall for f&#248;rste tilfelle av enten angina/hjerteinfarkt/bypass /PCI" group_id="NDV_CHD_DEBUT" />
 <question item_id="3398" mid="NDV_STROKE" datatype="ORD" page_number="9" question_text="Hjerneslag" optional="0" highlight="1" enumeration_uid="3398" help_text="Unntatt TIA" group_id="NDV_STROKE" />
-<question item_id="4062" mid="NDV_STROKE_DEBUT" datatype="QN" page_number="10" question_text="- f&#248;rste tilfelle, &#229;rstall" optional="0" min_value="DOB_YYYY" max_value="NOW_YYYY" highlight="1" help_text="&#197;rstall for f&#248;rste tilfelle av hjerneslag" group_id="NDV_STROKE_DEBUT" />
-<question item_id="4087" mid="NDV_RETINOPATHY" datatype="ORD" page_number="11" question_text="Diabetes retinopati" optional="0" highlight="1" enumeration_uid="4087" group_id="NDV_RETINOPATHY" />
-<question item_id="4205" mid="NDV_LASER_FIRST" datatype="QN" page_number="12" question_text="- f&#248;rste laserbehandling, &#229;rstall" optional="0" min_value="DOB_YYYY" max_value="NOW_YYYY" highlight="1" group_id="NDV_LASER_FIRST" />
+<question item_id="4062" mid="NDV_STROKE_DEBUT" datatype="QN" page_number="10" question_text=" - f&#248;rste tilfelle, &#229;rstall" optional="0" min_value="DOB_YYYY" max_value="NOW_YYYY" highlight="1" help_text="&#197;rstall for f&#248;rste tilfelle av hjerneslag" group_id="NDV_STROKE_DEBUT" />
+<question item_id="4087" mid="NDV_RETINOPATHY" datatype="ORD" page_number="11" question_text="Diabetes retinopati" optional="0" highlight="1" enumeration_uid="4087" help_text="Behandling inkluderer laserbehandling, injeksjonsbehandling og kirurgi." group_id="NDV_RETINOPATHY" />
+<question item_id="4205" mid="NDV_LASER_FIRST" datatype="QN" page_number="12" question_text=" - f&#248;rste laserbehandling, &#229;rstall" optional="0" min_value="DOB_YYYY" max_value="NOW_YYYY" highlight="1" group_id="NDV_LASER_FIRST" />
 <question item_id="3342" mid="NDV_FAM_CHD" datatype="ORD" page_number="13" question_text="Tidlig koronarsykd. foreldre/s&#248;sken" optional="0" highlight="1" enumeration_uid="3342" help_text="F&#248;r 55/65 &#229;r hos menn/kvinner, kun biologiske foreldre/s&#248;sken" group_id="NDV_FAM_CHD" />
 
 <!-- Start: Form actions, generated XML -->

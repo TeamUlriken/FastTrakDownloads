@@ -72,8 +72,8 @@
 <enumeration enumeration_uid="3389">
   <enum_item value="1" text="Ja | Samtykke gitt til diabetesregisteret." short_code="J" answer_id="16869" />
   <enum_item value="2" text="Nei | Ikke samtykke til diabetesregisteret." short_code="N" answer_id="16870" />
-  <enum_item value="3" text="Trukket tilbake | Samtykke til diabetesregisteret trukket tilbake." answer_id="19223" />
-  <enum_item value="4" text="Ukjent*" answer_id="20850" />
+  <enum_item value="3" text="Trukket tilbake | Samtykke til diabetesregisteret trukket tilbake." short_code="Tr" answer_id="19223" />
+  <enum_item value="4" text="Ukjent*" short_code="U" answer_id="20850" />
 </enumeration>
 
 <enumeration enumeration_uid="3397">
@@ -152,8 +152,8 @@
 
 <enumeration enumeration_uid="4087">
   <enum_item value="1" text="Nei*" short_code="N" answer_id="21836" />
-  <enum_item value="2" text="Retinopati, ikke-laserbehandlet." answer_id="21837" />
-  <enum_item value="3" text="Laserbehandlet retinopati." answer_id="21838" />
+  <enum_item value="2" text="Retinopati, ubehandlet." answer_id="21837" />
+  <enum_item value="3" text="Behandlet retinopati." answer_id="21838" />
   <enum_item value="4" text="Ukjent*" answer_id="21839" />
 </enumeration>
 
@@ -252,14 +252,14 @@
 <question item_id="3230" mid="SYSBP" datatype="QN" page_number="2" page_title="&#197;rskontroll" question_text="Systolisk blodtrykk (mmHg)" optional="0" min_value="50" max_value="250" units="mmHg" highlight="1" help_text="Standard BT-m&#229;ling, dvs. gj.snittet av de to siste av tre m&#229;linger med 1 min. mellom." group_id="SYSBP" />
 <question item_id="3231" mid="DIABP" datatype="QN" page_number="2" page_title="&#197;rskontroll" question_text="Diastolisk blodtrykk (mmHg)" optional="0" min_value="30" max_value="150" units="mmHg" highlight="1" help_text="Standard BT-m&#229;ling, dvs. gj.snittet av de to siste av tre m&#229;linger med 1 min. mellom." group_id="DIABP" />
 <question item_id="3224" mid="WEIGHT" datatype="QN" page_number="2" page_title="&#197;rskontroll" question_text="Vekt (kg)" optional="0" min_value="10" max_value="400" units="kg" decimals="1" highlight="1" help_text="Uten sko og yttert&#248;y." group_id="WEIGHT" />
-<question item_id="3310" mid="BMI" datatype="QN" page_number="2" page_title="&#197;rskontroll" question_text="BMI (kg/m2)" optional="1" min_value="5" max_value="100" units="kg/m2" decimals="1" highlight="1" expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" help_text="Beregnes automatisk" group_id="BMI" />
+<question item_id="3310" mid="BMI" datatype="QN" page_number="2" page_title="&#197;rskontroll" question_text="BMI (kg/m2)" optional="1" min_value="5" max_value="150" units="kg/m2" decimals="1" highlight="1" expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" help_text="Beregnes automatisk" group_id="BMI" />
 <question item_id="3226" mid="WAIST" datatype="QN" page_number="2" page_title="&#197;rskontroll" question_text="Midjem&#229;l (cm)" optional="1" min_value="40" max_value="250" units="cm" highlight="1" help_text="Midt mellom ribbensbue og hoftekam, m&#229;lt etter ekspirasjon" group_id="WAIST" />
 <question item_id="4637" mid="NDV_FOOT_PULSE" datatype="ORD" page_number="2" page_title="&#197;rskontroll" question_text="Fotpuls" optional="0" highlight="1" enumeration_uid="4637" help_text="Puls p&#229; fotrygg eller bak mediale malleol" group_id="NDV_FOOT_PULSE" />
 <question item_id="4636" mid="NDV_FOOT_SENS" datatype="ORD" page_number="2" page_title="&#197;rskontroll" question_text="Normal sensibilitet p&#229; f&#248;tter" optional="0" highlight="1" enumeration_uid="4636" help_text="Vibrasjon normal eller monofilament 4/4" group_id="NDV_FOOT_SENS" />
 <question item_id="4058" mid="NDV_SELFMON" datatype="ORD" page_number="2" page_title="&#197;rskontroll" question_text="M&#229;ler glukose selv" optional="0" highlight="1" enumeration_uid="4058" group_id="NDV_SELFMON" />
 <question item_id="4059" mid="NDV_SELFMON_COUNT" datatype="QN" page_number="3" header="Egenm&#229;ling hyppighet" question_text="Antall egenm&#229;linger per uke (ganger/uke)" optional="0" min_value="0" max_value="140" units="ganger/uke" highlight="1" group_id="NDV_SELFMON_COUNT" />
 <question item_id="3351" mid="NDV_HYPOGLYCEMIA" datatype="ORD" page_number="4" question_text="Hjelpetrengende pga. hypoglykemi" optional="0" carry_forward="1" exclude_from_text="1" highlight="1" enumeration_uid="3351" help_text="Noen gang v&#230;rt hjelpetrengende pga. hypoglykemi." group_id="NDV_HYPOGLYCEMIA" />
-<question item_id="4235" mid="NDV_HYPOGLYC_YEAR" datatype="QN" page_number="5" header="Alvorlig hypoglykemi" question_text="Antall ganger hjelpetrengende for hypoglykemi siste &#229;r (ganger siste &#229;r)" optional="0" min_value="0" max_value="365" units="ganger siste &#229;r" highlight="1" group_id="NDV_HYPOGLYC_YEAR" />
+<question item_id="4235" mid="NDV_HYPOGLYC_YEAR" datatype="QN" page_number="5" header="Alvorlig hypoglykemi" question_text="Antall ganger hjelpetrengende for hypoglykemi siste &#229;r (ganger siste &#229;r)" optional="0" min_value="0" max_value="366" units="ganger siste &#229;r" highlight="1" group_id="NDV_HYPOGLYC_YEAR" />
 <question item_id="3227" mid="NDV_SMOKING" datatype="ORD" page_number="6" page_title="R&#248;yking og fysisk aktivitet" question_text="R&#248;ykestatus" optional="0" highlight="1" enumeration_uid="3227" help_text="Velg Dagligr&#248;yker hvis sluttet for mindre enn 3 mnd siden." group_id="NDV_SMOKING" />
 <question item_id="4638" mid="NDV_EXERCISE_CAT" datatype="ORD" page_number="6" page_title="R&#248;yking og fysisk aktivitet" question_text="Regelmessig fysisk aktivitet" optional="0" highlight="1" enumeration_uid="4638" help_text="Antall dager per uke med minst 30 min. rask gange eller tilsvarende" group_id="NDV_EXERCISE_CAT" />
 <question item_id="3353" mid="NDV_EYECHECK" datatype="ORD" page_number="7" page_title="&#216;yelege" question_text="&#216;yenbunnsunders&#248;kelse" optional="0" highlight="1" enumeration_uid="3353" help_text="&#248;yelege eller &#248;yefoto" group_id="NDV_EYECHECK" />
@@ -286,7 +286,7 @@
 <question item_id="4642" mid="NDV_AF" datatype="ORD" page_number="17" question_text="Atrieflimmer" optional="0" highlight="1" enumeration_uid="4642" help_text="Noen gang hatt atrieflimmer" group_id="NDV_AF" />
 <question item_id="3398" mid="NDV_STROKE" datatype="ORD" page_number="17" question_text="Hjerneslag" optional="0" highlight="1" enumeration_uid="3398" help_text="Unntatt TIA" group_id="NDV_STROKE" />
 <question item_id="4062" mid="NDV_STROKE_DEBUT" datatype="QN" page_number="18" question_text="F&#248;rste hjerneslag" optional="0" min_value="DOB_YYYY" max_value="NOW_YYYY" highlight="1" help_text="&#197;rstall for f&#248;rste tilfelle av hjerneslag" group_id="NDV_STROKE_DEBUT" />
-<question item_id="4087" mid="NDV_RETINOPATHY" datatype="ORD" page_number="19" question_text="Retinopati" optional="0" highlight="1" enumeration_uid="4087" group_id="NDV_RETINOPATHY" />
+<question item_id="4087" mid="NDV_RETINOPATHY" datatype="ORD" page_number="19" question_text="Retinopati" optional="0" highlight="1" enumeration_uid="4087" help_text="Behandling inkluderer laserbehandling, injeksjonsbehandling og kirurgi." group_id="NDV_RETINOPATHY" />
 <question item_id="4205" mid="NDV_LASER_FIRST" datatype="QN" page_number="20" question_text="&#197;rstall for f&#248;rste laserbehandling" optional="0" min_value="DOB_YYYY" max_value="NOW_YYYY" highlight="1" group_id="NDV_LASER_FIRST" />
 <question item_id="3404" mid="NDV_EYESIGHT" datatype="ORD" page_number="21" question_text="Sterkt synshemmet" optional="0" highlight="1" enumeration_uid="3404" help_text="d&#229;rligere enn 6/18 (0.33) p&#229; beste &#248;ye evt. med egen brille" group_id="NDV_EYESIGHT" />
 <question item_id="3415" mid="NDV_NEPHROPATHY" datatype="ORD" page_number="21" header="Nyrestatus" question_text="Albuminuri eller nefropati?" optional="0" highlight="1" enumeration_uid="3415" group_id="NDV_NEPHROPATHY" />
