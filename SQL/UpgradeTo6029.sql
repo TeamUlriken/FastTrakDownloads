@@ -1,0 +1,30 @@
+BEGIN TRANSACTION UpgradeTo6029
+PRINT 'Starting upgrade to 6029'
+
+DELETE FROM DbUpgradeLog WHERE DbVer > 6028;
+
+EXEC DbCheckVersion 6028;
+EXECUTE DbStartUpgrade 6029;
+GO
+
+IF NOT OBJECT_ID('UpdateLabClass') IS NULL
+  DROP PROCEDURE dbo.UpdateLabClass
+GO
+
+IF NOT OBJECT_ID('NDV.GetCenterList') IS NULL
+  DROP PROCEDURE NDV.GetCenterList
+GO
+
+IF NOT OBJECT_ID('NDV.GetLabData') IS NULL
+  DROP PROCEDURE NDV.GetLabData
+GO
+
+IF NOT OBJECT_ID('NDV.MarkForExport') IS NULL
+  DROP PROCEDURE NDV.MarkForExport
+GO
+
+EXECUTE dbo.DbFinalizeUpgrade 6029;
+GO
+
+COMMIT TRANSACTION UpgradeTo6029;
+GO
