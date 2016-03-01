@@ -12,6 +12,7 @@ PRINT 'Includes ReadOnly role, which is a feature requested from Bergen Kommune.
 --  ALTER GBD.GetCaseListDiedHere, a population of patients who died at the same site the user is logged in.
 --  ALTER dbo.GetMDRD, using a larger decimal data type and only labdata before specified cutoff date.
 --  GRANT EXECUTE ON dbo.UpdateDrugReaction TO public, has not been granted to anybody.
+--  ALTER dbo.UpdateCAVE, Logging of changes to CAVE field is now handled by trigger, to dbo.PersonDocumentLog.
 
 EXECUTE dbo.DbStartUpgrade 6304, 6305;
 GO
@@ -206,6 +207,17 @@ PRINT '--  GRANT EXECUTE ON dbo.UpdateDrugReaction TO public, has not been grant
 GO
 
 GRANT EXECUTE ON dbo.UpdateDrugReaction TO [public] AS [dbo]
+GO
+
+PRINT '--  ALTER dbo.UpdateCAVE, Logging of changes is now handled by trigger.';
+GO
+
+ALTER PROCEDURE dbo.UpdateCAVE( @PersonId INT, @CAVE VARCHAR(MAX) ) AS
+BEGIN
+  UPDATE dbo.Person SET CAVE = @CAVE WHERE PersonId=@PersonId;
+  INSERT INTO dbo.CaseLog (PersonId,LogType,LogText)
+    VALUES( @PersonId,'CAVE','CAVE redigert  av ' + USER_NAME() )
+END
 GO
 
 -- -----------------------------------------------------------------------------
