@@ -18,31 +18,31 @@ GO
 
 PRINT '--  CREATE procedure CRF.GetClinFormList to replace CRF.GetClinForms.'
 
-IF NOT OBJECT_ID('CRF.GetClinFormList','P' ) IS NULL 
-  DROP PROCEDURE CRF.GetClinFormList 
+IF NOT OBJECT_ID('CRF.GetClinFormList', 'P') IS NULL
+  DROP PROCEDURE CRF.GetClinFormList
 GO
 
-CREATE PROCEDURE CRF.GetClinFormList( @StudyId INT, @PersonId INT, @IncludeArchived BIT ) AS
+CREATE PROCEDURE CRF.GetClinFormList (@StudyId INT, @PersonId INT, @IncludeArchived BIT) AS
 BEGIN
   -- Log reads
-  INSERT INTO dbo.CaseLog (PersonId,LogType,LogText)
-  VALUES( @PersonId,'LESE','Journal lest av ' + USER_NAME() );
+  INSERT INTO dbo.CaseLog (PersonId, LogType, LogText)
+    VALUES (@PersonId, 'LESE', 'Journal lest av ' + USER_NAME());
   --- Get forms
-  SELECT ce.EventNum,cf.FormId,ce.EventId,ce.EventTime,mf.FormTitle,mf.FormName,
-    cf.ClinFormId,cf.FormStatus,cf.FormComplete,cf.Comment,cf.CachedText,
-    mfs.StatusDesc,cf.CreatedAt,cf.SignedAt, cf.Archived,
+  SELECT ce.EventNum, cf.FormId, ce.EventId, ce.EventTime, mf.FormTitle, mf.FormName,
+    cf.ClinFormId, cf.FormStatus, cf.FormComplete, cf.Comment, cf.CachedText,
+    mfs.StatusDesc, cf.CreatedAt, cf.SignedAt, cf.Archived,
     up1.Signature AS CreatedBySign, ul1.ProfId AS CreatedByProfId, cf.CreatedBy,
     up2.Signature AS SignedBySign, ul2.ProfId AS SignedByProfId, cf.SignedBy
   FROM dbo.ClinEvent ce
-    JOIN dbo.ClinForm cf on cf.EventId=ce.EventId AND ( cf.DeletedAt IS NULL )
-    JOIN dbo.MetaFormStatus mfs ON mfs.FormStatus=cf.FormStatus
-    JOIN dbo.MetaForm mf on mf.FormId=cf.FormId
-    JOIN dbo.MetaStudyForm msf ON msf.FormId=cf.FormId AND msf.StudyId = @StudyId
-    LEFT JOIN dbo.UserList ul1 ON ul1.UserId=cf.CreatedBy
-    LEFT JOIN dbo.UserList ul2 ON ul2.UserId=cf.SignedBy
-    LEFT JOIN dbo.Person up1 ON up1.PersonId=ul1.PersonId
-    LEFT JOIN dbo.Person up2 ON up2.PersonId=ul2.PersonId
-  WHERE ( ce.PersonId = @PersonId ) AND ( ( cf.Archived = 0 ) OR ( @IncludeArchived = 1 ) );
+  JOIN dbo.ClinForm cf ON cf.EventId = ce.EventId AND (cf.DeletedAt IS NULL)
+  JOIN dbo.MetaFormStatus mfs ON mfs.FormStatus = cf.FormStatus
+  JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId
+  JOIN dbo.MetaStudyForm msf ON msf.FormId = cf.FormId AND msf.StudyId = @StudyId
+  LEFT JOIN dbo.UserList ul1 ON ul1.UserId = cf.CreatedBy
+  LEFT JOIN dbo.UserList ul2 ON ul2.UserId = cf.SignedBy
+  LEFT JOIN dbo.Person up1 ON up1.PersonId = ul1.PersonId
+  LEFT JOIN dbo.Person up2 ON up2.PersonId = ul2.PersonId
+  WHERE (ce.PersonId = @PersonId) AND ((cf.Archived = 0) OR (@IncludeArchived = 1));
 END
 GO
 

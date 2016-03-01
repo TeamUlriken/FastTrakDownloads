@@ -209,14 +209,16 @@ GO
 GRANT EXECUTE ON dbo.UpdateDrugReaction TO [public] AS [dbo]
 GO
 
-PRINT '--  ALTER dbo.UpdateCAVE, Logging of changes is now handled by trigger.';
+PRINT '--  ALTER dbo.UpdateCAVE, Logging of changes to CAVE field is now handled by trigger, to dbo.PersonDocumentLog.';
 GO
 
-ALTER PROCEDURE dbo.UpdateCAVE( @PersonId INT, @CAVE VARCHAR(MAX) ) AS
+ALTER PROCEDURE dbo.UpdateCAVE (@PersonId INT, @CAVE VARCHAR(MAX)) AS
 BEGIN
-  UPDATE dbo.Person SET CAVE = @CAVE WHERE PersonId=@PersonId;
-  INSERT INTO dbo.CaseLog (PersonId,LogType,LogText)
-    VALUES( @PersonId,'CAVE','CAVE redigert  av ' + USER_NAME() )
+  UPDATE dbo.Person
+  SET CAVE = @CAVE
+  WHERE PersonId = @PersonId;
+  INSERT INTO dbo.CaseLog (PersonId, LogType, LogText)
+    VALUES (@PersonId, 'CAVE', 'CAVE redigert  av ' + USER_NAME());
 END
 GO
 
