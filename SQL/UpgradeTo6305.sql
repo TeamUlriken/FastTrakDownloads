@@ -149,10 +149,14 @@ BEGIN
 END;
 GO
 
-PRINT '--  ALTER GBD.GetCaseListDiedHere, a population of patients who died at the same site the user is logged in.';
+PRINT '--  CREATE GBD.GetCaseListDiedHere, a population of patients who died at the same site the user is logged in.';
 GO
 
-ALTER PROCEDURE GBD.GetCaseListDiedHere (@StudyId INT) AS
+IF NOT OBJECT_ID('GBD.GetCaseListDiedHere') IS NULL 
+  DROP PROCEDURE GBD.GetCaseListDiedHere
+GO
+
+CREATE PROCEDURE GBD.GetCaseListDiedHere (@StudyId INT) AS
 BEGIN
   SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, v.StudyId, v.GenderId,
     'LCP3:  ' + ISNULL(dbo.LongTime(f.EventTime), 'Ikke utfylt') + '. Data til ' + dbo.ShortTime(sc.LastWrite) + '.' AS InfoText,
@@ -165,6 +169,8 @@ BEGIN
 END
 GO
 
+GRANT EXECUTE ON GBD.GetCaseListDiedHere TO [public] AS [dbo]
+GO
 
 PRINT '--  ALTER dbo.GetMDRD, using a larger decimal data type and only labdata before specified cutoff date.';
 GO
