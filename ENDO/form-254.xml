@@ -336,6 +336,12 @@
   <enum_item value="4" text="Total Charcot | Total Charcot ortose H." answer_id="23514" />
 </enumeration>
 
+<enumeration enumeration_uid="10316">
+  <enum_item value="1" text="Ett" answer_id="57849" />
+  <enum_item value="2" text="To" answer_id="57850" />
+  <enum_item value="3" text="Tre eller flere" answer_id="57851" />
+</enumeration>
+
 <!-- Start: Form items, generated XML -->
 
 <question item_id="3263" mid="DIAPOL_PODIATRIST" datatype="ORD" page_number="1" page_title="Fotstatus" question_text="F&#248;lges opp av fotteam" optional="0" carry_forward="1" enumeration_uid="3263" group_id="DIAPOL_PODIATRIST" />
@@ -367,6 +373,7 @@
 <question item_id="3218" mid="NDV_FOOT_ULCER" datatype="ORD" page_number="8" page_title="Fots&#229;r" header="Diabetisk fots&#229;r" question_text="Har noen gang hatt diabetess&#229;r nedenfor ankelen?" optional="0" carry_forward="1" highlight="1" enumeration_uid="3218" group_id="NDV_FOOT_ULCER" />
 <question item_id="3250" mid="ULCER_COUNT" datatype="QN" page_number="9" question_text="Antall aktuelle fots&#229;r" optional="0" min_value="0" max_value="6" help_text="Du kan registrere detaljer om inntil 3 fots&#229;r.  Start med det viktigste." group_id="ULCER_COUNT" />
 <question item_id="4282" mid="ULCER_YN" datatype="ORD" page_number="10" page_introduction="Denne siden er skjult" question_text="Fots&#229;r tilstede" optional="1" visible="0" expression="2-ISPOS(ULCER_COUNT)" enumeration_uid="4282" help_text="Skjult avledet variabel" group_id="ULCER_YN" />
+<question item_id="10316" mid="tmpUlcerCount" datatype="ORD" page_number="10" page_introduction="Denne siden er skjult" question_text="Antall fots&#229;r" optional="1" visible="-1" expression="ISPOS(ULCER_COUNT) + ISPOS(ULCER_COUNT-1) + ISPOS(ULCER_COUNT-2)" enumeration_uid="10316" group_id="tmpUlcerCount" />
 <question item_id="4043" mid="ULCER_ANTIBIOTICS" datatype="ORD" page_number="11" question_text="Antibiotikabehandling p&#229;g&#229;r" optional="1" enumeration_uid="4043" group_id="ULCER_ANTIBIOTICS" />
 <question item_id="4263" mid="ULCER_AB_DATE" datatype="DATE" page_number="12" question_text="Startdato for kur" optional="1" min_value="DOB" max_value="NOW" group_id="ULCER_AB_DATE" />
 <question item_id="4264" mid="ULCER_AB_DRUG" datatype="NAR" page_number="12" question_text="Preparat og dosering" optional="1" multiline="0" group_id="ULCER_AB_DRUG" />
@@ -441,23 +448,23 @@
 <question_action master_question_mid="DIAPOL_CALLUS" detail_question_mid="DIAPOL_CALLUS_COMMENT" enum_item_value="4" activate="1" />
 <question_action master_question_mid="NDV_FOOT_ULCER" detail_question_mid="ULCER_COUNT" enum_item_value="2" activate="1" />
 <question_action master_question_mid="NDV_FOOT_ULCER" detail_question_mid="ULCER_COUNT" enum_item_value="3" activate="1" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER_ANTIBIOTICS" enum_item_value="0" activate="3" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER_ANTIBIOTICS" enum_item_value="1" activate="5" />
 <question_action master_question_mid="ULCER_ANTIBIOTICS" detail_question_mid="ULCER_AB_DATE" enum_item_value="1" activate="1" />
 <question_action master_question_mid="ULCER_ANTIBIOTICS" detail_question_mid="ULCER_AB_DRUG" enum_item_value="1" activate="1" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER1_LATERALITY" enum_item_value="1" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER1_LOCATION" enum_item_value="1" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER1_LOC_TEXT" enum_item_value="1" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER1_SINCE" enum_item_value="1" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER1_DEPTH" enum_item_value="1" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER1_DIAMETER" enum_item_value="1" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER1_WIDTH" enum_item_value="1" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER1_SECRETION" enum_item_value="1" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER1_RUBOR" enum_item_value="1" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER1_NECROSIS" enum_item_value="1" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER1_SUSPM86" enum_item_value="1" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER1_BACTUS" enum_item_value="1" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER1_COMMENT" enum_item_value="1" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER1_DETAIL" enum_item_value="1" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER1_LATERALITY" enum_item_value="1" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER1_LOCATION" enum_item_value="1" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER1_LOC_TEXT" enum_item_value="1" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER1_SINCE" enum_item_value="1" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER1_DEPTH" enum_item_value="1" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER1_DIAMETER" enum_item_value="1" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER1_WIDTH" enum_item_value="1" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER1_SECRETION" enum_item_value="1" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER1_RUBOR" enum_item_value="1" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER1_NECROSIS" enum_item_value="1" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER1_SUSPM86" enum_item_value="1" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER1_BACTUS" enum_item_value="1" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER1_COMMENT" enum_item_value="1" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER1_DETAIL" enum_item_value="1" activate="5" />
 <question_action master_question_mid="ULCER1_DETAIL" detail_question_mid="ULCER1_NACL" enum_item_value="1" activate="1" />
 <question_action master_question_mid="ULCER1_DETAIL" detail_question_mid="ULCER1_DRESSING" enum_item_value="1" activate="1" />
 <question_action master_question_mid="ULCER1_DRESSING" detail_question_mid="ULCER1_EDGE" enum_item_value="3" activate="1" />
@@ -468,32 +475,32 @@
 <question_action master_question_mid="ULCER1_DRESSING" detail_question_mid="ULCER1_HYPAFIX" enum_item_value="3" activate="1" />
 <question_action master_question_mid="ULCER1_DRESSING" detail_question_mid="ULCER1_TUBEGAS" enum_item_value="3" activate="1" />
 <question_action master_question_mid="ULCER1_DRESSING" detail_question_mid="ULCER1_TUBIFAST" enum_item_value="3" activate="1" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER2_LATERALITY" enum_item_value="2" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER2_LOCATION" enum_item_value="2" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER2_LOC_TEXT" enum_item_value="2" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER2_SINCE" enum_item_value="2" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER2_DEPTH" enum_item_value="2" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER2_DIAMETER" enum_item_value="2" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER2_WIDTH" enum_item_value="2" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER2_SECRETION" enum_item_value="2" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER2_RUBOR" enum_item_value="2" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER2_NECROSIS" enum_item_value="2" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER2_SUSPM86" enum_item_value="2" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER2_BACTUS" enum_item_value="2" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER2_COMMENT" enum_item_value="2" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER3_LATERALITY" enum_item_value="3" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER3_LOCATION" enum_item_value="3" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER3_LOC_TEXT" enum_item_value="3" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER3_SINCE" enum_item_value="3" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER3_DEPTH" enum_item_value="3" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER3_DIAMETER" enum_item_value="3" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER3_WIDTH" enum_item_value="3" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER3_SECRETION" enum_item_value="3" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER3_RUBOR" enum_item_value="3" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER3_NECROSIS" enum_item_value="3" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER3_SUSPM86" enum_item_value="3" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER3_BACTUS" enum_item_value="3" activate="5" />
-<question_action master_question_mid="ULCER_COUNT" detail_question_mid="ULCER3_COMMENT" enum_item_value="3" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER2_LATERALITY" enum_item_value="2" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER2_LOCATION" enum_item_value="2" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER2_LOC_TEXT" enum_item_value="2" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER2_SINCE" enum_item_value="2" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER2_DEPTH" enum_item_value="2" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER2_DIAMETER" enum_item_value="2" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER2_WIDTH" enum_item_value="2" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER2_SECRETION" enum_item_value="2" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER2_RUBOR" enum_item_value="2" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER2_NECROSIS" enum_item_value="2" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER2_SUSPM86" enum_item_value="2" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER2_BACTUS" enum_item_value="2" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER2_COMMENT" enum_item_value="2" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER3_LATERALITY" enum_item_value="3" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER3_LOCATION" enum_item_value="3" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER3_LOC_TEXT" enum_item_value="3" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER3_SINCE" enum_item_value="3" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER3_DEPTH" enum_item_value="3" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER3_DIAMETER" enum_item_value="3" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER3_WIDTH" enum_item_value="3" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER3_SECRETION" enum_item_value="3" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER3_RUBOR" enum_item_value="3" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER3_NECROSIS" enum_item_value="3" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER3_SUSPM86" enum_item_value="3" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER3_BACTUS" enum_item_value="3" activate="5" />
+<question_action master_question_mid="tmpUlcerCount" detail_question_mid="ULCER3_COMMENT" enum_item_value="3" activate="5" />
 <question_action master_question_mid="ULCER1_DETAIL" detail_question_mid="FOOT_RELIEF_BEDS" enum_item_value="1" activate="1" />
 <question_action master_question_mid="ULCER1_DETAIL" detail_question_mid="FOOT_RELIEF_SHOES" enum_item_value="1" activate="1" />
 <question_action master_question_mid="ULCER1_DETAIL" detail_question_mid="FOOT_RELIEF_FILT" enum_item_value="1" activate="1" />
