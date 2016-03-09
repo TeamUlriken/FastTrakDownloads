@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form form_id="680" form_uid="FORM680" title="Insulinpumpe - Intervalldosering" calculate_invalid="True" rating_scale="False" status="Design" repeatable="1" >
+<instructions></instructions>
+
+<!-- Start: Form enums, generated XML -->
+
+<enumeration enumeration_uid="8455">
+  <enum_item value="1" text="Ja" answer_id="46702" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="46703" />
+</enumeration>
+
+<enumeration enumeration_uid="8458">
+  <enum_item value="1" text="Ja" answer_id="46706" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="46707" />
+</enumeration>
+
+<enumeration enumeration_uid="8466">
+  <enum_item value="1" text="Ja" answer_id="46712" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="46713" />
+</enumeration>
+
+<!-- Start: Form items, generated XML -->
+
+<question item_id="8453" mid="InsDos2Dose1" datatype="QN" page_number="1" page_title="F&#248;rste intervall" page_introduction="F&#248;rste intervall starter klokken 00:00." question_text="Dosering (E/time)" optional="1" min_value="0" max_value="20" units="E/time" decimals="2" group_id="InsDos2Dose1" />
+<question item_id="8437" mid="InsDos2StopHr1" datatype="QN" page_number="1" page_title="F&#248;rste intervall" page_introduction="F&#248;rste intervall starter klokken 00:00." question_text="Frem til klokken" optional="1" min_value="0" max_value="24" group_id="InsDos2StopHr1" />
+<question item_id="8455" mid="InsDos2Dose1Last" datatype="ORD" page_number="1" page_title="F&#248;rste intervall" page_introduction="F&#248;rste intervall starter klokken 00:00." question_text="F&#248;rste er siste intervall" optional="1" visible="-1" expression="2-ISNULL(InsDos2StopHr1-24)" enumeration_uid="8455" group_id="InsDos2Dose1Last" />
+<question item_id="8445" mid="InsDos2StopMin1" datatype="QN" page_number="2" question_text="Sluttminutt intervall 1 (min)" optional="1" min_value="0" max_value="59" units="min" group_id="InsDos2StopMin1" />
+<question item_id="8462" mid="InsDos2Length1" datatype="QN" page_number="2" question_text="Lengde av intervall 1 (timer)" optional="1" exclude_from_text="1" units="timer" decimals="2" expression="InsDos2StopHr1 + (InsDos2StopMin1 / 60)" help_text="Beregnet verdi" group_id="InsDos2Length1" />
+<question item_id="8454" mid="InsDos2Subtotal1" datatype="QN" page_number="2" question_text="Subtotal f&#248;rste intervall (E)" optional="1" exclude_from_text="1" units="E" decimals="2" expression="InsDos2Length1 * InsDos2Dose1" group_id="InsDos2Subtotal1" />
+<question item_id="8456" mid="InsDos2Dose2" datatype="QN" page_number="3" page_title="Andre intervall" page_introduction="Intervallet starter n&#229;r det forrige slutter" question_text="Dosering (E/time)" optional="1" units="E/time" decimals="2" group_id="InsDos2Dose2" />
+<question item_id="8457" mid="InsDos2StopHr2" datatype="QN" page_number="3" page_title="Andre intervall" page_introduction="Intervallet starter n&#229;r det forrige slutter" question_text="Frem til klokken" optional="1" min_value="0" max_value="24" decimals="2" group_id="InsDos2StopHr2" />
+<question item_id="8458" mid="InsDos2Dose2Last" datatype="ORD" page_number="3" page_title="Andre intervall" page_introduction="Intervallet starter n&#229;r det forrige slutter" question_text="Andre er siste intervall" optional="1" visible="-1" expression="2-ISNULL(InsDos2StopHr2-24)" enumeration_uid="8458" group_id="InsDos2Dose2Last" />
+<question item_id="8459" mid="InsDos2StopMin2" datatype="QN" page_number="4" question_text="Sluttminutt intervall 2 (min)" optional="1" min_value="0" max_value="59" units="min" group_id="InsDos2StopMin2" />
+<question item_id="8461" mid="InsDos2Length2" datatype="QN" page_number="4" question_text="Lengde av intervall 2 (timer)" optional="1" exclude_from_text="1" units="timer" decimals="2" expression="( InsDos2StopHr2 - InsDos2StopHr1 ) + ( ISPOS(InsDos2StopMin2)*InsDos2StopMin2 - ISPOS(InsDos2StopMin1)*InsDos2StopMin1 ) / 60" help_text="Beregnet verdi" group_id="InsDos2Length2" />
+<question item_id="8460" mid="InsDos2Subtotal2" datatype="QN" page_number="4" question_text="Subtotal andre intervall (E)" optional="1" exclude_from_text="1" units="E" decimals="2" expression="InsDos2Length2 * InsDos2Dose2" group_id="InsDos2Subtotal2" />
+<question item_id="8464" mid="InsDos2Dose3" datatype="QN" page_number="5" page_title="Tredje intervall" page_introduction="Intervallet starter n&#229;r det forrige slutter" question_text="Dosering (E/time)" optional="1" units="E/time" decimals="2" group_id="InsDos2Dose3" />
+<question item_id="8465" mid="InsDos2StopHr3" datatype="QN" page_number="5" page_title="Tredje intervall" page_introduction="Intervallet starter n&#229;r det forrige slutter" question_text="Frem til klokken" optional="1" min_value="0" max_value="24" group_id="InsDos2StopHr3" />
+<question item_id="8466" mid="InsDos2Dose3Last" datatype="ORD" page_number="5" page_title="Tredje intervall" page_introduction="Intervallet starter n&#229;r det forrige slutter" question_text="Tredje er siste intervall" optional="1" visible="-1" expression="2-ISNULL(InsDos2StopHr3-24)" enumeration_uid="8466" group_id="InsDos2Dose3Last" />
+<question item_id="8467" mid="InsDos2StopMin3" datatype="QN" page_number="6" question_text="Sluttminutt intervall 3 (min)" optional="1" min_value="0" max_value="59" units="min" group_id="InsDos2StopMin3" />
+<question item_id="8469" mid="InsDos2Length3" datatype="QN" page_number="7" question_text="Lengde av intervall 3 (timer)" optional="1" exclude_from_text="1" units="timer" decimals="2" expression="( InsDos2StopHr3 - InsDos2StopHr2 ) + ( ISPOS(InsDos2StopMin3) * InsDos2StopMin3 - ISPOS(InsDos2StopMin2)*InsDos2StopMin2 ) / 60" help_text="Beregnet verdi" group_id="InsDos2Length3" />
+<question item_id="8468" mid="InsDos2Subtotal3" datatype="QN" page_number="7" question_text="Subtotal tredje intervall (E)" optional="1" exclude_from_text="1" units="E" decimals="2" expression="InsDos2Length3 * InsDos2Dose3" group_id="InsDos2Subtotal3" />
+<question item_id="8463" mid="InsDos2GrandTotal" datatype="QN" page_number="8" page_title="D&#248;gndosering" page_introduction="Fyll ut skjemaet helt komplett for &#229; f&#229; beregnet d&#248;gndosering riktig!" question_text="Sum dosering (E/d&#248;gn)" optional="1" units="E/d&#248;gn" decimals="2" expression="InsDos2Subtotal1 + InsDos2Subtotal2 + InsDos2Subtotal3" group_id="InsDos2GrandTotal" />
+
+<!-- Start: Form actions, generated XML -->
+
+<question_action master_question_mid="InsDos2Dose1Last" detail_question_mid="InsDos2StopMin1" enum_item_value="2" activate="1" />
+<question_action master_question_mid="InsDos2Dose1Last" detail_question_mid="InsDos2Length1" enum_item_value="2" activate="1" />
+<question_action master_question_mid="InsDos2Dose1Last" detail_question_mid="InsDos2Subtotal1" enum_item_value="2" activate="1" />
+<question_action master_question_mid="InsDos2Dose1Last" detail_question_mid="InsDos2Dose2" enum_item_value="2" activate="1" />
+<question_action master_question_mid="InsDos2Dose1Last" detail_question_mid="InsDos2StopHr2" enum_item_value="2" activate="1" />
+<question_action master_question_mid="InsDos2Dose1Last" detail_question_mid="InsDos2Dose2Last" enum_item_value="2" activate="1" />
+<question_action master_question_mid="InsDos2Dose2Last" detail_question_mid="InsDos2StopMin2" enum_item_value="2" activate="1" />
+<question_action master_question_mid="InsDos2Dose2Last" detail_question_mid="InsDos2Length2" enum_item_value="2" activate="1" />
+<question_action master_question_mid="InsDos2Dose2Last" detail_question_mid="InsDos2Subtotal2" enum_item_value="2" activate="1" />
+<question_action master_question_mid="InsDos2Dose3Last" detail_question_mid="InsDos2StopMin3" enum_item_value="2" activate="1" />
+<question_action master_question_mid="InsDos2Dose2Last" detail_question_mid="InsDos2Length3" enum_item_value="2" activate="1" />
+<question_action master_question_mid="InsDos2Dose2Last" detail_question_mid="InsDos2Subtotal3" enum_item_value="2" activate="1" />
+</form>

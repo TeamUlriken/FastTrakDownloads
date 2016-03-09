@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form form_id="685" form_uid="FORM685" title="Test av NDV Amputasjonsvariable" calculate_invalid="False" rating_scale="False" status="Design" repeatable="1" >
+<instructions></instructions>
+
+<!-- Start: Form enums, generated XML -->
+
+<enumeration enumeration_uid="3414">
+  <enum_item value="1" text="Nei*" short_code="N" answer_id="17084" />
+  <enum_item value="2" text="fot t.om. ankelledd." answer_id="17085" />
+  <enum_item value="3" text="over ankelniv&#229;." answer_id="17086" />
+  <enum_item value="4" text="Ukjent*" answer_id="21285" />
+</enumeration>
+
+<enumeration enumeration_uid="8472">
+  <enum_item value="1" text="Ja" answer_id="46736" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="46737" />
+  <enum_item value="3" text="Ukjent" answer_id="46738" />
+</enumeration>
+
+<enumeration enumeration_uid="8473">
+  <enum_item value="1" text="Ja" answer_id="46739" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="46740" />
+</enumeration>
+
+<enumeration enumeration_uid="8474">
+  <enum_item value="1" text="Nei*" answer_id="46745" />
+  <enum_item value="2" text="fot t.om. ankelledd." answer_id="46746" />
+  <enum_item value="3" text="over ankelniv&#229;." answer_id="46747" />
+  <enum_item value="4" text="Ukjent*" answer_id="46748" />
+</enumeration>
+
+<!-- Start: Form items, generated XML -->
+
+<question item_id="8472" mid="FotAmputert" datatype="ORD" page_number="1" page_title="Test av amputasjon" question_text="Amputasjon" optional="1" enumeration_uid="8472" help_text="Ikke traumatisk" group_id="FotAmputert" />
+<question item_id="8473" mid="FotAmputertOverAnkel" datatype="ORD" page_number="2" question_text="Amputasjon over ankelniv&#229;?" optional="1" enumeration_uid="8473" help_text="Dersom amputert begge f&#248;tter, velg h&#248;yeste niv&#229;" group_id="FotAmputertOverAnkel" />
+<question item_id="8474" mid="NdvAmputertBeregnet" datatype="ORD" page_number="3" page_title="Konklusjoner" page_introduction="Skal v&#230;re like..." header="Amputasjon" question_text="Amputasjon (ikke traumatisk)" optional="0" expression="1*ISNULL(FotAmputert-2) + 2*ISNULL(FotAmputertOverAnkel-2) + 3*ISNULL(FotAmputertOverAnkel-1) + 4*ISNULL(FotAmputert-3)" enumeration_uid="8474" help_text="Dersom amputasjon p&#229; begge f&#248;tter, velg h&#248;yeste niv&#229;.
+" group_id="NdvAmputertBeregnet" />
+<question item_id="3414" mid="NDV_AMPUTATION" datatype="ORD" page_number="3" page_title="Konklusjoner" page_introduction="Skal v&#230;re like..." header="Amputasjon" question_text="Amputasjon (ikke traumatisk)" optional="0" enumeration_uid="3414" help_text="Dersom amputasjon p&#229; begge f&#248;tter, velg h&#248;yeste niv&#229;." group_id="NDV_AMPUTATION" />
+
+<!-- Start: Form actions, generated XML -->
+
+<question_action master_question_mid="FotAmputert" detail_question_mid="FotAmputertOverAnkel" enum_item_value="1" activate="1" />
+</form>

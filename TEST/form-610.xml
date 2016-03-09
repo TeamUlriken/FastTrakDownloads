@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form form_id="610" form_uid="FORM610" title="Forslag til nye variable om nyresvikt" calculate_invalid="False" rating_scale="False" status="Design" repeatable="1" >
+<instructions></instructions>
+
+<!-- Start: Form enums, generated XML -->
+
+<enumeration enumeration_uid="3415">
+  <enum_item value="1" text="Normal nyrestatus." answer_id="17090" />
+  <enum_item value="2" text="Tidligere mikroalbuminuri." answer_id="17091" />
+  <enum_item value="3" text="Mikroalbuminuri." answer_id="17092" />
+  <enum_item value="4" text="Proteinuri." answer_id="21273" />
+  <enum_item value="5" text="Dialysebehandlet." answer_id="21274" />
+  <enum_item value="6" text="Nyretransplantert." answer_id="21275" />
+  <enum_item value="7" text="Ukjent nyrestatus." answer_id="23467" />
+</enumeration>
+
+<enumeration enumeration_uid="7517">
+  <enum_item value="1" text="Nei*" short_code="N" answer_id="40495" />
+  <enum_item value="2" text="Redusert nyrefunksjon." short_code="R" answer_id="40496" />
+  <enum_item value="3" text="Dialysebehandlet (ikke transplantert)." short_code="D" answer_id="40497" />
+  <enum_item value="4" text="Nyretransplantert." short_code="T" answer_id="40566" />
+</enumeration>
+
+<enumeration enumeration_uid="7519">
+  <enum_item value="1" text="Nei" short_code="N" answer_id="40509" />
+  <enum_item value="2" text="Tidligere | Tidligere mikroalbuminuri." short_code="T" answer_id="40510" />
+  <enum_item value="3" text="Ja | Mikroalbuminuri." short_code="J" answer_id="40511" />
+  <enum_item value="4" text="Ukjent" short_code="U" answer_id="40512" />
+</enumeration>
+
+<enumeration enumeration_uid="7520">
+  <enum_item value="1" text="Ja | Makroalbuminuri." short_code="J" answer_id="40536" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="40537" />
+  <enum_item value="3" text="Ukjent" answer_id="40539" />
+</enumeration>
+
+<!-- Start: Form items, generated XML -->
+
+<question item_id="3415" mid="NDV_NEPHROPATHY" datatype="ORD" page_number="1" page_title="Dagens variabel" header="Nyrestatus" question_text="Albuminuri eller nefropati?" optional="0" enumeration_uid="3415" group_id="NDV_NEPHROPATHY" />
+<question item_id="7520" mid="NDV_MACROALBUMINURIA" datatype="ORD" page_number="2" page_title="Proteinuri" question_text="Makroalbuminuri" optional="0" enumeration_uid="7520" help_text="For diagnose kreves kvantifisering dvs. alb/kreatininratio &gt; 30 mg/mmol (eller U-albumin &gt;200 &#181;g/min, eller &gt; 300 mg/24t)" group_id="NDV_MACROALBUMINURIA" />
+<question item_id="7519" mid="NDV_MICROALBUMINURIA" datatype="ORD" page_number="3" question_text="Mikroalbuminuri" optional="0" enumeration_uid="7519" help_text="For diagnose kreves kvantifisering der to av tre pr&#248;ver skal v&#230;re positive dvs. alb/kreatininratio 3-30 mg/mmol (eller U-albumin 20-200 &#181;g/min, eller 20-300 mg/24t)." group_id="NDV_MICROALBUMINURIA" />
+<question item_id="7517" mid="NDV_RENAL_FUNCTION" datatype="ORD" page_number="4" page_title="Nyresvikt" header="Nedsatt nyrefunksjon" question_text="Er nyrefunksjonen redusert?" optional="1" enumeration_uid="7517" help_text="Velg &quot;Redusert nyrefunksjon&quot; ved eGFR &lt; 60 ml/min/1.73m2. Velg &quot;Nyretransplantert&quot; ogs&#229; ved dialysebehandling etter transplantasjon." group_id="NDV_RENAL_FUNCTION" />
+<question item_id="7518" mid="NDV_DIALYSIS_YYYY" datatype="QN" page_number="5" page_title="&#197;rstall for dialysebehandling" page_introduction="Denne kommer frem hvis det er svart dialysebehandlet ELLER nyretransplantert, det er sannsynlig at de som transplanteres f&#248;rst har v&#230;rt gjennom dialysebehandling?" question_text="&#197;rstall for dialysebehandling" optional="1" min_value="DOB_YYYY" max_value="NOW_YYYY" help_text="F&#248;rste gang pasienten fikk dialysebehandling." group_id="NDV_DIALYSIS_YYYY" />
+<question item_id="7521" mid="NDV_RENAL_TRANSPL_YYYY" datatype="QN" page_number="6" page_title="&#197;rstall for transplantasjon" page_introduction="Denne kommer frem hvis det er svart Nyretransplantert p&#229; 7517." question_text="&#197;rstall for nyretransplantasjon" optional="0" min_value="DOB_YYYY" max_value="NOW_YYYY" group_id="NDV_RENAL_TRANSPL_YYYY" />
+
+<!-- Start: Form actions, generated XML -->
+
+<question_action master_question_mid="NDV_MACROALBUMINURIA" detail_question_mid="NDV_MICROALBUMINURIA" enum_item_value="1" activate="6" />
+<question_action master_question_mid="NDV_RENAL_FUNCTION" detail_question_mid="NDV_DIALYSIS_YYYY" enum_item_value="3" activate="1" />
+<question_action master_question_mid="NDV_RENAL_FUNCTION" detail_question_mid="NDV_DIALYSIS_YYYY" enum_item_value="4" activate="1" />
+<question_action master_question_mid="NDV_RENAL_FUNCTION" detail_question_mid="NDV_RENAL_TRANSPL_YYYY" enum_item_value="4" activate="1" />
+</form>
