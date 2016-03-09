@@ -1,0 +1,891 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<DSSRule>
+	<row RuleId="1" RuleClass="BERGER" RuleType="M" RuleProc="GBD.RuleBerger" Title="Berger demensvurdering" Description="Registere Bergers skala med 180 dagers intervall" LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleBerger( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'BERGER',180,2
+END;]]>
+	</row>
+	<row RuleId="2" RuleClass="DrugProb#\d" RuleType="M" RuleProc="dbo.RuleDrugToProblem" Title="Diagnoseforslag" Description="Manglende diagnose basert på medikament som bare har én indikasjon (eks. insulin, glaukomdråper)." LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE dbo.RuleDrugToProblem( @StudyId INT, @PersonId INT ) AS
+  DECLARE @DrugName VARCHAR(64);
+  DECLARE @ATC VARCHAR(7);
+  DECLARE @ListId INT;
+  DECLARE @ListName VARCHAR(32);
+  DECLARE @DrugProbId INT;
+  DECLARE @ItemCode VARCHAR(8);
+  DECLARE @ProbDesc VARCHAR(32);
+  DECLARE @ProbStatus INT;
+  DECLARE @AlertClass varchar(12);
+  DECLARE @AlertHeader varchar(64);
+  DECLARE @AlertMsg varchar(512);
+  DECLARE @AlertLevel INT;
+  DECLARE @AlertFacet varchar(16);
+BEGIN
+  /* Disable all old alerts for this rule */
+  UPDATE dbo.Alert SET AlertLevel=0 WHERE StudyId=@StudyId AND PersonId=@PersonId AND AlertClass LIKE 'DrugProb#%';
+  /* Create list of problem matches for the patient's' drugs */
+  DECLARE alert_list CURSOR FOR
+    SELECT mdp.DrugProbId,mdp.ATC,dt.DrugName,mnl.ListId,mnl.ListName,mdp.ItemCode,mdp.ProbDesc,
+      dbo.GetProblemStatus(dt.PersonId,mnl.ListId,mdp.ItemCode) AS ProbStatus
+    FROM dbo.DrugTreatment dt
+      JOIN dbo.KBDrugToProblem mdp ON CHARINDEX(mdp.ATC,dt.ATC) = 1
+      JOIN dbo.MetaNomList mnl ON mnl.ListName=mdp.ListName AND ListActive=1
+    WHERE ( dt.PersonId=@PersonId ) AND (dt.StopAt IS NULL);
+  /* Walk through the list, adding a rule for each one with status = 0 */
+  OPEN alert_list;
+  FETCH NEXT FROM alert_list INTO @DrugProbId,@ATC,@DrugName,@ListId,@ListName,@ItemCode,@ProbDesc,@ProbStatus;
+  WHILE @@FETCH_STATUS = 0 BEGIN
+    /* Prepare alert data */
+    SET @AlertClass = 'DrugProb#' + CONVERT(VARCHAR,@DrugProbId);
+    SET @AlertHeader = @ProbDesc;
+    IF @ProbStatus=0 BEGIN
+       SET @AlertHeader = @AlertHeader + '?';
+       SET @AlertLevel = 3
+       SET @AlertFacet = 'DataMissing';
+    END
+    ELSE BEGIN
+      SET @AlertLevel = 0;
+      SET @AlertFacet = 'DataFound';
+    END
+    SELECT @ListId = dbo.GetListId( @ListName );
+    SET @AlertMsg = dbo.GetTextItem( 'DrugToProblem',@AlertFacet );
+    /* Do replacements */
+    IF CHARINDEX('@DrugName',@AlertMsg) > 0
+      SET @AlertMsg = REPLACE( @AlertMsg,'@DrugName',@DrugName );
+    IF CHARINDEX('@ProbDesc',@AlertMsg) > 0
+      SET @AlertMsg = REPLACE( @AlertMsg,'@ProbDesc',@ProbDesc );
+    IF CHARINDEX('@ListId',@AlertMsg) > 0
+      SET @AlertMsg = REPLACE( @AlertMsg,'@ListId',@ListId );
+    IF CHARINDEX('@ItemCode',@AlertMsg) > 0
+      SET @AlertMsg = REPLACE( @AlertMsg,'@ItemCode',@ItemCode );
+    EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,@AlertClass,@AlertFacet,@AlertHeader,@AlertMsg,'MY';
+    FETCH NEXT FROM alert_list INTO @DrugProbId,@ATC,@DrugName,@ListId,@ListName,@ItemCode,@ProbDesc,@ProbStatus;
+  END;
+  CLOSE alert_list;
+  DEALLOCATE alert_list;
+END;]]>
+	</row>
+	<row RuleId="3" RuleClass="DRUID#\d" RuleType="M" RuleProc="dbo.RuleDrugInteractions" Title="Interaksjoner" Description="Legemiddelinteraksjoner" LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE dbo.RuleDrugInteractions ( @StudyId INT, @PersonId INT ) AS
+  /* Variables for interaction result */
+  DECLARE @LevelId tinyint;
+  DECLARE @ATC1 varchar(7);
+  DECLARE @ATC2 varchar(7);
+  DECLARE @Drug1 varchar(64);
+  DECLARE @Drug2 varchar(64);
+  DECLARE @InfoText varchar(512);
+  DECLARE @AlertLevel tinyint;
+  /* Variables for message */
+  DECLARE @AlertAction varchar(4);
+  DECLARE @AlertClass varchar(12);
+  DECLARE @AlertInfo varchar(32);
+  DECLARE @AlertFacet varchar(16);
+  DECLARE @AlertHeader varchar(64);
+  DECLARE @IntId integer;
+BEGIN
+
+  /* Downgrade old alerts */
+
+  UPDATE dbo.Alert SET AlertLevel=0 WHERE StudyId=@StudyId AND PersonId=@PersonId AND AlertClass LIKE 'DRUID#%';
+  CREATE TABLE #ATCList (AtcFragment varchar(7) COLLATE Danish_Norwegian_CI_AS NOT NULL);
+
+  /* Build ATC list */
+
+  INSERT INTO #ATCList (ATCFragment) SELECT ATC FROM DrugTreatment WHERE PersonId=@PersonId AND ( ( StopAt > GetDate() OR StopAt IS NULL ) AND PauseStatus=0 )
+  INSERT INTO #ATCList (ATCFragment) SELECT DISTINCT SUBSTRING(ATCFragment,1,5) FROM #ATCList;
+  INSERT INTO #ATCList (ATCFragment) SELECT DISTINCT SUBSTRING(ATCFragment,1,4) FROM #ATCList;
+  INSERT INTO #ATCList (ATCFragment) SELECT DISTINCT SUBSTRING(ATCFragment,1,3) FROM #ATCList
+  INSERT INTO #ATCList (ATCFragment) SELECT GrpCode FROM KBMetaMember WHERE GrpMember IN ( SELECT ATCFragment FROM #ATCList);
+  
+  /* Find matching interactions */
+
+  DECLARE interaction_cursor CURSOR FOR
+  SELECT i.IntId,i.LevelId,i.ATC1,dt1.AtcName as Drug1,i.ATC2,dt2.AtcName as Drug2,i.InfoText
+  FROM dbo.KBInteraction i
+    JOIN dbo.KBAtcIndex dt1 ON i.ATC1=dt1.AtcCode
+    JOIN dbo.KBAtcIndex dt2 ON i.ATC2=dt2.AtcCode
+  WHERE ATC1 IN (SELECT DISTINCT ATCFragment FROM #ATCList ) AND ATC2 IN (SELECT DISTINCT ATCFragment FROM #ATCList )
+  ORDER BY i.LevelId DESC; 
+  
+  /* Add alerts for interactions */
+
+  OPEN interaction_cursor;
+  FETCH NEXT FROM interaction_cursor INTO @IntId,@LevelId,@ATC1,@Drug1,@ATC2,@Drug2,@InfoText;
+  WHILE @@FETCH_STATUS = 0 BEGIN
+    SET @AlertClass='DRUID#'+CONVERT(VARCHAR,@IntId)
+    SET @Alertheader=@Drug1 + ' - ' + @Drug2;
+    /* Map levels and facets */
+    SELECT @AlertLevel = CASE @LevelId
+      WHEN 1 THEN 1
+      WHEN 2 THEN 2
+      WHEN 3 THEN 2
+      WHEN 4 THEN 4
+    END;
+    SELECT @AlertInfo = CASE @LevelId
+      WHEN 1 THEN 'Mulig interaksjon: '
+      WHEN 2 THEN 'Ta forholdsregler: '
+      WHEN 3 THEN 'Ta med 2-3 timers intervall: '
+      WHEN 4 THEN 'Må ikke kombineres: '
+    END
+    SELECT @AlertFacet = CASE @LevelId
+      WHEN 1 THEN 'RiskLow'
+      WHEN 2 THEN 'RiskMedium'
+      WHEN 3 THEN 'RiskMedium'
+      WHEN 4 THEN 'RiskHigh'
+    END
+    SELECT @AlertAction = CASE @LevelId
+      WHEN 1 THEN 'TFYM'
+      WHEN 2 THEN 'TYM'
+      WHEN 3 THEN 'TYM'
+      WHEN 4 THEN 'TM'
+    END
+    SET @InfoText = @AlertInfo + @InfoText;
+    EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,@AlertClass,@AlertFacet,@AlertHeader,@InfoText,@AlertAction;
+    FETCH NEXT FROM interaction_cursor INTO @IntId,@LevelId,@ATC1,@Drug1,@ATC2,@Drug2,@InfoText;
+  END
+  CLOSE interaction_cursor
+  DEALLOCATE interaction_cursor;
+END;]]>
+	</row>
+	<row RuleId="4" RuleClass="GFR" RuleType="M" RuleProc="dbo.RuleGFR" Title="Nyrefunksjon" Description="Lav nyrefunksjon. GRF 60,45 og 30 som grenser." LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE dbo.RuleGFR( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  DECLARE @GFR DECIMAL(5,1);
+  DECLARE @AlertLevel INT;
+  DECLARE @Facet varchar(16);
+  DECLARE @MsgStr varchar(512);
+  DECLARE @HeadStr varchar(64);
+  SET @GFR = dbo.GetMDRD( @PersonId, getdate() );
+  IF ( @GFR IS NULL ) OR ( @GFR <= 0 ) BEGIN
+    SET @AlertLevel = 2;
+    SET @Facet = 'DataMissing'
+  END
+  ELSE BEGIN
+    IF @GFR < 30 BEGIN
+      SET @AlertLevel=3;
+      SET @Facet='RiskHigh';
+    END
+    ELSE IF @GFR < 45 BEGIN
+      SET @AlertLevel=2;
+      SET @Facet='RiskMedium';
+    END
+    ELSE IF @GFR < 60 BEGIN
+      SET @AlertLevel=1;
+      SET @Facet='RiskLow';
+    END
+    ELSE BEGIN
+      SET @AlertLevel=0;
+      SET @Facet = 'DataFound';
+    END;
+  END;
+  SET @MsgStr=dbo.GetTextItem('GFR',@Facet);
+  SET @HeadStr=dbo.GetTextItem('GFR',@Facet+'.Header');
+  IF CHARINDEX( '@GFR',@MsgStr ) > 1 SET @MsgStr=REPLACE(@MsgStr,'@GFR',CONVERT(VARCHAR,@GFR));
+  IF CHARINDEX( '@Formula',@MsgStr) > 1 SET @MsgStr=REPLACE(@MsgStr,'@Formula','MDRD');
+  EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'GFR',@Facet,@HeadStr,@MsgStr
+END;]]>
+	</row>
+	<row RuleId="5" RuleClass="HULTEN" RuleType="M" RuleProc="GBD.RuleHulten" Title="Hultén pleietyngde" Description="Registrere Hulten med maks 90 dagers intervall" LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleHulten( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'HULTEN',90,2
+END;]]>
+	</row>
+	<row RuleId="6" RuleClass="WARFADJ" RuleType="M" RuleProc="GBD.RuleWarfarinAdjust" Title="Marevandosering" Description="På tide med Marevandosering basert på variabel WARFARIN_NEXT, som ligger i eget skjema." LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleWarfarinAdjust( @StudyId INT, @PersonId INT )
+AS
+BEGIN
+  DECLARE @AlertFacet varchar(16);
+  DECLARE @AlertLevel INT;
+  DECLARE @NewDosingDate DateTime;
+  
+  /* Check for Warfarin treatment */
+  
+  IF NOT EXISTS ( SELECT TreatId FROM dbo.OngoingTreatment WHERE PersonId=@PersonId AND ATC='B01AA03' ) BEGIN
+    SET @AlertFacet='Exclude';
+    SET @AlertLevel=0;
+  END
+  ELSE BEGIN      
+  
+    /* Find next Warfarin dosing date from form data */
+    
+    SELECT @NewDosingDate = dbo.GetLastDTVal( @PersonId,'WARFARIN_NEXT' );
+    IF @NewDosingDate IS NULL BEGIN
+      SET @AlertFacet = 'Exclude';
+      SET @AlertLevel = 0;
+    END
+    ELSE IF @NewDosingDate<GetDate() BEGIN
+      SET @AlertFacet = 'DataOld';
+      SET @AlertLevel = 3;
+    END
+    ELSE BEGIN
+      SET @AlertFacet = 'DataFound';
+      SET @AlertLevel = 0;
+    END
+  END
+  EXEC dbo.AddAlertForDSSRule @StudyId,@PersonId,@AlertLevel,'WARFADJ',@AlertFacet
+END;]]>
+	</row>
+	<row RuleId="7" RuleClass="WEIGHT30D" RuleType="M" RuleProc="GBD.RuleWeight30Days" Title="Veiing" Description="Veiing med maks 30 dagers intervall" LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleWeight30Days( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  EXEC dbo.RulePeriodicData @StudyId,@PersonId,'WEIGHT',30,2
+END]]>
+	</row>
+	<row RuleId="8" RuleClass="INFECTION" RuleType="M" RuleProc="GBD.RuleInfectionForm" Title="Infeksjonsregistrering" Description="Infeksjonsregistering hvis systemisk antibiotika gitt siste 30 dager, og etter siste infeksjonsregistrering." LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleInfectionForm( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  DECLARE @LastJ01Date DateTime;
+  DECLARE @LastFormDate DateTime;
+  DECLARE @MsgText VARCHAR(512);
+  DECLARE @FormDateText VARCHAR(24);
+  DECLARE @DrugName VARCHAR(64);
+  -- Find ongoing or recently started antibiotic/antiparasitic treatment
+  SELECT TOP 1 @LastJ01Date=StartAt,@DrugName=DrugName FROM dbo.DrugTreatment
+    WHERE ( ( ATC LIKE 'J01%' ) OR ( ATC LIKE 'P01A%' ) ) AND PersonId=@PersonId
+      AND ((StartAt > getdate()-30) OR ( StopAt IS NULL ) OR ( StopAt > getdate()) ) ORDER BY StartAt DESC;
+  IF @LastJ01Date IS NULL
+    EXEC dbo.AddAlertForDSSRule @StudyId,@PersonId,0,'INFECTION','Exclude'
+  ELSE BEGIN 
+    SET @LastFormDate = dbo.GetLastSignedForm( @StudyId, @PersonId,'GBD_INFECTION' );
+    IF ( @LastFormDate IS NULL ) OR ( @LastJ01Date > @LastFormDate + 1 ) BEGIN
+      SET @MsgText = dbo.GetTextItem( 'INFECTION','DataMissing' );
+      IF @LastFormDate IS NULL
+        SET @FormDateText = '(aldri)'
+      ELSE
+        SET @FormDateText = dbo.LongTime( @LastFormDate );
+      SET @MsgText = REPLACE( @MsgText, '@DrugDate', '<b>' + dbo.LongTime( @LastJ01Date ) + '</b>' );
+      SET @MsgText = REPLACE( @MsgText, '@FormDate', '<b>' + @FormDateText +'</b>' );
+      SET @MsgText = REPLACE( @MsgText, '@DrugName', '<b>' + @DrugName +'</b>' );
+      EXEC dbo.AddAlertForPerson @StudyId,@PersonId,2,'INFECTION','DataMissing','Infeksjonsregistrering',@MsgText;
+    END
+    ELSE
+      EXEC dbo.AddAlertForDSSRule @StudyId,@PersonId,0,'INFECTION','DataFound'
+  END;
+END;]]>
+	</row>
+	<row RuleId="9" RuleClass="LAB" RuleType="M" RuleProc="GBD.RuleLabData" Title="Eksterne labdata" Description="Eksterne labdata med maka 180 dagers intervall" LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleLabData( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  IF EXISTS( SELECT ResultId FROM dbo.LabData WHERE PersonId=@PersonId
+    AND LabDate > getdate()-180 )
+    EXEC dbo.AddAlertForPerson @StudyId,@PersonId,1,'LAB','DataFound','Labdata funnet',
+      'Eksterne labdata er funnet siste 6 mnd'
+  ELSE
+    EXEC dbo.AddAlertForPerson @StudyId,@PersonId,2,'LAB','DataMissing','Labdata mangler',
+      'Ingen eksterne labdata fra siste 6 mnd.  Labprøver bør tas regelmessig, bl.a. for å overvåke nyrefunksjon.';
+END]]>
+	</row>
+	<row RuleId="10" RuleClass="MUST" RuleType="M" RuleProc="GBD.RuleMUST" Title="MUST" Description="Automatisk beregning av MUST score, med tilhørende varsling ved høy score." LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleMUST( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  SET NOCOUNT ON;
+  DECLARE @EventTime DateTime;
+  DECLARE @WeightNow FLOAT;
+  DECLARE @Height FLOAT;
+  DECLARE @MustScore INT;
+  DECLARE @MsgHeader VARCHAR(24);
+  DECLARE @BMI FLOAT;
+  DECLARE @AlertLevel INT;
+  DECLARE @MsgText VARCHAR(512);
+  DECLARE @AlertFacet VARCHAR(16);
+  SET @MustScore = NULL;
+  -- Get last height
+  SELECT TOP 1 @Height=co.Quantity FROM dbo.ClinObservation co
+  JOIN dbo.ClinEvent ce ON ce.EventId=co.EventId
+  WHERE ce.PersonId=@PersonId AND co.VarName='HEIGHT' AND co.Quantity>1 ORDER BY ce.EventTime DESC;
+  -- Get last weight with timestamp
+  SELECT TOP 1 @WeightNow=co.Quantity,@EventTime=ce.EventTime  FROM dbo.ClinObservation co
+  JOIN dbo.ClinEvent ce ON ce.EventId=co.EventId
+  WHERE ce.PersonId=@PersonId AND co.VarName='WEIGHT' AND co.Quantity>1 ORDER BY ce.EventTime DESC;
+  -- Calculate weight change and days before last weight/timestamp
+  IF ( @Height > 1 ) AND ( @WeightNow > 1 )
+  BEGIN
+    SET @BMI = 10000*@WeightNow/@Height/@Height;
+    SELECT ce.EventTime,@WeightNow AS WeightNow,co.Quantity as WeightThen,@Height as Height,
+        100*(@WeightNow/co.Quantity-1) as PercentChange,
+        CONVERT(FLOAT,@EventTime - ce.EventTime) as DaysBetween,
+        co.Quantity/@Height/@Height*10000 as BMIThen
+      INTO #temp
+      FROM dbo.ClinEvent ce JOIN dbo.ClinObservation co on co.EventId=ce.EventId
+      WHERE ce.PersonId=@PersonId AND co.VarName='WEIGHT' AND co.Quantity > 0;
+    -- Remove all old data
+    DELETE FROM #temp WHERE DaysBetween > 180;
+    -- Return all data indication lost weight last 180 days
+    IF EXISTS( SELECT EventTime FROM #temp WHERE PercentChange < -10 )
+    BEGIN
+      SET @MustScore = 2;
+      SET @MsgText = 'Vekttap > 10% siste 180 dager (2p). ';
+    END
+    ELSE IF EXISTS( SELECT EventTime FROM #temp WHERE PercentChange < -5 ) BEGIN
+      SET @MsgText = 'Vektendring > 5% siste 180 dager (1p). ';
+      SET @MustScore = 1;
+    END
+    ELSE IF ( SELECT COUNT(*) FROM #temp ) < 2 BEGIN
+      SET @MsgText = 'Mindre enn 2 vektregistreringer siste 180 dager (0p). ';
+      SET @MustScore = 0;
+    END
+    ELSE
+    BEGIN
+      SET @MustScore = 0;
+      SET @MsgText = 'Vektendring < 5% siste 180 dager (0p). ';
+    END;
+    IF @BMI < 18.5 BEGIN
+      SET @MsgText = @MsgText + ' BMI er under 18.5 (2p). ';
+      SET @MustScore = @MustScore + 2;
+    END
+    ELSE IF @BMI < 20 BEGIN
+      SET @MsgText = @MsgText + ' BMI er under 20 (1p). ';
+      SET @MustScore = @MustScore + 1;
+    END
+    ELSE
+    BEGIN
+      SET @MsgText = @MsgText + 'BMI er over 20 (' + dbo.GetShortNumber( ROUND(@BMI,1) ) + ', 0p). ';
+    END
+  END;
+  UPDATE dbo.PersonAbstraction SET MustScore=@MustScore,BMI=@BMI,Weight=@WeightNow,Height=@Height WHERE PersonId=@PersonId;
+  IF @@ROWCOUNT = 0
+    INSERT INTO dbo.PersonAbstraction (PersonId,Height,Weight,MustScore,BMI) VALUES(@PersonId,@Height,@WeightNow,@MustScore,@BMI)
+  IF @MustScore IS NULL
+  BEGIN
+    SET @MsgHeader = 'Ernæringstilstand?';
+    SET @AlertFacet = 'DataMissing';
+    SET @MsgText = 'Ernæringstilstand kan ikke overvåkes, fordi vekt og/eller høyde mangler. ';
+    SET @AlertLevel = 1;
+  END
+  ELSE
+  BEGIN
+    IF @MustScore > 0
+    BEGIN
+      SET @MsgHeader = 'OBS Ernæringstilstand';
+      SET @MsgText = @MsgText + 'MUST Score ' + CONVERT(VARCHAR,@MustScore) + ' eller mer. ';
+    END
+    ELSE
+      SET @MsgHeader = 'Ernæringstilstand';
+    IF @MustScore = 0 SET @AlertFacet = 'RiskLow'
+    ELSE IF @MustScore=1 BEGIN
+     SET @AlertFacet = 'RiskMedium';
+     SET @MsgText = @MsgText + 'Observasjon. ';
+    END
+    ELSE
+    BEGIN
+      SET @AlertFacet = 'RiskHigh';
+      SET @MsgText = @MsgText + 'Start behandling. ';
+    END;
+    SET @AlertLevel = @MustScore;
+    IF @AlertLevel > 3 SET @AlertLevel = 3;
+  END;
+  EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'MUST',@AlertFacet,@MsgHeader, @MsgText,'TYM'
+END]]>
+	</row>
+	<row RuleId="11" RuleClass="METFORMGFR" RuleType="M" RuleProc="dbo.RuleMetforminGFR" Title="Metformin og GFR" Description="Advarsel om metforminbruk med samtidig lav GFR, grenseverdier 60,30 og 15." LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE dbo.RuleMetforminGFR( @StudyId INT, @PersonId INT )
+AS
+BEGIN
+  DECLARE @CalcAt DateTime;
+  DECLARE @HeaderText VARCHAR(64);
+  DECLARE @MsgText VARCHAR(512);
+  DECLARE @AlertFacet VARCHAR(16);
+  DECLARE @AlertLevel INT;
+  DECLARE @GFR INT;
+  SET @CalcAt = getdate();
+  IF dbo.GetDrugUse( @PersonId, 'A10BA02', @CalcAt ) = 1
+  BEGIN
+    SET @GFR = dbo.GetMDRD( @PersonId, @CalcAt );
+    IF @GFR IS NULL
+    BEGIN
+      SET @HeaderText = 'Metformin + ukjent GFR'
+      SET @MsgText = 'Alle som bruker metformin bør måle GFR regelmessig.';
+      SET @AlertLevel= 3;
+      SET @AlertFacet = 'DataMissing';
+    END
+    ELSE IF @GFR < 60
+    BEGIN
+      SET @HeaderText = 'Metformin + lav GFR';
+      SET @MsgText = ( 'OBS eGFR = ' + CONVERT(VARCHAR,@GFR) + ' mL/min/1.73m2. Vurder å seponere metformin.' );
+      IF @GFR < 60
+      BEGIN
+        SET @AlertFacet = 'RiskHigh';
+        IF @GFR < 30 BEGIN
+          SET @AlertLevel = 4;
+          IF @GFR < 15
+            SET @MsgText = @MsgText + ' Nyresykdom grad 4, betydelig nedsatt GFR. '
+          ELSE
+            SET @MsgText = @MsgText + ' Nyresykdom grad 5, nyresvikt. ';
+        END
+        ELSE BEGIN
+          SET @MsgText = @MsgText + ' Nyresykdom grad 3, moderat redusert GFR. ';
+          IF @GFR < 50
+            SET @AlertLevel = 3
+          ELSE BEGIN
+            -- Mellom 50 og 60
+            SET @AlertLevel = 2;
+            SET @AlertFacet = 'RiskMedium'
+          END
+        END;
+      END;
+    END
+    ELSE
+    BEGIN
+     SET @HeaderText = 'Metformin + normal GFR';
+     SET @MsgText = ( 'eGFR = ' + CONVERT(VARCHAR,@GFR) + ' mL/min/1.73m2' );
+     SET @AlertFacet = 'RiskLow';
+     SET @AlertLevel = 0;
+    END
+  END
+  ELSE
+  BEGIN
+    SET @HeaderText = 'Ikke metformin';
+    SET @MsgText = 'Bruker ikke metformin, vurdering av GFR utelatt.';
+    SET @AlertFacet = 'Exclude';
+    SET @AlertLevel = 0;
+  END;
+  EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'METFORMGFR',@AlertFacet,@HeaderText,@MsgText;
+END]]>
+	</row>
+	<row RuleId="12" RuleClass="SBP_UNSPEC30" RuleType="M" RuleProc="GBD.RuleBP30Days" Title="Blodtrykk" Description="Blodtrykksmåling med maks 30 dagers intervall." LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleBP30Days( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  EXEC dbo.RulePeriodicData @StudyId, @PersonId, 'SBP_UNSPEC',30, 2
+END]]>
+	</row>
+	<row RuleId="13" RuleClass="AFTREATED" RuleType="M" RuleProc="GBD.RuleAtrialFibrillation" Title="Atrieflimmer" Description="Behandling av atrieflimmer med B01AA eller B01AC." LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleAtrialFibrillation( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  DECLARE @HasAF INT;
+  DECLARE @HeaderText VARCHAR(64);
+  DECLARE @MsgText VARCHAR(512);
+  DECLARE @AlertFacet VARCHAR(16);
+  DECLARE @AlertLevel INT;
+  SET @HasAF = dbo.GetProblemStatus( @PersonId,4, 'I48%' );
+  IF @HasAF = 1
+  BEGIN
+    IF EXISTS( SELECT TreatId FROM dbo.OngoingTreatment 
+      WHERE PersonId=@PersonId AND ATC COLLATE Latin1_General_CI_AS LIKE 'B01A[ABCEF]%' COLLATE Latin1_General_CI_AS )
+    BEGIN
+      SET @AlertLevel = 0;
+      SET @AlertFacet = 'DrugFound';
+    END  
+    ELSE
+    BEGIN
+      SET @AlertLevel = 2;
+      SET @AlertFacet = 'DrugGive';
+    END
+  END
+  ELSE BEGIN
+    SET @AlertLevel = 0;
+    SET @AlertFacet = 'Exclude'
+  END;
+  SET @MsgText = dbo.GetTextItem( 'AFTREATED', @AlertFacet )  
+  SET @HeaderText = dbo.GetTextItem( 'AFTREATED', @AlertFacet + '.Header' )  
+  EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'AFTREATED',@AlertFacet,@HeaderText,@MsgText
+END]]>
+	</row>
+	<row RuleId="14" RuleClass="CF#\d" RuleType="M" RuleProc="GBD.RuleReminder" Title="Skjema" Description="Påminnelse basert på eget påminnelsesskjema." LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleReminder( @StudyId INT, @PersonId INT )
+AS
+BEGIN
+  -- Reset all alerts of this class to level 0, because some forms may have been deleted
+  UPDATE dbo.Alert SET AlertLevel=0 WHERE StudyId=@StudyId AND PersonId=@PersonId AND AlertClass LIKE 'CF#%';
+  
+  -- Find events first to get a small temp table for next join
+  SELECT ce.EventId,cf.ClinFormId,ce.EventTime 
+  INTO #tempEvents 
+  FROM dbo.ClinEvent ce
+  JOIN dbo.ClinForm cf ON cf.EventId=ce.EventId AND cf.DeletedAt IS NULL
+  JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId AND mf.FormName = 'ALERT'
+  WHERE ce.StudyId=@StudyId AND ce.PersonId=@PersonId; 
+  
+  -- Get current alerts 
+  SELECT @PersonId as PersonId,@StudyId AS StudyId,
+    'CF#' + CONVERT(VARCHAR,te.ClinFormId) AS AlertClass,
+    'Include' as AlertFacet,                                                          
+    c.EnumVal as AlertLevel,
+    h.TextVal as AlertHeader, 
+    q.TextVal + ' ( <a href="ShowClinFormId='+CONVERT(VARCHAR,te.ClinFormId) + '">Påminnelse</a> fra ' + CONVERT(VARCHAR,te.EventTime,104 ) + ' )' as AlertMessage,
+    ISNULL(NULLIF(b.TextVal,''),'TWMF') as AlertButtons, 
+    d.DTVal AS HideUntil           
+  INTO #tempAlerts
+  FROM #tempEvents te 
+    JOIN dbo.ClinObservation h on h.EventId = te.EventId AND h.VarName='AlertHeader' 
+    JOIN dbo.ClinObservation c on c.EventId = te.EventId AND c.VarName='AlertLevel' 
+    JOIN dbo.ClinObservation q on q.EventId = te.EventId AND q.VarName='AlertMessage'
+    JOIN dbo.ClinObservation d ON d.EventId = te.EventId AND d.VarName='HideUntil'
+    LEFT OUTER JOIN dbo.ClinObservation b ON b.EventId = te.EventId AND b.VarName='AlertButtons'
+  WHERE c.EnumVal > 0;
+    
+  UPDATE dbo.Alert SET 
+    AlertLevel=t.AlertLevel,AlertHeader=t.AlertHeader,
+    AlertMessage=t.AlertMessage, AlertButtons=UPPER(t.AlertButtons)
+  FROM #tempAlerts t 
+  WHERE ( t.PersonId=Alert.PersonId AND t.StudyId=Alert.StudyId AND t.AlertClass=Alert.AlertClass )
+  AND  (Alert.AlertLevel <> t.AlertLevel OR Alert.AlertMessage<>t.AlertMessage OR Alert.AlertHeader<>t.AlertHeader OR Alert.AlertButtons <> t.AlertButtons);
+  
+  -- Bump forward HideUntil if needed (data on form has changed)  
+  UPDATE dbo.Alert SET 
+    HideUntil=t.HideUntil
+  FROM #tempAlerts t
+  WHERE (t.PersonId=Alert.PersonId AND t.StudyId=Alert.StudyId AND t.AlertClass=Alert.AlertClass )
+  AND t.HideUntil > Alert.HideUntil;
+  
+  -- Remove all existing alerts from temp, based on ClinFormId
+  DELETE FROM #tempAlerts WHERE AlertClass IN ( SELECT AlertClass FROM dbo.Alert WHERE StudyId=@StudyId AND PersonId=@PersonId );
+  
+  -- Add the rest, which will be from new ClinForms
+  INSERT INTO dbo.Alert ( PersonId,StudyId,AlertClass,AlertFacet,AlertLevel,AlertHeader,AlertMessage,AlertButtons,HideUntil)
+  SELECT t.PersonId,t.StudyId,t.AlertClass,t.AlertFacet,t.AlertLevel,t.AlertHeader,t.AlertMessage,t.AlertButtons,t.HideUntil FROM #tempAlerts t;
+  
+END]]>
+	</row>
+	<row RuleId="15" RuleClass="NDVTSH" RuleType="M" RuleProc="NDV.RuleTSH" Title="TSH" Description="Måling av TSH med 730 dagers intervall hos type-1 diabetikere." LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE NDV.RuleTSH( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  DECLARE @LabName VARCHAR(40);
+  DECLARE @LabVal FLOAT;     
+  DECLARE @LabDate DateTime;
+  DECLARE @AlertFacet VARCHAR(16);
+  DECLARE @AlertLevel INT; 
+  IF ISNULL(dbo.GetLastEnumVal( @PersonId, 'NDV_TYPE' ),-1) <> 1
+  BEGIN
+    SET @AlertFacet = 'Exclude';
+    SET @AlertLevel = 0; 
+  END
+  ELSE 
+  BEGIN                                                         
+    SELECT TOP 1 @LabName=lc.LabName,@LabDate=ld.LabDate,@LabVal=ld.NumResult
+    FROM dbo.LabData ld 
+    JOIN dbo.LabCode lc ON lc.LabCodeId=ld.LabCodeId 
+    WHERE ( ld.PersonId=@PersonId ) AND ( ld.NumResult > 0 ) AND ( lc.VarName='S_TSH' )
+    ORDER BY ld.LabDate DESC;   
+    IF @LabDate IS NULL
+    BEGIN
+      SET @AlertFacet = 'DataMissing';
+      SET @AlertLevel = 1;
+    END
+    ELSE IF @LabDate < getdate()-730
+    BEGIN
+      SET @AlertFacet = 'DataOld';
+      SET @AlertLevel = 1;
+    END
+    ELSE
+    BEGIN
+      SET @AlertFacet = 'DataFound';
+      SET @AlertLevel = 0;
+    END
+  END; 
+  DECLARE @AlertHeader VARCHAR(64);
+  DECLARE @AlertMessage VARCHAR(512);     
+  SET @AlertHeader = dbo.GetTextItem( 'NDV.RuleTSH', @AlertFacet +'.Header' );
+  SET @AlertMessage = dbo.GetTextItem( 'NDV.RuleTSH', @AlertFacet );
+  IF NOT @LabDate IS NULL                        
+  BEGIN
+    SET @AlertMessage = REPLACE( @AlertMessage, '@LabDate', dbo.LongTime( @LabDate ) );
+    SET @AlertMessage = REPLACE( @AlertMessage, '@LabValue', CONVERT(VARCHAR,@LabVal) );
+    SET @AlertMessage = REPLACE( @AlertMessage, '@LabName', @LabName );
+  END
+  EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'NDVTSH',@AlertFacet,@AlertHeader,
+      @AlertMessage;    
+END
+]]>
+	</row>
+	<row RuleId="16" RuleClass="CARBCOUNT" RuleType="M" RuleProc="NDV.RuleCarbCount" Title="Karbohydrattelling" Description="Opplæring i karbohydrattelling hos type-1 diabetikere." LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE NDV.RuleCarbCount( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  DECLARE @TrainDate DateTime;
+  DECLARE @AlertFacet VARCHAR(16);
+  DECLARE @AlertLevel INT; 
+  IF ISNULL(dbo.GetLastEnumVal( @PersonId, 'NDV_TYPE' ),-1) <> 1
+  BEGIN
+    SET @AlertFacet = 'Exclude';
+    SET @AlertLevel = 0; 
+  END
+  ELSE BEGIN                                                         
+    SELECT TOP 1 @TrainDate=DTVal FROM dbo.ClinObservation co
+    JOIN dbo.ClinEvent ce ON co.EventId=ce.EventId 
+    WHERE ( ce.StudyId=@StudyId ) AND ( ce.PersonId=@PersonId ) AND ( co.VarName='DIAPOL_TRAIN_CARBCOUNT' )
+    ORDER BY DTVal DESC;   
+    IF @TrainDate IS NULL
+    BEGIN
+      SET @AlertFacet = 'DataMissing';
+      SET @AlertLevel = 1;
+    END
+    ELSE
+    BEGIN
+      SET @AlertFacet = 'DataFound';
+      SET @AlertLevel = 0;
+    END
+  END; 
+  DECLARE @AlertHeader VARCHAR(64);
+  DECLARE @AlertMessage VARCHAR(512);     
+  SET @AlertHeader = dbo.GetTextItem( 'NDV.RuleCarbCount', @AlertFacet +'.Header' );
+  SET @AlertMessage = dbo.GetTextItem( 'NDV.RuleCarbCount', @AlertFacet );
+  IF NOT @TrainDate IS NULL                        
+  BEGIN
+    SET @AlertMessage = REPLACE( @AlertMessage, '@TrainDate', dbo.LongTime( @TrainDate ) );
+  END
+  EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'CARBCOUNT',@AlertFacet,@AlertHeader, @AlertMessage;    
+END]]>
+	</row>
+	<row RuleId="17" RuleClass="NDVCONSENT" RuleType="M" RuleProc="NDV.RuleConsent" Title="Samtykke" Description="Manglende samtykke-erklæring." LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE NDV.RuleConsent( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  DECLARE @AlertFacet VARCHAR(16);
+  DECLARE @AlertLevel INT;
+  DECLARE @NdvConsent INT;                                           
+  DECLARE @StudyName VARCHAR(32);
+  DECLARE @DiabetesType INT;  
+  SELECT @StudyName = StudName FROM dbo.Study WHERE StudyId=@StudyId;
+  SET @DiabetesType = ISNULL(dbo.GetLastEnumVal( @PersonId, 'NDV_TYPE' ), -1 );
+  IF @StudyName = 'NDV' AND @DiabetesType=-1 SET @DiabetesType=0;    
+  IF @DiabetesType = -1
+  BEGIN
+    SET @AlertFacet = 'Exclude';
+    SET @AlertLevel = 0;
+  END
+  ELSE
+  BEGIN
+    SET @NdvConsent = dbo.GetLastEnumVal( @PersonId, 'NDV_CONSENT' );
+    IF @NdvConsent IN  (1,2) 
+    BEGIN
+      SET @AlertFacet = 'DataFound';
+      SET @AlertLevel = 0;
+    END
+    ELSE 
+    BEGIN
+      SET @AlertFacet = 'DataMissing';
+      SET @AlertLevel = 3; 
+    END
+  END;
+  EXEC dbo.AddAlertForDSSRule @StudyId,@PersonId,@AlertLevel,'NDVCONSENT',@AlertFacet;    
+END]]>
+	</row>
+	<row RuleId="18" RuleClass="Kost(Til|Sa)" RuleType="M" RuleProc="GBD.RuleNutritionAction" Title="Ernæring" Description="Kostsamtale gjennomført, tiltakskjema utfylt og signert hvis aktuelt basert kostsamtalen. " LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleNutritionAction( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  DECLARE @LastTiltakDate DateTime;
+  DECLARE @LastInnkomstDate DateTime;
+  DECLARE @KostLege INT;  
+  DECLARE @AlertFacet varchar(16);
+  DECLARE @AlertHdr VARCHAR(64);
+  DECLARE @AlertMsg VARCHAR(512);
+  DECLARE @AlertLevel INT;
+  DECLARE @LastInnkomstDateStr VARCHAR(24);
+  DECLARE @LastTiltakDateStr VARCHAR(24);     
+  
+  -- Finn eksisterende signert kostsamtale-skjema
+  SET @LastInnkomstDate = dbo.GetLastSignedForm( @StudyId,@PersonId,'SAMTALE_KOST' );
+  SET @LastInnkomstDateStr = CONVERT(VARCHAR,@LastInnkomstDate,104);
+  SET @KostLege = ISNULL( dbo.GetLastEnumVal( @PersonId, 'KOST_Lege' ), 1 );
+  IF ( @LastInnkomstDate IS NULL ) OR ( @KostLege = -1 )
+  BEGIN          
+    -- Finnes ikke noen signert eller skikkelig utfylt kostsamtale, varsling gult nivå, ekskluder for tiltak. 
+    EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, 2, 'KostSamtale', 'DataMissing';
+    EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, 0, 'KostTiltak', 'Exclude';
+  END
+  ELSE 
+  BEGIN                      
+    -- Kostsamtale er funnet, legg til i Alert på debug nivå 
+    EXEC dbo.GetAlertText 'KostSamtale', 'DataFound', @AlertHdr OUT, @AlertMsg OUT; 
+    SET @AlertMsg = REPLACE( @AlertMsg,'@LastInnkomstDate', @LastInnkomstDateStr );
+    EXEC dbo.AddAlertForPerson @StudyId, @PersonId, 0, 'KostSamtale', 'DataFound', @AlertHdr,@AlertMsg;
+    -- Nødvendig med tilsyn av lege?
+    IF @KostLege = 1
+    BEGIN
+      -- Det skal være et signert skjema med ernæringstiltak her!
+      SELECT @LastTiltakDate = dbo.GetLastSignedForm( @StudyId,@PersonId,'GbdErnaeringTiltak' );
+      SET @LastTiltakDateStr = CONVERT(VARCHAR,@LastTiltakDate,104);
+      IF ( @LastTiltakDate IS NULL )  
+      BEGIN       
+        -- Det finnes ikke noe tiltaksskjema i det hele tatt
+        SET @LastTiltakDateStr = '';
+        SET @AlertLevel = 3;
+        SET @AlertFacet = 'DataMissing';
+      END                            
+      ELSE IF ( @LastTiltakDate < @LastInnkomstDate - 2 )
+      BEGIN        
+        -- Tiltaksskjema er mye eldre enn innkomstskjema
+        SET @AlertLevel = 2;
+        SET @AlertFacet = 'DataOld';
+      END
+      ELSE
+      BEGIN
+        -- Tiltaksskjema er oppdatert, alt vel.
+        SET @AlertLevel = 0;
+        SET @AlertFacet = 'DataFound';
+      END  
+    END
+    ELSE
+    BEGIN          
+      -- Ikke nødvendig med tiltak
+      SET @AlertLevel = 0;
+      SET @AlertFacet = 'Exclude';
+    END;
+    EXEC dbo.GetAlertText 'KostTiltak', @AlertFacet, @AlertHdr OUT, @AlertMsg OUT;
+    IF NOT @LastTiltakDateStr IS NULL SET @AlertMsg = REPLACE( @AlertMsg,'@LastTiltakDate', @LastTiltakDateStr );
+    IF NOT @LastInnkomstDateStr IS NULL SET @AlertMsg = REPLACE( @AlertMsg,'@LastInnkomstDate', @LastInnkomstDateStr );
+    EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'KostTiltak',@AlertFacet,@AlertHdr,@AlertMsg;
+  END;
+END;]]>
+	</row>
+	<row RuleId="19" RuleClass="TVANG" RuleType="M" RuleProc="GBD.RuleTvangsvedtak" Title="Tvangsvedtak" Description="Fornyelse av tvangsvedtak" LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleTvangsvedtak( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  DECLARE @EventTime DateTime;
+  DECLARE @StopDate DateTime;
+  DECLARE @StopDateText VARCHAR(24);
+  DECLARE @StopAction INT;
+  DECLARE @DaysPastDue INT;    
+  DECLARE @ClinFormId INT;
+  DECLARE @AlertClass VARCHAR(16);                                         
+  DECLARE @AlertHeader VARCHAR(64);
+  DECLARE @AlertMessage VARCHAR(512);    
+  DECLARE @AlertLevel INT;
+  DECLARE cur_vedtak CURSOR FAST_FORWARD FOR   
+    SELECT EventTime,StopDate, StopAction,DaysPastDue, ClinFormId FROM GBD.Tvangsvedtak
+    WHERE StudyId=@StudyId AND PersonId=@PersonId;
+  OPEN cur_vedtak;
+  FETCH NEXT FROM cur_vedtak INTO @EventTime,@StopDate,@StopAction,@DaysPastDue,@ClinFormId;
+  WHILE @@FETCH_STATUS = 0
+  BEGIN            
+    SET @AlertMessage = '<a href="SelectForm='+CONVERT(VARCHAR,@ClinFormId)+'">Tvangsvedtak</a> ' + CONVERT(VARCHAR,@EventTime,4);
+    SET @AlertClass = 'TVANG#' + CONVERT(VARCHAR,@ClinFormId);
+    IF @StopAction <> 1  
+    BEGIN                   
+      SET @AlertLevel = 0;
+      SELECT @AlertHeader = 
+      CASE @StopAction 
+        WHEN 2 THEN 'Automatisk avslutning'
+        WHEN 3 THEN 'Aktivt avsluttet'
+        WHEN 4 THEN 'Fornyet vedtak'
+        ELSE 'Ukjent håndtering'
+      END;
+      SET @AlertMessage = @AlertMessage + ' er avsluttet og det er ikke bedt om påminnelser i den forbindelse.';
+    END
+    ELSE        
+    BEGIN
+      SET @StopDateText = ISNULL(CONVERT(VARCHAR,@StopDate,104),'(uspesifisert dato)');
+      IF @DaysPastDue > 0 
+      BEGIN
+        SET @AlertLevel = 3;
+        SET @AlertHeader = 'Utgått tvangsvedtak'
+        SET @AlertMessage = @AlertMessage + ' utløp ' + @StopDateText + '.  ' + 
+          'Dette vedtaket er ikke eksplisitt avsluttet.  Du bør gjenåpne skjemaet og avslutte vedtaket.'; 
+      END
+      ELSE
+      BEGIN                       
+        SET @AlertLevel = 2;
+        SET @AlertHeader = 'Forny tvangsvedtak';
+        SET @AlertMessage = @AlertMessage + ' utløper ' + @StopDateText + '!  Du bør aktivt avslutte dette eller fornye det.';
+      END
+    END;    
+    EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@ALertLevel,@AlertClass,'Include',@AlertHeader,@AlertMessage,'TWF';
+    FETCH NEXT FROM cur_vedtak INTO @EventTime,@StopDate,@StopAction,@DaysPastDue,@ClinFormId;
+  END;
+  CLOSE cur_vedtak;
+  DEALLOCATE cur_vedtak;
+END]]>
+	</row>
+	<row RuleId="20" RuleClass="NDVEYE" RuleType="M" RuleProc="NDV.RuleEyeCheck" Title="Øyeundersøkelse" Description="Øyeundersøkelse med maks 730 dagers intervall hos type-1 diabetikere ved minst 5 års sykdomsvarighet." LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE NDV.RuleEyeCheck( @StudyId INT, @PersonId INT ) AS
+BEGIN
+
+  DECLARE @EyeCheckDate DateTime;
+  DECLARE @AlertFacet VARCHAR(16);
+  DECLARE @AlertLevel INT;
+  DECLARE @DiabetesType INT;
+  DECLARE @DiabetesDebut FLOAT;
+  DECLARE @ThisYear FLOAT;
+  DECLARE @RuleIsRelevant BIT;
+  
+  SET @ThisYear = DATEPART(yy,getdate());
+  
+  SELECT @DiabetesType = dbo.GetLastEnumVal( @PersonId, 'NDV_TYPE' );
+  SELECT @DiabetesDebut = dbo.GetLastQuantity( @PersonId, 'NDV_DIAGNOSE_YYYY' );
+    
+  SET @RuleIsRelevant = 0;
+  IF ( @DiabetesType = 1 ) AND ( @ThisYear - ISNULL(@DiabetesDebut,1900) > 5 )
+    SET @RuleIsRelevant = 1;
+  IF ( ISNULL(@DiabetesType,-1)  IN  (2,3,4) ) 
+    SET @RuleIsRelevant = 1;
+  IF @RuleIsRelevant = 0 BEGIN
+    SET @AlertFacet = 'Exclude';
+    SET @AlertLevel = 0;
+  END
+  ELSE
+  BEGIN       
+    SELECT @EyeCheckDate=dbo.GetLastDTVal( @PersonId, 'NDV_EYECHECK_DATE' );
+    IF @EyeCheckDate IS NULL BEGIN
+      SET @AlertFacet = 'DataMissing';
+      SET @AlertLevel = 3;
+    END
+    ELSE IF @EyeCheckDate < getdate()-730 BEGIN
+      SET @AlertFacet = 'DataOld';
+      SET @AlertLevel = 2;
+    END
+    ELSE BEGIN
+      SET @AlertFacet = 'DataFound';
+      SET @AlertLevel = 0;
+    END 
+  END
+  DECLARE @AlertHeader VARCHAR(64);
+  DECLARE @AlertMessage VARCHAR(512);     
+  SET @AlertHeader = dbo.GetTextItem( 'NDV.RuleEyeCheck', @AlertFacet +'.Header' );
+  SET @AlertMessage = dbo.GetTextItem( 'NDV.RuleEyeCheck', @AlertFacet );
+  IF NOT @EyeCheckDate IS NULL BEGIN
+    SET @AlertMessage = REPLACE( @AlertMessage, '@EyeCheckDate', dbo.LongTime( @EyeCheckDate ) );
+  END
+  EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'NDVEYE',@AlertFacet,@AlertHeader, @AlertMessage;    
+END]]>
+	</row>
+	<row RuleId="21" RuleClass="NDVAVSLUTT" RuleType="M" RuleProc="NDV.RuleAutoClose" Title="Avslutning" Description="Automatisk avslutning av pasienter i NOKLUS Diabetes basert på innhold i poliklinisk notat." LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE NDV.RuleAutoClose( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  DECLARE @DpAvsluttet INT;           
+  SELECT TOP 1 @DpAvsluttet = EnumVal 
+    FROM dbo.ClinObservation co 
+    JOIN dbo.ClinEvent ce ON ce.EventId=co.EventId 
+    WHERE ce.StudyId=@StudyId AND ce.PersonId=@PersonId AND co.VarName='DP_AVSLUTTET'
+    AND co.ObsDate > getdate()-1
+    ORDER BY ce.EventNum DESC;
+  IF @DpAvsluttet = 1
+  BEGIN
+    UPDATE dbo.StudCase SET FinState=4, GroupId = NULL 
+    WHERE StudyId=@StudyId AND PersonId=@PersonId;
+    EXEC dbo.AddAlertForPerson @StudyId,@PersonId,1,'NDVAVSLUTT','Include','Avsluttet','Avsluttet på diabetespoliklinikken basert på informasjon fra skjema..';
+  END
+  ELSE      
+    EXEC dbo.AddAlertForPerson @StudyId,@PersonId,0,'NDVAVSLUTT','Exclude','Fortsetter','Ikke avsluttet på diabetespoliklinikken, basert på informasjon fra skjema.';
+END]]>
+	</row>
+	<row RuleId="22" RuleClass="MATKORT" RuleType="M" RuleProc="GBD.RuleMatkort" Title="Matkort" Description="Revisjon av matkort på dato som er angitt i forrige matkort." LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleMatkort( @StudyId INT, @PersonId INT )
+AS
+BEGIN
+  DECLARE @AlertFacet varchar(16);
+  DECLARE @AlertLevel INT;
+  DECLARE @RevisionDate DateTime;
+
+  SELECT @RevisionDate = dbo.GetLastDTVal( @PersonId,'MAT_Revisjonsdato' );
+  IF @RevisionDate IS NULL BEGIN
+    SET @AlertFacet = 'Exclude';
+    SET @AlertLevel = 0;
+  END
+  ELSE IF @RevisionDate < GETDATE() BEGIN
+    SET @AlertFacet = 'DataOld';
+    SET @AlertLevel = 3;
+  END
+  ELSE BEGIN
+    SET @AlertFacet = 'DataFound';
+    SET @AlertLevel = 0;
+  END;
+  EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, @AlertLevel, 'MATKORT', @AlertFacet;
+END;]]>
+	</row>
+	<row RuleId="23" RuleClass="LMG" RuleType="M" RuleProc="GBD.RuleLMG" Title="Legemiddelgjennomgang" Description="Utfylling av legemiddelgjennomgang med 180 dagers intervall." LastUpdate="2016-02-26T16:50:19.133Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleLMG( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'LMG',180,2
+END;]]>
+	</row>
+</DSSRule>
