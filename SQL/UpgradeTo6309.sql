@@ -7,6 +7,7 @@ PRINT 'Overall purpose: Adapting audit trail procedure to use ClinDataPoint inst
 --  DROP procedure dbo.ReportClinFormAuditTrail
 --  CREATE procedure Report.GetClinFormAuditTrail.
 --  CREATE synonym dbo.ReportClinFormAuditTrail for backwards compatibility.
+--  Deactivate all BERGER alerts and disable the CDSS rule.
 
 EXECUTE dbo.DbStartUpgrade 6308, 6309;
 GO
@@ -36,6 +37,8 @@ BEGIN
   DECLARE @StudyId INT;
   DECLARE @PersonId INT;
 
+  -- Establish context variables for this form
+
   SELECT @FormId = FormId
   FROM dbo.ClinForm
   WHERE ClinFormId = @ClinFormId;
@@ -43,7 +46,7 @@ BEGIN
   FROM dbo.ClinEvent ce
   JOIN dbo.ClinForm cf ON cf.EventId = ce.EventId AND ClinFormId = @ClinFormId;
 
-  -- Get current data for items on the form
+  -- Get current data for items that appear on this form
 
   SELECT mi.ItemId,
     ISNULL(NULLIF(mfi.ItemHeader, ''), mfi.ItemText) AS Caption, mi.VarName,
@@ -84,11 +87,19 @@ GRANT EXECUTE ON Report.GetClinFormAuditTrail TO [public] AS [dbo]
 GO
 
 PRINT '--  CREATE synonym dbo.ReportClinFormAuditTrail for backwards compatibility.'
+GO
 
 CREATE SYNONYM dbo.ReportClinFormAuditTrail FOR Report.GetClinFormAuditTrail
 GO
 
 GRANT EXECUTE ON dbo.ReportClinFormAuditTrail TO [public] AS [dbo]
+GO
+
+
+PRINT '--  Deactivate all BERGER alerts and disable the CDSS rule.'
+
+UPDATE dbo.DSSStudyRule SET RuleActive = 0 WHERE RuleId = 1 AND RuleActive = 1
+UPDATE dbo.Alert SET AlertLevel = 0 WHERE AlertClass = 'BERGER' AND AlertLevel <> 0
 GO
 
 EXECUTE dbo.DbFinalizeUpgrade 6309;
