@@ -600,7 +600,7 @@ BEGIN
   EXECUTE dbo.GetCaseListProblem @StudyId,'I48%'
 END]]>
 	</row>
-	<row ProcId="131" StudyName="GBD" ProcName="GetCaseListLastBerger" ProcDesc="Prosess: Siste Berger" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="131" StudyName="GBD.OLD" ProcName="GetCaseListLastBerger" ProcDesc="Prosess: Siste Berger" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2016-03-19T08:41:49.417Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListLastBerger( @StudyId INT ) AS
 BEGIN
   EXEC GetCaseListLastForm @StudyId, 'BERGER'
@@ -691,7 +691,7 @@ BEGIN
   EXEC GetCaseListLastForm @StudyId,'MMSE_INPATIENT',365
 END]]>
 	</row>
-	<row ProcId="143" StudyName="GBD" ProcName="GBD.GetCaseListNoBergerSixMonths" ProcDesc="Prosess: Ikke Berger siste 6 mnd" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="143" StudyName="GBD.OLD" ProcName="GBD.GetCaseListNoBergerSixMonths" ProcDesc="Prosess: Ikke Berger siste 6 mnd" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2016-03-19T08:41:51.410Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListNoBergerSixMonths( @StudyId INT ) AS
 BEGIN
   EXEC GetCaseListLastForm @StudyId,'BERGER',180
@@ -3371,6 +3371,22 @@ BEGIN
   ORDER BY a.DiaOrderNumber,a.SamtOrderNumber
 END]]>
 	</row>
+	<row ProcId="1034" StudyName="*" ProcName="Report.GetCommentsOnEmptyForms" ProcDesc="Tomme skjema med rapporter" ListId="FR" GrantTo="superuser" LastUpdate="2016-03-18T08:32:35.363Z">
+		<![CDATA[CREATE PROCEDURE Report.GetCommentsOnEmptyForms( @StartTime DATETIME = NULL, @EndTime DATETIME = NULL ) AS
+BEGIN
+  SELECT @StartTime = ISNULL( @StartTime, DATEADD( DAY, -3650, GETDATE() ) )
+  SELECT @EndTime = ISNULL( @EndTime,  GETDATE() )   
+  SELECT TOP 200 ce.PersonId,cf.ClinFormId,cf.CreatedAt,mf.FormTitle,cf.Comment,p.Signature,ul.UserName 
+  FROM dbo.ClinForm cf
+  JOIN dbo.ClinEvent ce ON  ce.EventId=cf.EventId
+  JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId
+  JOIN dbo.UserList ul ON ul.UserId  = cf.CreatedBy 
+  JOIN Person p ON p.PersonId=ul.PersonId
+  WHERE cf.FormComplete = 0 AND DATALENGTH(cf.Comment) > 5 AND cf.DeletedAt IS NULL
+  AND cf.CreatedAt > @StartTime AND cf.CreatedAt < @EndTime
+  ORDER by cf.ClinFormId DESC
+END]]>
+	</row>
 	<row ProcId="5001" StudyName="GBD" ProcName="GBD.UpdateMustScoreForAll" ProcDesc="Oppdatering av MUST for alle, trenger GBD.RuleMust på plass" ProcParams=":StudyId" ListId="UTIL" GrantTo="public" LastUpdate="2016-02-26T15:31:10.873Z">
 		<![CDATA[CREATE PROCEDURE GBD.UpdateMustScoreForAll( @StudyId INT)
 AS
@@ -3434,7 +3450,7 @@ BEGIN
   DELETE FROM dbo.UserList WHERE UserId=@UserId;
 END]]>
 	</row>
-	<row ProcId="10001" StudyName="*" ProcName="GBD.RuleBerger" ProcDesc="Registere Bergers skala med 180 dagers intervall" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10001" StudyName="*" ProcName="GBD.RuleBerger" ProcDesc="Registere Bergers skala med 180 dagers intervall" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MaxVersion="6300" LastUpdate="2016-03-19T08:40:44.957Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleBerger( @StudyId INT, @PersonId INT ) AS
 BEGIN
   EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'BERGER',180,2
