@@ -9,6 +9,8 @@ PRINT 'Overall purpose: Add report for consent status NDV.'
 --  CREATE function NDV.GetConsentStatusTable.
 --  CREATE function NDV.GetConsentSummaryTable.
 --  CREATE procedure NDV.ReportConsentStatus for report Samtykkeinnhentinger.fr3
+--  ALTER view Report.LabTestOverview to include NLK and Loinc fields.
+--  ALTER view Report.LabClassOverview to include NLK field.
 
 EXECUTE dbo.DbStartUpgrade 6309, 6310;
 GO
@@ -224,6 +226,43 @@ BEGIN
   FROM #ResData
   ORDER BY StartTime DESC;
 END
+GO
+
+PRINT '--  ALTER view Report.LabTestOverview to include NLK and Loinc fields.'
+GO
+
+ALTER VIEW Report.LabTestOverview AS
+  SELECT
+    LabStats.LabCodeId, lc.LabClassId, lc.LabName, cl.FriendlyName, cl.FurstId, cl.VarName, cl.NLK, cl.Loinc, 
+    LabStats.LabCount, LabStats.MinResult, LabStats.MaxResult, LabStats.AvgResult
+    FROM
+    (
+      SELECT ld.LabCodeId,
+        COUNT(*) AS LabCount, MIN(ld.NumResult) AS MinResult, 
+        MAX(ld.NumResult) AS MaxResult, AVG(ld.NumResult) AS AvgResult 
+      FROM dbo.LabData ld WHERE ld.NumResult >= 0
+      GROUP BY ld.LabCodeId
+    ) LabStats
+  JOIN LabCode lc ON lc.LabCodeId = LabStats.LabCodeId
+  LEFT JOIN dbo.LabClass cl ON cl.LabClassId=lc.LabClassId
+GO
+
+
+PRINT '--  ALTER view Report.LabClassOverview to include NLK field.'
+GO
+
+ALTER VIEW Report.LabClassOverview AS
+SELECT 
+  cl.LabClassId, ISNULL(cl.FriendlyName,'Uklassifiserte prøver') AS FriendlyName, 
+    cl.FurstId, cl.VarName, cl.NLK, cl.Loinc, LabStats.LabCount
+  FROM
+  (
+    SELECT lc.LabClassId,count(*) as LabCount                                           
+    FROM dbo.LabCode lc 
+    JOIN dbo.LabData ld ON ld.LabCodeId=lc.LabCodeId
+    GROUP BY lc.LabClassId
+  ) LabStats
+  LEFT JOIN dbo.LabClass cl ON cl.LabClassId=LabStats.LabClassId
 GO
 
 EXECUTE dbo.DbFinalizeUpgrade 6310;
