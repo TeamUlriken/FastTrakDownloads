@@ -11,6 +11,7 @@ PRINT 'Overall purpose: Add report for consent status NDV.'
 --  CREATE procedure NDV.ReportConsentStatus for report Samtykkeinnhentinger.fr3
 --  ALTER view Report.LabTestOverview to include NLK and Loinc fields.
 --  ALTER view Report.LabClassOverview to include NLK field.
+--  ALTER procedure CRF.GetFormItems to include FormItemId field.
 
 EXECUTE dbo.DbStartUpgrade 6309, 6310;
 GO
@@ -58,15 +59,15 @@ IF NOT OBJECT_ID('Report.TimePeriods') IS NULL
 GO
 
 CREATE TABLE Report.TimePeriods (
-  RowId INT IDENTITY(1,1) NOT NULL,
+  RowId INT IDENTITY (1, 1) NOT NULL,
   StartTime DATETIME NOT NULL,
   EndTime DATETIME NOT NULL,
   PeriodType CHAR(8) NOT NULL,
-  CONSTRAINT PK_Report_TimePeriods PRIMARY KEY (RowId )
+  CONSTRAINT PK_Report_TimePeriods PRIMARY KEY (RowId)
 )
 GO
 
-CREATE UNIQUE INDEX IDX_Report_TimePeriods_StartTime_EndTime ON Report.TimePeriods( StartTime,EndTime )
+CREATE UNIQUE INDEX IDX_Report_TimePeriods_StartTime_EndTime ON Report.TimePeriods (StartTime, EndTime)
 GO
 
 ALTER TABLE Report.TimePeriods ADD StartYear AS DATEPART(YYYY, StartTime)
@@ -126,7 +127,7 @@ IF NOT OBJECT_ID('NDV.GetConsentStatusTable') IS NULL
   DROP FUNCTION NDV.GetConsentStatusTable
 GO
 
-CREATE FUNCTION NDV.GetConsentStatusTable( @StartTime DATETIME, @EndTime DATETIME )
+CREATE FUNCTION NDV.GetConsentStatusTable ( @StartTime DATETIME, @EndTime DATETIME )
 RETURNS @ConsentStatus TABLE (
   PersonId INT NOT NULL,
   EnumVal INT NOT NULL,
@@ -161,7 +162,7 @@ IF NOT OBJECT_ID('NDV.GetConsentSummaryTable') IS NULL
   DROP FUNCTION NDV.GetConsentSummaryTable
 GO
 
-CREATE FUNCTION NDV.GetConsentSummaryTable( @StartTime DATETIME, @EndAt DATETIME )
+CREATE FUNCTION NDV.GetConsentSummaryTable ( @StartTime DATETIME, @EndAt DATETIME )
 RETURNS @ConsentSummary TABLE (
   StartTime DATETIME NOT NULL,
   EndAt DATETIME NOT NULL,
@@ -232,19 +233,16 @@ PRINT '--  ALTER view Report.LabTestOverview to include NLK and Loinc fields.'
 GO
 
 ALTER VIEW Report.LabTestOverview AS
-  SELECT
-    LabStats.LabCodeId, lc.LabClassId, lc.LabName, cl.FriendlyName, cl.FurstId, cl.VarName, cl.NLK, cl.Loinc, 
+  SELECT LabStats.LabCodeId, lc.LabClassId, lc.LabName, cl.FriendlyName, cl.FurstId, cl.VarName, cl.NLK, cl.Loinc,
     LabStats.LabCount, LabStats.MinResult, LabStats.MaxResult, LabStats.AvgResult
-    FROM
-    (
-      SELECT ld.LabCodeId,
-        COUNT(*) AS LabCount, MIN(ld.NumResult) AS MinResult, 
-        MAX(ld.NumResult) AS MaxResult, AVG(ld.NumResult) AS AvgResult 
-      FROM dbo.LabData ld WHERE ld.NumResult >= 0
-      GROUP BY ld.LabCodeId
-    ) LabStats
+  FROM (SELECT ld.LabCodeId,
+      COUNT(*) AS LabCount, MIN(ld.NumResult) AS MinResult,
+      MAX(ld.NumResult) AS MaxResult, AVG(ld.NumResult) AS AvgResult
+    FROM dbo.LabData ld
+    WHERE ld.NumResult >= 0
+    GROUP BY ld.LabCodeId) LabStats
   JOIN LabCode lc ON lc.LabCodeId = LabStats.LabCodeId
-  LEFT JOIN dbo.LabClass cl ON cl.LabClassId=lc.LabClassId
+  LEFT JOIN dbo.LabClass cl ON cl.LabClassId = lc.LabClassId
 GO
 
 
@@ -252,17 +250,65 @@ PRINT '--  ALTER view Report.LabClassOverview to include NLK field.'
 GO
 
 ALTER VIEW Report.LabClassOverview AS
-SELECT 
-  cl.LabClassId, ISNULL(cl.FriendlyName,'Uklassifiserte prøver') AS FriendlyName, 
+  SELECT cl.LabClassId, ISNULL(cl.FriendlyName, 'Uklassifiserte prøver') AS FriendlyName,
     cl.FurstId, cl.VarName, cl.NLK, cl.Loinc, LabStats.LabCount
-  FROM
-  (
-    SELECT lc.LabClassId,count(*) as LabCount                                           
-    FROM dbo.LabCode lc 
-    JOIN dbo.LabData ld ON ld.LabCodeId=lc.LabCodeId
-    GROUP BY lc.LabClassId
-  ) LabStats
-  LEFT JOIN dbo.LabClass cl ON cl.LabClassId=LabStats.LabClassId
+  FROM (SELECT lc.LabClassId, COUNT(*) AS LabCount
+    FROM dbo.LabCode lc
+    JOIN dbo.LabData ld
+      ON ld.LabCodeId = lc.LabCodeId
+    GROUP BY lc.LabClassId) LabStats
+  LEFT JOIN dbo.LabClass cl ON cl.LabClassId = LabStats.LabClassId
+GO
+
+PRINT '--  ALTER procedure CRF.GetFormItems to include FormItemId field.'
+GO
+
+ALTER PROCEDURE CRF.GetFormItems ( @FormId INT ) AS
+BEGIN
+  SELECT mfi.FormItemId, mfi.FormId, mfi.OrderNumber, mi.ItemId, mi.VarName, mi.LabName, mi.ItemType, mi.UnitStr,
+    mi.MinNormal, mi.MaxNormal, mi.ThreadTypeId, mi.Multiline,
+    mfi.ExcludeFromText, mfi.ExcludeCaption, mfi.ItemHeader, mfi.ItemText,
+    mfi.ItemHelp, mfi.Optional, mfi.ReadOnly, mfi.CarryForward,
+    mfi.MinExpression, mfi.MaxExpression, mfi.Decimals, mfi.Expression, mfi.FormatStr, mfi.Highlight,
+    DefaultValue, ISNULL(Visibility, 1) AS Visibility, mfi.PageNumber, mfi.LastUpdate
+  FROM dbo.MetaFormItem mfi
+  JOIN dbo.MetaItem mi ON mi.ItemId = mfi.ItemId
+  LEFT OUTER JOIN dbo.MetaFormPage mfp ON mfp.PageId = mfi.PageId
+  WHERE mfi.FormId = @FormId
+  ORDER BY mfi.PageNumber, mfi.OrderNumber
+END
+GO
+
+
+PRINT '--  ALTER procedure CRF.GetMetaForms to use tables directly and use HideComment field.'
+GO
+
+DROP PROCEDURE CRF.GetMetaForms 
+GO
+
+CREATE PROCEDURE CRF.GetMetaForms( @StudyId INT ) AS
+BEGIN
+  SELECT msf.StudyId, mf.FormId, mf.FormName, mf.FormTitle, mf.Subtitle,
+    mf.CalculateInvalid, mf.RatingScale, mf.Copyright, msf.HideComment,
+    mf.ThreadTypeId, mf.Instructions,
+    ISNULL(msf.Repeatable, mf.Repeatable) AS Repeatable,
+    ISNULL(msf.SurveyStatus, mf.SurveyStatus) AS SurveyStatus,
+    ISNULL(msf.FormActive, mf.FormActive) AS FormActive,
+    msf.ParentId, msf.CreatedAt, msf.CreatedBy
+  FROM dbo.MetaForm mf
+  JOIN dbo.MetaStudyForm msf ON msf.FormId = mf.FormId
+  WHERE msf.StudyId=@StudyId
+END
+
+IF NOT OBJECT_ID( 'dbo.GetMetaForms','P') IS NULL
+  DROP PROCEDURE dbo.GetMetaForms
+GO
+
+IF NOT OBJECT_ID( 'dbo.GetMetaForms','SN') IS NULL
+  DROP SYNONYM dbo.GetMetaForms
+GO
+
+CREATE SYNONYM dbo.GetMetaForms FOR CRF.GetMetaForms
 GO
 
 EXECUTE dbo.DbFinalizeUpgrade 6310;
