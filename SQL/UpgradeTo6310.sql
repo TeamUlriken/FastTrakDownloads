@@ -12,6 +12,8 @@ PRINT 'Overall purpose: Add report for consent status NDV.'
 --  ALTER view Report.LabTestOverview to include NLK and Loinc fields.
 --  ALTER view Report.LabClassOverview to include NLK field.
 --  ALTER procedure CRF.GetFormItems to include FormItemId field.
+--  ALTER procedure CRF.GetMetaForms to use tables directly and use HideComment field.
+--  DROP view Meta.StudyForm and the Meta schema, where the view was the only object.
 
 EXECUTE dbo.DbStartUpgrade 6309, 6310;
 GO
@@ -283,7 +285,16 @@ GO
 PRINT '--  ALTER procedure CRF.GetMetaForms to use tables directly and use HideComment field.'
 GO
 
-DROP PROCEDURE CRF.GetMetaForms 
+IF NOT OBJECT_ID( 'dbo.GetMetaForms','P') IS NULL
+  DROP PROCEDURE dbo.GetMetaForms
+GO
+
+IF NOT OBJECT_ID( 'dbo.GetMetaForms','SN') IS NULL
+  DROP SYNONYM dbo.GetMetaForms
+GO
+
+IF NOT OBJECT_ID( 'CRF.GetMetaForms','P') IS NULL
+  DROP PROCEDURE CRF.GetMetaForms
 GO
 
 CREATE PROCEDURE CRF.GetMetaForms( @StudyId INT ) AS
@@ -300,15 +311,18 @@ BEGIN
   WHERE msf.StudyId=@StudyId
 END
 
-IF NOT OBJECT_ID( 'dbo.GetMetaForms','P') IS NULL
-  DROP PROCEDURE dbo.GetMetaForms
-GO
-
-IF NOT OBJECT_ID( 'dbo.GetMetaForms','SN') IS NULL
-  DROP SYNONYM dbo.GetMetaForms
-GO
-
 CREATE SYNONYM dbo.GetMetaForms FOR CRF.GetMetaForms
+GO
+
+PRINT '--  DROP view Meta.StudyForm and the Meta schema, where the view was the only object.'
+GO
+
+IF NOT OBJECT_ID('Meta.StudyForm') IS NULL
+  DROP VIEW Meta.StudyForm
+GO
+
+IF NOT SCHEMA_ID('Meta') IS NULL
+  DROP SCHEMA Meta
 GO
 
 EXECUTE dbo.DbFinalizeUpgrade 6310;
