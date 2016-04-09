@@ -78,6 +78,9 @@ GO
 TRUNCATE TABLE Report.TimePeriods
 GO
 
+GRANT INSERT ON Report.TimePeriods TO [public] AS [dbo]
+GO
+
 DECLARE @StartDate DATETIME
 DECLARE @EndDate DATETIME
 SET @StartDate = CAST('1900-01-01' AS DATETIME)
