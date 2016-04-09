@@ -98,8 +98,16 @@ GO
 
 PRINT '--  Deactivate all BERGER alerts and disable the CDSS rule.'
 
+GRANT UPDATE ON dbo.DSSStudyRule TO [public] AS [dbo]
+GRANT UPDATE ON dbo.Alert TO [public] AS [dbo]
+GO
+
 UPDATE dbo.DSSStudyRule SET RuleActive = 0 WHERE RuleId = 1 AND RuleActive = 1
 UPDATE dbo.Alert SET AlertLevel = 0 WHERE AlertClass = 'BERGER' AND AlertLevel <> 0
+GO
+
+REVOKE UPDATE ON dbo.DSSStudyRule TO [public]
+REVOKE UPDATE ON dbo.Alert TO [public]
 GO
 
 EXECUTE dbo.DbFinalizeUpgrade 6309;

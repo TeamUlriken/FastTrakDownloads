@@ -76,6 +76,7 @@ GO
 
 IF USER_ID('ReadOnly') IS NULL
 BEGIN
+  GRANT INSERT ON dbo.UserRoleInfo TO [public] AS [dbo]
   CREATE ROLE ReadOnly
   INSERT INTO dbo.UserRoleInfo (RoleName, RoleCaption, RoleInfo, IsActive, SortOrder)
     VALUES ('ReadOnly', 'Lesetilgang', 'Gir tilgang til lesing av journalinformasjon, men ingen skriving.', 1, 19)
