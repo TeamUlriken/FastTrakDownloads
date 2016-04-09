@@ -86,8 +86,17 @@ GO
 ALTER TABLE Dash.PersonData ADD CONSTRAINT PK_Dash_PersonData PRIMARY KEY(RowId)
 GO
 
+GRANT UPDATE ON dbo.MetaForm TO [public] AS [dbo]
+GRANT DELETE ON dbo.Alert TO [public] AS [dbo]
+GO
+
 UPDATE dbo.MetaForm SET FormName='LMG' WHERE FormName='GbdLegemiddel'
+GO
 DELETE FROM dbo.Alert WHERE AlertClass = 'GbdLegemidde'
+GO
+
+REVOKE UPDATE ON dbo.MetaForm TO [public]
+REVOKE DELETE ON dbo.Alert TO [public]
 GO
 
 ALTER TABLE dbo.Alert ALTER COLUMN AlertClass VARCHAR(24) NOT NULL
