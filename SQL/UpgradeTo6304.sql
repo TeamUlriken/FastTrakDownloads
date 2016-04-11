@@ -202,6 +202,7 @@ END;
 GO
 
 -- Move data from CaveLog to DocumentLog 
+
 GRANT INSERT ON dbo.PersonDocumentLog TO [public] AS [dbo]
 GO
 
