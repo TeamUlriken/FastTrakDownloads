@@ -313,6 +313,7 @@ BEGIN
   JOIN dbo.MetaStudyForm msf ON msf.FormId = mf.FormId
   WHERE msf.StudyId=@StudyId
 END
+GO
 
 CREATE SYNONYM dbo.GetMetaForms FOR CRF.GetMetaForms
 GO
