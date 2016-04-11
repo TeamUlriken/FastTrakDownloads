@@ -318,17 +318,6 @@ GO
 CREATE SYNONYM dbo.GetMetaForms FOR CRF.GetMetaForms
 GO
 
-PRINT '--  DROP view Meta.StudyForm and the Meta schema, where the view was the only object.'
-GO
-
-IF NOT OBJECT_ID('Meta.StudyForm') IS NULL
-  DROP VIEW Meta.StudyForm
-GO
-
-IF NOT SCHEMA_ID('Meta') IS NULL
-  DROP SCHEMA Meta
-GO
-
 EXECUTE dbo.DbFinalizeUpgrade 6310;
 GO
 

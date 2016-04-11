@@ -87,15 +87,21 @@ ALTER TABLE Dash.PersonData ADD CONSTRAINT PK_Dash_PersonData PRIMARY KEY(RowId)
 GO
 
 GRANT UPDATE ON dbo.MetaForm TO [public] AS [dbo]
-GRANT DELETE ON dbo.Alert TO [public] AS [dbo]
 GO
 
 UPDATE dbo.MetaForm SET FormName='LMG' WHERE FormName='GbdLegemiddel'
 GO
-DELETE FROM dbo.Alert WHERE AlertClass = 'GbdLegemidde'
-GO
 
 REVOKE UPDATE ON dbo.MetaForm TO [public]
+GO
+
+GRANT DELETE ON dbo.Alert TO [public] AS [dbo]
+GO
+
+DELETE FROM dbo.Alert WHERE AlertClass = 'GbdLegemidde'
+DELETE FROM dbo.Alert WHERE AlertClass LIKE '%!%'
+GO
+
 REVOKE DELETE ON dbo.Alert TO [public]
 GO
 
@@ -103,9 +109,6 @@ ALTER TABLE dbo.Alert ALTER COLUMN AlertClass VARCHAR(24) NOT NULL
 GO
 
 ALTER TABLE dbo.DSSRule ALTER COLUMN RuleClass VARCHAR(24) NOT NULL
-GO
-
-DELETE FROM dbo.Alert WHERE AlertClass LIKE '%!%'
 GO
 
 CREATE UNIQUE INDEX I_Alert_StudyPersonClass ON dbo.Alert(StudyId,PersonId,AlertClass)
@@ -199,9 +202,14 @@ END;
 GO
 
 -- Move data from CaveLog to DocumentLog 
+GRANT INSERT ON dbo.PersonDocumentLog TO [public] AS [dbo]
+GO
 
 INSERT INTO dbo.PersonDocumentLog (PersonId,DocumentId,Content,ChangedAt,ChangedBy)
 SELECT PersonId,50001,CAVE,CreatedAt,CreatedBy FROM dbo.CaveLog
+GO
+
+REVOKE INSERT ON dbo.PersonDocumentLog TO [public]
 GO
 
 DROP TABLE dbo.CaveLog
