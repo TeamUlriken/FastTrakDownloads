@@ -2022,6 +2022,16 @@ BEGIN
  EXEC dbo.GetActiveSingleVar @StudyId,'ICD10_E063a',1 
 END]]>
 	</row>
+	<row ProcId="725" StudyName="ROAS" ProcName="ROAS.GetRoasNumbers" ProcDesc="Prosess: Prøvenummer" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6311" LastUpdate="2016-04-14T09:09:43.813Z">
+		<![CDATA[CREATE PROCEDURE ROAS.GetRoasNumbers ( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, ISNULL( CONVERT(VARCHAR, CONVERT(INT, a.Quantity)), 'Mangler') AS RoasNr
+  FROM ViewActiveCaseListStub v
+  LEFT JOIN dbo.GetLastQuantityTable(6082, NULL) a ON a.PersonId = v.PersonId
+  WHERE v.StudyId = 2
+  ORDER BY v.PersonId
+END]]>
+	</row>
 	<row ProcId="726" StudyName="ROAS" ProcName="ENDO.GetHyperThyroAutoimmune" ProcDesc="Hypertyreose: Autoimmun" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-02-14T11:22:21.030Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHyperThyroAutoimmune( @StudyId INT ) AS 
 BEGIN 
