@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<form form_id="448" form_uid="SAMTALE_INNKOMST" title="Innkomstsamtale (langtid)" calculate_invalid="False" rating_scale="False" status="Open" repeatable="1" >
+<form form_id="448" form_uid="SAMTALE_INNKOMST" title="Innkomstsamtale (langtid)" calculate_invalid="False" rating_scale="False" status="Closed" repeatable="1" >
 <instructions>Innkomstsamtalen finner som regel sted etter ca 2 uker. Skjemaet gjennomgåes punktvis som sjekkliste under innkomstsamtalen. Kommentarfelter fylles ut ved behov. Minimum et referat fra samtalen fylles ut i GBD, i tillegg til administrative opplysninger. Ev. papirnotater legges i journal.</instructions>
 
 <!-- Start: Form enums, generated XML -->
@@ -13,16 +13,16 @@
 </enumeration>
 
 <enumeration enumeration_uid="5452">
-  <enum_item value="1" text="Ja" answer_id="29514" />
-  <enum_item value="2" text="Nei" short_code="N" answer_id="29515" />
+  <enum_item value="1" text="Ja | Pasienten bidrar med opplysinger." answer_id="29514" />
+  <enum_item value="2" text="Nei | Pasienten kan ikke bidra med opplysninger." short_code="N" answer_id="29515" />
 </enumeration>
 
 <enumeration enumeration_uid="5455">
-  <enum_item value="1" text="Hjem" answer_id="29524" />
-  <enum_item value="2" text="Somatisk sykehus" answer_id="29525" />
-  <enum_item value="3" text="Psykiatrisk sykehus" answer_id="29526" />
-  <enum_item value="4" text="Sykehjem / aldershjem" answer_id="29527" />
-  <enum_item value="5" text="Annet" answer_id="29528" />
+  <enum_item value="1" text="hjemmet." answer_id="29524" />
+  <enum_item value="2" text="somatisk sykehus." answer_id="29525" />
+  <enum_item value="3" text="psykiatrisk sykehus." answer_id="29526" />
+  <enum_item value="4" text="sykehjem / aldershjem." answer_id="29527" />
+  <enum_item value="5" text="Annet*" answer_id="29528" />
 </enumeration>
 
 <enumeration enumeration_uid="5456">
@@ -38,11 +38,11 @@
 
 <!-- Start: Form items, generated XML -->
 
-<question item_id="5451" mid="VAR5451" datatype="NAR" page_number="1" page_title="Kontekst" question_text="Samtale mellom" optional="1" multiline="0" />
-<question item_id="5452" mid="VAR5452" datatype="ORD" page_number="1" page_title="Kontekst" question_text="Er beboer i stand til &#229; bidra med opplysninger ved innkomstsamtalen?" optional="1" enumeration_uid="5452" />
+<question item_id="5451" mid="VAR5451" datatype="NAR" page_number="1" page_title="Kontekst" header="Tilstede" question_text="Hvem var tilstede under samtalen?" optional="1" multiline="1" />
+<question item_id="5452" mid="VAR5452" datatype="ORD" page_number="1" page_title="Kontekst" header="Bidrag fra pasient" question_text="Er beboer i stand til &#229; bidra med opplysninger ved innkomstsamtalen?" optional="1" enumeration_uid="5452" />
 <question item_id="5456" mid="VAR5456" datatype="ORD" page_number="1" page_title="Kontekst" header="Subjektiv helsetilstand" question_text="Hvordan oppleves beboerens helsetilstand (av seg selv, ev. p&#229;r&#248;rende)?" optional="1" enumeration_uid="5456" />
-<question item_id="4085" mid="GBD_INNDATO" datatype="DATE" page_number="2" page_title="Administrativt" question_text="Ankom sykehjemmet" optional="0" min_value="DOB" max_value="FORMDATE+7" help_text="Datoen da pasienten kom inn p&#229; sykehjemmet." group_id="GBD_INNDATO" />
-<question item_id="5455" mid="VAR5455" datatype="ORD" page_number="2" page_title="Administrativt" question_text="Kommer fra..." optional="0" enumeration_uid="5455" />
+<question item_id="4085" mid="GBD_INNDATO" datatype="DATE" page_number="2" page_title="Administrativt" header="Ankom" question_text="N&#229;r kom pasienten kom inn p&#229; sykehjemmet?" optional="0" min_value="DOB" max_value="FORMDATE+7" help_text="Gjelder aktuelt opphold." group_id="GBD_INNDATO" />
+<question item_id="5455" mid="VAR5455" datatype="ORD" page_number="2" page_title="Administrativt" header="Kommer fra" question_text="Hvor kommer pasienten fra?" optional="0" enumeration_uid="5455" />
 <question item_id="5457" mid="VAR5457" datatype="NAR" page_number="3" header="Institusjon" question_text="Navn p&#229; ev. institusjon som pasienten innlegges fra" optional="1" multiline="0" />
 <question item_id="5425" mid="VAR5425" datatype="NAR" page_number="4" page_title="Generell informasjon" question_text="Velkommen" optional="1" multiline="1" help_text="&#8226;	presenter deltakerne 
 &#8226;	informere om hensikt med samtalen" />
