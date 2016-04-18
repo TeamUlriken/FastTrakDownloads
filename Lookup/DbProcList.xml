@@ -2022,13 +2022,13 @@ BEGIN
  EXEC dbo.GetActiveSingleVar @StudyId,'ICD10_E063a',1 
 END]]>
 	</row>
-	<row ProcId="725" StudyName="ROAS" ProcName="ROAS.GetRoasNumbers" ProcDesc="Prosess: Prøvenummer" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6311" LastUpdate="2016-04-14T09:09:43.813Z">
+	<row ProcId="725" StudyName="ROAS" ProcName="ROAS.GetRoasNumbers" ProcDesc="Prosess: Prøvenummer" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6311" InfoCaption="Prøvenummer" LastUpdate="2016-04-15T18:29:00.283Z">
 		<![CDATA[CREATE PROCEDURE ROAS.GetRoasNumbers ( @StudyId INT ) AS
 BEGIN
-  SELECT v.*, ISNULL( CONVERT(VARCHAR, CONVERT(INT, a.Quantity)), 'Mangler') AS RoasNr
-  FROM ViewActiveCaseListStub v
+  SELECT v.*, ISNULL( CONVERT(VARCHAR, CONVERT(INT, a.Quantity)), 'Mangler') AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
   LEFT JOIN dbo.GetLastQuantityTable(6082, NULL) a ON a.PersonId = v.PersonId
-  WHERE v.StudyId = 2
+  WHERE v.StudyId = @StudyId
   ORDER BY v.PersonId
 END]]>
 	</row>
@@ -2036,6 +2036,16 @@ END]]>
 		<![CDATA[CREATE PROCEDURE ENDO.GetHyperThyroAutoimmune( @StudyId INT ) AS 
 BEGIN 
  EXEC dbo.GetActiveSingleVar @StudyId,'ICD10_E063b',1 
+END]]>
+	</row>
+	<row ProcId="727" StudyName="ROAS" ProcName="ROAS.GetRoasNumbersMissing" ProcDesc="Prosess: Mangler prøvenummer" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6311" InfoCaption="Informasjon" LastUpdate="2016-04-15T18:34:27.473Z">
+		<![CDATA[CREATE PROCEDURE ROAS.GetRoasNumbersMissing ( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, ISNULL(CONVERT(VARCHAR, CONVERT(INT, a.Quantity)), 'Mangler') AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  LEFT JOIN dbo.GetLastQuantityTable( 6082, NULL) a ON a.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId AND a.Quantity IS NULL
+  ORDER BY v.PersonId
 END]]>
 	</row>
 	<row ProcId="728" StudyName="ROAS" ProcName="ENDO.GetDiabetesType1" ProcDesc="Diagnose: Diabetes type 1" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-06-06T10:09:07.020Z">
