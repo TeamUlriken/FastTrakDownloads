@@ -318,6 +318,9 @@ GO
 CREATE SYNONYM dbo.GetMetaForms FOR CRF.GetMetaForms
 GO
 
+GRANT EXECUTE ON dbo.GetMetaForms TO [public] AS [dbo]
+GO
+
 EXECUTE dbo.DbFinalizeUpgrade 6310;
 GO
 
