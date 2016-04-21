@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<form form_id="450" form_uid="AKTIVITETSPLAN" title="Aktivitetsplan" calculate_invalid="False" rating_scale="False" status="Closed" repeatable="1" >
+<form form_id="551" form_uid="AKTIVITETSPLAN" title="Aktivitetsplan" calculate_invalid="False" status="Open" repeatable="1" >
 <instructions></instructions>
 
 <!-- Start: Form enums, generated XML -->
+
+<enumeration enumeration_uid="1012">
+  <enum_item value="1" text="Ja" answer_id="58736" />
+  <enum_item value="2" text="Nei" answer_id="58737" />
+</enumeration>
 
 <enumeration enumeration_uid="5471">
   <enum_item value="1" text="Ja" answer_id="29585" />
@@ -167,8 +172,10 @@
 <question item_id="5502" mid="VAR5502" datatype="ORD" page_number="7" page_title="Vaner" question_text="Beboer liker &#229; st&#229; opp klokken..." optional="1" enumeration_uid="5502" />
 <question item_id="5503" mid="VAR5503" datatype="ORD" page_number="7" page_title="Vaner" question_text="Beboer liker &#229; legge seg klokken..." optional="1" enumeration_uid="5503" />
 <question item_id="5504" mid="VAR5504" datatype="NAR" page_number="7" page_title="Vaner" question_text="Andre vaner..." optional="1" multiline="1" />
-<question item_id="5505" mid="GbdLivssynHensyn" datatype="ORD" page_number="8" page_title="Livssyn" header="Livssyn" question_text="Har beboeren et livssyn/religion som avdelingen trenger &#229; ta spesielt hensyn til?" optional="0" carry_forward="1" exclude_from_text="1" enumeration_uid="5505" help_text="F.eks. knyttet til kosthold, prestetilbud, h&#248;ytider, blodoverf&#248;ring, m.m." group_id="GbdLivssynHensyn" />
-<question item_id="5506" mid="GbdLivvsynHensynTekst" datatype="NAR" page_number="9" header="Hvordan" question_text="P&#229; hvilken m&#229;te det &#248;nskes &#229; bli tatt hensyn til?" optional="1" multiline="1" group_id="GbdLivvsynHensynTekst" />
+<question item_id="1012" mid="LS1_LIVSSYN_KJENT" datatype="ORD" page_number="8" page_title="Livssyn" question_text="Pasientens trosretning eller livssyn er kjent" optional="0" carry_forward="1" exclude_from_text="1" enumeration_uid="1012" group_id="LS1_LIVSSYN_KJENT" />
+<question item_id="1044" mid="LS1_LIVSSYN" datatype="NAR" page_number="9" question_text="Pasientens trosretning eller livssyn:" optional="0" carry_forward="1" exclude_caption="1" multiline="0" group_id="LS1_LIVSSYN" />
+<question item_id="5505" mid="GbdLivssynHensyn" datatype="ORD" page_number="9" header="Livssyn" question_text="Har beboeren et livssyn/religion som avdelingen trenger &#229; ta spesielt hensyn til?" optional="0" carry_forward="1" exclude_from_text="1" enumeration_uid="5505" help_text="F.eks. knyttet til kosthold, prestetilbud, h&#248;ytider, blodoverf&#248;ring, m.m." group_id="GbdLivssynHensyn" />
+<question item_id="5506" mid="GbdLivvsynHensynTekst" datatype="NAR" page_number="10" header="Hvordan" question_text="P&#229; hvilken m&#229;te det &#248;nskes &#229; bli tatt hensyn til?" optional="0" carry_forward="1" multiline="1" group_id="GbdLivvsynHensynTekst" />
 
 <!-- Start: Form actions, generated XML -->
 
@@ -188,5 +195,7 @@
 <question_action master_question_mid="VAR5471" detail_question_mid="VAR5492" enum_item_value="2" activate="1" />
 <question_action master_question_mid="VAR5471" detail_question_mid="VAR5493" enum_item_value="2" activate="1" />
 <question_action master_question_mid="VAR5495" detail_question_mid="VAR5496" enum_item_value="1" activate="1" />
+<question_action master_question_mid="LS1_LIVSSYN_KJENT" detail_question_mid="LS1_LIVSSYN" enum_item_value="1" activate="1" />
+<question_action master_question_mid="LS1_LIVSSYN_KJENT" detail_question_mid="GbdLivssynHensyn" enum_item_value="1" activate="1" />
 <question_action master_question_mid="GbdLivssynHensyn" detail_question_mid="GbdLivvsynHensynTekst" enum_item_value="1" activate="1" />
 </form>
