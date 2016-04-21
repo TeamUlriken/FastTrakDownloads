@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<form form_id="504" form_uid="SAMTALE_INNKOMST" title="Innkomstsamtale (langtid)" calculate_invalid="False" rating_scale="False" status="Open" repeatable="1" >
+<form form_id="504" form_uid="GBD_INN_LANGTID" title="Innkomstsamtale (langtid)" calculate_invalid="False" rating_scale="False" status="Open" repeatable="1" >
 <instructions></instructions>
 
 <!-- Start: Form enums, generated XML -->
@@ -10,6 +10,11 @@
   <enum_item value="3" text="Rehabiliteringsopphold." answer_id="170" />
   <enum_item value="4" text="Rullering." answer_id="171" />
   <enum_item value="5" text="Fast beboer." answer_id="17614" />
+</enumeration>
+
+<enumeration enumeration_uid="1012">
+  <enum_item value="1" text="Ja" answer_id="58736" />
+  <enum_item value="2" text="Nei" answer_id="58737" />
 </enumeration>
 
 <enumeration enumeration_uid="1056">
@@ -27,6 +32,11 @@
   <enum_item value="2" text="Nei" answer_id="58896" />
 </enumeration>
 
+<enumeration enumeration_uid="1080">
+  <enum_item value="1" text="Ja | Stratify er utfylt." answer_id="58925" />
+  <enum_item value="2" text="Nei" answer_id="58926" />
+</enumeration>
+
 <enumeration enumeration_uid="5452">
   <enum_item value="1" text="Ja | Pasienten bidrar med opplysinger." answer_id="29514" />
   <enum_item value="2" text="Nei | Pasienten kan ikke bidra med opplysninger." short_code="N" answer_id="29515" />
@@ -38,6 +48,11 @@
   <enum_item value="3" text="psykiatrisk sykehus." answer_id="29526" />
   <enum_item value="4" text="sykehjem / aldershjem." answer_id="29527" />
   <enum_item value="5" text="Annet*" answer_id="29528" />
+</enumeration>
+
+<enumeration enumeration_uid="5505">
+  <enum_item value="1" text="Ja" answer_id="29705" />
+  <enum_item value="2" text="Nei" short_code="N" answer_id="29706" />
 </enumeration>
 
 <enumeration enumeration_uid="6100">
@@ -120,6 +135,7 @@
 &#8226; Informer om hensikt" />
 <question item_id="6107" mid="VAR6107" datatype="ORD" page_number="5" page_title="Gjennomgang status beboer" header="Ern&#230;ringsplan" question_text="Er skjemaet Ern&#230;ringsplan utfylt?" optional="0" enumeration_uid="6107" help_text="&#8226; Gjennomgang av ern&#230;ringsstatus ved innkomst  
 &#8226; Ern&#230;ringsplan/matkort og m&#229;ltider - suppler med informasjon som innhentes i l&#248;pet av samtalen med beboer/ p&#229;r&#248;rende" />
+<question item_id="1080" mid="VAR1080" datatype="ORD" page_number="5" page_title="Gjennomgang status beboer" header="Fallrisiko" question_text="Er skjemaet Fallrisiko - Stratify utfylt?" optional="0" enumeration_uid="1080" />
 <question item_id="1056" mid="VAR1056" datatype="ORD" page_number="5" page_title="Gjennomgang status beboer" header="Samarbeid med p&#229;r&#248;rende" question_text="Er forventinger til kommunikasjon/informasjon/samarbeid avklart?" optional="0" enumeration_uid="1056" help_text="Avklar forventninger begge veier." />
 <question item_id="1062" mid="VAR1062" datatype="ORD" page_number="5" page_title="Gjennomgang status beboer" header="Beslutningskjema" question_text="Er skjemaet Beslutninger fylt ut av legen?" optional="0" exclude_from_text="1" enumeration_uid="1062" help_text="Skjemaet skal fylles ut av lege innen to uker etter innkomst." />
 <question item_id="1059" mid="VAR1059" datatype="NAR" page_number="5" page_title="Gjennomgang status beboer" header="Medisinske forhold" question_text="&#216;nsker/avklaringer rundt medisinske forhold" optional="1" multiline="1" />
@@ -136,10 +152,17 @@
 <question item_id="6122" mid="VAR6122" datatype="ORD" page_number="9" page_title="Informasjon om tilbud og tjenester" header="Oppf&#248;lgingssamtale" question_text="Er det informert om &#229;rlig oppf&#248;lgingssamtale?" optional="0" enumeration_uid="6122" />
 <question item_id="6123" mid="VAR6123" datatype="ORD" page_number="9" page_title="Informasjon om tilbud og tjenester" header="Sp&#248;rsm&#229;l fra beboer/p&#229;r&#248;rende" question_text="Har pasient eller p&#229;r&#248;rende noen ytterligere sp&#248;rsm&#229;l?" optional="0" enumeration_uid="6123" help_text="Inviter ogs&#229; til &#229; ta kontakt n&#229;r de har sp&#248;rsm&#229;l eller behov for avklaringer senere." />
 <question item_id="6124" mid="VAR6124" datatype="NAR" page_number="10" header="Kommentar" question_text="Hvilke sp&#248;rsm&#229;l trenger ytterligere avklaring?" optional="0" exclude_caption="1" multiline="1" />
+<question item_id="1012" mid="LS1_LIVSSYN_KJENT" datatype="ORD" page_number="11" page_title="Livssyn" question_text="Pasientens trosretning eller livssyn er kjent" optional="0" carry_forward="1" exclude_from_text="1" enumeration_uid="1012" group_id="LS1_LIVSSYN_KJENT" />
+<question item_id="1044" mid="LS1_LIVSSYN" datatype="NAR" page_number="12" question_text="Pasientens trosretning eller livssyn:" optional="0" carry_forward="1" exclude_caption="1" multiline="0" group_id="LS1_LIVSSYN" />
+<question item_id="5505" mid="GbdLivssynHensyn" datatype="ORD" page_number="12" header="Livssyn" question_text="Har beboeren et livssyn/religion som avdelingen trenger &#229; ta spesielt hensyn til?" optional="0" carry_forward="1" exclude_from_text="1" enumeration_uid="5505" help_text="F.eks. knyttet til kosthold, prestetilbud, h&#248;ytider, blodoverf&#248;ring, m.m." group_id="GbdLivssynHensyn" />
+<question item_id="5506" mid="GbdLivvsynHensynTekst" datatype="NAR" page_number="13" header="Hvordan" question_text="P&#229; hvilken m&#229;te det &#248;nskes &#229; bli tatt hensyn til?" optional="0" carry_forward="1" multiline="1" group_id="GbdLivvsynHensynTekst" />
 
 <!-- Start: Form actions, generated XML -->
 
 <question_action master_question_mid="VAR5455" detail_question_mid="VAR5457" enum_item_value="1" activate="6" />
 <question_action master_question_mid="VAR6114" detail_question_mid="VAR1057" enum_item_value="1" activate="1" />
 <question_action master_question_mid="VAR6123" detail_question_mid="VAR6124" enum_item_value="1" activate="1" />
+<question_action master_question_mid="LS1_LIVSSYN_KJENT" detail_question_mid="LS1_LIVSSYN" enum_item_value="1" activate="1" />
+<question_action master_question_mid="LS1_LIVSSYN_KJENT" detail_question_mid="GbdLivssynHensyn" enum_item_value="1" activate="1" />
+<question_action master_question_mid="GbdLivssynHensyn" detail_question_mid="GbdLivvsynHensynTekst" enum_item_value="1" activate="1" />
 </form>
