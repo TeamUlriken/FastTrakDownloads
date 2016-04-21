@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<form form_id="514" form_uid="LCP3" title="Mors (LCP del 3 - ved d&#248;dsfallet)" calculate_invalid="False" rating_scale="False" status="Closed" repeatable="1" >
+<form form_id="514" form_uid="LCP3" title="Mors (LCP del 3 - ved d&#248;dsfallet)" calculate_invalid="False" rating_scale="False" status="Closed" repeatable="0" >
 <instructions></instructions>
 
 <!-- Start: Form enums, generated XML -->
@@ -63,11 +63,13 @@
 <enumeration enumeration_uid="6550">
   <enum_item value="1" text="Ja" answer_id="35055" />
   <enum_item value="2" text="Nei" short_code="N" answer_id="35056" />
+  <enum_item value="3" text="Ikke aktuelt" answer_id="10012" />
 </enumeration>
 
 <enumeration enumeration_uid="6551">
   <enum_item value="1" text="Ja" answer_id="35061" />
   <enum_item value="2" text="Nei" short_code="N" answer_id="35062" />
+  <enum_item value="3" text="Ikke aktuelt" answer_id="10013" />
 </enumeration>
 
 <enumeration enumeration_uid="6552">
@@ -141,12 +143,12 @@
 
 <!-- Start: Form items, generated XML -->
 
-<question item_id="6297" mid="VAR6297" datatype="DATE" page_number="1" page_title="VED D&#216;DSFALLET" page_introduction="Skjema fylles ut av ansvarlig pleiepersonal ved d&#248;dsfall, selv om ikke LCP har v&#230;rt brukt. Skriv gjerne en kort rapport i kommentarfeltet." question_text="D&#248;dstidspunkt - dato" optional="0" />
-<question item_id="6298" mid="VAR6298" datatype="QN" page_number="1" page_title="VED D&#216;DSFALLET" page_introduction="Skjema fylles ut av ansvarlig pleiepersonal ved d&#248;dsfall, selv om ikke LCP har v&#230;rt brukt. Skriv gjerne en kort rapport i kommentarfeltet." question_text="D&#248;dstidspunkt - klokkeslett (avrundet)" optional="0" carry_forward="1" min_value="00" max_value="23" help_text="N&#230;rmeste hele klokkeslett" />
-<question item_id="6549" mid="VAR6549" datatype="DATE" page_number="1" page_title="VED D&#216;DSFALLET" page_introduction="Skjema fylles ut av ansvarlig pleiepersonal ved d&#248;dsfall, selv om ikke LCP har v&#230;rt brukt. Skriv gjerne en kort rapport i kommentarfeltet." question_text="Attestert av lege - dato" optional="0" />
-<question item_id="6548" mid="VAR6548" datatype="QN" page_number="1" page_title="VED D&#216;DSFALLET" page_introduction="Skjema fylles ut av ansvarlig pleiepersonal ved d&#248;dsfall, selv om ikke LCP har v&#230;rt brukt. Skriv gjerne en kort rapport i kommentarfeltet." question_text="Klokkeslett (avrundet) attestert av lege:" optional="0" carry_forward="1" min_value="00" max_value="23" help_text="N&#230;rmeste hele klokkeslett" />
+<question item_id="6297" mid="DEATH_DATE" datatype="DATE" page_number="1" page_title="VED D&#216;DSFALLET" page_introduction="Skjema fylles ut av ansvarlig pleiepersonal ved d&#248;dsfall, selv om ikke LCP har v&#230;rt brukt. Skriv gjerne en kort rapport i kommentarfeltet." question_text="D&#248;dstidspunkt - dato" optional="0" group_id="DEATH_DATE" />
+<question item_id="6298" mid="DEATH_HOUR" datatype="QN" page_number="1" page_title="VED D&#216;DSFALLET" page_introduction="Skjema fylles ut av ansvarlig pleiepersonal ved d&#248;dsfall, selv om ikke LCP har v&#230;rt brukt. Skriv gjerne en kort rapport i kommentarfeltet." question_text="D&#248;dstidspunkt - klokkeslett (avrundet)" optional="0" carry_forward="1" min_value="00" max_value="23" help_text="N&#230;rmeste hele klokkeslett" group_id="DEATH_HOUR" />
+<question item_id="6549" mid="DEATH_DATE_ATTESTED" datatype="DATE" page_number="1" page_title="VED D&#216;DSFALLET" page_introduction="Skjema fylles ut av ansvarlig pleiepersonal ved d&#248;dsfall, selv om ikke LCP har v&#230;rt brukt. Skriv gjerne en kort rapport i kommentarfeltet." question_text="Attestert av lege - dato" optional="0" group_id="DEATH_DATE_ATTESTED" />
+<question item_id="6548" mid="DEATH_HOUR_ATTESTED" datatype="QN" page_number="1" page_title="VED D&#216;DSFALLET" page_introduction="Skjema fylles ut av ansvarlig pleiepersonal ved d&#248;dsfall, selv om ikke LCP har v&#230;rt brukt. Skriv gjerne en kort rapport i kommentarfeltet." question_text="Klokkeslett (avrundet) attestert av lege:" optional="0" carry_forward="1" min_value="00" max_value="23" help_text="N&#230;rmeste hele klokkeslett" group_id="DEATH_HOUR_ATTESTED" />
 <question item_id="5800" mid="OBSERVED_DEATH" datatype="ORD" page_number="2" page_title="Hvem var tilstede" question_text="Var det noen tilstede idet pasienten d&#248;de" optional="0" enumeration_uid="5800" group_id="OBSERVED_DEATH" />
-<question item_id="5094" mid="VAR5094" datatype="ORD" page_number="2" page_title="Hvem var tilstede" question_text="Ingen" optional="0" visible="0" expression="2-ISNULL(OBSERVED_DEATH-2)" enumeration_uid="5094" />
+<question item_id="5094" mid="DIED_ALONE" datatype="ORD" page_number="2" page_title="Hvem var tilstede" question_text="Ingen" optional="0" visible="0" expression="2-ISNULL(OBSERVED_DEATH-2)" enumeration_uid="5094" group_id="DIED_ALONE" />
 <question item_id="5096" mid="VAR5096" datatype="ORD" page_number="3" question_text="P&#229;r&#248;rende" optional="1" enumeration_uid="5096" />
 <question item_id="5095" mid="VAR5095" datatype="ORD" page_number="3" question_text="Pleiepersonale" optional="0" enumeration_uid="5095" />
 <question item_id="5097" mid="VAR5097" datatype="ORD" page_number="3" question_text="Fastvakt" optional="1" enumeration_uid="5097" />
@@ -154,24 +156,24 @@
 <question item_id="5099" mid="VAR5099" datatype="ORD" page_number="3" question_text="Prest" optional="1" enumeration_uid="5099" />
 <question item_id="5185" mid="LCP_USED" datatype="ORD" page_number="4" page_title="LCP" header="LCP benyttet" question_text="Var Liverpool Care Pathway tiltaksplan benyttet?" optional="0" enumeration_uid="5185" group_id="LCP_USED" />
 <question item_id="7507" mid="VAR7507" datatype="ORD" page_number="5" question_text="Hva er grunnen til at den avd&#248;de ikke stod p&#229; LCP?" optional="1" enumeration_uid="7507" />
-<question item_id="7508" mid="VAR7508" datatype="NAR" page_number="6" question_text="Kommentar" optional="1" multiline="1" />
+<question item_id="7508" mid="VAR7508" datatype="NAR" page_number="6" header="Kommentar" question_text="Skriv kort om hvorfor tiltaksplanen ikke ble brukt" optional="1" multiline="1" />
 <question item_id="6577" mid="VAR6577" datatype="MSG" page_number="7" page_title="DELM&#197;L ETTER D&#216;DSFALLET" header="M&#229;l 12" question_text="Fastlegen er informert om d&#248;dsfallet (dersom ikke fast beboer)" optional="1" />
-<question item_id="6550" mid="VAR6550" datatype="ORD" page_number="7" page_title="DELM&#197;L ETTER D&#216;DSFALLET" question_text="Fastlegen er informert om d&#248;dsfallet" optional="1" enumeration_uid="6550" help_text="(dersom ikke fast beboer). Ta kontakt neste arbeidsdag hvis d&#248;dsfallet skjer utenom arbeidstiden." />
+<question item_id="6550" mid="VAR6550" datatype="ORD" page_number="7" page_title="DELM&#197;L ETTER D&#216;DSFALLET" question_text="Fastlegen er informert om d&#248;dsfallet." optional="1" enumeration_uid="6550" help_text="Ta kontakt neste arbeidsdag hvis d&#248;dsfallet skjer utenom arbeidstiden, dersom ikke fast beboer." />
 <question item_id="6557" mid="VAR6557" datatype="NAR" page_number="8" question_text="Tiltak for &#229; oppn&#229; m&#229;let" optional="0" multiline="1" />
 <question item_id="6558" mid="VAR6558" datatype="ORD" page_number="8" question_text="Effekt av tiltaket" optional="0" enumeration_uid="6558" />
-<question item_id="6551" mid="VAR6551" datatype="ORD" page_number="9" question_text="Hjemmesykepleien er informert om d&#248;dsfallet" optional="1" enumeration_uid="6551" help_text="(dersom ikke fast beboer)" />
+<question item_id="6551" mid="VAR6551" datatype="ORD" page_number="9" question_text="Hjemmesykepleien er informert om d&#248;dsfallet" optional="1" enumeration_uid="6551" help_text="Dersom de er tjenesteyter." />
 <question item_id="5108" mid="VAR5108" datatype="NAR" page_number="10" question_text="Tiltak for &#229; oppn&#229; m&#229;let" optional="0" multiline="1" />
 <question item_id="5282" mid="VAR5282" datatype="ORD" page_number="10" question_text="Effekt av tiltaket" optional="0" enumeration_uid="5282" />
 <question item_id="6578" mid="VAR6578" datatype="MSG" page_number="11" header="M&#229;l 13" question_text="Avdelingens prosedyrer ved mors og ved stell av d&#248;de er fulgt" optional="1" />
-<question item_id="6553" mid="VAR6553" datatype="ORD" page_number="11" question_text="Avdelingens prosedyrer ved mors og ved stell av d&#248;de er fulgt" optional="0" enumeration_uid="6553" help_text="(spesielle religi&#248;se/kulturelle behov ivaretatt)" />
+<question item_id="6553" mid="VAR6553" datatype="ORD" page_number="11" question_text="Avdelingens prosedyrer ved mors og ved stell av d&#248;de er fulgt." optional="0" enumeration_uid="6553" help_text="Spesielle religi&#248;se/kulturelle behov ivaretatt." />
 <question item_id="6567" mid="VAR6567" datatype="NAR" page_number="12" question_text="Tiltak for &#229; oppn&#229; m&#229;let" optional="0" multiline="1" />
 <question item_id="6568" mid="VAR6568" datatype="ORD" page_number="12" question_text="Effekt av tiltaket" optional="0" enumeration_uid="6568" />
 <question item_id="6579" mid="VAR6579" datatype="MSG" page_number="13" header="M&#229;l 14" question_text="Avdelingens prosedyrer etter d&#248;dsfall er fulgt" optional="1" />
-<question item_id="6552" mid="VAR6552" datatype="ORD" page_number="13" question_text="Avdelingens prosedyrer etter d&#248;dsfall er fulgt" optional="0" enumeration_uid="6552" help_text="Sjekk f&#248;lgende punkter: syning av liket, fjerning av ev pacemaker eller ICD pga kremasjon, obduksjon, registrering av d&#248;dsfallet/d&#248;dsattest fylt ut, journalen avsluttet og epikrise diktert, beskjed formidlet til ev. andre offisielle instanser." />
+<question item_id="6552" mid="VAR6552" datatype="ORD" page_number="13" question_text="Avdelingens prosedyrer etter d&#248;dsfall er fulgt." optional="0" enumeration_uid="6552" help_text="Sjekk f&#248;lgende punkter: syning av liket, fjerning av ev pacemaker eller ICD pga kremasjon, obduksjon, registrering av d&#248;dsfallet/d&#248;dsattest fylt ut, journalen avsluttet og epikrise diktert, beskjed formidlet til ev. andre offisielle instanser." />
 <question item_id="6565" mid="VAR6565" datatype="NAR" page_number="14" question_text="Tiltak for &#229; oppn&#229; m&#229;let" optional="0" multiline="1" />
 <question item_id="6566" mid="VAR6566" datatype="ORD" page_number="14" question_text="Effekt av tiltaket" optional="0" enumeration_uid="6566" />
 <question item_id="6580" mid="VAR6580" datatype="MSG" page_number="15" header="M&#229;l 15" question_text="De p&#229;r&#248;rende er gitt informasjon om rutiner ved d&#248;dsfall" optional="1" />
-<question item_id="6554" mid="VAR6554" datatype="ORD" page_number="15" question_text="De p&#229;r&#248;rende er gitt informasjon om rutiner ved d&#248;dsfall" optional="0" enumeration_uid="6554" help_text="Brosjyre med praktisk informasjon ved d&#248;dsfall er gitt til de p&#229;r&#248;rende" />
+<question item_id="6554" mid="VAR6554" datatype="ORD" page_number="15" question_text="De p&#229;r&#248;rende er gitt informasjon om rutiner ved d&#248;dsfall." optional="0" enumeration_uid="6554" help_text="Brosjyre med praktisk informasjon ved d&#248;dsfall er gitt til de p&#229;r&#248;rende" />
 <question item_id="6563" mid="VAR6563" datatype="NAR" page_number="16" question_text="Tiltak for &#229; oppn&#229; m&#229;let" optional="0" multiline="1" />
 <question item_id="6564" mid="VAR6564" datatype="ORD" page_number="16" question_text="Effekt av tiltaket" optional="0" enumeration_uid="6564" />
 <question item_id="6581" mid="VAR6581" datatype="MSG" page_number="17" header="M&#229;l 16" question_text="Sykehjemmets prosedyrer vedr&#248;rende pasientens verdisaker og eiendeler er fulgt" optional="1" />
@@ -183,7 +185,7 @@
 <question item_id="6569" mid="VAR6569" datatype="NAR" page_number="20" question_text="Tiltak for &#229; oppn&#229; m&#229;let" optional="0" multiline="1" />
 <question item_id="6570" mid="VAR6570" datatype="ORD" page_number="20" question_text="Effekt av tiltaket" optional="0" enumeration_uid="6570" />
 <question item_id="6583" mid="VAR6583" datatype="MSG" page_number="21" header="M&#229;l 18" question_text="Skriftlig informasjon til etterlatte er gitt til de p&#229;r&#248;rende" optional="1" />
-<question item_id="6315" mid="VAR6315" datatype="ORD" page_number="21" question_text="Skriftlig informasjon til etterlatte er gitt til de p&#229;r&#248;rende" optional="0" enumeration_uid="6315" help_text="Informasjonshefte om sorg og aktuell oppf&#248;lging i lokalmilj&#248;et delt ut (&quot;etterlattemappe&quot;)" />
+<question item_id="6315" mid="VAR6315" datatype="ORD" page_number="21" question_text="Skriftlig informasjon til etterlatte er gitt til de p&#229;r&#248;rende." optional="0" enumeration_uid="6315" help_text="Informasjonshefte om sorg og aktuell oppf&#248;lging i lokalmilj&#248;et delt ut (&quot;etterlattemappe&quot;)" />
 <question item_id="6559" mid="VAR6559" datatype="NAR" page_number="22" question_text="Tiltak for &#229; oppn&#229; m&#229;let" optional="0" multiline="1" />
 <question item_id="6560" mid="VAR6560" datatype="ORD" page_number="22" question_text="Effekt av tiltaket" optional="0" enumeration_uid="6560" />
 
