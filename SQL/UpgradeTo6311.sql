@@ -2,10 +2,11 @@ SET XACT_ABORT ON;
 BEGIN TRANSACTION UpgradeTo6311
 GO
 
-PRINT 'Overall purpose: Add GetLastQuantityTable for reporting/populations.'
+PRINT 'Overall purpose: Add GetLastQuantityTable for reporting/populations. Bugfixes.'
 
 --  CREATE table function dbo.GetLastQuantityTable for easy cross-sectional reporting on quantity variables.
---  UPDATE misleading caption and text for UserRoleInfo related to role ReadOnly.
+--  UPDATE UserRoleInfo, change misleading caption and text related to role ReadOnly.
+--  CREATE PROCEDURE UpdateCaseTransfer to allow single-operation transfer of patients between institutions.
 
 EXECUTE dbo.DbStartUpgrade 6310, 6311;
 GO
@@ -41,18 +42,37 @@ BEGIN
 END
 GO
 
-PRINT '--  UPDATE misleading caption and text for UserRoleInfo related to role ReadOnly.'
+PRINT '--  UPDATE UserRoleInfo, change misleading caption and text related to role ReadOnly.'
 GO
 
 GRANT UPDATE ON dbo.UserRoleInfo TO [public] AS [dbo]
 GO
 
+SET NOCOUNT ON
 UPDATE dbo.UserRoleInfo
 SET RoleCaption = 'Skrivesperre', RoleInfo = 'Hindrer brukeren i å registrere data i journalen.'
 WHERE RoleName = 'ReadOnly'
 GO
 
 REVOKE UPDATE ON dbo.UserRoleInfo TO [public]
+GO
+
+PRINT '--  CREATE PROCEDURE UpdateCaseTransfer to allow single-operation transfer of patients between institutions.'
+GO
+
+IF NOT OBJECT_ID('UpdateCaseTransfer','P') IS NULL
+  DROP PROCEDURE dbo.UpdateCaseTransfer
+GO
+
+CREATE PROCEDURE dbo.UpdateCaseTransfer( @StudyId INT, @PersonId INT, @GroupId INT, @StatusId INT ) AS
+BEGIN
+  SET NOCOUNT ON;
+  UPDATE dbo.StudCase SET GroupId=@GroupId, FinState = @StatusId 
+  WHERE StudyId=@StudyId AND PersonId=@PersonId;
+END
+GO
+
+GRANT EXECUTE ON dbo.UpdateCaseTransfer TO [public] AS [dbo]
 GO
 
 EXECUTE dbo.DbFinalizeUpgrade 6311;
