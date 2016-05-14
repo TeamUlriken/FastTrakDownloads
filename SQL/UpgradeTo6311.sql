@@ -1,12 +1,14 @@
-SET XACT_ABORT ON;
+SET XACT_ABORT OFF;
+
 BEGIN TRANSACTION UpgradeTo6311
 GO
 
-PRINT 'Overall purpose: Add GetLastQuantityTable for reporting/populations. Bugfixes.'
+PRINT 'Overall purpose: Table function GetLastQuantityTable for reporting/populations. Bugfixes.'
 
 --  CREATE table function dbo.GetLastQuantityTable for easy cross-sectional reporting on quantity variables.
 --  UPDATE UserRoleInfo, change misleading caption and text related to role ReadOnly.
 --  CREATE PROCEDURE UpdateCaseTransfer to allow single-operation transfer of patients between institutions.
+--  Adding profession Ergoteraput.
 
 EXECUTE dbo.DbStartUpgrade 6310, 6311;
 GO
@@ -73,6 +75,24 @@ END
 GO
 
 GRANT EXECUTE ON dbo.UpdateCaseTransfer TO [public] AS [dbo]
+GO
+
+PRINT '--  Adding profession Ergoterapeut ...'
+GO
+
+BEGIN TRY
+  SET NOCOUNT ON
+  INSERT INTO dbo.MetaProfession (ProfName, OID9060)
+    VALUES ('Ergoterapeut', 'ET')
+  INSERT INTO dbo.MetaRelation (ProfType, RelName, RelDuration)
+    VALUES ('ET', 'Fast oppfølging', 365)
+  INSERT INTO dbo.MetaRelation (ProfType, RelName, RelDuration)
+    VALUES ('ET', 'Enkeltkontakt', 1)
+  PRINT '--   Ergoterapeut er lagt til i database.'
+END TRY
+BEGIN CATCH
+  PRINT '--   Ergoterapeut finnes allerede i databasen'
+END CATCH
 GO
 
 EXECUTE dbo.DbFinalizeUpgrade 6311;
