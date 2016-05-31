@@ -495,20 +495,20 @@ BEGIN
   EXEC GetCaseListDruidLevel @StudyId,2
 END]]>
 	</row>
-	<row ProcId="123" StudyName="GBD" ProcName="GetCaseListAntiHTLowBP" ProcDesc="Forsiktighetsregler: Antihypertensiva og BT &lt; 120" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-01-22T12:27:10.913Z">
-		<![CDATA[CREATE PROCEDURE dbo.GetCaseListAntiHTLowBP( @StudyId INT ) AS
+	<row ProcId="123" StudyName="GBD" ProcName="GetCaseListAntiHTLowBP" ProcDesc="Forsiktighetsregler: Antihypertensiva og BT &lt; 120" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2016-05-31T13:57:31.330Z">
+		<![CDATA[CREATE PROCEDURE dbo.GetCaseListAntiHTLowBP (@StudyId INT) AS
 BEGIN
-  SET NOCOUNT ON;
-  SELECT DISTINCT vcl.PersonId,vcl.DOB,vcl.FullName,vcl.GroupName,
-    'Sys BT = ' + CONVERT(VARCHAR,CONVERT(INT,dbo.GetLastQuantity(vcl.PersonId,'SBP_UNSPEC'))) +
-    ', ' + dt.DrugName AS InfoText
-  FROM dbo.ViewActiveCaseListStub vcl
-    JOIN dbo.DrugTreatment dt on dt.PersonId=vcl.PersonId
-      and ( dt.ATC like 'C07%' or dt.ATC like 'C09%' or dt.ATC like 'C08%'
-        or dt.ATC like 'C02%' OR dt.ATC like 'C03%')
-      and ( dt.StopAt IS NULL OR dt.StopAt>getdate())
-  WHERE vcl.StudyId=@StudyId AND dbo.GetLastQuantity(vcl.PersonId,'SBP_UNSPEC') < 120
-  ORDER BY FullName
+	SET NOCOUNT ON;
+	SELECT DISTINCT a.PersonId, a.DOB, a.FullName, a.GroupName, 'Sys BT = ' + CONVERT(VARCHAR, CONVERT(INT, a.Quantity)) + ', ' + dt.DrugName AS InfoText
+	FROM (SELECT ce.PersonId, vacls.DOB, vacls.FullName, vacls.GroupName, cdp.Quantity, vacls.StudyId, RANK() OVER (PARTITION BY ce.PersonId, ce.StudyId ORDER BY ce.EventTime DESC) AS rnk
+		FROM dbo.ClinEvent ce
+		JOIN dbo.ViewActiveCaseListStub vacls
+			ON vacls.PersonId = ce.PersonId
+		JOIN dbo.ClinDataPoint cdp
+			ON cdp.EventId = ce.EventId AND cdp.ItemId = 3556) a
+	JOIN dbo.DrugTreatment dt ON dt.PersonId = a.PersonId AND (dt.ATC LIKE 'C07%' OR dt.ATC LIKE 'C09%' OR dt.ATC LIKE 'C08%' OR dt.ATC LIKE 'C02%' OR dt.ATC LIKE 'C03%') AND (dt.StopAt IS NULL OR dt.StopAt > GETDATE())
+	WHERE a.rnk = 1 AND a.Quantity < 120 AND a.StudyId = @StudyId
+	ORDER BY FullName
 END]]>
 	</row>
 	<row ProcId="124" StudyName="GBD" ProcName="GetCaseListN04BAN05A" ProcDesc="Kontraindikasjoner: Antiparkinson + nevroleptika" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-01-22T12:27:10.913Z">
@@ -2038,7 +2038,7 @@ BEGIN
  EXEC dbo.GetActiveSingleVar @StudyId,'ICD10_E063b',1 
 END]]>
 	</row>
-	<row ProcId="727" StudyName="ROAS" ProcName="ROAS.GetRoasNumbersMissing" ProcDesc="Prosess: Mangler prøvenummer" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6311" InfoCaption="Informasjon" LastUpdate="2016-04-15T18:34:27.473Z">
+	<row ProcId="727" StudyName="ROAS" ProcName="ROAS.GetRoasNumbersMissing" ProcDesc="Prosess: Prøvenummer mangler" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6311" InfoCaption="Informasjon" LastUpdate="2016-05-23T12:26:08.167Z">
 		<![CDATA[CREATE PROCEDURE ROAS.GetRoasNumbersMissing ( @StudyId INT ) AS
 BEGIN
   SELECT v.*, ISNULL(CONVERT(VARCHAR, CONVERT(INT, a.Quantity)), 'Mangler') AS InfoText
@@ -2159,6 +2159,17 @@ BEGIN
   JOIN dbo.Person p ON p.PersonId=v.PersonId
   WHERE (not p.DeceasedDate IS NULL) AND ( sc.StatusId<>2 ) AND ( v.StudyId=@StudyId )
   ORDER BY p.DeceasedDate DESC
+END]]>
+	</row>
+	<row ProcId="745" StudyName="ROAS" ProcName="ROAS.GetRoasNumbersMissingAddison" ProcDesc="Prosess: Prøvenummer mangler (Addison)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6311" InfoCaption="Prøvenummer" LastUpdate="2016-05-23T12:37:47.030Z">
+		<![CDATA[CREATE PROCEDURE ROAS.GetRoasNumbersMissingAddison ( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, ISNULL(CONVERT(VARCHAR, CONVERT(INT, a.Quantity)), 'Mangler') AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.GetLastEnumValuesTable( 6090, NULL ) b ON b.PersonId = v.PersonId AND ( b.EnumVal IN (1,2,3,4,5) )
+  LEFT JOIN dbo.GetLastQuantityTable( 6082, NULL) a ON a.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId AND a.Quantity IS NULL
+  ORDER BY v.PersonId
 END]]>
 	</row>
 	<row ProcId="800" StudyName="HOFTE" ProcName="dbo.GetCaseListLastGamma" ProcDesc="Operasjon: Gammanagling" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-09-03T11:41:34.540Z">
