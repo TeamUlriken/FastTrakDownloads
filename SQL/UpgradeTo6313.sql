@@ -3,7 +3,7 @@ SET XACT_ABORT OFF;
 BEGIN TRANSACTION UpgradeTo6313
 GO
 
-PRINT 'Overall purpose: Support profession privileges to for edit, sign and create forms.'
+PRINT 'Overall purpose: Add profession privileges and disabling of groups'
 
 -- CREATE procedure dbo.GetMetaFormProfessionPrivileges to return privileges for forms based on profession.
 
@@ -26,7 +26,30 @@ BEGIN
 END;
 GO
 
-GRANT EXECUTE ON dbo.GetMetaFormProfessionPrivleges TO [public] AS [dbo]
+GRANT EXECUTE ON dbo.GetMetaFormProfessionPrivileges TO [public] AS [dbo]
+GO
+
+PRINT '--  CREATE procedure dbo.DisableStudyGroup to allow old groups/departments to be disabled safely'
+GO
+
+IF NOT OBJECT_ID('dbo.DisableStudyGroup') IS NULL 
+  DROP PROCEDURE DisableStudyGroup
+GO
+
+CREATE PROCEDURE dbo.DisableStudyGroup( @StudyId INT, @GroupId INT ) AS
+BEGIN
+  DECLARE @MemCount INTEGER;
+  SELECT @MemCount = COUNT(sc.PersonId) FROM dbo.StudCase sc 
+  JOIN dbo.StudyGroup sg ON sg.StudyId=sc.StudyId AND sg.GroupId=sc.GroupId
+  JOIN dbo.Person p ON p.PersonId = sc.PersonId AND p.TestCase = 0
+  WHERE sc.StudyId = @StudyId AND sc.GroupId=@GroupId;
+  IF @MemCount > 0
+    RAISERROR(  'Deaktivering ikke mulig, fordi det er %d personer i denne gruppen.', 16, 1, @MemCount );
+  UPDATE dbo.StudyGroup SET GroupActive = 0 WHERE StudyId=@StudyId AND GroupId = @GroupId;
+END
+GO
+
+GRANT EXECUTE ON dbo.DisableStudyGroup TO [superuser] AS [dbo]
 GO
 
 EXECUTE dbo.DbFinalizeUpgrade 6313;
