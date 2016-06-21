@@ -38,14 +38,15 @@ GO
 
 CREATE PROCEDURE dbo.DisableStudyGroup( @StudyId INT, @GroupId INT ) AS
 BEGIN
-  DECLARE @MemCount INTEGER;
-  SELECT @MemCount = COUNT(sc.PersonId) FROM dbo.StudCase sc 
+  DECLARE @GroupMemberCount INTEGER;
+  SELECT @GroupMemberCount = COUNT(sc.PersonId) FROM dbo.StudCase sc 
   JOIN dbo.StudyGroup sg ON sg.StudyId=sc.StudyId AND sg.GroupId=sc.GroupId
   JOIN dbo.Person p ON p.PersonId = sc.PersonId AND p.TestCase = 0
   WHERE sc.StudyId = @StudyId AND sc.GroupId=@GroupId;
-  IF @MemCount > 0
-    RAISERROR(  'Deaktivering ikke mulig, fordi det er %d personer i denne gruppen.', 16, 1, @MemCount );
-  UPDATE dbo.StudyGroup SET GroupActive = 0 WHERE StudyId=@StudyId AND GroupId = @GroupId;
+  IF @GroupMemberCount > 0
+    RAISERROR(  'Deaktivering ikke mulig, fordi det er %d personer i denne gruppen.', 16, 1, @GroupMemberCount )
+  ELSE
+    UPDATE dbo.StudyGroup SET GroupActive = 0 WHERE StudyId=@StudyId AND GroupId = @GroupId;
 END
 GO
 
