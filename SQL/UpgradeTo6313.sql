@@ -14,7 +14,7 @@ PRINT '--  CREATE procedure dbo.GetMetaFormProfessionPrivileges to return privil
 GO
 
 IF NOT OBJECT_ID('GetMetaFormProfessionPrivileges') IS NULL
-  DROP PROCEDURE GetMetaFormProfessionPrivileges
+  DROP PROCEDURE dbo.GetMetaFormProfessionPrivileges
 GO
 
 CREATE PROCEDURE dbo.GetMetaFormProfessionPrivileges AS
