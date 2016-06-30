@@ -29,7 +29,10 @@ REVOKE UPDATE ON dbo.StudyStatus TO [superuser]
 REVOKE UPDATE ON dbo.UserRoleInfo TO [superuser]
 GO
 
-REVOKE EXECUTE ON dbo.GetAndRemoveStudyCasesWithoutForms TO [public]
+IF NOT OBJECT_ID('GetAndRemoveStudyCasesWithoutForms') IS NULL
+  REVOKE EXECUTE ON dbo.GetAndRemoveStudyCasesWithoutForms TO [public]
+GO
+
 REVOKE EXECUTE ON FEST.FinnRefusjonskoder TO [PrintPrescription]
 
 IF NOT OBJECT_ID('GBD.GetCaseListAvvik') IS NULL
