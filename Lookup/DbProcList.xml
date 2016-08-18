@@ -1497,24 +1497,23 @@ BEGIN
 END
 ]]>
 </row>
-<row ProcId="285" StudyName="NDV" ProcName="NDV.GetYoungRecentlyDiagnosedType1" ProcDesc="Studier: Unge (18-25 år) type 1, nye etter 01.11.2012" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-09-23T13:53:50.380Z">
-<![CDATA[CREATE PROCEDURE NDV.GetYoungRecentlyDiagnosedType1( @StudyId INT )
-AS
+<row ProcId="285" StudyName="NDV" ProcName="NDV.GetYoungRecentlyDiagnosedType1" ProcDesc="Studier: Unge (18-25 år) type 1, nye etter 01.01.2012" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2016-08-18T13:04:19.147Z">
+<![CDATA[CREATE PROCEDURE NDV.GetYoungRecentlyDiagnosedType1( @StudyId INT ) AS
 BEGIN
   select sc.PersonId,
   dbo.GetLastQuantity( sc.PersonId,'NDV_DIAGNOSE_YYYY') AS NDV_DIAGNOSE_YYYY,
   dbo.GetLastEnumVal( sc.PersonId,'NDV_TYPE') AS NDV_TYPE
   INTO #temp
-  FROM StudCase sc
-  JOIN Person p ON p.PersonId=sc.PersonId 
-  WHERE ( p.DOB >= '1988-11-01' ) AND ( p.DOB < DATEADD(yy,-18,getdate() ) )
+  FROM dbo.StudCase sc
+  JOIN dbo.Person p ON p.PersonId=sc.PersonId 
+  WHERE ( p.DOB >= '1988-01-01' ) AND ( p.DOB < DATEADD(yy,-18,getdate() ) )
   AND sc.StudyId=@StudyId;
   DELETE FROM #temp 
-  WHERE PersonId IN ( SELECT DISTINCT PersonId FROM ClinEvent WHERE EventTime < '2012-11-01' )
+  WHERE PersonId IN ( SELECT DISTINCT PersonId FROM dbo.ClinEvent WHERE EventTime < '2012-01-01' )
   OR ( NDV_DIAGNOSE_YYYY < 2012 ) OR ( NDV_TYPE <> 1 )
   SELECT p.PersonId,p.DOB,p.ReverseName as FullName,'Alle grupper' as GroupName,
   'Diagnoseår: ' + ISNULL(CONVERT(VARCHAR,CONVERT(INT,NDV_DIAGNOSE_YYYY)),'Uoppgitt') AS InfoText FROM #temp t
-  JOIN Person p ON p.PersonId=t.PersonId
+  JOIN dbo.Person p ON p.PersonId=t.PersonId
   ORDER BY DOB
 END]]>
 </row>
