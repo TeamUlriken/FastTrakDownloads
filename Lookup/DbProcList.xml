@@ -1679,7 +1679,7 @@ BEGIN
   EXEC NDV.GetAnnualControls '2013-01-01','2013-12-31'; 
 END]]>
 	</row>
-	<row ProcId="305" StudyName="NDV" ProcName="NDV.GetAnnualControls2012" ProcDesc="Årskontroller: Årskontroller i 2012" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" LastUpdate="2015-11-05T13:35:47.620Z">
+	<row ProcId="305" StudyName="NDV" ProcName="NDV.GetAnnualControls2012" ProcDesc="Årskontroller: Årskontroller i 2012" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" InfoCaption="Dato for årskontroll" LastUpdate="2016-09-20T11:59:33.117Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetAnnualControls2012( @StudyId INT ) AS 
 BEGIN
   SET NOCOUNT ON; 
@@ -1791,6 +1791,13 @@ END
 	</row>
 	<row ProcId="312" StudyName="ENDO" ProcName="NDV.GetYoungDiabetics" ProcDesc="Studier: Unge diabetikere" ProcParams=":StudyId" ListId="CASE" GrantTo="Researcher" MinVersion="6302" InfoCaption="Første konsultajson" LastUpdate="2016-03-02T08:33:43.277Z">
 		<![CDATA[]]>
+	</row>
+	<row ProcId="313" StudyName="NDV" ProcName="NDV.GetAnnualControls2016" ProcDesc="Årskontroller: Årskontroller i 2016" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" InfoCaption="Dato for årskontroll" LastUpdate="2016-09-20T11:59:38.573Z">
+		<![CDATA[CREATE PROCEDURE NDV.GetAnnualControls2016( @StudyId INT ) AS 
+BEGIN
+  SET NOCOUNT ON; 
+  EXEC NDV.GetAnnualControls '2016-01-01','2016-12-31'; 
+END]]>
 	</row>
 	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-11-14T14:52:27.327Z">
 		<![CDATA[CREATE PROCEDURE BAR.GetHospitalizedWithoutAdmissionForm( @StudyId INT )
@@ -2021,10 +2028,30 @@ BEGIN
  EXEC dbo.GetActiveSingleVar @StudyId,'ICD10_E063a',1 
 END]]>
 	</row>
+	<row ProcId="725" StudyName="ROAS" ProcName="ROAS.GetRoasNumbers" ProcDesc="Prosess: Prøvenummer" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6311" InfoCaption="Prøvenummer" LastUpdate="2016-04-15T18:29:00.283Z">
+		<![CDATA[CREATE PROCEDURE ROAS.GetRoasNumbers ( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, ISNULL( CONVERT(VARCHAR, CONVERT(INT, a.Quantity)), 'Mangler') AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  LEFT JOIN dbo.GetLastQuantityTable(6082, NULL) a ON a.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId
+  ORDER BY v.PersonId
+END]]>
+	</row>
 	<row ProcId="726" StudyName="ROAS" ProcName="ENDO.GetHyperThyroAutoimmune" ProcDesc="Hypertyreose: Autoimmun" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-02-14T11:22:21.030Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHyperThyroAutoimmune( @StudyId INT ) AS 
 BEGIN 
  EXEC dbo.GetActiveSingleVar @StudyId,'ICD10_E063b',1 
+END]]>
+	</row>
+	<row ProcId="727" StudyName="ROAS" ProcName="ROAS.GetRoasNumbersMissing" ProcDesc="Prosess: Prøvenummer mangler" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6311" InfoCaption="Informasjon" LastUpdate="2016-05-23T12:26:08.167Z">
+		<![CDATA[CREATE PROCEDURE ROAS.GetRoasNumbersMissing ( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, ISNULL(CONVERT(VARCHAR, CONVERT(INT, a.Quantity)), 'Mangler') AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  LEFT JOIN dbo.GetLastQuantityTable( 6082, NULL) a ON a.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId AND a.Quantity IS NULL
+  ORDER BY v.PersonId
 END]]>
 	</row>
 	<row ProcId="728" StudyName="ROAS" ProcName="ENDO.GetDiabetesType1" ProcDesc="Diagnose: Diabetes type 1" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-06-06T10:09:07.020Z">
@@ -2138,6 +2165,17 @@ BEGIN
   JOIN dbo.Person p ON p.PersonId=v.PersonId
   WHERE (not p.DeceasedDate IS NULL) AND ( sc.StatusId<>2 ) AND ( v.StudyId=@StudyId )
   ORDER BY p.DeceasedDate DESC
+END]]>
+	</row>
+	<row ProcId="745" StudyName="ROAS" ProcName="ROAS.GetRoasNumbersMissingAddison" ProcDesc="Prosess: Prøvenummer mangler (Addison)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6311" InfoCaption="Prøvenummer" LastUpdate="2016-05-23T12:37:47.030Z">
+		<![CDATA[CREATE PROCEDURE ROAS.GetRoasNumbersMissingAddison ( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, ISNULL(CONVERT(VARCHAR, CONVERT(INT, a.Quantity)), 'Mangler') AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.GetLastEnumValuesTable( 6090, NULL ) b ON b.PersonId = v.PersonId AND ( b.EnumVal IN (1,2,3,4,5) )
+  LEFT JOIN dbo.GetLastQuantityTable( 6082, NULL) a ON a.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId AND a.Quantity IS NULL
+  ORDER BY v.PersonId
 END]]>
 	</row>
 	<row ProcId="800" StudyName="HOFTE" ProcName="dbo.GetCaseListLastGamma" ProcDesc="Operasjon: Gammanagling" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-09-03T11:41:34.540Z">
