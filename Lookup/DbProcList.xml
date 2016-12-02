@@ -1635,22 +1635,17 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="300" StudyName="NDV" ProcName="NDV.GetCaseListCGM" ProcDesc="CGM: Aktive CGM brukere" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" LastUpdate="2015-05-21T11:58:19.880Z">
-		<![CDATA[CREATE PROCEDURE NDV.GetCaseListCGM( @StudyId INT ) AS 
-BEGIN 
-  SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,mia.OptionText AS InfoText, v.GenderId 
-  FROM 
-  ( 
-    SELECT ce.PersonId,cdp.EnumVal,RANK() OVER (PARTITION BY ce.PersonId ORDER BY ce.EventTime DESC ) AS Nummer
-    FROM dbo.ClinDataPoint cdp 
-    JOIN dbo.ClinEvent ce on ce.EventId=cdp.EventId
-    WHERE cdp.ItemId=5715 AND cdp.EnumVal IN (1,2) 
-  ) a
-  JOIN dbo.MetaItemAnswer mia ON mia.ItemId=5715 AND mia.OrderNumber=a.EnumVal
-  JOIN dbo.ViewActiveCaseListStub v on v.PersonId=a.PersonId
-  WHERE a.Nummer=1 AND v.StudyId = @StudyId 
-  ORDER BY v.FullName
-END]]>
+	<row ProcId="300" StudyName="NDV" ProcName="NDV.GetCaseListCGM" ProcDesc="CGM: Aktive CGM brukere" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" LastUpdate="2016-12-02T19:41:50.130Z">
+		<![CDATA[CREATE PROCEDURE NDV.GetCaseListCGM( @StudyId INT ) AS
+BEGIN
+  SELECT p.PersonId, p.DOB, p.FullName, p.GenderId,
+    diatype.OptionText AS GroupName, cgm.OptionText AS InfoText
+  FROM dbo.ViewActiveCaseListStub p
+  JOIN dbo.GetLastEnumValuesTable( 10288, NULL ) cgm ON cgm.PersonId = p.PersonId
+  JOIN dbo.GetLastEnumValuesTable( 3196, NULL ) diatype ON diatype.PersonId = p.PersonId
+    WHERE cgm.EnumVal IN (1, 2) AND p.StudyId = @StudyId
+  ORDER BY FullName
+END  ]]>
 	</row>
 	<row ProcId="301" StudyName="NDV" ProcName="NDV.GetPumpAll" ProcDesc="Type 1 m/pumpe: Alle etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="521" LastUpdate="2015-11-08T10:38:38.057Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpAll( @StudyId INT ) AS 
