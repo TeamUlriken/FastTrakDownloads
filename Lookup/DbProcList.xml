@@ -1635,7 +1635,7 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="300" StudyName="NDV" ProcName="NDV.GetCaseListCGM" ProcDesc="CGM: Aktive CGM brukere" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" LastUpdate="2016-12-02T19:41:50.130Z">
+	<row ProcId="300" StudyName="NDV" ProcName="NDV.GetCaseListCGM" ProcDesc="CGM: Aktive CGM brukere" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" LastUpdate="2016-12-05T15:40:27.773Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetCaseListCGM( @StudyId INT ) AS
 BEGIN
   SELECT p.PersonId, p.DOB, p.FullName, p.GenderId,
@@ -1720,51 +1720,51 @@ AS
 	JOIN dbo.MetaItemAnswer mia ON mia.ItemId=3196 AND mia.OrderNumber=dt.DiabetesType
   END]]>
 	</row>
-	<row ProcId="307" StudyName="NDV" ProcName="NDV.GetType1WithoutConsent" ProcDesc="Samtykke: Aktive m/Type 1, ukjent/ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6302" InfoCaption="Samtykkestatus" LastUpdate="2015-11-08T10:37:31.603Z">
+	<row ProcId="307" StudyName="NDV" ProcName="NDV.GetType1WithoutConsent" ProcDesc="Samtykke: Aktive m/Type 1, ukjent/ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Samtykkestatus" LastUpdate="2016-12-05T15:40:29.293Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType1WithoutConsent( @StudyId INT ) AS
 BEGIN
   SET NOCOUNT ON;
   SELECT v.*,'Ukjent/ubesvart samtykke' AS InfoText
-  FROM dbo.GetLastEnumValues( 3196 ) DiaType 
-  LEFT JOIN dbo.GetLastEnumValues( 3389 ) Samtykke ON Samtykke.PersonId = DiaType.PersonId
+  FROM dbo.GetLastEnumValuesTable( 3196, NULL ) DiaType 
+  LEFT JOIN dbo.GetLastEnumValuesTable( 3389, NULL ) Samtykke ON Samtykke.PersonId = DiaType.PersonId
   JOIN dbo.ViewActiveCaseListStub v ON v.PersonId = DiaType.PersonId AND v.StudyId=@StudyId
   WHERE ( DiaType.EnumVal = 1 ) AND ( NOT ISNULL(Samtykke.EnumVal,-1) IN (1,2,3) )
 END]]>
 	</row>
-	<row ProcId="308" StudyName="NDV" ProcName="NDV.GetType2WithoutConsent" ProcDesc="Samtykke: Aktive m/Type 2, ukjent/ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6302" InfoCaption="Samtykkestatus" LastUpdate="2015-11-08T10:37:35.900Z">
+	<row ProcId="308" StudyName="NDV" ProcName="NDV.GetType2WithoutConsent" ProcDesc="Samtykke: Aktive m/Type 2, ukjent/ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Samtykkestatus" LastUpdate="2016-12-05T15:40:31.430Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType2WithoutConsent( @StudyId INT ) AS
 BEGIN
   SET NOCOUNT ON;
   SELECT v.*,'Ukjent/ubesvart samtykke' AS InfoText
-  FROM dbo.GetLastEnumValues( 3196 ) DiaType 
-  LEFT JOIN dbo.GetLastEnumValues( 3389 ) Samtykke ON Samtykke.PersonId = DiaType.PersonId
+  FROM dbo.GetLastEnumValuesTable( 3196, NULL ) DiaType 
+  LEFT JOIN dbo.GetLastEnumValuesTable( 3389, NULL ) Samtykke ON Samtykke.PersonId = DiaType.PersonId
   JOIN dbo.ViewActiveCaseListStub v ON v.PersonId = DiaType.PersonId AND v.StudyId=@StudyId
   WHERE ( DiaType.EnumVal = 2 ) AND ( NOT ISNULL(Samtykke.EnumVal,-1) IN (1,2,3) )
 END]]>
 	</row>
-	<row ProcId="309" StudyName="NDV" ProcName="NDV.GetType5WithoutConsent" ProcDesc="Samtykke: Aktive m/Sv.sk.sdiabetes, ukjent/ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6302" InfoCaption="Samtykkestatus" LastUpdate="2015-11-08T10:38:01.150Z">
+	<row ProcId="309" StudyName="NDV" ProcName="NDV.GetType5WithoutConsent" ProcDesc="Samtykke: Aktive m/Sv.sk.sdiabetes, ukjent/ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Samtykkestatus" LastUpdate="2016-12-05T15:40:32.910Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType5WithoutConsent( @StudyId INT ) AS
 BEGIN
   SET NOCOUNT ON;
   SELECT v.*,'Ukjent/ubesvart samtykke' AS InfoText
-  FROM dbo.GetLastEnumValues( 3196 ) DiaType 
-  LEFT JOIN dbo.GetLastEnumValues( 3389 ) Samtykke ON Samtykke.PersonId = DiaType.PersonId
+  FROM dbo.GetLastEnumValuesTable( 3196, NULL ) DiaType 
+  LEFT JOIN dbo.GetLastEnumValues( 3389, NULL ) Samtykke ON Samtykke.PersonId = DiaType.PersonId
   JOIN dbo.ViewActiveCaseListStub v ON v.PersonId = DiaType.PersonId AND v.StudyId=@StudyId
   WHERE ( DiaType.EnumVal = 5 ) AND ( NOT ISNULL(Samtykke.EnumVal,-1) IN (1,2,3) )
 END]]>
 	</row>
-	<row ProcId="310" StudyName="NDV" ProcName="NDV.GetType34WithoutConsent" ProcDesc="Samtykke: Aktive m/Andre typer, ukjent ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6302" InfoCaption="Samtykkestatu" LastUpdate="2015-11-08T10:43:05.430Z">
+	<row ProcId="310" StudyName="NDV" ProcName="NDV.GetType34WithoutConsent" ProcDesc="Samtykke: Aktive m/Andre typer, ukjent ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Samtykkestatu" LastUpdate="2016-12-05T15:40:34.190Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType34WithoutConsent( @StudyId INT ) AS
 BEGIN
   SET NOCOUNT ON;
   SELECT v.*,'Ukjent/ubesvart samtykke' AS InfoText
-  FROM dbo.GetLastEnumValues( 3196 ) DiaType 
-  LEFT JOIN dbo.GetLastEnumValues( 3389 ) Samtykke ON Samtykke.PersonId = DiaType.PersonId
+  FROM dbo.GetLastEnumValues( 3196, NULL ) DiaType 
+  LEFT JOIN dbo.GetLastEnumValuesTable( 3389, NULL ) Samtykke ON Samtykke.PersonId = DiaType.PersonId
   JOIN dbo.ViewActiveCaseListStub v ON v.PersonId = DiaType.PersonId AND v.StudyId=@StudyId
   WHERE ( DiaType.EnumVal IN (3,4) ) AND ( NOT ISNULL(Samtykke.EnumVal,-1) IN (1,2,3) )
 END]]>
 	</row>
-	<row ProcId="311" StudyName="NDV" ProcName="NDV.GetYoungDiabetics" ProcDesc="Studier: Unge diabetikere" ProcParams=":StudyId" ListId="CASE" GrantTo="Researcher" MinVersion="6302" InfoCaption="Første konsultasjon" LastUpdate="2016-03-02T08:33:40.740Z">
+	<row ProcId="311" StudyName="NDV" ProcName="NDV.GetYoungDiabetics" ProcDesc="Studier: Unge diabetikere" ProcParams=":StudyId" ListId="CASE" GrantTo="Researcher" MinVersion="6310" InfoCaption="Første konsultasjon" LastUpdate="2016-12-05T15:40:37.140Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetYoungDiabetics( @StudyId INT ) AS
 BEGIN
   SELECT a.*, a.StudyName + ': '+ CONVERT( VARCHAR,a.FirstDate,104) + ' (' + CONVERT(VARCHAR,a.Alder) + ' år)'  AS InfoText
@@ -1775,14 +1775,13 @@ BEGIN
     FROM dbo.Person p
       JOIN dbo.StudCase sc ON sc.PersonId = p.PersonId
       JOIN dbo.Study s ON s.StudyId=sc.StudyId
-      JOIN dbo.GetLastEnumValues(3196) dt ON dt.PersonId = p.PersonId 
+      JOIN dbo.GetLastEnumValuesTable( 3196, NULL ) dt ON dt.PersonId = p.PersonId 
     WHERE DATEDIFF(YYYY,p.DOB,sc.CreatedAt) BETWEEN 15 AND 20
   AND s.StudName IN ( 'NDV','ENDO' )
   ) a
   WHERE a.EntryOrder = 1
   ORDER BY Alder
-END
-]]>
+END]]>
 	</row>
 	<row ProcId="312" StudyName="ENDO" ProcName="NDV.GetYoungDiabetics" ProcDesc="Studier: Unge diabetikere" ProcParams=":StudyId" ListId="CASE" GrantTo="Researcher" MinVersion="6302" InfoCaption="Første konsultajson" LastUpdate="2016-03-02T08:33:43.277Z">
 		<![CDATA[]]>
@@ -1827,16 +1826,16 @@ BEGIN
   ORDER BY HbA1c DESC
 END]]>
 	</row>
-	<row ProcId="600" StudyName="ROAS" ProcName="ENDO.GetAddisonPatients" ProcDesc="Addison: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6303" InfoCaption="Addison type" LastUpdate="2015-12-18T09:28:32.743Z">
+	<row ProcId="600" StudyName="ROAS" ProcName="ENDO.GetAddisonPatients" ProcDesc="Addison: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Addison type" LastUpdate="2016-12-05T15:40:38.600Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetAddisonPatients (@StudyId INT) AS
 BEGIN
   SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, v.GenderId,
     'Diagnoseår ' + ISNULL(CONVERT(VARCHAR, CONVERT(INT, T6089.Quantity)), 'mangler') + ', ' +
     ISNULL(T6090.OptionText, '(subtype mangler)') + '.' AS InfoText
   FROM dbo.ViewActiveCaseListStub v
-  LEFT JOIN dbo.GetLastEnumValues(6090) AS T6090 ON T6090.PersonId = v.PersonId
-  LEFT JOIN dbo.GetLastEnumValues(6299) AS T6299 ON T6299.PersonId = v.PersonId
-  LEFT JOIN dbo.GetLastQuantities(6089) AS T6089 ON T6089.PersonId = v.PersonId
+  LEFT JOIN dbo.GetLastEnumValuesTable( 6090, NULL ) AS T6090 ON T6090.PersonId = v.PersonId
+  LEFT JOIN dbo.GetLastEnumValuesTable( 6299, NULL ) AS T6299 ON T6299.PersonId = v.PersonId
+  LEFT JOIN dbo.GetLastQuantities( 6089 ) AS T6089 ON T6089.PersonId = v.PersonId
   WHERE v.StudyId = @StudyId AND (T6090.EnumVal = 1 OR T6299.EnumVal = 1 OR T6089.Quantity > 1900)
 END]]>
 	</row>
@@ -3352,7 +3351,7 @@ BEGIN
   SELECT * FROM #ResultSet WHERE UsingDrug > 1 ORDER BY PercentUse DESC;
 END]]>
 	</row>
-	<row ProcId="1032" StudyName="NDV" ProcName="NDV.GetPatientCount" ProcDesc="Fordeling av aktive pasienter på samtykkestatus" ListId="FR" GrantTo="public" MinVersion="6302" LastUpdate="2015-11-26T00:02:54.470Z">
+	<row ProcId="1032" StudyName="NDV" ProcName="NDV.GetPatientCount" ProcDesc="Fordeling av aktive pasienter på samtykkestatus" ListId="FR" GrantTo="public" MinVersion="6310" LastUpdate="2016-12-05T15:32:22.250Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPatientCount AS
 BEGIN
 
@@ -3364,7 +3363,7 @@ BEGIN
     INTO #temp
     FROM dbo.ViewActiveCaseListStub vac
     JOIN dbo.Study s ON ( s.StudyId = vac.StudyId ) AND ( s.StudyName IN ( 'NDV','ENDO' ) )
-    LEFT JOIN dbo.GetLastEnumValues( 3389 ) ev ON ev.PersonId=vac.PersonId;
+    LEFT JOIN dbo.GetLastEnumValuesTable( 3389, NULL ) ev ON ev.PersonId=vac.PersonId;
 
     -- Count total
     DECLARE @PatientCount FLOAT;
@@ -3380,7 +3379,7 @@ BEGIN
 
 END]]>
 	</row>
-	<row ProcId="1033" StudyName="NDV" ProcName="NDV.GetPatientCountByDiabetesType" ProcDesc="Fordeling av samtykker etter type" ListId="FR" GrantTo="public" MinVersion="6302" LastUpdate="2015-11-26T00:02:55.730Z">
+	<row ProcId="1033" StudyName="NDV" ProcName="NDV.GetPatientCountByDiabetesType" ProcDesc="Fordeling av samtykker etter type" ListId="FR" GrantTo="public" MinVersion="6310" LastUpdate="2016-12-05T15:32:23.933Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPatientCountByDiabetesType AS
 BEGIN
   SELECT 
@@ -3395,8 +3394,8 @@ BEGIN
 		ISNULL(edt.EnumVal,0) AS DiaOrderNumber, ISNULL(edt.OptionText, 'Diabetes type er ubesvart.') AS DiaOptionText
     FROM dbo.ViewActiveCaseListStub vac
 	JOIN dbo.Study s ON ( s.StudyId = vac.StudyId ) AND ( s.StudyName IN ( 'NDV','ENDO' ) )
-    JOIN dbo.GetLastEnumValues( 3196 ) edt ON edt.PersonId=vac.PersonId
-    LEFT JOIN dbo.GetLastEnumValues( 3389 ) est ON est.PersonId=vac.PersonId
+    JOIN dbo.GetLastEnumValuesTable( 3196, NULL ) edt ON edt.PersonId=vac.PersonId
+    LEFT JOIN dbo.GetLastEnumValuesTable( 3389, NULL ) est ON est.PersonId=vac.PersonId
   ) a
   GROUP BY a.SamtOrderNumber, a.SamtOptionText, a.DiaOrderNumber, a.DiaOptionText 
   ORDER BY a.DiaOrderNumber,a.SamtOrderNumber
