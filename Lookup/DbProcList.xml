@@ -967,6 +967,12 @@ BEGIN
   EXECUTE dbo.GetCaseListProblem @StudyId,'I50%'
 END]]>
 	</row>
+	<row ProcId="165" StudyName="GBD" ProcName="dbo.GetCaseListB01AF" ProcDesc="Medikamentbruk: DOAK (B01AF)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2017-01-16T20:38:14.650Z">
+		<![CDATA[CREATE PROCEDURE dbo.GetCaseListB01AF( @StudyId INT ) AS
+BEGIN
+  EXEC dbo.GetCaseListDrug @StudyId,'B01AF%'
+END]]>
+	</row>
 	<row ProcId="201" StudyName="NDV.BASE" ProcName="NDV.GetPumpWithHighHbA1c" ProcDesc="Utvalg av Type-1 m/pumpe basert på alder og HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2015-06-12T07:59:28.400Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpWithHighHbA1c( @StudyId INT, @AgeMin FLOAT, @AgeMax FLOAT, @HbA1cCutoff FLOAT ) AS
 BEGIN
