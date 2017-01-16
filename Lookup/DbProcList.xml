@@ -417,7 +417,7 @@ BEGIN
   EXEC dbo.GetCaseListDrug @StudyId,'N06D%'
 END]]>
 	</row>
-	<row ProcId="113" StudyName="GBD" ProcName="GetCaseListB01AA03" ProcDesc="Medikamentbruk: Marevan (B01AA03)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="113" StudyName="GBD" ProcName="dbo.GetCaseListB01AA03" ProcDesc="Medikamentbruk: Marevan (B01AA03)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2017-01-16T20:38:37.700Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListB01AA03( @StudyId INT ) AS
 BEGIN
   EXEC dbo.GetCaseListDrug @StudyId,'B01AA03'
@@ -588,10 +588,15 @@ END
 
 ]]>
 	</row>
-	<row ProcId="129" StudyName="GBD" ProcName="GetCaseListWarfarinNSAID" ProcDesc="Kontraindikasjoner: Warfarin + NSAIDs" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="129" StudyName="GBD" ProcName="dbo.GetCaseListWarfarinNSAID" ProcDesc="Kontraindikasjoner: Warfarin/DOAK + NSAIDs" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2017-01-16T20:32:32.783Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListWarfarinNSAID( @StudyId INT ) AS
 BEGIN
-  EXEC GetCaseListDrugCombo @StudyId,'B01AA03','M01A%'
+  SELECT p.PersonId,p.DOB, p.FullName, p.GroupName, p.GenderId, dt1.DrugName + ' - ' + dt2.DrugName AS InfoText
+  FROM dbo.OngoingTreatment dt1 
+  JOIN dbo.OngoingTreatment dt2 ON dt1.PersonId=dt2.PersonId AND dt1.TreatId <> dt2.TreatId
+  JOIN dbo.ViewActiveCaseListStub p ON p.PersonId = dt1.PersonId
+  WHERE ( dt1.ATC LIKE 'B01AA%' OR dt1.ATC LIKE 'B01AF%' ) AND dt2.ATC LIKE 'M01A%'
+  ORDER BY p.FullName
 END]]>
 	</row>
 	<row ProcId="130" StudyName="GBD.Deprecated" ProcName="GetCaseListProblemI48" ProcDesc="Diagnose: Atrieflimmer" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-01-22T12:27:10.913Z">
