@@ -836,15 +836,19 @@ BEGIN
   ORDER BY ce.EventTime DESC
 END]]>
 	</row>
-	<row ProcId="155" StudyName="GBD" ProcName="GBD.GetCaseListDiedHere" ProcDesc="Dødsfall: Skjema utfylt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="523" LastUpdate="2013-05-30T10:24:54.970Z">
-		<![CDATA[CREATE PROCEDURE GBD.GetCaseListDiedHere( @StudyId INT ) AS
+	<row ProcId="155" StudyName="GBD" ProcName="GBD.GetCaseListDiedHere" ProcDesc="Dødsfall: Skjema utfylt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6305" LastUpdate="2017-01-18T22:45:14.683Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListDiedHere (@StudyId INT) AS
 BEGIN
-  SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,v.StudyId,v.GenderId,
-    'LCP3:  ' + dbo.LongTime(dbo.GetLastSignedForm(v.StudyId,v.PersonId,'LCP3')) as InfoText 
-  FROM ViewCenterCaseListStub v   
-  JOIN StudyCase sc ON sc.StudyId=v.StudyId and sc.PersonId=v.PersonId
-  WHERE v.StudyId=@StudyId and sc.FinState=5
-END]]>
+  SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, v.StudyId, v.GenderId,
+    'LCP3:  ' + ISNULL(dbo.LongTime(f.EventTime), 'Ikke utfylt') + '. Data til ' + dbo.ShortTime(sc.LastWrite) + '.' AS InfoText,
+    sc.LastWrite, f.EventTime
+  FROM dbo.GetLastGroupCaseList(@StudyId) v
+  JOIN dbo.StudCase sc ON sc.StudyId = @StudyId AND sc.PersonId = v.PersonId
+  LEFT JOIN dbo.GetLastSignedFormList(@StudyId, 'LCP3') f ON f.PersonId = v.PersonId
+  WHERE v.FinState = 5
+  ORDER BY sc.LastWrite DESC;
+END
+]]>
 	</row>
 	<row ProcId="156" StudyName="GBD" ProcName="GetCaseListDiabetes" ProcDesc="Diagnose: Diabetes" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-03-29T14:22:07.773Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListDiabetes( @StudyId INT ) AS
@@ -1753,13 +1757,13 @@ BEGIN
   WHERE ( DiaType.EnumVal = 2 ) AND ( NOT ISNULL(Samtykke.EnumVal,-1) IN (1,2,3) )
 END]]>
 	</row>
-	<row ProcId="309" StudyName="NDV" ProcName="NDV.GetType5WithoutConsent" ProcDesc="Samtykke: Aktive m/Sv.sk.sdiabetes, ukjent/ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Samtykkestatus" LastUpdate="2016-12-05T15:40:32.910Z">
+	<row ProcId="309" StudyName="NDV" ProcName="NDV.GetType5WithoutConsent" ProcDesc="Samtykke: Aktive m/Sv.sk.sdiabetes, ukjent/ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Samtykkestatus" LastUpdate="2017-01-18T23:01:40.910Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType5WithoutConsent( @StudyId INT ) AS
 BEGIN
   SET NOCOUNT ON;
   SELECT v.*,'Ukjent/ubesvart samtykke' AS InfoText
   FROM dbo.GetLastEnumValuesTable( 3196, NULL ) DiaType 
-  LEFT JOIN dbo.GetLastEnumValues( 3389, NULL ) Samtykke ON Samtykke.PersonId = DiaType.PersonId
+  LEFT JOIN dbo.GetLastEnumValuesTable( 3389, NULL ) Samtykke ON Samtykke.PersonId = DiaType.PersonId
   JOIN dbo.ViewActiveCaseListStub v ON v.PersonId = DiaType.PersonId AND v.StudyId=@StudyId
   WHERE ( DiaType.EnumVal = 5 ) AND ( NOT ISNULL(Samtykke.EnumVal,-1) IN (1,2,3) )
 END]]>
@@ -2182,6 +2186,40 @@ BEGIN
   WHERE v.StudyId = @StudyId AND a.Quantity IS NULL
   ORDER BY v.PersonId
 END]]>
+	</row>
+	<row ProcId="746" StudyName="ENDO" ProcName="ENDO.GetSynacthenPatientForms" ProcDesc="Studier: Synacthen pasientskjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6400" LastUpdate="2017-01-16T21:39:22.187Z">
+		<![CDATA[CREATE PROCEDURE ENDO.GetSynacthenPatientForms( @StudyId INT ) AS
+BEGIN
+  SELECT v.PersonId,v.DOB, v.FullName, v.GroupName, 'Synacthenskjema: ' + dbo.ShortTime( f.EventTime) AS InfoText
+  FROM dbo.GetLastFormTable( 519 ) f
+  JOIN  dbo.ViewCaseListStub v on v.PersonId = f.PersonId
+  WHERE StudyId = @StudyId
+END]]>
+	</row>
+	<row ProcId="747" StudyName="ENDO" ProcName="ENDO.GetAddisonOvaryFailure" ProcDesc="Addison: Ovarialsvikt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6400" InfoCaption="Diagnoseår og type" LastUpdate="2017-01-18T23:00:34.680Z">
+		<![CDATA[CREATE PROCEDURE ENDO.GetAddisonOvaryFailure( @StudyId INT ) AS
+BEGIN
+  SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, v.GenderId,
+    'Addison diagnoseår ' + ISNULL(CONVERT(VARCHAR, CONVERT(INT, T6089.Quantity)), 'mangler') + ', ' +
+    ISNULL(T6090.OptionText, '(subtype mangler)') + '.' AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  -- Varianter av registrering av Addison
+    LEFT JOIN dbo.GetLastEnumValuesTable(6090,NULL) AS T6090 ON T6090.PersonId = v.PersonId
+    LEFT JOIN dbo.GetLastEnumValuesTable(6299,NULL) AS T6299 ON T6299.PersonId = v.PersonId
+    LEFT JOIN dbo.GetLastQuantityTable(6089,NULL) AS T6089 ON T6089.PersonId = v.PersonId
+  -- Ovarialsvikt som variabel
+    LEFT JOIN dbo.GetLastEnumValuesTable(6318,NULL) AS T6318 ON T6318.PersonId = v.PersonId
+  -- Antistoff indekser
+    LEFT JOIN dbo.GetLastQuantityTable(6073,NULL) AS T6073 ON T6073.PersonId = v.PersonId
+    LEFT JOIN dbo.GetLastQuantityTable(6044,NULL) AS T6044 ON T6044.PersonId = v.PersonId
+  WHERE ( v.StudyId = @StudyId AND v.GenderId = 2 ) 
+    AND ( T6090.EnumVal = 1 OR T6299.EnumVal = 1 OR T6089.Quantity > 1900) 
+    AND ( T6318.EnumVal= 1 OR T6073.Quantity>=65 OR T6044.Quantity >=200 )
+END
+]]>
+	</row>
+	<row ProcId="748" StudyName="ROAS" ProcName="ENDO.GetAddisonOvaryFailure" ProcDesc="Addison: Ovarialsvikt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6400" InfoCaption="Diagnoseår og type" LastUpdate="2017-01-17T07:39:28.613Z">
+		<![CDATA[]]>
 	</row>
 	<row ProcId="800" StudyName="HOFTE" ProcName="dbo.GetCaseListLastGamma" ProcDesc="Operasjon: Gammanagling" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-09-03T11:41:34.540Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListLastGamma( @StudyId INT ) AS
