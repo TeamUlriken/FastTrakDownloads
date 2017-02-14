@@ -836,19 +836,24 @@ BEGIN
   ORDER BY ce.EventTime DESC
 END]]>
 	</row>
-	<row ProcId="155" StudyName="GBD" ProcName="GBD.GetCaseListDiedHere" ProcDesc="Dødsfall: Skjema utfylt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6305" LastUpdate="2017-01-18T22:45:14.683Z">
-		<![CDATA[CREATE PROCEDURE GBD.GetCaseListDiedHere (@StudyId INT) AS
+	<row ProcId="155" StudyName="GBD" ProcName="GBD.GetCaseListDiedHere" ProcDesc="Dødsfall: Skjema utfylt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6402" LastUpdate="2017-02-07T19:52:33.370Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListDiedHere( @StudyId INT ) AS
 BEGIN
-  SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, v.StudyId, v.GenderId,
-    'LCP3:  ' + ISNULL(dbo.LongTime(f.EventTime), 'Ikke utfylt') + '. Data til ' + dbo.ShortTime(sc.LastWrite) + '.' AS InfoText,
-    sc.LastWrite, f.EventTime
-  FROM dbo.GetLastGroupCaseList(@StudyId) v
-  JOIN dbo.StudCase sc ON sc.StudyId = @StudyId AND sc.PersonId = v.PersonId
-  LEFT JOIN dbo.GetLastSignedFormList(@StudyId, 'LCP3') f ON f.PersonId = v.PersonId
-  WHERE v.FinState = 5
-  ORDER BY sc.LastWrite DESC;
-END
-]]>
+  DECLARE @FormId INT
+  SELECT @FormId = MAX(FormId) from dbo.MetaForm where FormName = 'LS3'
+  SELECT vcldh.PersonId, DOB, FullName, StudyId, GroupName, vcldh.DeathRegisteredAt, 
+    StatusText = 
+      CASE 
+        WHEN ft.CreatedAt IS NULL THEN 'Livets siste dager: Mangler!' 
+      ELSE  
+        CASE 
+          WHEN ft.SignedAt IS NULL THEN 'Livets siste dager: Påbegynt...' 
+          ELSE 'Livets siste dager: Signert.' 
+        END
+      END 
+  FROM GBD.ViewCaseListDiedHere AS vcldh 
+  LEFT JOIN dbo.GetLastFormTable( @FormId ) ft ON ft.PersonId = vcldh.PersonId
+END]]>
 	</row>
 	<row ProcId="156" StudyName="GBD" ProcName="GetCaseListDiabetes" ProcDesc="Diagnose: Diabetes" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-03-29T14:22:07.773Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListDiabetes( @StudyId INT ) AS
@@ -2229,7 +2234,7 @@ END
 
 ]]>
 	</row>
-	<row ProcId="1001" StudyName="GBD" ProcName="GBD.RapportAvvik" ProcDesc="Avviksrapport" ProcParams=":StudyId, :StartAt, :StopAt, :OrderBy" ListId="FR" GrantTo="public" LastUpdate="2014-10-01T13:33:16.560Z">
+	<row ProcId="1001" StudyName="GBD" ProcName="GBD.RapportAvvik" ProcDesc="Avviksrapport" ProcParams=":StudyId, :StartAt, :StopAt, :OrderBy" ListId="FR" GrantTo="public" LastUpdate="2017-02-14T08:28:01.507Z">
 		<![CDATA[CREATE PROCEDURE GBD.RapportAvvik ( @StudyId INT, @StartAt DateTime = NULL, @StopAt DateTime = NULL, @OrderBy INT = 0 ) AS
 BEGIN
   SET LANGUAGE Norwegian; 
@@ -2305,7 +2310,7 @@ BEGIN
   WHERE ( cf.DeletedAt IS NULL )
     AND ( mf.FormName='GbdAvvik' )
     AND ( ( su.GroupId=sg.GroupId ) OR ( su.ShowMyGroup = 0 ) ) 
-    AND ( sg.CenterId=my.CenterId ) AND ( sg.GroupActive = 1 ) 
+    AND ( sg.CenterId=my.CenterId ) 
     AND ( sc.StudyId=@StudyId ) 
     AND ( ce.EventTime >= @StartAt ) AND ( ce.EventTime < @StopAt )
   /* Select final dataset from temp table */
