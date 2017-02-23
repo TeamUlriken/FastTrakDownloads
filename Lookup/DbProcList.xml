@@ -2884,27 +2884,44 @@ BEGIN
   SELECT * FROM #temp WHERE OrderNo=1 ORDER BY FullName;
 END]]>
 	</row>
-	<row ProcId="1015" StudyName="GBD" ProcName="GBD.RapportPaminnelser" ProcDesc="Aktive påminnelser" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="521" LastUpdate="2015-09-03T12:18:29.723Z">
-		<![CDATA[CREATE PROCEDURE GBD.RapportPaminnelser( @StudyId INT )AS
+	<row ProcId="1015" StudyName="GBD" ProcName="GBD.RapportPaminnelser" ProcDesc="Aktive påminnelser" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="521" LastUpdate="2017-02-23T10:49:56.960Z">
+		<![CDATA[ALTER PROCEDURE GBD.RapportPaminnelser( @StudyId INT ) AS
 BEGIN
-   SET LANGUAGE Norwegian; 
-   SELECT v.PersonId, v.DOB,v.FullName,
-   a.AlertHeader AS T5601,
-   SUBSTRING(a.AlertMessage,1,CHARINDEX('( <a href',a.AlertMessage)-1) AS T5602,
-   a.AlertButtons AS T5603,
-   a.HideUntil AS T5604, 
-   ce.EventTime, up.Signature AS CreatedBySign
-  FROM dbo.Alert a 
-  JOIN dbo.ViewActiveCaseListStub v ON v.StudyId=a.StudyId AND v.PersonId=a.PersonId
-  JOIN dbo.ClinForm cf ON cf.ClinFormId=CONVERT(INTEGER,SUBSTRING(AlertClass,4,15))
-  JOIN dbo.ClinEvent ce ON ce.EventId=cf.EventId
-  JOIN dbo.UserList ul ON ul.UserId=cf.CreatedBy
-  LEFT OUTER JOIN dbo.Person up ON up.PersonId=ul.PersonId
-  WHERE ( AlertClass LIKE 'CF#%' ) 
-  AND ( v.StudyId=@StudyId ) 
-  AND ( a.HideUntil > GETDATE() - 7 ) AND ( a.HideUntil < GETDATE() + 3650 )
-  ORDER BY a.HideUntil DESC
-END]]>
+
+    SET LANGUAGE Norwegian;
+    
+    SELECT v.PersonId, v.DOB, v.FullName, a.AlertHeader AS T5601, 
+       SUBSTRING(a.AlertMessage, 1, CHARINDEX('( <a href', a.AlertMessage) - 1) AS T5602, 
+       a.AlertButtons AS T5603, a.HideUntil AS T5604, ce.EventTime, up.signature AS CreatedBySign
+    FROM dbo.Alert a
+    JOIN dbo.ViewActiveCaseListStub v ON v.StudyId = a.StudyId
+        AND v.PersonId = a.PersonId
+    JOIN dbo.ClinForm cf ON cf.ClinFormId = CONVERT(INTEGER, SUBSTRING(AlertClass, 4, 15))
+    JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId
+    JOIN dbo.UserList ul ON ul.UserId = cf.CreatedBy
+    LEFT OUTER JOIN dbo.Person up ON up.PersonId = ul.PersonId
+    WHERE (AlertClass LIKE 'CF#%')
+    AND (v.StudyId = @StudyId)
+    AND (a.HideUntil > GETDATE() - 7)
+    AND (a.HideUntil < GETDATE() + 3650)
+    
+    UNION
+    
+    SELECT v.PersonId, v.DOB, v.FullName, a.AlertHeader AS T5601, 
+      a.AlertMessage AS T5602, 
+      a.AlertButtons AS T5603, a.HideUntil AS T5604, 
+      a.CreatedAt AS EventTime, NULL AS CreatedBySign
+    FROM dbo.Alert a
+    JOIN dbo.ViewActiveCaseListStub v ON v.StudyId = a.StudyId
+        AND v.PersonId = a.PersonId
+    WHERE (AlertClass LIKE 'MAN#%')
+    AND (v.StudyId = @StudyId)
+    AND (a.HideUntil > GETDATE() - 7)
+    AND (a.HideUntil < GETDATE() + 3650)
+    ORDER BY a.HideUntil DESC
+    
+END
+]]>
 	</row>
 	<row ProcId="1016" StudyName="GBD" ProcName="GBD.RapportFallOgSkader" ProcDesc="Fall og skader" ProcParams=":StudyId, :StartAt, :StopAt, :OrderBy" ListId="FR" GrantTo="public" MinVersion="521" LastUpdate="2015-09-16T10:49:57.280Z">
 		<![CDATA[CREATE PROCEDURE GBD.RapportFallOgSkader( @StudyId INT, @StartAt DateTime = NULL, @StopAt DateTime = NULL, @OrderBy INT = 0 ) AS
@@ -3856,7 +3873,7 @@ BEGIN
   DEALLOCATE alert_list;
 END;]]>
 	</row>
-	<row ProcId="10003" StudyName="*" ProcName="dbo.RuleDrugInteractions" ProcDesc="Legemiddelinteraksjoner" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10003" StudyName="*" ProcName="dbo.RuleDrugInteractions" ProcDesc="Legemiddelinteraksjoner" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" LastUpdate="2017-02-15T18:45:24.097Z">
 		<![CDATA[CREATE PROCEDURE dbo.RuleDrugInteractions ( @StudyId INT, @PersonId INT ) AS
   /* Variables for interaction result */
   DECLARE @LevelId tinyint;
@@ -3878,7 +3895,7 @@ BEGIN
   /* Downgrade old alerts */
 
   UPDATE dbo.Alert SET AlertLevel=0 WHERE StudyId=@StudyId AND PersonId=@PersonId AND AlertClass LIKE 'DRUID#%';
-  CREATE TABLE #ATCList (AtcFragment varchar(7) COLLATE Danish_Norwegian_CI_AS NOT NULL);
+  CREATE TABLE #ATCList (AtcFragment varchar(7) COLLATE Latin1_General_BIN2 NOT NULL);
 
   /* Build ATC list */
 
@@ -3886,7 +3903,7 @@ BEGIN
   INSERT INTO #ATCList (ATCFragment) SELECT DISTINCT SUBSTRING(ATCFragment,1,5) FROM #ATCList;
   INSERT INTO #ATCList (ATCFragment) SELECT DISTINCT SUBSTRING(ATCFragment,1,4) FROM #ATCList;
   INSERT INTO #ATCList (ATCFragment) SELECT DISTINCT SUBSTRING(ATCFragment,1,3) FROM #ATCList
-  INSERT INTO #ATCList (ATCFragment) SELECT GrpCode FROM KBMetaMember WHERE GrpMember IN ( SELECT ATCFragment FROM #ATCList);
+  INSERT INTO #ATCList (ATCFragment) SELECT GrpCode FROM KBMetaMember WHERE GrpMember COLLATE Latin1_General_BIN2 IN ( SELECT ATCFragment FROM #ATCList);
   
   /* Find matching interactions */
 
@@ -3895,7 +3912,8 @@ BEGIN
   FROM dbo.KBInteraction i
     JOIN dbo.KBAtcIndex dt1 ON i.ATC1=dt1.AtcCode
     JOIN dbo.KBAtcIndex dt2 ON i.ATC2=dt2.AtcCode
-  WHERE ATC1 IN (SELECT DISTINCT ATCFragment FROM #ATCList ) AND ATC2 IN (SELECT DISTINCT ATCFragment FROM #ATCList )
+  WHERE ATC1 COLLATE Latin1_General_BIN2 IN (SELECT DISTINCT ATCFragment FROM #ATCList ) 
+    AND ATC2 COLLATE Latin1_General_BIN2 IN (SELECT DISTINCT ATCFragment FROM #ATCList )
   ORDER BY i.LevelId DESC; 
   
   /* Add alerts for interactions */
@@ -3936,7 +3954,10 @@ BEGIN
   END
   CLOSE interaction_cursor
   DEALLOCATE interaction_cursor;
-END;]]>
+END
+
+
+]]>
 	</row>
 	<row ProcId="10004" StudyName="*" ProcName="dbo.RuleGFR" ProcDesc="Lav nyrefunksjon. GRF 60,45 og 30 som grenser." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" LastUpdate="2016-02-26T16:50:19.133Z">
 		<![CDATA[CREATE PROCEDURE dbo.RuleGFR( @StudyId INT, @PersonId INT ) AS
