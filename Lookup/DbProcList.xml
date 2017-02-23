@@ -307,6 +307,18 @@ BEGIN
   where DATALENGTH(ISNULL(p.NationalId,''))<>11
 END]]>
 	</row>
+	<row ProcId="30" StudyName="*" ProcName="Report.GetAllActiveCases" ProcDesc="QuickStat: Alle aktive uansett lokalisasjon." ProcParams=":StudyId" ListId="CASE" GrantTo="Researcher" LastUpdate="2017-02-23T12:50:41.813Z">
+		<![CDATA[CREATE PROCEDURE Report.GetAllActiveCases( @StudyId INT ) AS
+BEGIN
+  SELECT p.PersonId,p.DOB,p.FullName,sg.GroupName,ss.StatusText AS InfoText,p.GenderId,p.NationalId 
+  FROM dbo.Person p
+  JOIN dbo.StudCase sc ON sc.PersonId = p.PersonId
+  JOIN dbo.StudyGroup sg ON sg.StudyId=sc.StudyId AND sg.GroupId=sc.GroupId and sg.GroupActive = 1
+  JOIN dbo.StudyStatus ss ON ss.StudyId=sc.StudyId AND ss.StatusId=sc.FinState AND ss.StatusActive = 1
+  JOIN dbo.Study s on s.StudyId = sc.StudyId 
+  WHERE s.StudyId=@StudyId;
+END]]>
+	</row>
 	<row ProcId="50" StudyName="BASE" ProcName="dbo.GetCaseListProblem" ProcDesc="Utvalg basert på diagnose" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2014-05-12T12:47:27.627Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListProblem( @StudyId INT, @ProbCode VARCHAR(8) ) AS
 BEGIN
