@@ -886,10 +886,33 @@ BEGIN
   EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, @AlertLevel, 'MATKORT', @AlertFacet;
 END;]]>
 	</row>
-	<row RuleId="23" RuleClass="LMG" RuleType="M" RuleProc="GBD.RuleLMG" Title="Legemiddelgjennomgang" Description="Utfylling av legemiddelgjennomgang med 180 dagers intervall." LastUpdate="2016-02-26T16:50:19.133Z">
+	<row RuleId="23" RuleClass="LMG" RuleType="M" RuleProc="GBD.RuleLMG" Title="Legemiddelgjennomgang" Description="Utfylling av legemiddelgjennomgang med 180 dagers intervall." LastUpdate="2017-02-24T14:57:52.427Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleLMG( @StudyId INT, @PersonId INT ) AS
 BEGIN
-  EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'LMG',180,2
-END;]]>
+  DECLARE @LastFormDate DateTime;
+  DECLARE @AlertFacet varchar(16);
+  DECLARE @ActualLevel INT;
+  -- Find the last LMG form
+  SELECT @LastFormDate = dbo.GetLastSignedForm( @StudyId, @PersonId, 'LMG' );
+  IF @LastFormDate IS NULL 
+  BEGIN
+    SET @ActualLevel = 2;
+    SET @AlertFacet = 'DataMissing';
+  END
+  ELSE 
+  BEGIN
+    IF DATEDIFF( DAY, @LastFormDate, GETDATE() ) > 180 
+    BEGIN
+      SET @ActualLevel = 2;
+      SET @AlertFacet = 'DataOld';
+    END
+    ELSE 
+    BEGIN
+      SET @ActualLevel = 0;
+      SET @AlertFacet = 'DataFound';
+    END
+  END
+  EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, @ActualLevel, 'LMG', @AlertFacet;
+END]]>
 	</row>
 </DSSRule>

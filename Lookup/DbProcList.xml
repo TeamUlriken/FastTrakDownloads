@@ -795,20 +795,6 @@ BEGIN
   ORDER BY LabDate;
 END]]>
 	</row>
-	<row ProcId="151" StudyName="GBD" ProcName="GBD.GetCaseListAnticholinergic" ProcDesc="Forsiktighetsregler: Antikolinergika og demens" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2014-04-25T12:52:00.467Z">
-		<![CDATA[CREATE PROCEDURE GBD.GetCaseListAnticholinergic( @StudyId INT ) AS 
-BEGIN
-  SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,ot.DrugName,ac.AlertLevel,CONVERT(INT,dbo.GetLastEnumVal(v.PersonId,'BERGER_SKALA')) as Berger
-  INTO #temp 
-  FROM dbo.ViewActiveCaseListStub v
-  JOIN dbo.OngoingTreatment ot ON ot.PersonId=v.PersonId
-  JOIN dbo.KBAnticholinDrug ac ON ac.ATC=ot.ATC;
-  SELECT PersonId,DOB,FullName,GroupName,'Nivå ' + CONVERT(VARCHAR,AlertLevel) + ' (' + DrugName + ') Berger: ' + ISNULL(CONVERT(VARCHAR,Berger),'Ukjent') AS InfoText
-  FROM #temp
-  WHERE AlertLevel IN ('A','B')
-  ORDER BY AlertLevel,Berger DESC,FullName
-END]]>
-	</row>
 	<row ProcId="152" StudyName="GBD" ProcName="GBD.GetCaseListOppholdstype" ProcDesc="Personer: Oppholdstype" ProcParams=":StudyId" ListId="CASE" GrantTo="public" LastUpdate="2013-01-22T12:27:10.913Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListOppholdstype( @StudyId INT ) AS
 BEGIN
@@ -4705,10 +4691,33 @@ BEGIN
   EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, @AlertLevel, 'MATKORT', @AlertFacet;
 END;]]>
 	</row>
-	<row ProcId="10023" StudyName="*" ProcName="GBD.RuleLMG" ProcDesc="Utfylling av legemiddelgjennomgang med 180 dagers intervall." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10023" StudyName="*" ProcName="GBD.RuleLMG" ProcDesc="Utfylling av legemiddelgjennomgang med 180 dagers intervall." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" LastUpdate="2017-02-24T14:57:52.427Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleLMG( @StudyId INT, @PersonId INT ) AS
 BEGIN
-  EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'LMG',180,2
-END;]]>
+  DECLARE @LastFormDate DateTime;
+  DECLARE @AlertFacet varchar(16);
+  DECLARE @ActualLevel INT;
+  -- Find the last LMG form
+  SELECT @LastFormDate = dbo.GetLastSignedForm( @StudyId, @PersonId, 'LMG' );
+  IF @LastFormDate IS NULL 
+  BEGIN
+    SET @ActualLevel = 2;
+    SET @AlertFacet = 'DataMissing';
+  END
+  ELSE 
+  BEGIN
+    IF DATEDIFF( DAY, @LastFormDate, GETDATE() ) > 180 
+    BEGIN
+      SET @ActualLevel = 2;
+      SET @AlertFacet = 'DataOld';
+    END
+    ELSE 
+    BEGIN
+      SET @ActualLevel = 0;
+      SET @AlertFacet = 'DataFound';
+    END
+  END
+  EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, @ActualLevel, 'LMG', @AlertFacet;
+END]]>
 	</row>
 </DbProcList>
