@@ -1385,29 +1385,26 @@ BEGIN
   EXEC GetCaseListNoRecentForm @StudyId,456;
 END]]>
 	</row>
-	<row ProcId="274" StudyName="NDV" ProcName="NDV.GetType1WithHbA1c" ProcDesc="Type 1: Sortert etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1012249818" LastUpdate="2015-06-12T08:15:45.040Z">
+	<row ProcId="274" StudyName="NDV" ProcName="NDV.GetType1WithHbA1c" ProcDesc="Type 1: Sortert etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6320" ChkSum="700376865" LastUpdate="2017-03-09T21:24:42.677Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType1WithHbA1c( @StudyId INT ) AS
 BEGIN
-  -- Create temporary table
-  SELECT p.PersonId,p.DOB,p.FullName,p.GroupName,dbo.GetLastValue(PersonId,'HBA1C') AS HbA1c INTO #temp
-  FROM NDV.Type1 p;
-  -- Read data
-  SELECT PersonId,DOB,FullName,GroupName,'HbA1c = ' + SUBSTRING(CONVERT(VARCHAR,HbA1c),1,4) as InfoText 
-  FROM #temp 
-  ORDER BY HbA1c DESC
+  SELECT p.PersonId,p.DOB,p.FullName,p.GroupName,
+    COALESCE(ld.LabName + ' = ' + CONVERT(VARCHAR,ld.NumResult ) +' (' +
+    CONVERT(VARCHAR,DATEPART(YYYY,ld.LabDate)) + ')','(ikke målt)') AS InfoText
+  FROM NDV.Type1 p
+  LEFT JOIN dbo.GetLastLabDataTable( 45,GETDATE()) ld ON ld.PersonId= p.PersonId
+  ORDER BY ISNULL(ld.NumResult,99) DESC
 END]]>
 	</row>
-	<row ProcId="275" StudyName="NDV" ProcName="NDV.GetType2WithHbA1c" ProcDesc="Type 2: Sortert etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-112111084" LastUpdate="2015-06-12T08:03:44.180Z">
+	<row ProcId="275" StudyName="NDV" ProcName="NDV.GetType2WithHbA1c" ProcDesc="Type 2: Sortert etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6320" ChkSum="-1539528923" LastUpdate="2017-03-09T21:25:43.423Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType2WithHbA1c( @StudyId INT ) AS
 BEGIN
-  -- Create temporary table
-  SELECT PersonId,DOB,FullName,GroupName,dbo.GetLastValue(PersonId,'HBA1C') AS HbA1c 
-  INTO #temp
-  FROM NDV.Type2;
-  -- Read data
-  SELECT PersonId,DOB,FullName,GroupName,'HbA1c = ' + SUBSTRING(CONVERT(VARCHAR,HbA1c),1,4) as InfoText 
-  FROM #temp 
-  ORDER BY HbA1c DESC
+  SELECT p.PersonId,p.DOB,p.FullName,p.GroupName,
+    COALESCE(ld.LabName + ' = ' + CONVERT(VARCHAR,ld.NumResult ) +' (' +
+    CONVERT(VARCHAR,DATEPART(YYYY,ld.LabDate)) + ')','(ikke målt)') AS InfoText
+  FROM NDV.Type2 p
+  LEFT JOIN dbo.GetLastLabDataTable( 45,GETDATE()) ld ON ld.PersonId= p.PersonId
+  ORDER BY ISNULL(ld.NumResult,99) DESC
 END]]>
 	</row>
 	<row ProcId="276" StudyName="NDV" ProcName="NDV.GetCaseListNoForm24Months" ProcDesc="Prosess: Aktive uten skjema siste 24 mnd" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1490685986" LastUpdate="2013-01-22T12:27:10.913Z">
@@ -1845,17 +1842,16 @@ BEGIN
   ORDER BY FullName
 END]]>
 	</row>
-	<row ProcId="500" StudyName="NDV" ProcName="NDV.GetType1Age18to65WithHbA1c" ProcDesc="Type 1: Alder 18-65 etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="406766065" LastUpdate="2015-06-12T08:11:09.150Z">
+	<row ProcId="500" StudyName="NDV" ProcName="NDV.GetType1Age18to65WithHbA1c" ProcDesc="Type 1: Alder 18-65 etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6320" ChkSum="-592742721" LastUpdate="2017-03-09T21:29:43.060Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType1Age18to65WithHbA1c( @StudyId INT ) AS
 BEGIN
-  -- Create temporary table
-  SELECT p.PersonId,p.DOB,p.FullName,p.GroupName,dbo.GetLastValue(PersonId,'HBA1C') AS HbA1c INTO #temp
+  SELECT p.PersonId,p.DOB,p.FullName,p.GroupName,
+    COALESCE(ld.LabName + ' = ' + CONVERT(VARCHAR,ld.NumResult ) +' (' +
+    CONVERT(VARCHAR,DATEPART(YYYY,ld.LabDate)) + ')','(ikke målt)') AS InfoText
   FROM NDV.Type1 p
-  WHERE ( Age < 65 ) AND ( Age >= 18 )  
-  -- Read data
-  SELECT PersonId,DOB,FullName,GroupName,'HbA1c = ' + SUBSTRING(CONVERT(VARCHAR,HbA1c),1,4) as InfoText
-  FROM #temp
-  ORDER BY HbA1c DESC
+  LEFT JOIN dbo.GetLastLabDataTable( 45,GETDATE()) ld ON ld.PersonId = p.PersonId
+  WHERE ( p.Age < 65 ) AND ( p.Age >= 18 )  
+  ORDER BY ISNULL(ld.NumResult,99) DESC
 END]]>
 	</row>
 	<row ProcId="600" StudyName="ROAS" ProcName="ENDO.GetAddisonPatients" ProcDesc="Addison: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Addison type" ChkSum="1363668548" LastUpdate="2016-12-05T15:40:38.600Z">
