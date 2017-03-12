@@ -2234,6 +2234,21 @@ END
 	<row ProcId="748" StudyName="ROAS" ProcName="ENDO.GetAddisonOvaryFailure" ProcDesc="Addison: Ovarialsvikt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6400" InfoCaption="Diagnoseår og type" ChkSum="137229807" LastUpdate="2017-01-17T07:39:28.613Z">
 		<![CDATA[]]>
 	</row>
+	<row ProcId="749" StudyName="ROAS" ProcName="ROAS.GetAddisonPatientsAlive" ProcDesc="Addison: Levende (folkeregister)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6400" ChkSum="1698448136" LastUpdate="2017-03-12T14:09:58.157Z">
+		<![CDATA[CREATE PROCEDURE ROAS.GetAddisonPatientsAlive (@StudyId INT) AS
+BEGIN
+  SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, v.GenderId,
+    'Diagnoseår ' + ISNULL(CONVERT(VARCHAR, CONVERT(INT, T6089.Quantity)), 'mangler') + ', ' +
+    ISNULL(T6090.OptionText, '(subtype mangler)') + '.' AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.Person p ON p.PersonId = v.PersonId
+  LEFT JOIN dbo.GetLastEnumValuesTable( 6090, NULL ) AS T6090 ON T6090.PersonId = v.PersonId
+  LEFT JOIN dbo.GetLastEnumValuesTable( 6299, NULL ) AS T6299 ON T6299.PersonId = v.PersonId
+  LEFT JOIN dbo.GetLastQuantities( 6089 ) AS T6089 ON T6089.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId AND (T6090.EnumVal = 1 OR T6299.EnumVal = 1 OR T6089.Quantity > 1900)
+  AND p.DeceasedDate IS NULL
+END]]>
+	</row>
 	<row ProcId="800" StudyName="HOFTE" ProcName="dbo.GetCaseListLastGamma" ProcDesc="Operasjon: Gammanagling" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1506179999" LastUpdate="2013-09-03T11:41:34.540Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListLastGamma( @StudyId INT ) AS
 BEGIN
