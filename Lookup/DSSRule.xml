@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <DSSRule>
-	<row RuleId="1" RuleClass="BERGER" RuleType="M" RuleProc="GBD.RuleBerger" MaxVersion="6300" Title="Berger demensvurdering" Description="Registere Bergers skala med 180 dagers intervall" LastUpdate="2016-03-19T08:40:44.957Z">
-		<![CDATA[CREATE PROCEDURE GBD.RuleBerger( @StudyId INT, @PersonId INT ) AS
+<row RuleId="1" RuleClass="BERGER" RuleType="M" RuleProc="GBD.RuleBerger" MaxVersion="6300" Title="Berger demensvurdering" Description="Registere Bergers skala med 180 dagers intervall" ChkSum="980396964" LastUpdate="2016-03-19T08:40:44.957Z">
+<![CDATA[CREATE PROCEDURE GBD.RuleBerger( @StudyId INT, @PersonId INT ) AS
 BEGIN
   EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'BERGER',180,2
 END;]]>
-	</row>
-	<row RuleId="2" RuleClass="DrugProb#\d" RuleType="M" RuleProc="dbo.RuleDrugToProblem" Title="Diagnoseforslag" Description="Manglende diagnose basert på medikament som bare har én indikasjon (eks. insulin, glaukomdråper)." LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE dbo.RuleDrugToProblem( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="2" RuleClass="DrugProb#\d" RuleType="M" RuleProc="dbo.RuleDrugToProblem" Title="Diagnoseforslag" Description="Manglende diagnose basert på medikament som bare har én indikasjon (eks. insulin, glaukomdråper)." ChkSum="782745445" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE dbo.RuleDrugToProblem( @StudyId INT, @PersonId INT ) AS
   DECLARE @DrugName VARCHAR(64);
   DECLARE @ATC VARCHAR(7);
   DECLARE @ListId INT;
@@ -65,9 +65,9 @@ BEGIN
   CLOSE alert_list;
   DEALLOCATE alert_list;
 END;]]>
-	</row>
-	<row RuleId="3" RuleClass="DRUID#\d" RuleType="M" RuleProc="dbo.RuleDrugInteractions" Title="Interaksjoner" Description="Legemiddelinteraksjoner" LastUpdate="2017-02-15T18:45:24.097Z">
-		<![CDATA[CREATE PROCEDURE dbo.RuleDrugInteractions ( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="3" RuleClass="DRUID#\d" RuleType="M" RuleProc="dbo.RuleDrugInteractions" Title="Interaksjoner" Description="Legemiddelinteraksjoner" ChkSum="-320670011" LastUpdate="2017-02-15T18:45:24.097Z">
+<![CDATA[CREATE PROCEDURE dbo.RuleDrugInteractions ( @StudyId INT, @PersonId INT ) AS
   /* Variables for interaction result */
   DECLARE @LevelId tinyint;
   DECLARE @ATC1 varchar(7);
@@ -151,9 +151,9 @@ END
 
 
 ]]>
-	</row>
-	<row RuleId="4" RuleClass="GFR" RuleType="M" RuleProc="dbo.RuleGFR" Title="Nyrefunksjon" Description="Lav nyrefunksjon. GRF 60,45 og 30 som grenser." LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE dbo.RuleGFR( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="4" RuleClass="GFR" RuleType="M" RuleProc="dbo.RuleGFR" Title="Nyrefunksjon" Description="Lav nyrefunksjon. GRF 60,45 og 30 som grenser." ChkSum="-1011919235" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE dbo.RuleGFR( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @GFR DECIMAL(5,1);
   DECLARE @AlertLevel INT;
@@ -189,15 +189,15 @@ BEGIN
   IF CHARINDEX( '@Formula',@MsgStr) > 1 SET @MsgStr=REPLACE(@MsgStr,'@Formula','MDRD');
   EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'GFR',@Facet,@HeadStr,@MsgStr
 END;]]>
-	</row>
-	<row RuleId="5" RuleClass="HULTEN" RuleType="M" RuleProc="GBD.RuleHulten" Title="Hultén pleietyngde" Description="Registrere Hulten med maks 90 dagers intervall" LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE GBD.RuleHulten( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="5" RuleClass="HULTEN" RuleType="M" RuleProc="GBD.RuleHulten" Title="Hultén pleietyngde" Description="Registrere Hulten med maks 90 dagers intervall" ChkSum="-1109930964" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE GBD.RuleHulten( @StudyId INT, @PersonId INT ) AS
 BEGIN
   EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'HULTEN',90,2
 END;]]>
-	</row>
-	<row RuleId="6" RuleClass="WARFADJ" RuleType="M" RuleProc="GBD.RuleWarfarinAdjust" Title="Marevandosering" Description="På tide med Marevandosering basert på variabel WARFARIN_NEXT, som ligger i eget skjema." LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE GBD.RuleWarfarinAdjust( @StudyId INT, @PersonId INT )
+</row>
+<row RuleId="6" RuleClass="WARFADJ" RuleType="M" RuleProc="GBD.RuleWarfarinAdjust" Title="Marevandosering" Description="På tide med Marevandosering basert på variabel WARFARIN_NEXT, som ligger i eget skjema." ChkSum="-253360512" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE GBD.RuleWarfarinAdjust( @StudyId INT, @PersonId INT )
 AS
 BEGIN
   DECLARE @AlertFacet varchar(16);
@@ -230,15 +230,15 @@ BEGIN
   END
   EXEC dbo.AddAlertForDSSRule @StudyId,@PersonId,@AlertLevel,'WARFADJ',@AlertFacet
 END;]]>
-	</row>
-	<row RuleId="7" RuleClass="WEIGHT30D" RuleType="M" RuleProc="GBD.RuleWeight30Days" Title="Veiing" Description="Veiing med maks 30 dagers intervall" LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE GBD.RuleWeight30Days( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="7" RuleClass="WEIGHT30D" RuleType="M" RuleProc="GBD.RuleWeight30Days" Title="Veiing" Description="Veiing med maks 30 dagers intervall" ChkSum="75897193" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE GBD.RuleWeight30Days( @StudyId INT, @PersonId INT ) AS
 BEGIN
   EXEC dbo.RulePeriodicData @StudyId,@PersonId,'WEIGHT',30,2
 END]]>
-	</row>
-	<row RuleId="8" RuleClass="INFECTION" RuleType="M" RuleProc="GBD.RuleInfectionForm" Title="Infeksjonsregistrering" Description="Infeksjonsregistering hvis systemisk antibiotika gitt siste 30 dager, og etter siste infeksjonsregistrering." LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE GBD.RuleInfectionForm( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="8" RuleClass="INFECTION" RuleType="M" RuleProc="GBD.RuleInfectionForm" Title="Infeksjonsregistrering" Description="Infeksjonsregistering hvis systemisk antibiotika gitt siste 30 dager, og etter siste infeksjonsregistrering." ChkSum="-1553155358" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE GBD.RuleInfectionForm( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @LastJ01Date DateTime;
   DECLARE @LastFormDate DateTime;
@@ -268,9 +268,9 @@ BEGIN
       EXEC dbo.AddAlertForDSSRule @StudyId,@PersonId,0,'INFECTION','DataFound'
   END;
 END;]]>
-	</row>
-	<row RuleId="9" RuleClass="LAB" RuleType="M" RuleProc="GBD.RuleLabData" Title="Eksterne labdata" Description="Eksterne labdata med maka 180 dagers intervall" LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE GBD.RuleLabData( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="9" RuleClass="LAB" RuleType="M" RuleProc="GBD.RuleLabData" Title="Eksterne labdata" Description="Eksterne labdata med maka 180 dagers intervall" ChkSum="508375617" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE GBD.RuleLabData( @StudyId INT, @PersonId INT ) AS
 BEGIN
   IF EXISTS( SELECT ResultId FROM dbo.LabData WHERE PersonId=@PersonId
     AND LabDate > getdate()-180 )
@@ -280,9 +280,9 @@ BEGIN
     EXEC dbo.AddAlertForPerson @StudyId,@PersonId,2,'LAB','DataMissing','Labdata mangler',
       'Ingen eksterne labdata fra siste 6 mnd.  Labprøver bør tas regelmessig, bl.a. for å overvåke nyrefunksjon.';
 END]]>
-	</row>
-	<row RuleId="10" RuleClass="MUST" RuleType="M" RuleProc="GBD.RuleMUST" Title="MUST" Description="Automatisk beregning av MUST score, med tilhørende varsling ved høy score." LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE GBD.RuleMUST( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="10" RuleClass="MUST" RuleType="M" RuleProc="GBD.RuleMUST" Title="MUST" Description="Automatisk beregning av MUST score, med tilhørende varsling ved høy score." ChkSum="519050083" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE GBD.RuleMUST( @StudyId INT, @PersonId INT ) AS
 BEGIN
   SET NOCOUNT ON;
   DECLARE @EventTime DateTime;
@@ -382,9 +382,9 @@ BEGIN
   END;
   EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'MUST',@AlertFacet,@MsgHeader, @MsgText,'TYM'
 END]]>
-	</row>
-	<row RuleId="11" RuleClass="METFORMGFR" RuleType="M" RuleProc="dbo.RuleMetforminGFR" Title="Metformin og GFR" Description="Advarsel om metforminbruk med samtidig lav GFR, grenseverdier 60,30 og 15." LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE dbo.RuleMetforminGFR( @StudyId INT, @PersonId INT )
+</row>
+<row RuleId="11" RuleClass="METFORMGFR" RuleType="M" RuleProc="dbo.RuleMetforminGFR" Title="Metformin og GFR" Description="Advarsel om metforminbruk med samtidig lav GFR, grenseverdier 60,30 og 15." ChkSum="-1901190138" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE dbo.RuleMetforminGFR( @StudyId INT, @PersonId INT )
 AS
 BEGIN
   DECLARE @CalcAt DateTime;
@@ -447,15 +447,15 @@ BEGIN
   END;
   EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'METFORMGFR',@AlertFacet,@HeaderText,@MsgText;
 END]]>
-	</row>
-	<row RuleId="12" RuleClass="SBP_UNSPEC30" RuleType="M" RuleProc="GBD.RuleBP30Days" Title="Blodtrykk" Description="Blodtrykksmåling med maks 30 dagers intervall." LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE GBD.RuleBP30Days( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="12" RuleClass="SBP_UNSPEC30" RuleType="M" RuleProc="GBD.RuleBP30Days" Title="Blodtrykk" Description="Blodtrykksmåling med maks 30 dagers intervall." ChkSum="737675974" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE GBD.RuleBP30Days( @StudyId INT, @PersonId INT ) AS
 BEGIN
   EXEC dbo.RulePeriodicData @StudyId, @PersonId, 'SBP_UNSPEC',30, 2
 END]]>
-	</row>
-	<row RuleId="13" RuleClass="AFTREATED" RuleType="M" RuleProc="GBD.RuleAtrialFibrillation" Title="Atrieflimmer" Description="Behandling av atrieflimmer med B01AA eller B01AC." LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE GBD.RuleAtrialFibrillation( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="13" RuleClass="AFTREATED" RuleType="M" RuleProc="GBD.RuleAtrialFibrillation" Title="Atrieflimmer" Description="Behandling av atrieflimmer med B01AA eller B01AC." ChkSum="-831281577" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE GBD.RuleAtrialFibrillation( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @HasAF INT;
   DECLARE @HeaderText VARCHAR(64);
@@ -485,9 +485,9 @@ BEGIN
   SET @HeaderText = dbo.GetTextItem( 'AFTREATED', @AlertFacet + '.Header' )  
   EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'AFTREATED',@AlertFacet,@HeaderText,@MsgText
 END]]>
-	</row>
-	<row RuleId="14" RuleClass="CF#\d" RuleType="M" RuleProc="GBD.RuleReminder" Title="Skjema" Description="Påminnelse basert på eget påminnelsesskjema." LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE GBD.RuleReminder( @StudyId INT, @PersonId INT )
+</row>
+<row RuleId="14" RuleClass="CF#\d" RuleType="M" RuleProc="GBD.RuleReminder" Title="Skjema" Description="Påminnelse basert på eget påminnelsesskjema." ChkSum="-449999949" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE GBD.RuleReminder( @StudyId INT, @PersonId INT )
 AS
 BEGIN
   -- Reset all alerts of this class to level 0, because some forms may have been deleted
@@ -541,9 +541,9 @@ BEGIN
   SELECT t.PersonId,t.StudyId,t.AlertClass,t.AlertFacet,t.AlertLevel,t.AlertHeader,t.AlertMessage,t.AlertButtons,t.HideUntil FROM #tempAlerts t;
   
 END]]>
-	</row>
-	<row RuleId="15" RuleClass="NDVTSH" RuleType="M" RuleProc="NDV.RuleTSH" Title="TSH" Description="Måling av TSH med 730 dagers intervall hos type-1 diabetikere." LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE NDV.RuleTSH( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="15" RuleClass="NDVTSH" RuleType="M" RuleProc="NDV.RuleTSH" Title="TSH" Description="Måling av TSH med 730 dagers intervall hos type-1 diabetikere." ChkSum="-237869947" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE NDV.RuleTSH( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @LabName VARCHAR(40);
   DECLARE @LabVal FLOAT;     
@@ -592,9 +592,9 @@ BEGIN
       @AlertMessage;    
 END
 ]]>
-	</row>
-	<row RuleId="16" RuleClass="CARBCOUNT" RuleType="M" RuleProc="NDV.RuleCarbCount" Title="Karbohydrattelling" Description="Opplæring i karbohydrattelling hos type-1 diabetikere." LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE NDV.RuleCarbCount( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="16" RuleClass="CARBCOUNT" RuleType="M" RuleProc="NDV.RuleCarbCount" Title="Karbohydrattelling" Description="Opplæring i karbohydrattelling hos type-1 diabetikere." ChkSum="-702223112" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE NDV.RuleCarbCount( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @TrainDate DateTime;
   DECLARE @AlertFacet VARCHAR(16);
@@ -630,9 +630,9 @@ BEGIN
   END
   EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'CARBCOUNT',@AlertFacet,@AlertHeader, @AlertMessage;    
 END]]>
-	</row>
-	<row RuleId="17" RuleClass="NDVCONSENT" RuleType="M" RuleProc="NDV.RuleConsent" Title="Samtykke" Description="Manglende samtykke-erklæring." LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE NDV.RuleConsent( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="17" RuleClass="NDVCONSENT" RuleType="M" RuleProc="NDV.RuleConsent" Title="Samtykke" Description="Manglende samtykke-erklæring." ChkSum="773715923" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE NDV.RuleConsent( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @AlertFacet VARCHAR(16);
   DECLARE @AlertLevel INT;
@@ -663,9 +663,9 @@ BEGIN
   END;
   EXEC dbo.AddAlertForDSSRule @StudyId,@PersonId,@AlertLevel,'NDVCONSENT',@AlertFacet;    
 END]]>
-	</row>
-	<row RuleId="18" RuleClass="Kost(Til|Sa)" RuleType="M" RuleProc="GBD.RuleNutritionAction" Title="Ernæring" Description="Kostsamtale gjennomført, tiltakskjema utfylt og signert hvis aktuelt basert kostsamtalen. " LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE GBD.RuleNutritionAction( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="18" RuleClass="Kost(Til|Sa)" RuleType="M" RuleProc="GBD.RuleNutritionAction" Title="Ernæring" Description="Kostsamtale gjennomført, tiltakskjema utfylt og signert hvis aktuelt basert kostsamtalen. " ChkSum="-1068857473" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE GBD.RuleNutritionAction( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @LastTiltakDate DateTime;
   DECLARE @LastInnkomstDate DateTime;
@@ -731,9 +731,9 @@ BEGIN
     EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'KostTiltak',@AlertFacet,@AlertHdr,@AlertMsg;
   END;
 END;]]>
-	</row>
-	<row RuleId="19" RuleClass="TVANG" RuleType="M" RuleProc="GBD.RuleTvangsvedtak" Title="Tvangsvedtak" Description="Fornyelse av tvangsvedtak" LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE GBD.RuleTvangsvedtak( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="19" RuleClass="TVANG" RuleType="M" RuleProc="GBD.RuleTvangsvedtak" Title="Tvangsvedtak" Description="Fornyelse av tvangsvedtak" ChkSum="-1976837309" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE GBD.RuleTvangsvedtak( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @EventTime DateTime;
   DECLARE @StopDate DateTime;
@@ -789,9 +789,9 @@ BEGIN
   CLOSE cur_vedtak;
   DEALLOCATE cur_vedtak;
 END]]>
-	</row>
-	<row RuleId="20" RuleClass="NDVEYE" RuleType="M" RuleProc="NDV.RuleEyeCheck" Title="Øyeundersøkelse" Description="Øyeundersøkelse med maks 730 dagers intervall hos type-1 diabetikere ved minst 5 års sykdomsvarighet." LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE NDV.RuleEyeCheck( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="20" RuleClass="NDVEYE" RuleType="M" RuleProc="NDV.RuleEyeCheck" Title="Øyeundersøkelse" Description="Øyeundersøkelse med maks 730 dagers intervall hos type-1 diabetikere ved minst 5 års sykdomsvarighet." ChkSum="1727932610" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE NDV.RuleEyeCheck( @StudyId INT, @PersonId INT ) AS
 BEGIN
 
   DECLARE @EyeCheckDate DateTime;
@@ -841,9 +841,9 @@ BEGIN
   END
   EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'NDVEYE',@AlertFacet,@AlertHeader, @AlertMessage;    
 END]]>
-	</row>
-	<row RuleId="21" RuleClass="NDVAVSLUTT" RuleType="M" RuleProc="NDV.RuleAutoClose" Title="Avslutning" Description="Automatisk avslutning av pasienter i NOKLUS Diabetes basert på innhold i poliklinisk notat." LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE NDV.RuleAutoClose( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="21" RuleClass="NDVAVSLUTT" RuleType="M" RuleProc="NDV.RuleAutoClose" Title="Avslutning" Description="Automatisk avslutning av pasienter i NOKLUS Diabetes basert på innhold i poliklinisk notat." ChkSum="220751245" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE NDV.RuleAutoClose( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @DpAvsluttet INT;           
   SELECT TOP 1 @DpAvsluttet = EnumVal 
@@ -861,9 +861,9 @@ BEGIN
   ELSE      
     EXEC dbo.AddAlertForPerson @StudyId,@PersonId,0,'NDVAVSLUTT','Exclude','Fortsetter','Ikke avsluttet på diabetespoliklinikken, basert på informasjon fra skjema.';
 END]]>
-	</row>
-	<row RuleId="22" RuleClass="MATKORT" RuleType="M" RuleProc="GBD.RuleMatkort" Title="Matkort" Description="Revisjon av matkort på dato som er angitt i forrige matkort." LastUpdate="2016-02-26T16:50:19.133Z">
-		<![CDATA[CREATE PROCEDURE GBD.RuleMatkort( @StudyId INT, @PersonId INT )
+</row>
+<row RuleId="22" RuleClass="MATKORT" RuleType="M" RuleProc="GBD.RuleMatkort" Title="Matkort" Description="Revisjon av matkort på dato som er angitt i forrige matkort." ChkSum="-2127804112" LastUpdate="2016-02-26T16:50:19.133Z">
+<![CDATA[CREATE PROCEDURE GBD.RuleMatkort( @StudyId INT, @PersonId INT )
 AS
 BEGIN
   DECLARE @AlertFacet varchar(16);
@@ -885,9 +885,9 @@ BEGIN
   END;
   EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, @AlertLevel, 'MATKORT', @AlertFacet;
 END;]]>
-	</row>
-	<row RuleId="23" RuleClass="LMG" RuleType="M" RuleProc="GBD.RuleLMG" Title="Legemiddelgjennomgang" Description="Utfylling av legemiddelgjennomgang med 180 dagers intervall." LastUpdate="2017-02-24T14:57:52.427Z">
-		<![CDATA[CREATE PROCEDURE GBD.RuleLMG( @StudyId INT, @PersonId INT ) AS
+</row>
+<row RuleId="23" RuleClass="LMG" RuleType="M" RuleProc="GBD.RuleLMG" Title="Legemiddelgjennomgang" Description="Utfylling av legemiddelgjennomgang med 180 dagers intervall." ChkSum="-623153698" LastUpdate="2017-02-24T14:57:52.427Z">
+<![CDATA[CREATE PROCEDURE GBD.RuleLMG( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @LastFormDate DateTime;
   DECLARE @AlertFacet varchar(16);
@@ -914,5 +914,7 @@ BEGIN
   END
   EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, @ActualLevel, 'LMG', @AlertFacet;
 END]]>
-	</row>
+</row>
+
 </DSSRule>
+
