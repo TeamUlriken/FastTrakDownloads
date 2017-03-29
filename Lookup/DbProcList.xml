@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <DbProcList>
+	<row ProcId="-2" StudyName="*" ProcName="NDV.MergeHba1cToLabdata" ProcDesc="Flytter labdata fra skjema til labtabell" ListId="UTIL" GrantTo="public" MinVersion="6401" ChkSum="-1365688244" LastUpdate="2017-03-29T11:00:40.893Z">
+		<![CDATA[CREATE PROCEDURE NDV.MergeHba1cToLabdata AS
+BEGIN
+  DECLARE @MergedName VARCHAR(32);
+  DECLARE @LabCodeId INT;
+
+  -- Make sure that we have a LabCode for the form data.
+  SET @MergedName = 'B-HbA1c (skjema)';
+  SELECT @LabCodeId = LabCodeId FROM dbo.LabCode WHERE LabName = @MergedName;
+  IF @LabCodeId IS NULL
+  BEGIN
+    INSERT INTO LabCode (LabName,VarName,LabClassId) VALUES( @MergedName,'HBA1C', 45);
+	SET @LabCodeId = SCOPE_IDENTITY();
+  END
+  ELSE  
+    UPDATE LabCode SET LabClassId=45 WHERE LabCodeId=@LabCodeId;
+
+  -- Merge new data from forms into labdata
+  MERGE dbo.LabData AS trg 
+  USING
+  ( 
+    SELECT ce.PersonId, ObsDate, Quantity FROM dbo.ClinDataPoint cdp
+    JOIN dbo.ClinEvent ce ON ce.EventId=cdp.EventId
+    WHERE cdp.ItemId = 527 AND Quantity > 0
+  ) src
+  ON trg.PersonId=src.PersonId AND trg.LabDate=src.ObsDate AND trg.LabCodeId=@LabCodeId
+  WHEN NOT MATCHED THEN
+    INSERT (PersonId,LabDate,LabCodeId,NumResult,UnitStr )
+    VALUES (src.PersonId,src.ObsDate,@LabCodeId,src.Quantity,'%' )
+  WHEN MATCHED THEN
+    UPDATE SET NumResult = src.Quantity;
+END]]>
+	</row>
 	<row ProcId="-1" StudyName="*" ProcName="CalculateTertial" ProcDesc="Beregner tertial" ProcParams=":SomeDate, :StartsAt,:EndsAt" ListId="UTIL" GrantTo="public" ChkSum="1637670642" LastUpdate="2014-05-12T12:42:12.923Z">
 		<![CDATA[CREATE PROCEDURE dbo.CalculateTertial( @SomeDate DateTime, @StartsAt DateTime OUTPUT, @EndsAt DateTime OUTPUT )
 AS
@@ -3573,14 +3606,18 @@ BEGIN
   
 END]]>
 	</row>
-	<row ProcId="1037" StudyName="NDV" ProcName="NDV.ReportHbA1cTimeSeries" ProcDesc="Tidsserie for dårlig regulerte Type 1" ProcParams=":Year,:HbA1cCutoff,:LookBehindMonths,:LookForwardMonths" ListId="FR" GrantTo="public" MinVersion="6401" ChkSum="368004598" LastUpdate="2017-03-13T07:11:52.177Z">
+	<row ProcId="1037" StudyName="NDV" ProcName="NDV.ReportHbA1cTimeSeries" ProcDesc="Tidsserie for dårlig regulerte Type 1, prosjekt i regi NDV." ProcParams=":Year, :HbA1cCutoff, :LookBehindMonths, :LookForwardMonths" ListId="FR" GrantTo="public" MinVersion="6401" ChkSum="-1622486953" LastUpdate="2017-03-29T11:06:44.137Z">
 		<![CDATA[CREATE PROCEDURE NDV.ReportHbA1cTimeSeries( @Year INT, @HbA1cCutoff FLOAT, @LookBehindMonths INT, @LookforwardMonths INT ) AS
 BEGIN
 
   DECLARE @NumPatientsType1 INT;
   DECLARE @YearStart DateTime;
   DECLARE @YearEnd DateTime;
-
+  
+  -- Merge labdata from ClinDatapoint to LabData
+                                      
+  EXEC NDV.MergeHba1cToLabdata;
+  
   -- Find start and end of the year passed in as a parameter.
 
   SELECT @YearStart = CONVERT(DateTime,CONVERT(VARCHAR, @Year) + '-01-01');
@@ -3628,8 +3665,7 @@ BEGIN
   ) labs
   WHERE @NumPatientsType1 > 0;
   
-END
-]]>
+END]]>
 	</row>
 	<row ProcId="5001" StudyName="GBD" ProcName="GBD.UpdateMustScoreForAll" ProcDesc="Oppdatering av MUST for alle, trenger GBD.RuleMust på plass" ProcParams=":StudyId" ListId="UTIL" GrantTo="public" ChkSum="-1790760205" LastUpdate="2016-06-06T12:55:01.353Z">
 		<![CDATA[CREATE PROCEDURE GBD.UpdateMustScoreForAll( @StudyId INT ) AS
