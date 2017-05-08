@@ -2297,7 +2297,7 @@ END
 
 ]]>
 	</row>
-	<row ProcId="1001" StudyName="GBD" ProcName="GBD.RapportAvvik" ProcDesc="Avviksrapport" ProcParams=":StudyId, :StartAt, :StopAt, :OrderBy" ListId="FR" GrantTo="public" ChkSum="-604751842" LastUpdate="2017-02-14T08:28:01.507Z">
+	<row ProcId="1001" StudyName="GBD" ProcName="GBD.RapportAvvik" ProcDesc="Avviksrapport" ProcParams=":StudyId, :StartAt, :StopAt, :OrderBy" ListId="FR" GrantTo="public" ChkSum="-1287264417" LastUpdate="2017-05-08T09:32:24.437Z">
 		<![CDATA[CREATE PROCEDURE GBD.RapportAvvik ( @StudyId INT, @StartAt DateTime = NULL, @StopAt DateTime = NULL, @OrderBy INT = 0 ) AS
 BEGIN
   SET LANGUAGE Norwegian; 
@@ -2311,7 +2311,7 @@ BEGIN
     dbo.MonthYear( ce.EventTime ) AS MonthYear,
     DATENAME( mm, ce.EventTime ) AS MonthName,
     DATEPART( hh, ce.EventTime ) AS EventHour,
-    DATEPART( ww, ce.EventTime ) AS EventWeek,
+    DATEPART( ISO_WEEK, ce.EventTime ) AS EventWeek,
     v6402.EnumVal as E6402,
     a6402.OptionText as T6402,
     CONVERT(VARCHAR(16),v6410.TextVal) as T6410,
