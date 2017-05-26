@@ -1370,7 +1370,7 @@ BEGIN
   EXECUTE NDV.GetType1WithHighLDL @StudyId,3.51,40
 END]]>
 	</row>
-	<row ProcId="270" StudyName="NDV" ProcName="GetCaseListHbA1c9Plus" ProcDesc="Behandling: HbA1c &gt; 9" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1876185540" LastUpdate="2015-06-12T07:12:21.587Z">
+	<row ProcId="270" StudyName="NDV" ProcName="dbo.GetCaseListHbA1c9Plus" ProcDesc="Behandling: HbA1c &gt; 9" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1012258125" LastUpdate="2017-05-26T08:58:46.073Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListHbA1c9Plus( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,
@@ -1862,6 +1862,23 @@ BEGIN
   EXEC NDV.GetAnnualControls '2017-01-01','2017-12-31'; 
 END]]>
 	</row>
+	<row ProcId="315" StudyName="NDV" ProcName="NDV.GetCaseListHbA1cProject2017" ProcDesc="Prosjekter: HbA1c prosjekt 2017" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6401" ChkSum="241983820" LastUpdate="2017-05-26T08:58:27.350Z">
+		<![CDATA[CREATE PROCEDURE NDV.GetCaseListHbA1cProject2017( @StudyId INT ) AS
+BEGIN
+  SET LANGUAGE Norwegian;
+  EXEC NDV.MergeHba1cToLabdata;
+  SELECT rp.PersonId, p.DOB, p.ReverseName, ISNULL(ss.StatusText,'(ukjent)') AS GroupName, p.NationalId, p.GenderId, 
+  ld.NumResult AS HbA1c, ld.LabDate,
+  'HbA1c = ' + CONVERT(VARCHAR,ld.NumResult) + ', tatt ' + CONVERT( VARCHAR,ld.LabDate,104) AS InfoText 
+  FROM NDV.GetRecentPatientsTable( 1, '2017-01-01', 15 ) rp
+  JOIN dbo.GetLastLabDataTable( 45, '2100-01-01' ) ld ON ld.PersonId = rp.PersonId
+  JOIN dbo.Person p ON p.PersonId = rp.PersonId
+  JOIN dbo.Study s ON s.StudyName = 'NDV'
+  LEFT JOIN dbo.StudCase sc ON sc.StudyId = s.StudyId AND sc.PersonId = p.PersonId
+  LEFT JOIN dbo.StudyStatus ss ON ss.StudyId = sc.StudyId AND ss.StatusId = sc.FinState
+  ORDER BY NumResult DESC, ReverseName
+END]]>
+	</row>
 	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1529014000" LastUpdate="2013-11-14T14:52:27.327Z">
 		<![CDATA[CREATE PROCEDURE BAR.GetHospitalizedWithoutAdmissionForm( @StudyId INT )
 AS
@@ -2287,6 +2304,19 @@ BEGIN
   LEFT JOIN dbo.GetLastQuantities( 6089 ) AS T6089 ON T6089.PersonId = v.PersonId
   WHERE v.StudyId = @StudyId AND (T6090.EnumVal = 1 OR T6299.EnumVal = 1 OR T6089.Quantity > 1900)
   AND p.DeceasedDate IS NULL
+END]]>
+	</row>
+	<row ProcId="750" StudyName="ROAS" ProcName="ROAS.GetAddisonPatientsWithStatus" ProcDesc="Addison: Alle med status folkeregister" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6602" ChkSum="-2135717702" LastUpdate="2017-05-23T14:11:33.270Z">
+		<![CDATA[CREATE PROCEDURE ROAS.GetAddisonPatientsWithStatus( @StudyId INT ) AS
+BEGIN
+  SELECT p.PersonId,p.DOB,p.ReverseName,p.DeceasedInd,p.NationalId,p.GenderId,
+  CASE DeceasedInd 
+  WHEN 0 THEN 'Levende'
+  WHEN 1 THEN 'Død' END AS GroupName,
+  CONVERT(VARCHAR,p.DeceasedDate,106) AS InfoText
+  FROM Diagnose.AddisonInferred a
+  JOIN dbo.Person p ON p.PersonId = a.PersonId
+  ORDER BY p.PersonId
 END]]>
 	</row>
 	<row ProcId="800" StudyName="HOFTE" ProcName="dbo.GetCaseListLastGamma" ProcDesc="Operasjon: Gammanagling" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1506179999" LastUpdate="2013-09-03T11:41:34.540Z">
