@@ -1659,6 +1659,52 @@ END]]>
 	<row ProcId="293" StudyName="ENDO" ProcName="NDV.GetCaseListConsentNegative" ProcDesc="Samtykke NDV: Nei / Trukket" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="696359776" LastUpdate="2014-11-06T07:29:25.630Z">
 		<![CDATA[]]>
 	</row>
+	<row ProcId="294" StudyName="NDV" ProcName="NDV.GetCaseListUserVsConsent" ProcDesc="Samtykke: Positive per behandler" ProcParams=":StudyId" ListId="CASE" GrantTo="superuser" MinVersion="6000" ChkSum="1750847198" LastUpdate="2017-05-31T09:51:07.577Z">
+		<![CDATA[CREATE PROCEDURE NDV.GetCaseListUserVsConsent( @StudyId INT ) AS
+BEGIN
+	SELECT p.PersonId, p.DOB, p.FullName, p.GenderId, c.CenterName AS GroupName, Rapport.*, 100.0 * Ja / Total AS JaProsent,
+		'Ja = ' + CONVERT(VARCHAR, CONVERT(DECIMAL(3, 0), 100.0 * Ja / Total)) + '%, n = ' + CONVERT(VARCHAR, Total) AS InfoText
+	FROM (SELECT
+			*,
+			src.Ja + src.Nei + src.Trukket + src.Ukjent + src.Mangler AS Total
+		FROM (SELECT
+				CreatedBy,
+				[1] AS Ja,
+				[2] AS Nei,
+				[3] AS Trukket,
+				[4] AS Ukjent,
+				[-1] AS Mangler
+			FROM (SELECT
+					Consent,
+					CreatedBy
+				FROM (SELECT
+						diat.PersonId,
+						diat.EnumVal AS DiaType,
+						ISNULL(cons.EnumVal, -1) AS Consent,
+						LastVisit.CreatedBy
+					FROM dbo.GetLastEnumValuesTable(3196, '2100-01-01') diat
+					LEFT JOIN dbo.GetLastEnumValuesTable(3389, '2100-01-01') cons
+						ON diat.PersonId = cons.PersonId
+					JOIN (SELECT
+							PersonId,
+							CreatedBy,
+							RANK() OVER (PARTITION BY PersonId ORDER BY CreatedAt DESC) AS ReverseOrder
+						FROM dbo.ClinEvent
+						WHERE CreatedAt > GETDATE() - 365) LastVisit
+						ON LastVisit.ReverseOrder = 1
+						AND LastVisit.PersonId = diat.PersonId AND diat.EnumVal IN (1,2)) v) br
+			PIVOT
+			(
+			COUNT(Consent)
+			FOR Consent IN ([-1], [1], [2], [3], [4])
+			) piv) src) Rapport
+	JOIN dbo.UserList ul ON ul.UserId = Rapport.CreatedBy
+	JOIN dbo.Person p ON p.PersonId = ul.PersonId
+	JOIN dbo.StudyCenter c ON c.CenterId = ul.CenterId
+	WHERE Total >= 10
+	ORDER BY JaProsent DESC
+END]]>
+	</row>
 	<row ProcId="295" StudyName="NDV" ProcName="NDV.GetGravide2014" ProcDesc="Gravide: Kontroller i 2014" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1353070269" LastUpdate="2015-03-31T13:43:09.447Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetGravide2014(  @StudyId INT )
 AS
@@ -1862,22 +1908,25 @@ BEGIN
   EXEC NDV.GetAnnualControls '2017-01-01','2017-12-31'; 
 END]]>
 	</row>
-	<row ProcId="315" StudyName="NDV" ProcName="NDV.GetCaseListHbA1cProject2017" ProcDesc="Prosjekter: HbA1c prosjekt 2017" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6401" ChkSum="241983820" LastUpdate="2017-05-26T08:58:27.350Z">
+	<row ProcId="315" StudyName="NDV" ProcName="NDV.GetCaseListHbA1cProject2017" ProcDesc="Prosjekter: HbA1c prosjekt 2017" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6401" ChkSum="1576252337" LastUpdate="2017-05-26T12:32:29.487Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetCaseListHbA1cProject2017( @StudyId INT ) AS
 BEGIN
-  SET LANGUAGE Norwegian;
+  SET LANGUAGE Norwegian;  
+  -- Get latest labdata from forms
   EXEC NDV.MergeHba1cToLabdata;
-  SELECT rp.PersonId, p.DOB, p.ReverseName, ISNULL(ss.StatusText,'(ukjent)') AS GroupName, p.NationalId, p.GenderId, 
-  ld.NumResult AS HbA1c, ld.LabDate,
-  'HbA1c = ' + CONVERT(VARCHAR,ld.NumResult) + ', tatt ' + CONVERT( VARCHAR,ld.LabDate,104) AS InfoText 
+  SELECT rp.PersonId, p.DOB, p.ReverseName AS FullName, ISNULL(ss.StatusText,'(ukjent)') AS GroupName, p.NationalId, p.GenderId, 
+    ld.NumResult AS HbA1c, ld.LabDate, 'HbA1c = ' + CONVERT(VARCHAR,ld.NumResult) + ', tatt ' + CONVERT( VARCHAR,ld.LabDate,104) AS InfoText 
   FROM NDV.GetRecentPatientsTable( 1, '2017-01-01', 15 ) rp
   JOIN dbo.GetLastLabDataTable( 45, '2100-01-01' ) ld ON ld.PersonId = rp.PersonId
   JOIN dbo.Person p ON p.PersonId = rp.PersonId
   JOIN dbo.Study s ON s.StudyName = 'NDV'
   LEFT JOIN dbo.StudCase sc ON sc.StudyId = s.StudyId AND sc.PersonId = p.PersonId
   LEFT JOIN dbo.StudyStatus ss ON ss.StudyId = sc.StudyId AND ss.StatusId = sc.FinState
-  ORDER BY NumResult DESC, ReverseName
+  ORDER BY ld.NumResult DESC, p.ReverseName
 END]]>
+	</row>
+	<row ProcId="316" StudyName="ENDO" ProcName="NDV.GetCaseListHbA1cProject2017" ProcDesc="Prosjekter: HbA1c prosjekt 2017" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6401" ChkSum="-1461251566" LastUpdate="2017-05-26T09:40:35.167Z">
+		<![CDATA[]]>
 	</row>
 	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1529014000" LastUpdate="2013-11-14T14:52:27.327Z">
 		<![CDATA[CREATE PROCEDURE BAR.GetHospitalizedWithoutAdmissionForm( @StudyId INT )
@@ -4874,6 +4923,39 @@ BEGIN
     END
   END
   EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, @ActualLevel, 'LMG', @AlertFacet;
+END]]>
+	</row>
+	<row ProcId="10024" StudyName="*" ProcName="NDV.RuleBiobank" ProcDesc="Samtykke til biobank" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-968131333" LastUpdate="2017-05-26T13:46:54.330Z">
+		<![CDATA[CREATE PROCEDURE NDV.RuleBiobank( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  DECLARE @AlertFacet VARCHAR(16);
+  DECLARE @AlertLevel INT;
+  DECLARE @NdvConsent INT;                                           
+  DECLARE @StudyName VARCHAR(32);
+  DECLARE @DiabetesType INT;  
+  SELECT @StudyName = StudName FROM dbo.Study WHERE StudyId=@StudyId;
+  SET @DiabetesType = ISNULL(dbo.GetLastEnumVal( @PersonId, 'NDV_TYPE' ), -1 );
+  IF @StudyName = 'NDV' AND @DiabetesType=-1 SET @DiabetesType=0;    
+  IF @DiabetesType = -1
+  BEGIN
+    SET @AlertFacet = 'Exclude';
+    SET @AlertLevel = 0;
+  END
+  ELSE
+  BEGIN
+    SET @NdvConsent = dbo.GetLastEnumVal( @PersonId, 'NDV_CONSENT_BIOBANK' );
+    IF @NdvConsent IN  (1,2) 
+    BEGIN
+      SET @AlertFacet = 'DataFound';
+      SET @AlertLevel = 0;
+    END
+    ELSE 
+    BEGIN
+      SET @AlertFacet = 'DataMissing';
+      SET @AlertLevel = 3; 
+    END
+  END;
+  EXEC dbo.AddAlertForDSSRule @StudyId,@PersonId,@AlertLevel,'NDVBIOBANK',@AlertFacet;    
 END]]>
 	</row>
 </DbProcList>
