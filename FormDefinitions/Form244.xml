@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="244" FormName="IPAQ" FormTitle="IPAQ">
+    <Page PageId="273" PageNumber="1" PageTitle="International Physical Activity Questionnaire" PageIntroduction="Dette skjemaet måler fysisk aktivitetsnivå på en enkel og standardisert måte.  Les mer på http://www.ipaq.ki.se.">
+      <Item ItemId="3051" ItemType="8" VarName="VAR3051" LoincScale="MSG" DisplayFormat="">
+        <FormItem FormItemId="1251" OrderNumber="1" ItemText="Vi er interessert i å finne ut mer om den fysiske aktivitet som du utfører som en del av ditt daglige liv.  Spørsmålene vil omhandle den tiden du har vært fysisk aktiv de *siste 7 dager* Svar på spørsmålene selv om du ikke ser på deg selv som en aktiv person.  Tenk på aktivitetene du gjør på arbeid, i hus og hage, for å komme fra sted til sted, og i fritiden for rekreasjon, trening og sport." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="274" PageNumber="2" PageTitle="Hard fysisk aktivitet" PageIntroduction="Tenk nå på all *meget anstrengende* aktivitet som krever *hard fysisk innsats* som du har gjort de siste 7 dager.    Meget anstrengende aktivitet er det som får deg til å bli skikkelig andpusten.  Dette kan f.eks. være tunge løft, graving, tungt bygge- eller hagearbeid,  aerobics, jogging eller sykling i hurtig tempo.  Tenk bare på de aktivitetene som du holdt på med i minst 10 minutter om gangen.">
+      <Item ItemId="3056" ItemType="1" VarName="IPAQ_1A" LoincScale="QN" UnitStr="dager/uke" DisplayFormat="">
+        <FormItem FormItemId="1256" OrderNumber="2" ItemHeader="Dager med hard fysisk aktivitet" ItemText="Hvor mange av de *siste 7 dagene* har du utført *hard* fysisk aktivitet? (dager/uke)" ItemHelp="Tenk bare på aktiviteter som varte i minst 10 minutter om gangen." MinExpression="0" MaxExpression="7" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10357" ItemType="2" VarName="tmpIPAQ1" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="21101" OrderNumber="3" ItemText="Åpne detaljer om IPAQ 1" ItemHelp="" Expression="2-ISPOS(IPAQ_1a)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="58158" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="58159" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="275" PageNumber="3" PageTitle="Tidsforbruk hard fysisk aktivitet*">
+      <Item ItemId="3054" ItemType="1" VarName="IPAQ_1B" LoincScale="QN" UnitStr="timer/dag" DisplayFormat="">
+        <FormItem FormItemId="1254" OrderNumber="4" ItemHeader="Timer med hard fysisk aktivitet" ItemText="Hvor mye tid brukte du vanligvis på *hard* fysisk aktivitet en av disse dagene? (timer/dag)" ItemHelp="I hele timer, ekstra minutter på neste spm." MinExpression="0" MaxExpression="12" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3055" ItemType="1" VarName="IPAQ_1C" LoincScale="QN" UnitStr="min/dag" DisplayFormat="">
+        <FormItem FormItemId="1255" OrderNumber="5" ItemHeader="Minutter med hard fysisk aktivitet" ItemText="Minutter i tillegg til timene over (min/dag)" ItemHelp="" MinExpression="0" MaxExpression="59" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" DefaultValue="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="276" PageNumber="4" PageTitle="Moderat fysisk aktvitet" PageIntroduction="Tenk nå på aktiviteter som krever *moderat fysisk innsats* og som du har gjort de siste 7 dager.  Moderat fysisk aktivitet skal få deg til å puste noe kraftigere enn vanlig.  Dette kan f.eks. være å bære relativt lette bører, sykle i vanlig tempo eller rolig mosjonsidrett. Ikke inkluder spaserturer.  Også nå skal du bare tenke på de aktiviteter som du har gjort i minst 10 minutter om gangen.">
+      <Item ItemId="3060" ItemType="1" VarName="IPAQ_2A" LoincScale="QN" UnitStr="dager/uke" DisplayFormat="">
+        <FormItem FormItemId="1260" OrderNumber="6" ItemHeader="Dager med moderat fysisk aktiviet" ItemText="Hvor mange av de &lt;b&gt;siste 7 dagene&lt;/b&gt; har du utført &lt;b&gt;moderat&lt;/b&gt; fysisk aktivitet? (dager/uke)" ItemHelp="Tenk bare på aktiviteter som varte i minst 10 minutter om gangen." MinExpression="0" MaxExpression="7" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10358" ItemType="2" VarName="tmpIPAQ2" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="21103" OrderNumber="7" ItemText="Åpne detaljer om IPAQ 2" ItemHelp="" Expression="2-ISPOS(IPAQ_2a)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="58171" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="58172" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="277" PageNumber="5" PageTitle="Tidsforbruk moderat fysisk aktivitet*">
+      <Item ItemId="3059" ItemType="1" VarName="IPAQ_2B" LoincScale="QN" UnitStr="timer/dag" DisplayFormat="">
+        <FormItem FormItemId="1259" OrderNumber="8" ItemHeader="Timer med moderat fysisk aktivitet" ItemText="Hvor mye tid brukte du vanligvis på &lt;b&gt;moderat&lt;/b&gt; fysisk aktivitet en av disse dagene? (timer/dag)" ItemHelp="I hele timer, ekstra minutter på neste spm." MinExpression="0" MaxExpression="12" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3058" ItemType="1" VarName="IPAQ_2C" LoincScale="QN" UnitStr="min/dag" DisplayFormat="">
+        <FormItem FormItemId="1258" OrderNumber="9" ItemHeader="Minutter med moderat fysisk aktivtet" ItemText="Minutter i tillegg til timene over (min/dag)" ItemHelp="" MinExpression="0" MaxExpression="59" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" DefaultValue="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="278" PageNumber="6" PageTitle="Spaserturer" PageIntroduction="Tenk nå på den tiden du har brukt på å spasere de siste 7 dagene.  Dette inkluderer på arbeid og i hjemmet, når du går fra sted til sted som forflytning, pluss andre spaserturer som du tar for rekreasjon, sport, trening eller fritidsformål.">
+      <Item ItemId="3052" ItemType="1" VarName="IPAQ_3A" LoincScale="QN" UnitStr="dager/uke" DisplayFormat="">
+        <FormItem FormItemId="1252" OrderNumber="10" ItemHeader="Dager med spaserturer" ItemText="I løpet av de &lt;b&gt;siste 7 dagene&lt;/b&gt;, hvor mange dager &lt;b&gt;gikk&lt;/b&gt; du minst 10 minutter om gangen? (dager/uke)" ItemHelp="" MinExpression="0" MaxExpression="7" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10359" ItemType="2" VarName="tmpIPAQ3" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="21105" OrderNumber="11" ItemText="Åpne detaljer om IPAQ 3" ItemHelp="" Expression="2-ISPOS(IPAQ_3a)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="58181" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="58182" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="279" PageNumber="7" PageTitle="Tid brukt på spaserturer*">
+      <Item ItemId="3053" ItemType="1" VarName="IPAQ_3B" LoincScale="QN" UnitStr="timer/dag" DisplayFormat="">
+        <FormItem FormItemId="1253" OrderNumber="12" ItemHeader="Timer brukt på spaserturer" ItemText="Hvor mye tid brukte du i gjennomsnitt på å &lt;b&gt;gå&lt;/b&gt; en av disse dagene? (timer/dag)" ItemHelp="I hele timer, ekstra minutter på neste spm." MinExpression="0" MaxExpression="12" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3057" ItemType="1" VarName="IPAQ_3C" LoincScale="QN" UnitStr="min/dag" DisplayFormat="">
+        <FormItem FormItemId="1257" OrderNumber="13" ItemHeader="Minutter brukt på spaserturer" ItemText="Minutter i tillegg til timene over (min/dag)" ItemHelp="" MinExpression="0" MaxExpression="59" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" DefaultValue="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="280" PageNumber="8" PageTitle="Tid tilbrakt sittende" PageIntroduction="Du skal nå tenke på den tiden du har tilbrakt sittende på hverdager de siste 7 dagene.  Ta med tid på arbeid, hjemme eller studier, og på fritiden.  Dette kan f.eks. være tid brukt ved skrivebordet,  på besøk hos venner, på å lese, eller når du sitter eller ligger for å se på TV.">
+      <Item ItemId="3061" ItemType="1" VarName="IPAQ_4A" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="1261" OrderNumber="14" ItemHeader="Timer tilbrakt sittende på en hverdag" ItemText="Hvor mye tid har du vanligvis tilbrakt *sittende* på en vanlig hverdag de siste 7 dager? (timer/hverdag)" ItemHelp="" MinExpression="1" MaxExpression="18" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="10357">
+      <Activate EnumVal="1" PageConditionId="5551" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="10358">
+      <Activate EnumVal="1" PageConditionId="5552" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="10359">
+      <Activate EnumVal="1" PageConditionId="5553" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

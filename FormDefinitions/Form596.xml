@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="596" FormName="FORM596" FormTitle="Basisregistrering" Copyright="SOREG">
+    <Page PageId="2414" PageNumber="1" PageTitle="Basisregistrering">
+      <Item ItemId="7063" ItemType="5" VarName="BASEREG_REFERALDATE" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="8312" OrderNumber="1" ItemText="Henvisningsdato" ItemHelp="Angi dato henvisning fra primærhelsetjeneste er registrert mottatt i spesialisthelsetenesten (kirurgisk eller medisinsk). Tenk ut i fra pasientens perspektiv: Når startet forløpet for å bli operert ?" MinExpression="DOB" MaxExpression="FORM.DATE-1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7064" ItemType="5" VarName="BASEREG_DATE" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="8313" OrderNumber="2" ItemText="Besøksdato" ItemHelp="Angi dato for pasientbesøket der basisregistreringen gjøres. Har pasienten vært på flere besøk før operasjon angi det siste besøket før operasjon men før eventuell preoperativ vektreduksjon starter." Expression="TRUNC(FORM.DATE)" MinExpression="DOB" MaxExpression="NOW+1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7065" ItemType="5" VarName="BASEREG_OPDECISIONDATE" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="8314" OrderNumber="3" ItemText="Datoen der operasjon blir bestemt" ItemHelp="Datoen der operasjon blir bestemt. All preoperativ utredning og eventuell behandling, utenom preoperativ vektreduksjon er utført." MinExpression="DOB" MaxExpression="FORM.DATE" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9794" ItemType="2" VarName="BASEREG_PATIENTOPERATION" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17688" OrderNumber="4" ItemText="Hvordan finansieres pasientens operasjon?" ItemHelp="Hvor kommer pengene fra som betaler for pasientens operasjon? Med offentlige midler menes all finansiering som kommer fra skattemidler, uavhengig om klinikken som utfører inngrepet er privat eller offentlig. Med helseforsikring menes alle typer forsikringer, både der pasienten har betalt premien selv og der premien betales av feks arbeidsgiver. Om flere alternativ er aktuelle angi den hovedsaklige finansieringsformen." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="53695" OrderNumber="1" OptionText="Offentlige midler"/>
+          <Answer AnswerId="53696" OrderNumber="2" OptionText="Helseforsikring (privat eller via ansettelsesforhold etc)"/>
+          <Answer AnswerId="53697" OrderNumber="3" OptionText="Pasienten betaler selv"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5314" PageNumber="2" PageTitle="Antropometri">
+      <Item ItemId="7066" ItemType="1" VarName="BASEREG_HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        <FormItem FormItemId="8315" OrderNumber="5" ItemText="Høyde (cm)" ItemHelp="Pasientens høyde i centimeter" MinExpression="125" MaxExpression="240" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7067" ItemType="1" VarName="BASEREG_WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
+        <FormItem FormItemId="8316" OrderNumber="6" ItemText="Vekt (kg)" ItemHelp="Kroppsvekt i hele kg." MinExpression="30" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7068" ItemType="1" VarName="BASEREG_BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
+        <FormItem FormItemId="8317" OrderNumber="7" ItemText="KMI (kg/m2)" ItemHelp="Utregningen gjøres av systemet" Expression="BASEREG_WEIGHT / BASEREG_HEIGHT / BASEREG_HEIGHT * 10000* ISPOS( BASEREG_HEIGHT ) * ISPOS( BASEREG_WEIGHT )" MinExpression="5" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7069" ItemType="1" VarName="BASEREG_WAISTCIRCUM" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        <FormItem FormItemId="8318" OrderNumber="8" ItemText="Midjemål (cm)" ItemHelp="Måles i centimeter med målebånd i høyde med spina iliaca anterior superior. Pasienten skal være stående, avslappet i skuldre og albuen bøyd i 90 grader. Målebåndet plasseres rett under albuene (olecranon). Dette punktet tilsvarer nesten alltid spina iliaca anterior superior." MinExpression="40" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5315" PageNumber="3" PageTitle="Labprøver">
+      <Item ItemId="7070" ItemType="1" VarName="BASEREG_HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem FormItemId="8319" OrderNumber="9" ItemText="B-HbA1c (%)" ItemHelp="Angis i % med en desimal. Omregningsformel fra gammel til ny enhet: 10,45 x Gammel enhet (%) - 10,62 = Ny enhet (mmol/mol)." MinExpression="4" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7071" ItemType="1" VarName="BASEREG_HBA1C_NEW" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem FormItemId="8320" OrderNumber="10" ItemText="HbA1c - NY metod/enhet (%)" ItemHelp="Oppgis i % med én desimal." MinExpression="4" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7104" ItemType="1" VarName="BASEREG_BGLUKOS" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
+        <FormItem FormItemId="8354" OrderNumber="11" ItemText="fP-Glukose (mmol/L)" ItemHelp="Fastende prøve. Angis i mmol/l med en desimal." MinExpression="1.0" MaxExpression="30.0" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7105" ItemType="1" VarName="BASEREG_TG" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
+        <FormItem FormItemId="8355" OrderNumber="12" ItemText="fP-TG (mmol/L)" ItemHelp="Fastende prøve. Angis i mmol/l med en desimal." MinExpression="0.1" MaxExpression="99.9" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7106" ItemType="1" VarName="BASEREG_LDL" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
+        <FormItem FormItemId="8356" OrderNumber="13" ItemText="P-LDL (mmol/L)" ItemHelp="Angis i mmol/l med en decimal." MinExpression="0.1" MaxExpression="30.0" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7107" ItemType="1" VarName="BASEREG_HDL" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
+        <FormItem FormItemId="8357" OrderNumber="14" ItemText="P-HDL (mmol/L)" ItemHelp="Angis i mmol/l med en desimal." MinExpression="0.1" MaxExpression="50.0" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7108" ItemType="1" VarName="BASEREG_KREA" LoincScale="QN" UnitStr="µmol/l" DisplayFormat="">
+        <FormItem FormItemId="8358" OrderNumber="15" ItemText="P-Kreatinin (µmol/l)" ItemHelp="Angis i µmol/l." MinExpression="10" MaxExpression="999" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9795" ItemType="1" VarName="BASEREG_HB" LoincScale="QN" UnitStr="g/dL" DisplayFormat="">
+        <FormItem FormItemId="17689" OrderNumber="16" ItemText="Hb (g/dL)" ItemHelp="Angis i g/dL." MinExpression="4" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9796" ItemType="1" VarName="BASEREG_PTH" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="17690" OrderNumber="17" ItemText="PTH (paratyreoideahormon) (pmol/L)" ItemHelp="Angis i pmol/l. Du fyller inn verdien enten i ng/l eller i enheten pmol/l. Omregningen skjer automatisk. Iblant benyttes enheten pg/ml hvilket er eksakt det samme som ng/l." MinExpression="0.1" MaxExpression="999" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9797" ItemType="1" VarName="BASEREG_PTH_NGL" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="17691" OrderNumber="18" ItemText="PTH (paratyreoideahormon) (pmol/L)" ItemHelp="Angis i ng/l. Du fyller inn verdien enten i ng/l eller i enheten pmol/l. Omregningen skjer automatisk. Iblant benyttes enheten pg/ml hvilket er eksakt det samme som ng/l." Expression="BASEREG_PTH/0.106" MinExpression="0.9" MaxExpression="9425.0" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9798" ItemType="1" VarName="BASEREG_DVIT" LoincScale="QN" UnitStr="nmol/L" DisplayFormat="">
+        <FormItem FormItemId="17692" OrderNumber="19" ItemText="Analyse av S-25-OH vitamin D (nmol/L)" ItemHelp="Angis i nmol/l." MinExpression="0" MaxExpression="999" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9799" ItemType="1" VarName="BASEREG_INSULIN" LoincScale="QN" UnitStr="mIE/L" DisplayFormat="">
+        <FormItem FormItemId="17693" OrderNumber="20" ItemText="fS-insulin (mIE/L)" ItemHelp="Fasteprøve, angis i mIE/l. Du fyller inn verdien enten i mIE/l eller pmol/l. Omregningen gjøres automatisk." MinExpression="0.0" MaxExpression="999.0" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9800" ItemType="1" VarName="BASEREG_INSULIN_PMOL" LoincScale="QN" UnitStr="pmol/L" DisplayFormat="">
+        <FormItem FormItemId="17694" OrderNumber="21" ItemText="fS-insulin (pmol/L)" ItemHelp="Fasteprøve, angis i pmol/l. Du fyller inn verdien enten i mIE/l eller pmol/l. Omregningen gjøres automatisk." Expression="BASEREG_INSULIN/6.945" MinExpression="0.0" MaxExpression="143.9" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2422" PageNumber="4" PageTitle="Blodtrykk">
+      <Item ItemId="7109" ItemType="1" VarName="BASEREG_SYSTOLIC" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+        <FormItem FormItemId="8359" OrderNumber="22" ItemText="Systolisk (mmHg)" ItemHelp="Angis i mm Hg" MinExpression="70" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" FormatStr="Blodtrykk %s">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7110" ItemType="1" VarName="BASEREG_DIASTOLIC" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+        <FormItem FormItemId="8360" OrderNumber="23" ItemText="Diastolisk (mmHg)" ItemHelp="Angis i mm Hg" MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" FormatStr="¬/%s mmHg.">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5320" PageNumber="5" PageTitle="Sykehus-spesifikke variabler">
+      <Item ItemId="9804" ItemType="2" VarName="EV_BASEREG_DIABETESTYPE1" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17698" OrderNumber="24" ItemText="Diabetes type 1" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="53704" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="53705" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9805" ItemType="2" VarName="EV_BASEREG_DIABETESTYPE2" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17699" OrderNumber="25" ItemText="Diabetes type 2" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="53706" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="53707" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9806" ItemType="2" VarName="EV_BASEREG_DIETTREATED" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17700" OrderNumber="26" ItemText="Diabetes kostbehandlet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="53708" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="53709" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9807" ItemType="2" VarName="EV_BASEREG_ADHDADD" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17701" OrderNumber="27" ItemText="ADHD/ADD" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="53710" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="53711" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9808" ItemType="2" VarName="EV_BASEREG_ASPERGER" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17702" OrderNumber="28" ItemText="Asperger" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="53712" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="53713" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9809" ItemType="2" VarName="EV_BASEREG_TREATMENTDEPR" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17703" OrderNumber="29" ItemText="Tidligere behandlingskrevende depresjon" ItemHelp="Depresjon behandlet med antidepressiva" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="53714" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="53715" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9810" ItemType="2" VarName="EV_BASEREG_IBS" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17704" OrderNumber="30" ItemText="IBS" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="53716" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="53717" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9811" ItemType="2" VarName="EV_BASEREG_IBD" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17705" OrderNumber="31" ItemText="IBD" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="53718" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="53719" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9812" ItemType="2" VarName="EV_BASEREG_REDUCED_PHY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17706" OrderNumber="32" ItemText="Redusert fysisk kapasitet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="53720" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="53721" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9813" ItemType="2" VarName="EV_BASEREG_SNORING" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17707" OrderNumber="33" ItemText="Snorking" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="53722" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="53723" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9814" ItemType="2" VarName="EV_BASEREG_URINARY_LEAKA" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17708" OrderNumber="34" ItemText="Urinlekkasje (stressinkontinens)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="53724" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="53725" OrderNumber="1" OptionText="Ja" VerboseText="Har stressinkontinens." ShortCode="J" ICD10="N393"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9815" ItemType="2" VarName="EV_BASEREG_INFERTILITY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17709" OrderNumber="35" ItemText="Infertilitet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="53726" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="53727" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9816" ItemType="2" VarName="EV_BASEREG_MENSTRUATION" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17710" OrderNumber="36" ItemText="Menstruasjonsstatus" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="53728" OrderNumber="1" OptionText="Premenopausal"/>
+          <Answer AnswerId="53729" OrderNumber="2" OptionText="Postmenopausal (inkl hysterektomert / ooforektomert)"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9817" ItemType="2" VarName="EV_BASEREG_AMENORRHEA" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17711" OrderNumber="37" ItemText="Amenore" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="53730" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="53731" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9818" ItemType="2" VarName="EV_BASEREG_WORK" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17712" OrderNumber="38" ItemText="Er pasienten i inntektsgivende arbeid ?" ItemHelp="Nei (Student, pensjonist, sosialstønad etc)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="53732" OrderNumber="0" OptionText="Nei" VerboseText="Ikke i inntektsgivende arbeid." ShortCode="N"/>
+          <Answer AnswerId="53733" OrderNumber="1" OptionText="Ja" VerboseText="Er i inntektsgivende arbeid." ShortCode="J"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9819" ItemType="1" VarName="EV_BASEREG_EMPLOYMENT" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem FormItemId="17713" OrderNumber="39" ItemHeader="Stillingsprosent" ItemText="Hvor stor er pasientens stillingsprosent i jobb? (%)" ItemHelp="Bruk 100 også hvis mer enn full jobb." MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9820" ItemType="1" VarName="EV_BASEREG_CPEPTIDLAB" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
+        <FormItem FormItemId="17714" OrderNumber="40" ItemText="Insulin C-peptid (mmol/L)" ItemHelp="" MinExpression="0.00" MaxExpression="99.99" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2423" PageNumber="7" PageTitle="Komorbiditet">
+      <Item ItemId="7111" ItemType="2" VarName="BASEREG_ONGOINGTREAT" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8361" OrderNumber="41" ItemText="Pågående behandling" ItemHelp="Angi all relevant komorbiditet." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="39001" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="39002" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5318" PageNumber="8" PageTitle="Komorbiditet 1*">
+      <Item ItemId="7112" ItemType="2" VarName="BASEREG_SLEEPAPNEA" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8362" OrderNumber="42" ItemText="Søvnapne" ItemHelp="Søvnapne behandlet med CPAP eller BiPAP." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="39003" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="39004" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7113" ItemType="2" VarName="BASEREG_HYPERTENSION" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8363" OrderNumber="43" ItemText="Hypertoni" ItemHelp="Farmakologisk behandlet hypertensjon." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="39005" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="39006" OrderNumber="1" OptionText="Ja" VerboseText="Behandles for hypertensjon." ShortCode="J"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7114" ItemType="2" VarName="BASEREG_DIABETIC" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8364" OrderNumber="44" ItemText="Diabetes" ItemHelp="Farmakologisk behandling av diabetes. Kostholdbehandlet diabetes oppgis ikke." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="39007" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="39008" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5317" PageNumber="9" PageTitle="Diagnoseår diabetes*">
+      <Item ItemId="7136" ItemType="1" VarName="BASEREG_DIABETICYEAR" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="8365" OrderNumber="45" ItemText="Siden år" ItemHelp="Årstall for debut av farmakologisk behandling av diabetes." MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9801" ItemType="2" VarName="BASEREG_DIABETICTREATMEN" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17721" OrderNumber="46" ItemText="Type diabetesbehandling" ItemHelp="Kostholdsbehandlet diabetes oppgis ikke.&#xA;Tablettbehandling = diabetes som kun er behandlet med tabletter.&#xA;Insulinbehandling = diabetes som kun behandles med insulin.&#xA;Tablett og insulinbehandling = diabetes som behandles med både tabletter og insulin.&#xA;Annen behandling = feks GLP-1 analoger alene eller i kombinasjon med noen av de ovennevnte." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="53698" OrderNumber="1" OptionText="Tablettbehandling."/>
+          <Answer AnswerId="53699" OrderNumber="2" OptionText="Insulinbehandling."/>
+          <Answer AnswerId="53700" OrderNumber="3" OptionText="Tablett og insulinbehandling."/>
+          <Answer AnswerId="53701" OrderNumber="4" OptionText="Annen behandling"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5319" PageNumber="10" PageTitle="Komorbiditet 2*">
+      <Item ItemId="7115" ItemType="2" VarName="BASEREG_DYSLIPAEMIA" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8366" OrderNumber="47" ItemText="Dyslipidemi" ItemHelp="Farmakologisk behandlet dyslipidemi" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="39009" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="39010" OrderNumber="1" OptionText="Ja" VerboseText="Behandles for hyperlipidemi." ShortCode="J"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7116" ItemType="2" VarName="BASEREG_DYSPEPSIA" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8367" OrderNumber="48" ItemText="Dyspepsi" ItemHelp="Dyspepsi behandlet daglig med syrehemmende midler den siste måneden." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="39011" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="39012" OrderNumber="1" OptionText="Ja" VerboseText="Tar syrehemmende midler mot dyspepsi." ShortCode="J"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7117" ItemType="2" VarName="BASEREG_DIARRHEA" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8368" OrderNumber="49" ItemText="Diaré" ItemHelp="Diaré behandlet daglig med antidiaré-midler den siste måneden." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="39013" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="39014" OrderNumber="1" OptionText="Ja" VerboseText="Bruker medisiner mot diaré." ShortCode="J"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7118" ItemType="2" VarName="BASEREG_DEPRESSION" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8369" OrderNumber="50" ItemText="Depresjon" ItemHelp="Depresjon behandlet med antidepressiva." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="39015" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="39016" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9802" ItemType="2" VarName="BASEREG_MUSCLEPAIN" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17722" OrderNumber="51" ItemText="Muskel/skjelettsmerter" ItemHelp="Smerter i muskler og/eller skjelett, uansett underliggende diagnose, som krever regelmessig behandling med smertestillende og/eller betennelsesdempende medisin feks NSAID eller paracetamol" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="53702" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="53703" OrderNumber="1" OptionText="Ja" VerboseText="Bruker smertestillende mot muskel-/skjelettplager." ShortCode="J"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5322" PageNumber="11" PageTitle="Muskelsmerter tekst*">
+      <Item ItemId="9803" ItemType="4" VarName="BASEREG_BASE_MUSCLEPAIN" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="17697" OrderNumber="52" ItemText="Kommentar" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5321" PageNumber="12" PageTitle="Annen sykdom som har bidratt*">
+      <Item ItemId="7119" ItemType="2" VarName="BASEREG_OTHERDISEASE" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8370" OrderNumber="53" ItemText="Annen sykdom som bidrar til operasjonsbeslutningen" ItemHelp="Annen sykdom som kan betraktes som komorbiditet eller sykdom som forverres av overvekt og som har bidratt til beslutninga om å operere pasienten. Feks artrose, infertilitet." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="39017" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="39018" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2424" PageNumber="13" PageTitle="Bidratt*">
+      <Item ItemId="7120" ItemType="4" VarName="BASEREG_OTHERDISEASEWHAT" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="8371" OrderNumber="54" ItemText="Hva" ItemHelp="Skriv diagnosen(e) så kortfattet som mulig" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2425" PageNumber="14" PageTitle="Risikovurdering">
+      <Item ItemId="7121" ItemType="2" VarName="BASEREG_PREVIOUSDVT" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8372" OrderNumber="55" ItemText="Tidligere DVT eller PE" ItemHelp="Har pasienten hatt dyp trombose (DVT) eller lungeemboli (PE)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39019" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="39020" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7122" ItemType="1" VarName="BASEREG_OSMRS" LoincScale="QN" UnitStr="poeng" DisplayFormat="">
+        <FormItem FormItemId="8373" OrderNumber="56" ItemText="OS-MRS, Obesity Surgery Mortality Risk Score (poeng)" ItemHelp="Utregningen gjøres av systemet.&#xA;OS-MRS er en risikoscore for kirurgi på fedmepasienter.&#xA;Minst risiko = 0 poeng. Høyest risiko = 5 poeng.&#xA;Beregnes som følger: Kjønn. Kvinne = 0 Mann = 1&#xA;Alder. &lt;45år = 0 &gt;45 år = 1&#xA;Hypertoni. Nei = 0 Ja = 1&#xA;BMI. &lt;50 = 0 &gt;50 = 1&#xA;Tidligere DVT/PE. Nei = 0 Ja = 1" MinExpression="0" MaxExpression="5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5316" PageNumber="15" PageTitle="Annet">
+      <Item ItemId="7123" ItemType="2" VarName="BASEREG_SMOKING" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8374" OrderNumber="57" ItemText="Røyking" ItemHelp="Ja om vanerøyker, &quot;festrøyker&quot; teller ikke.&#xA;Sluttet å røyke = har vært røykfri i over 6 måneder.&#xA;Tilfeldig røykeslutt før operasjon = de som har sluttet å røyke 0-6 måneder før operasjonen, bruk dette alternativ uansett om pasienten begynner å røyke igjen etter operasjonen eller ikke" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="39021" OrderNumber="0" OptionText="Nei" VerboseText="Aldri røykt." ShortCode="N"/>
+          <Answer AnswerId="39022" OrderNumber="1" OptionText="Ja" VerboseText="Dagligrøyker." ShortCode="J"/>
+          <Answer AnswerId="39023" OrderNumber="2" OptionText="Sluttet" VerboseText="Eks-røyker."/>
+          <Answer AnswerId="53734" OrderNumber="3" OptionText="Tilfeldig røykeslutt før operasjon" VerboseText="Sluttet å røyke i forbindelse med operasjon for overvekt."/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7135" ItemType="2" VarName="BASEREG_EDUCATION" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8375" OrderNumber="58" ItemText="Utdanningsnivå" ItemHelp="Angi antall år som pasienten har gått på skole. Tell bare med heltidsstudier der opp til og med 10 år=grunnskole, 11-13 = videregående skole og over 13 år skole = høgskole/universitet. Ta ikke med førskole, deltidsstudier eller kortere kurs som ikke leder til eksamen." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="39024" OrderNumber="1" OptionText="10 års skolegang eller mindre"/>
+          <Answer AnswerId="39025" OrderNumber="2" OptionText="11-13 års skolegang"/>
+          <Answer AnswerId="39026" OrderNumber="3" OptionText="Mer enn 13 års skolegang"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9821" ItemType="2" VarName="BASEREG_INCLUDEDINSTUDY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17720" OrderNumber="59" ItemText="Inngår i studie" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="53735" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="53736" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2420" PageNumber="16" PageTitle="Studier">
+      <Item ItemId="9822" ItemType="4" VarName="BASEREG_INCLUDEDINSTUDY1" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="17716" OrderNumber="60" ItemText="1" ItemHelp="Studie 1&lt;br&gt;&lt;br&gt;Maks: 40 tegn" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9823" ItemType="4" VarName="BASEREG_INCLUDEDINSTUDY2" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="17717" OrderNumber="61" ItemText="2" ItemHelp="Studie 2&lt;br&gt;&lt;br&gt;Maks: 40 tegn" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9824" ItemType="4" VarName="BASEREG_INCLUDEDINSTUDY3" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="17718" OrderNumber="62" ItemText="3" ItemHelp="Studie 3&lt;br&gt;&lt;br&gt;Maks: 40 tegn" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9825" ItemType="4" VarName="BASEREG_INCLUDEDINSTUDY4" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="17719" OrderNumber="63" ItemText="4" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2415" PageNumber="17" PageTitle="SF-36">
+      <Item ItemId="7124" ItemType="1" VarName="BASEREG_PHYSICALFUNCTION" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem FormItemId="8376" OrderNumber="64" ItemText="Fysisk funksjon (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7125" ItemType="1" VarName="BASEREG_ROLEPHYSICAL" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem FormItemId="8377" OrderNumber="65" ItemText="Fysisk rolle (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7126" ItemType="1" VarName="BASEREG_BODYPAIN" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem FormItemId="8378" OrderNumber="66" ItemText="Kroppssmerte (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7127" ItemType="1" VarName="BASEREG_GENERALHEALTH" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem FormItemId="8379" OrderNumber="67" ItemText="Allmen helse (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7128" ItemType="1" VarName="BASEREG_VITALITY" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem FormItemId="8380" OrderNumber="68" ItemText="Vitalitet (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7129" ItemType="1" VarName="BASEREG_SOCIALFUNCTIONIN" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem FormItemId="8381" OrderNumber="69" ItemText="Sosial funksjon (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7130" ItemType="1" VarName="BASEREG_ROLEEMOTIONAL" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem FormItemId="8382" OrderNumber="70" ItemText="Emosjonell rolle (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7131" ItemType="1" VarName="BASEREG_MENTALHEALTH" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem FormItemId="8383" OrderNumber="71" ItemText="Psykisk helse (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7132" ItemType="1" VarName="BASEREG_SUBTOTALPHYSICAL" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem FormItemId="8384" OrderNumber="72" ItemText="Delsum fysisk helse (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7133" ItemType="1" VarName="BASEREG_SUBTOTALMENTALHE" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem FormItemId="8385" OrderNumber="73" ItemText="Delsum psykisk helse (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2416" PageNumber="18" PageTitle="OP9">
+      <Item ItemId="7134" ItemType="1" VarName="BASEREG_TOTALSCORE" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem FormItemId="8386" OrderNumber="74" ItemText="OP9 Sum (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="7111">
+      <Activate EnumVal="1" PageConditionId="4756" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7114">
+      <Activate EnumVal="1" PageConditionId="2593" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7111">
+      <Activate EnumVal="1" PageConditionId="4757" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="9802">
+      <Activate EnumVal="1" PageConditionId="4758" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7119">
+      <Activate EnumVal="1" PageConditionId="2592" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="9821">
+      <Activate EnumVal="1" PageConditionId="4759" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="509" FormName="BAR_DAY7" FormTitle="Day 7 or departure">
+    <Page PageId="1659" PageNumber="1" PageTitle="Examination">
+      <Item ItemId="6271" ItemType="5" VarName="VAR6271" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="5516" OrderNumber="1" ItemText="Date of examination" ItemHelp="" Expression="TRUNC(FORM.Date)" MinExpression="DOB" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6269" PageNumber="2" PageTitle="">
+      <Item ItemId="6273" ItemType="2" VarName="EGOS" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5518" OrderNumber="2" ItemHeader="GOS-E" ItemText="Extended Glasgow Outcome Scale" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="33064" OrderNumber="1" OptionText="Dead"/>
+          <Answer AnswerId="33065" OrderNumber="2" OptionText="Vegetative state"/>
+          <Answer AnswerId="33066" OrderNumber="3" OptionText="Lower severe disability"/>
+          <Answer AnswerId="33067" OrderNumber="4" OptionText="Upper severe disability"/>
+          <Answer AnswerId="33068" OrderNumber="5" OptionText="Lower moderate disability"/>
+          <Answer AnswerId="33069" OrderNumber="6" OptionText="Upper moderate disability"/>
+          <Answer AnswerId="33070" OrderNumber="7" OptionText="Lower good recovery"/>
+          <Answer AnswerId="33071" OrderNumber="8" OptionText="Upper good recovery"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6369" ItemType="2" VarName="BarSurvival" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5873" OrderNumber="3" ItemText="Survival" ItemHelp="" Expression="ISNULL(EGOS-1) + ISNULL(EGOS-2)*2 + ISPOS(EGOS-2)*3" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+          <Answer AnswerId="33685" OrderNumber="1" OptionText="Dead"/>
+          <Answer AnswerId="33686" OrderNumber="2" OptionText="Vegetative"/>
+          <Answer AnswerId="33687" OrderNumber="3" OptionText="Yes"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6300" PageNumber="3" PageTitle="">
+      <Item ItemId="6373" ItemType="2" VarName="BarCauseOfDeath" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5879" OrderNumber="4" ItemText="Cause of death" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="33719" OrderNumber="1" OptionText="Primary SAH"/>
+          <Answer AnswerId="33720" OrderNumber="2" OptionText="Rebleeding before treatment"/>
+          <Answer AnswerId="33721" OrderNumber="3" OptionText="Rebleeding after treatment"/>
+          <Answer AnswerId="33722" OrderNumber="4" OptionText="SAH, another aneurysm rupture"/>
+          <Answer AnswerId="33723" OrderNumber="5" OptionText="Brain infarction, main vessel occluded"/>
+          <Answer AnswerId="33724" OrderNumber="6" OptionText="Brain infarction, spasm"/>
+          <Answer AnswerId="33725" OrderNumber="7" OptionText="Post-op hematoma"/>
+          <Answer AnswerId="33726" OrderNumber="8" OptionText="Other"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6319" PageNumber="4" PageTitle="">
+      <Item ItemId="6368" ItemType="2" VarName="Rankin7d" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5871" OrderNumber="5" ItemText="Modified Rankin Scale (Day 7 or departure)" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="33667" OrderNumber="0" OptionText="No symptoms at all"/>
+          <Answer AnswerId="33668" OrderNumber="1" OptionText="No significant disability despite symptoms; able to carry out all usual duties and activities."/>
+          <Answer AnswerId="33669" OrderNumber="2" OptionText="Slight disability; unable to carry out all previous activites, but able to look after own affairs without assistance."/>
+          <Answer AnswerId="33670" OrderNumber="3" OptionText="Moderate disability; requiring some help, but able to walk without assistance."/>
+          <Answer AnswerId="33671" OrderNumber="4" OptionText="Moderately severe disability; unable to walk without assistance and unable to attend to own bodily needs without assistance."/>
+          <Answer AnswerId="33672" OrderNumber="5" OptionText="Severe disability; bedridden, incontinent and requiring constant nursing care and attention."/>
+          <Answer AnswerId="33673" OrderNumber="6" OptionText="Intubated/sedate; unable to classify"/>
+          <Answer AnswerId="33674" OrderNumber="7" OptionText="Dead"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6333" PageNumber="5" PageTitle="">
+      <Item ItemId="6370" ItemType="2" VarName="BarCauseOfDisability" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5874" OrderNumber="6" ItemText="Cause of disability" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="33713" OrderNumber="1" OptionText="SAH or treatment"/>
+          <Answer AnswerId="33714" OrderNumber="2" OptionText="Other disease"/>
+          <Answer AnswerId="51309" OrderNumber="3" OptionText="Both SAH or treatment AND Other disease"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1660" PageNumber="6" PageTitle="Sequelae">
+      <Item ItemId="6274" ItemType="2" VarName="VAR6274" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5520" OrderNumber="7" ItemText="Neurologic deficit" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="33072" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="33073" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2164" PageNumber="7" PageTitle="Sequelae details*">
+      <Item ItemId="6275" ItemType="2" VarName="VAR6275" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5521" OrderNumber="8" ItemText="Cranial nerve deficit" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="33074" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="33075" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6276" ItemType="2" VarName="VAR6276" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5522" OrderNumber="9" ItemText="Cognitive impairment" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="33078" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="33079" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6277" ItemType="2" VarName="VAR6277" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5523" OrderNumber="10" ItemText="Hemiparesis" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="33084" OrderNumber="1" OptionText="No"/>
+          <Answer AnswerId="33085" OrderNumber="2" OptionText="Minor"/>
+          <Answer AnswerId="33088" OrderNumber="3" OptionText="Major"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6278" ItemType="2" VarName="VAR6278" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5524" OrderNumber="11" ItemText="Other" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="33091" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="33092" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6371" PageNumber="8" PageTitle="">
+      <Item ItemId="6374" ItemType="4" VarName="VAR6374" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="5880" OrderNumber="12" ItemText="Comment" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2040" PageNumber="9" PageTitle="Discharge">
+      <Item ItemId="6897" ItemType="2" VarName="DischargedToday" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="7062" OrderNumber="13" ItemText="Discharged today" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="38397" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="38398" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2141" PageNumber="10" PageTitle="Discharge details*">
+      <Item ItemId="6371" ItemType="2" VarName="BarDischargedTo" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="7059" OrderNumber="14" ItemText="Discharged to" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="33715" OrderNumber="1" OptionText="Home"/>
+          <Answer AnswerId="33716" OrderNumber="2" OptionText="Local hospital"/>
+          <Answer AnswerId="33717" OrderNumber="3" OptionText="Rehabilitation center"/>
+          <Answer AnswerId="33718" OrderNumber="4" OptionText="Other"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6427" PageNumber="11" PageTitle="">
+      <Item ItemId="6372" ItemType="4" VarName="BarDischargeLocation" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="7061" OrderNumber="15" ItemText="Where" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="4963" PageNumber="12" PageTitle="Date of departure*">
+      <Item ItemId="6272" ItemType="5" VarName="BarDepartureDate" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="7063" OrderNumber="16" ItemText="Date of departure" ItemHelp="Move form on timeline to get correct date." Expression="TRUNC(FORM.Date*ISNULL(DischargedToday-1))" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6454" PageNumber="13" PageTitle="">
+      <Item ItemId="6965" ItemType="8" VarName="VAR6965" LoincScale="MSG" DisplayFormat="">
+        <FormItem FormItemId="7346" OrderNumber="17" ItemHeader="Other forms" ItemText="Please make sure to complete the forms Treatment details and Aneurysm details too." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="6273">
+      <Activate EnumVal="1" PageConditionId="1926" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="2050" PageNumber="4" ComparisonType="6" ComparisonDescription="Not Equal"/>
+    </PageAction>
+    <PageAction MasterId="6369">
+      <Activate EnumVal="3" PageConditionId="1923" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6274">
+      <Activate EnumVal="1" PageConditionId="1921" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6278">
+      <Activate EnumVal="1" PageConditionId="1927" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6897">
+      <Activate EnumVal="1" PageConditionId="2314" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6371">
+      <Activate EnumVal="1" PageConditionId="2371" PageNumber="11" ComparisonType="6" ComparisonDescription="Not Equal"/>
+    </PageAction>
+    <PageAction MasterId="6897">
+      <Activate EnumVal="1" PageConditionId="4532" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

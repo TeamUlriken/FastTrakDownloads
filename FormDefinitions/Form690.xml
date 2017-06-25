@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="690" FormName="GbdAvvik" FormTitle="Avvik">
+    <Page PageId="3643" PageNumber="1" PageTitle="Om avviket" PageIntroduction="Type og stikkord for avviket, utfyllende detaljer i kommentarfelt nederst.">
+      <Item ItemId="8518" ItemType="4" VarName="AvvikStikkord" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="12563" OrderNumber="2" ItemHeader="Stikkord" ItemText="Skriv bare noen få stikkord om avviket her, felt for utfyllende informasjon kommer senere." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8514" ItemType="2" VarName="AvvikType" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="12559" OrderNumber="3" ItemText="Type avvik" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="47373" OrderNumber="1" OptionText="Fall"/>
+          <Answer AnswerId="47374" OrderNumber="2" OptionText="Legemidler"/>
+          <Answer AnswerId="47375" OrderNumber="3" OptionText="Ernæring"/>
+          <Answer AnswerId="47376" OrderNumber="4" OptionText="Manglende dokumentasjon internt eller hos fastlegen"/>
+          <Answer AnswerId="47377" OrderNumber="5" OptionText="Manglende dokumentasjon fra sykehus"/>
+          <Answer AnswerId="47378" OrderNumber="6" OptionText="Overgrep"/>
+          <Answer AnswerId="47379" OrderNumber="7" OptionText="Ventetid fysio/ergoterapi"/>
+          <Answer AnswerId="47380" OrderNumber="8" OptionText="Andre avvik"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3645" PageNumber="2" PageTitle="Melding fall*">
+      <Item ItemId="8515" ItemType="8" VarName="VAR8515" LoincScale="MSG" DisplayFormat="">
+        <FormItem FormItemId="12560" OrderNumber="4" ItemHeader="Fallregistrering" ItemText="Husk eget skjema for fallregistrering." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3646" PageNumber="3" PageTitle="Bivirkning*">
+      <Item ItemId="8516" ItemType="8" VarName="VAR8516" LoincScale="MSG" DisplayFormat="">
+        <FormItem FormItemId="12561" OrderNumber="5" ItemHeader="Bivirkning?" ItemText="Husk å registrere eventuell bivirkninger i medikamentmodulen." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3647" PageNumber="4" PageTitle="Alvorlighetsgrad" PageIntroduction="Alvorlighetsgraden er knyttet til eventuell skade på pasient.">
+      <Item ItemId="6402" ItemType="2" VarName="EVENT_SEVERITY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="12551" OrderNumber="6" ItemHeader="Alvorlighetsgrad" ItemText="Vurdering av alvorlighetsgrad" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="33896" OrderNumber="1" OptionText="Ingen skade skjedd."/>
+          <Answer AnswerId="33897" OrderNumber="2" OptionText="Mild: En hendelse som vanligvis er forbigående og krever minimal behandling.  Påvirker normalt ikke dagliglivet."/>
+          <Answer AnswerId="33898" OrderNumber="3" OptionText="Moderat: En hendelse som krever tilleggsbehandling.  Den påvirker vanlige aktiviteter i dagliglivet og gir ubehag, men uten vesentlig eller varig risiko for pasienten."/>
+          <Answer AnswerId="33899" OrderNumber="4" OptionText="Betydelig: En hendelse som krever intensiv tilleggsbehandling.  Dagliglivet eller klinisk status er betydelig endret.  Betydelig risiko for skade, sykehusinnleggelse kan være nødvendig."/>
+          <Answer AnswerId="33900" OrderNumber="5" OptionText="Livstruende/invalidiserende: En hendelse som krever stor eller akutt intervensjon og truer patientens liv.  Hendelsen kan gi varig skade og kan forstyrre patientens mulighet for vanlige aktiviteter."/>
+          <Answer AnswerId="33921" OrderNumber="6" OptionText="Død: Pasienten døde i relasjon til hendelsen."/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8507" ItemType="2" VarName="AvvikAlvorlighet" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="12552" OrderNumber="7" ItemText="Alvorlighetsgrad for rapportering (3 kategorier)" ItemHelp="" Expression="1 * ISPOS( ISNULL(EVENT_SEVERITY-1) + ISNULL (EVENT_SEVERITY-2) ) +&#xA;2 * ISPOS( ISNULL(EVENT_SEVERITY-3) ) +&#xA;3 * ISPOS( ISNULL(EVENT_SEVERITY-4) + ISNULL (EVENT_SEVERITY-5) + ISNULL ( EVENT_SEVERITY-6) )" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+          <Answer AnswerId="47319" OrderNumber="1" OptionText="Liten"/>
+          <Answer AnswerId="47320" OrderNumber="2" OptionText="Middels"/>
+          <Answer AnswerId="47321" OrderNumber="3" OptionText="Stor"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3642" PageNumber="5" PageTitle="Årsaker til avvik" PageIntroduction="Mer enn en årsak kan velges">
+      <Item ItemId="8509" ItemType="2" VarName="AvvikRutiner" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="12554" OrderNumber="8" ItemHeader="Mangelfulle rutiner" ItemText="Var mangelfulle rutiner medvirkende til at avviket oppstod?" ItemHelp="Tjenestemottaker ble skadelidende som følge av feil i eller mangler ved eksisterende rutiner, eller manglende rutiner." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="47333" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="47334" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="47335" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8508" ItemType="2" VarName="AvvikOpplaering" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="12553" OrderNumber="9" ItemHeader="Mangelfull opplæring" ItemText="Var mangelfull opplæring medvirkende til at avviket oppstod?" ItemHelp="Tjenestemottaker ble skadelidende som følge av at medarbeider utførte en handling uten opplæring." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="47328" OrderNumber="1" OptionText="Ja" VerboseText="Mangelfull opplæring." ShortCode="J"/>
+          <Answer AnswerId="47329" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="47330" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8510" ItemType="2" VarName="AvvikOppfoelging" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="12555" OrderNumber="10" ItemHeader="Mangelfull oppfølging" ItemText="Var mangelfull oppfølging av rutine/retningslinje medvirkende til at avviket oppstod?" ItemHelp="Tjenestemottaker ble skadelidende som følge av at medarbeider ikke fulgte eksisterende rutiner/arbeidsoppgaver." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="47347" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="47348" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="47349" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8511" ItemType="2" VarName="AvvikSikring" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="12556" OrderNumber="11" ItemHeader="Mangelfull sikring / tiltak / annet" ItemText="Var mangelfull sikring/tiltak medvirkende til at avviket oppstod?" ItemHelp="Tjenestemottaker ble skadelidende som følge av en uønsket hendelse" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="47355" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="47356" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="47357" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9105" ItemType="2" VarName="AvvikHovedarsak" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="16159" OrderNumber="12" ItemHeader="Hovedårsak" ItemText="Av disse, hvilken årsak var viktigst?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="50810" OrderNumber="1" OptionText="Mangelfulle rutiner"/>
+          <Answer AnswerId="50811" OrderNumber="2" OptionText="Mangelfull opplæring"/>
+          <Answer AnswerId="50812" OrderNumber="3" OptionText="Mangelfull oppfølging av rutine/retningslinje"/>
+          <Answer AnswerId="50813" OrderNumber="4" OptionText="Mangelfull sikring / Annet"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3648" PageNumber="6" PageTitle="Forslag" PageIntroduction="Den som registrerer avviket kan foreslå tiltak for å hindre gjentagelse.">
+      <Item ItemId="6410" ItemType="4" VarName="AvvikForslag" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="12564" OrderNumber="13" ItemText="Forslag til korrigerende tiltak" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3644" PageNumber="7" PageTitle="Status" PageIntroduction="Endring av status skal bare gjøres av den som er ansvarlig for håndtering av avviket, typisk avdelingsleder.">
+      <Item ItemId="8512" ItemType="2" VarName="AvvikStatus" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="12565" OrderNumber="14" ItemHeader="Status" ItemText="Status for avviket" ItemHelp="Velg &quot;Registrert&quot; hvis du ikke selv skal behandle avviket." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="47361" OrderNumber="1" OptionText="Registrert"/>
+          <Answer AnswerId="47362" OrderNumber="2" OptionText="Under behandling"/>
+          <Answer AnswerId="47363" OrderNumber="3" OptionText="Lukket"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3649" PageNumber="8" PageTitle="Lukket av*">
+      <Item ItemId="8513" ItemType="4" VarName="AvvikLukketAv" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="12558" OrderNumber="15" ItemText="Avviket er lukket av" ItemHelp="Skriv inn navnet ditt når lukker avviket, før du signerer skjemaet.  Eks. &quot;Avdelingsleder&quot;, &quot;Primærkontakt&quot; el.l." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3650" PageNumber="9" PageTitle="Kommentarer*">
+      <Item ItemId="8519" ItemType="4" VarName="AvvikRespons" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="12566" OrderNumber="16" ItemText="Kommentarer fra kvalitetsutvalget" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8517" ItemType="8" VarName="VAR8517" LoincScale="MSG" DisplayFormat="">
+        <FormItem FormItemId="12562" OrderNumber="17" ItemHeader="Om signering..." ItemText="Skjemaet skal ligge usignert til avviket er lukket." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="8514">
+      <Activate EnumVal="1" PageConditionId="3606" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="3607" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="8512">
+      <Activate EnumVal="3" PageConditionId="3608" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

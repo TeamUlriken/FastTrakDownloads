@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="810" FormName="DSH_RTG_MOBIL" FormTitle="Mobilt røntgen DSH">
+    <Page PageId="5361" PageNumber="1" PageTitle="Kliniske opplysninger">
+      <Item ItemId="8912" ItemType="4" VarName="VAR8912" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="17872" OrderNumber="1" ItemHeader="Problemstilling" ItemText="Kliniske opplysninger" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9901" ItemType="2" VarName="VAR9901" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17873" OrderNumber="2" ItemText="Smitte" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="54454" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="54455" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5355" PageNumber="2" PageTitle="Type smitte*">
+      <Item ItemId="9902" ItemType="4" VarName="VAR9902" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="17874" OrderNumber="3" ItemText="Type smitte" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5356" PageNumber="3" PageTitle="Type undersøkelse">
+      <Item ItemId="8930" ItemType="4" VarName="VAR8930" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="17875" OrderNumber="4" ItemText="Hva ønskes undersøkt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5357" PageNumber="4" PageTitle="Timeavtale">
+      <Item ItemId="8934" ItemType="2" VarName="VAR8934" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17876" OrderNumber="5" ItemText="ØH" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="50128" OrderNumber="1" OptionText="Ja" VerboseText="Bestilt som ØH."/>
+          <Answer AnswerId="50129" OrderNumber="2" OptionText="Nei" VerboseText="Vanlig hastegrad."/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8938" ItemType="2" VarName="DshRtgHarTime" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="17878" OrderNumber="6" ItemText="Har fått time" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="50130" OrderNumber="1" OptionText="Ja" VerboseText="Har fått time."/>
+          <Answer AnswerId="50131" OrderNumber="2" OptionText="Nei" VerboseText="Ikke fått time."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5360" PageNumber="5" PageTitle="Timeavtale*">
+      <Item ItemId="8936" ItemType="5" VarName="DshRtgBestiltDato" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="17877" OrderNumber="7" ItemText="Avtalt dato" ItemHelp="Fyll ut bare hvis det er avtalt tidspunkt" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8937" ItemType="4" VarName="VAR8937" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="17879" OrderNumber="8" ItemText="Tidspunkt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5359" PageNumber="6" PageTitle="Ønsket dato*">
+      <Item ItemId="8935" ItemType="5" VarName="VAR8935" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="17884" OrderNumber="9" ItemText="Ønsket dato" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5358" PageNumber="7" PageTitle="Kopi av svar bes sendt til">
+      <Item ItemId="8927" ItemType="4" VarName="VAR8927" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="17880" OrderNumber="10" ItemText="Navn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8928" ItemType="4" VarName="VAR8928" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="17882" OrderNumber="11" ItemText="Adresse" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8929" ItemType="4" VarName="VAR8929" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="17883" OrderNumber="12" ItemText="Postnr./sted" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="9901">
+      <Activate EnumVal="1" PageConditionId="4764" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="8938">
+      <Activate EnumVal="1" PageConditionId="4765" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="4766" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

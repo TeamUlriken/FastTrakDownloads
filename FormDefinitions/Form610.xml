@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="610" FormName="FORM610" FormTitle="Forslag til nye variable om nyresvikt">
+    <Page PageId="2581" PageNumber="1" PageTitle="Dagens variabel">
+      <Item ItemId="3415" ItemType="2" VarName="NDV_NEPHROPATHY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="9277" OrderNumber="1" ItemHeader="Nyrestatus" ItemText="Albuminuri eller nefropati?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="17090" OrderNumber="1" OptionText="Normal nyrestatus."/>
+          <Answer AnswerId="17091" OrderNumber="2" OptionText="Tidligere mikroalbuminuri."/>
+          <Answer AnswerId="17092" OrderNumber="3" OptionText="Mikroalbuminuri." ICD10="N083"/>
+          <Answer AnswerId="21273" OrderNumber="4" OptionText="Proteinuri." ICD10="N083"/>
+          <Answer AnswerId="21274" OrderNumber="5" OptionText="Dialysebehandlet." ICD10="N185"/>
+          <Answer AnswerId="21275" OrderNumber="6" OptionText="Nyretransplantert." ICD10="Z940"/>
+          <Answer AnswerId="23467" OrderNumber="7" OptionText="Ukjent nyrestatus."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2711" PageNumber="2" PageTitle="Proteinuri">
+      <Item ItemId="7520" ItemType="2" VarName="NDV_MACROALBUMINURIA" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="9279" OrderNumber="2" ItemText="Makroalbuminuri" ItemHelp="For diagnose kreves kvantifisering dvs. alb/kreatininratio &gt; 30 mg/mmol (eller U-albumin &gt;200 µg/min, eller &gt; 300 mg/24t)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="40536" OrderNumber="1" OptionText="Ja" VerboseText="Makroalbuminuri." ShortCode="J"/>
+          <Answer AnswerId="40537" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="40539" OrderNumber="3" OptionText="Ukjent"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2583" PageNumber="3" PageTitle="Mikroalbuminuri*">
+      <Item ItemId="7519" ItemType="2" VarName="NDV_MICROALBUMINURIA" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="9278" OrderNumber="3" ItemText="Mikroalbuminuri" ItemHelp="For diagnose kreves kvantifisering der to av tre prøver skal være positive dvs. alb/kreatininratio 3-30 mg/mmol (eller U-albumin 20-200 µg/min, eller 20-300 mg/24t)." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="40509" OrderNumber="1" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="40510" OrderNumber="2" OptionText="Tidligere" VerboseText="Tidligere mikroalbuminuri." ShortCode="T"/>
+          <Answer AnswerId="40511" OrderNumber="3" OptionText="Ja" VerboseText="Mikroalbuminuri." ShortCode="J"/>
+          <Answer AnswerId="40512" OrderNumber="4" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2580" PageNumber="4" PageTitle="Nyresvikt">
+      <Item ItemId="7517" ItemType="2" VarName="NDV_RENAL_FUNCTION" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="9275" OrderNumber="4" ItemHeader="Nedsatt nyrefunksjon" ItemText="Er nyrefunksjonen redusert?" ItemHelp="Velg &quot;Redusert nyrefunksjon&quot; ved eGFR &lt; 60 ml/min/1.73m2. Velg &quot;Nyretransplantert&quot; også ved dialysebehandling etter transplantasjon." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40495" OrderNumber="1" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="40496" OrderNumber="2" OptionText="Redusert nyrefunksjon." ShortCode="R"/>
+          <Answer AnswerId="40497" OrderNumber="3" OptionText="Dialysebehandlet (ikke transplantert)." ShortCode="D" ICD10="N185"/>
+          <Answer AnswerId="40566" OrderNumber="4" OptionText="Nyretransplantert." ShortCode="T" ICD10="Z940"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="1134" ItemType="2" VarName="ICD10_Z940" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="22220" OrderNumber="5" ItemText="Nyretransplantert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="59001" OrderNumber="1" OptionText="Ja" ShortCode="J" ICD10="Z940"/>
+          <Answer AnswerId="59002" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="10030" OrderNumber="3" OptionText="Vet ikke" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="1135" ItemType="2" VarName="ICD10_N185" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="22221" OrderNumber="6" ItemText="Dialysebehandlet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="59005" OrderNumber="1" OptionText="Ja" ShortCode="J" ICD10="N185"/>
+          <Answer AnswerId="59006" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="59007" OrderNumber="3" OptionText="Vet ikke" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2579" PageNumber="5" PageTitle="Årstall for dialysebehandling" PageIntroduction="Denne kommer frem hvis det er svart dialysebehandlet ELLER nyretransplantert, det er sannsynlig at de som transplanteres først har vært gjennom dialysebehandling?">
+      <Item ItemId="7518" ItemType="1" VarName="NDV_DIALYSIS_YYYY" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="9276" OrderNumber="7" ItemText="Årstall for dialysebehandling" ItemHelp="Første gang pasienten fikk dialysebehandling." MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2582" PageNumber="6" PageTitle="Årstall for transplantasjon" PageIntroduction="Denne kommer frem hvis det er svart Nyretransplantert på 7517.">
+      <Item ItemId="7521" ItemType="1" VarName="NDV_RENAL_TRANSPL_YYYY" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="9280" OrderNumber="8" ItemText="Årstall for nyretransplantasjon" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="7520">
+      <Activate EnumVal="1" PageConditionId="2875" PageNumber="3" ComparisonType="6" ComparisonDescription="Not Equal"/>
+    </PageAction>
+    <PageAction MasterId="7517">
+      <Activate EnumVal="3" PageConditionId="2767" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="2768" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="2769" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

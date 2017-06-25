@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="660" FormName="FORM660" FormTitle="Utskrivning">
+    <Page PageId="3213" PageNumber="1" PageTitle="Utskrivning">
+      <Item ItemId="8119" ItemType="5" VarName="VAR8119" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="11343" OrderNumber="1" ItemText="Utskrivningsdato" ItemHelp="Datoen pasienten ble skrevet ut etter slaget." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8113" ItemType="2" VarName="VAR8113" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="11337" OrderNumber="2" ItemText="Avdeling utskrevet fra" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="43443" OrderNumber="1" OptionText="Slagenhet" VerboseText="Utskrevet fra slagenhet."/>
+          <Answer AnswerId="43444" OrderNumber="2" OptionText="Annet sengeavdeling*"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3360" PageNumber="2" PageTitle="Utskrevet fra annen avdeling*">
+      <Item ItemId="8337" ItemType="2" VarName="VAR8337" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="11806" OrderNumber="3" ItemText="Hvilken avdeling" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="44904" OrderNumber="1" OptionText="Medisinsk" VerboseText="Utskrevet fra medisinsk avdeling."/>
+          <Answer AnswerId="44905" OrderNumber="2" OptionText="Nevrologisk" VerboseText="Utskrevet fra nevrologisk avdeling."/>
+          <Answer AnswerId="44906" OrderNumber="3" OptionText="Nevrokirurgisk" VerboseText="Utskrevet fra nevrokirurgisk avdeling."/>
+          <Answer AnswerId="44907" OrderNumber="4" OptionText="Intensivavdeling" VerboseText="Utskrevet fra intensivavdeling."/>
+          <Answer AnswerId="44908" OrderNumber="5" OptionText="Observasjonsavdeling" VerboseText="Utskrevet fra observasjonsavdeling."/>
+          <Answer AnswerId="44909" OrderNumber="6" OptionText="Annen avdeling*"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6309" PageNumber="3" PageTitle="">
+      <Item ItemId="8114" ItemType="2" VarName="VAR8114" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="11338" OrderNumber="4" ItemHeader="Utskrives til" ItemText="Hvor skrives pasienten ut til?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="43454" OrderNumber="1" OptionText="egen bolig uten hjemmesykepleie/hjemmehjelp."/>
+          <Answer AnswerId="43455" OrderNumber="2" OptionText="egen bolig med hjemmesykepleie/hjemmehjelp."/>
+          <Answer AnswerId="43456" OrderNumber="3" OptionText="omsorgsbolig med døgnkontinuerlige tjenester og personale."/>
+          <Answer AnswerId="43457" OrderNumber="4" OptionText="sykehjem."/>
+          <Answer AnswerId="43458" OrderNumber="5" OptionText="annen avdeling for videre behandling."/>
+          <Answer AnswerId="43459" OrderNumber="6" OptionText="annen avd. i påvente av sykehjem/rehab."/>
+          <Answer AnswerId="43460" OrderNumber="7" OptionText="rehabiliteringsavd./-institusjon."/>
+          <Answer AnswerId="43461" OrderNumber="8" OptionText="opptreningssenter."/>
+          <Answer AnswerId="43462" OrderNumber="9" OptionText="Ukjent*"/>
+          <Answer AnswerId="43463" OrderNumber="10" OptionText="Død i løpet av oppholdet."/>
+          <Answer AnswerId="43464" OrderNumber="11" OptionText="Annet*"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8118" ItemType="2" VarName="HasDied" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="11342" OrderNumber="5" ItemText="Død" ItemHelp="" Expression="2-ISNULL(VAR8114-10)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+          <Answer AnswerId="43479" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="43480" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3214" PageNumber="4" PageTitle="Utskrives til*">
+      <Item ItemId="8115" ItemType="4" VarName="VAR8115" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="11339" OrderNumber="6" ItemText="Utskrives til" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3212" PageNumber="5" PageTitle="Mors">
+      <Item ItemId="8116" ItemType="5" VarName="VAR8116" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="11340" OrderNumber="7" ItemHeader="Døde" ItemText="Morsdato" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8117" ItemType="2" VarName="VAR8117" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="11341" OrderNumber="8" ItemText="Obdusert" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="43476" OrderNumber="1" OptionText="Ja" VerboseText="Obdusert." ShortCode="J"/>
+          <Answer AnswerId="43477" OrderNumber="2" OptionText="Nei" VerboseText="Ikke obdusert." ShortCode="N"/>
+          <Answer AnswerId="43478" OrderNumber="9" OptionText="Ukjent*" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="8113">
+      <Activate EnumVal="2" PageConditionId="3421" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="8114">
+      <Activate EnumVal="11" PageConditionId="3340" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="8118">
+      <Activate EnumVal="1" PageConditionId="3342" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

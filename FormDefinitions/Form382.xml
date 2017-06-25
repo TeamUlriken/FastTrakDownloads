@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="382" FormName="MRS_YEAR" FormTitle="Årskontroll Web">
+    <Page PageId="861" PageNumber="1" PageTitle="Årskontroll">
+      <Item ItemId="3389" ItemType="2" VarName="NDV_CONSENT" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="1727" OrderNumber="1" ItemText="Samtykke for diabetesregisteret" ItemHelp="Norsk diabetesregister for voksne. Kontaktperson Karianne Fjeld Løvaas." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="16869" OrderNumber="1" OptionText="Ja" VerboseText="Samtykke gitt til diabetesregisteret." ShortCode="J"/>
+          <Answer AnswerId="16870" OrderNumber="2" OptionText="Nei" VerboseText="Ikke samtykke til diabetesregisteret." ShortCode="N"/>
+          <Answer AnswerId="19223" OrderNumber="3" OptionText="Trukket tilbake" VerboseText="Samtykke til diabetesregisteret trukket tilbake." ShortCode="Tr"/>
+          <Answer AnswerId="20850" OrderNumber="4" OptionText="Ukjent*" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3486" ItemType="1" VarName="NDV_DIAGNOSE_YYYY" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="1944" OrderNumber="2" ItemHeader="Debut" ItemText="Diabetes diagnostisert år" ItemHelp="Angi årstall.  Svangerskapsdiabetes unntas." MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3196" ItemType="2" VarName="NDV_TYPE" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="1308" OrderNumber="3" ItemText="Diabetes type" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="15986" OrderNumber="1" OptionText="Type 1 (inkl. LADA)" VerboseText="Type 1 diabetes." ShortCode="1" ICD10="E10"/>
+          <Answer AnswerId="15987" OrderNumber="2" OptionText="Type 2" VerboseText="Type 2 diabetes." ShortCode="2" ICD10="E11"/>
+          <Answer AnswerId="15988" OrderNumber="3" OptionText="Annen diabetestype (inkl. pankreatitt, MODY)." ShortCode="A"/>
+          <Answer AnswerId="16137" OrderNumber="4" OptionText="er ikke avklart." ShortCode="U" ICD10="E14"/>
+          <Answer AnswerId="40942" OrderNumber="5" OptionText="Svangerskapsdiabetes." ShortCode="S" ICD10="O24"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        <FormItem FormItemId="1424" OrderNumber="4" ItemText="Høyde (cm)" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
+        <FormItem FormItemId="1406" OrderNumber="5" ItemText="Vekt (kg)" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3226" ItemType="1" VarName="WAIST" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        <FormItem FormItemId="1439" OrderNumber="6" ItemText="Midjemål (cm)" ItemHelp="Midt mellom ribbensbue og hoftekam, målt etter ekspirasjon" MinExpression="40" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3227" ItemType="2" VarName="NDV_SMOKING" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="1446" OrderNumber="7" ItemText="Røykestatus" ItemHelp="Velg Dagligrøyker hvis sluttet for mindre enn 3 mnd siden." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="16138" OrderNumber="1" OptionText="Aldri røykt daglig."/>
+          <Answer AnswerId="16139" OrderNumber="2" OptionText="Dagligrøyker."/>
+          <Answer AnswerId="16140" OrderNumber="3" OptionText="Eks-dagligrøyker."/>
+          <Answer AnswerId="16141" OrderNumber="4" OptionText="Røykestatus ukjent.*"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3340" ItemType="2" VarName="NDV_EXERCISE" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="1653" OrderNumber="8" ItemText="Mosjonerer regelmessig" ItemHelp="30 minutter rask gange eller tilsvarende minst en gang i uken" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="16575" OrderNumber="1" OptionText="Ja*" ShortCode="J"/>
+          <Answer AnswerId="16576" OrderNumber="2" OptionText="Nei" VerboseText="Mosjonerer ikke." ShortCode="N"/>
+          <Answer AnswerId="16577" OrderNumber="3" OptionText="Fysisk umulig å mosjonere."/>
+          <Answer AnswerId="21939" OrderNumber="4" OptionText="Vet ikke*"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="862" PageNumber="2" PageTitle="Ukedager med mosjon*">
+      <Item ItemId="3197" ItemType="1" VarName="NDV_EXERCISE_DAYS" LoincScale="QN" UnitStr="dager/uke" DisplayFormat="">
+        <FormItem FormItemId="1315" OrderNumber="9" ItemHeader="Mosjonerer" ItemText="Ukedager med mosjon (dager/uke)" ItemHelp="30 minutter rask gange eller tilsvarende" MinExpression="1" MaxExpression="7" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="863" PageNumber="3" PageTitle="Måler glukose selv*">
+      <Item ItemId="4058" ItemType="2" VarName="NDV_SELFMON" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="2560" OrderNumber="10" ItemText="Måler glukose selv" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="21313" OrderNumber="1" OptionText="ukentlig eller oftere."/>
+          <Answer AnswerId="21314" OrderNumber="2" OptionText="sjeldnere enn ukentlig." VerboseText="Måler glukose sjeldnere enn ukentlig."/>
+          <Answer AnswerId="21315" OrderNumber="3" OptionText="Nei" VerboseText="Måler ikke glukose selv."/>
+          <Answer AnswerId="21316" OrderNumber="4" OptionText="Vet ikke*"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="864" PageNumber="4" PageTitle="Antall egenmålinger per uke*">
+      <Item ItemId="4059" ItemType="1" VarName="NDV_SELFMON_COUNT" LoincScale="QN" UnitStr="ganger/uke" DisplayFormat="">
+        <FormItem FormItemId="2569" OrderNumber="11" ItemHeader="Egenmåling hyppighet" ItemText="Antall egenmålinger per uke (ganger/uke)" ItemHelp="" MinExpression="0" MaxExpression="140" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="865" PageNumber="5" PageTitle="Gjennomgått startkurs*">
+      <Item ItemId="3998" ItemType="2" VarName="NDV_STARTKURS" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="2447" OrderNumber="12" ItemText="Gjennomgått startkurs" ItemHelp="Kurs arrangert av sykehus" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="20768" OrderNumber="1" OptionText="Ja" VerboseText="Gjennomgått startkurs." ShortCode="J"/>
+          <Answer AnswerId="20769" OrderNumber="2" OptionText="Nei" VerboseText="Ikke gjennomgått startkurs." ShortCode="N"/>
+          <Answer AnswerId="20770" OrderNumber="3" OptionText="Vet ikke*" ShortCode="V"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="866" PageNumber="6" PageTitle="S-Kreatinin, mikroalbumin og HbA1c">
+      <Item ItemId="3304" ItemType="1" VarName="CREAT" LoincScale="QN" UnitStr="µmol/L" DisplayFormat="">
+        <FormItem FormItemId="1561" OrderNumber="13" ItemText="S-Kreatinin (µmol/L)" ItemHelp="Høye verdier ved nedsatt glomerulusfiltrasjon: prerenalt ved sirkulasjonssvikt, renalt ved glomerulusskade, postrenalt ved avløpshinder. Lave verdier har liten klinisk interesse. Forekommer ved atrofisk muskulatur og i svangerskapet." MinExpression="10" MaxExpression="2000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3311" ItemType="1" VarName="UACR" LoincScale="QN" UnitStr="mg/mmol" DisplayFormat="">
+        <FormItem FormItemId="1581" OrderNumber="14" ItemText="U-Albumin/Kreatinin-ratio (mg/mmol)" ItemHelp="" MinExpression="0" MaxExpression="7500" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4614" ItemType="1" VarName="U_ALB_NIGHT" LoincScale="QN" UnitStr="mcg/min" DisplayFormat="">
+        <FormItem FormItemId="3341" OrderNumber="15" ItemText="Albumin i natturin (mcg/min)" ItemHelp="Legg merke til enheter" MinExpression="0" MaxExpression="5000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4615" ItemType="1" VarName="U_ALB_24H" LoincScale="QN" UnitStr="mg/24h" DisplayFormat="">
+        <FormItem FormItemId="3343" OrderNumber="16" ItemText="Albumin i døgnurin (mg/24h)" ItemHelp="Legg merke til enheter" MinExpression="0" MaxExpression="15000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="527" ItemType="1" VarName="HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem FormItemId="296" OrderNumber="17" ItemText="B-HbA1c (%)" ItemHelp="" MinExpression="3" MaxExpression="25" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="867" PageNumber="7" PageTitle="Diabetesbehandling">
+      <Item ItemId="3322" ItemType="2" VarName="NDV_TREATMENT_TYPE" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="1600" OrderNumber="18" ItemHeader="Behandlingsstrategi" ItemText="Diabetes behandles ved hjelp av" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="16425" OrderNumber="1" OptionText="Kun kost/aktivitet."/>
+          <Answer AnswerId="16426" OrderNumber="2" OptionText="Andre blodsukkersenkende midler enn insulin."/>
+          <Answer AnswerId="16427" OrderNumber="3" OptionText="Kun insulinbehandlet."/>
+          <Answer AnswerId="16479" OrderNumber="4" OptionText="Insulin pluss andre blodsukkersenkende midler."/>
+          <Answer AnswerId="16480" OrderNumber="5" OptionText="Ukjent"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="868" PageNumber="8" PageTitle="Insulinadministrasjon*">
+      <Item ItemId="4056" ItemType="2" VarName="NDV_INSULIN_DEVICE" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="2551" OrderNumber="19" ItemText="Insulinadministrasjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="21306" OrderNumber="1" OptionText="Insulinpenn/sprøyte."/>
+          <Answer AnswerId="21307" OrderNumber="2" OptionText="Insulinpumpe."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="869" PageNumber="9" PageTitle="Insulinbehandling*">
+      <Item ItemId="4759" ItemType="7" VarName="ATC_A10AB$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3481" OrderNumber="20" ItemText="Hurtigvirkende insulin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="26452" OrderNumber="1" OptionText="Insulin human / Actrapid / Insuman Rapid [01]"/>
+          <Answer AnswerId="26453" OrderNumber="2" OptionText="Insulin lispro / Humalog [04]"/>
+          <Answer AnswerId="26454" OrderNumber="3" OptionText="Insulin aspart / NovoRapid [05]"/>
+          <Answer AnswerId="26455" OrderNumber="4" OptionText="Insulin glulisin / Apidra [06]"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4760" ItemType="7" VarName="ATC_A10A$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3483" OrderNumber="21" ItemText="Middels og lang virketid, inkl. kombinasjoner med hurtigvirkende" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="26460" OrderNumber="1" OptionText="Insulin human / Humulin NPH / Insulatard / Insuman Basal / Insuman Comb [C01]"/>
+          <Answer AnswerId="26461" OrderNumber="2" OptionText="Insulin lispro / Humalog Mix 25 [D04]"/>
+          <Answer AnswerId="26462" OrderNumber="3" OptionText="Insulin aspart / NovoMix 30 [D05]"/>
+          <Answer AnswerId="26476" OrderNumber="4" OptionText="Insulin glargin / Lantus [E04]"/>
+          <Answer AnswerId="26477" OrderNumber="5" OptionText="Insulin detemir / Levemir [E05]"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="870" PageNumber="10" PageTitle="Diabetesbehandling eks. insulin*">
+      <Item ItemId="4743" ItemType="7" VarName="ATC_A10B$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3439" OrderNumber="22" ItemText="Biguanider og sulfonamider" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="26101" OrderNumber="1" OptionText="Metformin / Glucophage [A02]"/>
+          <Answer AnswerId="26102" OrderNumber="2" OptionText="Glibenklamid / Euglucon [B01]"/>
+          <Answer AnswerId="26103" OrderNumber="3" OptionText="Glipizid / Mindiab [B07]"/>
+          <Answer AnswerId="26104" OrderNumber="4" OptionText="Glimepirid / Amaryl [B12]"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4744" ItemType="7" VarName="ATC_A10$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3441" OrderNumber="23" ItemText="Andre blodglukosesenkende midler" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="26119" OrderNumber="1" OptionText="Rosiglitazon / Avandia [BG02]"/>
+          <Answer AnswerId="26120" OrderNumber="2" OptionText="Pioglitazon / Actos [BG03]"/>
+          <Answer AnswerId="26121" OrderNumber="3" OptionText="Sitagliptin / Januvia [BH01]"/>
+          <Answer AnswerId="26122" OrderNumber="4" OptionText="Vildagliptin / Galvus [BH02]"/>
+          <Answer AnswerId="26123" OrderNumber="5" OptionText="Repaglinid / NovoNorm [BX02]"/>
+          <Answer AnswerId="26124" OrderNumber="6" OptionText="Nateglinid / Starlix [BX03]"/>
+          <Answer AnswerId="26125" OrderNumber="7" OptionText="Exenatid / Byetta [BX04]"/>
+          <Answer AnswerId="26428" OrderNumber="8" OptionText="Acarbose / Glucobay [BF01]"/>
+          <Answer AnswerId="26130" OrderNumber="9" OptionText="Saxagliptin / Onglyza [BH03]"/>
+          <Answer AnswerId="26131" OrderNumber="10" OptionText="Liraglutid / Victoza [BX07]"/>
+          <Answer AnswerId="26448" OrderNumber="11" OptionText="Annet [BXXX]"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4742" ItemType="7" VarName="ATC_A10BD$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3437" OrderNumber="24" ItemText="Kombinasjoner av perorale midler" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="26072" OrderNumber="1" OptionText="Metformin + rosiglitazon / Avandamet [03]"/>
+          <Answer AnswerId="26076" OrderNumber="2" OptionText="Metformin + pioglitazon / Competact [05]"/>
+          <Answer AnswerId="26077" OrderNumber="3" OptionText="Metformin + sitagliptin / Janumet [07]"/>
+          <Answer AnswerId="26078" OrderNumber="4" OptionText="Metformin + vildagliptin / Eucreas [08]"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="871" PageNumber="11" PageTitle="Blodtrykk">
+      <Item ItemId="3230" ItemType="1" VarName="SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+        <FormItem FormItemId="1464" OrderNumber="25" ItemText="Systolisk blodtrykk (mmHg)" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" FormatStr="Blodtrykk %s">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3231" ItemType="1" VarName="DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+        <FormItem FormItemId="1472" OrderNumber="26" ItemText="Diastolisk blodtrykk (mmHg)" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" FormatStr="¬/%s mmHg.">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4639" ItemType="2" VarName="NDV_BPDRUG_YN" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="3378" OrderNumber="27" ItemText="Bruker blodtrykksmedisin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="25229" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="25230" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="25231" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="872" PageNumber="12" PageTitle="Antall blodtrykksmedisiner*">
+      <Item ItemId="4079" ItemType="1" VarName="NDV_BPDRUGS" LoincScale="QN" UnitStr="stk" DisplayFormat="">
+        <FormItem FormItemId="2608" OrderNumber="28" ItemHeader="Blodtrykksmidler" ItemText="Antall blodtrykkssenkende midler (stk)" ItemHelp="Sammensatte midler (eks. Comp) teller som 2." MinExpression="0" MaxExpression="6" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="873" PageNumber="13" PageTitle="Blodtrykksbehandling">
+      <Item ItemId="4735" ItemType="7" VarName="ATC_C09A$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3425" OrderNumber="29" ItemText="ACE-hemmere" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="25789" OrderNumber="1" OptionText="Captopril [A01]"/>
+          <Answer AnswerId="25792" OrderNumber="2" OptionText="Enalapril / Renitec [A02]"/>
+          <Answer AnswerId="25793" OrderNumber="3" OptionText="Lisinopril / Zestril [A03]"/>
+          <Answer AnswerId="26032" OrderNumber="4" OptionText="Ramipril / Triatec [A05]"/>
+          <Answer AnswerId="26033" OrderNumber="5" OptionText="Trandolapril / Gopten [A10]"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4733" ItemType="7" VarName="ATC_C09B$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3421" OrderNumber="30" ItemText="ACE-hemmere i kombinasjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="25681" OrderNumber="1" OptionText="Enalapril + diuretika / Enalapril Comp / Renitec Comp (mite) [A02]"/>
+          <Answer AnswerId="25763" OrderNumber="2" OptionText="Lisinopril + diuretika / Lisinopril HCT / Zestoretic (mite) [A03]"/>
+          <Answer AnswerId="25927" OrderNumber="3" OptionText="Enalapril + lerkanidipin / Zanipress [B02]"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4736" ItemType="7" VarName="ATC_C09C$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3427" OrderNumber="31" ItemText="A2-blokkere" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="25803" OrderNumber="1" OptionText="Losartan / Cozaar [A01]"/>
+          <Answer AnswerId="25805" OrderNumber="2" OptionText="Eprosartan / Teveten [A02]"/>
+          <Answer AnswerId="25807" OrderNumber="3" OptionText="Valsartan / Diovan [A03]"/>
+          <Answer AnswerId="25809" OrderNumber="4" OptionText="Irbesartan / Aprovel [A04]"/>
+          <Answer AnswerId="25811" OrderNumber="5" OptionText="Candesartan / Amias / Atacand [A06]"/>
+          <Answer AnswerId="25835" OrderNumber="6" OptionText="Telmisartan / Micardis [A07]"/>
+          <Answer AnswerId="25878" OrderNumber="7" OptionText="Olmesartanmedoksomil / Olmetec [A08]"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4734" ItemType="7" VarName="ATC_C09D$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3423" OrderNumber="32" ItemText="A2-blokkere i kombinasjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="25705" OrderNumber="1" OptionText="Losartan + diuretika / Losartan HCT / Cozaar Comp (Forte) [A01]"/>
+          <Answer AnswerId="25708" OrderNumber="2" OptionText="Eprosartan + diuretika / Teveten Comp [A02]"/>
+          <Answer AnswerId="25729" OrderNumber="3" OptionText="Valsartan + diuretika / Diovan Comp [A03]"/>
+          <Answer AnswerId="25757" OrderNumber="4" OptionText="Irbesartan + diuretika / CoAprovel [A04]"/>
+          <Answer AnswerId="25782" OrderNumber="5" OptionText="Candesartan + diuretika / Atacand Plus (mite) [A06]"/>
+          <Answer AnswerId="25847" OrderNumber="6" OptionText="Telmisartan + diuretika / MicardisPlus [A07]"/>
+          <Answer AnswerId="25885" OrderNumber="7" OptionText="Olmesartan + diuretika / Olmetec Comp [A08]"/>
+          <Answer AnswerId="25893" OrderNumber="8" OptionText="Valsartan + amlodipin / Exforge [B01]"/>
+          <Answer AnswerId="25706" OrderNumber="9" OptionText="Valsartan + amlodipin + hydroklortiazid / Exforge HCT [X01]"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4739" ItemType="7" VarName="ATC_C07$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3431" OrderNumber="33" ItemText="Betablokkere" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="25894" OrderNumber="1" OptionText="Propranolol / Pranolol / Inderal (Retard) [AA05]"/>
+          <Answer AnswerId="25901" OrderNumber="2" OptionText="Metoprolol / Selo-Zok / Seloken [AB02]"/>
+          <Answer AnswerId="25906" OrderNumber="3" OptionText="Atenolol / Tenormin / Uniloc [AB03]"/>
+          <Answer AnswerId="25907" OrderNumber="4" OptionText="Bisoprolol / Emconcor (CHF) [AB07]"/>
+          <Answer AnswerId="25914" OrderNumber="5" OptionText="Labetalol / Trandate [AG01]"/>
+          <Answer AnswerId="25924" OrderNumber="6" OptionText="Karvedilol / Carvedilol [AG02]"/>
+          <Answer AnswerId="26587" OrderNumber="7" OptionText="Bisoprolol + diuretika / Lodoz [BB07]"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4740" ItemType="7" VarName="ATC_C03$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3433" OrderNumber="34" ItemText="Diuretika" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="25933" OrderNumber="1" OptionText="Hydriklortiazid / Esidrex [AA03]"/>
+          <Answer AnswerId="25934" OrderNumber="2" OptionText="Bendroflumetaiazid + kalium / Centyl (mite) med kaliumklorid [AB01]"/>
+          <Answer AnswerId="25935" OrderNumber="3" OptionText="Furosemid / Diural / Furix (Retard) / Lasix (Retard) [CA01]"/>
+          <Answer AnswerId="25940" OrderNumber="4" OptionText="Bumetanid / Burinex [CA02]"/>
+          <Answer AnswerId="25941" OrderNumber="5" OptionText="Spironolakton / Aldactone / Spirix [DA01]"/>
+          <Answer AnswerId="25948" OrderNumber="6" OptionText="Eplerenon / Inspra [DA04]"/>
+          <Answer AnswerId="25949" OrderNumber="7" OptionText="Hydroklortiazid + kaliumsparer / Moduretic (mite) / Normorix (mite) [EA01]"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4732" ItemType="7" VarName="ATC_C08$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3419" OrderNumber="35" ItemText="Kalsiumantagonister" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="25552" OrderNumber="1" OptionText="Amlodipin / Norvasc [CA01]"/>
+          <Answer AnswerId="25553" OrderNumber="2" OptionText="Felodipin / Plendil [CA02]"/>
+          <Answer AnswerId="25554" OrderNumber="3" OptionText="Isradipin / Lomir (SRO) [CA03]"/>
+          <Answer AnswerId="25563" OrderNumber="4" OptionText="Nifedipin / Adalat (Oros) [CA05]"/>
+          <Answer AnswerId="25565" OrderNumber="5" OptionText="Lerkanidipin / Zanidip [CA13]"/>
+          <Answer AnswerId="26543" OrderNumber="6" OptionText="Diltiazem / Cardizem (Uno/Retard) [DB01]"/>
+          <Answer AnswerId="26560" OrderNumber="7" OptionText="Verapamil / Verakard / Isoptin (Retard) [DA01]"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4737" ItemType="7" VarName="ATC_C09X$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3429" OrderNumber="36" ItemText="Reninhemmere" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="25869" OrderNumber="1" OptionText="Aliskiren / Rasilez [A02]"/>
+          <Answer AnswerId="25870" OrderNumber="2" OptionText="Alisikiren + diuretika / Rasilez HCT [A52]"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4741" ItemType="7" VarName="ATC_C02$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3435" OrderNumber="37" ItemText="Andre antihypertensiva" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="25950" OrderNumber="1" OptionText="Hydralazin / Apresolin [DB02]"/>
+          <Answer AnswerId="25951" OrderNumber="2" OptionText="Moxonidin / Physiotens [AC05]"/>
+          <Answer AnswerId="26553" OrderNumber="3" OptionText="Doxazosin / Carduran (CR) [CA04]"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="874" PageNumber="14" PageTitle="Blodlipider">
+      <Item ItemId="1294" ItemType="1" VarName="CHOL" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
+        <FormItem FormItemId="548" OrderNumber="38" ItemText="S-Kolesterol (mmol/L)" ItemHelp="Høye verdier ved primære og sekundære hyperlipoproteinemier. De sekundære ses bl.a. ved hypothyreose, nefrotisk syndrom, obstruktive leversykdommer og diabetes mellitus. Lave verdier ved hyperthyreose, malabsorpsjon, medfødt beta-lipoproteinmangel (acanthocytose)." MinExpression="0.5" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="1296" ItemType="1" VarName="HDL" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
+        <FormItem FormItemId="557" OrderNumber="39" ItemText="S-HDL-kolesterol (mmol/L)" ItemHelp="Høye verdier betyr oftest minsket risiko for hjerte-/karsykdom. De kan være arvelig betinget og kan også skyldes østrogenpåvirkning eller høy fysisk aktivitet. Alkoholinntak tenderer også til å øke HDL-kolesterol. Lave verdier kan skyldes inflammatoriske prosesser, særlig virushepatitt. De kan også være arvelig betinget (Tangiers sykdom, LCAT-mangel)." MinExpression="0" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="1884" ItemType="1" VarName="LDL" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+        <FormItem FormItemId="953" OrderNumber="40" ItemText="S-LDL-kolesterol (mmol/l)" ItemHelp="Høye verdier ved primære og sekundære hyperlipoproteinemier. De sekundære ses blant annet ved hypothyreose, nefrotisk syndrom, obstruktive leversykdommer og diabetes mellitus. Lave verdier ved hyperthyreose, malabsorpsjon, medfødt beta-lipoproteinmangel (acanthocytose)." MinExpression="0.2" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3488" ItemType="1" VarName="TRIG" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+        <FormItem FormItemId="1948" OrderNumber="41" ItemText="S-Triglycerider (mmol/l)" ItemHelp="fastende eller ikke-fastende" MinExpression="0.1" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="875" PageNumber="15" PageTitle="Lipidsenkende behandling">
+      <Item ItemId="3337" ItemType="2" VarName="ATC_C10A" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="1635" OrderNumber="42" ItemText="Lipidsenkende behandling" ItemHelp="Cholestagel&amp;reg;, Crestor&amp;reg;, Ezetrol&amp;reg;, Inegy&amp;reg;, Lescol&amp;reg;, Lestid&amp;reg;, Lipitor&amp;reg;, Lovastatin, Mevacor&amp;reg;, Niaspan&amp;reg;, Omacor&amp;reg;, Pravachol&amp;reg;, Pravastatin, Questran&amp;reg;, Simvastatin, Sortis&amp;reg;, Tredaptive&amp;reg;, Zocor&amp;reg;," MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="16548" OrderNumber="1" OptionText="Ja" VerboseText="Bruker lipidsenkende." ShortCode="J"/>
+          <Answer AnswerId="16549" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16550" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="876" PageNumber="16" PageTitle="Lipidsenkende midler*">
+      <Item ItemId="4748" ItemType="7" VarName="ATC_C10AA$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3443" OrderNumber="43" ItemText="Statiner" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="26171" OrderNumber="1" OptionText="Simvastatin / Zocor [01]"/>
+          <Answer AnswerId="26172" OrderNumber="2" OptionText="Lovastatin / Mevacor [02]"/>
+          <Answer AnswerId="26173" OrderNumber="3" OptionText="Pravastatin / Pravachol [03]"/>
+          <Answer AnswerId="26174" OrderNumber="4" OptionText="Fluvastatin / Lescol (Depot) [04]"/>
+          <Answer AnswerId="26175" OrderNumber="5" OptionText="Atorvastatin / Lipitor / Sortis [05]"/>
+          <Answer AnswerId="26176" OrderNumber="6" OptionText="Rosuvastatin / Crestor [07]"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4749" ItemType="7" VarName="ATC_C10AC$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3445" OrderNumber="44" ItemText="Midler som øker utskillelsen av gallesyre" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="26181" OrderNumber="1" OptionText="Kolestyramin / Questran (Loc) [01]"/>
+          <Answer AnswerId="26182" OrderNumber="2" OptionText="Kolestipol / Lestid [02]"/>
+          <Answer AnswerId="26183" OrderNumber="3" OptionText="Cholesevelam / Cholestagel [04]"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4750" ItemType="7" VarName="ATC_C10AD$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3447" OrderNumber="45" ItemText="Nikotinsyre og derivater" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="26184" OrderNumber="1" OptionText="Nikotinsyre / Niaspan [02]"/>
+          <Answer AnswerId="26185" OrderNumber="2" OptionText="Nikotinsyre og laropiprant / Tredaptive [52]"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4751" ItemType="7" VarName="ATC_C10AX$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3449" OrderNumber="46" ItemText="Andre lipidmodifiserende midler" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="26186" OrderNumber="1" OptionText="Omega-3 / Omacor [06]"/>
+          <Answer AnswerId="26187" OrderNumber="2" OptionText="Ezetimib / Ezetrol [09]"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="877" PageNumber="17" PageTitle="Tromboseprofylakse">
+      <Item ItemId="3336" ItemType="2" VarName="ATC_B01AC" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="1625" OrderNumber="47" ItemHeader="Bruker platehemmer" ItemText="Bruker pasienten platehemmer nå?" ItemHelp="Acetylsalicylsyre, Albyl-E&amp;reg;, Asasantin Retard&amp;reg;, Persantin&amp;reg;, Plavix&amp;reg; Ticlid&amp;reg;, evt. andre i ATC gruppe B01AC." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="16545" OrderNumber="1" OptionText="Ja" VerboseText="Bruker platehemmer." ShortCode="J"/>
+          <Answer AnswerId="16546" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16547" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="878" PageNumber="18" PageTitle="Platehemmere*">
+      <Item ItemId="4753" ItemType="7" VarName="ATC_B01AC$" LoincScale="CHECKLIST" DisplayFormat="Vertical">
+        <FormItem FormItemId="3452" OrderNumber="48" ItemText="Blodplatehemmere eks. heparin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="26204" OrderNumber="1" OptionText="Klopidogrel / Plavix [04]"/>
+          <Answer AnswerId="26205" OrderNumber="2" OptionText="Tiklopidin / Ticlid [05]"/>
+          <Answer AnswerId="26206" OrderNumber="3" OptionText="Acetylsalicylsyre / Acetyratio / Albyl-E / Magnyl-E [06]"/>
+          <Answer AnswerId="26207" OrderNumber="4" OptionText="Dipyramidol / Persantin (Retard) [07]"/>
+          <Answer AnswerId="26208" OrderNumber="5" OptionText="Prasugrel / Efient [22]"/>
+          <Answer AnswerId="26209" OrderNumber="6" OptionText="Asasantin Retard [30]"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="879" PageNumber="19" PageTitle="Antikoagulasjon*">
+      <Item ItemId="4003" ItemType="2" VarName="ATC_B01AA" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="2458" OrderNumber="49" ItemText="Antikoagulasjonsbehandling" ItemHelp="Marevan&amp;reg;, Warfarin, Pradaxa&amp;reg;, Eliquis&amp;reg;, Xarelto&amp;reg;" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="20865" OrderNumber="1" OptionText="Ja" VerboseText="Antikoagulert." ShortCode="J"/>
+          <Answer AnswerId="20866" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="20867" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="880" PageNumber="20" PageTitle="Fotstatus">
+      <Item ItemId="4637" ItemType="2" VarName="NDV_FOOT_PULSE" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="3369" OrderNumber="50" ItemText="Fotpuls" ItemHelp="Puls på fotrygg eller bak mediale malleol" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="25158" OrderNumber="1" OptionText="Ja, palpabel begge sider" VerboseText="Fotpuls bilateralt."/>
+          <Answer AnswerId="25159" OrderNumber="2" OptionText="Ja, men bare på høyre side" VerboseText="Fotpuls kun høyre side."/>
+          <Answer AnswerId="25160" OrderNumber="3" OptionText="Ja, men bare på venstre side" VerboseText="Fotpuls kun venstre side."/>
+          <Answer AnswerId="25161" OrderNumber="4" OptionText="Nei" VerboseText="Ingen fotpuls."/>
+          <Answer AnswerId="25162" OrderNumber="5" OptionText="ikke undersøkt."/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4636" ItemType="2" VarName="NDV_FOOT_SENS" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="3364" OrderNumber="51" ItemText="Normal sensibilitet på føtter" ItemHelp="Vibrasjon normal eller monofilament 4/4" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="25140" OrderNumber="1" OptionText="Ja, begge føtter" VerboseText="Normal fotsensibilitet bilateralt."/>
+          <Answer AnswerId="25141" OrderNumber="2" OptionText="Ja, høyre fot" VerboseText="Normal fotsensibilitet kun høyre side."/>
+          <Answer AnswerId="25142" OrderNumber="3" OptionText="Ja, venstre fot" VerboseText="Normal fotsensibilitet kun venstre side."/>
+          <Answer AnswerId="25143" OrderNumber="4" OptionText="Nei" VerboseText="Nedsatt fotsensibilitet begge sider."/>
+          <Answer AnswerId="25144" OrderNumber="5" OptionText="Ikke undersøkt" VerboseText="Fotsensibilitet ikke undersøkt."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="881" PageNumber="21" PageTitle="Viktige komplikasjoner">
+      <Item ItemId="4527" ItemType="2" VarName="DIABETESKOMPLIKASJONER" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="3254" OrderNumber="52" ItemHeader="Diabeteskomplikasjoner" ItemText="Kjente diabetes senkomplikasjoner" ItemHelp="Nefropati, retinopati, nevropati, koronarsykdom, hjerneslag, arteriell karkirurgi, amputasjon, diabetisk fotsår, erektil dysfunksjon." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="24022" OrderNumber="1" OptionText="Ja*" ShortCode="J"/>
+          <Answer AnswerId="24023" OrderNumber="2" OptionText="Nei" VerboseText="Ingen kjente komplikasjoner." ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="882" PageNumber="22" PageTitle="*">
+      <Item ItemId="4087" ItemType="2" VarName="NDV_RETINOPATHY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="2636" OrderNumber="53" ItemText="Retinopati" ItemHelp="Behandling inkluderer laserbehandling, injeksjonsbehandling og kirurgi." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="21836" OrderNumber="1" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="21837" OrderNumber="2" OptionText="Retinopati, ubehandlet." ICD10="H360"/>
+          <Answer AnswerId="21838" OrderNumber="3" OptionText="Behandlet retinopati." ICD10="H360"/>
+          <Answer AnswerId="21839" OrderNumber="4" OptionText="Ukjent*"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="883" PageNumber="23" PageTitle="*">
+      <Item ItemId="4205" ItemType="1" VarName="NDV_LASER_FIRST" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="2805" OrderNumber="54" ItemText="Årstall for første laserbehandling" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="884" PageNumber="24" PageTitle="*">
+      <Item ItemId="3404" ItemType="2" VarName="NDV_EYESIGHT" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="1762" OrderNumber="55" ItemText="Sterkt synshemmet" ItemHelp="dårligere enn 6/18 (0.33) på beste øye evt. med egen brille" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="16926" OrderNumber="1" OptionText="Ja" VerboseText="Sterkt synshemmet." ShortCode="J"/>
+          <Answer AnswerId="16927" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16928" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3354" ItemType="5" VarName="NDV_EYECHECK_DATE" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="1694" OrderNumber="56" ItemText="Siste besøk hos øyelege" ItemHelp="Beste estimat ved usikker dato." MinExpression="DOB" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3415" ItemType="2" VarName="NDV_NEPHROPATHY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="1790" OrderNumber="57" ItemHeader="Nyrestatus" ItemText="Albuminuri eller nefropati?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="17090" OrderNumber="1" OptionText="Normal nyrestatus."/>
+          <Answer AnswerId="17091" OrderNumber="2" OptionText="Tidligere mikroalbuminuri."/>
+          <Answer AnswerId="17092" OrderNumber="3" OptionText="Mikroalbuminuri." ICD10="N083"/>
+          <Answer AnswerId="21273" OrderNumber="4" OptionText="Proteinuri." ICD10="N083"/>
+          <Answer AnswerId="21274" OrderNumber="5" OptionText="Dialysebehandlet." ICD10="N185"/>
+          <Answer AnswerId="21275" OrderNumber="6" OptionText="Nyretransplantert." ICD10="Z940"/>
+          <Answer AnswerId="23467" OrderNumber="7" OptionText="Ukjent nyrestatus."/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3397" ItemType="2" VarName="NDV_CHD" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="1742" OrderNumber="58" ItemText="Koronarsykdom" ItemHelp="angina, hjerteinfarkt eller PCI/bypass" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="16884" OrderNumber="1" OptionText="Ja" VerboseText="Koronarsyk." ShortCode="J"/>
+          <Answer AnswerId="16885" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16886" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="885" PageNumber="25" PageTitle="*">
+      <Item ItemId="4055" ItemType="1" VarName="NDV_CHD_DEBUT" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="2543" OrderNumber="59" ItemText="Debut av koronar hjertesykdom" ItemHelp="Årstall for første tilfelle av enten angina/hjerteinfarkt/bypass /PCI" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="886" PageNumber="26" PageTitle="*">
+      <Item ItemId="3398" ItemType="2" VarName="NDV_STROKE" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="1752" OrderNumber="60" ItemText="Hjerneslag" ItemHelp="Unntatt TIA" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="16887" OrderNumber="1" OptionText="Ja" VerboseText="Hjerneslag." ShortCode="J"/>
+          <Answer AnswerId="16888" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16889" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="887" PageNumber="27" PageTitle="*">
+      <Item ItemId="4062" ItemType="1" VarName="NDV_STROKE_DEBUT" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="2587" OrderNumber="61" ItemText="Første hjerneslag" ItemHelp="Årstall for første tilfelle av hjerneslag" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="888" PageNumber="28" PageTitle="*">
+      <Item ItemId="3218" ItemType="2" VarName="NDV_FOOT_ULCER" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="1377" OrderNumber="62" ItemHeader="Diabetisk fotsår" ItemText="Har noen gang hatt diabetessår nedenfor ankelen?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="16057" OrderNumber="1" OptionText="Nei, aldri" VerboseText="Aldri fotsår." ShortCode="N"/>
+          <Answer AnswerId="16058" OrderNumber="2" OptionText="Ja, en gang" VerboseText="Har hatt fotsår før." ShortCode="En"/>
+          <Answer AnswerId="21248" OrderNumber="3" OptionText="Ja, flere ganger" VerboseText="Har hatt flere fotsår." ShortCode="Fler"/>
+          <Answer AnswerId="22279" OrderNumber="4" OptionText="Vet ikke" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3414" ItemType="2" VarName="NDV_AMPUTATION" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="1780" OrderNumber="63" ItemHeader="Amputasjon" ItemText="Amputasjon (ikke traumatisk)" ItemHelp="Dersom amputasjon på begge føtter, velg høyeste nivå." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="17084" OrderNumber="1" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="17085" OrderNumber="2" OptionText="fot t.om. ankelledd."/>
+          <Answer AnswerId="17086" OrderNumber="3" OptionText="over ankelnivå."/>
+          <Answer AnswerId="21285" OrderNumber="4" OptionText="Ukjent*"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3417" ItemType="2" VarName="NDV_ARTERIAL_SURGERY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="1800" OrderNumber="64" ItemHeader="Arteriell karkirurgi" ItemText="Arteriell karkirurgi distalt for aorta" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="17117" OrderNumber="1" OptionText="Ja" VerboseText="Karkirurgisk behandlet." ShortCode="J"/>
+          <Answer AnswerId="17118" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="17119" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4642" ItemType="2" VarName="NDV_AF" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="3381" OrderNumber="65" ItemText="Atrieflimmer" ItemHelp="Noen gang hatt atrieflimmer" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="25232" OrderNumber="1" OptionText="Ja" VerboseText="Har/hatt atrieflimmer." ShortCode="J"/>
+          <Answer AnswerId="25233" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="25234" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3351" ItemType="2" VarName="NDV_HYPOGLYCEMIA" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="1664" OrderNumber="66" ItemText="Hjelpetrengende pga. hypoglykemi" ItemHelp="Noen gang vært hjelpetrengende pga. hypoglykemi." MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="16652" OrderNumber="1" OptionText="Aldri"/>
+          <Answer AnswerId="16653" OrderNumber="2" OptionText="En gang"/>
+          <Answer AnswerId="16654" OrderNumber="3" OptionText="Flere ganger"/>
+          <Answer AnswerId="20898" OrderNumber="4" OptionText="Ukjent"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="889" PageNumber="29" PageTitle="*">
+      <Item ItemId="4235" ItemType="1" VarName="NDV_HYPOGLYC_YEAR" LoincScale="QN" UnitStr="ganger siste år" DisplayFormat="">
+        <FormItem FormItemId="2878" OrderNumber="67" ItemHeader="Alvorlig hypoglykemi" ItemText="Antall ganger hjelpetrengende for hypoglykemi siste år (ganger siste år)" ItemHelp="" MinExpression="0" MaxExpression="366" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="890" PageNumber="30" PageTitle="*">
+      <Item ItemId="3352" ItemType="2" VarName="NDV_KETOACIDOSIS" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="1677" OrderNumber="68" ItemHeader="Ketoacidose" ItemText="Innlagt for ketoacidose:" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="16661" OrderNumber="1" OptionText="Aldri*"/>
+          <Answer AnswerId="16662" OrderNumber="2" OptionText="en gang."/>
+          <Answer AnswerId="16663" OrderNumber="3" OptionText="flere ganger."/>
+          <Answer AnswerId="20903" OrderNumber="4" OptionText="Ukjent*"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="891" PageNumber="31" PageTitle="Arv">
+      <Item ItemId="4204" ItemType="2" VarName="NDV_FAM_DM" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="2798" OrderNumber="69" ItemText="Diabetes hos foreldre/barn/søsken" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="22251" OrderNumber="1" OptionText="Ja" VerboseText="Diabetes i nær familie." ShortCode="J"/>
+          <Answer AnswerId="22252" OrderNumber="2" OptionText="Nei" VerboseText="Ikke diabetes i nærmeste familie." ShortCode="N"/>
+          <Answer AnswerId="22253" OrderNumber="3" OptionText="Vet ikke*" ShortCode="V"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3342" ItemType="2" VarName="NDV_FAM_CHD" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="1660" OrderNumber="70" ItemText="Tidlig koronarsykdom hos foreldre/søsken" ItemHelp="Før 55/65 år hos menn/kvinner, kun biologiske foreldre/søsken" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="16605" OrderNumber="1" OptionText="Ja" VerboseText="Tidlig koronarsykdom i familien." ShortCode="J"/>
+          <Answer AnswerId="16606" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16607" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3982" ItemType="2" VarName="NDV_ETHNICITY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="2419" OrderNumber="71" ItemText="Etnisk opprinnelse" ItemHelp="Angi f.eks. asiatisk dersom begge foreldre er asiatiske; ved f.eks. europeisk mor og asiatisk far anføres ”annen”" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="20702" OrderNumber="1" OptionText="Europeisk." ShortCode="E"/>
+          <Answer AnswerId="20703" OrderNumber="2" OptionText="Afrikansk." ShortCode="Afr"/>
+          <Answer AnswerId="20704" OrderNumber="3" OptionText="Asiatisk." ShortCode="As"/>
+          <Answer AnswerId="20705" OrderNumber="4" OptionText="Annen" ShortCode="An"/>
+          <Answer AnswerId="21984" OrderNumber="5" OptionText="Vet ikke" ShortCode="Ukj"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="892" PageNumber="32" PageTitle="Avledede variable" PageIntroduction="Disse variablene er avledet med formler for å samsvare med PHT skjema">
+      <Item ItemId="4207" ItemType="2" VarName="NDV_NONPHARMA_ONLY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="2810" OrderNumber="72" ItemText="Kun kost/aktivitet" ItemHelp="" Expression="ISNULL(NDV_TREATMENT_TYPE-1)+2*ISPOS(NDV_TREATMENT_TYPE-1)+ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="0">
+          <Answer AnswerId="22300" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="22301" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="22302" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3332" ItemType="2" VarName="ATC_A10A" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="1614" OrderNumber="73" ItemText="Injeksjonsbehandling med insulin" ItemHelp="" Expression="ISPOS(ISNULL(NDV_TREATMENT_TYPE-3)+ISNULL(NDV_TREATMENT_TYPE-4)) + 2*ISNEG(NDV_TREATMENT_TYPE-3) + 3*ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="1">
+          <Answer AnswerId="16524" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="16525" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16526" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4726" ItemType="2" VarName="NDV_INSULINADM" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="3412" OrderNumber="74" ItemText="Insulinbruker" ItemHelp="" Expression="1*ISNULL(ATC_A10A-2) + 2*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-1) + 3*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-2) + 4*ISNULL(ATC_A10A-3)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="0">
+          <Answer AnswerId="25473" OrderNumber="1" OptionText="Nei"/>
+          <Answer AnswerId="25474" OrderNumber="2" OptionText="Sprøyte/penn"/>
+          <Answer AnswerId="25475" OrderNumber="3" OptionText="Pumpe"/>
+          <Answer AnswerId="25476" OrderNumber="4" OptionText="Vet ikke"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4754" ItemType="2" VarName="NDV_METFORMIN" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="3459" OrderNumber="75" ItemText="Bruker metformin" ItemHelp="Inkludert sammensatte preparater med metformin" Expression="2 - ISPOS( ISNULL( ATC_A10BA02 - 1 ) + ISNULL( ATC_A10BD03 - 1 ) + ISNULL( ATC_A10BD05 - 1 ) + ISNULL(ATC_A10BD07 - 1 ) + ISNULL( ATC_A10BD08 - 1 ) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="1">
+          <Answer AnswerId="26368" OrderNumber="1" OptionText="Ja" VerboseText="Metformin." ShortCode="J"/>
+          <Answer AnswerId="26369" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="26370" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4755" ItemType="2" VarName="NDV_SULFONYLUREA" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="3468" OrderNumber="76" ItemText="Bruker sulfonylurea" ItemHelp="Inkludert sammensatte preparater med sulfonylurea" Expression="2 - ISPOS( ISNULL( ATC_A10BB01 - 1 ) + ISNULL( ATC_A10BB07 - 1 ) + ISNULL( ATC_A10BB12 - 1 ) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="1">
+          <Answer AnswerId="26353" OrderNumber="1" OptionText="Ja" VerboseText="Sulfonylurea." ShortCode="J"/>
+          <Answer AnswerId="26354" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="26355" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4756" ItemType="2" VarName="NDV_GLITAZON" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="3477" OrderNumber="77" ItemText="Bruker glitazoner" ItemHelp="Inkludert sammensatte preparater med glitazoner" Expression="2 - ISPOS( ISNULL( ATC_A10BG02 - 1 ) + ISNULL( ATC_A10BG03 - 1 ) + ISNULL( ATC_A10BD03 - 1) + ISNULL( ATC_A10BD04 - 1 ) + ISNULL( ATC_A10BD05 - 1 ) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="1">
+          <Answer AnswerId="26379" OrderNumber="1" OptionText="Ja" VerboseText="Glitazoner." ShortCode="J"/>
+          <Answer AnswerId="26380" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="26381" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4060" ItemType="2" VarName="NDV_INCRETINS" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="2578" OrderNumber="78" ItemText="Bruker inkretiner / DPP4" ItemHelp="Januvia&amp;reg;, Galvus&amp;reg;, Onglyza&amp;reg; pluss preparater med inkretiner (Janumet&amp;reg;, Eucreas&amp;reg;)" Expression="2 - ISPOS( ISNULL( ATC_A10BH01 - 1 ) + ISNULL( ATC_A10BH02 -1 ) + ISNULL( ATC_A10BD07 - 1) + ISNULL( ATC_A10BD08 - 1 ) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="1">
+          <Answer AnswerId="21331" OrderNumber="1" OptionText="Ja" VerboseText="Inkretin." ShortCode="J"/>
+          <Answer AnswerId="21332" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="21333" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3339" ItemType="2" VarName="ATC_C09" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="1644" OrderNumber="79" ItemText="Bruker ACE-hemmer eller AII-blokker" ItemHelp="Aprovel&amp;reg;, Atacand&amp;reg;, Capoten&amp;reg;, Captopril, CoAprovel&amp;reg;, Cozaar&amp;reg;, Diovan&amp;reg;, Enalapril, Gopten&amp;reg;, Lisinopril, Losartan, Micardis&amp;reg;, MicardisPlus&amp;reg;, Olmetec&amp;reg;, Ramipril, Renitec&amp;reg;, Teveten&amp;reg;, Triatec&amp;reg;, Vivatec&amp;reg;, Zestoretic&amp;reg;, Zestril&amp;reg; (pluss alle comp/mite varianter)" Expression="2 - ISPOS(&#xA;ISNULL(ATC_C09AA01-1) + ISNULL(ATC_C09AA02-1) + ISNULL(ATC_C09AA03-1) + ISNULL(ATC_C09AA05-1) + ISNULL(ATC_C09AA10-1) + &#xA;ISNULL(ATC_C09BA02-1) + ISNULL(ATC_C09BA03-1) + ISNULL(ATC_C09BB02-1) +&#xA;ISNULL(ATC_C09CA01-1) + ISNULL(ATC_C09CA02-1) + ISNULL(ATC_C09CA03-1) + ISNULL(ATC_C09CA04-1) + ISNULL(ATC_C09CA06-1) + ISNULL(ATC_C09CA07-1) + ISNULL(ATC_C09CA08-1) + &#xA;ISNULL(ATC_C09DA01-1) + ISNULL(ATC_C09DA02-1) + ISNULL(ATC_C09DA03-1) + ISNULL(ATC_C09DA04-1) + ISNULL(ATC_C09DA06-1) + ISNULL(ATC_C09DA07-1) + ISNULL(ATC_C09DA08-1) + &#xA;ISNULL(ATC_C09DB01-1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="16566" OrderNumber="1" OptionText="Ja" VerboseText="Bruker ACE/A2-blokker." ShortCode="J"/>
+          <Answer AnswerId="16567" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16568" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4638" ItemType="2" VarName="NDV_EXERCISE_CAT" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="3374" OrderNumber="80" ItemText="Regelmessig fysisk aktivitet" ItemHelp="Antall dager per uke med minst 30 min. rask gange eller tilsvarende" Expression="1 * ISNULL(NDV_EXERCISE-2) + &#xA;2 * ISNULL(NDV_EXERCISE-1) * ISPOS(NDV_EXERCISE_DAYS)  *ISNEG(NDV_EXERCISE_DAYS-3) + &#xA;3 * ISNULL(NDV_EXERCISE-1) * ISPOS(NDV_EXERCISE_DAYS-2)*ISNEG(NDV_EXERCISE_DAYS-6) + &#xA;4 * ISNULL(NDV_EXERCISE-1) * ISPOS(NDV_EXERCISE_DAYS-5)*ISNEG(NDV_EXERCISE_DAYS-8) + &#xA;5 * ISNULL(NDV_EXERCISE-3) + &#xA;6 * ISNULL(NDV_EXERCISE-4)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="25198" OrderNumber="1" OptionText="Nei" VerboseText="Er ikke fysisk aktiv."/>
+          <Answer AnswerId="25199" OrderNumber="2" OptionText="1 til 2 dager / uke."/>
+          <Answer AnswerId="25200" OrderNumber="3" OptionText="3 til 5 dager / uke."/>
+          <Answer AnswerId="25201" OrderNumber="4" OptionText="6 til 7 dager / uke."/>
+          <Answer AnswerId="25206" OrderNumber="5" OptionText="Fysisk umulig å mosjonere."/>
+          <Answer AnswerId="25207" OrderNumber="6" OptionText="Vet ikke*"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
+        <FormItem FormItemId="1570" OrderNumber="81" ItemText="BMI (kg/m2)" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3353" ItemType="2" VarName="NDV_EYECHECK" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="1684" OrderNumber="82" ItemText="Øyenbunnsundersøkelse" ItemHelp="øyelege eller øyefoto" Expression="ISPOS(NDV_EYECHECK_DATE-Patient.DOB)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="16727" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="16728" OrderNumber="2" OptionText="Nei" VerboseText="Ikke undersøkt øyebunn." ShortCode="N"/>
+          <Answer AnswerId="16731" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3328" ItemType="2" VarName="ATC_A10BX" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="1609" OrderNumber="83" ItemText="Andre perorale diabetesmidler" ItemHelp="NovoNorm&amp;reg;, Starlix&amp;reg;, Glucobay&amp;reg;" Expression="ISPOS(ISNULL(ATC_A10BX02-1) + ISNULL(ATC_A10BX03-1) + ISNULL(ATC_A10BF01-1) + ISNULL(ATC_A10BXXX-1))" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="16470" OrderNumber="1" OptionText="Ja" VerboseText="Andre midler." ShortCode="J"/>
+          <Answer AnswerId="16471" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16472" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="3340">
+      <Activate EnumVal="1" PageConditionId="1088" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="4058">
+      <Activate EnumVal="1" PageConditionId="1014" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3322">
+      <Activate EnumVal="3" PageConditionId="1116" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="1117" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="4056">
+      <Activate EnumVal="1" PageConditionId="1118" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3322">
+      <Activate EnumVal="2" PageConditionId="1112" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="1113" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="4639">
+      <Activate EnumVal="1" PageConditionId="1075" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="1115" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3337">
+      <Activate EnumVal="1" PageConditionId="1077" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3336">
+      <Activate EnumVal="1" PageConditionId="1078" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="4527">
+      <Activate EnumVal="1" PageConditionId="1121" PageNumber="22" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="4087">
+      <Activate EnumVal="3" PageConditionId="1012" PageNumber="23" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="4527">
+      <Activate EnumVal="1" PageConditionId="1119" PageNumber="24" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3397">
+      <Activate EnumVal="1" PageConditionId="1013" PageNumber="25" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="4527">
+      <Activate EnumVal="1" PageConditionId="1120" PageNumber="26" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3398">
+      <Activate EnumVal="1" PageConditionId="1015" PageNumber="27" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="4527">
+      <Activate EnumVal="1" PageConditionId="1076" PageNumber="28" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3351">
+      <Activate EnumVal="2" PageConditionId="1073" PageNumber="29" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="1074" PageNumber="29" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="324" FormName="GBD_KURVE" FormTitle="Kurvenotat">
+    <Page PageId="717" PageNumber="1" PageTitle="Smerte og angst (fra ESAS)">
+      <Item ItemId="3683" ItemType="1" VarName="ESAS_01" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="2104" OrderNumber="1" ItemText="Smerte i ro" ItemHelp="" MinExpression="1" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3684" ItemType="1" VarName="ESAS_02" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="2106" OrderNumber="2" ItemText="Smerte ved bevegelse" ItemHelp="" MinExpression="1" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3690" ItemType="1" VarName="ESAS_08" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="2113" OrderNumber="3" ItemText="Angst/uro" ItemHelp="" MinExpression="1" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="718" PageNumber="2" PageTitle="Høyde og vekt">
+      <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        <FormItem FormItemId="1421" OrderNumber="4" ItemText="Høyde (cm)" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
+        <FormItem FormItemId="1402" OrderNumber="5" ItemText="Vekt (kg)" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
+        <FormItem FormItemId="1567" OrderNumber="6" ItemText="BMI (kg/m2)" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="719" PageNumber="3" PageTitle="Blodtrykk">
+      <Item ItemId="3556" ItemType="1" VarName="SBP_UNSPEC" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+        <FormItem FormItemId="1999" OrderNumber="7" ItemText="Systolisk BT (mmHg)" ItemHelp="Sittende eller liggende." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" FormatStr="Blodtrykk %s">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3555" ItemType="1" VarName="DBP_UNSPEC" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+        <FormItem FormItemId="1994" OrderNumber="8" ItemText="Diastolisk BT (mmHg)" ItemHelp="Sittende eller liggende." MinExpression="30" MaxExpression="130" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" FormatStr="¬/%s mmHg.">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5712" ItemType="2" VarName="BP_UPRIGHT" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="12571" OrderNumber="9" ItemHeader="Stående blodtrykk" ItemText="Vil du også registrere stående blodtrykk?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="30545" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="30546" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3652" PageNumber="4" PageTitle="Stående blodtrykk*">
+      <Item ItemId="573" ItemType="1" VarName="SBP_UPRIGHT" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+        <FormItem FormItemId="12572" OrderNumber="10" ItemText="Systolisk BT stående (mmHg)" ItemHelp="" MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" FormatStr="Stående BT %s">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="600" ItemType="1" VarName="DBP_UPRIGHT" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+        <FormItem FormItemId="12573" OrderNumber="11" ItemText="Diastolisk BT stående (mmHg)" ItemHelp="" MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" FormatStr="¬/%s mmHg.">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="720" PageNumber="5" PageTitle="Puls og temperatur">
+      <Item ItemId="186" ItemType="1" VarName="PULSE_RATE" LoincScale="QN" UnitStr="slag/min" DisplayFormat="">
+        <FormItem FormItemId="12575" OrderNumber="12" ItemText="Puls (slag/min)" ItemHelp="" MinExpression="25" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="187" ItemType="2" VarName="PULSE_QUALITY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="12574" OrderNumber="13" ItemText="Pulskvalitet" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="288" OrderNumber="1" OptionText="Regelmessig puls." ShortCode="R"/>
+          <Answer AnswerId="289" OrderNumber="2" OptionText="Uregelmessig puls som ved atrieflimmer." ShortCode="AF"/>
+          <Answer AnswerId="290" OrderNumber="3" OptionText="Uregelmessig puls som ved ekstrasystoli." ShortCode="ES"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="188" ItemType="1" VarName="BODY_TEMP" LoincScale="QN" UnitStr="°C" DisplayFormat="">
+        <FormItem FormItemId="50" OrderNumber="14" ItemText="Temperatur (°C)" ItemHelp="" MinExpression="32" MaxExpression="42" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4380" ItemType="1" VarName="O2_SATURATION" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem FormItemId="3101" OrderNumber="15" ItemText="O2-metning (%)" ItemHelp="" MinExpression="60" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8943" ItemType="1" VarName="SP_RESP_FREKVENS" LoincScale="QN" UnitStr="per minutt" DisplayFormat="">
+        <FormItem FormItemId="22821" OrderNumber="17" ItemText="Respirasjonsfrekvens (per minutt)" ItemHelp="" MinExpression="3" MaxExpression="60" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="721" PageNumber="6" PageTitle="Urin stix">
+      <Item ItemId="4328" ItemType="2" VarName="USTIX_TATT" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="3019" OrderNumber="16" ItemText="Er det tatt urin stix" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="23146" OrderNumber="1" OptionText="Ja" VerboseText="U-Stix tatt." ShortCode="J"/>
+          <Answer AnswerId="23147" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="722" PageNumber="7" PageTitle="Urin stix resultat*">
+      <Item ItemId="4322" ItemType="4" VarName="USTIX_GLU" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="3007" OrderNumber="18" ItemText="U-Glukose" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4323" ItemType="4" VarName="USTIX_LEU" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="3009" OrderNumber="19" ItemText="U-Leukcocytter" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4324" ItemType="4" VarName="USTIX_NIT" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="3011" OrderNumber="20" ItemText="U-Nitritt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4325" ItemType="4" VarName="USTIX_PRO" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="3013" OrderNumber="21" ItemText="U-Protein" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4326" ItemType="4" VarName="USTIX_ERY" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="3015" OrderNumber="22" ItemText="U-Erytrocytter" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4327" ItemType="2" VarName="URICULT" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="3017" OrderNumber="23" ItemText="Uricult" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="23143" OrderNumber="1" OptionText="Pos"/>
+          <Answer AnswerId="23144" OrderNumber="2" OptionText="Neg"/>
+          <Answer AnswerId="23145" OrderNumber="3" OptionText="ikke tatt."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="723" PageNumber="8" PageTitle="Hemofec">
+      <Item ItemId="6412" ItemType="2" VarName="HEMOFEC_1" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6022" OrderNumber="24" ItemText="Hemofec 1" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="33975" OrderNumber="0" OptionText="Negativ"/>
+          <Answer AnswerId="33976" OrderNumber="1" OptionText="+1"/>
+          <Answer AnswerId="33977" OrderNumber="2" OptionText="+2"/>
+          <Answer AnswerId="33978" OrderNumber="3" OptionText="+3"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6413" ItemType="2" VarName="HEMOFEC_2" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6023" OrderNumber="25" ItemText="Hemofec 2" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="33981" OrderNumber="0" OptionText="Negativ"/>
+          <Answer AnswerId="33982" OrderNumber="1" OptionText="+1"/>
+          <Answer AnswerId="33983" OrderNumber="2" OptionText="+2"/>
+          <Answer AnswerId="33984" OrderNumber="3" OptionText="+3"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6414" ItemType="2" VarName="HEMOFEC_3" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6024" OrderNumber="26" ItemText="Hemofec 3" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="33991" OrderNumber="0" OptionText="Negativ"/>
+          <Answer AnswerId="33992" OrderNumber="1" OptionText="+1"/>
+          <Answer AnswerId="33993" OrderNumber="2" OptionText="+2"/>
+          <Answer AnswerId="33994" OrderNumber="3" OptionText="+3"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="724" PageNumber="9" PageTitle="Blodprøver">
+      <Item ItemId="4331" ItemType="2" VarName="BLODPR_TATT" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="3024" OrderNumber="27" ItemText="Er det tatt lokale blodprøver?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="23148" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="23149" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="725" PageNumber="10" PageTitle="Resultat på blodprøver*">
+      <Item ItemId="3134" ItemType="1" VarName="B_HB" LoincScale="QN" UnitStr="g/100mL" DisplayFormat="">
+        <FormItem FormItemId="1272" OrderNumber="28" ItemText="B-Hb (g/100mL)" ItemHelp="Høye verdier ved polycytemi. Lave ved anemi. Nedsatt hemoglobin i fullblod med normalt hemoglobininnhold i en normal erytrocyttmasse kan ses i svangerskapet, etter splenektomi og undertiden ved makroglobulinemi. Årsaken er økt plasmavolum." MinExpression="5" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4329" ItemType="1" VarName="SR" LoincScale="QN" UnitStr="mm/t" DisplayFormat="">
+        <FormItem FormItemId="3020" OrderNumber="29" ItemText="B-SR (mm/t)" ItemHelp="SR &gt; 30 mm betyr oftest organisk sykdom. SR &gt; 70 mm betyr oftest alvorlig organisk sykdom. Normal SR utelukker ikke organisk sykdom, ikke engang alvorlig organisk sykdom. Ved særlig lave verdier (0 - 1 mm) bør polycytemi overveies." MinExpression="0" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="273" ItemType="1" VarName="CRP" LoincScale="QN" UnitStr="mg/L" DisplayFormat="">
+        <FormItem FormItemId="161" OrderNumber="30" ItemText="S-CRP (mg/L)" ItemHelp="Høye verdier ved aktive inflammatoriske prosesser. Bakterielle prosesser gir gjerne høyere verdier enn virusinfeksjoner. CRP er det mest følsomme av akutt fase proteinene. Det kan stige til 2000 ganger utgangsverdien i løpet av 24 timer ved en akutt aktiv prosess. Ved tilbakegang av prosessen synker CRP fortere enn de øvrige akutt fase proteinene." MinExpression="0" MaxExpression="500" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4330" ItemType="1" VarName="B_GLUCOSE" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+        <FormItem FormItemId="3022" OrderNumber="31" ItemText="B-Glukose (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="4328">
+      <Activate EnumVal="1" PageConditionId="858" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="4331">
+      <Activate EnumVal="1" PageConditionId="861" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

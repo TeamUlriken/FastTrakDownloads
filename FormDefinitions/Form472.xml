@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="472" FormName="BAR_INCLUSION" FormTitle="Inclusion (old)">
+    <Page PageId="1486" PageNumber="1" PageTitle="First contact" PageIntroduction="First contact date should the same as form date.  Move form on timeline to make it correct.">
+      <Item ItemId="6169" ItemType="5" VarName="BarInclusion" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="5404" OrderNumber="1" ItemText="Date of first contact" ItemHelp="Same as admission date if hospitalised" MinExpression="Patient.DOB" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6170" ItemType="1" VarName="BarInclusionAge" LoincScale="QN" UnitStr="years" DisplayFormat="">
+        <FormItem FormItemId="11306" OrderNumber="2" ItemText="Age at first contact (years)" ItemHelp="" Expression="(BarInclusion - Patient.DOB ) / 365.25" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8091" ItemType="2" VarName="VAR8091" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="11090" OrderNumber="3" ItemText="Hospital admission" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="43259" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="43260" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3208" PageNumber="2" PageTitle="Message*">
+      <Item ItemId="8111" ItemType="8" VarName="VAR8111" LoincScale="MSG" DisplayFormat="">
+        <FormItem FormItemId="11307" OrderNumber="4" ItemHeader="First admission" ItemText="Remember to fill out the form First Admission.  Most fields will be shared with data on this form, so the work required is very limited." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6297" PageNumber="3" PageTitle="">
+      <Item ItemId="4210" ItemType="4" VarName="ZIP" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="5407" OrderNumber="5" ItemText="Postnummer" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6168" ItemType="2" VarName="BarReferredFrom" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5403" OrderNumber="6" ItemText="Referred from" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="32489" OrderNumber="1" OptionText="Lokalsykehus"/>
+          <Answer AnswerId="32490" OrderNumber="2" OptionText="Fastlege"/>
+          <Answer AnswerId="32491" OrderNumber="3" OptionText="Legevakt/direkte"/>
+          <Answer AnswerId="32492" OrderNumber="4" OptionText="HUS"/>
+          <Answer AnswerId="32493" OrderNumber="5" OptionText="Andre"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6167" ItemType="2" VarName="BarTrial" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5409" OrderNumber="7" ItemText="Trial" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="32484" OrderNumber="1" OptionText="No"/>
+          <Answer AnswerId="32485" OrderNumber="2" OptionText="Vascular risk factors"/>
+          <Answer AnswerId="32486" OrderNumber="3" OptionText="Clazosentan"/>
+          <Answer AnswerId="32487" OrderNumber="4" OptionText="Duplex ultrasound"/>
+          <Answer AnswerId="32488" OrderNumber="5" OptionText="(for future use)"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1487" PageNumber="4" PageTitle="Vitals">
+      <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        <FormItem FormItemId="4611" OrderNumber="8" ItemText="Height (cm)" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
+        <FormItem FormItemId="4610" OrderNumber="9" ItemText="Weight (kg)" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
+        <FormItem FormItemId="4612" OrderNumber="10" ItemText="BMI (kg/m2)" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1488" PageNumber="5" PageTitle="Family">
+      <Item ItemId="6030" ItemType="2" VarName="BarFamilyHistory" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5079" OrderNumber="11" ItemText="Aneurysm in family" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="32091" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="32092" OrderNumber="2" OptionText="No"/>
+          <Answer AnswerId="50177" OrderNumber="3" OptionText="Unknown"/>
+          <Answer AnswerId="51855" OrderNumber="4" OptionText="Vascular event - Possible SAH"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1489" PageNumber="6" PageTitle="Familie detaljer*">
+      <Item ItemId="6031" ItemType="2" VarName="BarFamilySiblings" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5080" OrderNumber="12" ItemText="Sibling" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="32093" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="32094" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6032" ItemType="2" VarName="BarFamilyParents" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5081" OrderNumber="13" ItemText="Parents" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="32097" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="32098" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6033" ItemType="2" VarName="BarFamilyOther" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5082" OrderNumber="14" ItemText="Andre" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="32103" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="32104" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6173" ItemType="2" VarName="BarFamliyError" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5412" OrderNumber="15" ItemText="Error in family" ItemHelp="" Expression="2-ISNULL(BarFamilyParents-2)*ISNULL(BarFamilySiblings-2)*ISNULL(BarFamilyOther-2)*ISNULL(BarFamilyHistory-1)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+          <Answer AnswerId="32540" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="32541" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6358" PageNumber="7" PageTitle="">
+      <Item ItemId="6172" ItemType="8" VarName="VAR6172" LoincScale="MSG" DisplayFormat="">
+        <FormItem FormItemId="5410" OrderNumber="16" ItemHeader="Feil i data" ItemText="Du har svart Ja på at det er aneurysme i familien, men Nei på alle alternativene. Kontroller svarene." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1490" PageNumber="8" PageTitle="Kommentar*">
+      <Item ItemId="6034" ItemType="4" VarName="VAR6034" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="5083" OrderNumber="17" ItemText="Hvem?" ItemHelp="Skriv familierelasjon, alder ved debut." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="4930" PageNumber="9" PageTitle="Family number*">
+      <Item ItemId="6152" ItemType="1" VarName="VAR6152" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="5387" OrderNumber="18" ItemText="Family number" ItemHelp="Skjult variabel, skal ikke brukes." MinExpression="1" MaxExpression="9" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1491" PageNumber="10" PageTitle="Smoking">
+      <Item ItemId="6035" ItemType="2" VarName="VAR6035" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5084" OrderNumber="19" ItemText="Regular smoker" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="32107" OrderNumber="1" OptionText="Current"/>
+          <Answer AnswerId="32108" OrderNumber="2" OptionText="Former"/>
+          <Answer AnswerId="32109" OrderNumber="3" OptionText="No"/>
+          <Answer AnswerId="32110" OrderNumber="4" OptionText="Unknown"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="4962" PageNumber="11" PageTitle="Smoking details*">
+      <Item ItemId="6153" ItemType="1" VarName="CigsPerDay" LoincScale="QN" UnitStr="cigarettes" DisplayFormat="">
+        <FormItem FormItemId="5388" OrderNumber="20" ItemText="Daily consumption (cigarettes)" ItemHelp="" MinExpression="1" MaxExpression="99" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6154" ItemType="1" VarName="SmokingYears" LoincScale="QN" UnitStr="years" DisplayFormat="">
+        <FormItem FormItemId="5389" OrderNumber="21" ItemText="No of years smoking (years)" ItemHelp="" MinExpression="0" MaxExpression="TRUNC(Patient.Age-10)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6155" ItemType="1" VarName="PackYears" LoincScale="QN" UnitStr="py" DisplayFormat="">
+        <FormItem FormItemId="5390" OrderNumber="22" ItemText="Pack years (py)" ItemHelp="" Expression="CigsPerDay * SmokingYears / 20" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1492" PageNumber="12" PageTitle="Other details">
+      <Item ItemId="6156" ItemType="2" VarName="BarCardio" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5391" OrderNumber="23" ItemText="Cardiovascular" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="32428" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="32429" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6157" ItemType="2" VarName="BarAVM" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5392" OrderNumber="24" ItemText="Cerebral AVM" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="32432" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="32433" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6158" ItemType="2" VarName="BarPCKD" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5393" OrderNumber="25" ItemText="Polycystic kidney disease" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="32436" OrderNumber="1" OptionText="Yes" ICD10="Q61"/>
+          <Answer AnswerId="32437" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6159" ItemType="2" VarName="BarDM" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5394" OrderNumber="26" ItemText="Diabetes" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="32440" OrderNumber="1" OptionText="Yes" ICD10="E14"/>
+          <Answer AnswerId="32441" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6160" ItemType="2" VarName="BarICH" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5395" OrderNumber="27" ItemText="Previous ICH" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="32444" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="32445" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6161" ItemType="2" VarName="BarAlcohol" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5396" OrderNumber="28" ItemText="Alcoholism" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="32448" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="32449" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6162" ItemType="2" VarName="BarHypertension" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5397" OrderNumber="29" ItemText="Hypertension" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="32452" OrderNumber="1" OptionText="Yes" ICD10="I10"/>
+          <Answer AnswerId="32453" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6163" ItemType="2" VarName="BarAnticoagulation" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5398" OrderNumber="30" ItemText="Antithrombotic treatment" ItemHelp="Inkluderer platehemming (Albyl-E) og antikoagulasjon (Warfarin), eller andre (Plavix)." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="32468" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="32469" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6164" ItemType="2" VarName="BarSulfaAllergy" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5399" OrderNumber="31" ItemText="Sulfa Allergy" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="32474" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="32475" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6165" ItemType="2" VarName="BarOther" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5400" OrderNumber="32" ItemText="Other" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="32480" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="32481" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6171" ItemType="2" VarName="VAR6171" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="5408" OrderNumber="33" ItemText="None of the above" ItemHelp="" Expression="2-ISNULL(BarCardio + BarAVM + BarPCKD + BarDM + BarICH + BarAlcohol + BarHypertension + BarAnticoagulation + BarSulfaAllergy + BarOther - 20)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+          <Answer AnswerId="32516" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="32517" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6453" PageNumber="13" PageTitle="">
+      <Item ItemId="6166" ItemType="4" VarName="VAR6166" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="5401" OrderNumber="34" ItemText="Comment" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="8091">
+      <Activate EnumVal="1" PageConditionId="3339" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6030">
+      <Activate EnumVal="1" PageConditionId="1631" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="4604" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6173">
+      <Activate EnumVal="1" PageConditionId="1664" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6033">
+      <Activate EnumVal="1" PageConditionId="1632" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6035">
+      <Activate EnumVal="1" PageConditionId="1661" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="1662" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6165">
+      <Activate EnumVal="1" PageConditionId="1663" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="477" FormName="RESTURIN" FormTitle="Bestemmelse av resturin med blærescanning">
+    <Page PageId="1507" PageNumber="1" PageTitle="Indikasjon">
+      <Item ItemId="5877" ItemType="2" VarName="VAR5877" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="4788" OrderNumber="1" ItemText="Indikasjon for blærescanning" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="31544" OrderNumber="1" OptionText="Pasienten må presse for å tømme blæren/følelse av ikke å få tømt seg"/>
+          <Answer AnswerId="31545" OrderNumber="2" OptionText="Mistanke om urinvegsinfeksjon/hyppige UVI"/>
+          <Answer AnswerId="31546" OrderNumber="3" OptionText="Nedre magesmerter"/>
+          <Answer AnswerId="31547" OrderNumber="4" OptionText="Endring i mental tilstand (forvirring, uro, utagering)"/>
+          <Answer AnswerId="31548" OrderNumber="5" OptionText="Spørsmål om tett permanent kateter"/>
+          <Answer AnswerId="31549" OrderNumber="6" OptionText="Rutinekontroll"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5887" ItemType="2" VarName="VAR5887" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="4799" OrderNumber="2" ItemText="Hadde du vurdert å kateterisere pasienten for bestemmelse av resturin om blærescanner ikke var tilgjengelig" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="31560" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="31561" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="31562" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1508" PageNumber="2" PageTitle="Volum ved blærescanning" PageIntroduction="Blæren bør scannes to ganger for å få et sikrere resultat.">
+      <Item ItemId="5882" ItemType="1" VarName="UrinVol1" LoincScale="QN" UnitStr="mL" DisplayFormat="">
+        <FormItem FormItemId="4793" OrderNumber="3" ItemText="Blærevolum første scanning (mL)" ItemHelp="Resturin fortrinnsvis tatt maksimalt 15 minutter etter spontan vannlatning" MinExpression="0" MaxExpression="2000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5884" ItemType="1" VarName="UrinVol2" LoincScale="QN" UnitStr="mL" DisplayFormat="">
+        <FormItem FormItemId="4795" OrderNumber="4" ItemText="Blærevolum andre scanning (mL)" ItemHelp="Resturin fortrinnsvis tatt maksimalt 15 minutter etter spontan vannlatning" MinExpression="0" MaxExpression="2000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6596" ItemType="2" VarName="UrinVolOk" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6403" OrderNumber="5" ItemText="Urinvolum &gt;= 150 mL ved begge målinger" ItemHelp="" Expression="2-ISPOS(UrinVol1-149)*ISPOS(UrinVol2-149)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+          <Answer AnswerId="35396" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="35397" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6298" PageNumber="3" PageTitle="">
+      <Item ItemId="5879" ItemType="8" VarName="VAR5879" LoincScale="MSG" DisplayFormat="">
+        <FormItem FormItemId="4790" OrderNumber="6" ItemHeader="Bør ikke kateteriseres" ItemText="Blærevolum kan være under 150 ml. Kateterisering anbefales ikke." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1509" PageNumber="4" PageTitle="Kateterisering" PageIntroduction="Blærevolum er trolig over 150 ml. Kateterisering kan gjennomføres.">
+      <Item ItemId="5883" ItemType="2" VarName="VAR5883" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="4794" OrderNumber="7" ItemText="Kateterisering gjennomført" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="31550" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="31551" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6332" PageNumber="5" PageTitle="">
+      <Item ItemId="5878" ItemType="1" VarName="UrinVolKat" LoincScale="QN" UnitStr="mL" DisplayFormat="">
+        <FormItem FormItemId="4796" OrderNumber="8" ItemText="Urinvolum ved kateterisering (mL)" ItemHelp="" MinExpression="0" MaxExpression="2000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6343" PageNumber="6" PageTitle="">
+      <Item ItemId="5885" ItemType="2" VarName="VAR5885" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="4797" OrderNumber="9" ItemText="Årsak til at kateterisering ikke ble gjort" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="31552" OrderNumber="1" OptionText="Pasienten motsetter seg kateterisering"/>
+          <Answer AnswerId="31553" OrderNumber="2" OptionText="Mislykket forsøk på kateterisering (vanskelig å komme inn med kateter)"/>
+          <Answer AnswerId="31554" OrderNumber="3" OptionText="Annen årsak"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1510" PageNumber="7" PageTitle="Årsak">
+      <Item ItemId="5886" ItemType="2" VarName="VAR5886" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="4798" OrderNumber="10" ItemText="Sannsynlig årsak til urinretensjon hos pasienten" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="31555" OrderNumber="1" OptionText="Obstruksjon i urinvegene"/>
+          <Answer AnswerId="31556" OrderNumber="2" OptionText="Infeksjon"/>
+          <Answer AnswerId="31557" OrderNumber="3" OptionText="Bivirkning av medikament"/>
+          <Answer AnswerId="31558" OrderNumber="4" OptionText="Nevrologiske årsaker"/>
+          <Answer AnswerId="31559" OrderNumber="5" OptionText="Annet"/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="6596">
+      <Activate EnumVal="2" PageConditionId="2119" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="2121" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="5883">
+      <Activate EnumVal="1" PageConditionId="1614" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="1609" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6596">
+      <Activate EnumVal="1" PageConditionId="2122" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

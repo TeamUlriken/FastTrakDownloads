@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="820" FormName="Autoimmunitet" FormTitle="Bakgrunn - Autoimmunitet">
+    <Page PageId="5568" PageNumber="1" PageTitle="Diagnoser" PageIntroduction="Det finnes egne skjema for klinisk oppfølging av de fleste diagnosene.">
+      <Item ItemId="4255" ItemType="2" VarName="SEX" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18439" OrderNumber="1" ItemText="Kjønn" ItemHelp="Skjult" Expression="Patient.GenderId" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="0">
+          <Answer AnswerId="22860" OrderNumber="1" OptionText="Mann" ShortCode="M"/>
+          <Answer AnswerId="22861" OrderNumber="2" OptionText="Kvinne" ShortCode="K"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5570" PageNumber="2" PageTitle="Diabetes*">
+      <Item ItemId="6314" ItemType="2" VarName="ICD10_E10" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18445" OrderNumber="2" ItemText="Diabetes mellitus type 1" ItemHelp="WHO criteria for type 1 diabetes." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="33396" OrderNumber="1" OptionText="Ja" VerboseText="Diabetes mellitus type 1." ShortCode="J" ICD10="E10"/>
+          <Answer AnswerId="33397" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="37249" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5749" PageNumber="3" PageTitle="Diagnoseår diabetes*">
+      <Item ItemId="3486" ItemType="1" VarName="NDV_DIAGNOSE_YYYY" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="18435" OrderNumber="3" ItemHeader="Diagnostisert" ItemText="Diabetes diagnostisert år" ItemHelp="Angi årstall.  Svangerskapsdiabetes unntas." MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5573" PageNumber="4" PageTitle="Hypotyreose*">
+      <Item ItemId="6312" ItemType="2" VarName="ICD10_E063a" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18443" OrderNumber="4" ItemText="Autoimmun hypothyroidsime" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="33386" OrderNumber="1" OptionText="Ja" VerboseText="Autoimmun hypotyreose." ShortCode="J" ICD10="E063"/>
+          <Answer AnswerId="33387" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="37246" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig autoimmun hypotyreose." ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5574" PageNumber="5" PageTitle="Hypotyreose debut*">
+      <Item ItemId="6323" ItemType="1" VarName="VAR6323" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="18452" OrderNumber="5" ItemHeader="Diagnostisert" ItemText="Diagnoseår hypotyreose" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5575" PageNumber="6" PageTitle="Hyper*">
+      <Item ItemId="6313" ItemType="2" VarName="ICD10_E063b" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18444" OrderNumber="6" ItemText="Autoimmun hyperthyroidisme" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="33390" OrderNumber="1" OptionText="Ja" VerboseText="Autoimmun hypertyreose." ShortCode="J" ICD10="E063"/>
+          <Answer AnswerId="33391" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="37252" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig autoimmun hypotyreose." ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5576" PageNumber="7" PageTitle="Hypertyreose debut*">
+      <Item ItemId="6324" ItemType="1" VarName="VAR6324" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="18453" OrderNumber="7" ItemHeader="Diagnostisert" ItemText="Diagnoseår hypertyreose" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5605" PageNumber="8" PageTitle="Addison*">
+      <Item ItemId="6299" ItemType="2" VarName="ICD10_E271" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18442" OrderNumber="8" ItemText="Addisons sykdom" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="33330" OrderNumber="1" OptionText="Ja" VerboseText="Primær binyrebarksvikt." ShortCode="J" ICD10="E271"/>
+          <Answer AnswerId="33331" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="33464" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig binyrebarksvikt."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5569" PageNumber="9" PageTitle="Addison detaljer*">
+      <Item ItemId="6089" ItemType="1" VarName="RoasAddisonYear" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="18440" OrderNumber="9" ItemHeader="Diagnostisert" ItemText="Diagnoseår Addisons sykdom" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6090" ItemType="2" VarName="RoasAddisonType" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18441" OrderNumber="10" ItemText="Addison type" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="32200" OrderNumber="1" OptionText="Autoimmun/idiopatisk" VerboseText="Addisons sykdom." ICD10="E271"/>
+          <Answer AnswerId="32201" OrderNumber="2" OptionText="Enzymdefekt" VerboseText="Medfødt binyrebarkhyperplasi."/>
+          <Answer AnswerId="32202" OrderNumber="3" OptionText="Adrenalektomi" VerboseText="Fjernet binyrer."/>
+          <Answer AnswerId="32203" OrderNumber="4" OptionText="Infeksjon" VerboseText="Binyrebarksvikt etter infeksjon."/>
+          <Answer AnswerId="32204" OrderNumber="5" OptionText="Andre"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5571" PageNumber="10" PageTitle="Hypoparatyroidisme*">
+      <Item ItemId="6321" ItemType="2" VarName="ICD10_E20" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18450" OrderNumber="11" ItemText="Hypoparatyreoidisme" ItemHelp="Subnormal calcium and supranormal plasma phosphate concentration and normal renal function. Mg-deficiency manifests as painful convulsions during normocalcemia and only relieved by Mg-replacement (cf. Perheentupa JCEM 2006; 91,2843-50)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="33452" OrderNumber="1" OptionText="Ja" VerboseText="Hypoparatyreoidisme." ShortCode="J" ICD10="E20"/>
+          <Answer AnswerId="33453" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="35865" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig hypoparatyreoidisme."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5572" PageNumber="11" PageTitle="Hypoparatyroidisme debut*">
+      <Item ItemId="6332" ItemType="1" VarName="VAR6332" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="18460" OrderNumber="12" ItemHeader="Diagnostisert" ItemText="Diagnoseår hypoparathyroidisme" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5581" PageNumber="13" PageTitle="Cøliaki*">
+      <Item ItemId="3410" ItemType="2" VarName="ICD10_K900" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18433" OrderNumber="13" ItemText="Cøliaki" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="16962" OrderNumber="1" OptionText="Ja" VerboseText="Cøliaki." ShortCode="J" ICD10="K900"/>
+          <Answer AnswerId="16963" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16964" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5582" PageNumber="14" PageTitle="Cøliaki år*">
+      <Item ItemId="6328" ItemType="1" VarName="VAR6328" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="18456" OrderNumber="14" ItemHeader="Diagnostisert" ItemText="Diagnoseår cøliaki" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5589" PageNumber="15" PageTitle="Pernisiøs anemi*">
+      <Item ItemId="6317" ItemType="2" VarName="VAR6317" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18447" OrderNumber="15" ItemText="Vitamin B12-mangel" ItemHelp="Tegn til funksjonell B12-mangel (lav normal eller subnormal serum kobalamin og høy homocystein og/eller metylmalonsyre)." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="33418" OrderNumber="1" OptionText="Ja" VerboseText="Vitamin B-12 mangel." ShortCode="J"/>
+          <Answer AnswerId="33419" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="47585" OrderNumber="3" OptionText="Ukjent/Usikker"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5590" PageNumber="16" PageTitle="Pernisiøs anemi debut*">
+      <Item ItemId="6327" ItemType="1" VarName="VAR6327" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="18455" OrderNumber="16" ItemHeader="Diagnostisert" ItemText="Diagnoseår B12-mangel" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6316" ItemType="2" VarName="VAR6316" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18446" OrderNumber="17" ItemText="Autoimmun atrofisk gastritt" ItemHelp="Atrofisk gastritt verifisert med biopsi som viser isolert gastritt i fundus (Type A autoimmun gastritt)." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="33412" OrderNumber="1" OptionText="Ja" VerboseText="Atrofisk gastritt." ShortCode="J"/>
+          <Answer AnswerId="33413" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="47588" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5591" PageNumber="17" PageTitle="Gastritt debut*">
+      <Item ItemId="6326" ItemType="1" VarName="VAR6326" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="18454" OrderNumber="18" ItemHeader="Diagnostisert" ItemText="Diagnoseår autoimmun gastritt" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5577" PageNumber="18" PageTitle="Testikkelsvikt*">
+      <Item ItemId="8594" ItemType="2" VarName="VAR8594" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18490" OrderNumber="19" ItemText="Primær testikkelsvikt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="47940" OrderNumber="1" OptionText="Ja" VerboseText="Primær testikkelsvikt." ShortCode="J" ICD10="E291"/>
+          <Answer AnswerId="47941" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="47942" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig primær testikkelsvikt." ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5578" PageNumber="19" PageTitle="Testikkelsvikt detaljer*">
+      <Item ItemId="8595" ItemType="1" VarName="VAR8595" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="18491" OrderNumber="20" ItemHeader="Diagnostisert" ItemText="Diagnoseår primær testikkelsvikt" ItemHelp="" MinExpression="DOB_YYYY+10" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5579" PageNumber="20" PageTitle="Menopause*">
+      <Item ItemId="6318" ItemType="2" VarName="ICD10_E283" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18448" OrderNumber="21" ItemText="Primær ovarialsvikt" ItemHelp="Amenore med forhøyede gonadotropin-nivåer, Svarer til ICD-10 E28.3." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="33432" OrderNumber="1" OptionText="Ja" VerboseText="Primær ovarialsvikt." ShortCode="J" ICD10="E283"/>
+          <Answer AnswerId="33433" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="36170" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig primær ovarialsvikt." ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5580" PageNumber="21" PageTitle="Menopause detaljer*">
+      <Item ItemId="6334" ItemType="1" VarName="MenopauseAge" LoincScale="QN" UnitStr="år" DisplayFormat="">
+        <FormItem FormItemId="18462" OrderNumber="22" ItemText="Alder ved menopause (år)" ItemHelp="" MinExpression="15" MaxExpression="TRUNC(Patient.Age)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6329" ItemType="1" VarName="MenopauseYear" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="18457" OrderNumber="23" ItemHeader="Diagnoseår" ItemText="Diagnoseår prematur menopause" ItemHelp="" Expression="DOB_YYYY + MenopauseAge" MinExpression="DOB_YYYY+10" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5583" PageNumber="22" PageTitle="Vitiligo*">
+      <Item ItemId="3411" ItemType="2" VarName="ICD10_L80" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18434" OrderNumber="24" ItemText="Vitiligo" ItemHelp="Har hatt noen gang" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="16968" OrderNumber="1" OptionText="Ja" VerboseText="Vitiligo." ShortCode="J" ICD10="L80"/>
+          <Answer AnswerId="16969" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16970" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5584" PageNumber="23" PageTitle="Vitiligo år*">
+      <Item ItemId="6330" ItemType="1" VarName="VAR6330" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="18458" OrderNumber="25" ItemHeader="Diagnostisert" ItemText="Diagnoseår vitiligo" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5585" PageNumber="24" PageTitle="Alopeci*">
+      <Item ItemId="6320" ItemType="2" VarName="ICD10_L63" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18449" OrderNumber="26" ItemText="Alopeci" ItemHelp="Delvis eller totalt hårtap på hodet eller kroppen." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="33444" OrderNumber="1" OptionText="Ja" VerboseText="Alopeci." ShortCode="J" ICD10="L63"/>
+          <Answer AnswerId="33445" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="37255" OrderNumber="3" OptionText="Usikker*" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5586" PageNumber="25" PageTitle="Alopeci år*">
+      <Item ItemId="6331" ItemType="1" VarName="VAR6331" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="18459" OrderNumber="27" ItemHeader="Diagnostisert" ItemText="Diagnoseår alopeci" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5587" PageNumber="26" PageTitle="Mucokutan candidiasis*">
+      <Item ItemId="6322" ItemType="2" VarName="CANDIDIASIS" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18451" OrderNumber="28" ItemText="Kronisk mukokutan candidiasis" ItemHelp="Candida infections in the oral mucosa, skin or nails for more than 3 months. If oesophagus is involved, this is indicated separately." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="33458" OrderNumber="1" OptionText="Ja" VerboseText="Kronisk mukokutan candidiasis." ShortCode="J"/>
+          <Answer AnswerId="33459" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="46012" OrderNumber="3" OptionText="Usikker*" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5588" PageNumber="27" PageTitle="Mucokutan Candidiasis debut*">
+      <Item ItemId="6333" ItemType="1" VarName="VAR6333" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="18461" OrderNumber="29" ItemHeader="Diagnostisert" ItemText="Diagnoseår kronisk mukokutan candidiasis" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5593" PageNumber="28" PageTitle="Hypofysitt*">
+      <Item ItemId="8543" ItemType="2" VarName="VAR8543" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18488" OrderNumber="30" ItemText="Hypofysitt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="47619" OrderNumber="1" OptionText="Ja" VerboseText="Hypofysitt." ShortCode="J"/>
+          <Answer AnswerId="47620" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="47621" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig hypofysitt." ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5594" PageNumber="29" PageTitle="Diagnoseår hypofysitt*">
+      <Item ItemId="8544" ItemType="1" VarName="VAR8544" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="18489" OrderNumber="31" ItemHeader="Diagnostisert" ItemText="Diagnoseår hypofysitt" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5599" PageNumber="30" PageTitle="Polyendokrint syndrom avledninger*">
+      <Item ItemId="6669" ItemType="2" VarName="APS1_PRESENT" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18475" OrderNumber="32" ItemText="Er kriteriene for APS I oppfylt" ItemHelp="" Expression="2 - ISPOS( ISPOS( ISNULL(FAM_APSI-2) + ISNULL(ICD10_E271-1) + ISNULL(ICD10_E20-1) + ISNULL(CANDIDIASIS-1) - 1 ) + ISNULL(AIRE_MUTATION-1))" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+          <Answer AnswerId="35870" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="35871" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6670" ItemType="2" VarName="APS2_POSSIBLE" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18476" OrderNumber="33" ItemText="Er inklusjonkriteriene for APS II oppfylt" ItemHelp="" Expression="2-ISNULL(ICD10_E271-1)*ISPOS( ISNULL(ICD10_E10-1) + ISNULL(ICD10_E063a-1) + ISNULL(ICD10_E063b-1) + ISNULL(ICD10_E283-1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+          <Answer AnswerId="35874" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="35875" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6671" ItemType="2" VarName="APS3_POSSIBLE" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18477" OrderNumber="34" ItemText="Er inklusjonkriteriene for APS III oppfylt" ItemHelp="" Expression="2-ISPOS( ISPOS(ISNULL(ICD10_E063a-1)+ISNULL(ICD10_E063b-1)) * ISNULL(ICD10_E10-1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+          <Answer AnswerId="35896" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="35897" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6607" ItemType="2" VarName="VAR6607" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18465" OrderNumber="35" ItemText="Polyendokrint syndrom" ItemHelp="Avledes av indeksdiagnoser, AIRE-mutasjon, mukokutan candidiasis og APS I i familien." Expression="1*ISNULL(APS1_PRESENT-1)+&#xA;2*ISNULL(APS2_POSSIBLE-1)*ISNULL(APS1_PRESENT-2)+&#xA;3*ISNULL(APS3_POSSIBLE-1)*ISNULL(APS1_PRESENT-2)*ISNULL(APS2_POSSIBLE-2)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="35465" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="35466" OrderNumber="1" OptionText="APS I" VerboseText="APS I foreligger."/>
+          <Answer AnswerId="35467" OrderNumber="2" OptionText="APS II" VerboseText="APS II foreligger."/>
+          <Answer AnswerId="35471" OrderNumber="3" OptionText="APS III."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5595" PageNumber="31" PageTitle="Arv/genetikk" PageIntroduction="Fyll eventuelt ut med detaljer i kommentarfeltet nederst på skjemaet.">
+      <Item ItemId="3982" ItemType="2" VarName="NDV_ETHNICITY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18499" OrderNumber="36" ItemText="Etnisk opprinnelse" ItemHelp="Angi f.eks. asiatisk dersom begge foreldre er asiatiske; ved f.eks. europeisk mor og asiatisk far anføres ”annen”" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+          <Answer AnswerId="20702" OrderNumber="1" OptionText="Europeisk." ShortCode="E"/>
+          <Answer AnswerId="20703" OrderNumber="2" OptionText="Afrikansk." ShortCode="Afr"/>
+          <Answer AnswerId="20704" OrderNumber="3" OptionText="Asiatisk." ShortCode="As"/>
+          <Answer AnswerId="20705" OrderNumber="4" OptionText="Annen" ShortCode="An"/>
+          <Answer AnswerId="21984" OrderNumber="5" OptionText="Vet ikke" ShortCode="Ukj"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6633" ItemType="2" VarName="VAR6633" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18466" OrderNumber="37" ItemText="Autoimmun sykdom i familien" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="35491" OrderNumber="1" OptionText="Ja" VerboseText="Autoimmunitet i familien."/>
+          <Answer AnswerId="35492" OrderNumber="2" OptionText="Nei" VerboseText="Ingen autoimmunitet i familien." ShortCode="N"/>
+          <Answer AnswerId="35493" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig autoimmunitet i familien." ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5596" PageNumber="32" PageTitle="Detaljert familieanamnese*">
+      <Item ItemId="6634" ItemType="2" VarName="VAR6634" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18467" OrderNumber="38" ItemText="Diabetes Mellitus Type 1" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="35494" OrderNumber="0" OptionText="Nei*"/>
+          <Answer AnswerId="35495" OrderNumber="1" OptionText="Foreldre/søsken/barn (førstegrads slektning)" VerboseText="Diabetes mellitus type 1 hos førstegrads slektning."/>
+          <Answer AnswerId="35496" OrderNumber="2" OptionText="Besteforeldre/barnebarn/halvsøsken/onkel/tante/niese/nevø (andregrads slektning)" VerboseText="Diabetes mellitus type 1 hos andregrads slektning."/>
+          <Answer AnswerId="35497" OrderNumber="3" OptionText="Andre lenger ute"/>
+          <Answer AnswerId="35498" OrderNumber="4" OptionText="Ukjent*"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6635" ItemType="2" VarName="VAR6635" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18468" OrderNumber="39" ItemText="Autoimmun thyroideasykdom" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="35506" OrderNumber="0" OptionText="Nei*"/>
+          <Answer AnswerId="35507" OrderNumber="1" OptionText="Foreldre/søsken/barn (førstegrads slektning)" VerboseText="Autoimmun thyroideasykdom hos førstegrads slektning."/>
+          <Answer AnswerId="35508" OrderNumber="2" OptionText="Besteforeldre/barnebarn/halvsøsken/onkel/tante/niese/nevø (andregrads slektning)" VerboseText="Autoimmun thyroideasykdom hos andregrads slektning."/>
+          <Answer AnswerId="35509" OrderNumber="3" OptionText="Andre lenger ute"/>
+          <Answer AnswerId="35510" OrderNumber="4" OptionText="Ukjent*"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6636" ItemType="2" VarName="VAR6636" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18469" OrderNumber="40" ItemText="Addisons sykdom i familien" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="35523" OrderNumber="0" OptionText="Nei*"/>
+          <Answer AnswerId="35524" OrderNumber="1" OptionText="Foreldre/søsken/barn (førstegrads slektning)" VerboseText="Addisons sykdom hos førstegrads slektning."/>
+          <Answer AnswerId="35525" OrderNumber="2" OptionText="Besteforeldre/barnebarn/halvsøsken/onkel/tante/niese/nevø (andregrads slektning)" VerboseText="Addisons sykdom hos andregrads slektning."/>
+          <Answer AnswerId="35526" OrderNumber="3" OptionText="Andre lenger ute" VerboseText="Addisons sykdom i slekten."/>
+          <Answer AnswerId="35527" OrderNumber="4" OptionText="Ukjent*"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6637" ItemType="2" VarName="VAR6637" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18470" OrderNumber="41" ItemText="Cøliaki i familien" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="35535" OrderNumber="0" OptionText="Nei*"/>
+          <Answer AnswerId="35536" OrderNumber="1" OptionText="Foreldre/søsken/barn (førstegrads slektning)" VerboseText="Cøliaki hos førstegrads slektning."/>
+          <Answer AnswerId="35537" OrderNumber="2" OptionText="Besteforeldre/barnebarn/halvsøsken/onkel/tante/niese/nevø (andregrads slektning)" VerboseText="Cøliaki hos andregrads slektning."/>
+          <Answer AnswerId="35538" OrderNumber="3" OptionText="Andre lenger ute"/>
+          <Answer AnswerId="35539" OrderNumber="4" OptionText="Ukjent*"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6638" ItemType="2" VarName="VAR6638" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18471" OrderNumber="42" ItemText="Vitamin B12-mangel / perniciøs anemi i familien" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="35547" OrderNumber="0" OptionText="Nei*"/>
+          <Answer AnswerId="35548" OrderNumber="1" OptionText="Foreldre/søsken/barn (førstegrads slektning)" VerboseText="Vitamin B12-mangel hos førstegrads slektning."/>
+          <Answer AnswerId="35549" OrderNumber="2" OptionText="Besteforeldre/barnebarn/halvsøsken/onkel/tante/niese/nevø (andregrads slektning)" VerboseText="Vitamin B12-mangel hos andregrads slektning."/>
+          <Answer AnswerId="35550" OrderNumber="3" OptionText="Andre lenger ute"/>
+          <Answer AnswerId="35551" OrderNumber="4" OptionText="Ukjent*"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6639" ItemType="2" VarName="VAR6639" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18472" OrderNumber="43" ItemText="Hypoparathyroidisme i familien" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="35564" OrderNumber="0" OptionText="Nei*"/>
+          <Answer AnswerId="35565" OrderNumber="1" OptionText="Foreldre/søsken/barn (førstegrads slektning)" VerboseText="Hypoparathyroidisme hos førstegrads slektning."/>
+          <Answer AnswerId="35566" OrderNumber="2" OptionText="Besteforeldre/barnebarn/halvsøsken/onkel/tante/niese/nevø (andregrads slektning)" VerboseText="Hypoparathyroidisme hos andregrads slektning."/>
+          <Answer AnswerId="35567" OrderNumber="3" OptionText="Andre lenger ute"/>
+          <Answer AnswerId="35568" OrderNumber="4" OptionText="Ukjent*"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6640" ItemType="2" VarName="VAR6640" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18473" OrderNumber="44" ItemText="Andre organspesifikke autoimmune sykdommer" ItemHelp="Eks: Alopeci, vitiligo.  Spesifiser i kommentarfeltet." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="35576" OrderNumber="0" OptionText="Nei*"/>
+          <Answer AnswerId="35577" OrderNumber="1" OptionText="Foreldre/søsken/barn (førstegrads slektning)"/>
+          <Answer AnswerId="35578" OrderNumber="2" OptionText="Besteforeldre/barnebarn/halvsøsken/onkel/tante/niese/nevø (andregrads slektning)"/>
+          <Answer AnswerId="35579" OrderNumber="3" OptionText="Andre lenger ute"/>
+          <Answer AnswerId="35580" OrderNumber="4" OptionText="Ukjent*"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5597" PageNumber="33" PageTitle="APS1 i familien*">
+      <Item ItemId="6808" ItemType="2" VarName="FAM_APSI" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18484" OrderNumber="45" ItemText="APS I i familien" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="37218" OrderNumber="0" OptionText="Nei*"/>
+          <Answer AnswerId="37219" OrderNumber="1" OptionText="Foreldre/søsken/barn (førstegrads slektning)" VerboseText="APS I hos førstegrads slektning."/>
+          <Answer AnswerId="37220" OrderNumber="2" OptionText="Besteforeldre/barnebarn/halvsøsken/onkel/tante/niese/nevø (andregrads slektning)" VerboseText="APS I hos andregrads slektning."/>
+          <Answer AnswerId="37221" OrderNumber="3" OptionText="Andre lenger ute"/>
+          <Answer AnswerId="37222" OrderNumber="4" OptionText="Ukjent*"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5598" PageNumber="34" PageTitle="Polyendokrint syndrom*">
+      <Item ItemId="6641" ItemType="2" VarName="AIRE_MUTATION" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18474" OrderNumber="46" ItemText="Gentest for AIRE-mutasjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="35591" OrderNumber="1" OptionText="Positiv" VerboseText="AIRE positiv."/>
+          <Answer AnswerId="35592" OrderNumber="2" OptionText="Negativ" VerboseText="AIRE negativ."/>
+          <Answer AnswerId="35593" OrderNumber="3" OptionText="ikke utført."/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9996" ItemType="4" VarName="AutoimmuneGenetics" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="18915" OrderNumber="47" ItemHeader="Kommentar" ItemText="Ytterligere informasjon om arv/genetikk" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5603" PageNumber="35" PageTitle="Sosiale forhold">
+      <Item ItemId="3983" ItemType="4" VarName="YRKE" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="18494" OrderNumber="48" ItemHeader="Yrke*" ItemText="Pasientens yrke og evt. arbeidssted" ItemHelp="F.eks: Pensjonert fisker, renholder på sykehuset." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7135" ItemType="2" VarName="BASEREG_EDUCATION" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18876" OrderNumber="49" ItemText="Utdanningsnivå" ItemHelp="Angi antall år som pasienten har gått på skole. Tell bare med heltidsstudier der opp til og med 10 år=grunnskole, 11-13 = videregående skole og over 13 år skole = høgskole/universitet. Ta ikke med førskole, deltidsstudier eller kortere kurs som ikke leder til eksamen." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39024" OrderNumber="1" OptionText="10 års skolegang eller mindre"/>
+          <Answer AnswerId="39025" OrderNumber="2" OptionText="11-13 års skolegang"/>
+          <Answer AnswerId="39026" OrderNumber="3" OptionText="Mer enn 13 års skolegang"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4002" ItemType="2" VarName="DP_ALENEBOER" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18495" OrderNumber="50" ItemHeader="Aleneboende" ItemText="Bor pasienten alene?" ItemHelp="Definisjon: Vanligvis ikke andre personer over 10 år i huset, ingen som er i stand til å kontakte hjelp i en akuttsituasjon, eks. alvorlig føling/hypoglykemi, lårshalsbrudd, slag etc." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="20851" OrderNumber="1" OptionText="Ja" VerboseText="Ingen andre voksne i huset vanligvis." ShortCode="J"/>
+          <Answer AnswerId="20852" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="20853" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6682" ItemType="2" VarName="OID8414" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18496" OrderNumber="51" ItemText="Samlivsstatus" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="36213" OrderNumber="1" OptionText="Lever ikke i parforhold." ShortCode="N"/>
+          <Answer AnswerId="36214" OrderNumber="2" OptionText="Lever i parforhold." ShortCode="J"/>
+          <Answer AnswerId="36215" OrderNumber="3" OptionText="Ukjent*" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3985" ItemType="1" VarName="ANTALL_BARN" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="18498" OrderNumber="52" ItemText="Barn" ItemHelp="" MinExpression="0" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8797" ItemType="4" VarName="VAR8797" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="18586" OrderNumber="53" ItemHeader="Supplerende opplysninger" ItemText="Utdypende kommentarer til familie/sosiale forhold" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5600" PageNumber="36" PageTitle="ROAS">
+      <Item ItemId="6605" ItemType="2" VarName="RoasConsent" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18463" OrderNumber="54" ItemText="Samtykke for ROAS" ItemHelp="Register for organspesifikke autoimmune sykdommer.  Kontaktperson Kristian Løvås." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="35432" OrderNumber="1" OptionText="Ja" VerboseText="Samtykke ROAS gitt." ShortCode="J"/>
+          <Answer AnswerId="35433" OrderNumber="2" OptionText="Nei" VerboseText="Samtykke ROAS ikke gitt.." ShortCode="N"/>
+          <Answer AnswerId="35434" OrderNumber="3" OptionText="Trukket tilbake" VerboseText="Samtykke ROAS trukket tilbake."/>
+          <Answer AnswerId="35435" OrderNumber="4" OptionText="Ukjent"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5601" PageNumber="37" PageTitle="Prøvetaking*">
+      <Item ItemId="6606" ItemType="2" VarName="RoasSamplesTaken" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18464" OrderNumber="55" ItemText="Prøver sendt til biobank" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="35444" OrderNumber="1" OptionText="Ja" VerboseText="Prøver sendt biobank." ShortCode="J"/>
+          <Answer AnswerId="35445" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="5604" PageNumber="38" PageTitle="Antistoffer">
+      <Item ItemId="3981" ItemType="2" VarName="NDV_ANTIBODY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18501" OrderNumber="56" ItemHeader="Positive diabetes-antistoffer" ItemText="Positive auto-antistoffer mot beta-cellene i pankreas" ItemHelp="F.eks. GAD, IA2, insulin-antistoff eller anti-ZnT8.  Det er nok at én er positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="20696" OrderNumber="1" OptionText="Ja" VerboseText="Positive antistoffer mot beta-celler." ShortCode="Pos"/>
+          <Answer AnswerId="20697" OrderNumber="2" OptionText="Nei" VerboseText="Negative antistoffer mot beta-celler." ShortCode="Neg"/>
+          <Answer AnswerId="20698" OrderNumber="3" OptionText="Ukjent" ShortCode="Ukj"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6804" ItemType="2" VarName="VAR6804" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18503" OrderNumber="57" ItemText="Positiv TPO-antistoff" ItemHelp="Svar Ja hvis den har vært positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="37174" OrderNumber="1" OptionText="Ja" VerboseText="Positiv TPO-antistoff." ShortCode="J"/>
+          <Answer AnswerId="37175" OrderNumber="2" OptionText="Nei" VerboseText="Negativ TPO-antistoff." ShortCode="N"/>
+          <Answer AnswerId="37176" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6805" ItemType="2" VarName="VAR6805" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18504" OrderNumber="58" ItemText="Positiv TSH-reseptorantistoff" ItemHelp="TRAS. Svar Ja hvis den har vært positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="37177" OrderNumber="1" OptionText="Ja" VerboseText="Positiv TSH-reseptorantistoff." ShortCode="J"/>
+          <Answer AnswerId="37178" OrderNumber="2" OptionText="Nei" VerboseText="Negativ TSH-reseptorantistoff." ShortCode="N"/>
+          <Answer AnswerId="37179" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6802" ItemType="2" VarName="VAR6802" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18500" OrderNumber="59" ItemText="Positiv for 21-hydroksylase antistoff" ItemHelp="Svar Ja hvis den har vært positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="37161" OrderNumber="1" OptionText="Ja" VerboseText="Positiv 21-hydroksylase antistoff." ShortCode="J"/>
+          <Answer AnswerId="37162" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="37163" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6803" ItemType="2" VarName="VAR6803" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18502" OrderNumber="60" ItemText="Positiv NALP5 antistoff" ItemHelp="Svar Ja hvis den har vært positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="37167" OrderNumber="1" OptionText="Ja" VerboseText="Positiv NALP5 antistoff." ShortCode="J"/>
+          <Answer AnswerId="37168" OrderNumber="2" OptionText="Nei" VerboseText="Negativ NALP5 antistoff." ShortCode="N"/>
+          <Answer AnswerId="37169" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7977" ItemType="2" VarName="VAR7977" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18506" OrderNumber="61" ItemText="Positiv transglutaminase antistoff" ItemHelp="Svar Ja hvis IgA- eller IgG-antistoff har vært positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="42506" OrderNumber="1" OptionText="Ja" VerboseText="Positiv transglutaminase-antistoff." ShortCode="J"/>
+          <Answer AnswerId="42507" OrderNumber="2" OptionText="Nei" VerboseText="Negativ transglutaminase-antistoff." ShortCode="N"/>
+          <Answer AnswerId="42508" OrderNumber="3" OptionText="Ukjent"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7979" ItemType="2" VarName="VAR7979" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18508" OrderNumber="62" ItemText="Positiv for antistoffer mot parietalceller eller intrinsic faktor" ItemHelp="Svar Ja hvis én har vært positiv én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="42515" OrderNumber="1" OptionText="Ja" VerboseText="Positiv antistoffer mot parietalceller/IF." ShortCode="J"/>
+          <Answer AnswerId="42516" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="42517" OrderNumber="3" OptionText="Ukjent"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6807" ItemType="2" VarName="VAR6807" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="18509" OrderNumber="63" ItemText="Positiv interferon-omega-antistoff" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="37183" OrderNumber="1" OptionText="Ja" VerboseText="Positiv interferon-omega-antistoff." ShortCode="J"/>
+          <Answer AnswerId="37184" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="37185" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="6314">
+      <Activate EnumVal="1" PageConditionId="4891" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6312">
+      <Activate EnumVal="1" PageConditionId="4890" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6313">
+      <Activate EnumVal="1" PageConditionId="4884" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6299">
+      <Activate EnumVal="1" PageConditionId="4893" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6321">
+      <Activate EnumVal="1" PageConditionId="4889" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3410">
+      <Activate EnumVal="1" PageConditionId="4881" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6317">
+      <Activate EnumVal="1" PageConditionId="4883" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6316">
+      <Activate EnumVal="1" PageConditionId="4888" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="4255">
+      <Activate EnumVal="1" PageConditionId="4895" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="8594">
+      <Activate EnumVal="1" PageConditionId="4894" PageNumber="19" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="4255">
+      <Activate EnumVal="2" PageConditionId="4878" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6318">
+      <Activate EnumVal="1" PageConditionId="4882" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3411">
+      <Activate EnumVal="1" PageConditionId="4880" PageNumber="23" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6320">
+      <Activate EnumVal="1" PageConditionId="4879" PageNumber="25" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6322">
+      <Activate EnumVal="1" PageConditionId="4887" PageNumber="27" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="8543">
+      <Activate EnumVal="1" PageConditionId="4896" PageNumber="29" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6633">
+      <Activate EnumVal="1" PageConditionId="4892" PageNumber="32" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6605">
+      <Activate EnumVal="1" PageConditionId="4885" PageNumber="37" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="4886" PageNumber="37" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

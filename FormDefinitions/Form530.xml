@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="530" FormName="EndoSubstitusjon" FormTitle="Endokrin substitusjonsbehandling">
+    <Page PageId="1995" PageNumber="1" PageTitle="Sykdommer">
+      <Item ItemId="6299" ItemType="2" VarName="ICD10_E271" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6935" OrderNumber="1" ItemText="Addisons sykdom" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="33330" OrderNumber="1" OptionText="Ja" VerboseText="Primær binyrebarksvikt." ShortCode="J" ICD10="E271"/>
+          <Answer AnswerId="33331" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="33464" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig binyrebarksvikt."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1994" PageNumber="2" PageTitle="Hydrokortison">
+      <Item ItemId="6304" ItemType="2" VarName="ATC_H02AB09" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6465" OrderNumber="2" ItemText="Hydrokortison" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="33352" OrderNumber="1" OptionText="Ja" VerboseText="Hydrokortison." ShortCode="J"/>
+          <Answer AnswerId="33353" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="33482" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1874" PageNumber="3" PageTitle="Hydrokortisondosering*">
+      <Item ItemId="6609" ItemType="1" VarName="VAR6609" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6472" OrderNumber="5" ItemText="Morgen (mg)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6610" ItemType="1" VarName="VAR6610" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6473" OrderNumber="6" ItemText="Lunsj (mg)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6611" ItemType="1" VarName="VAR6611" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6474" OrderNumber="7" ItemText="Middag (mg)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6612" ItemType="1" VarName="VAR6612" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6475" OrderNumber="8" ItemText="Kveld (mg)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6613" ItemType="1" VarName="DD_H02AB09" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6476" OrderNumber="9" ItemText="Døgndose hydrokortison (mg)" ItemHelp="" Expression="ISNULL(ATC_H02AB09-1) * (HASDATA(VAR6609)*VAR6609 + HASDATA(VAR6610)*VAR6610 + HASDATA(VAR6611)*VAR6611 + HASDATA(VAR6612)*VAR6612)" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6845" ItemType="1" VarName="VAR6845" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6920" OrderNumber="10" ItemText="Ekstradoser hydrokortison (mg)" ItemHelp="Ekstradoser per uke i gjennomsnitt" MinExpression="0" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1875" PageNumber="4" PageTitle="Kortisonacetat">
+      <Item ItemId="6305" ItemType="2" VarName="ATC_H02AB10" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6466" OrderNumber="11" ItemText="Kortisonacetat" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="33356" OrderNumber="1" OptionText="Ja" VerboseText="Kortisonacetat." ShortCode="J"/>
+          <Answer AnswerId="33357" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="33485" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1876" PageNumber="5" PageTitle="Kortisonacetatdosering*">
+      <Item ItemId="6614" ItemType="1" VarName="VAR6614" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6477" OrderNumber="12" ItemText="Morgen (mg)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6615" ItemType="1" VarName="VAR6615" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6478" OrderNumber="13" ItemText="Lunsj (mg)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6616" ItemType="1" VarName="VAR6616" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6479" OrderNumber="14" ItemText="Middag (mg)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6617" ItemType="1" VarName="VAR6617" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6480" OrderNumber="15" ItemText="Kveld (mg)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6618" ItemType="1" VarName="DD_H02AB10" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6481" OrderNumber="16" ItemText="Døgndose kortisonacetat (mg)" ItemHelp="" Expression="ISNULL(ATC_H02AB10-1) * ( HASDATA(VAR6614) * VAR6614 + HASDATA(VAR6615) * VAR6615 + HASDATA(VAR6616) * VAR6616 + HASDATA(VAR6617) * VAR6617)" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6847" ItemType="1" VarName="VAR6847" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="6923" OrderNumber="17" ItemText="Ekstradoser kortisonacetat" ItemHelp="Ekstradoser kortisonacetat (mg) per uke i gjennomsnitt" MinExpression="0" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1877" PageNumber="6" PageTitle="Prednisolon">
+      <Item ItemId="6306" ItemType="2" VarName="ATC_H02AB06" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6468" OrderNumber="18" ItemText="Prednisolon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="33362" OrderNumber="1" OptionText="Ja" VerboseText="Prednisolon." ShortCode="J"/>
+          <Answer AnswerId="33363" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="33488" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1878" PageNumber="7" PageTitle="Prednisolondosering*">
+      <Item ItemId="6619" ItemType="1" VarName="VAR6619" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6488" OrderNumber="19" ItemText="Morgen (mg)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6620" ItemType="1" VarName="VAR6620" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6485" OrderNumber="20" ItemText="Kveld (mg)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6621" ItemType="1" VarName="DD_H02AB06" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6487" OrderNumber="21" ItemText="Døgndose prednisolon (mg)" ItemHelp="" Expression="ISNULL(ATC_H02AB06-1) * (VAR6619*HASDATA(VAR6619)+VAR6620*HASDATA(VAR6620))" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6852" ItemType="1" VarName="VAR6852" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="6929" OrderNumber="22" ItemText="Ekstradoser prednisolon" ItemHelp="Gjennomsnitt (mg) per uke" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1879" PageNumber="8" PageTitle="Deksametason">
+      <Item ItemId="6307" ItemType="2" VarName="ATC_H02AB02" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6469" OrderNumber="23" ItemText="Deksametason" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="33368" OrderNumber="1" OptionText="Ja" VerboseText="Deksametason." ShortCode="J"/>
+          <Answer AnswerId="33369" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="33491" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1880" PageNumber="9" PageTitle="Deksametasondosering*">
+      <Item ItemId="6622" ItemType="1" VarName="VAR6622" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6489" OrderNumber="24" ItemText="Morgen (mg)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6623" ItemType="1" VarName="VAR6623" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6490" OrderNumber="25" ItemText="Kveld (mg)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6624" ItemType="1" VarName="DD_H02AB02" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6491" OrderNumber="26" ItemText="Døgndose deksametason (mg)" ItemHelp="" Expression="ISNULL(ATC_H02AB02-1) * (HASDATA(VAR6622)*VAR6622+HASDATA(VAR6623)*VAR6623)" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6853" ItemType="1" VarName="VAR6853" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6930" OrderNumber="27" ItemText="Deksametason ekstradoser (mg)" ItemHelp="Gjennomsnitt per uke" MinExpression="0" MaxExpression="5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1881" PageNumber="10" PageTitle="Beregning av døgndose">
+      <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
+        <FormItem FormItemId="6936" OrderNumber="28" ItemText="Vekt (kg)" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6632" ItemType="1" VarName="DD_H02AB" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6499" OrderNumber="29" ItemText="Glukokortikoid døgndose (mg)" ItemHelp="" Expression="DD_H02AB02*20 + DD_H02AB09*1 + DD_H02AB10*0.8 + DD_H02AB06*5" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6854" ItemType="1" VarName="VAR6854" LoincScale="QN" UnitStr="mg/kg" DisplayFormat="">
+        <FormItem FormItemId="6931" OrderNumber="30" ItemHeader="Vektjustert døgndose" ItemText="Vektjustert døgndose glukokortikoid (mg/kg)" ItemHelp="" Expression="DD_H02AB / WEIGHT * ISPOS(WEIGHT)*ISPOS(DD_H02AB)" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1882" PageNumber="11" PageTitle="Fludrokortison">
+      <Item ItemId="6308" ItemType="2" VarName="ATC_H02AA02" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6470" OrderNumber="31" ItemText="Fludrokortison" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="33374" OrderNumber="1" OptionText="Ja" VerboseText="Fludrokortison." ShortCode="J"/>
+          <Answer AnswerId="33375" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="33494" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1883" PageNumber="12" PageTitle="Fludrokortisondosering*">
+      <Item ItemId="6625" ItemType="1" VarName="VAR6625" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6492" OrderNumber="32" ItemText="Morgen (mg)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6626" ItemType="1" VarName="VAR6626" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6493" OrderNumber="33" ItemText="Kveld (mg)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6627" ItemType="1" VarName="DD_H02AA02" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6494" OrderNumber="34" ItemText="Døgndose fludrokortison (mg)" ItemHelp="" Expression="ISNULL( ATC_H02AA02 - 1 ) * ( HASDATA(VAR6625)*VAR6625 + HASDATA(VAR6626)*VAR6626 )" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1884" PageNumber="13" PageTitle="DHEA">
+      <Item ItemId="6310" ItemType="2" VarName="ATC_A14AA07" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6471" OrderNumber="35" ItemText="DHEA" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="33380" OrderNumber="1" OptionText="Ja" VerboseText="DHEA." ShortCode="J"/>
+          <Answer AnswerId="33381" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="33497" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1885" PageNumber="14" PageTitle="DHEA-dosering*">
+      <Item ItemId="6631" ItemType="1" VarName="DD_A14AA07" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6498" OrderNumber="36" ItemText="Døgndose DHEA (mg)" ItemHelp="" MinExpression="10" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1993" PageNumber="15" PageTitle="Tyreoideahormonsubstitusjon">
+      <Item ItemId="6859" ItemType="2" VarName="ATC_H03AA" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6940" OrderNumber="37" ItemText="Tyreoideasubstitusjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="37794" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="37795" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="38147" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1997" PageNumber="16" PageTitle="Dosering av thyroideahormoner*">
+      <Item ItemId="6855" ItemType="1" VarName="WD_H03AA01" LoincScale="QN" UnitStr="µg" DisplayFormat="">
+        <FormItem FormItemId="6932" OrderNumber="38" ItemText="Thyroxinbehandling (µg)" ItemHelp="Dosering per uke" MinExpression="0" MaxExpression="4000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6856" ItemType="1" VarName="DD_H03AA02" LoincScale="QN" UnitStr="µg" DisplayFormat="">
+        <FormItem FormItemId="6933" OrderNumber="39" ItemText="Trijodthyronin / T3 (µg)" ItemHelp="Dosering per dag" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="1999" PageNumber="17" PageTitle="Hypoparathyroidisme* ">
+      <Item ItemId="6321" ItemType="2" VarName="ICD10_E20" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6943" OrderNumber="40" ItemText="Hypoparatyreoidisme" ItemHelp="Subnormal calcium and supranormal plasma phosphate concentration and normal renal function. Mg-deficiency manifests as painful convulsions during normocalcemia and only relieved by Mg-replacement (cf. Perheentupa JCEM 2006; 91,2843-50)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="33452" OrderNumber="1" OptionText="Ja" VerboseText="Hypoparatyreoidisme." ShortCode="J" ICD10="E20"/>
+          <Answer AnswerId="33453" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="35865" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig hypoparatyreoidisme."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2000" PageNumber="18" PageTitle="Behandling av hypoparatyroidisme">
+      <Item ItemId="6873" ItemType="2" VarName="ATC_A11CC" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6960" OrderNumber="41" ItemText="Aktivt vitamin D" ItemHelp="Etalpha &amp;reg;, Rocaltrol&amp;reg;" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="37856" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="37857" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="37858" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2015" PageNumber="19" PageTitle="Vitamin D-behandling">
+      <Item ItemId="6857" ItemType="2" VarName="VAR6857" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6937" OrderNumber="42" ItemText="Vitamin D-behandling" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="37789" OrderNumber="1" OptionText="kalcidiol / Etalpha"/>
+          <Answer AnswerId="37790" OrderNumber="2" OptionText="kalcitriol / Rocaltrol"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6858" ItemType="1" VarName="VAR6858" LoincScale="QN" UnitStr="µg" DisplayFormat="">
+        <FormItem FormItemId="6938" OrderNumber="43" ItemText="Ukedose (µg)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2016" PageNumber="20" PageTitle="Annen behandling for hypoparatyroidisme*">
+      <Item ItemId="6862" ItemType="2" VarName="ATC_A12A" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6944" OrderNumber="44" ItemText="Kalsiumtilskudd" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="37812" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="37813" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="37827" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6864" ItemType="2" VarName="ATC_A12CC" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6946" OrderNumber="45" ItemText="Magnesiumtilskudd" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="37817" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="37818" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="37819" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6874" ItemType="2" VarName="ATC_H05AA" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6961" OrderNumber="46" ItemText="PTH-behandling" ItemHelp="Forsteo&amp;reg;, Preotact&amp;reg;" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="37859" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="37860" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="37861" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2008" PageNumber="21" PageTitle="Prematur menopause">
+      <Item ItemId="6318" ItemType="2" VarName="ICD10_E283" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6948" OrderNumber="48" ItemText="Primær ovarialsvikt" ItemHelp="Amenore med forhøyede gonadotropin-nivåer, Svarer til ICD-10 E28.3." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="33432" OrderNumber="1" OptionText="Ja" VerboseText="Primær ovarialsvikt." ShortCode="J" ICD10="E283"/>
+          <Answer AnswerId="33433" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="36170" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig primær ovarialsvikt." ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2009" PageNumber="22" PageTitle="Substitusjon av østrogen og progesteron">
+      <Item ItemId="6871" ItemType="2" VarName="VAR6871" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6958" OrderNumber="49" ItemText="Østrogensubstitusjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="37840" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="37841" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="37842" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2012" PageNumber="23" PageTitle="Type østrogensubstitusjon">
+      <Item ItemId="6866" ItemType="2" VarName="VAR6866" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6949" OrderNumber="50" ItemText="Østrogentype" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="37828" OrderNumber="1" OptionText="Kombinasjonspreparat syklisk"/>
+          <Answer AnswerId="37829" OrderNumber="2" OptionText="Kombinasjonspreparat jevnt"/>
+          <Answer AnswerId="37830" OrderNumber="3" OptionText="Østrogen"/>
+          <Answer AnswerId="37831" OrderNumber="4" OptionText="Ingen"/>
+          <Answer AnswerId="37832" OrderNumber="5" OptionText="Ukjent"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2011" PageNumber="24" PageTitle="Testikulær svikt">
+      <Item ItemId="6679" ItemType="2" VarName="ICD10_E291" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6950" OrderNumber="52" ItemText="Testikulær hypofunksjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="36176" OrderNumber="1" OptionText="Ja" VerboseText="Testikulær hypofunksjon." ICD10="E291"/>
+          <Answer AnswerId="36177" OrderNumber="2" OptionText="Nei" VerboseText="Ikke testikulær hypofunksjon." ShortCode="N"/>
+          <Answer AnswerId="36178" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2013" PageNumber="25" PageTitle="Testosteronsubstitusjon">
+      <Item ItemId="6872" ItemType="2" VarName="ATC_G03BA03" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6959" OrderNumber="53" ItemText="Testosteronsubstitusjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="37848" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="37849" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="37850" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2014" PageNumber="26" PageTitle="Testosterontype*">
+      <Item ItemId="6867" ItemType="2" VarName="VAR6867" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="6951" OrderNumber="54" ItemText="Testosterontype" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="37833" OrderNumber="1" OptionText="Nebido-injeksjoner"/>
+          <Answer AnswerId="37834" OrderNumber="2" OptionText="Testosterongel"/>
+          <Answer AnswerId="37835" OrderNumber="3" OptionText="Andriol tabl"/>
+          <Answer AnswerId="37836" OrderNumber="4" OptionText="Ingen"/>
+          <Answer AnswerId="37837" OrderNumber="5" OptionText="Ukjent"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2005" PageNumber="27" PageTitle="Doseringsintervall Nebido">
+      <Item ItemId="6868" ItemType="1" VarName="VAR6868" LoincScale="QN" UnitStr="uker" DisplayFormat="">
+        <FormItem FormItemId="6952" OrderNumber="55" ItemText="Doseringsintervall (uker)" ItemHelp="" MinExpression="4" MaxExpression="26" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2006" PageNumber="28" PageTitle="Dosering testosterongel*">
+      <Item ItemId="6869" ItemType="1" VarName="DD_G03BA03" LoincScale="QN" UnitStr="mg" DisplayFormat="">
+        <FormItem FormItemId="6953" OrderNumber="56" ItemText="Dosering testosteron (mg)" ItemHelp="Dosering per dag tabletter eller gel" MinExpression="0" MaxExpression="500" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="6299">
+      <Activate EnumVal="1" PageConditionId="2234" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6304">
+      <Activate EnumVal="1" PageConditionId="2144" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6299">
+      <Activate EnumVal="1" PageConditionId="2235" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6305">
+      <Activate EnumVal="1" PageConditionId="2145" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6299">
+      <Activate EnumVal="1" PageConditionId="2236" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6306">
+      <Activate EnumVal="1" PageConditionId="2146" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6299">
+      <Activate EnumVal="1" PageConditionId="2238" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6307">
+      <Activate EnumVal="1" PageConditionId="2148" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6299">
+      <Activate EnumVal="1" PageConditionId="2239" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="2237" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6308">
+      <Activate EnumVal="1" PageConditionId="2150" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6299">
+      <Activate EnumVal="1" PageConditionId="2240" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6310">
+      <Activate EnumVal="1" PageConditionId="2152" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6859">
+      <Activate EnumVal="1" PageConditionId="2245" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6321">
+      <Activate EnumVal="1" PageConditionId="2251" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6873">
+      <Activate EnumVal="1" PageConditionId="2252" PageNumber="19" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6321">
+      <Activate EnumVal="1" PageConditionId="2253" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6318">
+      <Activate EnumVal="1" PageConditionId="2250" PageNumber="22" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6871">
+      <Activate EnumVal="1" PageConditionId="2254" PageNumber="23" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6679">
+      <Activate EnumVal="1" PageConditionId="2255" PageNumber="25" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6872">
+      <Activate EnumVal="1" PageConditionId="2256" PageNumber="26" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6867">
+      <Activate EnumVal="1" PageConditionId="2257" PageNumber="27" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="2258" PageNumber="28" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="2259" PageNumber="28" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

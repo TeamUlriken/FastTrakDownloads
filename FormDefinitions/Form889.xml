@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="889" FormName="LS3" FormTitle="Livets siste dager - Ved dødsfallet">
+    <Page PageId="7604" PageNumber="1" PageTitle="VED DØDSFALLET" PageIntroduction="Skjema fylles ut av ansvarlig pleiepersonal ved dødsfall, selv om ikke tiltaksplanen har vært brukt. Skriv gjerne en kort rapport i kommentarfeltet.  Hvis svaret på noen av delmål er Nei, utdyp i kommentarfelt.">
+      <Item ItemId="6297" ItemType="5" VarName="DEATH_DATE" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="21981" OrderNumber="1" ItemText="Dødstidspunkt - dato" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6298" ItemType="1" VarName="DEATH_HOUR" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="21982" OrderNumber="2" ItemText="Dødstidspunkt - klokkeslett (avrundet)" ItemHelp="Nærmeste hele klokkeslett" MinExpression="00" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6549" ItemType="5" VarName="DEATH_DATE_ATTESTED" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="21986" OrderNumber="3" ItemText="Attestert av lege - dato" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6548" ItemType="1" VarName="DEATH_HOUR_ATTESTED" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="21985" OrderNumber="4" ItemText="Klokkeslett (avrundet) attestert av lege:" ItemHelp="Nærmeste hele klokkeslett" MinExpression="00" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="7605" PageNumber="2" PageTitle="Hvem var tilstede">
+      <Item ItemId="5800" ItemType="2" VarName="OBSERVED_DEATH" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="21980" OrderNumber="5" ItemText="Var det noen tilstede idet pasienten døde" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="30874" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="30875" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5094" ItemType="2" VarName="DIED_ALONE" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="21971" OrderNumber="6" ItemText="Ingen" ItemHelp="" Expression="2-ISNULL(OBSERVED_DEATH-2)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="28151" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="28152" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="7606" PageNumber="3" PageTitle="Tilstede*">
+      <Item ItemId="5096" ItemType="2" VarName="VAR5096" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="21973" OrderNumber="7" ItemText="Pårørende" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="28155" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="28156" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="7626" PageNumber="4" PageTitle="Pårørende varslet*">
+      <Item ItemId="1072" ItemType="2" VarName="VAR1072" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="22018" OrderNumber="8" ItemText="Er pårørende varslet om dødsfallet?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="10007" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="10008" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="10009" OrderNumber="3" OptionText="Ikke aktuelt"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="7627" PageNumber="5" PageTitle="Tilstede 3*">
+      <Item ItemId="5095" ItemType="2" VarName="VAR5095" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="21972" OrderNumber="9" ItemText="Pleiepersonale" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="28153" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="28154" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5097" ItemType="2" VarName="VAR5097" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="21974" OrderNumber="10" ItemText="Fastvakt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="28157" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="28158" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5098" ItemType="2" VarName="VAR5098" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="21975" OrderNumber="11" ItemText="Lege" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="28159" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="28160" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5099" ItemType="2" VarName="VAR5099" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem FormItemId="21976" OrderNumber="12" ItemText="Prest" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="28161" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="28162" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="7607" PageNumber="6" PageTitle="Livets siste dager">
+      <Item ItemId="1070" ItemType="2" VarName="LS_BRUKT" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="22016" OrderNumber="13" ItemHeader="Livets siste dager" ItemText="Ble tiltaksplanen &quot;Livets Siste Dager&quot; benyttet ?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="58915" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="58916" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="7608" PageNumber="7" PageTitle="Ikke benyttet årsak*">
+      <Item ItemId="1071" ItemType="2" VarName="LS_IKKE_BRUKT" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="22017" OrderNumber="14" ItemText="Hva er grunnen til at planen ikke ble brukt?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="58919" OrderNumber="1" OptionText="Pasienten døde før en rakk å starte planen."/>
+          <Answer AnswerId="58920" OrderNumber="2" OptionText="Det ble glemt å starte planen."/>
+          <Answer AnswerId="58921" OrderNumber="3" OptionText="Det ble sett på som ikke nødvendig å starte planen."/>
+          <Answer AnswerId="58922" OrderNumber="4" OptionText="Annen årsak"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="7609" PageNumber="8" PageTitle="Kommentar*">
+      <Item ItemId="7508" ItemType="4" VarName="VAR7508" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="22015" OrderNumber="15" ItemHeader="Kommentar" ItemText="Skriv kort om hvorfor tiltaksplanen ikke ble brukt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="7610" PageNumber="9" PageTitle="Mål 12-14: Rutiner / prosedyrer">
+      <Item ItemId="6550" ItemType="2" VarName="VAR6550" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="21987" OrderNumber="16" ItemText="Fastlegen er informert om dødsfallet." ItemHelp="Ta kontakt neste arbeidsdag hvis dødsfallet skjer utenom arbeidstiden, dersom ikke fast beboer." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="35055" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="35056" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="10012" OrderNumber="3" OptionText="Ikke aktuelt"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6551" ItemType="2" VarName="VAR6551" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="21988" OrderNumber="17" ItemText="Hjemmesykepleien er informert om dødsfallet" ItemHelp="Dersom de er tjenesteyter." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="35061" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="35062" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="10013" OrderNumber="3" OptionText="Ikke aktuelt"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6553" ItemType="2" VarName="VAR6553" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="21990" OrderNumber="18" ItemText="Avdelingens prosedyrer ved mors og ved stell av døde er fulgt." ItemHelp="Spesielle religiøse/kulturelle behov ivaretatt." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="35099" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="35100" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6552" ItemType="2" VarName="VAR6552" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="21989" OrderNumber="19" ItemText="Avdelingens prosedyrer etter dødsfall er fulgt." ItemHelp="Sjekk følgende punkter: syning av liket, fjerning av ev pacemaker eller ICD pga kremasjon, obduksjon, registrering av dødsfallet/dødsattest fylt ut, journalen avsluttet og epikrise diktert, beskjed formidlet til ev. andre offisielle instanser." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="35091" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="35092" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="7618" PageNumber="10" PageTitle="Mål 15-18: Ivaretakelse av etterlatte">
+      <Item ItemId="6554" ItemType="2" VarName="VAR6554" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="21991" OrderNumber="20" ItemText="De pårørende er gitt informasjon om rutiner ved dødsfall." ItemHelp="Brosjyre med praktisk informasjon ved dødsfall er gitt til de pårørende" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="35107" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="35108" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6555" ItemType="2" VarName="VAR6555" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="21992" OrderNumber="21" ItemText="Sykehjemmets prosedyrer vedrørende pasientens verdisaker og eiendeler er fulgt." ItemHelp="Eiendeler og verdisaker er signert for av identifisert person. Gjenstander er pakket for senere avhenting. Verdisakene er registrert og lagret på et trygt sted." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="35113" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="35114" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6309" ItemType="2" VarName="VAR6309" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="21983" OrderNumber="22" ItemText="Nødvendig informasjon er gitt til rette vedkommende." ItemHelp="Heftet: &quot;Når en av våre nærmeste dør&quot; er utlevert." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="33402" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="33403" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6315" ItemType="2" VarName="VAR6315" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="21984" OrderNumber="23" ItemText="Skriftlig informasjon til etterlatte er gitt til de pårørende." ItemHelp="Informasjonshefte om sorg og aktuell oppfølging i lokalmiljøet delt ut (&quot;etterlattemappe&quot;)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="33398" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="33399" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="7628" PageNumber="11" PageTitle="Mål 19: Ivaretakelse av personell">
+      <Item ItemId="1073" ItemType="2" VarName="VAR1073" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="22019" OrderNumber="24" ItemText="Personalet er ivaretatt etter dødsfall." ItemHelp="Formell/uformell refleksjon/debriefing (tilgjengelig mal: &quot;Refleksjon etter dødsfall&quot;)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="10010" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="10011" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="7692" PageNumber="12" PageTitle="Auto*" PageIntroduction="This page was autogenerated">
+      <Item ItemId="1116" ItemType="2" VarName="GBD_DODSFALL_STED" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="22195" OrderNumber="25" ItemText="Hvor skjedde dødsfallet?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="10058" OrderNumber="1" OptionText="Hjemme" Score="1.00"/>
+          <Answer AnswerId="10059" OrderNumber="2" OptionText="Sykehjemmet" Score="4.00"/>
+          <Answer AnswerId="10060" OrderNumber="3" OptionText="Transport til sykehus" Score="3.00"/>
+          <Answer AnswerId="10061" OrderNumber="4" OptionText="Sykehus eller i annen institusjon" Score="4.00"/>
+          <Answer AnswerId="10062" OrderNumber="5" OptionText="Annet sted" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3693" ItemType="2" VarName="IS1025B_STED" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="22194" OrderNumber="26" ItemText="Død utenfor institusjon" ItemHelp="" Expression="GBD_DODSFALL_STED_SCORE" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="18832" OrderNumber="1" OptionText="Hjemme"/>
+          <Answer AnswerId="18833" OrderNumber="2" OptionText="Annet sted"/>
+          <Answer AnswerId="18834" OrderNumber="3" OptionText="Under transport til sykehus"/>
+          <Answer AnswerId="18835" OrderNumber="4" OptionText="Død i sykehus eller annen institusjon"/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="5096">
+      <Activate EnumVal="2" PageConditionId="5721" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>
