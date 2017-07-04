@@ -141,14 +141,14 @@ BEGIN
   AND NOT EXISTS ( SELECT ce.EventId FROM ClinEvent ce WHERE ce.PersonId=v.PersonId and ce.StudyId=v.StudyId );
 END]]>
 	</row>
-	<row ProcId="11" StudyName="*" ProcName="GetCaseListInactive" ProcDesc="Personer: Inaktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-575657153" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="11" StudyName="*" ProcName="dbo.GetCaseListInactive" ProcDesc="Personer: Ikke-aktiv status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1201126637" LastUpdate="2017-06-28T09:34:49.650Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListInactive( @StudyId INT ) AS
 BEGIN
   SELECT DISTINCT vcl.PersonId,vcl.DOB,vcl.FullName,sg.GroupName,ss.StatusText as InfoText
-  FROM ViewCaseListStub vcl
-    JOIN StudCase sc ON sc.PersonId=vcl.PersonId and sc.StudyId=@StudyId
+  FROM dbo.ViewCaseListStub vcl
+    JOIN dbo.StudCase sc ON sc.PersonId=vcl.PersonId and sc.StudyId=@StudyId
+    JOIN dbo.StudyStatus ss on ss.StatusId=sc.FinState and ss.StudyId=sc.StudyId
     LEFT OUTER JOIN dbo.StudyGroup sg on sg.GroupId=sc.GroupId and sg.StudyId=sc.StudyId
-    LEFT OUTER JOIN dbo.StudyStatus ss on ss.StatusId=sc.FinState and ss.StudyId=sc.StudyId
   WHERE (ss.StatusActive=0 ) or (ss.StatusActive IS NULL);
 END]]>
 	</row>
@@ -177,11 +177,18 @@ BEGIN
   ORDER BY a.AlertLevel DESC,vcl.PersonId
 END]]>
 	</row>
-	<row ProcId="14" StudyName="*" ProcName="GetCaseListTest" ProcDesc="Personer: Testpasienter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="2089188146" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="14" StudyName="*" ProcName="GetCaseListTest" ProcDesc="Personer: Testpasienter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1250675116" LastUpdate="2017-06-28T09:22:13.823Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListTest ( @StudyId INT ) AS
 BEGIN
-  SELECT PersonId,DOB,FullName,GroupName from ViewCaseListStub where StudyId=@StudyId and GroupName like 'Test%'
-  ORDER BY FullName
+  SELECT p.PersonId, p.DOB, v.FullName, v.GroupName, p.GenderId, p.NationalId 
+  FROM dbo.ViewCaseListStub v  
+  JOIN dbo.Person p ON p.PersonId = v.PersonId AND p.TestCase = 1
+  WHERE ( StudyId = @StudyId )
+  OR p.NationalId IN 
+  ( '15076500565','21016400952','12057900499','13116900216','14019800513',
+    '70019950032','05073500186','70019950032','02039000183','08077000292',
+	'15040650560','21030550231','12050050295','02027311027','24019494930' )
+  ORDER BY v.FullName
 END]]>
 	</row>
 	<row ProcId="15" StudyName="*" ProcName="GetCaseListNewsweek" ProcDesc="Aktivitet: Alle skjema siste  7 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-774654004" LastUpdate="2013-01-22T12:27:10.913Z">
@@ -338,6 +345,17 @@ BEGIN
   from ViewActiveCaseListStub v
   join Person p ON p.PersonId=v.PersonId 
   where DATALENGTH(ISNULL(p.NationalId,''))<>11
+END]]>
+	</row>
+	<row ProcId="27" StudyName="*" ProcName="dbo.GetGaseListInactiveGroup" ProcDesc="Personer: Ikke-aktiv gruppe" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1146707710" LastUpdate="2017-06-28T09:37:17.280Z">
+		<![CDATA[CREATE PROCEDURE dbo.GetGaseListInactiveGroup( @StudyId INT ) AS
+BEGIN
+  SELECT vcl.PersonId, vcl.DOB, vcl.FullName, sg.GroupName, ss.StatusText as InfoText
+  FROM dbo.ViewCaseListStub vcl
+    JOIN dbo.StudCase sc ON sc.PersonId=vcl.PersonId and sc.StudyId=@StudyId
+    JOIN dbo.StudyGroup sg on sg.GroupId=sc.GroupId and sg.StudyId=sc.StudyId
+    JOIN dbo.StudyStatus ss on ss.StatusId=sc.FinState and ss.StudyId=sc.StudyId
+  WHERE (sg.GroupActive=0 );
 END]]>
 	</row>
 	<row ProcId="30" StudyName="*" ProcName="Report.GetAllActiveCases" ProcDesc="QuickStat: Alle aktive uansett lokalisasjon." ProcParams=":StudyId" ListId="CASE" GrantTo="Researcher" ChkSum="-1207026810" LastUpdate="2017-02-23T12:50:41.813Z">
