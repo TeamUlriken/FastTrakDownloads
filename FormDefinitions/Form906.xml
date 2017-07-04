@@ -190,23 +190,35 @@
         </FormItem>
       </Item>
       <Item ItemId="1559" ItemType="2" VarName="PAID30PLUS" LoincScale="ORD">
-        <FormItem FormItemId="23368" OrderNumber="22" ItemText="Score &gt;= 30" ItemHelp="" Expression="2-ISPOS(PAIDSUM-29)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23368" OrderNumber="22" ItemText="Er PAID Score &gt;= 30?" ItemHelp="" Expression="2-ISPOS(PAIDSUM-29)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="10510" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="10511" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="1619" ItemType="2" VarName="PAID3PLUSSINGLE" LoincScale="ORD">
+        <FormItem FormItemId="23520" OrderNumber="23" ItemText="Er noen av enkeltscore 3 eller mer?" ItemHelp="" Expression="2 - ISPOS( ISPOS(PAID01-2) + ISPOS(PAID02-2) + ISPOS(PAID03-2) + ISPOS(PAID04-2) + ISPOS(PAID05-2)+ISPOS(PAID06-2) + ISPOS(PAID07-2) + ISPOS(PAID08-2) + ISPOS(PAID09-2) + ISPOS(PAID10-2) + ISPOS(PAID11-2) + ISPOS(PAID12-2) + ISPOS(PAID13-2) + ISPOS(PAID14-2) + ISPOS(PAID15-2) + ISPOS(PAID16-2) + ISPOS(PAID17-2) + ISPOS(PAID18-2) + ISPOS(PAID19-2) + ISPOS(PAID20-2) )" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="59697" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="59698" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="1620" ItemType="2" VarName="PAIDSHOWMESSAGE" LoincScale="ORD">
+        <FormItem FormItemId="23521" OrderNumber="24" ItemText="Skal meldingen vises?" ItemHelp="" Expression="2 - ISPOS( ISNULL(PAID30PLUS-1) + ISNULL(PAID3PLUSSINGLE-1) )" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="10637" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="10638" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageId="8095" PageNumber="3" PageTitle="Henvisning til sykepleier*">
       <Item ItemId="1558" ItemType="8" VarName="VAR1558" LoincScale="MSG">
-        <FormItem FormItemId="23367" OrderNumber="23" ItemHeader="Oppfølging" ItemText="PAID-score over 30 tilsier betydelige utfordringer, og at pasienten bør få en oppfølgingssamtale hos sykepleier." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23367" OrderNumber="25" ItemHeader="Oppfølging" ItemText="PAID-score over 30 eller enkeltscore på 3 eller mer tilsier betydelige utfordringer, og at pasienten bør få en oppfølgingssamtale hos sykepleier." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
   </Form>
   <Actions>
-    <PageAction MasterId="1559">
-      <Activate EnumVal="1" PageConditionId="5995" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+    <PageAction MasterId="1620">
+      <Activate EnumVal="1" PageConditionId="6052" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
