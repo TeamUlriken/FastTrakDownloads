@@ -33,7 +33,7 @@ BEGIN
     UPDATE SET NumResult = src.Quantity;
 END]]>
 	</row>
-	<row ProcId="-1" StudyName="*" ProcName="CalculateTertial" ProcDesc="Beregner tertial" ProcParams=":SomeDate, :StartsAt,:EndsAt" ListId="UTIL" GrantTo="public" ChkSum="1637670642" LastUpdate="2014-05-12T12:42:12.923Z">
+	<row ProcId="-1" StudyName="*" ProcName="dbo.CalculateTertial" ProcDesc="Beregner tertial" ProcParams=":SomeDate, :StartsAt,:EndsAt" ListId="UTIL" GrantTo="public" ChkSum="-689563371" LastUpdate="2017-07-07T13:58:24.410Z">
 		<![CDATA[CREATE PROCEDURE dbo.CalculateTertial( @SomeDate DateTime, @StartsAt DateTime OUTPUT, @EndsAt DateTime OUTPUT )
 AS
 BEGIN
@@ -46,7 +46,7 @@ BEGIN
   SET @EndsAt = DATEADD(second,-1,DATEADD(month,4,@StartsAt));
 END]]>
 	</row>
-	<row ProcId="1" StudyName="*" ProcName="GetCaseList" ProcDesc="001. Aktive pasienter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="968017730" LastUpdate="2014-08-05T11:48:21.003Z">
+	<row ProcId="1" StudyName="*" ProcName="dbo.GetCaseList" ProcDesc="001. Aktive pasienter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-815947842" LastUpdate="2017-07-07T13:58:29.130Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseList( @StudyId INT ) AS
 BEGIN
   SELECT vcl.PersonId,vcl.DOB,vcl.FullName,vcl.GroupName,ss.StatusText AS InfoText,
@@ -62,7 +62,7 @@ BEGIN
   ORDER BY vcl.FullName
 END]]>
 	</row>
-	<row ProcId="2" StudyName="*" ProcName="GetCaseListUnsignedForms" ProcDesc="002a. Mine usignerte skjema (UserId)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1832290165" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="2" StudyName="*" ProcName="dbo.GetCaseListUnsignedForms" ProcDesc="002a. Mine usignerte skjema (UserId)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1052181500" LastUpdate="2017-07-07T13:58:31.990Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListUnsignedForms( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, mf.FormTitle + ', ' + dbo.LongTime( ce.EventTime) as InfoText
@@ -74,7 +74,7 @@ BEGIN
   ORDER BY ce.EventTime
 END]]>
 	</row>
-	<row ProcId="3" StudyName="*" ProcName="GetCaseListUnsignedFormsByPerson" ProcDesc="002b. Mine usignerte skjema (PersonId)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1451404142" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="3" StudyName="*" ProcName="dbo.GetCaseListUnsignedFormsByPerson" ProcDesc="002b. Mine usignerte skjema (PersonId)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1321872983" LastUpdate="2017-07-07T13:58:35.853Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListUnsignedFormsByPerson( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, 
@@ -90,7 +90,7 @@ BEGIN
   ORDER BY ce.EventTime
 END]]>
 	</row>
-	<row ProcId="5" StudyName="*" ProcName="GetCaseListUnwrittenRx" ProcDesc="003. Utskriftskø for resepter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="919645289" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="5" StudyName="*" ProcName="dbo.GetCaseListUnwrittenRx" ProcDesc="003. Utskriftskø for resepter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1017158905" LastUpdate="2017-07-07T13:58:39.477Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListUnwrittenRx( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,convert(varchar,dp.CreatedAt,104) + ' - ' + dt.DrugName AS InfoText
@@ -101,13 +101,13 @@ BEGIN
   ORDER BY dp.CreatedAt DESC
 END]]>
 	</row>
-	<row ProcId="6" StudyName="*" ProcName="GetCaseListNews" ProcDesc="Aktivitet: Alle skjema siste døgn" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="262348401" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="6" StudyName="*" ProcName="dbo.GetCaseListNews" ProcDesc="Aktivitet: Alle skjema siste døgn" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1267392180" LastUpdate="2017-07-07T13:58:42.253Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListNews( @StudyId INT ) AS
 BEGIN
   EXEC GetCaseListNewForms @StudyId,1
 END]]>
 	</row>
-	<row ProcId="7" StudyName="*" ProcName="GetCaseListMyWeek" ProcDesc="Aktivitet: Mine skjema siste   7 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1681561605" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="7" StudyName="*" ProcName="dbo.GetCaseListMyWeek" ProcDesc="Aktivitet: Mine skjema siste   7 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1165270552" LastUpdate="2017-07-07T13:58:44.810Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListMyWeek( @StudyId INT ) AS
 BEGIN
   DECLARE @UserId INT;
@@ -115,7 +115,7 @@ BEGIN
   EXEC GetCaseListNewForms @StudyId,7,@UserId;
 END]]>
 	</row>
-	<row ProcId="8" StudyName="*" ProcName="GetCaseListMyMonth" ProcDesc="Aktivitet: Mine skjema siste  30 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1284917727" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="8" StudyName="*" ProcName="dbo.GetCaseListMyMonth" ProcDesc="Aktivitet: Mine skjema siste  30 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="146770204" LastUpdate="2017-07-07T13:58:49.043Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListMyMonth( @StudyId INT ) AS
 BEGIN
   DECLARE @UserId INT;
@@ -123,7 +123,7 @@ BEGIN
   EXEC GetCaseListNewForms @StudyId,30,@UserId;
 END]]>
 	</row>
-	<row ProcId="9" StudyName="*" ProcName="GetCaseListMyYear" ProcDesc="Aktivitet: Mine skjema siste 365 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1109042543" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="9" StudyName="*" ProcName="dbo.GetCaseListMyYear" ProcDesc="Aktivitet: Mine skjema siste 365 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1666491260" LastUpdate="2017-07-07T13:58:58.070Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListMyYear( @StudyId INT ) AS
 BEGIN
   DECLARE @UserId INT;
@@ -131,7 +131,7 @@ BEGIN
   EXEC GetCaseListNewForms @StudyId,365,@UserId;
 END]]>
 	</row>
-	<row ProcId="10" StudyName="*" ProcName="GetCaseListNoForm" ProcDesc="Personer: Aktive uten skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="838367689" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="10" StudyName="*" ProcName="dbo.GetCaseListNoForm" ProcDesc="Personer: Aktive uten skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-280395740" LastUpdate="2017-07-07T13:59:01.490Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListNoForm( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,'Opprettet ' + dbo.ShortTime( sc.CreatedAt ) as InfoText
@@ -141,7 +141,7 @@ BEGIN
   AND NOT EXISTS ( SELECT ce.EventId FROM ClinEvent ce WHERE ce.PersonId=v.PersonId and ce.StudyId=v.StudyId );
 END]]>
 	</row>
-	<row ProcId="11" StudyName="*" ProcName="dbo.GetCaseListInactive" ProcDesc="Personer: Ikke-aktiv status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1201126637" LastUpdate="2017-06-28T09:34:49.650Z">
+	<row ProcId="11" StudyName="*" ProcName="dbo.GetCaseListInactive" ProcDesc="Personer: Status er inaktiv" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-957228780" LastUpdate="2017-07-07T13:59:04.003Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListInactive( @StudyId INT ) AS
 BEGIN
   SELECT DISTINCT vcl.PersonId,vcl.DOB,vcl.FullName,sg.GroupName,ss.StatusText as InfoText
@@ -152,7 +152,7 @@ BEGIN
   WHERE (ss.StatusActive=0 ) or (ss.StatusActive IS NULL);
 END]]>
 	</row>
-	<row ProcId="12" StudyName="*" ProcName="GetCaseListMyRelations" ProcDesc="Personer: Mine relasjoner" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-230454008" LastUpdate="2014-08-07T12:31:45.753Z">
+	<row ProcId="12" StudyName="*" ProcName="dbo.GetCaseListMyRelations" ProcDesc="Personer: Mine relasjoner" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="130826854" LastUpdate="2017-07-07T13:59:08.107Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListMyRelations( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,r.RelName as InfoText,p.NationalId
@@ -166,7 +166,7 @@ BEGIN
   ORDER BY v.FullName
 END]]>
 	</row>
-	<row ProcId="13" StudyName="*" ProcName="GetCaseListAlert" ProcDesc="Varslinger: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1885282853" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="13" StudyName="*" ProcName="dbo.GetCaseListAlert" ProcDesc="Varslinger: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="953817660" LastUpdate="2017-07-07T13:59:12.113Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListAlert( @StudyId INT ) AS
 BEGIN
   SELECT vcl.PersonId,vcl.DOB,vcl.FullName,vcl.GroupName, l.LevelDesc + ': ' + a.AlertHeader AS InfoText
@@ -177,7 +177,7 @@ BEGIN
   ORDER BY a.AlertLevel DESC,vcl.PersonId
 END]]>
 	</row>
-	<row ProcId="14" StudyName="*" ProcName="GetCaseListTest" ProcDesc="Personer: Testpasienter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1250675116" LastUpdate="2017-06-28T09:22:13.823Z">
+	<row ProcId="14" StudyName="*" ProcName="dbo.GetCaseListTest" ProcDesc="Personer: Testpasienter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="245500265" LastUpdate="2017-07-07T13:59:15.183Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListTest ( @StudyId INT ) AS
 BEGIN
   SELECT p.PersonId, p.DOB, v.FullName, v.GroupName, p.GenderId, p.NationalId 
@@ -191,7 +191,7 @@ BEGIN
   ORDER BY v.FullName
 END]]>
 	</row>
-	<row ProcId="15" StudyName="*" ProcName="GetCaseListNewsweek" ProcDesc="Aktivitet: Alle skjema siste  7 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-774654004" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="15" StudyName="*" ProcName="dbo.GetCaseListNewsweek" ProcDesc="Aktivitet: Alle skjema siste  7 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="610039970" LastUpdate="2017-07-07T13:59:19.540Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListNewsweek( @StudyId INT ) AS
 BEGIN
   EXEC GetCaseListNewForms @StudyId,7
@@ -347,7 +347,7 @@ BEGIN
   where DATALENGTH(ISNULL(p.NationalId,''))<>11
 END]]>
 	</row>
-	<row ProcId="27" StudyName="*" ProcName="dbo.GetGaseListInactiveGroup" ProcDesc="Personer: Ikke-aktiv gruppe" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1146707710" LastUpdate="2017-06-28T09:37:17.280Z">
+	<row ProcId="27" StudyName="*" ProcName="dbo.GetGaseListInactiveGroup" ProcDesc="Personer: Gruppe er inaktiv" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-2060248721" LastUpdate="2017-06-28T09:39:12.950Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetGaseListInactiveGroup( @StudyId INT ) AS
 BEGIN
   SELECT vcl.PersonId, vcl.DOB, vcl.FullName, sg.GroupName, ss.StatusText as InfoText
@@ -3769,6 +3769,25 @@ BEGIN
   ) labs
   WHERE @NumPatientsType1 > 0;
   
+END]]>
+	</row>
+	<row ProcId="3000" StudyName="ROAS" ProcName="Dash.RoasGroupCount" ProcDesc="Pasienter per behandlingssted" ListId="DASH" GrantTo="public" MinVersion="6600" ChkSum="-271880444" LastUpdate="2017-07-07T13:57:45.103Z">
+		<![CDATA[CREATE PROCEDURE Dash.RoasGroupCount AS
+BEGIN
+  SELECT Report.PartitionKey(Dataset.GroupId) AS PartitionKey,Report.RowKey( Dataset.TimeAxis) AS RowKey,  
+  Dataset.*,
+  DataSource.*
+  FROM 
+  (
+  SELECT
+    Report.StartOfMonth(getdate()) AS TimeAxis,
+    sc.GroupId,count(*) AS n 
+  FROM dbo.StudCase sc
+  JOIN dbo.Study s ON s.StudyId=sc.StudyId AND s.StudName = 'ROAS'
+  GROUP BY sc.GroupId
+  ) Dataset
+  CROSS JOIN Report.DataSource() AS DataSource
+  ORDER BY TimeAxis,GroupId
 END]]>
 	</row>
 	<row ProcId="5001" StudyName="GBD" ProcName="GBD.UpdateMustScoreForAll" ProcDesc="Oppdatering av MUST for alle, trenger GBD.RuleMust på plass" ProcParams=":StudyId" ListId="UTIL" GrantTo="public" ChkSum="-1790760205" LastUpdate="2016-06-06T12:55:01.353Z">
