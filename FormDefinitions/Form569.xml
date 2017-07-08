@@ -3,17 +3,17 @@
   <Form FormId="569" FormName="FLACKER_KIELY" FormTitle="Flacker-Kiely">
     <Page PageId="7696" PageNumber="6" PageTitle="Høyde og vekt">
       <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        <FormItem FormItemId="22219" OrderNumber="1" ItemText="Høyde (cm)" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem FormItemId="22219" OrderNumber="1" ItemText="Høyde (cm)" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        <FormItem FormItemId="22218" OrderNumber="2" ItemText="Vekt (kg)" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0" Decimals="1">
+        <FormItem FormItemId="22218" OrderNumber="2" ItemText="Vekt (kg)" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-        <FormItem FormItemId="22217" OrderNumber="3" ItemText="BMI (kg/m2)" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1" Decimals="1">
+        <FormItem FormItemId="22217" OrderNumber="3" ItemText="BMI (kg/m2)" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -130,13 +130,15 @@
           <Answer AnswerId="58994" OrderNumber="2" OptionText="Nei" Score="0.00"/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageId="8200" PageNumber="9" PageTitle="Oppsummering">
       <Item ItemId="1128" ItemType="1" VarName="FK_B_SUM" LoincScale="QN" DisplayFormat="">
         <FormItem FormItemId="22213" OrderNumber="20" ItemText="Sum Flacker dødsrisiko skår (skår)" ItemHelp="" Expression="IsZero(SEX-1)*1.76 + FK_B_01_SCORE + FK_B_02_SCORE + FK_B_03_SCORE + FK_B_04_SCORE + FK_B_05_SCORE + FK_B_06_SCORE + FK_B_07_SCORE" MinExpression="0" MaxExpression="14,89" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="2">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="1133" ItemType="8" VarName="VAR1133" LoincScale="MSG" DisplayFormat="">
-        <FormItem FormItemId="22215" OrderNumber="21" ItemHeader="Cirka risiko for pasient død de kommende 12 mnd." ItemText="Skår 0-2, 7%&#xA;Skår 3-6, 19%&#xA;Skår 7-10, 50%&#xA;Skår 11+, 86%" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="22215" OrderNumber="21" ItemHeader="Estimert 12-måneders mortalitet" ItemText="Skår 0-2, 7%&#xA;Skår 3-6, 19%&#xA;Skår 7-10, 50%&#xA;Skår 11+, 86%" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="58981" OrderNumber="1" OptionText="Ja" Score="1.76"/>
           <Answer AnswerId="58982" OrderNumber="2" OptionText="Nei" Score="1.00"/>
         </FormItem>
