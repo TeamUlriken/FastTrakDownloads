@@ -177,19 +177,20 @@ BEGIN
   ORDER BY a.AlertLevel DESC,vcl.PersonId
 END]]>
 	</row>
-	<row ProcId="14" StudyName="*" ProcName="dbo.GetCaseListTest" ProcDesc="Personer: Testpasienter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="245500265" LastUpdate="2017-07-07T13:59:15.183Z">
-		<![CDATA[CREATE PROCEDURE dbo.GetCaseListTest ( @StudyId INT ) AS
+	<row ProcId="14" StudyName="*" ProcName="dbo.GetCaseListTest" ProcDesc="Personer: Testpasienter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6045" ChkSum="-522709964" LastUpdate="2017-07-08T18:49:25.800Z">
+		<![CDATA[CREATE PROCEDURE dbo.GetCaseListTest( @StudyId INT ) AS
 BEGIN
-  SELECT p.PersonId, p.DOB, v.FullName, v.GroupName, p.GenderId, p.NationalId 
-  FROM dbo.ViewCaseListStub v  
-  JOIN dbo.Person p ON p.PersonId = v.PersonId AND p.TestCase = 1
-  WHERE ( StudyId = @StudyId )
-  OR p.NationalId IN 
+  SET NOCOUNT ON;
+  UPDATE dbo.Person SET TestCase=1 WHERE NationalId IN 
   ( '15076500565','21016400952','12057900499','13116900216','14019800513',
     '70019950032','05073500186','70019950032','02039000183','08077000292',
-	'15040650560','21030550231','12050050295','02027311027','24019494930' )
-  ORDER BY v.FullName
-END]]>
+    '15040650560','21030550231','12050050295','02027311027','24019494930' );
+  SELECT p.PersonId, p.DOB, p.ReverseName AS FullName, 'Test' AS GroupName, p.GenderId, p.NationalId,
+    'Testperson' AS InfoText
+  FROM dbo.Person p
+  WHERE p.Testcase=1
+  ORDER BY p.FullName;
+END;]]>
 	</row>
 	<row ProcId="15" StudyName="*" ProcName="dbo.GetCaseListNewsweek" ProcDesc="Aktivitet: Alle skjema siste  7 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="610039970" LastUpdate="2017-07-07T13:59:19.540Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListNewsweek( @StudyId INT ) AS
