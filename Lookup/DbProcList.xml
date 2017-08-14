@@ -3711,7 +3711,7 @@ BEGIN
   
 END]]>
 	</row>
-	<row ProcId="1037" StudyName="NDV" ProcName="NDV.ReportHbA1cTimeSeries" ProcDesc="Tidsserie for dårlig regulerte Type 1, prosjekt i regi NDV." ProcParams=":Year, :HbA1cCutoff, :LookBehindMonths, :LookForwardMonths" ListId="FR" GrantTo="public" MinVersion="6401" ChkSum="-1622486953" LastUpdate="2017-03-29T11:06:44.137Z">
+	<row ProcId="1037" StudyName="NDV" ProcName="NDV.ReportHbA1cTimeSeries" ProcDesc="Tidsserie for dårlig regulerte Type 1, prosjekt i regi NDV." ProcParams=":Year, :HbA1cCutoff, :LookBehindMonths, :LookForwardMonths" ListId="FR" GrantTo="public" MinVersion="6401" ChkSum="2011926186" LastUpdate="2017-08-14T09:43:16.563Z">
 		<![CDATA[CREATE PROCEDURE NDV.ReportHbA1cTimeSeries( @Year INT, @HbA1cCutoff FLOAT, @LookBehindMonths INT, @LookforwardMonths INT ) AS
 BEGIN
 
@@ -3721,7 +3721,8 @@ BEGIN
   
   -- Merge labdata from ClinDatapoint to LabData
                                       
-  EXEC NDV.MergeHba1cToLabdata;
+  IF ( SELECT cmptlevel FROM master.dbo.sysdatabases WHERE name = db_name() ) >= 100
+    EXEC NDV.MergeHba1cToLabdata;
   
   -- Find start and end of the year passed in as a parameter.
 
