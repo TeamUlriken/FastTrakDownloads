@@ -76,7 +76,7 @@
         </FormItem>
       </Item>
       <Item ItemId="9038" ItemType="1" VarName="DBP_SITTING_5MIN" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem FormItemId="20632" OrderNumber="14" ItemText="Diastolisk blodtrykk i hvile, andre måling (mmHg)" ItemHelp="Målt sittende etter minst 5 minutter hvile" MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" FormatStr="¬/%s mmHg.">
+        <FormItem FormItemId="20632" OrderNumber="14" ItemText="Diastolisk blodtrykk i hvile, andre måling (mmHg)" ItemHelp="Målt sittende etter minst 5 minutter hvile" MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" FormatStr="¬/%s mmHg.">
           <Answer/>
         </FormItem>
       </Item>
@@ -109,8 +109,14 @@
       </Item>
     </Page>
     <Page PageId="7127" PageNumber="8" PageTitle="Pubertetsutvikling">
+      <Item ItemId="1677" ItemType="2" VarName="VAR1677" LoincScale="ORD">
+        <FormItem FormItemId="23845" OrderNumber="20" ItemHeader="Vurderingsgrunnlag" ItemText="Hva er vurdering pubertetsutviklingen basert på?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="10710" OrderNumber="1" OptionText="Klinisk undersøkelse."/>
+          <Answer AnswerId="10711" OrderNumber="2" OptionText="Egenrapportert."/>
+        </FormItem>
+      </Item>
       <Item ItemId="9763" ItemType="2" VarName="TannerScale" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="20640" OrderNumber="20" ItemText="Tanner" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20640" OrderNumber="21" ItemText="Tanner" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
           <Answer AnswerId="53373" OrderNumber="1" OptionText="En" VerboseText="Tanner I." ShortCode="I"/>
           <Answer AnswerId="53374" OrderNumber="2" OptionText="To" VerboseText="Tanner II." ShortCode="II"/>
           <Answer AnswerId="53375" OrderNumber="3" OptionText="Tre" VerboseText="Tanner III." ShortCode="III"/>
@@ -121,7 +127,7 @@
     </Page>
     <Page PageId="7128" PageNumber="9" PageTitle="P-Stadium*">
       <Item ItemId="9764" ItemType="2" VarName="TannerP" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="20641" OrderNumber="21" ItemText="P-stadium" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20641" OrderNumber="22" ItemText="P-stadium" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="53383" OrderNumber="1" OptionText="En" VerboseText="P-stadium I." ShortCode="I"/>
           <Answer AnswerId="53384" OrderNumber="2" OptionText="To" VerboseText="P-stadium II." ShortCode="II"/>
           <Answer AnswerId="53385" OrderNumber="3" OptionText="Tre" VerboseText="P-stadium III." ShortCode="III"/>
@@ -132,7 +138,7 @@
     </Page>
     <Page PageId="7129" PageNumber="10" PageTitle="B-Stadium*">
       <Item ItemId="9765" ItemType="2" VarName="TannerB" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="20642" OrderNumber="22" ItemText="B-stadium" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20642" OrderNumber="23" ItemText="B-stadium" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="53400" OrderNumber="1" OptionText="En" VerboseText="B-stadium I." ShortCode="I"/>
           <Answer AnswerId="53401" OrderNumber="2" OptionText="To" VerboseText="B-stadium II." ShortCode="II"/>
           <Answer AnswerId="53402" OrderNumber="3" OptionText="Tre" VerboseText="B-stadium III." ShortCode="III"/>
@@ -141,7 +147,7 @@
         </FormItem>
       </Item>
       <Item ItemId="9769" ItemType="2" VarName="VAR9769" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="20646" OrderNumber="23" ItemText="Menstruasjon" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20646" OrderNumber="24" ItemText="Menstruasjon" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="53413" OrderNumber="1" OptionText="Nei" VerboseText="Ikke fått menstruasjon." ShortCode="N"/>
           <Answer AnswerId="53414" OrderNumber="2" OptionText="Uregelmessig" VerboseText="Uregelmessig menstruasjon." ShortCode="U"/>
           <Answer AnswerId="53415" OrderNumber="3" OptionText="Regelmessig" VerboseText="Regelmessig menstruasjon." ShortCode="R"/>
@@ -150,36 +156,36 @@
     </Page>
     <Page PageId="7130" PageNumber="11" PageTitle="Menarche*">
       <Item ItemId="9776" ItemType="1" VarName="VAR9776" LoincScale="QN" UnitStr="år" DisplayFormat="">
-        <FormItem FormItemId="20653" OrderNumber="24" ItemText="Alder ved menarche (år)" ItemHelp="" MinExpression="6" MaxExpression="TRUNC(Patient.Age)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1" FormatStr="Menarche %s år">
+        <FormItem FormItemId="20653" OrderNumber="25" ItemText="Alder ved menarche (år)" ItemHelp="" MinExpression="6" MaxExpression="TRUNC(Patient.Age)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1" FormatStr="Menarche %s år">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="10179" ItemType="1" VarName="VAR10179" LoincScale="QN" UnitStr="mnd" DisplayFormat="">
-        <FormItem FormItemId="20673" OrderNumber="25" ItemText="Måneder (mnd)" ItemHelp="Antall måneder ut over hele år i forrige spørsmål." MinExpression="0" MaxExpression="11" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" FormatStr="%s mnd.">
+        <FormItem FormItemId="20673" OrderNumber="26" ItemText="Måneder (mnd)" ItemHelp="Antall måneder ut over hele år i forrige spørsmål." MinExpression="0" MaxExpression="11" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" FormatStr="%s mnd.">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageId="7131" PageNumber="12" PageTitle="Menstruasjoner siste 12 mnd*">
       <Item ItemId="9777" ItemType="1" VarName="VAR9777" LoincScale="QN" UnitStr="stk" DisplayFormat="">
-        <FormItem FormItemId="20654" OrderNumber="26" ItemText="Antall menstruasjoner siste 12 mnd (stk)" ItemHelp="" MinExpression="0" MaxExpression="24" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20654" OrderNumber="27" ItemText="Antall menstruasjoner siste 12 mnd (stk)" ItemHelp="" MinExpression="0" MaxExpression="24" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageId="7132" PageNumber="13" PageTitle="Testikkelstørrelse og gynekomasti*">
       <Item ItemId="9766" ItemType="1" VarName="VAR9766" LoincScale="QN" UnitStr="mL" DisplayFormat="">
-        <FormItem FormItemId="20643" OrderNumber="27" ItemText="Testikkelstørrelse, venstre (mL)" ItemHelp="" MinExpression="1" MaxExpression="25" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+        <FormItem FormItemId="20643" OrderNumber="28" ItemText="Testikkelstørrelse, venstre (mL)" ItemHelp="" MinExpression="1" MaxExpression="25" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="9767" ItemType="1" VarName="VAR9767" LoincScale="QN" UnitStr="mL" DisplayFormat="">
-        <FormItem FormItemId="20644" OrderNumber="28" ItemText="Testikkelstørrelse, høyre (mL)" ItemHelp="" MinExpression="1" MaxExpression="25" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+        <FormItem FormItemId="20644" OrderNumber="29" ItemText="Testikkelstørrelse, høyre (mL)" ItemHelp="" MinExpression="1" MaxExpression="25" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="9768" ItemType="2" VarName="VAR9768" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="20645" OrderNumber="29" ItemText="Gynekomasti" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20645" OrderNumber="30" ItemText="Gynekomasti" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="53407" OrderNumber="1" OptionText="Ja" VerboseText="Gynekomasti." ShortCode="J"/>
           <Answer AnswerId="53408" OrderNumber="2" OptionText="Nei" VerboseText="Ingen gynekomasti." ShortCode="N"/>
           <Answer AnswerId="53409" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
@@ -188,14 +194,14 @@
     </Page>
     <Page PageId="7133" PageNumber="14" PageTitle="Andre symptomer / funn">
       <Item ItemId="8909" ItemType="2" VarName="ICD10_L83" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="20614" OrderNumber="30" ItemText="Acanthosis nigricans" ItemHelp="Sammenflytende og retikulert papillomatose" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20614" OrderNumber="31" ItemText="Acanthosis nigricans" ItemHelp="Sammenflytende og retikulert papillomatose" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="50017" OrderNumber="1" OptionText="Ja" VerboseText="Acanthosis nigricans." ShortCode="J" ICD10="L83"/>
           <Answer AnswerId="50018" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="50019" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="5919" ItemType="2" VarName="VAR5919" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="20610" OrderNumber="31" ItemHeader="Søvnapné" ItemText="Klinisk mistanke om søvnapné?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20610" OrderNumber="32" ItemHeader="Søvnapné" ItemText="Klinisk mistanke om søvnapné?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="31777" OrderNumber="1" OptionText="Ja" VerboseText="Mistanke om søvnapné." ShortCode="J"/>
           <Answer AnswerId="31778" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="31779" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
@@ -204,7 +210,7 @@
     </Page>
     <Page PageId="7134" PageNumber="15" PageTitle="Hirsutisme*">
       <Item ItemId="9026" ItemType="2" VarName="ICD10_L680" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="20620" OrderNumber="32" ItemText="Hirsutisme" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20620" OrderNumber="33" ItemText="Hirsutisme" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="50488" OrderNumber="1" OptionText="Ja" VerboseText="Hirsutisme." ShortCode="J" ICD10="L680"/>
           <Answer AnswerId="50489" OrderNumber="2" OptionText="Nei" VerboseText="Ingen hirsutisme." ShortCode="N"/>
           <Answer AnswerId="50490" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig hirsutisme." ShortCode="U"/>
@@ -213,21 +219,21 @@
     </Page>
     <Page PageId="7135" PageNumber="16" PageTitle="Grad av hirsutisme*">
       <Item ItemId="9778" ItemType="1" VarName="FerrimanGallwey9pt" LoincScale="QN" UnitStr="poeng" DisplayFormat="">
-        <FormItem FormItemId="20655" OrderNumber="33" ItemText="Ferriman-Gallwey score (poeng)" ItemHelp="Graderes 0-4 for hvert av 9 kroppsområder. Overleppe, hake, bryst, abdomen, nedre adbdomen, overarm, lår, øvre rygg, seteregion." MinExpression="0" MaxExpression="36" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20655" OrderNumber="34" ItemText="Ferriman-Gallwey score (poeng)" ItemHelp="Graderes 0-4 for hvert av 9 kroppsområder. Overleppe, hake, bryst, abdomen, nedre adbdomen, overarm, lår, øvre rygg, seteregion." MinExpression="0" MaxExpression="36" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageId="7136" PageNumber="17" PageTitle="Striae og dysmorfi*">
       <Item ItemId="9779" ItemType="2" VarName="ICD10_L906" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="20656" OrderNumber="34" ItemText="Striae" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20656" OrderNumber="35" ItemText="Striae" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="53486" OrderNumber="1" OptionText="Ja" VerboseText="Striae." ShortCode="J" ICD10="L906"/>
           <Answer AnswerId="53487" OrderNumber="2" OptionText="Nei" VerboseText="Ingen striae." ShortCode="N"/>
           <Answer AnswerId="53488" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="9027" ItemType="2" VarName="VAR9027" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="20621" OrderNumber="35" ItemText="Dysmorfe trekk?" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20621" OrderNumber="36" ItemText="Dysmorfe trekk?" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="50496" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="50497" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="50498" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
@@ -236,38 +242,38 @@
     </Page>
     <Page PageId="7137" PageNumber="18" PageTitle="Dysmorfe trekk*">
       <Item ItemId="9028" ItemType="4" VarName="VAR9028" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="20622" OrderNumber="36" ItemHeader="Beskriv" ItemText="Beskrivelse av dysmorfe trekk" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20622" OrderNumber="37" ItemHeader="Beskriv" ItemText="Beskrivelse av dysmorfe trekk" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageId="7138" PageNumber="19" PageTitle="Vurdering">
       <Item ItemId="4088" ItemType="4" VarName="DP_AVTALER" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="20606" OrderNumber="37" ItemHeader="Vurdering*" ItemText="Vurdering og plan videre" ItemHelp="Inkludert eventuelle avtaler gjort med pasienten, unntatt timeavtale som er eget punkt." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20606" OrderNumber="38" ItemHeader="Vurdering*" ItemText="Vurdering og plan videre" ItemHelp="Inkludert eventuelle avtaler gjort med pasienten, unntatt timeavtale som er eget punkt." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4089" ItemType="4" VarName="DP_NESTE_KONTROLL" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="20607" OrderNumber="38" ItemHeader="Neste avtale" ItemText="Avtale og evt tidspunkt for neste konsultasjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20607" OrderNumber="39" ItemHeader="Neste avtale" ItemText="Avtale og evt tidspunkt for neste konsultasjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageId="7139" PageNumber="20" PageTitle="Sjekkliste" PageIntroduction="Kontroll av rutiner ved tidligere besøk.">
       <Item ItemId="9770" ItemType="2" VarName="VAR9770" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="20647" OrderNumber="39" ItemText="Fastende blodprøver ved 0 mnd bestilt?" ItemHelp="Totalkolesterol, HDL, LDL, TG, ASAT, ALAT, Gamma-GT, Bilirubin, kreatinin, HbA1c, fastende Insulin, C-Peptid og glukose, TSH, fT4, CRP." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20647" OrderNumber="40" ItemText="Fastende blodprøver ved 0 mnd bestilt?" ItemHelp="Totalkolesterol, HDL, LDL, TG, ASAT, ALAT, Gamma-GT, Bilirubin, kreatinin, HbA1c, fastende Insulin, C-Peptid og glukose, TSH, fT4, CRP." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="53418" OrderNumber="1" OptionText="Ja" VerboseText="Fastende blodprøver bestilt." ShortCode="J"/>
           <Answer AnswerId="53419" OrderNumber="2" OptionText="Nei" VerboseText="Fastende blodprøver er ikke bestilt." ShortCode="N"/>
         </FormItem>
       </Item>
       <Item ItemId="9774" ItemType="2" VarName="VAR9774" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="20651" OrderNumber="40" ItemText="DXA-Måling ved 0 mnd bestilt?" ItemHelp="Det skal gjøres DXA-måling ved oppstart." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20651" OrderNumber="41" ItemText="DXA-Måling ved 0 mnd bestilt?" ItemHelp="Det skal gjøres DXA-måling ved oppstart." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="53440" OrderNumber="1" OptionText="Ja" VerboseText="DXA-måling bestilt." ShortCode="J"/>
           <Answer AnswerId="53441" OrderNumber="2" OptionText="Nei" VerboseText="DXA-måling ikke bestilt." ShortCode="N"/>
         </FormItem>
       </Item>
       <Item ItemId="10024" ItemType="2" VarName="VAR10024" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="20663" OrderNumber="41" ItemText="Gangtest ved 0 mnd bestilt?" ItemHelp="Det skal gjøres 6 minutter gangtest ved oppstart." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20663" OrderNumber="42" ItemText="Gangtest ved 0 mnd bestilt?" ItemHelp="Det skal gjøres 6 minutter gangtest ved oppstart." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="55642" OrderNumber="1" OptionText="Ja" VerboseText="Gangtest bestilt." ShortCode="J"/>
           <Answer AnswerId="55643" OrderNumber="2" OptionText="Nei" VerboseText="Gangtest ikke bestilt." ShortCode="N"/>
         </FormItem>
@@ -275,7 +281,7 @@
     </Page>
     <Page PageId="7140" PageNumber="21" PageTitle="Forskning og registre">
       <Item ItemId="9782" ItemType="2" VarName="VAR9782" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="20658" OrderNumber="42" ItemText="Inngår i FABO studien?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20658" OrderNumber="43" ItemText="Inngår i FABO studien?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="53498" OrderNumber="1" OptionText="Ja" VerboseText="Inngår i FABO-studien."/>
           <Answer AnswerId="53499" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
@@ -283,14 +289,14 @@
     </Page>
     <Page PageId="7242" PageNumber="22" PageTitle="Begrunnelse*">
       <Item ItemId="10315" ItemType="4" VarName="VAR10315" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="20919" OrderNumber="43" ItemText="Hvorfor ikke?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="20919" OrderNumber="44" ItemText="Hvorfor ikke?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageId="7243" PageNumber="23" PageTitle="Registersamtykke*">
       <Item ItemId="9771" ItemType="2" VarName="VAR9771" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="20648" OrderNumber="44" ItemText="Samtykke til deltakelse i register?" ItemHelp="Registeret &quot;Til Normal vekt&quot;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20648" OrderNumber="45" ItemText="Samtykke til deltakelse i register?" ItemHelp="Registeret &quot;Til Normal vekt&quot;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="53422" OrderNumber="1" OptionText="Ja" VerboseText="Samtykke til register." ShortCode="J"/>
           <Answer AnswerId="53423" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
@@ -298,7 +304,7 @@
     </Page>
     <Page PageId="7141" PageNumber="24" PageTitle="Forskningsprøver*">
       <Item ItemId="9772" ItemType="2" VarName="VAR9772" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="20649" OrderNumber="45" ItemText="Forskningsprøver ved 0 mnd til registeret bestilt?" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem FormItemId="20649" OrderNumber="46" ItemText="Forskningsprøver ved 0 mnd til registeret bestilt?" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="53428" OrderNumber="1" OptionText="Ja" VerboseText="Forskningsprøver 0 mnd er bestilt." ShortCode="J"/>
           <Answer AnswerId="53429" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
