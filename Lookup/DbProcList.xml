@@ -900,7 +900,7 @@ BEGIN
   ORDER BY ce.EventTime DESC
 END]]>
 	</row>
-	<row ProcId="155" StudyName="GBD" ProcName="GBD.GetCaseListDiedHere" ProcDesc="Dødsfall: Skjema utfylt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6402" ChkSum="-1110236412" LastUpdate="2017-02-07T19:52:33.370Z">
+	<row ProcId="155" StudyName="GBD" ProcName="GBD.GetCaseListDiedHere" ProcDesc="Dødsfall: Skjemastatus &quot;Ved dødsfallet&quot;" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6614" ChkSum="1446462645" LastUpdate="2017-09-28T15:55:00.607Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListDiedHere( @StudyId INT ) AS
 BEGIN
   DECLARE @FormId INT
@@ -916,7 +916,7 @@ BEGIN
         END
       END 
   FROM GBD.ViewCaseListDiedHere AS vcldh 
-  LEFT JOIN dbo.GetLastFormTable( @FormId ) ft ON ft.PersonId = vcldh.PersonId
+  LEFT JOIN dbo.GetLastFormTable( @FormId, NULL ) ft ON ft.PersonId = vcldh.PersonId
 END]]>
 	</row>
 	<row ProcId="156" StudyName="GBD" ProcName="GetCaseListDiabetes" ProcDesc="Diagnose: Diabetes" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-450047842" LastUpdate="2013-03-29T14:22:07.773Z">
@@ -1947,6 +1947,27 @@ END]]>
 	<row ProcId="316" StudyName="ENDO" ProcName="NDV.GetCaseListHbA1cProject2017" ProcDesc="Prosjekter: HbA1c prosjekt 2017" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6401" ChkSum="-1461251566" LastUpdate="2017-05-26T09:40:35.167Z">
 		<![CDATA[]]>
 	</row>
+	<row ProcId="317" StudyName="NDV" ProcName="NDV.GetShortConsWithHbA1c" ProcDesc="Prosjekter: HbA1c og kortkonsultasjoner" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6401" ChkSum="1818149650" LastUpdate="2017-09-23T01:08:00.453Z">
+		<![CDATA[CREATE PROCEDURE NDV.GetShortConsWithHbA1c( @StudyId INT ) AS
+BEGIN
+  SELECT v.*,a.ShortConsCount,hba1c.NumResult, 
+    'HbA1c=' + CONVERT(VARCHAR,hbA1c.NumResult ) + ', Kortkonsultasjoner n = ' + CONVERT(VARCHAR,ShortConsCount) + '.' AS InfoText
+  FROM 
+  dbo.ViewActiveCaseListStub v
+  JOIN dbo.GetLastLabDataTable( 45, '3000-01-01' ) hba1c ON hba1c.PersonId = v.PersonId
+  JOIN (
+    SELECT ce.PersonId,count(*) AS ShortConsCount 
+    FROM dbo.ClinForm cf 
+    JOIN dbo.MetaForm mf on mf.FormId = cf.FormId
+    JOIN dbo.ClinEvent ce ON ce.EventId=cf.EventId
+    WHERE mf.FormName = 'DIAPOL_SHORT' AND cf.DeletedAt IS NULL 
+    GROUP BY ce.PersonId
+   ) a
+  ON a.PersonId = v.PersonId
+  WHERE v.StudyId=@StudyId
+  ORDER BY NumResult DESC;
+END]]>
+	</row>
 	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1529014000" LastUpdate="2013-11-14T14:52:27.327Z">
 		<![CDATA[CREATE PROCEDURE BAR.GetHospitalizedWithoutAdmissionForm( @StudyId INT )
 AS
@@ -2325,11 +2346,11 @@ BEGIN
   ORDER BY v.PersonId
 END]]>
 	</row>
-	<row ProcId="746" StudyName="ENDO" ProcName="ENDO.GetSynacthenPatientForms" ProcDesc="Studier: Synacthen pasientskjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6400" ChkSum="-1655459591" LastUpdate="2017-01-16T21:39:22.187Z">
+	<row ProcId="746" StudyName="ENDO" ProcName="ENDO.GetSynacthenPatientForms" ProcDesc="Studier: Synacthen pasientskjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6614" ChkSum="41448003" LastUpdate="2017-08-23T08:13:16.770Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetSynacthenPatientForms( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId,v.DOB, v.FullName, v.GroupName, 'Synacthenskjema: ' + dbo.ShortTime( f.EventTime) AS InfoText
-  FROM dbo.GetLastFormTable( 519 ) f
+  FROM dbo.GetLastFormTable( 519, NULL ) f
   JOIN  dbo.ViewCaseListStub v on v.PersonId = f.PersonId
   WHERE StudyId = @StudyId
 END]]>
