@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="926" FormName="HofteGamma" FormTitle="Margnagling">
+    <Page PageId="8278" PageNumber="1" PageTitle="Margnagling">
+      <Item ItemId="8483" ItemType="8" VarName="VAR8483" LoincScale="MSG" DisplayFormat="">
+        <FormItem FormItemId="23825" OrderNumber="1" ItemHeader="Arbeidsflyt" ItemText="Innkomstnotat skal være utfylt før dette skjemaet.  Skjemaet skal bare brukes på primæroperasjoner." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8279" PageNumber="2" PageTitle="Bruddtidspunkt" PageIntroduction="Hentes fra innkomstnotat">
+      <Item ItemId="8194" ItemType="5" VarName="HrBruddDato" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="23785" OrderNumber="2" ItemHeader="Dato" ItemText="Dato da bruddet skjedde" ItemHelp="" MinExpression="Patient.DOB" MaxExpression="FORM.Date" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8196" ItemType="1" VarName="HrBruddTidspunkt" LoincScale="QN" UnitStr="klokketime" DisplayFormat="">
+        <FormItem FormItemId="23787" OrderNumber="3" ItemText="Tidspunkt (klokketime)" ItemHelp="" MinExpression="0" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8267" ItemType="2" VarName="VAR8267" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23812" OrderNumber="4" ItemText="Skadested" ItemHelp="Fra ICD-10 kapittel XX - Ytre årsaker til sykdommer, skader og dødsfall" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="44180" OrderNumber="0" OptionText="Bolig og boligområde"/>
+          <Answer AnswerId="44182" OrderNumber="1" OptionText="Veitrafikkulykke"/>
+          <Answer AnswerId="44183" OrderNumber="2" OptionText="Annen ulykke på gate/vei"/>
+          <Answer AnswerId="44184" OrderNumber="3" OptionText="Barnehage/lekeplass"/>
+          <Answer AnswerId="44185" OrderNumber="4" OptionText="Skole, skolegård, høyskole"/>
+          <Answer AnswerId="44186" OrderNumber="5" OptionText="Sykehus og helseinstitusjon, somatisk og psykiatrisk"/>
+          <Answer AnswerId="44187" OrderNumber="6" OptionText="Fellesboform for pleie og omsorg, sykehjem og aldershjem"/>
+          <Answer AnswerId="44188" OrderNumber="7" OptionText="Gymnastikksal, idretts- og sportsanlegg, inne og ute, også på skole og institusjon"/>
+          <Answer AnswerId="44189" OrderNumber="8" OptionText="Friluft, hav, sjø og vann"/>
+          <Answer AnswerId="44190" OrderNumber="9" OptionText="Annet sted"/>
+          <Answer AnswerId="44191" OrderNumber="99" OptionText="Ukjent sted"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8280" PageNumber="3" PageTitle="Antikoagulasjon">
+      <Item ItemId="8500" ItemType="2" VarName="HrAntiKoag" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23829" OrderNumber="5" ItemText="Fast tromboseprofylakse" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="47264" OrderNumber="0" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="47265" OrderNumber="1" OptionText="Warfarin (Marevan)" VerboseText="Warfarin." ShortCode="Mar"/>
+          <Answer AnswerId="47266" OrderNumber="2" OptionText="Acetylsalisylsyre (Albyl-E)" VerboseText="Acetylsalicylsyre." ShortCode="ASA"/>
+          <Answer AnswerId="47267" OrderNumber="3" OptionText="Klopidogrel (Plavix)" VerboseText="Klopidogrel." ShortCode="Klo"/>
+          <Answer AnswerId="47268" OrderNumber="9" OptionText="Annet eller kombinasjoner*" ShortCode="Ann"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8281" PageNumber="4" PageTitle="Annen fast antikoagulasjon*">
+      <Item ItemId="8257" ItemType="4" VarName="HrAntiKoagAnnet" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="23807" OrderNumber="6" ItemText="Hvilke" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8282" PageNumber="5" PageTitle="Klassifikasjon av brudd">
+      <Item ItemId="8202" ItemType="2" VarName="VAR8202" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23790" OrderNumber="7" ItemText="Type primærbrudd" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="43902" OrderNumber="1" OptionText="Lårhalsbrudd udislokert" VerboseText="Udislokert" ICD10="S720"/>
+          <Answer AnswerId="43903" OrderNumber="2" OptionText="Lårhalsbrudd dislokert" VerboseText="Dislokert" ICD10="S720"/>
+          <Answer AnswerId="43904" OrderNumber="3" OptionText="Lateralt lårhalsbrudd" VerboseText="Lateralt" ICD10="S720"/>
+          <Answer AnswerId="43905" OrderNumber="4" OptionText="Pertrokantært tofragment" VerboseText="Pertrokantært tofragment" ICD10="S721"/>
+          <Answer AnswerId="43906" OrderNumber="5" OptionText="Pertrokantært flerfragment" VerboseText="Pertrokantært flerfragment" ICD10="S721"/>
+          <Answer AnswerId="43908" OrderNumber="6" OptionText="Subtrokantært" VerboseText="Subtrokantært" ICD10="S722"/>
+          <Answer AnswerId="43909" OrderNumber="7" OptionText="Annet*" ICD10="S720"/>
+          <Answer AnswerId="43907" OrderNumber="9" OptionText="Intertrokantært" VerboseText="Intertrokantært" ICD10="S721"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8283" PageNumber="6" PageTitle="Antibiotika">
+      <Item ItemId="8290" ItemType="2" VarName="HrAbProfylakse" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23814" OrderNumber="8" ItemText="Antibiotika som profylakse" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="44387" OrderNumber="0" OptionText="Nei" VerboseText="Antiotikaprofylakse ikke gitt." ShortCode="N"/>
+          <Answer AnswerId="44388" OrderNumber="1" OptionText="Ja" VerboseText="Antibiotikaprofylakse gitt." ShortCode="J"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8240" ItemType="2" VarName="HrSystAb" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23798" OrderNumber="9" ItemText="Systemisk antibiotika" ItemHelp="" Expression="HrAbProfylakse" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+          <Answer AnswerId="44077" OrderNumber="0" OptionText="Nei" VerboseText="Ikke gitt systemisk antibiotika." ShortCode="N"/>
+          <Answer AnswerId="44078" OrderNumber="1" OptionText="Ja*" ShortCode="J"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8284" PageNumber="7" PageTitle="Profylakse*">
+      <Item ItemId="8436" ItemType="1" VarName="VAR8436" LoincScale="QN" UnitStr="min" DisplayFormat="">
+        <FormItem FormItemId="23821" OrderNumber="10" ItemText="Tid fra antibiotikaprofylakse til operasjon (min)" ItemHelp="" MinExpression="1" MaxExpression="720" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" DefaultValue="30">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8480" ItemType="2" VarName="HrAbMed1" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23824" OrderNumber="11" ItemText="Preparatnavn 1" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="46954" OrderNumber="1" OptionText="Cefalotin (Keflin)" VerboseText="Cefalotin"/>
+          <Answer AnswerId="46955" OrderNumber="2" OptionText="Kloksacillin (Ekvacillin)" VerboseText="Kloksacillin"/>
+          <Answer AnswerId="46960" OrderNumber="3" OptionText="Cefuroksim (Zinacef, Cefuroxim, Lifurox)" VerboseText="Cefuroksim"/>
+          <Answer AnswerId="46964" OrderNumber="4" OptionText="Klindamycin (Dalacin, Clindamycin" VerboseText="Klindamycin"/>
+          <Answer AnswerId="46971" OrderNumber="5" OptionText="Dikloksacillin (Diclocil)" VerboseText="Dikloksacillin"/>
+          <Answer AnswerId="46989" OrderNumber="6" OptionText="Gentamicin (Garamycin, Gensumycin)" VerboseText="Gentamicin"/>
+          <Answer AnswerId="46990" OrderNumber="7" OptionText="Cefotaksim (Claforan)" VerboseText="Cefotaksim"/>
+          <Answer AnswerId="47007" OrderNumber="8" OptionText="Ampicillin (Pentrexyl, Pondocollin, Doktacillin)" VerboseText="Ampicillin"/>
+          <Answer AnswerId="46998" OrderNumber="99" OptionText="Annet*"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8285" PageNumber="8" PageTitle="Annet preparat*">
+      <Item ItemId="8241" ItemType="4" VarName="HrAbMed1Annet" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="23799" OrderNumber="12" ItemHeader="Preparat" ItemText="Oppgi preparatnavn for Annet" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8286" PageNumber="9" PageTitle="Doseringstekst 1*">
+      <Item ItemId="8485" ItemType="4" VarName="HrAbMed1Dose" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="23826" OrderNumber="13" ItemHeader="Dssn" ItemText="Doseringstekst for medikament 1" ItemHelp="Eks: 500mg x 1" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8287" PageNumber="10" PageTitle="Anestesi">
+      <Item ItemId="8201" ItemType="2" VarName="ASA_ANESTESI" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23789" OrderNumber="14" ItemText="ASA-klasse" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="43897" OrderNumber="1" OptionText="Frisk"/>
+          <Answer AnswerId="43898" OrderNumber="2" OptionText="Asymptomatisk tilstand som gir økt risiko"/>
+          <Answer AnswerId="43899" OrderNumber="3" OptionText="Symptomatisk sykdom"/>
+          <Answer AnswerId="43900" OrderNumber="4" OptionText="Livstruende sykdom"/>
+          <Answer AnswerId="43901" OrderNumber="5" OptionText="Moribund"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8235" ItemType="2" VarName="VAR8235" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23794" OrderNumber="15" ItemText="Anestesitype" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="44072" OrderNumber="1" OptionText="Narkose" VerboseText="Operert i narkose." ShortCode="Nark"/>
+          <Answer AnswerId="44073" OrderNumber="2" OptionText="Spinal" VerboseText="Operert i spinalbedøvelse." ShortCode="Spin"/>
+          <Answer AnswerId="44074" OrderNumber="3" OptionText="Annet*" ShortCode="Ann"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8288" PageNumber="11" PageTitle="Inngrepets start" PageIntroduction="Flytt skjemaet under Hendelser hvis datoen ikke er riktig.">
+      <Item ItemId="8195" ItemType="5" VarName="HrOprDato" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="23786" OrderNumber="16" ItemHeader="Dato" ItemText="Dato for operasjon" ItemHelp="" Expression="TRUNC(FORM.Date)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8197" ItemType="1" VarName="HrOprTidspunkt" LoincScale="QN" UnitStr="klokketime" DisplayFormat="">
+        <FormItem FormItemId="23788" OrderNumber="17" ItemText="Tidspunkt (klokketime)" ItemHelp="" MinExpression="0" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8193" ItemType="2" VarName="VAR8193" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23784" OrderNumber="18" ItemText="Side" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="43880" OrderNumber="1" OptionText="Høyre" VerboseText="Skaden er på høyre side." ShortCode="H"/>
+          <Answer AnswerId="43881" OrderNumber="2" OptionText="Venstre" VerboseText="Skaden er på venstre side." ShortCode="V"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8289" PageNumber="12" PageTitle="Operatører*">
+      <Item ItemId="8940" ItemType="4" VarName="VAR8940" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="23836" OrderNumber="19" ItemText="Operatør" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8941" ItemType="4" VarName="VAR8941" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="23837" OrderNumber="20" ItemText="Assistent" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8290" PageNumber="13" PageTitle="Nagling">
+      <Item ItemId="1675" ItemType="2" VarName="VAR1675" LoincScale="ORD">
+        <FormItem FormItemId="23838" OrderNumber="21" ItemText="Type nagle" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="10704" OrderNumber="1" OptionText="Gammanagle"/>
+          <Answer AnswerId="10705" OrderNumber="2" OptionText="InterTan"/>
+          <Answer AnswerId="10706" OrderNumber="99" OptionText="Annen type"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8309" PageNumber="14" PageTitle="Dobbeltskrue*">
+      <Item ItemId="1676" ItemType="2" VarName="VAR1676" LoincScale="ORD">
+        <FormItem FormItemId="23839" OrderNumber="22" ItemHeader="Dobbeltskrue" ItemText="Er det brukt dobbeltskrue i collum?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="10707" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="10708" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8308" PageNumber="15" PageTitle="Margnaglens lengde*">
+      <Item ItemId="8478" ItemType="2" VarName="GammaKortLang" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23823" OrderNumber="23" ItemText="Gammanaglens lengde" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="46840" OrderNumber="8" OptionText="Kort" VerboseText="Kort nagle."/>
+          <Answer AnswerId="46841" OrderNumber="10" OptionText="Lang" VerboseText="Lang nagle."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8291" PageNumber="16" PageTitle="Lengde lang gammanagle*">
+      <Item ItemId="8431" ItemType="1" VarName="VAR8431" LoincScale="QN" UnitStr="mm" DisplayFormat="">
+        <FormItem FormItemId="23817" OrderNumber="24" ItemText="Gammanaglens lengde (mm)" ItemHelp="Gjelder kun lang gammanagle" MinExpression="300" MaxExpression="700" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8292" PageNumber="17" PageTitle="Collumskrue*">
+      <Item ItemId="8421" ItemType="1" VarName="VAR8421" LoincScale="QN" UnitStr="mm" DisplayFormat="">
+        <FormItem FormItemId="23815" OrderNumber="25" ItemText="Collumskruens lengde (mm)" ItemHelp="Legen slik den ble målt i gjennomlysning" MinExpression="60" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8495" ItemType="2" VarName="VAR8495" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23827" OrderNumber="26" ItemText="Vinkel" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="47137" OrderNumber="1" OptionText="120 grader." ShortCode="120"/>
+          <Answer AnswerId="47138" OrderNumber="2" OptionText="125 grader." ShortCode="125"/>
+          <Answer AnswerId="47139" OrderNumber="3" OptionText="130 grader." ShortCode="130"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8434" ItemType="2" VarName="DistalSperringType" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23820" OrderNumber="27" ItemText="Distal sperring" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="46029" OrderNumber="1" OptionText="ved hjelp av gjennomlysning" VerboseText="Distal sperring via gjennomlysing."/>
+          <Answer AnswerId="46030" OrderNumber="2" OptionText="gjennom jiggen" VerboseText="Distal sperring gjennom jiggen."/>
+          <Answer AnswerId="46808" OrderNumber="3" OptionText="ingen" VerboseText="Ingen distal sperring."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8293" PageNumber="18" PageTitle="Fibrinolyse">
+      <Item ItemId="8258" ItemType="2" VarName="VAR8258" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23808" OrderNumber="28" ItemHeader="Fibrinolysehemmer" ItemText="Er det gitt fibrinolysehemmer i forbindelse med operasjonen?" ItemHelp="Eks. Cyklopkapron." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="44085" OrderNumber="0" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="44086" OrderNumber="1" OptionText="Ja" VerboseText="Fibrinolysehemmer gitt" ShortCode="J"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8294" PageNumber="19" PageTitle="Fibrinolyse detaljer*">
+      <Item ItemId="8259" ItemType="4" VarName="VAR8259" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="23809" OrderNumber="29" ItemText="Medikament" ItemHelp="Det vil bli utarbeidet en liste" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8260" ItemType="4" VarName="VAR8260" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="23810" OrderNumber="30" ItemText="Dosering" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8295" PageNumber="20" PageTitle="Komplikasjoner">
+      <Item ItemId="8237" ItemType="2" VarName="VAR8237" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23795" OrderNumber="31" ItemText="Peroperative komplikasjoner" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="44075" OrderNumber="0" OptionText="Nei" VerboseText="Ingen peroperative komplikasjoner." ShortCode="N"/>
+          <Answer AnswerId="44076" OrderNumber="1" OptionText="Ja" VerboseText="Det oppstod peroperative komplikasjoner." ShortCode="J"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8296" PageNumber="23" PageTitle="Komplikasjonsbeskrivelse*">
+      <Item ItemId="8238" ItemType="4" VarName="VAR8238" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="23796" OrderNumber="32" ItemHeader="Beskrivelse*" ItemText="Beskriv komplikasjonene" ItemHelp="Tips: Avslutt med punktum for et bedre notat." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8297" PageNumber="24" PageTitle="Avslutning">
+      <Item ItemId="8799" ItemType="2" VarName="VAR8799" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23835" OrderNumber="33" ItemText="Lukking av hud" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="49728" OrderNumber="1" OptionText="Sutur" VerboseText="Huden lukkes med sutur."/>
+          <Answer AnswerId="49729" OrderNumber="2" OptionText="Staples" VerboseText="Huden lukkes med staples."/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8432" ItemType="4" VarName="VAR8432" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="23818" OrderNumber="34" ItemHeader="Type" ItemText="Navn/type på sutur/staples" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8747" ItemType="1" VarName="HofteBleeding" LoincScale="QN" UnitStr="mL" DisplayFormat="">
+        <FormItem FormItemId="23833" OrderNumber="35" ItemText="Blødning (mL)" ItemHelp="" MinExpression="10" MaxExpression="3000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8239" ItemType="1" VarName="VAR8239" LoincScale="QN" UnitStr="minutter" DisplayFormat="">
+        <FormItem FormItemId="23797" OrderNumber="36" ItemText="Operasjonstid (minutter)" ItemHelp="(hud til hud)" MinExpression="5" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8298" PageNumber="25" PageTitle="Videre plan">
+      <Item ItemId="8430" ItemType="2" VarName="VAR8430" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23816" OrderNumber="37" ItemText="Belastning" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="46023" OrderNumber="1" OptionText="Full belastning fra dag én." ShortCode="Full"/>
+          <Answer AnswerId="46024" OrderNumber="2" OptionText="Avlaster med krykker." ShortCode="Red"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8433" ItemType="2" VarName="VAR8433" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23819" OrderNumber="38" ItemText="Postoperative bilder" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="46027" OrderNumber="1" OptionText="Rekvirert postoperative bilder."/>
+          <Answer AnswerId="46028" OrderNumber="2" OptionText="Ikke rekvirert bilder."/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8626" ItemType="2" VarName="VAR8626" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23830" OrderNumber="39" ItemText="Kontroll" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="48059" OrderNumber="0" OptionText="Ingen kontroll avtalt." ShortCode="n/a"/>
+          <Answer AnswerId="50381" OrderNumber="2" OptionText="Kontroll 6 uker." ShortCode="6U"/>
+          <Answer AnswerId="48060" OrderNumber="3" OptionText="Kontroll etter 3 mnd." ShortCode="3M"/>
+          <Answer AnswerId="48063" OrderNumber="99" OptionText="Annet*" ShortCode="A"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8299" PageNumber="26" PageTitle="Kontroll hvis Annet*">
+      <Item ItemId="8788" ItemType="4" VarName="VAR8788" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="23834" OrderNumber="40" ItemText="Kontroll" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8300" PageNumber="27" PageTitle="Tromboseprofylakse*">
+      <Item ItemId="8499" ItemType="2" VarName="ctrHrAtPrepCount" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23828" OrderNumber="41" ItemText="Antall antitrombotiske medikamenter" ItemHelp="Utenom fast tromboseprofylakse" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="47185" OrderNumber="0" OptionText="Ingen" VerboseText="Ingen (ekstra) tromboseprofylakse." ShortCode="N"/>
+          <Answer AnswerId="47186" OrderNumber="1" OptionText="Ett*" ShortCode="1"/>
+          <Answer AnswerId="47187" OrderNumber="2" OptionText="To eller flere*" ShortCode="2+"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8250" ItemType="2" VarName="HrTrombProfylakse" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23800" OrderNumber="42" ItemText="Tromboseprofylakse" ItemHelp="" Expression="ISPOS(ctrHrAtPrepCount)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+          <Answer AnswerId="44081" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="44082" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8301" PageNumber="28" PageTitle="Antitrombose første dose*">
+      <Item ItemId="8288" ItemType="2" VarName="VAR8288" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23813" OrderNumber="43" ItemText="Første dose" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="44371" OrderNumber="1" OptionText="Preoperativt" ShortCode="Pre"/>
+          <Answer AnswerId="44372" OrderNumber="2" OptionText="Postoperativt" ShortCode="Pos"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8302" PageNumber="29" PageTitle="Antitrombose 1*">
+      <Item ItemId="8251" ItemType="2" VarName="HrTrombo1" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23801" OrderNumber="44" ItemText="Medikament 1" ItemHelp="Lokal liste utarbeides av Helge" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="47247" OrderNumber="1" OptionText="Dalteparin (Fragmin)" VerboseText="Fragmin"/>
+          <Answer AnswerId="47248" OrderNumber="2" OptionText="Enoksaparin (Klexane)" VerboseText="Klexane"/>
+          <Answer AnswerId="47251" OrderNumber="99" OptionText="Annet*"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8303" PageNumber="30" PageTitle="">
+      <Item ItemId="8252" ItemType="4" VarName="VAR8252" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="23802" OrderNumber="45" ItemText="Dosering operasjonsdag" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8253" ItemType="4" VarName="VAR8253" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="23803" OrderNumber="46" ItemText="Dosering videre" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8635" ItemType="1" VarName="VAR8635" LoincScale="QN" UnitStr="døgn" DisplayFormat="">
+        <FormItem FormItemId="23831" OrderNumber="47" ItemText="Varighet (døgn)" ItemHelp="" MinExpression="1" MaxExpression="60" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8304" PageNumber="31" PageTitle="Antitrombose 2*">
+      <Item ItemId="8254" ItemType="2" VarName="HrTrombo2" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23804" OrderNumber="48" ItemText="Medikament 2" ItemHelp="Lokal liste utarbeides av Helge" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="47252" OrderNumber="1" OptionText="Dalteparin (Fragmin)" VerboseText="Fragmin"/>
+          <Answer AnswerId="47253" OrderNumber="2" OptionText="Enoksaparin (Klexane)" VerboseText="Klexane"/>
+          <Answer AnswerId="47254" OrderNumber="99" OptionText="Annet*"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8255" ItemType="4" VarName="VAR8255" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="23805" OrderNumber="49" ItemText="Dosering operasjonsdag" ItemHelp="Variablen er ikke med på registerskjemaet." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8256" ItemType="4" VarName="VAR8256" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="23806" OrderNumber="50" ItemText="Dosering videre" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8636" ItemType="1" VarName="VAR8636" LoincScale="QN" UnitStr="døgn" DisplayFormat="">
+        <FormItem FormItemId="23832" OrderNumber="51" ItemText="Varighet (døgn)" ItemHelp="" MinExpression="1" MaxExpression="60" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8305" PageNumber="32" PageTitle="Til registeret" PageIntroduction="Dette er data som skal til registeret, tas ikke med i notatet.">
+      <Item ItemId="8261" ItemType="2" VarName="HrOprErfaring" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23811" OrderNumber="52" ItemHeader="Erfaring" ItemText="Har en av operatørene mer enn 3 års erfaring i hoftebruddkirurgi" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="44087" OrderNumber="0" OptionText="Nei" VerboseText="Operatørerfaring under 3 år" ShortCode="N"/>
+          <Answer AnswerId="44088" OrderNumber="1" OptionText="Ja" VerboseText="Operatørerfaring mer enn 3 år" ShortCode="J"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8232" ItemType="2" VarName="HrPatologiskBrudd" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23792" OrderNumber="53" ItemText="Patologisk brudd" ItemHelp="Annen patologi enn osteoporose." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="44065" OrderNumber="0" OptionText="Nei" VerboseText="Ikke patologisk brudd." ShortCode="N"/>
+          <Answer AnswerId="44066" OrderNumber="1" OptionText="Ja" VerboseText="Patologisk brudd." ShortCode="J"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8306" PageNumber="33" PageTitle="Type patologisk brudd*">
+      <Item ItemId="8233" ItemType="4" VarName="VAR8233" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="23793" OrderNumber="54" ItemText="Type" ItemHelp="Type patologisk brudd" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8307" PageNumber="34" PageTitle="Avledete variable*">
+      <Item ItemId="8192" ItemType="2" VarName="HrAktuellOpr" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23783" OrderNumber="55" ItemText="Aktuell operasjon" ItemHelp="" Expression="1" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="1">
+          <Answer AnswerId="43878" OrderNumber="1" OptionText="Primæroperasjon." ShortCode="Pri"/>
+          <Answer AnswerId="43879" OrderNumber="2" OptionText="Reoperasjon." ShortCode="Reo"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8477" ItemType="2" VarName="DistalSperring" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23822" OrderNumber="56" ItemText="Distal sperring utført" ItemHelp="" Expression="ISPOS(ISNULL(DistalSperringType-1)+ISNULL(DistalSperringType-2))" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+          <Answer AnswerId="46809" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="46810" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8204" ItemType="2" VarName="HrPriOprType" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="23791" OrderNumber="57" ItemText="Type primæroperasjon" ItemHelp="Skriv ut og fest klistrelapp på baksiden av skjema." Expression="GammaKortLang + DistalSperring" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+          <Answer AnswerId="43918" OrderNumber="1" OptionText="To skruer eller pinner."/>
+          <Answer AnswerId="43919" OrderNumber="2" OptionText="Tre skruer eller pinner."/>
+          <Answer AnswerId="43920" OrderNumber="3" OptionText="Bipolar hemiprotese." ShortCode="BiP"/>
+          <Answer AnswerId="43921" OrderNumber="4" OptionText="Unipolar hemiprotese." ShortCode="UniP"/>
+          <Answer AnswerId="43922" OrderNumber="5" OptionText="Glideskrue og plate."/>
+          <Answer AnswerId="43923" OrderNumber="6" OptionText="Glideskrue og plate med trochantær støtteplate."/>
+          <Answer AnswerId="43924" OrderNumber="7" OptionText="Vinkelplate."/>
+          <Answer AnswerId="43925" OrderNumber="8" OptionText="Kort margnagle uten distal sperre."/>
+          <Answer AnswerId="43926" OrderNumber="9" OptionText="Kort margnagle med distal sperre."/>
+          <Answer AnswerId="43927" OrderNumber="10" OptionText="Lang margnagle uten distal sperre."/>
+          <Answer AnswerId="43928" OrderNumber="11" OptionText="Lang margnagle med distal sperre."/>
+          <Answer AnswerId="43929" OrderNumber="12" OptionText="Annet, spesifiser*"/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="8290">
+      <Activate EnumVal="1" PageConditionId="6133" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6134" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="1675">
+      <Activate EnumVal="2" PageConditionId="6146" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6145" PageNumber="15" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="8258">
+      <Activate EnumVal="1" PageConditionId="6135" PageNumber="19" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="8237">
+      <Activate EnumVal="1" PageConditionId="6130" PageNumber="23" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="8250">
+      <Activate EnumVal="1" PageConditionId="6142" PageNumber="28" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="8499">
+      <Activate EnumVal="1" PageConditionId="6139" PageNumber="29" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="6140" PageNumber="29" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6137" PageNumber="30" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="6138" PageNumber="30" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="6136" PageNumber="31" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="8232">
+      <Activate EnumVal="1" PageConditionId="6131" PageNumber="33" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>
