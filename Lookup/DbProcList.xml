@@ -697,12 +697,11 @@ BEGIN
   ORDER BY tl.LabDate
 END]]>
 	</row>
-	<row ProcId="134" StudyName="GBD" ProcName="GetCaseListLastMMSE" ProcDesc="Prosess: Siste MMS" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1990049540" LastUpdate="2013-01-22T12:27:10.913Z">
-		<![CDATA[CREATE PROCEDURE dbo.GetCaseListLastMMSE( @StudyId INT ) AS
+	<row ProcId="134" StudyName="GBD" ProcName="GBD.GetCaseListLastMMSE" ProcDesc="Prosess: Siste MMSE-NR3" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1815953492" LastUpdate="2017-10-20T01:51:05.097Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListLastMMSE( @StudyId INT ) AS
 BEGIN
-  EXEC GetCaseListLastForm @StudyId, 'MMSE_INPATIENT'
-END
-]]>
+  EXEC dbo.GetCaseListLastForm @StudyId, 'MMSE_NR3'
+END]]>
 	</row>
 	<row ProcId="136" StudyName="GBD" ProcName="GetCaseListC07" ProcDesc="Medikamentbruk: Betablokker (C07)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1257872290" LastUpdate="2013-01-22T12:27:10.913Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListC07( @StudyId INT ) AS
@@ -754,10 +753,10 @@ BEGIN
   WHERE tv.StopDate >= getdate();
 END]]>
 	</row>
-	<row ProcId="142" StudyName="GBD" ProcName="GBD.GetCaseListNoMMSLastYear" ProcDesc="Prosess: Ikke MMS siste år" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="2145126993" LastUpdate="2013-01-22T12:27:10.913Z">
-		<![CDATA[CREATE PROCEDURE GBD.GetCaseListNoMMSLastYear( @StudyId INT ) AS
+	<row ProcId="142" StudyName="GBD" ProcName="GBD.GetCaseListNoMMSELastYear" ProcDesc="Prosess: Ikke MMSE-NR3 siste år" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1680558064" LastUpdate="2017-10-20T01:51:42.513Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListNoMMSELastYear( @StudyId INT ) AS
 BEGIN
-  EXEC GetCaseListLastForm @StudyId,'MMSE_INPATIENT',365
+  EXEC GetCaseListLastForm @StudyId, 'MMSE_NR3',365
 END]]>
 	</row>
 	<row ProcId="143" StudyName="GBD.OLD" ProcName="GBD.GetCaseListNoBergerSixMonths" ProcDesc="Prosess: Ikke Berger siste 6 mnd" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="804982351" LastUpdate="2016-03-19T08:41:51.410Z">
