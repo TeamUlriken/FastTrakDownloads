@@ -1,0 +1,518 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>LIPID oversiktsbilde</title>
+
+  <!-- JQuery -->
+  <script type="text/javascript" src="[ExePath]HighCharts/js/jquery.min.js"></script>
+
+  <!-- HighCharts -->
+  <script type="text/javascript" src="[ExePath]HighCharts/js/highcharts.js"></script>
+
+  <!-- Styling -->
+  <script type="text/javascript">
+    Highcharts.theme = {
+      chart: {
+        backgroundColor: {
+          linearGradient: [0, 0, 500, 500],
+          stops: [
+            [0, 'rgb(255, 255, 255)'],
+            [1, 'rgb(220, 220, 220)']
+          ]
+        },
+        borderWidth: 0,
+        borderRadius: 0,
+        borderColor: '#000',
+        plotBackgroundColor: 'rgba(255, 255, 255, .9)',
+        plotShadow: false,
+        marginBottom: 44,
+        zoomType: 'x',
+        plotBorderWidth: 1
+      },
+      tooltip: {
+        borderRadius: 0,
+        borderWidth: 1
+      },
+      title: {
+        marginTop: -2,
+        style: {
+          color: '#000',
+          font: '8pt Tahoma, sans-serif'
+        }
+      },
+      subtitle: {
+        style: {
+          color: '#666666',
+          font: '7pt Tahoma, sans-serif'
+        }
+      },
+      xAxis: {
+        gridLineWidth: 1,
+        lineWidth: 2,
+        lineColor: '#000',
+        tickColor: '#000',
+        labels: {
+          style: {
+            color: '#000',
+            font: '8pt Tahoma, sans-serif'
+          }
+        },
+        title: {
+          style: {
+            color: '#000',
+            fontSize: '8pt',
+            fontFamily: 'Tahoma, sans-serif'
+
+          }
+        }
+      },
+      yAxis: {
+        minorTickInterval: 'auto',
+        lineColor: '#000',
+        lineWidth: 2,
+        tickWidth: 1,
+        tickLength: 4,
+        tickColor: '#000',
+        labels: {
+          rotation: 0,
+          style: {
+            color: '#000',
+            font: '8pt Tahoma, sans-serif'
+          }
+        },
+        title: {
+          style: {
+            color: '#000',
+            backgroundColor: '#ffffe0',
+            border: '1px solid silver',
+            padding: '2pt',
+            font: '8pt Tahoma, sans-serif'
+          }
+        }
+      },
+      legend: {
+        borderWidth: 0,
+        itemStyle: {
+          font: '8pt Tahoma, sans-serif',
+          color: 'black'
+
+        },
+        itemHoverStyle: {
+          color: '#000'
+        },
+        itemHiddenStyle: {
+          color: 'gray'
+        }
+      },
+      labels: {
+        style: {
+          color: '#99b'
+        }
+      }
+    };
+
+    // Apply the theme
+    var highchartsOptions = Highcharts.setOptions(Highcharts.theme);
+
+  </script>
+
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+
+     Highcharts.setOptions({
+      lang: {
+		months: ['Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni', 
+			'Juli', 'August', 'September', 'Oktober', 'November', 'Desember'],
+                shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 
+			'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
+		weekdays: ['Sï¿½ndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lï¿½rdag'],
+                resetZoomTitle: 'Tilbakestill til 1:1',
+                resetZoom: 'Vis alt'
+	}
+      });
+
+    var chartWeight = new Highcharts.Chart({
+          credits: { text: '' },
+          chart: { renderTo: 'Vekt' },
+          title: { text: '' },
+          xAxis: { type: 'datetime' },
+          yAxis: { tickInterval: 20, x: 8, title: { text: 'mmHg og kg'} }, tooltip: { formatter: function() { return '<b>'+ this.series.name + '</b><br/>'+ Highcharts.dateFormat('%e. %b %Y', this.x) +': '+ this.y; } },
+          series: 
+          [ 
+            { name: 'Systolisk BT', color: '#E53303', timeSeries: {varName: 'ClinData.SYSBP'} },
+            { name: 'Diastolisk BT', color: '#02A769', timeSeries: {varName: 'ClinData.DIABP'} },
+            { name: 'Vekt', color: '#022F9C', timeSeries: {varName: 'ClinData.WEIGHT'} }
+          ]
+        }
+      );
+
+    var chartLipidstatus = new Highcharts.Chart
+      ({
+          credits: { text: '' },
+          chart: { renderTo: 'Lipidstatus' },
+          title: { text: '' },
+          xAxis: { type: 'datetime' },
+          yAxis: { title: { text: ' mmol/L '} }, tooltip: { formatter: function() { return '<b>'+ this.series.name + '</b><br/>'+ Highcharts.dateFormat('%e. %b %Y', this.x) +': '+ this.y; } },
+          series: 
+          [ 
+            { name: 'Kolesterol', color: '#E59E03', timeSeries: { varName: 'LabData.CHOL'} },
+            { name: 'LDL', color: '#E53303', timeSeries: { varName: 'LabData.LDL'} },
+            { name: 'HDL', color: '#A9CA03', timeSeries: { varName: 'LabData.HDL'} },
+            { name: 'Triglyserider', color: '#A402A0', timeSeries: { varName: 'LabData.TG' } }
+          ]
+        }
+      );
+
+    });
+				
+
+  </script>
+
+<!-- Inline style to keep together with file (copy is created in temp folder during use) -->
+  <style type="text/css">
+
+    body { margin: 0px; padding: 0px; }
+    .A4Page { font-family: 'Segoe UI', Verdana, Arial; background-color: white; }
+
+    @page{ margin: 1cm; }
+    @media print { .A4Page{ padding: 0px; margin: 0px; } }
+    @media screen{ .A4Page{ padding: 1cm; margin: 8px; max-width: 850px; border: 1px solid black; } }
+    @media screen { body{ background-color: <#ColorScheme.Light>; } }
+
+    h1 { font-size: 20px; margin: 0px; margin-bottom: 2px; margin-top: 2px; color: <#ColorScheme.Dark>; }
+    h2 { font-size: 12px; color: <#ColorScheme.Dark>; background-color: <#ColorScheme.Light>; font-weight: bold; border-top: 1px solid <#ColorScheme.Dark>; margin: 0px; margin-bottom: 1px; padding: 4px; }
+    tr { vertical-align: top; }
+    th { text-align: left; font-size: 12px; color: #43454A; background-color: #EAEAEC; font-weight: bold; border-bottom: 1px solid #43454A; margin: 0px; margin-bottom: 1px; padding: 6px; }
+
+    td { font-size: 12px; padding: 0px; }
+
+    td.caption,
+    td.value,
+    td.date {
+      padding: 2px 4px;
+      border-bottom: 1px solid <#ColorScheme.Light>;
+    }
+
+    td.caption {
+      width: 30%;
+      color: #4e707b;     
+    }
+
+    td.value {
+      color: black;
+      width: 50%;
+    }
+
+    td.date {
+      color: #7494a3;
+      width: 20%;
+    }
+
+    table{ vertical-align: top; text-align: left; margin: 0px; padding: 0px; }
+    .headercell{ padding: 0px 0px 2px 0px; border-bottom: 1px solid black; }
+    .plan{ font-size: 11pt; }
+    .spacer{ padding: 2px; margin: 2px; }
+
+    .chartcell,.rowset{ padding: 0px;  }
+    .date,.number{ color: <#ColorScheme.Code>; text-align: right; font-size: 11px; }
+    .dosecode{ font-size: 11px; text-align: right; color: maroon; vertical-align: bottom; }
+    .druglist,.drugname,.dosecode{ font-size: 90%; padding: 0px; }
+    .drugname{ font-weight: bold; }
+    .error { background-color: mistyrose; color: red; border: 1px solid maroon; }
+    .fieldleft, .fieldright{ font-style: italic; }
+    .fieldright { text-align: right; }
+    .formHeader, .subheader { background-color: <#ColorScheme.VeryLight>; border-bottom: 1px solid black; padding: 4px 0px; font-weight: bold; }
+    .formTable { margin: 0px; padding: 0px; }
+    .formPage{ font-weight: bold; display: inline; }
+    .insulin{ border: 1px solid white; padding: 0px; background-color: snow; }
+    .info,.fieldnames{ background-color: lightyellow; }
+    .left { text-align: left; }
+    .pagefooter{ padding-right: 6px; border-top: 1px solid black; vertical-align: top; text-align: right; }
+    .params{ background-color: white; padding: 2px; }
+    .patientname{ font-size: 16px; font-weight: bold;}
+    .reportname{ font-size: 14px; font-weight: bold; text-align: right; vertical-align: bottom; }
+    .startreason{ font-style: italic; }
+    .tiny,.tinyr,.tinyl{ font-size: 10px; color: slategray; }
+    .tiny{ vertical-align: bottom; }
+    .tinyl{ text-align: left; }
+    .tinyr{ text-align: right }
+    .value{ color: blue; font-size: 9pt;}
+    .unassigned,
+    .empty{ color: #e81e25; }
+    .bocaption{ width: 140px; font-weight: bold; float: left; padding-left: 2px; padding-right: 8px; }
+
+    /* CSS for problem list */
+
+    .ProbCode{ font-weight: bold; color: <#ColorScheme.Code>; border-bottom: 1px solid black; padding: 1px; }
+    .ProbName{ padding-left: 4px; font-weight: bold; }
+    .ProbDebut{ color: maroon; padding-left: 4px; }
+    .ProbSummary{ color: gray; padding-left: 4px; font-style: italic; }
+  </style>
+</head>
+
+<body>
+  <div class="A4Page">
+
+    <table summary="Oversiktsbilde" width="100%">
+
+      <!-- Navn og overskrift -->
+      <tr>
+        <td class="headercell" colspan="2">
+          <table width="100%" cellpadding="0" cellspacing="0">
+            <tr valign="bottom">
+              <td class="patientname"><#Patient.VisualId></td>
+              <td class="reportname">Statusrapport <#Time.DateString></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+
+      <!-- Komplikasjoner og behandling -->
+    <tr valign="top">
+
+      <!-- Venstre side -->
+      <td class="chartcell" width="50%">
+
+        <h2>Historikk</h2>
+
+        <table summary="parameters" class="params" width="100%">
+          <tr>
+            <td class="caption">Diagnose</td>
+            <td class="value"><#Item.1158.OptionText Unassigned="(mangler)"></td>
+            <td class="date"><#Item.1158.Event.DateStr></td>
+          </tr>
+
+          <tr>
+            <td class="caption">Alder ved diagnose</td>
+            <td class="value"><#Item.2068.Text Unassigned="(mangler)"></td>
+            <td class="date"><#Item.2068.Event.DateStr Unassigned="&nbsp;"></td>
+          </tr>
+
+          <tr>
+            <td class="caption">Gentest</td>           
+            <td class="value"><#Item.1193.OptionText Unassigned="(ukjent)"></td>
+            <td class="date"><#Item.1193.Event.DateStr Unassigned="&nbsp;"></td>
+          </tr>
+
+          <tr>
+            <td class="caption">Mutasjon</td>           
+            <td class="value"><#Item.1159.AsString Unassigned="(ukjent)"></td>
+            <td class="date"><#Item.1159.Event.DateStr Unassigned="&nbsp;"></td>
+          </tr>
+
+          <tr>
+            <td class="caption">Mutasjon II</td>           
+            <td class="value"><#Item.1365.AsString Unassigned="(ukjent)"></td>
+            <td class="date"><#Item.1365.Event.DateStr Unassigned="&nbsp;"></td>
+          </tr>
+  
+          <tr>
+            <td class="caption">Genetisk veil</td>           
+            <td class="value"><#Item.1531.OptionText Unassigned="(ukjent)"></td>
+            <td class="date"><#Item.1531.Event.DateStr Unassigned="&nbsp;"></td>
+          </tr>
+
+          <tr>
+            <td class="caption">Bivirkninger</td>           
+            <td class="value"><#Item.2076.OptionText Unassigned="(ukjent)"></td>
+            <td class="date"><#Item.2076.Event.DateStr></td>
+          </tr>
+
+          <tr>
+            <td class="caption">Koronarsykdom</td>           
+            <td class="value"><#Item.3397.OptionText Unassigned="(ukjent)"></td>
+            <td class="date"><#Item.3397.Event.DateStr></td>
+          </tr>
+
+          <tr>
+            <td class="caption">Annen koronarsykdom</td>           
+            <td class="value"><#Item.2075.OptionText Unassigned="(ukjent)"></td>
+            <td class="date"><#Item.2075.Event.DateStr></td>
+          </tr>
+  
+          <tr>
+            <td class="caption">Behandlingsmål</td>           
+            <td class="value"><#Item.4083.Text Unassigned="(ukjent)"></td>
+            <td class="date"><#Item.4083.Event.DateStr></td>
+          </tr>
+          </table>
+
+        <h2>Livsstil</h2>
+
+        <table summary="parameters" class="params" width="100%" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="caption">Røyk</td>
+            <td class="value"><#Item.3227.OptionText Unassigned="(mangler)"></td>
+            <td class="date"><#Item.3227.Event.DateStr Unassigned="&nbsp;"></td>
+          </tr>
+
+          <tr>
+            <td class="caption">Snus</td>
+            <td class="value"><#Item.1399.OptionText Unassigned="(mangler)"></td>
+            <td class="date"><#Item.1399.Event.DateStr Unassigned="&nbsp;"></td>
+          </tr>
+
+          <tr>
+            <td class="caption">SmartDiet score</td>
+            <td class="value"><#Item.1529.Text Unassigned="(mangler)"> &#47; <#Item.1457.Text></td>
+            <td class="date"><#Item.1529.Event.DateStr Unassigned="&nbsp;"></td>
+          </tr>
+
+          <tr>
+            <td class="caption">Mosjon</td>
+            <td class="value"><#Item.1959.Text Unassigned="(mangler)"></td>
+            <td class="date"><#Item.1959.Event.DateStr></td>
+          </tr>
+        </table> <!-- Livstil -->
+
+        <h2>Socialt</h2>
+
+        <table summary="parameters" class="params" width="100%" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="caption">Barn</td>
+            <td class="value"><#Item.1321.VerboseText>
+              <#Item.1208.Text> <#Item.1627.OptionText> <#Item.1748.Text Unassigned="">
+              <#Item.1298.Text> <#Item.1723.OptionText> <#Item.1750.Text Unassigned="">
+              <#Item.1318.Text> <#Item.1724.OptionText> <#Item.1751.Text Unassigned="">
+              <#Item.1320.Text> <#Item.1725.OptionText> <#Item.1752.Text Unassigned="">
+            </td>
+            <td class="date"><#Item.1321.Event.DateStr></td>
+          </tr>
+
+          <tr>
+            <td class="caption">Samlivsstatus</td>
+            <td class="value"><#Item.6682.OptionText Unassigned="(mangler)"></td>
+            <td class="date"><#Item.6682.Event.DateStr></td>
+          </tr>
+
+          <tr>
+            <td class="caption">Yrke</td>
+            <td class="value"><#Item.3983.AsString Unassigned="(mangler)"></td>
+            <td class="date"><#Item.3983.Event.DateStr></td>
+          </tr>
+        </table>
+      </td>
+
+      <!-- Høyre side -->
+      <td class="chartcell">
+		
+          <h2>Risikofaktorer</h2>
+          <table summary="Complications" class="params" width="100%" cellspacing="0" cellpadding="0">
+            <tr>
+              <td class="caption">Alder ved behandlingsoppstart</td>
+              <td class="value"><#Item.2069.Text Unassigned="(mangler)"></td>
+              <td class="date"><#Item.2069.Event.DateStr Unassigned="&nbsp;"></td>
+            </tr>
+          
+            <tr>
+              <td class="caption">Lipidstigmata</td>
+              <td class="value"><#Item.1628.Text Unassigned="(mangler)"></td>
+              <td class="date"><#Item.1628.Event.DateStr Unassigned="&nbsp;"></td>
+            </tr>
+          
+            <tr>
+              <td class="caption">Tidlig hjertesykdom i nær familie</td>
+              <td class="value"><#Item.1757.OptionText Unassigned="(mangler)"></td>
+              <td class="date"><#Item.1757.Event.DateStr Unassigned="&nbsp;"></td>
+            </tr>
+          
+            <tr>
+              <td class="caption">Lp(a) mg/L</td>
+              <td class="value"><#LabData.S_IGE_PEANUT></td>
+              <td class="date"></td>
+            </tr>
+
+            <tr>
+              <td class="caption">Lp(a) mmol/L</td>
+              <td class="value"></td>
+              <td class="date"></td>
+            </tr>
+          </table>
+          <!-- Risikofaktorer -->
+
+          <h2>Diagnoser</h2>
+          <table>
+              <#Problems.Current Output="HTML" UseCSS>
+          </table>
+
+          <h2>Medikamentell behandling</h2>
+          <table width="100%" class="drugtable" summary="Drugs">
+            <tr>
+              <td class="subheader">Legemidler i bruk</td>
+              <td class="subheader tinyl">Indikasjon</td>
+              <td class="subheader tinyr">Dose</td>
+            </tr>
+            <#DrugList.HtmlRowset>
+            <!-- <#SUMMARY.* TextFormat="HTML" ClearSkiplist>
+            <tr>
+              <td colspan="3"><br><#SUMMARY.DIAPOL_INSULIN|INSULIN_PUMP1 MaxAge=365 Unassigned="(ingen insulindoseringsskjema siste 365 dager)"></td>
+            </tr> -->
+          </table>
+        </td>
+            
+        </td>
+      </tr>
+
+      <!-- put headers in separate row to align -->
+
+ 
+      <!-- Lipider og vekt -->
+
+      <tr>
+        <td class="chartcell">
+          <h2>Lipidstatus</h2>
+
+          <!-- Start: Grafikk Lipidstatus -->
+  
+          <div id="Lipidstatus" style="width: 100%; height: 270px; margin: 0;"></div>
+  
+          <!-- Slutt: Grafikk Lipidstatus -->
+  
+          <!-- Mål LDL-kolesterol: <b>[ITEM.GOAL_LDL.DATA]</b> mmol/l (lipidsenkende: [ITEM.ATC_C10A.LIST]) -->
+          <table width="100%" summary="Lipids">
+            <tr class="info">
+              <td class="caption">Mål LDL-kol:</td>
+              <td><b><#Item.ActualLDLGoal.Text Unassigned="(mål er ikke angitt)">&nbsp;</b></td>
+              <td><#Item.LDL_GOAL_REACHED.OptionText Unassigned="n/a" Template="Status: ï¿½s">&nbsp;</td>
+              <td class="date"><#Item.ActualLDLGoal.Event.DateStr>&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+  
+        <td class="chartcell">
+          <h2>Vekt og blodtrykk</h2>
+          <div id="Vekt" style="width: 100%; height: 270px; margin: 0;"></div>
+        </td>
+      </tr>
+  
+  <!-- Avtaler og neste kontroll -->
+
+      <tr>
+        <td colspan="2">
+          <h2>Plan videre</h2>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="plan">
+          <span class="bocaption">Vurdering/avtaler: </span>
+          <#Item.4088.Text Unassigned="(ingen avtaler)">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="plan">
+          <span class="bocaption">Neste kontroll: </span>
+          <#Item.1189.VerboseText Unassigned="(ikke registrert)">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="pagefooter">&copy; 2017 DIPS AS</td>
+      </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>
