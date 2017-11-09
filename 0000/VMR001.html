@@ -62,6 +62,12 @@ a:hover { color: red; text-decoration: underline; }
 .MsgDescr{ color: blue; }
 .MsgId{ color: green; }
 
+/* Print header/footer related */
+.pageheader{ border-bottom: 2px solid black; }
+.pagefooter{ border-top: 1px solid black; }
+.patientname{ font-size: 13pt; font-weight: bold; }
+.centername{ font-size: 11pt; font-weight: bold; float: right; }
+.printinfo{ font-size: 8pt; }
 @media screen {
 	.noscreen{ display: none;}
 }
@@ -69,10 +75,9 @@ a:hover { color: red; text-decoration: underline; }
 </style>
 </head>
 <body>
-<table>
-<tfoot class="noscreen"><tr><td colspan="3">
-Utskrift: <#User.FullName> / <#Time.DateTimeString>
-</td></tr></tfoot>
+<table width="100%">
+<thead class="noscreen" ><tr><td colspan="3" class="pageheader"><span class="patientname"><#Patient.VisualId></span><span class="centername"><#User.CenterName></span></td></tr></thead>
+<tfoot class="noscreen"><tr><td colspan="3" class="pagefooter"><span class="printinfo">Tatt ut av: <#User.FullName> <#Time.DateTimeString></span></td></tr></tfoot>
 <tbody>
 <#VmrViewer.FilteredVmr>
 </tbody>
