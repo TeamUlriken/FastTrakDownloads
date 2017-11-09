@@ -166,19 +166,18 @@
 
     });
 				
-
   </script>
 
-<!-- Inline style to keep together with file (copy is created in temp folder during use) -->
+  <!-- Inline style to keep together with file (copy is created in temp folder during use) -->
   <style type="text/css">
 
     body { margin: 0px; padding: 0px; }
     .A4Page { font-family: 'Segoe UI', Verdana, Arial; background-color: white; }
 
     @page{ margin: 1cm; }
-    @media print { .A4Page{ padding: 0px; margin: 0px; } }
-    @media screen{ .A4Page{ padding: 1cm; margin: 8px; max-width: 850px; border: 1px solid black; } }
-    @media screen { body{ background-color: <#ColorScheme.Light>; } }
+    @media print { .A4Page { padding: 0px; margin: 0px; } }
+    @media screen{ .A4Page { padding: 1cm; margin: 8px; max-width: 850px; border: 1px solid black; } }
+    @media screen { body { background-color: <#ColorScheme.Light>; } }
 
     h1 { font-size: 20px; margin: 0px; margin-bottom: 2px; margin-top: 2px; color: <#ColorScheme.Dark>; }
     h2 { font-size: 12px; color: <#ColorScheme.Dark>; background-color: <#ColorScheme.Light>; font-weight: bold; border-top: 1px solid <#ColorScheme.Dark>; margin: 0px; margin-bottom: 1px; padding: 4px; }
@@ -210,7 +209,7 @@
     }
 
     table{ vertical-align: top; text-align: left; margin: 0px; padding: 0px; }
-    .headercell{ padding: 0px 0px 2px 0px; border-bottom: 1px solid black; }
+    .headercell { padding: 0px 0px 2px 0px; border-bottom: 1px solid black; }
     .plan{ font-size: 11pt; }
     .spacer{ padding: 2px; margin: 2px; }
 
@@ -244,10 +243,10 @@
 
     /* CSS for problem list */
 
-    .ProbCode{ font-weight: bold; color: <#ColorScheme.Code>; border-bottom: 1px solid black; padding: 1px; }
-    .ProbName{ padding-left: 4px; font-weight: bold; }
-    .ProbDebut{ color: maroon; padding-left: 4px; }
-    .ProbSummary{ color: gray; padding-left: 4px; font-style: italic; }
+    .ProbCode { font-weight: bold; color: <#ColorScheme.Code>; border-bottom: 1px solid black; padding: 1px; }
+    .ProbName { padding-left: 4px; font-weight: bold; }
+    .ProbDebut { color: maroon; padding-left: 4px; }
+    .ProbSummary { color: gray; padding-left: 4px; font-style: italic; }
   </style>
 </head>
 
@@ -256,7 +255,7 @@
 
     <table summary="Oversiktsbilde" width="100%">
 
-      <!-- Navn og overskrift -->
+      <!-- Header -->
       <tr>
         <td class="headercell" colspan="2">
           <table width="100%" cellpadding="0" cellspacing="0">
@@ -268,135 +267,133 @@
         </td>
       </tr>
 
+      <tr valign="top">
 
-      <!-- Komplikasjoner og behandling -->
-    <tr valign="top">
+        <!-- Venstre side -->
+        <td class="chartcell" width="50%">
 
-      <!-- Venstre side -->
-      <td class="chartcell" width="50%">
+          <h2>Historikk</h2>
 
-        <h2>Historikk</h2>
+          <table summary="parameters" class="params" width="100%">
+            <tr>
+              <td class="caption">Diagnose</td>
+              <td class="value"><#Item.1158.OptionText Unassigned="(mangler)"></td>
+              <td class="date"><#Item.1158.Event.DateStr></td>
+            </tr>
 
-        <table summary="parameters" class="params" width="100%">
-          <tr>
-            <td class="caption">Diagnose</td>
-            <td class="value"><#Item.1158.OptionText Unassigned="(mangler)"></td>
-            <td class="date"><#Item.1158.Event.DateStr></td>
-          </tr>
+            <tr>
+              <td class="caption">Alder ved diagnose</td>
+              <td class="value"><#Item.2068.Text Unassigned="(mangler)"></td>
+              <td class="date"><#Item.2068.Event.DateStr Unassigned="&nbsp;"></td>
+            </tr>
 
-          <tr>
-            <td class="caption">Alder ved diagnose</td>
-            <td class="value"><#Item.2068.Text Unassigned="(mangler)"></td>
-            <td class="date"><#Item.2068.Event.DateStr Unassigned="&nbsp;"></td>
-          </tr>
+            <tr>
+              <td class="caption">Gentest</td>           
+              <td class="value"><#Item.1193.OptionText Unassigned="(ukjent)"></td>
+              <td class="date"><#Item.1193.Event.DateStr Unassigned="&nbsp;"></td>
+            </tr>
 
-          <tr>
-            <td class="caption">Gentest</td>           
-            <td class="value"><#Item.1193.OptionText Unassigned="(ukjent)"></td>
-            <td class="date"><#Item.1193.Event.DateStr Unassigned="&nbsp;"></td>
-          </tr>
+            <tr>
+              <td class="caption">Mutasjon</td>           
+              <td class="value"><#Item.1159.AsString Unassigned="(ukjent)"></td>
+              <td class="date"><#Item.1159.Event.DateStr Unassigned="&nbsp;"></td>
+            </tr>
 
-          <tr>
-            <td class="caption">Mutasjon</td>           
-            <td class="value"><#Item.1159.AsString Unassigned="(ukjent)"></td>
-            <td class="date"><#Item.1159.Event.DateStr Unassigned="&nbsp;"></td>
-          </tr>
+            <tr>
+              <td class="caption">Mutasjon II</td>           
+              <td class="value"><#Item.1365.AsString Unassigned="(ukjent)"></td>
+              <td class="date"><#Item.1365.Event.DateStr Unassigned="&nbsp;"></td>
+            </tr>
+    
+            <tr>
+              <td class="caption">Genetisk veil</td>           
+              <td class="value"><#Item.1531.OptionText Unassigned="(ukjent)"></td>
+              <td class="date"><#Item.1531.Event.DateStr Unassigned="&nbsp;"></td>
+            </tr>
 
-          <tr>
-            <td class="caption">Mutasjon II</td>           
-            <td class="value"><#Item.1365.AsString Unassigned="(ukjent)"></td>
-            <td class="date"><#Item.1365.Event.DateStr Unassigned="&nbsp;"></td>
-          </tr>
-  
-          <tr>
-            <td class="caption">Genetisk veil</td>           
-            <td class="value"><#Item.1531.OptionText Unassigned="(ukjent)"></td>
-            <td class="date"><#Item.1531.Event.DateStr Unassigned="&nbsp;"></td>
-          </tr>
+            <tr>
+              <td class="caption">Bivirkninger</td>           
+              <td class="value"><#Item.2076.OptionText Unassigned="(ukjent)"></td>
+              <td class="date"><#Item.2076.Event.DateStr></td>
+            </tr>
 
-          <tr>
-            <td class="caption">Bivirkninger</td>           
-            <td class="value"><#Item.2076.OptionText Unassigned="(ukjent)"></td>
-            <td class="date"><#Item.2076.Event.DateStr></td>
-          </tr>
+            <tr>
+              <td class="caption">Koronarsykdom</td>           
+              <td class="value"><#Item.3397.OptionText Unassigned="(ukjent)"></td>
+              <td class="date"><#Item.3397.Event.DateStr></td>
+            </tr>
 
-          <tr>
-            <td class="caption">Koronarsykdom</td>           
-            <td class="value"><#Item.3397.OptionText Unassigned="(ukjent)"></td>
-            <td class="date"><#Item.3397.Event.DateStr></td>
-          </tr>
+            <tr>
+              <td class="caption">Annen koronarsykdom</td>           
+              <td class="value"><#Item.2075.OptionText Unassigned="(ukjent)"></td>
+              <td class="date"><#Item.2075.Event.DateStr></td>
+            </tr>
+    
+            <tr>
+              <td class="caption">Behandlingsmål</td>           
+              <td class="value"><#Item.4083.Text Unassigned="(ukjent)"></td>
+              <td class="date"><#Item.4083.Event.DateStr></td>
+            </tr>
+            </table>
 
-          <tr>
-            <td class="caption">Annen koronarsykdom</td>           
-            <td class="value"><#Item.2075.OptionText Unassigned="(ukjent)"></td>
-            <td class="date"><#Item.2075.Event.DateStr></td>
-          </tr>
-  
-          <tr>
-            <td class="caption">Behandlingsmål</td>           
-            <td class="value"><#Item.4083.Text Unassigned="(ukjent)"></td>
-            <td class="date"><#Item.4083.Event.DateStr></td>
-          </tr>
+          <h2>Livsstil</h2>
+
+          <table summary="parameters" class="params" width="100%" cellspacing="0" cellpadding="0">
+            <tr>
+              <td class="caption">Røyk</td>
+              <td class="value"><#Item.3227.OptionText Unassigned="(mangler)"></td>
+              <td class="date"><#Item.3227.Event.DateStr Unassigned="&nbsp;"></td>
+            </tr>
+
+            <tr>
+              <td class="caption">Snus</td>
+              <td class="value"><#Item.1399.OptionText Unassigned="(mangler)"></td>
+              <td class="date"><#Item.1399.Event.DateStr Unassigned="&nbsp;"></td>
+            </tr>
+
+            <tr>
+              <td class="caption">SmartDiet score</td>
+              <td class="value"><#Item.1529.Text Unassigned="(mangler)"> &#47; <#Item.1457.Text></td>
+              <td class="date"><#Item.1529.Event.DateStr Unassigned="&nbsp;"></td>
+            </tr>
+
+            <tr>
+              <td class="caption">Mosjon</td>
+              <td class="value"><#Item.1959.Text Unassigned="(mangler)"></td>
+              <td class="date"><#Item.1959.Event.DateStr></td>
+            </tr>
+          </table> <!-- Livstil -->
+
+          <h2>Socialt</h2>
+
+          <table summary="parameters" class="params" width="100%" cellspacing="0" cellpadding="0">
+            <tr>
+              <td class="caption">Barn</td>
+              <td class="value"><#Item.1321.VerboseText>
+                <#Item.1208.Text> <#Item.1627.OptionText> <#Item.1748.Text Unassigned="">
+                <#Item.1298.Text> <#Item.1723.OptionText> <#Item.1750.Text Unassigned="">
+                <#Item.1318.Text> <#Item.1724.OptionText> <#Item.1751.Text Unassigned="">
+                <#Item.1320.Text> <#Item.1725.OptionText> <#Item.1752.Text Unassigned="">
+              </td>
+              <td class="date"><#Item.1321.Event.DateStr></td>
+            </tr>
+
+            <tr>
+              <td class="caption">Samlivsstatus</td>
+              <td class="value"><#Item.6682.OptionText Unassigned="(mangler)"></td>
+              <td class="date"><#Item.6682.Event.DateStr></td>
+            </tr>
+
+            <tr>
+              <td class="caption">Yrke</td>
+              <td class="value"><#Item.3983.AsString Unassigned="(mangler)"></td>
+              <td class="date"><#Item.3983.Event.DateStr></td>
+            </tr>
           </table>
+        </td>
 
-        <h2>Livsstil</h2>
-
-        <table summary="parameters" class="params" width="100%" cellspacing="0" cellpadding="0">
-          <tr>
-            <td class="caption">Røyk</td>
-            <td class="value"><#Item.3227.OptionText Unassigned="(mangler)"></td>
-            <td class="date"><#Item.3227.Event.DateStr Unassigned="&nbsp;"></td>
-          </tr>
-
-          <tr>
-            <td class="caption">Snus</td>
-            <td class="value"><#Item.1399.OptionText Unassigned="(mangler)"></td>
-            <td class="date"><#Item.1399.Event.DateStr Unassigned="&nbsp;"></td>
-          </tr>
-
-          <tr>
-            <td class="caption">SmartDiet score</td>
-            <td class="value"><#Item.1529.Text Unassigned="(mangler)"> &#47; <#Item.1457.Text></td>
-            <td class="date"><#Item.1529.Event.DateStr Unassigned="&nbsp;"></td>
-          </tr>
-
-          <tr>
-            <td class="caption">Mosjon</td>
-            <td class="value"><#Item.1959.Text Unassigned="(mangler)"></td>
-            <td class="date"><#Item.1959.Event.DateStr></td>
-          </tr>
-        </table> <!-- Livstil -->
-
-        <h2>Socialt</h2>
-
-        <table summary="parameters" class="params" width="100%" cellspacing="0" cellpadding="0">
-          <tr>
-            <td class="caption">Barn</td>
-            <td class="value"><#Item.1321.VerboseText>
-              <#Item.1208.Text> <#Item.1627.OptionText> <#Item.1748.Text Unassigned="">
-              <#Item.1298.Text> <#Item.1723.OptionText> <#Item.1750.Text Unassigned="">
-              <#Item.1318.Text> <#Item.1724.OptionText> <#Item.1751.Text Unassigned="">
-              <#Item.1320.Text> <#Item.1725.OptionText> <#Item.1752.Text Unassigned="">
-            </td>
-            <td class="date"><#Item.1321.Event.DateStr></td>
-          </tr>
-
-          <tr>
-            <td class="caption">Samlivsstatus</td>
-            <td class="value"><#Item.6682.OptionText Unassigned="(mangler)"></td>
-            <td class="date"><#Item.6682.Event.DateStr></td>
-          </tr>
-
-          <tr>
-            <td class="caption">Yrke</td>
-            <td class="value"><#Item.3983.AsString Unassigned="(mangler)"></td>
-            <td class="date"><#Item.3983.Event.DateStr></td>
-          </tr>
-        </table>
-      </td>
-
-      <!-- Høyre side -->
-      <td class="chartcell">
+        <!-- Høyre side -->
+        <td class="chartcell">
 		
           <h2>Risikofaktorer</h2>
           <table summary="Complications" class="params" width="100%" cellspacing="0" cellpadding="0">
@@ -420,8 +417,7 @@
           
             <tr>
               <td class="caption">Lp(a) mg/L</td>
-              <td class="value"><#LabData.S_IGE_PEANUT></td>
-              <td class="date"></td>
+              <td class="value" colspan="2"><#LabData.S_LIP_SMALL_A unit="mg/dL"></td>
             </tr>
 
             <tr>
@@ -430,7 +426,6 @@
               <td class="date"></td>
             </tr>
           </table>
-          <!-- Risikofaktorer -->
 
           <h2>Diagnoser</h2>
           <table>
@@ -450,16 +445,10 @@
               <td colspan="3"><br><#SUMMARY.DIAPOL_INSULIN|INSULIN_PUMP1 MaxAge=365 Unassigned="(ingen insulindoseringsskjema siste 365 dager)"></td>
             </tr> -->
           </table>
-        </td>
-            
-        </td>
+        </td>           
       </tr>
 
-      <!-- put headers in separate row to align -->
-
- 
-      <!-- Lipider og vekt -->
-
+      <!-- Charts -->
       <tr>
         <td class="chartcell">
           <h2>Lipidstatus</h2>
@@ -497,7 +486,7 @@
       <tr>
         <td colspan="2" class="plan">
           <span class="bocaption">Vurdering/avtaler: </span>
-          <#Item.4088.Text Unassigned="(ingen avtaler)">
+          <#Item.4088.AsString Unassigned="(ingen avtaler)">
         </td>
       </tr>
       <tr>
@@ -511,8 +500,6 @@
       </tr>
 
     </table>
-
-</div>
-
+  </div>
 </body>
 </html>
