@@ -1045,6 +1045,30 @@ BEGIN
   EXEC dbo.GetCaseListDrug @StudyId,'B01AF%'
 END]]>
 	</row>
+	<row ProcId="166" StudyName="GBD" ProcName="GBD.GetCaseListFormVaccine" ProcDesc="Prosess: Vaksinering" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6630" ChkSum="1033044284" LastUpdate="2017-11-13T10:11:27.177Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormVaccine (@StudyId INT) AS
+BEGIN
+    SELECT lf.PersonId,
+        p.FullName,
+        p.DOB,
+        sg.GroupName,
+        CONCAT(
+        CASE
+                WHEN cdp1.ItemId IS NOT NULL AND
+                        cdp2.ItemId IS NOT NULL THEN REPLACE(cdp1.ItemId, 7051, 'Pneumokokkvaksine, ') +
+                        REPLACE(cdp2.ItemId, 7052, 'Influensavaksine. ')
+                WHEN cdp1.ItemId IS NOT NULL THEN REPLACE(cdp1.ItemId, 7051, 'Pneumokokkvaksine. ')
+                WHEN cdp2.ItemId IS NOT NULL THEN REPLACE(cdp2.ItemId, 7052, 'Influensavaksine. ')
+        END, 'Skjemadato: ' + CONVERT(VARCHAR, lf.CreatedAt, 104)) AS InfoText
+    FROM dbo.GetLastFormTableByName('GbdVaksine', GETDATE() + 1) lf
+    JOIN dbo.Person p ON p.PersonId = lf.PersonId
+    JOIN dbo.StudCase sc ON sc.PersonId = lf.PersonId
+    JOIN dbo.StudyGroup sg ON sg.GroupId = sc.GroupId AND sg.StudyId = sc.StudyId AND sg.GroupActive = 1
+    LEFT JOIN dbo.ClinDataPoint cdp1 ON cdp1.EventId = lf.EventId AND cdp1.ItemId = 7051 AND cdp1.EnumVal = 1
+    LEFT JOIN dbo.ClinDataPoint cdp2 ON cdp2.EventId = lf.EventId AND cdp2.ItemId = 7052 AND cdp2.EnumVal = 1
+    WHERE sc.StudyId = @StudyId;
+END]]>
+	</row>
 	<row ProcId="201" StudyName="NDV.BASE" ProcName="NDV.GetPumpWithHighHbA1c" ProcDesc="Utvalg av Type-1 m/pumpe basert på alder og HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="462939626" LastUpdate="2015-06-12T07:59:28.400Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpWithHighHbA1c( @StudyId INT, @AgeMin FLOAT, @AgeMax FLOAT, @HbA1cCutoff FLOAT ) AS
 BEGIN
@@ -5022,6 +5046,15 @@ BEGIN
     END
   END;
   EXEC dbo.AddAlertForDSSRule @StudyId,@PersonId,@AlertLevel,'NDVBIOBANK',@AlertFacet;    
+END]]>
+	</row>
+	<row ProcId="10025" StudyName="*" ProcName="GBD.RuleFallrisikoStratify" ProcDesc="Fallrisikovurdering" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="706954377" LastUpdate="2017-11-15T14:23:18.257Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleFallrisikoStratify (@StudyId INT, @PersonId INT) AS
+BEGIN
+  IF dbo.GetLastCompleteForm(@StudyId, @PersonId, 'STRATIFY') IS NULL
+    EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, 2, 'STRATIFY', 'DataMissing';
+  ELSE
+   EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, 0, 'STRATIFY', 'DataFound';
 END]]>
 	</row>
 </DbProcList>
