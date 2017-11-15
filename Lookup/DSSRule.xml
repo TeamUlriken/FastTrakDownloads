@@ -948,4 +948,13 @@ BEGIN
   EXEC dbo.AddAlertForDSSRule @StudyId,@PersonId,@AlertLevel,'NDVBIOBANK',@AlertFacet;    
 END]]>
 	</row>
+	<row RuleId="25" RuleClass="STRATIFY" RuleType="M" RuleProc="GBD.RuleFallrisikoStratify" Description="Fallrisikovurdering" ChkSum="706954377" LastUpdate="2017-11-15T14:23:18.257Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleFallrisikoStratify (@StudyId INT, @PersonId INT) AS
+BEGIN
+  IF dbo.GetLastCompleteForm(@StudyId, @PersonId, 'STRATIFY') IS NULL
+    EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, 2, 'STRATIFY', 'DataMissing';
+  ELSE
+   EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, 0, 'STRATIFY', 'DataFound';
+END]]>
+	</row>
 </DSSRule>
