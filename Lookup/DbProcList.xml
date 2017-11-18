@@ -398,6 +398,33 @@ BEGIN
   ORDER BY p.FullName
 END]]>
 	</row>
+	<row ProcId="61" StudyName="BASE" ProcName="PROM.GetCaseListMyPendingProms" ProcDesc="Brukerens utfylte PROM-skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6631" ChkSum="1516358664" LastUpdate="2017-11-18T09:07:01.437Z">
+		<![CDATA[CREATE PROCEDURE PROM.GetCaseListMyPendingProms( @StudyId INT ) AS
+BEGIN
+  SET LANGUAGE 'Norwegian';
+  SELECT v.*, mf.FormTitle + ', frist: ' + CONVERT(VARCHAR,fo.ExpiryDate,104) AS InfoText
+  FROM PROM.FormOrder fo
+  JOIN dbo.MetaForm mf ON mf.FormId=fo.FormId
+  JOIN dbo.ViewActiveCaseListStub v ON v.PersonId = fo.PersonId AND StudyId = @StudyId
+  WHERE fo.ClinFormId IS NULL AND fo.CreatedBy = USER_ID()
+  ORDER BY fo.CreatedAt DESC;
+END]]>
+	</row>
+	<row ProcId="62" StudyName="BASE" ProcName="PROM.GetCaseListMyCompletedProms" ProcDesc="Brukerens nedlastede PROM-skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6631" ChkSum="-703374748" LastUpdate="2017-11-18T09:07:19.917Z">
+		<![CDATA[CREATE PROCEDURE PROM.GetCaseListMyCompletedProms( @StudyId INT ) AS
+BEGIN
+  SET LANGUAGE 'Norwegian';
+  SELECT v.*, 
+    mf.FormTitle + ', ' + CONVERT(VARCHAR,cf.FormComplete) + '% komplett, utfylt ' + CONVERT(VARCHAR,EventTime,104) + '.' AS InfoText 
+  FROM PROM.FormOrder fo
+  JOIN dbo.MetaForm mf ON mf.FormId=fo.FormId
+  JOIN dbo.ViewActiveCaseListStub v ON v.PersonId = fo.PersonId AND StudyId = @StudyId
+  JOIN dbo.ClinForm cf ON cf.ClinFormId = fo.ClinFormId
+  JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId
+  WHERE fo.CreatedBy = USER_ID()
+  ORDER BY fo.CreatedAt DESC;
+END]]>
+	</row>
 	<row ProcId="101" StudyName="GBD" ProcName="GetCaseListFocused" ProcDesc="101. Overvåket status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="818376950" LastUpdate="2013-01-22T12:27:10.913Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListFocused( @StudyId INT ) AS
 BEGIN
@@ -2437,6 +2464,12 @@ BEGIN
   JOIN dbo.Person p ON p.PersonId = a.PersonId
   ORDER BY p.PersonId
 END]]>
+	</row>
+	<row ProcId="751" StudyName="ROAS" ProcName="PROM.GetCaseListMyPendingProms" ProcDesc="PROM: Mine ventende PROM-skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6631" ChkSum="734854758" LastUpdate="2017-11-18T08:49:31.130Z">
+		<![CDATA[]]>
+	</row>
+	<row ProcId="752" StudyName="ROAS" ProcName="PROM.GetCaseListMyCompletedProms" ProcDesc="PROM: Mine utfylte PROM-skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6631" ChkSum="-403560327" LastUpdate="2017-11-18T08:41:36.077Z">
+		<![CDATA[]]>
 	</row>
 	<row ProcId="800" StudyName="HOFTE" ProcName="dbo.GetCaseListLastGamma" ProcDesc="Operasjon: Gammanagling" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1506179999" LastUpdate="2013-09-03T11:41:34.540Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListLastGamma( @StudyId INT ) AS
