@@ -2479,6 +2479,15 @@ END
 
 ]]>
 	</row>
+	<row ProcId="801" StudyName="VREX" ProcName="VREX.GetCaseListRandomization" ProcDesc="Randomisering" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6634" ChkSum="1507493827" LastUpdate="2017-11-20T14:53:29.813Z">
+		<![CDATA[CREATE PROCEDURE VREX.GetCaseListRandomization( @StudyId INT ) AS
+BEGIN
+  SELECT v.*,'RAN#' + FORMAT(q.Quantity,'00#') AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  LEFT JOIN dbo.GetLastQuantityTable( 10185, NULL ) q ON q.PersonId = v.PersonId
+  WHERE @StudyId = @StudyId;
+END]]>
+	</row>
 	<row ProcId="1001" StudyName="GBD" ProcName="GBD.RapportAvvik" ProcDesc="Avviksrapport" ProcParams=":StudyId, :StartAt, :StopAt, :OrderBy" ListId="FR" GrantTo="public" ChkSum="-1287264417" LastUpdate="2017-05-08T09:32:24.437Z">
 		<![CDATA[CREATE PROCEDURE GBD.RapportAvvik ( @StudyId INT, @StartAt DateTime = NULL, @StopAt DateTime = NULL, @OrderBy INT = 0 ) AS
 BEGIN
