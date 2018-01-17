@@ -957,4 +957,206 @@ BEGIN
    EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, 0, 'STRATIFY', 'DataFound';
 END]]>
 	</row>
+	<row RuleId="26" RuleClass="GPSEVALUERIN" RuleType="M" RuleProc="GBD.RuleLokaliseringsteknologi" MinVersion="18003" Title="Lokaliseringsteknologi" Description="RuleLokaliseringsteknologi" ChkSum="1653288713" LastUpdate="2018-01-16T15:34:27.897Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleLokaliseringsteknologi (@StudyId INT, @PersonId INT) AS
+BEGIN
+    DECLARE @FormName VARCHAR(24) = 'GbdGps';
+    DECLARE @FormTitle VARCHAR(128) = dbo.GetMetaFormTitle(@StudyId, @FormName);
+    DECLARE @DTVal DATETIME = dbo.GetLastDTValOnForm(@FormName, 1957, @PersonId, 1);
+
+    DECLARE @ScopeName VARCHAR(12) = 'EvalDate';
+    DECLARE @AlertHdr VARCHAR(64);
+    DECLARE @AlertMsg VARCHAR(512);
+
+    DECLARE @AlertFacet VARCHAR(16) = 'DataFound';
+    DECLARE @AlertLevel INT = 0;
+
+    IF (@DTVal IS NOT NULL)
+        AND (@DTVal < CONVERT(DATE, GETDATE()))
+    BEGIN
+        SET @AlertFacet = 'DataOld';
+        SET @AlertLevel = 2;
+
+        -- Get Header & Message for specified scope & facet
+        EXEC dbo.GetAlertText @ScopeName, @AlertFacet, @AlertHdr OUT, @AlertMsg OUT;
+
+        SET @AlertMsg = REPLACE(@AlertMsg, '@EvalueringDate', CONVERT(VARCHAR, @DTVal, 104));
+        SET @AlertMsg = REPLACE(@AlertMsg, '@FormTitle', CONVERT(VARCHAR, @FormTitle));
+        SET @AlertMsg = REPLACE(@AlertMsg, '@FormName', CONVERT(VARCHAR, @FormName));
+
+        SET @AlertHdr = @FormTitle;
+    END
+    ELSE
+    BEGIN
+        EXEC dbo.GetAlertText @ScopeName, @AlertFacet, @AlertHdr OUT, @AlertMsg OUT;
+    END
+
+    EXEC dbo.AddAlertForPerson @StudyId,
+        @PersonId,
+        @AlertLevel,
+        'GPSEVALUERIN',
+        @AlertFacet,
+        @AlertHdr,
+        @AlertMsg;
+END]]>
+	</row>
+	<row RuleId="27" RuleClass="MHVURDERING" RuleType="M" RuleProc="GBD.RuleMunnhygieneVurdering" MinVersion="18003" Title="Munnhygiene vurdering" Description="Munnhygiene vurdering" ChkSum="833778005" LastUpdate="2018-01-16T15:34:35.017Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleMunnhygieneVurdering (@StudyId INT, @PersonId INT) AS
+BEGIN
+    DECLARE @FormName VARCHAR(24) = 'GbdMunnhygiene';
+    DECLARE @FormTitle VARCHAR(128) = dbo.GetMetaFormTitle(@StudyId, @FormName);
+    DECLARE @DTVal DATETIME = dbo.GetLastDTValOnForm(@FormName, 1776, @PersonId, 1);
+
+    DECLARE @ScopeName VARCHAR(12) = 'EvalDate';
+    DECLARE @AlertHdr VARCHAR(64);
+    DECLARE @AlertMsg VARCHAR(512);
+
+    DECLARE @AlertFacet VARCHAR(16) = 'DataFound';
+    DECLARE @AlertLevel INT = 0;
+
+    IF (@DTVal IS NOT NULL)
+        AND (@DTVal < CONVERT(DATE, GETDATE()))
+    BEGIN
+        SET @AlertFacet = 'DataOld';
+        SET @AlertLevel = 2;
+
+        -- Get Header & Message for specified scope & facet
+        EXEC dbo.GetAlertText @ScopeName, @AlertFacet, @AlertHdr OUT, @AlertMsg OUT;
+
+        -- Replace specific placeholder with data
+        SET @AlertMsg = REPLACE(@AlertMsg, '@EvalueringDate', CONVERT(VARCHAR, @DTVal, 104));
+        SET @AlertMsg = REPLACE(@AlertMsg, '@FormTitle', CONVERT(VARCHAR, @FormTitle));
+        SET @AlertMsg = REPLACE(@AlertMsg, '@FormName', CONVERT(VARCHAR, @FormName));
+
+        SET @AlertHdr = @FormTitle;
+    END
+    ELSE
+    BEGIN
+        EXEC dbo.GetAlertText @ScopeName, @AlertFacet, @AlertHdr OUT, @AlertMsg OUT;
+    END
+
+    EXEC dbo.AddAlertForPerson @StudyId, @PersonId, @AlertLevel, 'MHVURDERING', @AlertFacet, @AlertHdr, @AlertMsg;
+END]]>
+	</row>
+	<row RuleId="28" RuleClass="SAROPPFOLGIN" RuleType="M" RuleProc="GBD.RuleSaroppfolging" MinVersion="18003" Title="Saroppfolging" Description="Saroppfolging" ChkSum="2137507569" LastUpdate="2018-01-16T15:33:54.340Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleSaroppfolging (@StudyId INT, @PersonId INT) AS
+BEGIN
+    DECLARE @FormName VARCHAR(24);
+    DECLARE @FormTitle VARCHAR(128);
+    DECLARE @DTVal DATETIME;
+    DECLARE @SignedAt DATETIME;
+
+    /*    Look for new evaluation date in GbdSaarProsedyre or
+        GbdSaarOppfolging. If variable 1384 in GbdSaarOppfolging
+        equal 1, evaluation is stopped and Alert is hidden. */
+    SELECT TOP (1) @SignedAt = cf.SignedAt
+        , @FormTitle = mf.FormTitle
+        , @DTVal = cdp.DTVal
+    FROM dbo.ClinForm cf
+    JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId
+    LEFT JOIN dbo.ClinDataPoint cdp ON cdp.EventId = cf.EventId
+    LEFT JOIN dbo.MetaFormItem mfi ON mfi.ItemId = cdp.ItemId
+        AND mfi.FormId = cf.FormId
+    JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId
+    WHERE mf.FormName IN ('GbdSaarProsedyre', 'GbdSaarOppfolging')
+    AND cf.FormStatus = 'L'
+    AND (cdp.ItemId = 5834
+        OR (mf.FormName = 'GbdSaarOppfolging'
+                AND cdp.ItemId = 1384
+                AND cdp.EnumVal = 1))
+    AND ce.StudyId = @StudyId
+    AND ce.PersonId = @PersonId
+    ORDER BY cf.EventNum DESC, cf.ClinFormId DESC, cdp.ItemId
+
+    DECLARE @ScopeName VARCHAR(12) = 'EvalDate';
+    DECLARE @AlertHdr VARCHAR(64);
+    DECLARE @AlertMsg VARCHAR(512);
+
+    DECLARE @AlertFacet VARCHAR(16) = 'DataFound';
+    DECLARE @AlertLevel INT = 0;
+
+    IF (@DTVal IS NOT NULL)
+        AND (@DTVal < CONVERT(DATE, GETDATE()))
+    BEGIN
+        SET @AlertFacet = 'DataOld';
+        SET @AlertLevel = 2;
+
+        EXEC dbo.GetAlertText @ScopeName,
+        @AlertFacet,
+        @AlertHdr OUT,
+        @AlertMsg OUT;
+
+        SELECT @FormName = FormName,
+                @FormTitle = FormTitle
+        FROM dbo.MetaForm
+        WHERE FormName = 'GbdSaarOppfolging';
+
+        SET @AlertMsg = REPLACE(@AlertMsg, '@EvalueringDate', CONVERT(VARCHAR, @DTVal, 104));
+        SET @AlertMsg = REPLACE(@AlertMsg, '@FormTitle', CONVERT(VARCHAR, @FormTitle));
+        SET @AlertMsg = REPLACE(@AlertMsg, '@FormName', CONVERT(VARCHAR, @FormName));
+        SET @AlertMsg = REPLACE(@AlertMsg, '@SignedDate', CONVERT(VARCHAR, @SignedAt, 104));
+
+        SET @AlertHdr = @FormTitle;
+    END
+    ELSE
+    BEGIN
+        EXEC dbo.GetAlertText @ScopeName,
+        @AlertFacet,
+        @AlertHdr OUT,
+        @AlertMsg OUT;
+    END
+
+    EXEC dbo.AddAlertForPerson @StudyId
+    , @PersonId
+    , @AlertLevel
+    , 'SAROPPFOLGIN'
+    , @AlertFacet
+    , @AlertHdr
+    , @AlertMsg;
+END]]>
+	</row>
+	<row RuleId="29" RuleClass="SAMTYKKEKOMP" RuleType="M" RuleProc="GBD.RuleSamtykkekompetanse" MinVersion="18003" Title="Samtykkekompetanse" Description="Samtykkekompetanse" ChkSum="-654589176" LastUpdate="2018-01-16T15:35:21.270Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleSamtykkekompetanse (@StudyId INT, @PersonId INT) AS
+BEGIN
+    DECLARE @FormName VARCHAR(24) = 'GbdSamtykkeKompetanse';
+    DECLARE @FormTitle VARCHAR(128) = dbo.GetMetaFormTitle(@StudyId, @FormName);
+    DECLARE @DTVal DATETIME = dbo.GetLastDTValOnForm(@FormName, 1154, @PersonId, 1);
+
+    -- TextItems
+    DECLARE @ScopeName VARCHAR(12) = 'EvalDate';
+    DECLARE @AlertHdr VARCHAR(64);
+    DECLARE @AlertMsg VARCHAR(512);
+
+    DECLARE @AlertFacet VARCHAR(16) = 'DataFound';
+    DECLARE @AlertLevel INT = 0;
+
+    IF (@DTVal IS NOT NULL)
+        AND (@DTVal < CONVERT(DATE, GETDATE()))
+    BEGIN
+        SET @AlertFacet = 'DataOld';
+        SET @AlertLevel = 2;
+
+        -- Get text (Header & Message) for specified class & keyword
+        EXEC dbo.GetAlertText @ScopeName, @AlertFacet, @AlertHdr OUT, @AlertMsg OUT;
+
+        SET @AlertMsg = REPLACE(@AlertMsg, '@EvalueringDate', CONVERT(VARCHAR, @DTVal, 104));
+        SET @AlertMsg = REPLACE(@AlertMsg, '@FormTitle', CONVERT(VARCHAR, @FormTitle));
+        SET @AlertMsg = REPLACE(@AlertMsg, '@FormName', CONVERT(VARCHAR, @FormName));
+
+        SET @AlertHdr = @FormTitle;
+    END
+    ELSE
+    BEGIN
+        EXEC dbo.GetAlertText @ScopeName, @AlertFacet, @AlertHdr OUT, @AlertMsg OUT;
+    END
+
+    EXEC dbo.AddAlertForPerson @StudyId,
+        @PersonId,
+        @AlertLevel,
+        'SAMTYKKEKOMP',
+        @AlertFacet,
+        @AlertHdr,
+        @AlertMsg;
+END]]>
+	</row>
 </DSSRule>

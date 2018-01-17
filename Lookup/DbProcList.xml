@@ -359,6 +359,28 @@ BEGIN
   WHERE (sg.GroupActive=0 );
 END]]>
 	</row>
+	<row ProcId="28" StudyName="BASE" ProcName="dbo.GetCaseListLastForm" ProcDesc="Personer: Aktive med skjemadato" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" ChkSum="-578497202" LastUpdate="2018-01-17T14:13:27.360Z">
+		<![CDATA[CREATE PROCEDURE dbo.GetCaseListLastForm( @StudyId INT, @FormName VARCHAR(24), @IgnoreDays FLOAT = 0 ) AS
+BEGIN
+  DECLARE @IgnoreFormsAfter DateTime;
+  SET @IgnoreFormsAfter = GETDATE() - @IgnoreDays;
+  SELECT v.PersonId, v.DOB, v.FullName, v.StudyId, ss.StatusText AS GroupName, v.GenderId,
+    'Utfylt: ' + ISNULL(CONVERT(VARCHAR,forms.LastFormDate,104), 'Aldri') AS InfoText 
+    FROM dbo.ViewActiveCaseListStub v
+    LEFT JOIN
+    (
+      SELECT ce.PersonId, MAX(ce.EventTime) AS LastFormDate
+      FROM dbo.ClinEvent ce
+      JOIN dbo.ClinForm cf ON cf.EventId=ce.EventId
+      JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId AND mf.FormName=@FormName
+      GROUP BY ce.PersonId 
+    ) forms ON forms.PersonId = v.PersonId
+  JOIN dbo.StudCase sc ON sc.StudyId = v.StudyId AND sc.PersonId = v.PersonId
+  JOIN dbo.StudyStatus ss ON ss.StudyId = sc.StudyId AND ss.StatusId = sc.StatusId  
+  WHERE v.StudyId = @StudyId AND ( ( forms.LastFormDate <= @IgnoreFormsAfter ) OR ( forms.LastFormDate IS NULL ) )
+  ORDER BY forms.LastFormDate;
+END]]>
+	</row>
 	<row ProcId="30" StudyName="*" ProcName="Report.GetAllActiveCases" ProcDesc="QuickStat: Alle aktive uansett lokalisasjon." ProcParams=":StudyId" ListId="CASE" GrantTo="Researcher" ChkSum="-1207026810" LastUpdate="2017-02-23T12:50:41.813Z">
 		<![CDATA[CREATE PROCEDURE Report.GetAllActiveCases( @StudyId INT ) AS
 BEGIN
@@ -1096,41 +1118,46 @@ BEGIN
     WHERE sc.StudyId = @StudyId;
 END]]>
 	</row>
-	<row ProcId="167" StudyName="GBD" ProcName="GetCaseListProBNPgt1522" ProcDesc="Forskning: ProBNP &gt; 1522" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6637" ChkSum="153296763" LastUpdate="2017-12-15T14:56:04.300Z">
-		<![CDATA[CREATE PROCEDURE dbo.GetCaseListProBNPgt1522 (@StudyId INT) AS
+	<row ProcId="167" StudyName="GBD" ProcName="GetCaseListProBNPgt1522" ProcDesc="Forskning: ProBNP &gt; 1522" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18001" ChkSum="566688019" LastUpdate="2018-01-13T13:14:54.730Z">
+		<![CDATA[CREATE PROCEDURE dbo.GetCaseListProBNPgt1522( @StudyId INT ) AS
 BEGIN
-    SET NOCOUNT ON;
     SELECT v.*, a.LabDate, a.NumResult, a.ResultId,
         'ProBNP = ' + CONVERT(VARCHAR, a.NumResult) + ' den ' + CONVERT(VARCHAR, a.LabDate, 104) + '.' AS InfoText
     FROM (SELECT PersonId, LabDate, NumResult, ResultId, RANK() OVER (PARTITION BY PersonId ORDER BY LabDate DESC) AS OrderNo
         FROM dbo.LabData ld
         JOIN dbo.LabCode lc
                 ON lc.LabCodeId = ld.LabCodeId
-        WHERE lc.LabClassId = 140
+        WHERE lc.LabClassId = 575
         AND ld.NumResult > 1522) a
     JOIN dbo.ViewActiveCaseListStub v ON v.StudyId = @StudyId AND v.PersonId = a.PersonId
     WHERE a.OrderNo = 1
-    ORDER BY a.NumResult DESC
+    ORDER BY a.NumResult DESC;
 END]]>
 	</row>
-	<row ProcId="168" StudyName="GBD" ProcName="GetCaseListProBNPgt1522woACEIA2RB" ProcDesc="Underbehandling: ProBNP &gt; 1522 uten ACEI/A2RB" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6637" ChkSum="-1845784316" LastUpdate="2017-12-15T14:56:12.053Z">
-		<![CDATA[CREATE PROCEDURE dbo.GetCaseListProBNPgt1522woACEIA2RB (@StudyId INT) AS
+	<row ProcId="168" StudyName="GBD" ProcName="GetCaseListProBNPgt1522Untreated" ProcDesc="Underbehandling: ProBNP &gt; 1522 uten ACEI/A2RB" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18001" ChkSum="531668840" LastUpdate="2018-01-13T13:14:56.420Z">
+		<![CDATA[CREATE PROCEDURE dbo.GetCaseListProBNPgt1522Untreated( @StudyId INT ) AS
 BEGIN
-    SET NOCOUNT ON;
     SELECT v.*, a.LabDate, a.NumResult, a.ResultId,
         'ProBNP = ' + CONVERT(VARCHAR, a.NumResult) + ' den ' + CONVERT(VARCHAR, a.LabDate, 104) + '.' AS InfoText
     FROM (SELECT PersonId, LabDate, NumResult, ResultId, RANK() OVER (PARTITION BY PersonId ORDER BY LabDate DESC) AS OrderNo
         FROM dbo.LabData ld
         JOIN dbo.LabCode lc
                 ON lc.LabCodeId = ld.LabCodeId
-        WHERE lc.LabClassId = 140) a
+        WHERE lc.LabClassId = 575) a
     JOIN dbo.ViewActiveCaseListStub v ON v.StudyId = @StudyId AND v.PersonId = a.PersonId
     WHERE a.OrderNo = 1 AND a.NumResult > 1522
     AND NOT v.PersonId IN (SELECT PersonId
         FROM dbo.OngoingTreatment ot
         WHERE ot.ATC LIKE 'C09%')
-    ORDER BY a.NumResult DESC
+    ORDER BY a.NumResult DESC;
 END]]>
+	</row>
+	<row ProcId="169" StudyName="GBD" ProcName="GBD.GetCaseListFlackerKiely" ProcDesc="Prosess: Flacker-Kiely" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" ChkSum="-1821465644" LastUpdate="2018-01-17T14:16:06.807Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListLastFlackerKiely( @StudyId INT ) AS 
+BEGIN
+  EXEC dbo.GetCaseListLastForm 2, 'FLACKER_KIELY', 180;
+END
+]]>
 	</row>
 	<row ProcId="201" StudyName="NDV.BASE" ProcName="NDV.GetPumpWithHighHbA1c" ProcDesc="Utvalg av Type-1 m/pumpe basert på alder og HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="462939626" LastUpdate="2015-06-12T07:59:28.400Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpWithHighHbA1c( @StudyId INT, @AgeMin FLOAT, @AgeMax FLOAT, @HbA1cCutoff FLOAT ) AS
@@ -5135,21 +5162,13 @@ BEGIN
    EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, 0, 'STRATIFY', 'DataFound';
 END]]>
 	</row>
-	<row ProcId="10026" StudyName="*" ProcName="GBD.RuleLokaliseringsteknologi" ProcDesc="RuleLokaliseringsteknologi" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="6637" ChkSum="-1046105177" LastUpdate="2017-12-18T09:51:30.070Z">
+	<row ProcId="10026" StudyName="*" ProcName="GBD.RuleLokaliseringsteknologi" ProcDesc="RuleLokaliseringsteknologi" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="1653288713" LastUpdate="2018-01-16T15:34:27.897Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleLokaliseringsteknologi (@StudyId INT, @PersonId INT) AS
 BEGIN
-    DECLARE @FormName VARCHAR(24);
-    DECLARE @FormTitle VARCHAR(128);
-    DECLARE @DTVal DATETIME;
-    DECLARE @SignedAt DATETIME;
+    DECLARE @FormName VARCHAR(24) = 'GbdGps';
+    DECLARE @FormTitle VARCHAR(128) = dbo.GetMetaFormTitle(@StudyId, @FormName);
+    DECLARE @DTVal DATETIME = dbo.GetLastDTValOnForm(@FormName, 1957, @PersonId, 1);
 
-    SELECT @FormTitle = FormTitle,
-        @FormName = FormName,
-        @DTVal = DTVal,
-        @SignedAt = SignedAt
-    FROM dbo.GetClinDataPointValuesTable(@StudyId, @PersonId, 'GbdGps', 1957);
-
-    -- TextItems
     DECLARE @ScopeName VARCHAR(12) = 'EvalDate';
     DECLARE @AlertHdr VARCHAR(64);
     DECLARE @AlertMsg VARCHAR(512);
@@ -5157,59 +5176,42 @@ BEGIN
     DECLARE @AlertFacet VARCHAR(16) = 'DataFound';
     DECLARE @AlertLevel INT = 0;
 
-	IF (@DTVal IS NOT NULL)
-		AND (@DTVal < CONVERT(DATE, GETDATE()))
+    IF (@DTVal IS NOT NULL)
+        AND (@DTVal < CONVERT(DATE, GETDATE()))
     BEGIN
         SET @AlertFacet = 'DataOld';
         SET @AlertLevel = 2;
 
-        -- Get text (Header & Message) for specified class & keyword
-        EXEC dbo.GetAlertText @ScopeName
-        , @AlertFacet
-        , @AlertHdr OUT
-        , @AlertMsg OUT;
+        -- Get Header & Message for specified scope & facet
+        EXEC dbo.GetAlertText @ScopeName, @AlertFacet, @AlertHdr OUT, @AlertMsg OUT;
 
         SET @AlertMsg = REPLACE(@AlertMsg, '@EvalueringDate', CONVERT(VARCHAR, @DTVal, 104));
         SET @AlertMsg = REPLACE(@AlertMsg, '@FormTitle', CONVERT(VARCHAR, @FormTitle));
         SET @AlertMsg = REPLACE(@AlertMsg, '@FormName', CONVERT(VARCHAR, @FormName));
-        SET @AlertMsg = REPLACE(@AlertMsg, '@SignedDate', CONVERT(VARCHAR, @SignedAt, 104));
 
         SET @AlertHdr = @FormTitle;
     END
     ELSE
     BEGIN
-        EXEC dbo.GetAlertText @ScopeName
-        , @AlertFacet
-        , @AlertHdr OUT
-        , @AlertMsg OUT;
-
-        SET @AlertHdr = @FormTitle;
+        EXEC dbo.GetAlertText @ScopeName, @AlertFacet, @AlertHdr OUT, @AlertMsg OUT;
     END
 
-    EXEC dbo.AddAlertForPerson @StudyId
-    , @PersonId
-    , @AlertLevel
-    , 'GPSEVALUERIN'
-    , @AlertFacet
-    , @AlertHdr
-    , @AlertMsg;
+    EXEC dbo.AddAlertForPerson @StudyId,
+        @PersonId,
+        @AlertLevel,
+        'GPSEVALUERIN',
+        @AlertFacet,
+        @AlertHdr,
+        @AlertMsg;
 END]]>
 	</row>
-	<row ProcId="10027" StudyName="*" ProcName="GBD.RuleMunnhygieneVurdering" ProcDesc="Munnhygiene vurdering" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="6637" ChkSum="-836681134" LastUpdate="2017-12-18T09:51:54.527Z">
+	<row ProcId="10027" StudyName="*" ProcName="GBD.RuleMunnhygieneVurdering" ProcDesc="Munnhygiene vurdering" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="833778005" LastUpdate="2018-01-16T15:34:35.017Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleMunnhygieneVurdering (@StudyId INT, @PersonId INT) AS
 BEGIN
-    DECLARE @FormName VARCHAR(24);
-    DECLARE @FormTitle VARCHAR(128);
-    DECLARE @DTVal DATETIME;
-    DECLARE @SignedAt DATETIME;
+    DECLARE @FormName VARCHAR(24) = 'GbdMunnhygiene';
+    DECLARE @FormTitle VARCHAR(128) = dbo.GetMetaFormTitle(@StudyId, @FormName);
+    DECLARE @DTVal DATETIME = dbo.GetLastDTValOnForm(@FormName, 1776, @PersonId, 1);
 
-    SELECT @FormTitle = FormTitle,
-        @FormName = FormName,
-        @DTVal = DTVal,
-        @SignedAt = SignedAt
-    FROM dbo.GetClinDataPointValuesTable(@StudyId, @PersonId, 'GbdMunnhygiene', 1776);
-
-    -- Alert variables and default values
     DECLARE @ScopeName VARCHAR(12) = 'EvalDate';
     DECLARE @AlertHdr VARCHAR(64);
     DECLARE @AlertMsg VARCHAR(512);
@@ -5217,45 +5219,31 @@ BEGIN
     DECLARE @AlertFacet VARCHAR(16) = 'DataFound';
     DECLARE @AlertLevel INT = 0;
 
-	IF (@DTVal IS NOT NULL)
-		AND (@DTVal < CONVERT(DATE, GETDATE()))
+    IF (@DTVal IS NOT NULL)
+        AND (@DTVal < CONVERT(DATE, GETDATE()))
     BEGIN
         SET @AlertFacet = 'DataOld';
         SET @AlertLevel = 2;
 
-        -- Get text (Header & Message) for specified class & keyword
-        EXEC dbo.GetAlertText @ScopeName
-        , @AlertFacet
-        , @AlertHdr OUT
-        , @AlertMsg OUT;
+        -- Get Header & Message for specified scope & facet
+        EXEC dbo.GetAlertText @ScopeName, @AlertFacet, @AlertHdr OUT, @AlertMsg OUT;
 
+        -- Replace specific placeholder with data
         SET @AlertMsg = REPLACE(@AlertMsg, '@EvalueringDate', CONVERT(VARCHAR, @DTVal, 104));
         SET @AlertMsg = REPLACE(@AlertMsg, '@FormTitle', CONVERT(VARCHAR, @FormTitle));
         SET @AlertMsg = REPLACE(@AlertMsg, '@FormName', CONVERT(VARCHAR, @FormName));
-        SET @AlertMsg = REPLACE(@AlertMsg, '@SignedDate', CONVERT(VARCHAR, @SignedAt, 104));
 
         SET @AlertHdr = @FormTitle;
     END
     ELSE
     BEGIN
-        EXEC dbo.GetAlertText @ScopeName
-        , @AlertFacet
-        , @AlertHdr OUT
-        , @AlertMsg OUT;
-
-        SET @AlertHdr = @FormTitle;
+        EXEC dbo.GetAlertText @ScopeName, @AlertFacet, @AlertHdr OUT, @AlertMsg OUT;
     END
 
-    EXEC dbo.AddAlertForPerson @StudyId
-    , @PersonId
-    , @AlertLevel
-    , 'MHVURDERING'
-    , @AlertFacet
-    , @AlertHdr
-    , @AlertMsg;
+    EXEC dbo.AddAlertForPerson @StudyId, @PersonId, @AlertLevel, 'MHVURDERING', @AlertFacet, @AlertHdr, @AlertMsg;
 END]]>
 	</row>
-	<row ProcId="10028" StudyName="*" ProcName="GBD.RuleSaroppfolging" ProcDesc="Saroppfolging" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="6637" ChkSum="-1300573230" LastUpdate="2017-12-15T11:22:37.620Z">
+	<row ProcId="10028" StudyName="*" ProcName="GBD.RuleSaroppfolging" ProcDesc="Saroppfolging" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="2137507569" LastUpdate="2018-01-16T15:33:54.340Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleSaroppfolging (@StudyId INT, @PersonId INT) AS
 BEGIN
     DECLARE @FormName VARCHAR(24);
@@ -5321,8 +5309,6 @@ BEGIN
         @AlertFacet,
         @AlertHdr OUT,
         @AlertMsg OUT;
-
-        SET @AlertHdr = @FormTitle;
     END
 
     EXEC dbo.AddAlertForPerson @StudyId
@@ -5332,6 +5318,50 @@ BEGIN
     , @AlertFacet
     , @AlertHdr
     , @AlertMsg;
+END]]>
+	</row>
+	<row ProcId="10029" StudyName="*" ProcName="GBD.RuleSamtykkekompetanse" ProcDesc="Samtykkekompetanse" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="-654589176" LastUpdate="2018-01-16T15:35:21.270Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleSamtykkekompetanse (@StudyId INT, @PersonId INT) AS
+BEGIN
+    DECLARE @FormName VARCHAR(24) = 'GbdSamtykkeKompetanse';
+    DECLARE @FormTitle VARCHAR(128) = dbo.GetMetaFormTitle(@StudyId, @FormName);
+    DECLARE @DTVal DATETIME = dbo.GetLastDTValOnForm(@FormName, 1154, @PersonId, 1);
+
+    -- TextItems
+    DECLARE @ScopeName VARCHAR(12) = 'EvalDate';
+    DECLARE @AlertHdr VARCHAR(64);
+    DECLARE @AlertMsg VARCHAR(512);
+
+    DECLARE @AlertFacet VARCHAR(16) = 'DataFound';
+    DECLARE @AlertLevel INT = 0;
+
+    IF (@DTVal IS NOT NULL)
+        AND (@DTVal < CONVERT(DATE, GETDATE()))
+    BEGIN
+        SET @AlertFacet = 'DataOld';
+        SET @AlertLevel = 2;
+
+        -- Get text (Header & Message) for specified class & keyword
+        EXEC dbo.GetAlertText @ScopeName, @AlertFacet, @AlertHdr OUT, @AlertMsg OUT;
+
+        SET @AlertMsg = REPLACE(@AlertMsg, '@EvalueringDate', CONVERT(VARCHAR, @DTVal, 104));
+        SET @AlertMsg = REPLACE(@AlertMsg, '@FormTitle', CONVERT(VARCHAR, @FormTitle));
+        SET @AlertMsg = REPLACE(@AlertMsg, '@FormName', CONVERT(VARCHAR, @FormName));
+
+        SET @AlertHdr = @FormTitle;
+    END
+    ELSE
+    BEGIN
+        EXEC dbo.GetAlertText @ScopeName, @AlertFacet, @AlertHdr OUT, @AlertMsg OUT;
+    END
+
+    EXEC dbo.AddAlertForPerson @StudyId,
+        @PersonId,
+        @AlertLevel,
+        'SAMTYKKEKOMP',
+        @AlertFacet,
+        @AlertHdr,
+        @AlertMsg;
 END]]>
 	</row>
 </DbProcList>
