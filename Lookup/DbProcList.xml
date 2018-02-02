@@ -681,7 +681,7 @@ BEGIN
   SELECT Personid,DOB,FullName,GroupName,InfoText FROM #temp order by GFR;
 END]]>
 	</row>
-	<row ProcId="128" StudyName="GBD" ProcName="GetCaseListProBNP" ProcDesc="Underbehandling: ProBNP &gt; 180 uten ACEI/A2RB" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-988200139" LastUpdate="2016-02-29T09:17:14.887Z">
+	<row ProcId="128" StudyName="GBD" ProcName="GetCaseListProBNP" ProcDesc="Underbehandling: ProBNP &gt; 180 uten ACEI/A2RB" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MaxVersion="6621" ChkSum="989815114" LastUpdate="2018-01-25T09:51:07.877Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListProBNP (@StudyId INT) AS
 BEGIN
   SET NOCOUNT ON;
@@ -775,7 +775,7 @@ BEGIN
   EXEC dbo.GetCaseListDrug @StudyId,'C03%'
 END]]>
 	</row>
-	<row ProcId="140" StudyName="GBD" ProcName="GetCaseListProBNPgt223" ProcDesc="Forskning: ProBNP &gt; 223" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="87036713" LastUpdate="2016-02-29T09:17:32.083Z">
+	<row ProcId="140" StudyName="GBD" ProcName="GetCaseListProBNPgt223" ProcDesc="Forskning: ProBNP &gt; 223" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MaxVersion="6621" ChkSum="-86625962" LastUpdate="2018-01-25T09:52:02.230Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListProBNPgt223 (@StudyId INT) AS
 BEGIN
   SET NOCOUNT ON;
@@ -3965,6 +3965,50 @@ BEGIN
   
 END]]>
 	</row>
+	<row ProcId="1038" StudyName="GBD" ProcName="Report.DrugList" ProcDesc="Medikamentliste som brukes i  GBD" ProcParams=":PersonId, :ShowDate, :DaysAgo" ListId="FR" GrantTo="public" MinVersion="6600" ChkSum="1328280423" LastUpdate="2018-02-02T17:27:40.493Z">
+		<![CDATA[CREATE PROCEDURE Report.DrugList( @PersonId INT, @ShowDate DATETIME = NULL, @DaysAgo INT = 0 ) AS
+BEGIN
+  -- Include DrugTreatment stopped recently, that is less than @DaysAgo days ago.
+  DECLARE @DaysAgoDate DATETIME;
+  SET @ShowDate = ISNULL( @ShowDate, GETDATE() );
+  SET @DaysAgoDate = DATEADD( DAY, -@DaysAgo, @ShowDate );
+  SELECT dt.TreatId, dt.StartAt, dt.DrugName, dbo.GetRxText(dt.TreatId) AS RxText,
+    dt.StopAt,
+    p2.Signature AS StopSign, p1.Signature AS StartSign, p3.Signature AS CreateSign,
+    dt.PackType, mp.PackDesc,
+    mp.SortOrder, mtpg.GroupName,
+    dt.TreatType, mt.TreatDesc,
+    dbo.ConvertDoseHourText(dd.Dose07, 7, dd.DoseHour) AS Dose07,
+    dbo.ConvertDoseHourText(dd.Dose08, 8, dd.DoseHour) AS Dose08,
+    dbo.ConvertDoseHourText(dd.Dose13, 13, dd.DoseHour) AS Dose13,
+    dbo.ConvertDoseHourText(dd.Dose18, 18, dd.DoseHour) AS Dose18,
+    dbo.ConvertDoseHourText(dd.Dose21, 21, dd.DoseHour) AS Dose21,
+    dbo.ConvertDoseHourText(dd.Dose23, 23, dd.DoseHour) AS Dose23,
+    dt.DrugForm,
+    dbo.GetDose24hText(dt.TreatId) AS Dose24hText,
+    dt.Strength, dt.StrengthUnit, dt.Dose24hDD,
+    CONVERT(FLOAT, ISNULL(dt.StopAt, @ShowDate + 1) - @ShowDate) AS DaysLeft, dt.PauseStatus
+  FROM dbo.DrugTreatment dt
+  JOIN dbo.MetaPackType mp ON mp.PackType = dt.PackType
+  JOIN dbo.MetaTreatType mt ON mt.TreatType = dt.TreatType
+  LEFT OUTER JOIN dbo.DrugDosing dd ON dd.DoseId = dt.DoseId
+  LEFT OUTER JOIN dbo.UserList u1 ON u1.UserId = dt.SignedBy
+  LEFT OUTER JOIN dbo.Person p1 ON p1.PersonId = u1.PersonId
+  LEFT OUTER JOIN dbo.UserList u2 ON u2.UserId = dt.StopBy
+  LEFT OUTER JOIN dbo.Person p2 ON p2.PersonId = u2.PersonId
+  LEFT OUTER JOIN dbo.UserList u3 ON u3.UserId = dt.CreatedBy
+  LEFT OUTER JOIN dbo.Person p3 ON p3.PersonId = u3.PersonId
+  LEFT OUTER JOIN dbo.MetaTreatPackGroup mtpg ON dt.TreatType = mtpg.TreatType AND dt.PackType = mtpg.PackType
+  WHERE dt.PersonId = @PersonId
+    AND (
+		(dt.StopAt IS NULL) 
+		OR 
+		((@DaysAgoDate < dt.StopAt) AND (dt.StartAt < dt.StopAt))
+	)
+    AND (dt.CreatedAt <= @ShowDate)
+  ORDER BY mtpg.SortOrder, dt.StartAt
+END;]]>
+	</row>
 	<row ProcId="3000" StudyName="ROAS" ProcName="Dash.RoasGroupCount" ProcDesc="Pasienter per behandlingssted" ListId="DASH" GrantTo="public" MinVersion="6600" ChkSum="-271880444" LastUpdate="2017-07-07T13:57:45.103Z">
 		<![CDATA[CREATE PROCEDURE Dash.RoasGroupCount AS
 BEGIN
@@ -5198,7 +5242,7 @@ BEGIN
    EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, 0, 'STRATIFY', 'DataFound';
 END]]>
 	</row>
-	<row ProcId="10026" StudyName="GBD" ProcName="GBD.RuleLokaliseringsteknologi" ProcDesc="RuleLokaliseringsteknologi" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="553807092" LastUpdate="2018-01-22T08:38:35.420Z">
+	<row ProcId="10026" StudyName="*" ProcName="GBD.RuleLokaliseringsteknologi" ProcDesc="RuleLokaliseringsteknologi" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="1653288713" LastUpdate="2018-01-22T08:45:16.150Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleLokaliseringsteknologi (@StudyId INT, @PersonId INT) AS
 BEGIN
     DECLARE @FormName VARCHAR(24) = 'GbdGps';
@@ -5241,7 +5285,7 @@ BEGIN
         @AlertMsg;
 END]]>
 	</row>
-	<row ProcId="10027" StudyName="GBD" ProcName="GBD.RuleMunnhygieneVurdering" ProcDesc="Munnhygiene vurdering" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="1916482216" LastUpdate="2018-01-22T08:38:36.343Z">
+	<row ProcId="10027" StudyName="*" ProcName="GBD.RuleMunnhygieneVurdering" ProcDesc="Munnhygiene vurdering" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="833778005" LastUpdate="2018-01-22T08:45:19.467Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleMunnhygieneVurdering (@StudyId INT, @PersonId INT) AS
 BEGIN
     DECLARE @FormName VARCHAR(24) = 'GbdMunnhygiene';
@@ -5279,7 +5323,7 @@ BEGIN
     EXEC dbo.AddAlertForPerson @StudyId, @PersonId, @AlertLevel, 'MHVURDERING', @AlertFacet, @AlertHdr, @AlertMsg;
 END]]>
 	</row>
-	<row ProcId="10028" StudyName="GBD" ProcName="GBD.RuleSaroppfolging" ProcDesc="Saroppfolging" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="1022264588" LastUpdate="2018-01-22T08:38:37.143Z">
+	<row ProcId="10028" StudyName="*" ProcName="GBD.RuleSaroppfolging" ProcDesc="Saroppfolging" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="2137507569" LastUpdate="2018-01-22T08:45:20.997Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleSaroppfolging (@StudyId INT, @PersonId INT) AS
 BEGIN
     DECLARE @FormName VARCHAR(24);
@@ -5356,7 +5400,7 @@ BEGIN
     , @AlertMsg;
 END]]>
 	</row>
-	<row ProcId="10029" StudyName="GBD" ProcName="GBD.RuleSamtykkekompetanse" ProcDesc="Samtykkekompetanse" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="-1686994699" LastUpdate="2018-01-22T08:38:38.183Z">
+	<row ProcId="10029" StudyName="*" ProcName="GBD.RuleSamtykkekompetanse" ProcDesc="Samtykkekompetanse" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="-654589176" LastUpdate="2018-01-22T08:45:22.260Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleSamtykkekompetanse (@StudyId INT, @PersonId INT) AS
 BEGIN
     DECLARE @FormName VARCHAR(24) = 'GbdSamtykkeKompetanse';
