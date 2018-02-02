@@ -359,13 +359,13 @@ BEGIN
   WHERE (sg.GroupActive=0 );
 END]]>
 	</row>
-	<row ProcId="28" StudyName="BASE" ProcName="dbo.GetCaseListLastForm" ProcDesc="Personer: Aktive med skjemadato" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" ChkSum="-578497202" LastUpdate="2018-01-17T14:13:27.360Z">
+	<row ProcId="28" StudyName="BASE" ProcName="dbo.GetCaseListLastForm" ProcDesc="Personer: Aktive med skjemadato" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" ChkSum="1154490005" LastUpdate="2018-01-17T14:27:05.153Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListLastForm( @StudyId INT, @FormName VARCHAR(24), @IgnoreDays FLOAT = 0 ) AS
 BEGIN
   DECLARE @IgnoreFormsAfter DateTime;
   SET @IgnoreFormsAfter = GETDATE() - @IgnoreDays;
-  SELECT v.PersonId, v.DOB, v.FullName, v.StudyId, ss.StatusText AS GroupName, v.GenderId,
-    'Utfylt: ' + ISNULL(CONVERT(VARCHAR,forms.LastFormDate,104), 'Aldri') AS InfoText 
+  SELECT v.*, 
+      'Utfylt: ' + ISNULL(CONVERT(VARCHAR,forms.LastFormDate,104), 'Aldri') AS InfoText 
     FROM dbo.ViewActiveCaseListStub v
     LEFT JOIN
     (
@@ -375,11 +375,10 @@ BEGIN
       JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId AND mf.FormName=@FormName
       GROUP BY ce.PersonId 
     ) forms ON forms.PersonId = v.PersonId
-  JOIN dbo.StudCase sc ON sc.StudyId = v.StudyId AND sc.PersonId = v.PersonId
-  JOIN dbo.StudyStatus ss ON ss.StudyId = sc.StudyId AND ss.StatusId = sc.StatusId  
   WHERE v.StudyId = @StudyId AND ( ( forms.LastFormDate <= @IgnoreFormsAfter ) OR ( forms.LastFormDate IS NULL ) )
   ORDER BY forms.LastFormDate;
-END]]>
+END;
+]]>
 	</row>
 	<row ProcId="30" StudyName="*" ProcName="Report.GetAllActiveCases" ProcDesc="QuickStat: Alle aktive uansett lokalisasjon." ProcParams=":StudyId" ListId="CASE" GrantTo="Researcher" ChkSum="-1207026810" LastUpdate="2017-02-23T12:50:41.813Z">
 		<![CDATA[CREATE PROCEDURE Report.GetAllActiveCases( @StudyId INT ) AS
@@ -1152,12 +1151,49 @@ BEGIN
     ORDER BY a.NumResult DESC;
 END]]>
 	</row>
-	<row ProcId="169" StudyName="GBD" ProcName="GBD.GetCaseListFlackerKiely" ProcDesc="Prosess: Flacker-Kiely" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" ChkSum="-1821465644" LastUpdate="2018-01-17T14:16:06.807Z">
-		<![CDATA[CREATE PROCEDURE GBD.GetCaseListLastFlackerKiely( @StudyId INT ) AS 
+	<row ProcId="169" StudyName="GBD" ProcName="GBD.GetCaseListFlackerKiely" ProcDesc="Prosess: Flacker-Kiely utfylt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" ChkSum="940127739" LastUpdate="2018-01-17T15:17:55Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFlackerKiely( @StudyId INT ) AS 
 BEGIN
-  EXEC dbo.GetCaseListLastForm 2, 'FLACKER_KIELY', 180;
-END
-]]>
+  -- Using StatusText AS GroupName on purpose
+  SELECT v.PersonId, v.DOB, v.FullName, v.StudyId, ss.StatusText AS GroupName, v.GenderId,
+      'Utfylt: ' + CONVERT(VARCHAR,forms.LastFormDate,104) AS InfoText 
+    FROM dbo.ViewActiveCaseListStub v
+    JOIN
+    (
+      SELECT ce.PersonId, MAX(ce.EventTime) AS LastFormDate
+      FROM dbo.ClinEvent ce
+      JOIN dbo.ClinForm cf ON cf.EventId=ce.EventId
+      JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId AND mf.FormName='FLACKER_KIELY'
+      GROUP BY ce.PersonId 
+    ) forms ON forms.PersonId = v.PersonId
+  JOIN dbo.StudCase sc ON sc.StudyId = v.StudyId AND sc.PersonId = v.PersonId
+  JOIN dbo.StudyStatus ss ON ss.StudyId = sc.StudyId AND ss.StatusId = sc.StatusId  
+  WHERE v.StudyId = @StudyId
+  ORDER BY forms.LastFormDate;
+END;]]>
+	</row>
+	<row ProcId="170" StudyName="GBD" ProcName="GBD.GetCaseListFlackerKielyPending" ProcDesc="Prosess: Flacker-Kiely mangler siste 6 mnd" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" ChkSum="-1728774878" LastUpdate="2018-01-17T15:18:24.770Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFlackerKielyPending( @StudyId INT ) AS 
+BEGIN
+  DECLARE @IgnoreFormsAfter DateTime;
+  SET @IgnoreFormsAfter = GETDATE() - 180;
+  -- Using StatusText AS GroupName on purpose
+  SELECT v.PersonId, v.DOB, v.FullName, v.StudyId, ss.StatusText AS GroupName, v.GenderId,
+      'Utfylt: ' + ISNULL(CONVERT(VARCHAR,forms.LastFormDate,104), 'Aldri') AS InfoText 
+    FROM dbo.ViewActiveCaseListStub v
+    LEFT JOIN
+    (
+      SELECT ce.PersonId, MAX(ce.EventTime) AS LastFormDate
+      FROM dbo.ClinEvent ce
+      JOIN dbo.ClinForm cf ON cf.EventId=ce.EventId
+      JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId AND mf.FormName='FLACKER_KIELY'
+      GROUP BY ce.PersonId 
+    ) forms ON forms.PersonId = v.PersonId
+  JOIN dbo.StudCase sc ON sc.StudyId = v.StudyId AND sc.PersonId = v.PersonId
+  JOIN dbo.StudyStatus ss ON ss.StudyId = sc.StudyId AND ss.StatusId = sc.StatusId  
+  WHERE v.StudyId = @StudyId AND ( ( forms.LastFormDate <= @IgnoreFormsAfter ) OR ( forms.LastFormDate IS NULL ) )
+  ORDER BY forms.LastFormDate;
+END;]]>
 	</row>
 	<row ProcId="201" StudyName="NDV.BASE" ProcName="NDV.GetPumpWithHighHbA1c" ProcDesc="Utvalg av Type-1 m/pumpe basert på alder og HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="462939626" LastUpdate="2015-06-12T07:59:28.400Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpWithHighHbA1c( @StudyId INT, @AgeMin FLOAT, @AgeMax FLOAT, @HbA1cCutoff FLOAT ) AS
@@ -5162,7 +5198,7 @@ BEGIN
    EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, 0, 'STRATIFY', 'DataFound';
 END]]>
 	</row>
-	<row ProcId="10026" StudyName="*" ProcName="GBD.RuleLokaliseringsteknologi" ProcDesc="RuleLokaliseringsteknologi" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="1653288713" LastUpdate="2018-01-16T15:34:27.897Z">
+	<row ProcId="10026" StudyName="GBD" ProcName="GBD.RuleLokaliseringsteknologi" ProcDesc="RuleLokaliseringsteknologi" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="553807092" LastUpdate="2018-01-22T08:38:35.420Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleLokaliseringsteknologi (@StudyId INT, @PersonId INT) AS
 BEGIN
     DECLARE @FormName VARCHAR(24) = 'GbdGps';
@@ -5205,7 +5241,7 @@ BEGIN
         @AlertMsg;
 END]]>
 	</row>
-	<row ProcId="10027" StudyName="*" ProcName="GBD.RuleMunnhygieneVurdering" ProcDesc="Munnhygiene vurdering" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="833778005" LastUpdate="2018-01-16T15:34:35.017Z">
+	<row ProcId="10027" StudyName="GBD" ProcName="GBD.RuleMunnhygieneVurdering" ProcDesc="Munnhygiene vurdering" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="1916482216" LastUpdate="2018-01-22T08:38:36.343Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleMunnhygieneVurdering (@StudyId INT, @PersonId INT) AS
 BEGIN
     DECLARE @FormName VARCHAR(24) = 'GbdMunnhygiene';
@@ -5243,7 +5279,7 @@ BEGIN
     EXEC dbo.AddAlertForPerson @StudyId, @PersonId, @AlertLevel, 'MHVURDERING', @AlertFacet, @AlertHdr, @AlertMsg;
 END]]>
 	</row>
-	<row ProcId="10028" StudyName="*" ProcName="GBD.RuleSaroppfolging" ProcDesc="Saroppfolging" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="2137507569" LastUpdate="2018-01-16T15:33:54.340Z">
+	<row ProcId="10028" StudyName="GBD" ProcName="GBD.RuleSaroppfolging" ProcDesc="Saroppfolging" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="1022264588" LastUpdate="2018-01-22T08:38:37.143Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleSaroppfolging (@StudyId INT, @PersonId INT) AS
 BEGIN
     DECLARE @FormName VARCHAR(24);
@@ -5320,7 +5356,7 @@ BEGIN
     , @AlertMsg;
 END]]>
 	</row>
-	<row ProcId="10029" StudyName="*" ProcName="GBD.RuleSamtykkekompetanse" ProcDesc="Samtykkekompetanse" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="-654589176" LastUpdate="2018-01-16T15:35:21.270Z">
+	<row ProcId="10029" StudyName="GBD" ProcName="GBD.RuleSamtykkekompetanse" ProcDesc="Samtykkekompetanse" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="-1686994699" LastUpdate="2018-01-22T08:38:38.183Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleSamtykkekompetanse (@StudyId INT, @PersonId INT) AS
 BEGIN
     DECLARE @FormName VARCHAR(24) = 'GbdSamtykkeKompetanse';
