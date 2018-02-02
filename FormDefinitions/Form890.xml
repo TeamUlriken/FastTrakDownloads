@@ -62,11 +62,11 @@
       <Item ItemId="1310" ItemType="2" VarName="NDV_GLUCMON" LoincScale="ORD" DisplayFormat="">
         <FormItem FormItemId="22683" OrderNumber="9" ItemText="Egenmåling av glukose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
           <Answer AnswerId="59269" OrderNumber="1" OptionText="CGM" VerboseText="Bruker CGM." Score="1.00" PromText="Kontinuerlig måling"/>
-          <Answer AnswerId="59270" OrderNumber="2" OptionText="FGM" VerboseText="Bruker FGM." Score="1.00" PromText="Flash Libre"/>
+          <Answer AnswerId="59270" OrderNumber="2" OptionText="irCGM (FGM)" VerboseText="Bruker infrarød CGM (Flash)." Score="1.00" PromText="Flash Libre"/>
           <Answer AnswerId="59271" OrderNumber="3" OptionText="daglig (glukometer)" VerboseText="Måler glukose daglig." Score="1.00" PromText="Glukometer daglig"/>
           <Answer AnswerId="59272" OrderNumber="4" OptionText="ukentlig eller oftere (glukometer)" VerboseText="Måler glukose ukentlig eller oftere." Score="1.00" PromText="Glukometer ukentlig"/>
           <Answer AnswerId="59273" OrderNumber="5" OptionText="sjeldnere enn ukentlig (glukometer)" VerboseText="Måler glukose sjeldnere enn ukentlig." Score="2.00" PromText="Glukometer sjeldnere enn ukentlig"/>
-          <Answer AnswerId="59274" OrderNumber="6" OptionText="Nei" VerboseText="Måler ikke glukose selv" Score="3.00" PromText="Måler ikke glukose selv"/>
+          <Answer AnswerId="59274" OrderNumber="6" OptionText="Nei" VerboseText="Måler ikke glukose selv." Score="3.00" PromText="Måler ikke glukose selv"/>
           <Answer AnswerId="59275" OrderNumber="7" OptionText="Vet ikke*" Score="4.00" PromText="Jeg er usikker"/>
         </FormItem>
       </Item>
@@ -79,68 +79,75 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7859" PageNumber="7" PageTitle="Egemålinger per uke*">
-      <Item ItemId="4059" ItemType="1" VarName="NDV_SELFMON_COUNT" LoincScale="QN" UnitStr="ganger/uke" DisplayFormat="">
-        <FormItem FormItemId="22681" OrderNumber="11" ItemHeader="Egenmåling hyppighet" ItemText="Antall egenmålinger per uke (ganger/uke)" ItemHelp="" MinExpression="0" MaxExpression="140" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0">
+    <Page PageId="9179" PageNumber="7" PageTitle="Flash-målinger*">
+      <Item ItemId="1411" ItemType="1" VarName="VAR1411" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="26154" OrderNumber="11" ItemText="Antall &quot;flash&quot;-målinger daglig" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7861" PageNumber="8" PageTitle="Insulinbehandling">
+    <Page PageId="9178" PageNumber="8" PageTitle="Egenmålinger*">
+      <Item ItemId="4059" ItemType="1" VarName="NDV_SELFMON_COUNT" LoincScale="QN" UnitStr="ganger/uke" DisplayFormat="">
+        <FormItem FormItemId="22681" OrderNumber="12" ItemText="Antall egenmålinger per uke (ganger/uke)" ItemHelp="" MinExpression="0" MaxExpression="140" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="7861" PageNumber="10" PageTitle="Insulinbehandling">
       <Item ItemId="1200" ItemType="2" VarName="VAR1200" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="22461" OrderNumber="12" ItemText="Setter du insulin til hvert hovedmåltid?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem FormItemId="22461" OrderNumber="13" ItemText="Setter du insulin til hvert hovedmåltid?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="10187" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="10188" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7797" PageNumber="9" PageTitle="Måltider uten insulin*">
+    <Page PageId="7797" PageNumber="11" PageTitle="Måltider uten insulin*">
       <Item ItemId="1238" ItemType="1" VarName="VAR1238" LoincScale="QN" DisplayFormat="">
-        <FormItem FormItemId="22492" OrderNumber="13" ItemText="Omtrent hvor mange hovedmåltider/uke settes ikke insulin til" ItemHelp="" MinExpression="1" MaxExpression="28" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem FormItemId="22492" OrderNumber="14" ItemText="Omtrent hvor mange hovedmåltider/uke settes ikke insulin til" ItemHelp="" MinExpression="1" MaxExpression="28" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7798" PageNumber="10" PageTitle="Auto*" PageIntroduction="This page was autogenerated">
+    <Page PageId="7798" PageNumber="12" PageTitle="Auto*" PageIntroduction="This page was autogenerated">
       <Item ItemId="1232" ItemType="2" VarName="VAR1232" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="22462" OrderNumber="14" ItemText="Setter du insulin til småmåltidene?" ItemHelp="Snacks" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem FormItemId="22462" OrderNumber="15" ItemText="Setter du insulin til småmåltidene?" ItemHelp="Snacks" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="10162" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="10163" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
       <Item ItemId="1233" ItemType="2" VarName="VAR1233" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="22463" OrderNumber="15" ItemText="Har du brukt insulin til å gå ned i vekt?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem FormItemId="22463" OrderNumber="16" ItemText="Har du brukt insulin til å gå ned i vekt?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="10164" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="10165" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
       <Item ItemId="1234" ItemType="2" VarName="VAR1234" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="22464" OrderNumber="16" ItemText="Justerer du insulindose i forhold til mat?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem FormItemId="22464" OrderNumber="17" ItemText="Justerer du insulindose i forhold til mat?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="10171" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="10172" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
       <Item ItemId="1235" ItemType="2" VarName="VAR1235" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="22465" OrderNumber="17" ItemText="Er følingsangst et problem for deg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem FormItemId="22465" OrderNumber="18" ItemText="Er følingsangst et problem for deg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="59177" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="59178" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
       <Item ItemId="1236" ItemType="1" VarName="VAR1236" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
-        <FormItem FormItemId="22466" OrderNumber="18" ItemText="Hvor høyt må blodsukker være når du legger deg for at du føler det komfortabel? (mmol/L)" ItemHelp="" MinExpression="2" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem FormItemId="22466" OrderNumber="19" ItemText="Hvor høyt må blodsukker være når du legger deg for at du føler det komfortabel? (mmol/L)" ItemHelp="" MinExpression="2" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="1237" ItemType="2" VarName="VAR1237" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="22467" OrderNumber="19" ItemText="Benytter du noen gang andre rusmidler enn alkohol?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem FormItemId="22467" OrderNumber="20" ItemText="Benytter du noen gang andre rusmidler enn alkohol?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="10173" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="10183" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7775" PageNumber="11" PageTitle="Utdanning og yrkesstatus">
+    <Page PageId="7775" PageNumber="13" PageTitle="Utdanning og yrkesstatus">
       <Item ItemId="2302" ItemType="2" VarName="KKS_15" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem FormItemId="22468" OrderNumber="20" ItemHeader="Utdanning" ItemText="Høyeste fullførte utdanning" ItemHelp="KKS 15" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem FormItemId="22468" OrderNumber="21" ItemHeader="Utdanning" ItemText="Høyeste fullførte utdanning" ItemHelp="KKS 15" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="6775" OrderNumber="1" OptionText="Ikke avsluttet grunnskole." Score="0.00"/>
           <Answer AnswerId="6776" OrderNumber="2" OptionText="Grunnskole" Score="1.00"/>
           <Answer AnswerId="6777" OrderNumber="3" OptionText="Videregående skole/gymnas/yrkesskole." Score="2.00"/>
@@ -150,7 +157,7 @@
         </FormItem>
       </Item>
       <Item ItemId="2303" ItemType="2" VarName="KKS_16" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem FormItemId="22469" OrderNumber="21" ItemText="Yrkesstatus" ItemHelp="KKS 16" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem FormItemId="22469" OrderNumber="22" ItemText="Yrkesstatus" ItemHelp="KKS 16" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="6781" OrderNumber="1" OptionText="Uten beskjeftigelse." Score="0.00"/>
           <Answer AnswerId="6782" OrderNumber="2" OptionText="Heltidsjobb." Score="1.00"/>
           <Answer AnswerId="6783" OrderNumber="3" OptionText="Deltidsjobb." Score="2.00"/>
@@ -160,9 +167,19 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7779" PageNumber="12" PageTitle="Vurdering">
+    <Page PageId="9266" PageNumber="14" PageTitle="Oppsummering">
+      <Item ItemId="2083" ItemType="2" VarName="VAR2083" LoincScale="ORD">
+        <FormItem FormItemId="26290" OrderNumber="24" ItemText="Tiltak pga høy HbA1c (&gt;=9%)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11059" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="11060" OrderNumber="2" OptionText="Nei, pasienten ønsker ikke"/>
+          <Answer AnswerId="11061" OrderNumber="3" OptionText="Nei, ikke aktuelt"/>
+          <Answer AnswerId="11062" OrderNumber="4" OptionText="Vet ikke / ubesvart"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="7779" PageNumber="15" PageTitle="Vurdering">
       <Item ItemId="4088" ItemType="4" VarName="DP_AVTALER" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="22460" OrderNumber="22" ItemHeader="Vurdering*" ItemText="Vurdering og plan videre" ItemHelp="Inkludert eventuelle avtaler gjort med pasienten, unntatt timeavtale som er eget punkt." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem FormItemId="22460" OrderNumber="23" ItemHeader="Vurdering*" ItemText="Vurdering og plan videre" ItemHelp="Inkludert eventuelle avtaler gjort med pasienten, unntatt timeavtale som er eget punkt." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -170,11 +187,14 @@
   </Form>
   <Actions>
     <PageAction MasterId="1310">
-      <Activate EnumVal="3" PageConditionId="5831" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="4" PageConditionId="5833" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="6721" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="6722" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="6723" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="5831" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="5833" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="1200">
-      <Activate EnumVal="2" PageConditionId="5807" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="5807" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>

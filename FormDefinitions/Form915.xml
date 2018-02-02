@@ -194,8 +194,8 @@
       </Item>
       <Item ItemId="1457" ItemType="2" VarName="VAR1457" LoincScale="ORD">
         <FormItem FormItemId="24265" OrderNumber="26" ItemText="Kostholdsvurdering:" ItemHelp="Hvis &lt;28 :         'Kostholdet bør forbedres på mange punkter'&#xA;Hvis &gt;27 AND &lt;36 : 'Kostholdet bør forbedres på en del punkter'&#xA;Hvis &gt;35 :         'Kostholdsvanene er sunne'" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="10712" OrderNumber="1" OptionText="Under 28p Kostholdet bør forbedres på mange punkter" VerboseText="Kostholdet kan bli bedre på flere punkter."/>
-          <Answer AnswerId="10713" OrderNumber="2" OptionText="28-35p Kostholdet bør forbedres på en del punkter" VerboseText="Kostholdet kan bli bedre på enkelte punkter."/>
+          <Answer AnswerId="10712" OrderNumber="1" OptionText="Under 28p Kostholdet kan bli bedre på flere punkter" VerboseText="Kostholdet kan bli bedre på flere punkter."/>
+          <Answer AnswerId="10713" OrderNumber="2" OptionText="28-35p  Kostholdet kan bli bedre på enkelte punkter." VerboseText="Kostholdet kan bli bedre på enkelte punkter."/>
           <Answer AnswerId="10714" OrderNumber="3" OptionText="Over 35 p Kostholdsvanene er sunne" VerboseText="Kostholdsvanene er sunne."/>
         </FormItem>
       </Item>
@@ -324,20 +324,22 @@
       </Item>
     </Page>
     <Page PageId="8179" PageNumber="29" PageTitle="Tobakk">
-      <Item ItemId="3227" ItemType="2" VarName="NDV_SMOKING" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="23514" OrderNumber="48" ItemText="Røykestatus" ItemHelp="Velg Dagligrøyker hvis sluttet for mindre enn 3 mnd siden." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="16138" OrderNumber="1" OptionText="Aldri røykt daglig."/>
-          <Answer AnswerId="16139" OrderNumber="2" OptionText="Dagligrøyker."/>
-          <Answer AnswerId="16140" OrderNumber="3" OptionText="Eks-dagligrøyker."/>
-          <Answer AnswerId="16141" OrderNumber="4" OptionText="Røykestatus ukjent.*"/>
+      <Item ItemId="2072" ItemType="2" VarName="VAR2072" LoincScale="ORD">
+        <FormItem FormItemId="25377" OrderNumber="48" ItemText="Røykestatus" ItemHelp="Velg dagligrøyker om sluttet innenfor de siste 3 mnd" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11038" OrderNumber="1" OptionText="Aldri røykt" VerboseText="Har aldri røykt."/>
+          <Answer AnswerId="11039" OrderNumber="2" OptionText="Dagligrøyker" VerboseText="Røyker"/>
+          <Answer AnswerId="11040" OrderNumber="3" OptionText="Røyker av og til" VerboseText="Røyker av og til,"/>
+          <Answer AnswerId="11041" OrderNumber="4" OptionText="Røyket tidligere" VerboseText="Har tidligere røykt"/>
+          <Answer AnswerId="11042" OrderNumber="5" OptionText="Røykestatus ukjent" VerboseText=""/>
         </FormItem>
       </Item>
       <Item ItemId="1399" ItemType="2" VarName="VAR1399" LoincScale="ORD" DisplayFormat="">
         <FormItem FormItemId="23515" OrderNumber="50" ItemText="Snus" ItemHelp="Velg Daglig hvis sluttet for &lt; 3 mnd siden" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="10341" OrderNumber="1" OptionText="Aldri snust daglig" VerboseText="Bruker ikke snus"/>
-          <Answer AnswerId="10342" OrderNumber="2" OptionText="Snuser daglig" VerboseText="Snuser daglig"/>
-          <Answer AnswerId="10343" OrderNumber="3" OptionText="Tidligere snust daglig" VerboseText="Tidligere snust daglig"/>
-          <Answer AnswerId="10344" OrderNumber="4" OptionText="Ukjent bruk av snus" VerboseText="Bruk av snus ikke avklart"/>
+          <Answer AnswerId="10341" OrderNumber="1" OptionText="Aldri snust" VerboseText="Bruker ikke snus."/>
+          <Answer AnswerId="10342" OrderNumber="2" OptionText="Snuser daglig" VerboseText="Snuser daglig,"/>
+          <Answer AnswerId="10343" OrderNumber="3" OptionText="Snuste tidligere" VerboseText="Tidligere snust daglig,"/>
+          <Answer AnswerId="10344" OrderNumber="4" OptionText="Snuser av og til" VerboseText="Snuser av og til,"/>
+          <Answer AnswerId="11037" OrderNumber="5" OptionText="Ukjent bruk av snus" VerboseText="Bruk av snus ikke avklart."/>
         </FormItem>
       </Item>
     </Page>
@@ -358,21 +360,27 @@
           <Answer AnswerId="10994" OrderNumber="6" OptionText="6-7 ganger i uka"/>
         </FormItem>
       </Item>
+      <Item ItemId="1959" ItemType="4" VarName="VAR1959" LoincScale="NAR">
+        <FormItem FormItemId="25378" OrderNumber="54" ItemText="Type mosjon:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="60355" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="60356" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
     </Page>
     <Page PageId="8176" PageNumber="31" PageTitle="Kosttilskudd">
       <Item ItemId="1617" ItemType="2" VarName="VAR1617" LoincScale="ORD">
-        <FormItem FormItemId="23518" OrderNumber="55" ItemText="Tar du kosttilskudd?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23518" OrderNumber="56" ItemText="Tar du kosttilskudd?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="10632" OrderNumber="1" OptionText="Nei" VerboseText="Bruker ingen kosttilskudd."/>
           <Answer AnswerId="10633" OrderNumber="2" OptionText="Tran" VerboseText="Tar tran."/>
           <Answer AnswerId="10634" OrderNumber="3" OptionText="Fiskeoljer/omega-3-kapsler" VerboseText="Tar tilskudd av omega-3 i form av fiskeoljer/omega-3-kapsler."/>
           <Answer AnswerId="10635" OrderNumber="4" OptionText="Multivitaminpreparat" VerboseText="Bruker multivitaminpreparat."/>
-          <Answer AnswerId="10636" OrderNumber="5" OptionText="Flere / annet" VerboseText="Tar følgende kosttilskudd:"/>
+          <Answer AnswerId="10636" OrderNumber="5" OptionText="Flere / annet" VerboseText="Tar kosttilskudd i form av"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageId="8177" PageNumber="32" PageTitle="Annet tilskudd*">
       <Item ItemId="1618" ItemType="4" VarName="VAR1618" LoincScale="NAR">
-        <FormItem FormItemId="23519" OrderNumber="56" ItemText="Hvilke(t) andre kosttilskudd bruker du?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23519" OrderNumber="57" ItemText="Hvilke(t) andre kosttilskudd bruker du?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>

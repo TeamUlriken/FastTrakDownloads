@@ -11,8 +11,8 @@
         <FormItem FormItemId="22825" OrderNumber="2" ItemText="Er det tatt en gentest?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="10156" OrderNumber="1" OptionText="Nei" VerboseText="Pasienten er ikke gentestet"/>
           <Answer AnswerId="10157" OrderNumber="2" OptionText="Ja, mutasjonspositiv" VerboseText="Mutasjonspositiv for"/>
-          <Answer AnswerId="10106" OrderNumber="3" OptionText="Ja, svar ikke klart/mottatt" VerboseText="Gentest er tatt men svaret er ikke klart/mottatt"/>
-          <Answer AnswerId="10107" OrderNumber="4" OptionText="Ja, mutasjonsnegativ" VerboseText="Mutasjonsnegativ"/>
+          <Answer AnswerId="10106" OrderNumber="3" OptionText="Ja, svar ikke klart/mottatt" VerboseText="Gentest er tatt, men svaret er ikke klart/mottatt."/>
+          <Answer AnswerId="10107" OrderNumber="4" OptionText="Ja, mutasjonsnegativ" VerboseText="Gentest er tatt, men ingen mutasjon påvist."/>
         </FormItem>
       </Item>
     </Page>
@@ -60,61 +60,63 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8052" PageNumber="5" PageTitle="FH genetisk fastsatt*">
+    <Page PageId="7752" PageNumber="5" PageTitle="FH klinisk fastsatt *">
+      <Item ItemId="1570" ItemType="4" VarName="VAR1570" LoincScale="NAR">
+        <FormItem FormItemId="23452" OrderNumber="8" ItemHeader="FH klinisk fastsatt:" ItemText="Begrunnelse for klinisk antatt/sikker FH" ItemHelp="Eksempelvis barn med kjent FH i slekt og høye kolesterolverdier." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="1367" ItemType="4" VarName="VAR1367" LoincScale="NAR" DisplayFormat="">
+        <FormItem FormItemId="22781" OrderNumber="9" ItemHeader="DLCN-score:" ItemText="Om score er beregnet, kan den føres her." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8052" PageNumber="6" PageTitle="FH genetisk fastsatt*">
       <Item ItemId="1366" ItemType="2" VarName="VAR1366" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="22780" OrderNumber="8" ItemText="Mutasjonen sitter på gen for" ItemHelp="Om kombinert HeFH og mutasjon på ulike gen: bruk kommentarfeltet nederst" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="22780" OrderNumber="10" ItemText="Mutasjonen sitter på gen for" ItemHelp="Om kombinert HeFH og mutasjon på ulike gen: bruk kommentarfeltet nederst" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="10204" OrderNumber="1" OptionText="LDL-reseptor"/>
           <Answer AnswerId="10205" OrderNumber="2" OptionText="ApoB"/>
           <Answer AnswerId="10206" OrderNumber="3" OptionText="PCSK9"/>
         </FormItem>
       </Item>
       <Item ItemId="1159" ItemType="4" VarName="VAR1159" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="22281" OrderNumber="9" ItemText="Mutasjon:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="22281" OrderNumber="11" ItemText="Mutasjon:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="1365" ItemType="4" VarName="VAR1365" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="22779" OrderNumber="10" ItemText="2. mutasjonssekvens" ItemHelp="Ved to mutasjoner, skriv inn begge (også ved ren homozygot FH)." ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="22779" OrderNumber="12" ItemText="2. mutasjonssekvens" ItemHelp="Ved to mutasjoner, skriv inn begge (også ved ren homozygot FH)." ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageId="8665" PageNumber="7" PageTitle="FH alle*">
       <Item ItemId="1451" ItemType="2" VarName="VAR1451" LoincScale="ORD">
-        <FormItem FormItemId="23243" OrderNumber="11" ItemText="Arvet fra" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="10477" OrderNumber="1" OptionText="ikke oppgitt forelder"/>
-          <Answer AnswerId="10478" OrderNumber="2" OptionText="mor"/>
-          <Answer AnswerId="10480" OrderNumber="3" OptionText="far"/>
-          <Answer AnswerId="10481" OrderNumber="4" OptionText="begge foreldrene"/>
+        <FormItem FormItemId="23243" OrderNumber="13" ItemText="Arvet fra" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="10477" OrderNumber="1" OptionText="ikke oppgitt forelder" VerboseText=""/>
+          <Answer AnswerId="10478" OrderNumber="2" OptionText="mor" VerboseText="Arvet fra mor"/>
+          <Answer AnswerId="10480" OrderNumber="3" OptionText="far" VerboseText="Arvet fra far"/>
+          <Answer AnswerId="10481" OrderNumber="4" OptionText="begge foreldrene" VerboseText="Arvet fra begge foreldre"/>
         </FormItem>
       </Item>
       <Item ItemId="1536" ItemType="2" VarName="VAR1536" LoincScale="ORD">
-        <FormItem FormItemId="23248" OrderNumber="12" ItemText="Antall barn med kjent FH:" ItemHelp="Fødselsår registreres senere" MinExpression="0" MaxExpression="7" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="59693" OrderNumber="1" OptionText="ingen"/>
-          <Answer AnswerId="59694" OrderNumber="2" OptionText="1"/>
-          <Answer AnswerId="59695" OrderNumber="3" OptionText="2"/>
-          <Answer AnswerId="10783" OrderNumber="4" OptionText="3"/>
-          <Answer AnswerId="10784" OrderNumber="5" OptionText="4"/>
-          <Answer AnswerId="10791" OrderNumber="6" OptionText="5"/>
+        <FormItem FormItemId="23248" OrderNumber="14" ItemText="Antall barn med kjent FH:" ItemHelp="Fødselsår registreres senere" MinExpression="0" MaxExpression="7" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="59693" OrderNumber="0" OptionText="ingen"/>
+          <Answer AnswerId="59694" OrderNumber="1" OptionText="1"/>
+          <Answer AnswerId="59695" OrderNumber="2" OptionText="2"/>
+          <Answer AnswerId="10783" OrderNumber="3" OptionText="3"/>
+          <Answer AnswerId="10784" OrderNumber="4" OptionText="4"/>
+          <Answer AnswerId="10791" OrderNumber="5" OptionText="5"/>
         </FormItem>
       </Item>
       <Item ItemId="1718" ItemType="4" VarName="VAR1718" LoincScale="NAR">
-        <FormItem FormItemId="24184" OrderNumber="14" ItemText="Søsken med kjent FH:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="24184" OrderNumber="15" ItemText="Søsken med kjent FH:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7752" PageNumber="6" PageTitle="FH klinisk fastsatt *">
-      <Item ItemId="1570" ItemType="4" VarName="VAR1570" LoincScale="NAR">
-        <FormItem FormItemId="23452" OrderNumber="13" ItemHeader="FH klinisk fastsatt:" ItemText="Begrunnelse for klinisk antatt/sikker FH" ItemHelp="Eksempelvis barn med kjent FH i slekt og høye kolesterolverdier." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1367" ItemType="4" VarName="VAR1367" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="22781" OrderNumber="15" ItemHeader="DLCN-score:" ItemText="Om score er beregnet, kan den føres her." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="7919" PageNumber="7" PageTitle="Spesifiser hypertriglyseridemi*" PageIntroduction="Både isolerte hypertriglyseridemier og blandede former som Type III ">
+    <Page PageId="7919" PageNumber="8" PageTitle="Spesifiser hypertriglyseridemi*" PageIntroduction="Både isolerte hypertriglyseridemier og blandede former som Type III ">
       <Item ItemId="1191" ItemType="4" VarName="VAR1191" LoincScale="NAR" DisplayFormat="">
         <FormItem FormItemId="22790" OrderNumber="16" ItemHeader="Klinisk diagnose" ItemText="Spesifiser arvelig hypertriglyseridemi" ItemHelp="Fritekst, du velger selv om du vil bruke Fredrickson-klassifisering eller annet." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
@@ -131,21 +133,21 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7862" PageNumber="8" PageTitle="Sekundær dyslipidemi*">
+    <Page PageId="7862" PageNumber="9" PageTitle="Sekundær dyslipidemi*">
       <Item ItemId="1202" ItemType="4" VarName="VAR1202" LoincScale="NAR" DisplayFormat="">
         <FormItem FormItemId="22342" OrderNumber="19" ItemHeader="Sekundær dyslipidemi" ItemText="Oppgi diagnose manuelt" ItemHelp="Husk å legge inn eventuell bakenforliggende diagnose i diagnosefeltet til høyre" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7934" PageNumber="9" PageTitle="Andre lipidforstyrrelser*">
+    <Page PageId="7934" PageNumber="10" PageTitle="Andre lipidforstyrrelser*">
       <Item ItemId="1201" ItemType="4" VarName="VAR1201" LoincScale="NAR" DisplayFormat="">
         <FormItem FormItemId="22340" OrderNumber="20" ItemHeader="Annen arvelig lipidforstyrrelse" ItemText="Oppgi diagnose manuelt" ItemHelp="Kategorien skal kun benyttes for svært sjeldne dyslipidemier ikke angitt andre steder. Hyppighet &lt; 1:500.000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7871" PageNumber="10" PageTitle="Sosiale forhold">
+    <Page PageId="7871" PageNumber="11" PageTitle="Sosiale forhold">
       <Item ItemId="1321" ItemType="2" VarName="VAR1321" LoincScale="ORD">
         <FormItem FormItemId="23305" OrderNumber="21" ItemText="Antall barn" ItemHelp="Oppgi antall egne barn" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="10543" OrderNumber="0" OptionText="0"/>
@@ -153,11 +155,11 @@
           <Answer AnswerId="10159" OrderNumber="2" OptionText="2" VerboseText="To barn:"/>
           <Answer AnswerId="10160" OrderNumber="3" OptionText="3" VerboseText="Tre barn:"/>
           <Answer AnswerId="10184" OrderNumber="4" OptionText="4" VerboseText="Fire barn:"/>
-          <Answer AnswerId="10186" OrderNumber="5" OptionText="5 eller flere" VerboseText="Fem eller flere barn:"/>
+          <Answer AnswerId="10186" OrderNumber="5" OptionText="5 eller flere" VerboseText="Barn:"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8068" PageNumber="11" PageTitle="1. barn*">
+    <Page PageId="8068" PageNumber="12" PageTitle="1. barn*">
       <Item ItemId="1208" ItemType="1" VarName="VAR1208" LoincScale="QN">
         <FormItem FormItemId="23299" OrderNumber="22" ItemHeader="født i" ItemText="Fødselsår første barn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
@@ -170,15 +172,15 @@
         </FormItem>
       </Item>
       <Item ItemId="1748" ItemType="2" VarName="VAR1748" LoincScale="ORD">
-        <FormItem FormItemId="24255" OrderNumber="25" ItemText="Har førstefødte kjent arvelig dyslipidemi?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="10777" OrderNumber="1" OptionText="Ja"/>
+        <FormItem FormItemId="24255" OrderNumber="24" ItemText="Har barn nr.1 kjent arvelig dyslipidemi?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="10777" OrderNumber="1" OptionText="Ja" VerboseText="kjent dyslipidemi." Score="1.00"/>
           <Answer AnswerId="10778" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8069" PageNumber="12" PageTitle="2. barn*">
+    <Page PageId="8069" PageNumber="13" PageTitle="2. barn*">
       <Item ItemId="1298" ItemType="1" VarName="VAR1298" LoincScale="QN">
-        <FormItem FormItemId="23300" OrderNumber="24" ItemHeader="født i" ItemText="Fødselsår andre barn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23300" OrderNumber="25" ItemHeader="født i" ItemText="Fødselsår andre barn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -189,15 +191,15 @@
         </FormItem>
       </Item>
       <Item ItemId="1750" ItemType="2" VarName="VAR1750" LoincScale="ORD">
-        <FormItem FormItemId="24256" OrderNumber="28" ItemText="Har barn nr. 2 kjent arvelig dyslipidemi?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="60030" OrderNumber="1" OptionText="Ja"/>
+        <FormItem FormItemId="24256" OrderNumber="27" ItemText="Har barn nr. 2 kjent arvelig dyslipidemi?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="60030" OrderNumber="1" OptionText="Ja" VerboseText="kjent dyslipidemi." Score="1.00"/>
           <Answer AnswerId="60031" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8070" PageNumber="13" PageTitle="3. barn*">
+    <Page PageId="8070" PageNumber="14" PageTitle="3. barn*">
       <Item ItemId="1318" ItemType="1" VarName="VAR1318" LoincScale="QN">
-        <FormItem FormItemId="23301" OrderNumber="27" ItemHeader="født i" ItemText="Fødselsår tredje barn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23301" OrderNumber="28" ItemHeader="født i" ItemText="Fødselsår tredje barn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -208,15 +210,15 @@
         </FormItem>
       </Item>
       <Item ItemId="1751" ItemType="2" VarName="VAR1751" LoincScale="ORD">
-        <FormItem FormItemId="24257" OrderNumber="31" ItemText="Har barn nr. 3 kjent arvelig dyslipidemi?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="60033" OrderNumber="1" OptionText="Ja"/>
+        <FormItem FormItemId="24257" OrderNumber="30" ItemText="Har barn nr. 3 kjent arvelig dyslipidemi?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="60033" OrderNumber="1" OptionText="Ja" VerboseText="kjent dyslipidemi." Score="1.00"/>
           <Answer AnswerId="60034" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8144" PageNumber="14" PageTitle="4. barn*">
+    <Page PageId="8144" PageNumber="15" PageTitle="4. barn*">
       <Item ItemId="1320" ItemType="1" VarName="VAR1320" LoincScale="QN">
-        <FormItem FormItemId="23457" OrderNumber="30" ItemHeader="født i" ItemText="Fødselsår fjerde barn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23457" OrderNumber="31" ItemHeader="født i" ItemText="Fødselsår fjerde barn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="10493" OrderNumber="1" OptionText="statin"/>
           <Answer AnswerId="10498" OrderNumber="2" OptionText="ezetimibe"/>
           <Answer AnswerId="10499" OrderNumber="3" OptionText="statin + ezetimibe"/>
@@ -235,20 +237,20 @@
         </FormItem>
       </Item>
       <Item ItemId="1752" ItemType="2" VarName="VAR1752" LoincScale="ORD">
-        <FormItem FormItemId="24258" OrderNumber="34" ItemText="Har barn nr. 4 kjent arvelig dyslipidemi?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="60036" OrderNumber="1" OptionText="Ja"/>
+        <FormItem FormItemId="24258" OrderNumber="33" ItemText="Har barn nr. 4 kjent arvelig dyslipidemi?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="60036" OrderNumber="1" OptionText="Ja" VerboseText="kjent dyslipidemi." Score="1.00"/>
           <Answer AnswerId="60037" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8071" PageNumber="15" PageTitle="5. barn+*">
+    <Page PageId="8071" PageNumber="16" PageTitle="5. barn+*">
       <Item ItemId="1319" ItemType="4" VarName="VAR1319" LoincScale="NAR">
-        <FormItem FormItemId="23302" OrderNumber="33" ItemText="Kjønn og fødselsår og lipidstatus femte og påfølgende barn" ItemHelp="Fødselsår registreres i fritekst separert med komma (1995,1999...)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23302" OrderNumber="34" ItemText="Kjønn og fødselsår og lipidstatus femte og påfølgende barn" ItemHelp="Fødselsår registreres i fritekst separert med komma (1995,1999...)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8072" PageNumber="16" PageTitle="Sosialt forts*">
+    <Page PageId="8072" PageNumber="17" PageTitle="Sosialt forts*">
       <Item ItemId="6682" ItemType="2" VarName="OID8414" LoincScale="ORD" DisplayFormat="">
         <FormItem FormItemId="22324" OrderNumber="35" ItemText="Samlivsstatus" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="36213" OrderNumber="1" OptionText="Lever ikke i parforhold." ShortCode="N"/>
@@ -275,88 +277,78 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="7755" ItemType="2" VarName="VAR7755" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="22325" OrderNumber="38" ItemText="Yrkesklasse" ItemHelp="Basert på ISCO-08 yrkesklassifisering" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="41518" OrderNumber="0" OptionText="Mililtære yrker og uoppgitt"/>
-          <Answer AnswerId="41509" OrderNumber="1" OptionText="Leder"/>
-          <Answer AnswerId="41510" OrderNumber="2" OptionText="Akademisk yrke"/>
-          <Answer AnswerId="41511" OrderNumber="3" OptionText="Høyskoleyrke"/>
-          <Answer AnswerId="41512" OrderNumber="4" OptionText="Kontoryrke"/>
-          <Answer AnswerId="41513" OrderNumber="5" OptionText="Salgs- og serviceyrke"/>
-          <Answer AnswerId="41514" OrderNumber="6" OptionText="Bonde/fisker e.l."/>
-          <Answer AnswerId="41515" OrderNumber="7" OptionText="Håndverker"/>
-          <Answer AnswerId="41516" OrderNumber="8" OptionText="Prosess- og maskinoperatører, transportarbeider el.l."/>
-          <Answer AnswerId="41517" OrderNumber="9" OptionText="Renholder. hjelpearbeider el.l."/>
-          <Answer AnswerId="41529" OrderNumber="99" OptionText="Flere yrker"/>
-        </FormItem>
-      </Item>
     </Page>
-    <Page PageId="8066" PageNumber="17" PageTitle="Status første visitt">
+    <Page PageId="8066" PageNumber="18" PageTitle="Status første visitt">
       <Item ItemId="1188" ItemType="1" VarName="VAR1188" LoincScale="QN" DisplayFormat="">
-        <FormItem FormItemId="23309" OrderNumber="39" ItemHeader="År:" ItemText="Oppgi årstall for første konsultasjon ved lipidklinikk" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23309" OrderNumber="38" ItemHeader="År:" ItemText="Oppgi årstall for første konsultasjon ved lipidklinikk" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="1179" ItemType="1" VarName="VAR1179" LoincScale="QN" UnitStr="kg">
-        <FormItem FormItemId="23293" OrderNumber="40" ItemHeader="Vekt:" ItemText="Vekt (kg) ved første konsultasjon" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="440" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23293" OrderNumber="39" ItemHeader="Vekt:" ItemText="Vekt (kg) ved første konsultasjon" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="440" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="1178" ItemType="1" VarName="VAR1178" LoincScale="QN" UnitStr="cm">
-        <FormItem FormItemId="23292" OrderNumber="41" ItemHeader="Høyde:" ItemText="Høyde (cm) ved første konsultasjon" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23292" OrderNumber="40" ItemHeader="Høyde:" ItemText="Høyde (cm) ved første konsultasjon" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="1185" ItemType="1" VarName="VAR1185" LoincScale="QN" UnitStr="mmHg">
-        <FormItem FormItemId="23295" OrderNumber="42" ItemHeader="Systolisk" ItemText="Systolisk blodtrykk ved første konsultasjon (mmHg)" ItemHelp="" MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23295" OrderNumber="41" ItemHeader="Systolisk" ItemText="Systolisk blodtrykk ved første konsultasjon (mmHg)" ItemHelp="" MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="1180" ItemType="1" VarName="VAR1180" LoincScale="QN" UnitStr="mmHg">
-        <FormItem FormItemId="23294" OrderNumber="43" ItemHeader="Diastolisk;" ItemText="Diastolisk blodtrykk ved første konsultasjon (mmHg)" ItemHelp="" MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23294" OrderNumber="42" ItemHeader="Diastolisk;" ItemText="Diastolisk blodtrykk ved første konsultasjon (mmHg)" ItemHelp="" MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="1205" ItemType="1" VarName="SMARTDIETFIRST_SUM" LoincScale="QN">
-        <FormItem FormItemId="23297" OrderNumber="44" ItemText="SmartDiet score første konsultasjon" ItemHelp="" MinExpression="10" MaxExpression="45" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23297" OrderNumber="43" ItemText="SmartDiet score første konsultasjon" ItemHelp="" MinExpression="10" MaxExpression="45" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="10201" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="10202" OrderNumber="2" OptionText="Nei"/>
           <Answer AnswerId="10203" OrderNumber="3" OptionText="Ukjent"/>
         </FormItem>
       </Item>
       <Item ItemId="1203" ItemType="2" VarName="SMARTDIETFIRSTMAX" LoincScale="ORD">
-        <FormItem FormItemId="23296" OrderNumber="45" ItemText="SmartDiet versjon" ItemHelp="Dette viser hvilken versjon av smartdiet som ble fylt ut" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23296" OrderNumber="44" ItemText="SmartDiet versjon" ItemHelp="Dette viser hvilken versjon av smartdiet som ble fylt ut" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="10190" OrderNumber="1" OptionText="Smart Diet 2007 (maxscore: 36p )" VerboseText="av 36 poeng" Score="36.00"/>
           <Answer AnswerId="10191" OrderNumber="2" OptionText="Smart Diet 2009 (maxscore: 45p )" VerboseText="av 45 poeng" Score="45.00"/>
           <Answer AnswerId="10192" OrderNumber="3" OptionText="Smart Diet 2011 (maxscore: 41p )" VerboseText="av 41 poeng" Score="41.00"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8074" PageNumber="18" PageTitle="SmartDietfirstpercentscore*">
+    <Page PageId="8074" PageNumber="19" PageTitle="SmartDietfirstpercentscore*">
       <Item ItemId="1206" ItemType="1" VarName="SMARTDIETFIRST_SCORE" LoincScale="QN">
-        <FormItem FormItemId="23298" OrderNumber="46" ItemText="Score SmartDiet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23298" OrderNumber="45" ItemText="Score SmartDiet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8053" PageNumber="19" PageTitle="Status siste konsultasjon">
+    <Page PageId="8053" PageNumber="20" PageTitle="Status siste konsultasjon">
       <Item ItemId="1187" ItemType="5" VarName="VAR1187" LoincScale="DATE">
-        <FormItem FormItemId="23264" OrderNumber="47" ItemHeader="Dato" ItemText="Siste konsultasjon -" ItemHelp="NB! skal være samme dato som dette skjemaet! Flytt skjemaet om dette ikke er tilfelle" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23264" OrderNumber="46" ItemHeader="Dato" ItemText="Siste konsultasjon -" ItemHelp="NB! skal være samme dato som dette skjemaet! Flytt skjemaet om dette ikke er tilfelle" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        <FormItem FormItemId="23258" OrderNumber="48" ItemText="Vekt (kg)" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+        <FormItem FormItemId="23258" OrderNumber="47" ItemText="Vekt (kg)" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        <FormItem FormItemId="23261" OrderNumber="49" ItemText="Høyde (cm)" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1">
+        <FormItem FormItemId="23261" OrderNumber="48" ItemText="Høyde (cm)" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-        <FormItem FormItemId="23259" OrderNumber="50" ItemText="BMI (kg/m2)" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="1" Decimals="1">
+        <FormItem FormItemId="23259" OrderNumber="49" ItemText="BMI (kg/m2)" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3226" ItemType="1" VarName="WAIST" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        <FormItem FormItemId="24920" OrderNumber="50" ItemText="Midjemål (cm)" ItemHelp="Midt mellom ribbensbue og hoftekam, målt etter ekspirasjon" MinExpression="40" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -372,7 +364,7 @@
         </FormItem>
       </Item>
       <Item ItemId="1713" ItemType="2" VarName="VAR1713" LoincScale="ORD">
-        <FormItem FormItemId="24181" OrderNumber="54" ItemText="Mosjonerer" ItemHelp="I gjennomsnitt. Med mosjon mener man å gå tur, går på ski, svømme eller drive trening/idrett.&#xA;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="24181" OrderNumber="53" ItemText="Mosjonerer" ItemHelp="I gjennomsnitt. Med mosjon mener man å gå tur, går på ski, svømme eller drive trening/idrett.&#xA;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="10753" OrderNumber="1" OptionText="aldri"/>
           <Answer AnswerId="10754" OrderNumber="2" OptionText="sjeldnere enn en dag i uka"/>
           <Answer AnswerId="10755" OrderNumber="3" OptionText="en gang i uka"/>
@@ -382,20 +374,20 @@
         </FormItem>
       </Item>
       <Item ItemId="1959" ItemType="4" VarName="VAR1959" LoincScale="NAR">
-        <FormItem FormItemId="24808" OrderNumber="55" ItemText="Type mosjon:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="24808" OrderNumber="54" ItemText="Type mosjon:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="60355" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="60356" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
       <Item ItemId="1714" ItemType="2" VarName="VAR1714" LoincScale="ORD">
-        <FormItem FormItemId="24259" OrderNumber="56" ItemText="Mosjonsintensiteten tilsvarer å" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="24259" OrderNumber="55" ItemText="Mosjonsintensiteten tilsvarer å" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="10758" OrderNumber="1" OptionText="ta det rolig, uten å bli andpusten eller svett"/>
           <Answer AnswerId="10759" OrderNumber="2" OptionText="bli andpusten og svett"/>
           <Answer AnswerId="10760" OrderNumber="3" OptionText="ta seg nesten helt ut"/>
         </FormItem>
       </Item>
       <Item ItemId="1715" ItemType="2" VarName="VAR1715" LoincScale="ORD">
-        <FormItem FormItemId="24260" OrderNumber="57" ItemText="mosjonsøktenes varighet i snitt er på" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="24260" OrderNumber="56" ItemText="mosjonsøktenes varighet i snitt er på" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="10761" OrderNumber="1" OptionText="mindre enn 15 minutter"/>
           <Answer AnswerId="10762" OrderNumber="2" OptionText="15-29 minutter"/>
           <Answer AnswerId="10763" OrderNumber="3" OptionText="30 minutter - 1 time"/>
@@ -403,17 +395,22 @@
         </FormItem>
       </Item>
       <Item ItemId="3230" ItemType="1" VarName="SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem FormItemId="23269" OrderNumber="58" ItemText="Systolisk blodtrykk (mmHg)" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="1" FormatStr="Blodtrykk %s">
+        <FormItem FormItemId="23269" OrderNumber="57" ItemText="Systolisk blodtrykk (mmHg)" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="1" FormatStr="Blodtrykk %s">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3231" ItemType="1" VarName="DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem FormItemId="23270" OrderNumber="59" ItemText="Diastolisk blodtrykk (mmHg)" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="1" FormatStr="¬/%s mmHg.">
+        <FormItem FormItemId="23270" OrderNumber="58" ItemText="Diastolisk blodtrykk (mmHg)" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="1" FormatStr="¬/%s mmHg.">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="186" ItemType="1" VarName="PULSE_RATE" LoincScale="QN" UnitStr="slag/min" DisplayFormat="">
+        <FormItem FormItemId="24921" OrderNumber="59" ItemText="Puls (slag/min)" ItemHelp="" MinExpression="25" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="1529" ItemType="1" VarName="SMARTDIET41_SUM" LoincScale="QN">
-        <FormItem FormItemId="23231" OrderNumber="60" ItemHeader="Lipidklinikkens kostevalueringsskjema Smart Diet skår:" ItemText="Ny poengscore SmartDiet" ItemHelp="Enhet: poeng av 41 oppnåelige" MinExpression="10" MaxExpression="41" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23231" OrderNumber="60" ItemText="Får på Lipidklinikkens kostevalueringsskjema SmartDiet en skår på" ItemHelp="Enhet: poeng av 41 oppnåelige" MinExpression="10" MaxExpression="41" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -428,18 +425,18 @@
           <Answer AnswerId="10633" OrderNumber="2" OptionText="Tran" VerboseText="Tar tran."/>
           <Answer AnswerId="10634" OrderNumber="3" OptionText="Fiskeoljer/omega-3-kapsler" VerboseText="Tar tilskudd av omega-3 i form av fiskeoljer/omega-3-kapsler."/>
           <Answer AnswerId="10635" OrderNumber="4" OptionText="Multivitaminpreparat" VerboseText="Bruker multivitaminpreparat."/>
-          <Answer AnswerId="10636" OrderNumber="5" OptionText="Flere / annet" VerboseText="Tar følgende kosttilskudd:"/>
+          <Answer AnswerId="10636" OrderNumber="5" OptionText="Flere / annet" VerboseText="Tar kosttilskudd i form av"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8513" PageNumber="20" PageTitle="tilskudd*">
+    <Page PageId="8513" PageNumber="21" PageTitle="tilskudd*">
       <Item ItemId="1618" ItemType="4" VarName="VAR1618" LoincScale="NAR">
         <FormItem FormItemId="24369" OrderNumber="63" ItemText="Hvilke(t) andre kosttilskudd bruker du?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8514" PageNumber="21" PageTitle="status forts*">
+    <Page PageId="8514" PageNumber="22" PageTitle="status forts*">
       <Item ItemId="1207" ItemType="2" VarName="VAR1207" LoincScale="ORD">
         <FormItem FormItemId="23466" OrderNumber="64" ItemText="Omega-3 tilskudd" ItemHelp="NB! Omacor skal føres i medikamentlisten" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="10207" OrderNumber="1" OptionText="Ja, tran eller trankapsler" VerboseText="Omega-3 tilskudd i form av tran"/>
@@ -450,13 +447,13 @@
       </Item>
       <Item ItemId="1457" ItemType="2" VarName="VAR1457" LoincScale="ORD">
         <FormItem FormItemId="23885" OrderNumber="65" ItemText="Kostholdsvurdering:" ItemHelp="Hvis &lt;28 :         'Kostholdet bør forbedres på mange punkter'&#xA;Hvis &gt;27 AND &lt;36 : 'Kostholdet bør forbedres på en del punkter'&#xA;Hvis &gt;35 :         'Kostholdsvanene er sunne'" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="10712" OrderNumber="1" OptionText="Under 28p Kostholdet bør forbedres på mange punkter" VerboseText="Kostholdet kan bli bedre på flere punkter."/>
-          <Answer AnswerId="10713" OrderNumber="2" OptionText="28-35p Kostholdet bør forbedres på en del punkter" VerboseText="Kostholdet kan bli bedre på enkelte punkter."/>
+          <Answer AnswerId="10712" OrderNumber="1" OptionText="Under 28p Kostholdet kan bli bedre på flere punkter" VerboseText="Kostholdet kan bli bedre på flere punkter."/>
+          <Answer AnswerId="10713" OrderNumber="2" OptionText="28-35p  Kostholdet kan bli bedre på enkelte punkter." VerboseText="Kostholdet kan bli bedre på enkelte punkter."/>
           <Answer AnswerId="10714" OrderNumber="3" OptionText="Over 35 p Kostholdsvanene er sunne" VerboseText="Kostholdsvanene er sunne."/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8145" PageNumber="22" PageTitle="Lipidstigmata*">
+    <Page PageId="8145" PageNumber="23" PageTitle="Lipidstigmata*">
       <Item ItemId="1628" ItemType="2" VarName="VAR1628" LoincScale="ORD">
         <FormItem FormItemId="23670" OrderNumber="66" ItemHeader="Lipidstigmata" ItemText="Er det gjort funn av lipidstigmata?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="10686" OrderNumber="1" OptionText="Ja" VerboseText="Lipidstigmata:"/>
@@ -465,7 +462,7 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8225" PageNumber="23" PageTitle="Lipidstigmata - ja*">
+    <Page PageId="8225" PageNumber="24" PageTitle="Lipidstigmata - ja*">
       <Item ItemId="1573" ItemType="2" VarName="VAR1573" LoincScale="ORD">
         <FormItem FormItemId="23462" OrderNumber="67" ItemText="Hælsene-xanthom" ItemHelp="Funn til dette tidspunkt" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="10545" OrderNumber="1" OptionText="Ja, venstresidig" VerboseText="Venstre hælsene fortykket,"/>
@@ -495,16 +492,16 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7887" PageNumber="24" PageTitle="Lipidpanel ubehandlet" PageIntroduction="Lipidpanelet hentes fra labsystemet basert på dato">
+    <Page PageId="7887" PageNumber="25" PageTitle="Lipidpanel ubehandlet" PageIntroduction="Lipidpanelet hentes fra labsystemet basert på dato">
       <Item ItemId="1194" ItemType="5" VarName="VAR1194" LoincScale="DATE" DisplayFormat="">
-        <FormItem FormItemId="22353" OrderNumber="71" ItemHeader="Ubehandlet lipidpanel:" ItemText="Dato for bekreftet ubehandlet lipidpanel" ItemHelp="Skal brukes for å hente inn lipidprofil automatisk, skriv derfor inn den nøyaktige datoen fra labdataene. Legg eventuelt først til lipidpanelet med korrekt dato i skjemaet 916 Labprøver." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="22353" OrderNumber="71" ItemHeader="Ubehandlet lipidpanel:" ItemText="Dato for bekreftet ubehandlet lipidpanel" ItemHelp="Skal brukes for å markere lipidprofil automatisk i graf, skriv derfor inn den nøyaktige datoen fra labdataene. Legg eventuelt først til lipidpanelet med korrekt dato i skjemaet 916 Labprøver." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7872" PageNumber="25" PageTitle="Familiært">
+    <Page PageId="7872" PageNumber="26" PageTitle="Familiært">
       <Item ItemId="1662" ItemType="4" VarName="VAR1662" LoincScale="NAR">
-        <FormItem FormItemId="24334" OrderNumber="72" ItemText="Familieanamnese" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="24334" OrderNumber="72" ItemText="Familieanamnese fritekst" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -518,13 +515,13 @@
       </Item>
       <Item ItemId="1757" ItemType="2" VarName="VAR1757" LoincScale="ORD">
         <FormItem FormItemId="24330" OrderNumber="74" ItemText="Kjent tidlig hjerte-/karsykdom hos førsteledds slektning(er)" ItemHelp="Menn under 55 år og kvinner under 65 år (ZE82 ICD10)&#xA;(for statistikk)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="10792" OrderNumber="1" OptionText="Ja" VerboseText=""/>
-          <Answer AnswerId="10793" OrderNumber="2" OptionText="Nei" VerboseText="Ingen kjent tidlig hjertesykdom hos slekt i første ledd"/>
-          <Answer AnswerId="10794" OrderNumber="3" OptionText="Ukjent" VerboseText="Ingen kjent tidlig hjertesykdom hos slekt i første ledd"/>
+          <Answer AnswerId="10792" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="10793" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="10794" OrderNumber="3" OptionText="Ukjent"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8060" PageNumber="26" PageTitle="Tidlig hjertesykdom i slekt*">
+    <Page PageId="8060" PageNumber="27" PageTitle="Tidlig hjertesykdom i slekt*">
       <Item ItemId="1175" ItemType="1" VarName="VAR1175" LoincScale="QN">
         <FormItem FormItemId="23271" OrderNumber="75" ItemText="Debutalder yngste tilfelle av tidlig HKS 1. slektsledd" ItemHelp="" MinExpression="5" MaxExpression="90" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="10488" OrderNumber="1" OptionText="En gang i uken"/>
@@ -544,15 +541,15 @@
         </FormItem>
       </Item>
       <Item ItemId="1760" ItemType="2" VarName="VAR1760" LoincScale="ORD">
-        <FormItem FormItemId="24333" OrderNumber="80" ItemText="Hadde dette 2. tilfellet også kjent arvelig dyslipidemi?" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="24333" OrderNumber="78" ItemText="Hadde dette 2. tilfellet også kjent arvelig dyslipidemi?" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="60042" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="60043" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8073" PageNumber="27" PageTitle="familiært forts*">
+    <Page PageId="8073" PageNumber="28" PageTitle="familiært forts*">
       <Item ItemId="1794" ItemType="2" VarName="VAR1794" LoincScale="ORD">
-        <FormItem FormItemId="24370" OrderNumber="78" ItemHeader="Etnisitet" ItemText="Oppgi etnisk opprinnelse" ItemHelp="Relevans: diabetes-risiko og helseulikheter. &#xA;Ved ulik opprinnelse: bruk annet" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="24370" OrderNumber="79" ItemHeader="Etnisitet" ItemText="Oppgi etnisk opprinnelse" ItemHelp="Relevans: diabetes-risiko og helseulikheter. &#xA;Ved ulik opprinnelse: bruk annet" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="10850" OrderNumber="1" OptionText="Kaukasisk"/>
           <Answer AnswerId="10851" OrderNumber="2" OptionText="Asiatisk"/>
           <Answer AnswerId="10855" OrderNumber="3" OptionText="Afrikansk"/>
@@ -561,7 +558,7 @@
         </FormItem>
       </Item>
       <Item ItemId="1190" ItemType="2" VarName="VAR1190" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="23304" OrderNumber="79" ItemText="Etnisk opprinnelse" ItemHelp="Fra NPR-samlingen, OID=8423" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23304" OrderNumber="80" ItemText="Etnisk opprinnelse" ItemHelp="Fra NPR-samlingen, OID=8423" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="10152" OrderNumber="1" OptionText="Norsk"/>
           <Answer AnswerId="10153" OrderNumber="2" OptionText="Samisk"/>
           <Answer AnswerId="10174" OrderNumber="3" OptionText="Nordisk"/>
@@ -574,7 +571,7 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7873" PageNumber="28" PageTitle="Asiatisk opprinnelse* ">
+    <Page PageId="7873" PageNumber="29" PageTitle="Asiatisk opprinnelse* ">
       <Item ItemId="1325" ItemType="2" VarName="VAR1325" LoincScale="ORD" DisplayFormat="">
         <FormItem FormItemId="22702" OrderNumber="81" ItemText="Spesifisert etnisk opprinnelse - Asia" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="10289" OrderNumber="1" OptionText="Vest-Asia (Midtøsten)"/>
@@ -585,7 +582,14 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8477" PageNumber="29" PageTitle="Øvrige sykdommer">
+    <Page PageId="8667" PageNumber="30" PageTitle="Lipidanamnese">
+      <Item ItemId="2056" ItemType="4" VarName="VAR2056" LoincScale="NAR">
+        <FormItem FormItemId="24924" OrderNumber="82" ItemText="Lipidanamnese:" ItemHelp="Fritekstfelt" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8477" PageNumber="31" PageTitle="Øvrige sykdommer">
       <Item ItemId="3397" ItemType="2" VarName="NDV_CHD" LoincScale="ORD" DisplayFormat="">
         <FormItem FormItemId="24239" OrderNumber="83" ItemText="Koronarsykdom" ItemHelp="angina, hjerteinfarkt eller PCI/bypass" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
           <Answer AnswerId="16884" OrderNumber="1" OptionText="Ja" VerboseText="Koronarsyk." ShortCode="J"/>
@@ -607,9 +611,9 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7879" PageNumber="30" PageTitle="Risikoprofil" PageIntroduction="Aktuelle risikofaktorer">
+    <Page PageId="7879" PageNumber="32" PageTitle="Risikoprofil" PageIntroduction="Aktuelle risikofaktorer">
       <Item ItemId="3227" ItemType="2" VarName="NDV_SMOKING" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="22345" OrderNumber="82" ItemText="Røykestatus" ItemHelp="Velg Dagligrøyker hvis sluttet for mindre enn 3 mnd siden." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="22345" OrderNumber="86" ItemText="Røykestatus" ItemHelp="Velg Dagligrøyker hvis sluttet for mindre enn 3 mnd siden." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="16138" OrderNumber="1" OptionText="Aldri røykt daglig."/>
           <Answer AnswerId="16139" OrderNumber="2" OptionText="Dagligrøyker."/>
           <Answer AnswerId="16140" OrderNumber="3" OptionText="Eks-dagligrøyker."/>
@@ -617,19 +621,19 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8313" PageNumber="31" PageTitle="Årstall røykeslutt*">
+    <Page PageId="8313" PageNumber="33" PageTitle="Årstall røykeslutt*">
       <Item ItemId="1705" ItemType="1" VarName="VAR1705" LoincScale="QN">
-        <FormItem FormItemId="24335" OrderNumber="86" ItemHeader="I snitt" ItemText="Gjennomsnittlig antall røyk per dag" ItemHelp="Hvis røyker eller da man røyket" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="24335" OrderNumber="87" ItemHeader="i snitt" ItemText="Gjennomsnittlig antall røyk per dag" ItemHelp="Hvis røyker eller da man røyket" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="1690" ItemType="1" VarName="VAR1690" LoincScale="QN">
-        <FormItem FormItemId="24336" OrderNumber="87" ItemHeader="Begynte når" ItemText="Alder ved røykestart" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="24336" OrderNumber="88" ItemHeader="Begynte å røyke når" ItemText="Alder ved røykestart" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="1626" ItemType="1" VarName="VAR1626" LoincScale="QN">
-        <FormItem FormItemId="23693" OrderNumber="88" ItemText="Alder ved røykeslutt" ItemHelp="" MinExpression="10" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23693" OrderNumber="89" ItemHeader="og sluttet når" ItemText="Alder ved røykeslutt" ItemHelp="" MinExpression="10" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="10674" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="10675" OrderNumber="2" OptionText="Nei"/>
           <Answer AnswerId="10676" OrderNumber="3" OptionText="Ukjent"/>
@@ -641,50 +645,51 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8314" PageNumber="32" PageTitle="Risiko forts*">
+    <Page PageId="8314" PageNumber="34" PageTitle="Risiko forts*">
       <Item ItemId="1399" ItemType="2" VarName="VAR1399" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="23260" OrderNumber="89" ItemText="Snus" ItemHelp="Velg Daglig hvis sluttet for &lt; 3 mnd siden" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="10341" OrderNumber="1" OptionText="Aldri snust daglig" VerboseText="Bruker ikke snus"/>
-          <Answer AnswerId="10342" OrderNumber="2" OptionText="Snuser daglig" VerboseText="Snuser daglig"/>
-          <Answer AnswerId="10343" OrderNumber="3" OptionText="Tidligere snust daglig" VerboseText="Tidligere snust daglig"/>
-          <Answer AnswerId="10344" OrderNumber="4" OptionText="Ukjent bruk av snus" VerboseText="Bruk av snus ikke avklart"/>
+        <FormItem FormItemId="23260" OrderNumber="90" ItemText="Snus" ItemHelp="Velg Daglig hvis sluttet for &lt; 3 mnd siden" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="10341" OrderNumber="1" OptionText="Aldri snust" VerboseText="Bruker ikke snus."/>
+          <Answer AnswerId="10342" OrderNumber="2" OptionText="Snuser daglig" VerboseText="Snuser daglig,"/>
+          <Answer AnswerId="10343" OrderNumber="3" OptionText="Snuste tidligere" VerboseText="Tidligere snust daglig,"/>
+          <Answer AnswerId="10344" OrderNumber="4" OptionText="Snuser av og til" VerboseText="Snuser av og til,"/>
+          <Answer AnswerId="11037" OrderNumber="5" OptionText="Ukjent bruk av snus" VerboseText="Bruk av snus ikke avklart."/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8374" PageNumber="33" PageTitle="snus-slutt*">
+    <Page PageId="8374" PageNumber="35" PageTitle="snus-slutt*">
       <Item ItemId="1722" ItemType="1" VarName="VAR1722" LoincScale="QN">
-        <FormItem FormItemId="24337" OrderNumber="90" ItemHeader="I snitt" ItemText="Gjennomsnittlig antall porsjoner per dag:" ItemHelp="Mens vedkommende var/er dagligsnuser" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="24337" OrderNumber="91" ItemHeader="i snitt" ItemText="Gjennomsnittlig antall porsjoner per dag:" ItemHelp="Mens vedkommende var/er snuser" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="1707" ItemType="1" VarName="VAR1707" LoincScale="QN">
-        <FormItem FormItemId="24339" OrderNumber="91" ItemHeader="Begynte når" ItemText="Alder når startet med daglig snusbruk" ItemHelp="" MinExpression="5" MaxExpression="110" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="24339" OrderNumber="92" ItemHeader="Begynte å snuse når" ItemText="Alder når startet med snusbruk" ItemHelp="" MinExpression="5" MaxExpression="110" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="1708" ItemType="1" VarName="VAR1708" LoincScale="QN">
-        <FormItem FormItemId="24372" OrderNumber="92" ItemText="Gjennomsnittlig antall pakker snus per måned:" ItemHelp="Mens vedkommende var/er dagligsnuser - regn om fra daglige porsjoner" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="24372" OrderNumber="93" ItemText="Gjennomsnittlig antall pakker snus per måned:" ItemHelp="Mens vedkommende var/er dagligsnuser - regn om fra daglige porsjoner" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8517" PageNumber="34" PageTitle="snus-slutt*">
+    <Page PageId="8517" PageNumber="36" PageTitle="snus-slutt*">
       <Item ItemId="1687" ItemType="1" VarName="VAR1687" LoincScale="QN">
-        <FormItem FormItemId="23886" OrderNumber="93" ItemHeader="Sluttet når" ItemText="Alder når sluttet med daglig snusbruk:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23886" OrderNumber="94" ItemText="og sluttet når" ItemHelp="Alder når sluttet å snuse" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8375" PageNumber="35" PageTitle="Risiko forts.*">
+    <Page PageId="8375" PageNumber="37" PageTitle="Risiko forts.*">
       <Item ItemId="3986" ItemType="1" VarName="ALKOHOL_PER_UKE" LoincScale="QN" UnitStr="enh/uke" DisplayFormat="">
-        <FormItem FormItemId="23717" OrderNumber="94" ItemText="Alkoholforbruk (enh/uke)" ItemHelp="Oppgis i enheter per uke. En halvflaske pils (0.35 liter), et glass bordvin eller en drink brennevin (4cl) er 1 enhet. En halvliter pils er 1.5 enheter." MinExpression="0" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="2">
+        <FormItem FormItemId="23717" OrderNumber="95" ItemText="Alkoholforbruk (enh/uke)" ItemHelp="Oppgis i enheter per uke. En halvflaske pils (0.35 liter), et glass bordvin eller en drink brennevin (4cl) er 1 enhet. En halvliter pils er 1.5 enheter." MinExpression="0" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="2">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7880" PageNumber="36" PageTitle="Behandlingsdetaljer">
+    <Page PageId="7880" PageNumber="38" PageTitle="Behandlingsdetaljer">
       <Item ItemId="1402" ItemType="1" VarName="VAR1402" LoincScale="QN">
-        <FormItem FormItemId="24213" OrderNumber="95" ItemText="Behandlet med lipidsenkende siden" ItemHelp="årstall" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="24213" OrderNumber="96" ItemText="Behandlet med lipidsenkende siden" ItemHelp="årstall" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="10348" OrderNumber="1" OptionText="sønn"/>
           <Answer AnswerId="10349" OrderNumber="2" OptionText="datter"/>
           <Answer AnswerId="10350" OrderNumber="3" OptionText="Ja, over abdominalaorta"/>
@@ -692,51 +697,51 @@
         </FormItem>
       </Item>
       <Item ItemId="4083" ItemType="1" VarName="GOAL_LDL" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
-        <FormItem FormItemId="24214" OrderNumber="96" ItemText="Mål LDL-kolesterol (mmol/l)" ItemHelp="" MinExpression="1" MaxExpression="5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1" DefaultValue="3">
+        <FormItem FormItemId="24214" OrderNumber="97" ItemText="Mål LDL-kolesterol (mmol/l)" ItemHelp="" MinExpression="1" MaxExpression="5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1" DefaultValue="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="1697" ItemType="4" VarName="VAR1697" LoincScale="NAR">
-        <FormItem FormItemId="24215" OrderNumber="97" ItemHeader="Intoleranser relatert til medikamentbruk:" ItemText="Kjent intoleranseproblematikk" ItemHelp="Det anbefales å registrere spesifikke bivirkninger under hvert medikament i medikamentlisten" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="24215" OrderNumber="98" ItemHeader="Intoleranser relatert til medikamentbruk:" ItemText="Spesifiser intoleranseproblematikk" ItemHelp="Det anbefales å registrere spesifikke bivirkninger under hvert medikament i medikamentlisten" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="1404" ItemType="2" VarName="VAR1404" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="23249" OrderNumber="98" ItemHeader="Aferesebehandling" ItemText="Behandling med aferese?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23249" OrderNumber="99" ItemHeader="Aferesebehandling" ItemText="Behandling med aferese?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="10354" OrderNumber="1" OptionText="ikke aktuelt"/>
           <Answer AnswerId="10355" OrderNumber="2" OptionText="med fullblodsseparasjon" VerboseText="Aferesebehandling med fullblodsseparasjon"/>
           <Answer AnswerId="10487" OrderNumber="3" OptionText="med plasmaseparasjon" VerboseText="Aferesebehandling med plasmaseparasjon"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8058" PageNumber="37" PageTitle="Aferese*">
+    <Page PageId="8058" PageNumber="39" PageTitle="Aferese*">
       <Item ItemId="1561" ItemType="5" VarName="VAR1561" LoincScale="DATE">
-        <FormItem FormItemId="23371" OrderNumber="99" ItemText="Oppstart aferese" ItemHelp="For år: bruk 01.07" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23371" OrderNumber="100" ItemText="Oppstart aferese" ItemHelp="For år: bruk 01.07" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="1538" ItemType="2" VarName="VAR1538" LoincScale="ORD">
-        <FormItem FormItemId="23266" OrderNumber="100" ItemText="Blodtilgang" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23266" OrderNumber="101" ItemText="Blodtilgang" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="10483" OrderNumber="1" OptionText="Fistel"/>
           <Answer AnswerId="10484" OrderNumber="2" OptionText="Vene til vene"/>
         </FormItem>
       </Item>
       <Item ItemId="1539" ItemType="2" VarName="VAR1539" LoincScale="ORD">
-        <FormItem FormItemId="23267" OrderNumber="101" ItemText="Frekvens" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23267" OrderNumber="102" ItemText="Frekvens" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="10485" OrderNumber="1" OptionText="1 gang i uken"/>
           <Answer AnswerId="10486" OrderNumber="2" OptionText="1 gang hver 2. uke"/>
           <Answer AnswerId="10721" OrderNumber="3" OptionText="Annet" VerboseText=":"/>
         </FormItem>
       </Item>
       <Item ItemId="1562" ItemType="4" VarName="VAR1562" LoincScale="NAR">
-        <FormItem FormItemId="23372" OrderNumber="102" ItemText="Kommentarer til aferesebehandling" ItemHelp="Avsluttet, perioder uten eller liknende" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23372" OrderNumber="103" ItemText="Kommentarer til aferesebehandling" ItemHelp="Avsluttet, perioder uten eller liknende" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7890" PageNumber="38" PageTitle="Administrativt">
+    <Page PageId="7890" PageNumber="40" PageTitle="Administrativt">
       <Item ItemId="1189" ItemType="2" VarName="VAR1189" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="22315" OrderNumber="103" ItemHeader="Neste visitt om:" ItemText="Når er neste visitt planlagt?" ItemHelp="Settes opp i slutten av aktuell konsultasjon." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="22315" OrderNumber="104" ItemHeader="Neste visitt om:" ItemText="Når er neste visitt planlagt?" ItemHelp="Settes opp i slutten av aktuell konsultasjon." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="10108" OrderNumber="1" OptionText="3 mnd" VerboseText="Neste visitt om 3 mnd"/>
           <Answer AnswerId="10109" OrderNumber="2" OptionText="6 mnd" VerboseText="Neste visitt om 6 mnd"/>
           <Answer AnswerId="10110" OrderNumber="3" OptionText="9 mnd" VerboseText="Neste visitt om 9 mnd"/>
@@ -744,25 +749,25 @@
           <Answer AnswerId="10280" OrderNumber="5" OptionText="1,5 år" VerboseText="Neste visitt om 1,5 år"/>
           <Answer AnswerId="10281" OrderNumber="6" OptionText="2 år" VerboseText="Neste visitt om 2 år"/>
           <Answer AnswerId="10282" OrderNumber="7" OptionText="3 år" VerboseText="Neste visitt om 3 år"/>
-          <Answer AnswerId="10283" OrderNumber="8" OptionText="avviklet eller avvikles nå" VerboseText=""/>
+          <Answer AnswerId="10283" OrderNumber="8" OptionText="avvikles nå" VerboseText=""/>
           <Answer AnswerId="10722" OrderNumber="9" OptionText="annet"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7876" PageNumber="39" PageTitle="Avviklet*">
+    <Page PageId="7876" PageNumber="41" PageTitle="Avviklet*">
       <Item ItemId="1322" ItemType="2" VarName="VAR1322" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="22699" OrderNumber="104" ItemHeader="Avviklet da pasienten" ItemText="Oppgi bakgrunnen for avvikling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="10284" OrderNumber="1" OptionText="ikke har møtt etter gjentatte innkallinger."/>
-          <Answer AnswerId="10285" OrderNumber="2" OptionText="ikke ønsker videre oppfølging."/>
-          <Answer AnswerId="10287" OrderNumber="3" OptionText="følges opp hos fastlegen."/>
+        <FormItem FormItemId="22699" OrderNumber="105" ItemHeader="Avvikles, pasienten" ItemText="Oppgi bakgrunnen for avvikling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="10284" OrderNumber="1" OptionText="har ikke møtt etter gjentatte innkallinger."/>
+          <Answer AnswerId="10285" OrderNumber="2" OptionText="ønsker ingen videre oppfølging."/>
+          <Answer AnswerId="10287" OrderNumber="3" OptionText="kan følges videre hos fastlegen."/>
           <Answer AnswerId="10288" OrderNumber="4" OptionText="er viderehenvist til annen spesialist."/>
           <Answer AnswerId="10551" OrderNumber="5" OptionText="er bekreftet død med dødsmelding."/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="8094" PageNumber="40" PageTitle="Admin forts.*">
+    <Page PageId="8094" PageNumber="42" PageTitle="Admin forts.*">
       <Item ItemId="1556" ItemType="2" VarName="VAR1556" LoincScale="ORD">
-        <FormItem FormItemId="23365" OrderNumber="105" ItemHeader="Helseregion" ItemText="Hvilken helseregion hører pasienten til?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="23365" OrderNumber="106" ItemHeader="Helseregion" ItemText="Hvilken helseregion hører pasienten til?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="10506" OrderNumber="1" OptionText="HSØ"/>
           <Answer AnswerId="10507" OrderNumber="2" OptionText="HV"/>
           <Answer AnswerId="10508" OrderNumber="3" OptionText="HMN"/>
@@ -770,7 +775,7 @@
         </FormItem>
       </Item>
       <Item ItemId="1174" ItemType="2" VarName="VAR1174" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="22336" OrderNumber="106" ItemText="Viderehenvises pasienten til annen helseregion?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="22336" OrderNumber="107" ItemText="Viderehenvises pasienten til annen helseregion?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="10145" OrderNumber="1" OptionText="ja" VerboseText="Viderehenvisning til egen helseregion"/>
           <Answer AnswerId="10146" OrderNumber="2" OptionText="nei, dette er pasientens helseregion" VerboseText=""/>
           <Answer AnswerId="10147" OrderNumber="3" OptionText="nei, grunnet fritt sykehusvalg" VerboseText=""/>
@@ -778,23 +783,23 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageId="7870" PageNumber="41" PageTitle="Samtykker" PageIntroduction="JA = signert og lagret på sikkert område">
+    <Page PageId="7870" PageNumber="43" PageTitle="Samtykker" PageIntroduction="JA = signert og lagret på sikkert område">
       <Item ItemId="1182" ItemType="2" VarName="VAR1182" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="22308" OrderNumber="107" ItemHeader="Biobanksamtykke" ItemText="Det er gitt samtykke til lagring av blod i Biobank for lipidforstyrrelser" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="22308" OrderNumber="108" ItemHeader="Biobanksamtykke" ItemText="Det er gitt samtykke til lagring av blod i Biobank for lipidforstyrrelser" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="10114" OrderNumber="1" OptionText="Ja" VerboseText="Biobanksamtykke avgitt og lagret"/>
           <Answer AnswerId="10115" OrderNumber="2" OptionText="Nei"/>
           <Answer AnswerId="10195" OrderNumber="3" OptionText="Trukket" VerboseText="Biobanksamtykke trukket tilbake"/>
         </FormItem>
       </Item>
       <Item ItemId="1183" ItemType="2" VarName="VAR1183" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="22309" OrderNumber="108" ItemHeader="Registersamtykke" ItemText="Samtykke til lagring av opplysninger i nasjonalt lipidregister" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="22309" OrderNumber="109" ItemHeader="Registersamtykke" ItemText="Samtykke til lagring av opplysninger i nasjonalt lipidregister" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="59080" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="59081" OrderNumber="2" OptionText="Nei"/>
           <Answer AnswerId="10196" OrderNumber="3" OptionText="Trukket"/>
         </FormItem>
       </Item>
       <Item ItemId="1184" ItemType="2" VarName="VAR1184" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="22310" OrderNumber="109" ItemHeader="Prosjektsamtykke" ItemText="Samtykke til kontakt for prosjektdeltakelse" ItemHelp="Før kontakt må samtykkestatus oppdateres" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem FormItemId="22310" OrderNumber="110" ItemHeader="Prosjektsamtykke" ItemText="Samtykke til kontakt for prosjektdeltakelse" ItemHelp="Før kontakt må samtykkestatus oppdateres" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="59084" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="59085" OrderNumber="2" OptionText="Nei"/>
           <Answer AnswerId="10180" OrderNumber="3" OptionText="Trukket"/>
@@ -810,52 +815,53 @@
       <Activate EnumVal="1" PageConditionId="5881" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="1712">
-      <Activate EnumVal="1" PageConditionId="6262" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="2" PageConditionId="6263" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="6263" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6262" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="1158">
-      <Activate EnumVal="5" PageConditionId="5876" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="7" PageConditionId="5874" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="8" PageConditionId="5904" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="6404" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="5" PageConditionId="5876" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="7" PageConditionId="5874" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="8" PageConditionId="5904" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="1321">
-      <Activate EnumVal="1" PageConditionId="5978" PageNumber="11" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
-      <Activate EnumVal="2" PageConditionId="5979" PageNumber="12" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
-      <Activate EnumVal="3" PageConditionId="6042" PageNumber="13" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
-      <Activate EnumVal="4" PageConditionId="6043" PageNumber="14" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
-      <Activate EnumVal="5" PageConditionId="5981" PageNumber="15" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
+      <Activate EnumVal="1" PageConditionId="5978" PageNumber="12" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
+      <Activate EnumVal="2" PageConditionId="5979" PageNumber="13" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
+      <Activate EnumVal="3" PageConditionId="6042" PageNumber="14" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
+      <Activate EnumVal="4" PageConditionId="6043" PageNumber="15" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
+      <Activate EnumVal="5" PageConditionId="5981" PageNumber="16" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
     </PageAction>
     <PageAction MasterId="1203">
-      <Activate EnumVal="1" PageConditionId="5982" PageNumber="18" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
+      <Activate EnumVal="1" PageConditionId="5982" PageNumber="19" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
     </PageAction>
     <PageAction MasterId="1617">
-      <Activate EnumVal="5" PageConditionId="6306" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="5" PageConditionId="6306" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="1628">
-      <Activate EnumVal="1" PageConditionId="6085" PageNumber="23" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6085" PageNumber="24" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="1177">
-      <Activate EnumVal="1" PageConditionId="5972" PageNumber="26" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="3" PageConditionId="5971" PageNumber="26" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="5972" PageNumber="27" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="5971" PageNumber="27" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="1794">
-      <Activate EnumVal="2" PageConditionId="6307" PageNumber="28" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="6307" PageNumber="29" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="3227">
-      <Activate EnumVal="2" PageConditionId="6295" PageNumber="31" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="3" PageConditionId="6148" PageNumber="31" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="6295" PageNumber="33" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="6148" PageNumber="33" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="1399">
-      <Activate EnumVal="2" PageConditionId="6296" PageNumber="33" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="3" PageConditionId="6197" PageNumber="33" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="3" PageConditionId="6309" PageNumber="34" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="6296" PageNumber="35" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="6197" PageNumber="35" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="6309" PageNumber="36" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="1404">
-      <Activate EnumVal="2" PageConditionId="5966" PageNumber="37" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="3" PageConditionId="5967" PageNumber="37" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="5966" PageNumber="39" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="5967" PageNumber="39" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="1189">
-      <Activate EnumVal="8" PageConditionId="5958" PageNumber="39" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="8" PageConditionId="5958" PageNumber="41" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
