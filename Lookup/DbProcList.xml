@@ -1195,6 +1195,80 @@ BEGIN
   ORDER BY forms.LastFormDate;
 END;]]>
 	</row>
+	<row ProcId="171" StudyName="GBD" ProcName="GBD.GetCaseListFormAvvikThisTertile" ProcDesc="Avvik: Alle avvik dette tertial" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="686532850" LastUpdate="2018-02-09T13:45:40.837Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormAvvikThisTertile (@StudyId INT) AS
+BEGIN
+    DECLARE @DTValue DATETIME = GETDATE();
+    DECLARE @StartsAt DATETIME;
+    DECLARE @EndsAt DATETIME;
+    EXEC dbo.CalculateTertial @DTValue, @StartsAt OUTPUT, @EndsAt OUTPUT;
+
+    SELECT lf.PersonId,
+        p.FullName,
+        p.DOB,
+        sg.GroupName,
+        CONCAT('Opprettet: ', CONVERT(VARCHAR, lf.EventTime, 104), ', Status: ', mia.OptionText) AS InfoText
+    FROM dbo.GetLastFormTableByName('GbdAvvik', GETDATE() + 1) lf
+    JOIN dbo.Person p ON p.PersonId = lf.PersonId
+    JOIN dbo.StudCase sc ON sc.PersonId = lf.PersonId
+    JOIN dbo.StudyStatus ss ON ss.StatusId = sc.FinState AND ss.StudyId = sc.StudyId
+    JOIN dbo.StudyGroup sg ON sg.GroupId = sc.GroupId AND sg.StudyId = sc.StudyId AND sg.GroupActive = 1
+    LEFT JOIN dbo.ClinDataPoint cdp ON cdp.EventId = lf.EventId AND cdp.ItemId = 8512
+    LEFT JOIN dbo.MetaItemAnswer mia ON mia.OrderNumber = cdp.EnumVal AND mia.ItemId = cdp.ItemId
+    LEFT JOIN dbo.StudyUser su ON su.UserId = USER_ID() AND su.StudyId = sc.StudyId
+    WHERE (lf.EventTime BETWEEN @StartsAt AND @EndsAt)
+    AND (sc.StudyId = @StudyId) AND ((su.GroupId = sc.GroupId) OR (su.UserId IS NULL) OR (su.GroupId IS NULL) OR (su.ShowMyGroup = 0))
+END;]]>
+	</row>
+	<row ProcId="172" StudyName="GBD" ProcName="GBD.GetCaseListFormAvvikLastTertile" ProcDesc="Avvik: Alle avvik forrige tertial" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="-399232509" LastUpdate="2018-02-09T13:46:39.753Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormAvvikLastTertile (@StudyId INT) AS
+BEGIN
+    DECLARE @KeyDate DATETIME = DATEADD(MONTH, -4, GETDATE());
+    DECLARE @StartsAt DATETIME;
+    DECLARE @EndsAt DATETIME;
+    EXEC dbo.CalculateTertial @KeyDate, @StartsAt OUTPUT, @EndsAt OUTPUT;
+    SELECT lf.PersonId,
+        p.FullName,
+        p.DOB,
+        sg.GroupName,
+        CONCAT('Opprettet: ', CONVERT(VARCHAR, lf.EventTime, 104), ', Status: ', mia.OptionText) AS InfoText
+    FROM dbo.GetLastFormTableByName('GbdAvvik', GETDATE() + 1) lf
+    JOIN dbo.Person p ON p.PersonId = lf.PersonId
+    JOIN dbo.StudCase sc ON sc.PersonId = lf.PersonId
+    JOIN dbo.StudyStatus ss ON ss.StatusId = sc.FinState AND ss.StudyId = sc.StudyId
+    JOIN dbo.StudyGroup sg ON sg.GroupId = sc.GroupId AND sg.StudyId = sc.StudyId AND sg.GroupActive = 1
+    LEFT JOIN dbo.ClinDataPoint cdp ON cdp.EventId = lf.EventId AND cdp.ItemId = 8512
+    LEFT JOIN dbo.MetaItemAnswer mia ON mia.OrderNumber = cdp.EnumVal AND mia.ItemId = cdp.ItemId
+    LEFT JOIN dbo.StudyUser su ON su.UserId = USER_ID() AND su.StudyId = sc.StudyId
+    WHERE (lf.EventTime BETWEEN @StartsAt AND @EndsAt)
+    AND (sc.StudyId = @StudyId)
+    AND ((su.GroupId = sc.GroupId) OR (su.UserId IS NULL) OR (su.GroupId IS NULL) OR (su.ShowMyGroup = 0))
+END;]]>
+	</row>
+	<row ProcId="173" StudyName="GBD" ProcName="GBD.GetCaseListFormBeslutninger" ProcDesc="Beslutninger: Siste beslutninger" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="1306267585" LastUpdate="2018-02-13T10:23:22.977Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormBeslutninger (@StudyId INT) AS
+BEGIN
+    SELECT lf.PersonId,
+        p.FullName,
+        p.DOB,
+        sg.GroupName,
+        CONCAT(ss.StatusText, '. Utfylt: ', CONVERT(VARCHAR, lf.EventTime, 104)) AS InfoText
+    FROM dbo.GetLastFormTableByName('GBD_BESLUTNINGER', GETDATE() + 1) lf
+    JOIN dbo.Person p ON p.PersonId = lf.PersonId
+    JOIN dbo.StudCase sc ON sc.PersonId = lf.PersonId
+    JOIN dbo.StudyStatus ss ON ss.StatusId = sc.FinState AND ss.StudyId = sc.StudyId
+    JOIN dbo.StudyGroup sg ON sg.GroupId = sc.GroupId AND sg.StudyId = sc.StudyId AND sg.GroupActive = 1
+    LEFT JOIN dbo.StudyUser su ON su.UserId = USER_ID() AND su.StudyId = sc.StudyId
+    WHERE (sc.StudyId = @StudyId)
+    AND    ((su.GroupId = sc.GroupId) OR (su.UserId IS NULL) OR (su.GroupId IS NULL) OR (su.ShowMyGroup = 0))
+END;]]>
+	</row>
+	<row ProcId="174" StudyName="GBD" ProcName="GBD.GetCaseListNoFormBeslutninger" ProcDesc="Beslutninger: Uten beslutninger" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="821544166" LastUpdate="2018-02-13T10:23:27.363Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListNoFormBeslutninger (@StudyId INT) AS
+BEGIN
+    EXEC dbo.GetCaseListLastForm @StudyId, 'GBD_BESLUTNINGER', 36500;
+END;]]>
+	</row>
 	<row ProcId="201" StudyName="NDV.BASE" ProcName="NDV.GetPumpWithHighHbA1c" ProcDesc="Utvalg av Type-1 m/pumpe basert på alder og HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="462939626" LastUpdate="2015-06-12T07:59:28.400Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpWithHighHbA1c( @StudyId INT, @AgeMin FLOAT, @AgeMax FLOAT, @HbA1cCutoff FLOAT ) AS
 BEGIN
@@ -3965,13 +4039,12 @@ BEGIN
   
 END]]>
 	</row>
-	<row ProcId="1038" StudyName="GBD" ProcName="Report.DrugList" ProcDesc="Medikamentliste som brukes i  GBD" ProcParams=":PersonId, :ShowDate, :DaysAgo" ListId="FR" GrantTo="public" MinVersion="6600" ChkSum="1328280423" LastUpdate="2018-02-02T17:27:40.493Z">
+	<row ProcId="1038" StudyName="GBD" ProcName="Report.DrugList" ProcDesc="Medikamentliste som brukes i  GBD" ProcParams=":PersonId, :ShowDate, :DaysAgo" ListId="FR" GrantTo="public" MinVersion="6600" ChkSum="-1025031511" LastUpdate="2018-02-19T12:37:53.797Z">
 		<![CDATA[CREATE PROCEDURE Report.DrugList( @PersonId INT, @ShowDate DATETIME = NULL, @DaysAgo INT = 0 ) AS
 BEGIN
-  -- Include DrugTreatment stopped recently, that is less than @DaysAgo days ago.
   DECLARE @DaysAgoDate DATETIME;
-  SET @ShowDate = ISNULL( @ShowDate, GETDATE() );
-  SET @DaysAgoDate = DATEADD( DAY, -@DaysAgo, @ShowDate );
+  SET @ShowDate = ISNULL(@ShowDate,GETDATE());
+  SET @DaysAgoDate = DATEADD( DAY, -@DaysAgo, @ShowDate);
   SELECT dt.TreatId, dt.StartAt, dt.DrugName, dbo.GetRxText(dt.TreatId) AS RxText,
     dt.StopAt,
     p2.Signature AS StopSign, p1.Signature AS StartSign, p3.Signature AS CreateSign,
@@ -4001,12 +4074,12 @@ BEGIN
   LEFT OUTER JOIN dbo.MetaTreatPackGroup mtpg ON dt.TreatType = mtpg.TreatType AND dt.PackType = mtpg.PackType
   WHERE dt.PersonId = @PersonId
     AND (
-		(dt.StopAt IS NULL) 
-		OR 
-		((@DaysAgoDate < dt.StopAt) AND (dt.StartAt < dt.StopAt))
-	)
+        (dt.StopAt IS NULL) 
+        OR 
+        ((@DaysAgoDate < dt.StopAt) AND (dt.StartAt < dt.StopAt))
+    )
     AND (dt.CreatedAt <= @ShowDate)
-  ORDER BY mtpg.SortOrder, dt.StartAt
+  ORDER BY mtpg.SortOrder, dt.StartAt;
 END;]]>
 	</row>
 	<row ProcId="3000" StudyName="ROAS" ProcName="Dash.RoasGroupCount" ProcDesc="Pasienter per behandlingssted" ListId="DASH" GrantTo="public" MinVersion="6600" ChkSum="-271880444" LastUpdate="2017-07-07T13:57:45.103Z">
