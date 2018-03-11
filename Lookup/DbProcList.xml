@@ -46,7 +46,7 @@ BEGIN
   SET @EndsAt = DATEADD(second,-1,DATEADD(month,4,@StartsAt));
 END]]>
 	</row>
-	<row ProcId="1" StudyName="*" ProcName="dbo.GetCaseList" ProcDesc="001. Aktive pasienter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-815947842" LastUpdate="2017-07-07T13:58:29.130Z">
+	<row ProcId="1" StudyName="*" ProcName="dbo.GetCaseList" ProcDesc="001. Aktive pasienter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-628163489" LastUpdate="2018-02-22T09:49:39.153Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseList( @StudyId INT ) AS
 BEGIN
   SELECT vcl.PersonId,vcl.DOB,vcl.FullName,vcl.GroupName,ss.StatusText AS InfoText,
@@ -2198,6 +2198,27 @@ BEGIN
   ORDER BY NumResult DESC;
 END]]>
 	</row>
+	<row ProcId="318" StudyName="NDV" ProcName="NDV.GetPregnantInPeriod" ProcDesc="Gravide: Svangerskapskjema i periode" ProcParams=":StudyId, :StartDate, :StopDate" ListId="CASE" GrantTo="public" ChkSum="1759106862" LastUpdate="2018-03-06T11:18:38.260Z">
+		<![CDATA[CREATE PROCEDURE NDV.GetPregnantInPeriod( @StudyId INT, @StartDate DateTime, @StopDate DateTime ) AS
+BEGIN
+   SELECT 
+     v.PersonId, v.DOB, v.FullName, v.GroupName, 
+     REPLACE(ISNULL(mia.OptionText, 'Uspesifisert'),'.','') + '; ' + CONVERT(VARCHAR,agg.Antall) + ' kontroller.' AS InfoText 
+  FROM 
+    (
+      SELECT ce.PersonId,COUNT(*) as Antall 
+      FROM dbo.ClinEvent ce
+      JOIN dbo.ClinForm cf ON cf.EventId=ce.EventId AND cf.DeletedAt IS NULL
+      JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId 
+      WHERE mf.FormName = 'DIAPOL_GRAVIDE'
+      AND ce.EventTime BETWEEN @StartDate AND @StopDate
+      GROUP BY ce.PersonId
+     ) agg
+  JOIN dbo.ViewCaseListStub v ON agg.PersonId=v.PersonId
+  LEFT JOIN dbo.MetaItemAnswer mia ON mia.ItemId = 3196 AND mia.OrderNumber = dbo.GetLastEnumValInThePast( v.PersonId, 'NDV_TYPE', @StopDate )
+  WHERE v.StudyId=@StudyId;
+END]]>
+	</row>
 	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1529014000" LastUpdate="2013-11-14T14:52:27.327Z">
 		<![CDATA[CREATE PROCEDURE BAR.GetHospitalizedWithoutAdmissionForm( @StudyId INT )
 AS
@@ -2643,6 +2664,16 @@ END]]>
 	</row>
 	<row ProcId="752" StudyName="ROAS" ProcName="PROM.GetCaseListMyCompletedProms" ProcDesc="PROM: Mine utfylte PROM-skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6631" ChkSum="-403560327" LastUpdate="2017-11-18T08:41:36.077Z">
 		<![CDATA[]]>
+	</row>
+	<row ProcId="753" StudyName="ROAS" ProcName="ROAS.GetCaseListConsentBefore16" ProcDesc="ROAS: Samtykke før 16" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-497657115" LastUpdate="2018-03-05T08:45:39.570Z">
+		<![CDATA[CREATE PROCEDURE ROAS.GetCaseListConsentBefore16( @StudyId INT )  AS
+BEGIN
+  SELECT v.*,s.OptionText AS InfoText  FROM dbo.GetLastEnumValuesTable( 2143, NULL ) s
+  JOIN dbo.ViewActiveCaseListStub v ON v.PersonId=s.PersonId
+  WHERE s.EnumVal = 2 AND v.StudyId = @StudyId
+  AND DATEDIFF(YEAR,DOB,GETDATE()) >  14
+  ORDER BY DOB DESC
+END]]>
 	</row>
 	<row ProcId="800" StudyName="HOFTE" ProcName="dbo.GetCaseListLastGamma" ProcDesc="Operasjon: Gammanagling" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1506179999" LastUpdate="2013-09-03T11:41:34.540Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListLastGamma( @StudyId INT ) AS
@@ -4082,7 +4113,7 @@ BEGIN
   ORDER BY mtpg.SortOrder, dt.StartAt;
 END;]]>
 	</row>
-	<row ProcId="3000" StudyName="ROAS" ProcName="Dash.RoasGroupCount" ProcDesc="Pasienter per behandlingssted" ListId="DASH" GrantTo="public" MinVersion="6600" ChkSum="-271880444" LastUpdate="2017-07-07T13:57:45.103Z">
+	<row ProcId="3000" StudyName="ROAS" ProcName="Dash.RoasGroupCount" ProcDesc="Pasienter per behandlingssted" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="-272109820" LastUpdate="2018-03-07T18:54:11.367Z">
 		<![CDATA[CREATE PROCEDURE Dash.RoasGroupCount AS
 BEGIN
   SELECT Report.PartitionKey(Dataset.GroupId) AS PartitionKey,Report.RowKey( Dataset.TimeAxis) AS RowKey,  
@@ -4100,6 +4131,240 @@ BEGIN
   CROSS JOIN Report.DataSource() AS DataSource
   ORDER BY TimeAxis,GroupId
 END]]>
+	</row>
+	<row ProcId="3001" StudyName="NDV" ProcName="Dash.NdvType1Consent" ProcDesc="Prosentandel Type-1 med positivt samtykke" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="-501959455" LastUpdate="2018-03-07T21:42:09.053Z">
+		<![CDATA[CREATE PROCEDURE Dash.NdvType1Consent AS
+BEGIN
+  SELECT 
+    Report.PartitionKey( CenterId ) AS PartitionKey,
+    Report.RowKeyReverse( TimeAxis ) AS RowKey,
+    'MM' AS TimeResolution,
+    Dataset.*,
+    DataSource.*
+  FROM 
+  
+  ( 
+    SELECT TimeAxis, CenterId, MonthSum AS Type1Events, 
+    n AS Type1PositiveConsent, 100.0 * n / MonthSum AS Type1PercentPositiveConsent
+    FROM 
+    (
+      SELECT DATEADD( MM, 1, MonthList.StartTime ) AS TimeAxis, agg.CenterId, agg.EnumVal, agg.n,
+      SUM(agg.n) OVER ( PARTITION BY CenterId, MonthList.EndTime ) AS MonthSum
+      FROM
+      (
+        SELECT StartTime, EndTime 
+        FROM Report.TimePeriods ml
+        WHERE PeriodType = 'MONTH' AND StartTime > DATEADD( YY, -5, GETDATE() ) AND EndTime < GETDATE()
+      ) MonthList
+  
+      CROSS APPLY
+  
+      ( 
+        SELECT visits.CenterId, consent.EnumVal, count(*) AS n
+        FROM dbo.GetLastEnumValuesTable( 3196, MonthList.EndTime ) diatype
+        JOIN
+        (
+          SELECT ce.PersonId, sg.CenterId, COUNT(*) AS visitcount 
+    	    FROM dbo.ClinEvent ce  
+          JOIN dbo.StudyGroup sg ON sg.StudyId=ce.StudyId AND sg.GroupId = ce.GroupId
+          WHERE EventTime BETWEEN MonthList.StartTime AND MonthList.EndTime
+          GROUP BY ce.PersonId, sg.CenterId 
+        ) visits
+          ON visits.PersonId = diatype.PersonId
+        LEFT OUTER JOIN dbo.GetLastEnumValuesTable( 3389, MonthList.EndTime ) consent 
+          ON consent.PersonId = diatype.PersonId
+      WHERE diatype.EnumVal = 1
+      GROUP BY visits.CenterId, consent.EnumVal
+      ) agg
+    ) ds
+    WHERE ds.EnumVal= 1
+  ) Dataset
+  
+  CROSS JOIN Report.DataSource() AS DataSource
+  ORDER BY TimeAxis DESC, CenterId;
+END]]>
+	</row>
+	<row ProcId="3002" StudyName="NDV" ProcName="Dash.NdvType1HbA1cAbove9" ProcDesc="Prosentandel Type-1 med HbA1c på 9 eller mer" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="-582414338" LastUpdate="2018-03-07T21:42:19.977Z">
+		<![CDATA[CREATE PROCEDURE Dash.NdvType1HbA1cAbove9 AS
+BEGIN
+
+  SELECT
+  
+    Report.PartitionKey( ul.CenterId ) AS PartitionKey,
+    Report.RowKeyReverse( Dataset.TimeAxis ) AS RowKey,
+    'MM' AS TimeResolution,
+    Dataset.*,
+    DataSource.*
+  
+    FROM
+  
+  ( SELECT
+      MonthList.StartTime AS TimeAxis, 
+      AllType1.NumPatients,
+      AboveCutoffAgg.NumHbA1c AS NumAboveCutoff, 
+      AboveCutoffAgg.MinHbA1c,
+      AboveCutoffAgg.AvgHbA1cAboveCutoff, 
+      AboveCutoffAgg.MaxHbA1c,
+      100.0 * AboveCutoffAgg.NumHbA1c / AllType1.NumPatients AS PctAboveCutoffTotal
+    FROM
+  
+    (
+      SELECT StartTime FROM Report.TimePeriods ml 
+      WHERE PeriodType = 'MONTH' AND StartTime > DATEADD( YY, -5, GETDATE() ) AND StartTime < GETDATE()
+    ) MonthList
+  
+  CROSS APPLY
+  
+    (
+      SELECT COUNT(Type1AboveCutoff.NumResult) AS NumHbA1c,
+        MIN(Type1AboveCutoff.NumResult) AS MinHbA1c,
+        MAX(Type1AboveCutoff.NumResult) AS MaxHbA1c,
+        AVG(Type1AboveCutoff.NumResult) AS AvgHbA1cAboveCutoff
+      FROM
+      (
+        SELECT cas.PersonId,lab.NumResult
+        FROM NDV.GetRecentPatientsTable( 1, MonthList.StartTime, 15 ) cas
+        JOIN dbo.GetLastLabDataTable( 45, MonthList.StartTime) lab ON lab.PersonId = cas.PersonId
+  	  WHERE NumResult >= 9.0
+      ) Type1AboveCutoff
+    ) AboveCutoffAgg
+  
+  CROSS APPLY 
+  
+    (
+      SELECT COUNT(*) AS NumPatients FROM NDV.GetRecentPatientsTable( 1, MonthList.StartTime, 15 )
+    ) AllType1
+    WHERE AllType1.NumPatients > 0
+  )  Dataset
+  
+  CROSS JOIN Report.DataSource() AS DataSource
+  
+  JOIN dbo.UserList ul ON ul.UserId = USER_ID()
+  
+  ORDER BY TimeAxis DESC
+END;]]>
+	</row>
+	<row ProcId="3003" StudyName="*" ProcName="Dash.UserCount" ProcDesc="Akkumulert antall brukere" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="-788130051" LastUpdate="2018-03-07T21:46:51.660Z">
+		<![CDATA[CREATE PROCEDURE Dash.UserCount AS 
+BEGIN 
+  
+  SELECT
+    
+    Report.PartitionKey( NULL ) AS PartitionKey,
+    Report.RowKeyReverse( TimeAxis ) AS RowKey,
+    'WW' AS TimeResolution,
+    Dataset.*,
+    DataSource.*
+  
+  FROM
+  
+    ( SELECT
+        Report.StartOfWeek( createdate ) AS TimeAxis,
+        MAX(Rnk) AS n
+        FROM
+           ( SELECT
+             su.uid,su.createdate,RANK() OVER( ORDER BY createdate ) AS Rnk
+           FROM sys.sysusers su WHERE su.islogin = 1 AND su.uid > 5
+         ) ul
+       GROUP BY Report.StartOfWeek( createdate )
+    ) Dataset
+  
+  CROSS JOIN Report.DataSource() AS DataSource
+  
+  ORDER BY TimeAxis DESC 
+
+END;]]>
+	</row>
+	<row ProcId="3004" StudyName="NDV" ProcName="Dash.NdvType1HbA1cBelow7" ProcDesc="Prosentandel Type-1 med HbA1c under 7" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="78529040" LastUpdate="2018-03-07T21:42:38.283Z">
+		<![CDATA[CREATE PROCEDURE Dash.NdvType1HbA1cBelow7 AS
+BEGIN
+  SELECT
+  
+    Report.PartitionKey( ul.CenterId ) AS PartitionKey,
+    Report.RowKeyReverse( Dataset.TimeAxis ) AS RowKey,
+    'MM' AS TimeResolution,
+    Dataset.*,
+    DataSource.*
+  
+    FROM
+  
+  ( SELECT
+      MonthList.StartTime AS TimeAxis, 
+      AllType1.NumPatients,
+      AboveCutoffAgg.NumHbA1c AS NumAboveCutoff, 
+      AboveCutoffAgg.MinHbA1c,
+      AboveCutoffAgg.AvgHbA1cAboveCutoff, 
+      AboveCutoffAgg.MaxHbA1c,
+      100.0 * AboveCutoffAgg.NumHbA1c / AllType1.NumPatients AS PctAboveCutoffTotal
+    FROM
+  
+    (
+      SELECT StartTime FROM Report.TimePeriods ml 
+      WHERE PeriodType = 'MONTH' AND StartTime > DATEADD( YEAR, -5, GETDATE() ) AND StartTime < GETDATE()
+    ) MonthList
+  
+  CROSS APPLY
+  
+    (
+      SELECT COUNT(Type1AboveCutoff.NumResult) AS NumHbA1c,
+        MIN(Type1AboveCutoff.NumResult) AS MinHbA1c,
+        MAX(Type1AboveCutoff.NumResult) AS MaxHbA1c,
+        AVG(Type1AboveCutoff.NumResult) AS AvgHbA1cAboveCutoff
+      FROM
+      (
+        SELECT cas.PersonId,lab.NumResult
+        FROM NDV.GetRecentPatientsTable( 1, MonthList.StartTime, 15 ) cas
+        JOIN dbo.GetLastLabDataTable( 45, MonthList.StartTime) lab ON lab.PersonId = cas.PersonId
+        WHERE NumResult < 7.0
+      ) Type1AboveCutoff
+    ) AboveCutoffAgg
+  
+  CROSS APPLY 
+  
+    (
+      SELECT COUNT(*) AS NumPatients FROM NDV.GetRecentPatientsTable( 1, MonthList.StartTime, 15 )
+    ) AllType1
+    WHERE AllType1.NumPatients > 0
+  )  Dataset
+  
+  CROSS JOIN Report.DataSource() AS DataSource
+  
+  JOIN dbo.UserList ul ON ul.UserId = USER_ID()
+  
+  ORDER BY TimeAxis DESC;
+
+END;]]>
+	</row>
+	<row ProcId="3005" StudyName="*" ProcName="Dash.DirtyClose" ProcDesc="Ufullstendig nedstenging" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="-1989728275" LastUpdate="2018-03-07T21:53:01.447Z">
+		<![CDATA[CREATE PROCEDURE Dash.DirtyClose AS
+BEGIN
+
+  DECLARE @StartOfThisWeek DateTime;
+  SET @StartOfThisWeek = Report.StartOfWeek( GETDATE() );
+  SELECT
+  
+    Report.PartitionKey( NULL ) AS PartitionKey,
+    Report.RowKeyReverse( Dataset.TimeAxis ) AS RowKey,
+    'WW' AS TimeResolution,
+    Dataset.*,
+      CONVERT(DECIMAL(5,1),DirtySessions * 100.0 / TotalSessions ) AS DirtyInPercent,
+    DataSource.*
+  
+  FROM
+  
+    ( SELECT
+        Report.StartOfWeek( MAX( ServTime) ) AS TimeAxis,
+        COUNT(*) AS TotalSessions,
+        SUM(CASE WHEN DirtyClose = 1 OR ClosedAt IS NULL THEN 1 ELSE 0 END ) AS DirtySessions
+      FROM dbo.UserLog
+      WHERE AppVer LIKE '[3-9].[0-9]%' AND ServTime <  @StartOfThisWeek
+      GROUP BY ServYear, ServWeek
+    ) Dataset
+  
+  CROSS JOIN Report.DataSource() AS DataSource
+  ORDER BY TimeAxis DESC;
+  
+END;]]>
 	</row>
 	<row ProcId="5001" StudyName="GBD" ProcName="GBD.UpdateMustScoreForAll" ProcDesc="Oppdatering av MUST for alle, trenger GBD.RuleMust på plass" ProcParams=":StudyId" ListId="UTIL" GrantTo="public" ChkSum="-1790760205" LastUpdate="2016-06-06T12:55:01.353Z">
 		<![CDATA[CREATE PROCEDURE GBD.UpdateMustScoreForAll( @StudyId INT ) AS
