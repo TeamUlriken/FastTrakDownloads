@@ -2,578 +2,578 @@
 <StudyForm>
   <Form FormId="887" FormName="LS1" FormTitle="Livets siste dager - Oppstart">
     <Page PageId="7418" PageNumber="1" PageTitle="Kriterier for å bruke tiltaksplanen" PageIntroduction="Bruk av denne planen forutsetter kommunikasjon med pasienten og de pårørende slik at deres ønsker og behov er kartlagt og de er informert om at pasienten er døende.">
-      <Item ItemId="10440" ItemType="2" VarName="LS1_IRREVERSIBEL" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21643" OrderNumber="1" ItemHeader="Reversible tilstander" ItemText="Alle mulige reversible årsaker til pasientens tilstand er vurdert." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58412" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58413" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="10441" ItemType="2" VarName="LS1_TVERRFAGLIGHET" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21529" OrderNumber="2" ItemHeader="Tverrfaglig enighet" ItemText="Behandlingsteamet, minimum lege og sykepleier, er enige om at pasienten er døende." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58418" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58419" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="10440" ItemType="2" VarName="LS1_IRREVERSIBEL" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21643" OrderNumber="1" ItemHeader="Reversible tilstander" ItemText="Alle mulige reversible årsaker til pasientens tilstand er vurdert." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58412" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58413" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10441" ItemType="2" VarName="LS1_TVERRFAGLIGHET" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21529" OrderNumber="2" ItemHeader="Tverrfaglig enighet" ItemText="Behandlingsteamet, minimum lege og sykepleier, er enige om at pasienten er døende." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58418" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58419" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7419" PageNumber="2" PageTitle="Tilleggskriterier" PageIntroduction="I tillegg vil minst to av følgende punkter vanligvis være oppfylt.">
-      <Item ItemId="1020" ItemType="2" VarName="LS1_SENG" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21860" OrderNumber="3" ItemText="Pasienten er sengeliggende." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58756" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58757" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1021" ItemType="2" VarName="LS1_KONTAKT" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21861" OrderNumber="4" ItemText="Pasienten er i lengre perioder ikke kontaktbar." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58760" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58761" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="10442" ItemType="2" VarName="LS1_DRIKKE" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21532" OrderNumber="5" ItemText="Pasienten klarer bare å drikke små slurker." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58428" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58429" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="10443" ItemType="2" VarName="LS1_TABLETT" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21533" OrderNumber="6" ItemText="Pasienten kan ikke lenger svelge tabletter." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58434" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58435" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1022" ItemType="2" VarName="LS1_TILLEGG_OPPFYLT" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21862" OrderNumber="7" ItemText="To eller flere kriterier oppfylt" ItemHelp="" Expression="2-ISPOS( ISNULL(LS1_SENG-1) + ISNULL(LS1_KONTAKT-1) + ISNULL(LS1_DRIKKE-1) + ISNULL(LS1_TABLETT-1) - 1 )" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58764" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58765" OrderNumber="2" OptionText="Nei (LCP bør ikke iverksettes)"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1004" ItemType="8" VarName="VAR1004" LoincScale="MSG" DisplayFormat="">
-        <FormItem FormItemId="21846" OrderNumber="8" ItemHeader="Viktig" ItemText="Når denne planen settes i gang, erstatter den annen dokumentasjon og blir eneste form for rapport som brukes.  Dokumentasjon av medikamentordinasjon og -utlevering følger sykehjemmets vanlige regler.&#xA;&#xA;" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="10444" ItemType="8" VarName="VAR10444" LoincScale="MSG" DisplayFormat="">
-        <FormItem FormItemId="21644" OrderNumber="9" ItemHeader="Revurdering" ItemText="Bruk av planen skal vurderes fortløpende og alltid revurderes dersom:&#xA;* Pasientens tilstand bedres.&#xA;* Det uttrykkes tvil, bekymring eller uenighet til bruken av planen.&#xA;* Planen er brukt i tre døgn.&#xA;&#xA;" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
+        <Item ItemId="1020" ItemType="2" VarName="LS1_SENG" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21860" OrderNumber="3" ItemText="Pasienten er sengeliggende." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58756" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58757" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1021" ItemType="2" VarName="LS1_KONTAKT" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21861" OrderNumber="4" ItemText="Pasienten er i lengre perioder ikke kontaktbar." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58760" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58761" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10442" ItemType="2" VarName="LS1_DRIKKE" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21532" OrderNumber="5" ItemText="Pasienten klarer bare å drikke små slurker." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58428" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58429" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10443" ItemType="2" VarName="LS1_TABLETT" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21533" OrderNumber="6" ItemText="Pasienten kan ikke lenger svelge tabletter." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58434" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58435" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1022" ItemType="2" VarName="LS1_TILLEGG_OPPFYLT" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21862" OrderNumber="7" ItemText="To eller flere kriterier oppfylt" ItemHelp="" Expression="2-ISPOS( ISNULL(LS1_SENG-1) + ISNULL(LS1_KONTAKT-1) + ISNULL(LS1_DRIKKE-1) + ISNULL(LS1_TABLETT-1) - 1 )" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58764" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58765" OrderNumber="2" OptionText="Nei (LCP bør ikke iverksettes)"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1004" ItemType="8" VarName="VAR1004" LoincScale="MSG" DisplayFormat="">
+                <FormItem FormItemId="21846" OrderNumber="8" ItemHeader="Viktig" ItemText="Når denne planen settes i gang, erstatter den annen dokumentasjon og blir eneste form for rapport som brukes.  Dokumentasjon av medikamentordinasjon og -utlevering følger sykehjemmets vanlige regler.&#xA;&#xA;" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10444" ItemType="8" VarName="VAR10444" LoincScale="MSG" DisplayFormat="">
+                <FormItem FormItemId="21644" OrderNumber="9" ItemHeader="Revurdering" ItemText="Bruk av planen skal vurderes fortløpende og alltid revurderes dersom:&#xA;* Pasientens tilstand bedres.&#xA;* Det uttrykkes tvil, bekymring eller uenighet til bruken av planen.&#xA;* Planen er brukt i tre døgn.&#xA;&#xA;" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7420" PageNumber="3" PageTitle="Diagnose og personopplysninger">
-      <Item ItemId="4085" ItemType="5" VarName="GBD_INNDATO" LoincScale="DATE" DisplayFormat="">
-        <FormItem FormItemId="21848" OrderNumber="10" ItemHeader="Ankom" ItemText="Når kom pasienten kom inn på sykehjemmet?" ItemHelp="Gjelder aktuelt opphold." MinExpression="DOB" MaxExpression="FORMDATE+7" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1016" ItemType="4" VarName="LS1_HOVEDDIAGNOSE" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="21856" OrderNumber="11" ItemHeader="Hoveddiagnose" ItemText="Hva er hovedårsaken til at pasienten er døende?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1017" ItemType="4" VarName="LS1_BIDIAGNOSER" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="21857" OrderNumber="12" ItemHeader="Bidiagnoser" ItemText="Andre alvorlige tilstander" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="6487" ItemType="2" VarName="VAR6487" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="23984" OrderNumber="13" ItemText="Nasjonalitet" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="34799" OrderNumber="1" OptionText="Norsk"/>
-          <Answer AnswerId="34800" OrderNumber="2" OptionText="Utenlandsk"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="4085" ItemType="5" VarName="GBD_INNDATO" LoincScale="DATE" DisplayFormat="">
+                <FormItem FormItemId="21848" OrderNumber="10" ItemHeader="Ankom" ItemText="Når kom pasienten kom inn på sykehjemmet?" ItemHelp="Gjelder aktuelt opphold." MinExpression="DOB" MaxExpression="FORMDATE+7" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1016" ItemType="4" VarName="LS1_HOVEDDIAGNOSE" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="21856" OrderNumber="11" ItemHeader="Hoveddiagnose" ItemText="Hva er hovedårsaken til at pasienten er døende?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1017" ItemType="4" VarName="LS1_BIDIAGNOSER" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="21857" OrderNumber="12" ItemHeader="Bidiagnoser" ItemText="Andre alvorlige tilstander" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="6487" ItemType="2" VarName="VAR6487" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="23984" OrderNumber="13" ItemText="Nasjonalitet" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="34799" OrderNumber="1" OptionText="Norsk"/>
+                                <Answer AnswerId="34800" OrderNumber="2" OptionText="Utenlandsk"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="8378" PageNumber="4" PageTitle="Utenlandsk nasjonalitet*">
-      <Item ItemId="6488" ItemType="4" VarName="VAR6488" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="23983" OrderNumber="14" ItemText="Spesifiser utenlandsk nasjonalitet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
+        <Item ItemId="6488" ItemType="4" VarName="VAR6488" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="23983" OrderNumber="14" ItemText="Spesifiser utenlandsk nasjonalitet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="8377" PageNumber="5" PageTitle="Beslutning">
-      <Item ItemId="1006" ItemType="4" VarName="LS1_BESLUTNING_TATT" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="24167" OrderNumber="15" ItemText="Beslutning om bruk tatt" ItemHelp="Dato og klokkeslett for når bruken av planen ble bestemt." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1018" ItemType="4" VarName="LS1_BESLUTNINGSTAKERE" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="21858" OrderNumber="16" ItemHeader="Beslutningstakere" ItemText="Hvem inngår i det tverrfaglige teamet som tar beslutningen?" ItemHelp="Minst én sykepleier og én lege." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
+        <Item ItemId="1006" ItemType="4" VarName="LS1_BESLUTNING_TATT" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="24167" OrderNumber="15" ItemText="Beslutning om bruk tatt" ItemHelp="Dato og klokkeslett for når bruken av planen ble bestemt." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1018" ItemType="4" VarName="LS1_BESLUTNINGSTAKERE" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="21858" OrderNumber="16" ItemHeader="Beslutningstakere" ItemText="Hvem inngår i det tverrfaglige teamet som tar beslutningen?" ItemHelp="Minst én sykepleier og én lege." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7421" PageNumber="6" PageTitle="Inklusjonsvurdering - symptomer og funn">
-      <Item ItemId="10445" ItemType="2" VarName="LS1_SVELG" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21541" OrderNumber="17" ItemText="Er i stand til å svelge" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58440" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58441" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1009" ItemType="2" VarName="LS1_KVALM" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21849" OrderNumber="18" ItemText="Kvalm" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58724" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58725" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="10446" ItemType="2" VarName="LS1_BREKNINGER" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21544" OrderNumber="19" ItemText="Brekninger, oppkast" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58446" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58447" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1010" ItemType="2" VarName="LS1_OBSTIPERT" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21850" OrderNumber="20" ItemText="Obstipert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58728" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58729" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1023" ItemType="2" VarName="LS1_FORVIRRET" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21863" OrderNumber="21" ItemText="Forvirret" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58768" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58769" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="10447" ItemType="2" VarName="LS1_UROLIG" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21539" OrderNumber="22" ItemText="Urolig / agitert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58452" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58453" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="10448" ItemType="2" VarName="LS1_RASTLOS" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21536" OrderNumber="23" ItemText="Rastløs" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58458" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58459" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1068" ItemType="2" VarName="LS1_ANSPENT" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21969" OrderNumber="24" ItemText="Anspent / engstelig" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58907" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58908" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="10445" ItemType="2" VarName="LS1_SVELG" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21541" OrderNumber="17" ItemText="Er i stand til å svelge" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58440" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58441" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1009" ItemType="2" VarName="LS1_KVALM" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21849" OrderNumber="18" ItemText="Kvalm" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58724" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58725" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10446" ItemType="2" VarName="LS1_BREKNINGER" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21544" OrderNumber="19" ItemText="Brekninger, oppkast" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58446" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58447" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1010" ItemType="2" VarName="LS1_OBSTIPERT" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21850" OrderNumber="20" ItemText="Obstipert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58728" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58729" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1023" ItemType="2" VarName="LS1_FORVIRRET" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21863" OrderNumber="21" ItemText="Forvirret" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58768" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58769" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10447" ItemType="2" VarName="LS1_UROLIG" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21539" OrderNumber="22" ItemText="Urolig / agitert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58452" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58453" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10448" ItemType="2" VarName="LS1_RASTLOS" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21536" OrderNumber="23" ItemText="Rastløs" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58458" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58459" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1068" ItemType="2" VarName="LS1_ANSPENT" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21969" OrderNumber="24" ItemText="Anspent / engstelig" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58907" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58908" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7482" PageNumber="7" PageTitle="Kolonne 2*">
-      <Item ItemId="1019" ItemType="2" VarName="LS1_VAAKEN" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21859" OrderNumber="25" ItemText="Våken" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58752" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58753" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1069" ItemType="2" VarName="LS1_BEVISST" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21970" OrderNumber="26" ItemText="Bevisst" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58911" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58912" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="10450" ItemType="2" VarName="LS1_VANNLATINGSPROBLEM" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21548" OrderNumber="27" ItemText="Vannlatingsbesvær, UVI" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58470" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58471" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1024" ItemType="2" VarName="LS1_KATETERISERT" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21864" OrderNumber="28" ItemText="Kateterisert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58772" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58773" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1025" ItemType="2" VarName="LS1_SURKLING" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21865" OrderNumber="29" ItemText="Surkling i luftveiene" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58776" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58777" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1026" ItemType="2" VarName="LS1_DYSPNE" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21866" OrderNumber="30" ItemText="Dyspne" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58780" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58781" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1027" ItemType="2" VarName="LS1_SMERTE" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21867" OrderNumber="31" ItemText="Smerte" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58784" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58785" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1011" ItemType="2" VarName="LS1_ANNET_SYMPTOM" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21851" OrderNumber="32" ItemText="Annet" ItemHelp="For eksempel ødemer, kløe." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58732" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58733" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="1019" ItemType="2" VarName="LS1_VAAKEN" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21859" OrderNumber="25" ItemText="Våken" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58752" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58753" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1069" ItemType="2" VarName="LS1_BEVISST" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21970" OrderNumber="26" ItemText="Bevisst" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58911" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58912" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10450" ItemType="2" VarName="LS1_VANNLATINGSPROBLEM" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21548" OrderNumber="27" ItemText="Vannlatingsbesvær, UVI" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58470" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58471" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1024" ItemType="2" VarName="LS1_KATETERISERT" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21864" OrderNumber="28" ItemText="Kateterisert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58772" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58773" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1025" ItemType="2" VarName="LS1_SURKLING" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21865" OrderNumber="29" ItemText="Surkling i luftveiene" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58776" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58777" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1026" ItemType="2" VarName="LS1_DYSPNE" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21866" OrderNumber="30" ItemText="Dyspne" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58780" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58781" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1027" ItemType="2" VarName="LS1_SMERTE" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21867" OrderNumber="31" ItemText="Smerte" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58784" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58785" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1011" ItemType="2" VarName="LS1_ANNET_SYMPTOM" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21851" OrderNumber="32" ItemText="Annet" ItemHelp="For eksempel ødemer, kløe." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58732" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58733" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7582" PageNumber="8" PageTitle="Annet*">
-      <Item ItemId="10472" ItemType="4" VarName="LS1_ANNET_TEKST" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="21549" OrderNumber="33" ItemHeader="Beskrivelse" ItemText="Beskriv kort andre symptomer og funn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
+        <Item ItemId="10472" ItemType="4" VarName="LS1_ANNET_TEKST" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="21549" OrderNumber="33" ItemHeader="Beskrivelse" ItemText="Beskriv kort andre symptomer og funn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7422" PageNumber="9" PageTitle="Mål 1 - Medikamentvurdering" PageIntroduction="Mål: Aktuell medikasjon er vurdert og ikke-essensielle medikamenter seponert.">
-      <Item ItemId="1028" ItemType="2" VarName="VAR1028" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21868" OrderNumber="34" ItemText="Aktuell medikasjon er vurdert og ikke-essensielle medikamenter seponert" ItemHelp="Hensiktsmessig peroral medikasjon er endret til subkutan, og subkutan pumpe er satt i gang hvis hensiktsmessig. Uhensiktsmessig medikasjon er seponert." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58788" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58789" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="1028" ItemType="2" VarName="VAR1028" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21868" OrderNumber="34" ItemText="Aktuell medikasjon er vurdert og ikke-essensielle medikamenter seponert" ItemHelp="Hensiktsmessig peroral medikasjon er endret til subkutan, og subkutan pumpe er satt i gang hvis hensiktsmessig. Uhensiktsmessig medikasjon er seponert." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58788" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58789" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7424" PageNumber="10" PageTitle="Mål 2 - Behovsmedikasjon" PageIntroduction="Mål: Behovsmedikasjon til subkutan administrasjon er ordinert for smerter, uro/agitasjon, surkling, kvalme/brekninger og dyspne etter avdelingens prosedyrer.">
-      <Item ItemId="1013" ItemType="2" VarName="VAR1013" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21853" OrderNumber="35" ItemText="Eventuell subkutan medikasjon for SMERTER er ordinert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58740" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58741" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1031" ItemType="2" VarName="VAR1031" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21871" OrderNumber="36" ItemText="Eventuell subkutan medikasjon for URO / AGITASJON er ordinert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58802" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58803" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1014" ItemType="2" VarName="VAR1014" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21854" OrderNumber="37" ItemText="Eventuell subkutan medikasjon for SURKLING I LUFTVEIENE er ordinert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58744" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58745" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1032" ItemType="2" VarName="VAR1032" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21872" OrderNumber="38" ItemText="Eventuell subkutan medikasjon for KVALME OG  BREKNINGER er ordinert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58806" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58807" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1015" ItemType="2" VarName="VAR1015" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21855" OrderNumber="39" ItemText="Eventuell subkutan medikasjon for DYSPNE er ordinert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58748" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58749" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="1013" ItemType="2" VarName="VAR1013" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21853" OrderNumber="35" ItemText="Eventuell subkutan medikasjon for SMERTER er ordinert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58740" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58741" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1031" ItemType="2" VarName="VAR1031" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21871" OrderNumber="36" ItemText="Eventuell subkutan medikasjon for URO / AGITASJON er ordinert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58802" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58803" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1014" ItemType="2" VarName="VAR1014" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21854" OrderNumber="37" ItemText="Eventuell subkutan medikasjon for SURKLING I LUFTVEIENE er ordinert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58744" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58745" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1032" ItemType="2" VarName="VAR1032" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21872" OrderNumber="38" ItemText="Eventuell subkutan medikasjon for KVALME OG  BREKNINGER er ordinert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58806" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58807" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1015" ItemType="2" VarName="VAR1015" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21855" OrderNumber="39" ItemText="Eventuell subkutan medikasjon for DYSPNE er ordinert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58748" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58749" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7434" PageNumber="11" PageTitle="Mål 3 - Uhensiktsmessige tiltak er seponert" PageIntroduction="Beslutningene bygger på grundig vurdering av alle aktuelle tiltak">
-      <Item ItemId="1029" ItemType="2" VarName="LS1_SEP_BLODPROVER" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21869" OrderNumber="40" ItemText="Blodprøver" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58792" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58793" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="58794" OrderNumber="3" OptionText="Tiltaket ikke aktuelt"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1030" ItemType="2" VarName="LS1_SEP_ANTIBIOTIKA" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21870" OrderNumber="41" ItemText="Antibiotika" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58797" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58798" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="58799" OrderNumber="3" OptionText="Tiltaket ikke aktuelt"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1033" ItemType="2" VarName="LS1_SEP_VAESKE" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21873" OrderNumber="42" ItemText="Væskebehandling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58810" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58811" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="58812" OrderNumber="3" OptionText="Tiltaket ikke aktuelt"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1034" ItemType="2" VarName="LS1_SEP_ERNAERING" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21874" OrderNumber="43" ItemText="Ernæringsbehandling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58815" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58816" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="58817" OrderNumber="3" OptionText="Tiltaket ikke aktuelt"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1035" ItemType="2" VarName="LCD1_SEP_HLR" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21875" OrderNumber="44" ItemText="Journalført at hjerte- lungeredning ikke er aktuelt (HLR-)" ItemHelp="(jfr. &quot;Beslutninger&quot; skjema)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58820" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58821" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1692" ItemType="4" VarName="LS1_SEP_ANNET" LoincScale="NAR">
-        <FormItem FormItemId="23981" OrderNumber="45" ItemText="Eventuelle andre tiltak seponert" ItemHelp="Beskriv hvis aktuelt" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
+        <Item ItemId="1029" ItemType="2" VarName="LS1_SEP_BLODPROVER" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21869" OrderNumber="40" ItemText="Blodprøver" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58792" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58793" OrderNumber="2" OptionText="Nei"/>
+                                <Answer AnswerId="58794" OrderNumber="3" OptionText="Tiltaket ikke aktuelt"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1030" ItemType="2" VarName="LS1_SEP_ANTIBIOTIKA" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21870" OrderNumber="41" ItemText="Antibiotika" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58797" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58798" OrderNumber="2" OptionText="Nei"/>
+                                <Answer AnswerId="58799" OrderNumber="3" OptionText="Tiltaket ikke aktuelt"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1033" ItemType="2" VarName="LS1_SEP_VAESKE" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21873" OrderNumber="42" ItemText="Væskebehandling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58810" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58811" OrderNumber="2" OptionText="Nei"/>
+                                <Answer AnswerId="58812" OrderNumber="3" OptionText="Tiltaket ikke aktuelt"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1034" ItemType="2" VarName="LS1_SEP_ERNAERING" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21874" OrderNumber="43" ItemText="Ernæringsbehandling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58815" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58816" OrderNumber="2" OptionText="Nei"/>
+                                <Answer AnswerId="58817" OrderNumber="3" OptionText="Tiltaket ikke aktuelt"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1035" ItemType="2" VarName="LCD1_SEP_HLR" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21875" OrderNumber="44" ItemText="Journalført at hjerte- lungeredning ikke er aktuelt (HLR-)" ItemHelp="(jfr. &quot;Beslutninger&quot; skjema)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58820" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58821" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1692" ItemType="4" VarName="LS1_SEP_ANNET" LoincScale="NAR">
+                <FormItem FormItemId="23981" OrderNumber="45" ItemText="Eventuelle andre tiltak seponert" ItemHelp="Beskriv hvis aktuelt" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7442" PageNumber="12" PageTitle="ICD*">
-      <Item ItemId="10469" ItemType="2" VarName="LS1_ICD_DEAKTIVERT" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21560" OrderNumber="46" ItemText="Deaktivering av implantert defibrillator (ICD)" ItemHelp="Kontakt pasientens kardiolog.  Henvis til lokale retningslinjer og prosedyrer.  Gi evt. informasjonsbrosjyre til pasient/pårørende." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58615" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58616" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="58617" OrderNumber="3" OptionText="Ikke aktuelt"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="10469" ItemType="2" VarName="LS1_ICD_DEAKTIVERT" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21560" OrderNumber="46" ItemText="Deaktivering av implantert defibrillator (ICD)" ItemHelp="Kontakt pasientens kardiolog.  Henvis til lokale retningslinjer og prosedyrer.  Gi evt. informasjonsbrosjyre til pasient/pårørende." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58615" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58616" OrderNumber="2" OptionText="Nei"/>
+                                <Answer AnswerId="58617" OrderNumber="3" OptionText="Ikke aktuelt"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7487" PageNumber="13" PageTitle="ICD Lege*">
-      <Item ItemId="10470" ItemType="4" VarName="LS1_ICD_LEGE" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="21655" OrderNumber="47" ItemText="Legens navn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="10471" ItemType="4" VarName="LS1_ICD_TIDSPUNKT" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="21656" OrderNumber="48" ItemText="Dato og klokkeslett" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
+        <Item ItemId="10470" ItemType="4" VarName="LS1_ICD_LEGE" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="21655" OrderNumber="47" ItemText="Legens navn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10471" ItemType="4" VarName="LS1_ICD_TIDSPUNKT" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="21656" OrderNumber="48" ItemText="Dato og klokkeslett" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7444" PageNumber="14" PageTitle="Mål 3a - Det er tatt en avgjørelse om å avslutte uhensiktsmessige pleietiltak">
-      <Item ItemId="1036" ItemType="2" VarName="VAR1036" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21876" OrderNumber="49" ItemText="Det er tatt avgjørelse om å avslutte ikke-hensiktsmessige pleietiltak" ItemHelp="Skal en ha et regime for å snu pasienten, eller bare ved behov, vurder anti-decubitus madrass, skal en fortsette å ta BT, puls, temp, osv...?" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58824" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58825" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="1036" ItemType="2" VarName="VAR1036" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21876" OrderNumber="49" ItemText="Det er tatt avgjørelse om å avslutte ikke-hensiktsmessige pleietiltak" ItemHelp="Skal en ha et regime for å snu pasienten, eller bare ved behov, vurder anti-decubitus madrass, skal en fortsette å ta BT, puls, temp, osv...?" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58824" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58825" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7446" PageNumber="15" PageTitle="Mål 3b - Subkutan pumpe">
-      <Item ItemId="10468" ItemType="2" VarName="VAR10468" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21562" OrderNumber="50" ItemText="Subkutan pumpe er satt i gang innen 4 timer etter at det er forordnet av legen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58601" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58602" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="58603" OrderNumber="3" OptionText="Ikke aktuelt"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="10468" ItemType="2" VarName="VAR10468" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21562" OrderNumber="50" ItemText="Subkutan pumpe er satt i gang innen 4 timer etter at det er forordnet av legen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58601" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58602" OrderNumber="2" OptionText="Nei"/>
+                                <Answer AnswerId="58603" OrderNumber="3" OptionText="Ikke aktuelt"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7447" PageNumber="16" PageTitle="Tiltak*">
-      <Item ItemId="10466" ItemType="4" VarName="LS1_PUMPE_SYKEPLEIER" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="21653" OrderNumber="51" ItemText="Sykepleierens navn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="10467" ItemType="4" VarName="LS1_PUMPE_TIDSPUNKT" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="21654" OrderNumber="52" ItemText="Dato og klokkeslett" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
+        <Item ItemId="10466" ItemType="4" VarName="LS1_PUMPE_SYKEPLEIER" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="21653" OrderNumber="51" ItemText="Sykepleierens navn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10467" ItemType="4" VarName="LS1_PUMPE_TIDSPUNKT" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="21654" OrderNumber="52" ItemText="Dato og klokkeslett" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7448" PageNumber="17" PageTitle="Mål 4 - Evne til å kommunisere på norsk er vurdert som adekvat">
-      <Item ItemId="1037" ItemType="2" VarName="LS1_KOMM_PASIENT" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21877" OrderNumber="53" ItemText="Evnen til å kommunisere på norsk er vurdert som adekvat hos PASIENTEN" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58828" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58829" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="58830" OrderNumber="3" OptionText="Komatøs"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1038" ItemType="2" VarName="LS1_KOMM_PARORENDE" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21878" OrderNumber="54" ItemText="Evnen til å kommunisere på norsk er vurdert som adekvat hos PÅRØRENDE" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58833" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58834" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="1037" ItemType="2" VarName="LS1_KOMM_PASIENT" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21877" OrderNumber="53" ItemText="Evnen til å kommunisere på norsk er vurdert som adekvat hos PASIENTEN" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58828" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58829" OrderNumber="2" OptionText="Nei"/>
+                                <Answer AnswerId="58830" OrderNumber="3" OptionText="Komatøs"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1038" ItemType="2" VarName="LS1_KOMM_PARORENDE" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21878" OrderNumber="54" ItemText="Evnen til å kommunisere på norsk er vurdert som adekvat hos PÅRØRENDE" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58833" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58834" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7452" PageNumber="18" PageTitle="Mål 5 - Innsikt i pasientens tilstand er vurdert">
-      <Item ItemId="1039" ItemType="2" VarName="VAR1039" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21879" OrderNumber="55" ItemText="PASIENTEN er klar over diagnosen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58837" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58838" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="58839" OrderNumber="3" OptionText="Komatøs"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1040" ItemType="2" VarName="VAR1040" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem FormItemId="21880" OrderNumber="56" ItemText="De PÅRØRENDE er klar over diagnosen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58842" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58843" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1041" ItemType="2" VarName="VAR1041" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem FormItemId="21881" OrderNumber="57" ItemText="PASIENTEN er klar over at han / hun er døende" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="58846" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58847" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="58848" OrderNumber="3" OptionText="Komatøs"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1042" ItemType="2" VarName="VAR1042" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem FormItemId="21882" OrderNumber="58" ItemText="De PÅRØRENDE er klar over at pasienten er døende" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58851" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58852" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1043" ItemType="2" VarName="VAR1043" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21883" OrderNumber="59" ItemText="Behov hos barn/ungdom som pårørende er vurdert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58855" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58856" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="58857" OrderNumber="3" OptionText="Ikke aktuelt"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="1039" ItemType="2" VarName="VAR1039" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21879" OrderNumber="55" ItemText="PASIENTEN er klar over diagnosen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58837" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58838" OrderNumber="2" OptionText="Nei"/>
+                                <Answer AnswerId="58839" OrderNumber="3" OptionText="Komatøs"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1040" ItemType="2" VarName="VAR1040" LoincScale="ORD" DisplayFormat="Vertical">
+                <FormItem FormItemId="21880" OrderNumber="56" ItemText="De PÅRØRENDE er klar over diagnosen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58842" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58843" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1041" ItemType="2" VarName="VAR1041" LoincScale="ORD" DisplayFormat="Vertical">
+                <FormItem FormItemId="21881" OrderNumber="57" ItemText="PASIENTEN er klar over at han / hun er døende" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+                                <Answer AnswerId="58846" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58847" OrderNumber="2" OptionText="Nei"/>
+                                <Answer AnswerId="58848" OrderNumber="3" OptionText="Komatøs"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1042" ItemType="2" VarName="VAR1042" LoincScale="ORD" DisplayFormat="Vertical">
+                <FormItem FormItemId="21882" OrderNumber="58" ItemText="De PÅRØRENDE er klar over at pasienten er døende" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58851" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58852" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1043" ItemType="2" VarName="VAR1043" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21883" OrderNumber="59" ItemText="Behov hos barn/ungdom som pårørende er vurdert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58855" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58856" OrderNumber="2" OptionText="Nei"/>
+                                <Answer AnswerId="58857" OrderNumber="3" OptionText="Ikke aktuelt"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7460" PageNumber="19" PageTitle="Mål 6 - Åndelige / eksistensielle behov er vurdert" PageIntroduction="Pasienten eller de pårørende kan være engstelig for seg selv eller andre.  Vurder spesielle behov i forhold til familiens kulturelle bakgrunn. Vurder støtte fra prest eller annen åndelig veileder.">
-      <Item ItemId="1002" ItemType="2" VarName="VAR1002" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21884" OrderNumber="60" ItemText="Åndelige/eksistensielle behov er vurdert hos PASIENTEN" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58860" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58861" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="58862" OrderNumber="3" OptionText="Komatøs"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1008" ItemType="2" VarName="VAR1008" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21885" OrderNumber="61" ItemText="Åndelige/eksistensielle behov er vurdert hos PÅRØRENDE" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58865" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58866" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1012" ItemType="2" VarName="LS1_LIVSSYN_KJENT" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21886" OrderNumber="62" ItemText="Pasientens trosretning eller livssyn er kjent" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58736" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58737" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="10742" OrderNumber="3" OptionText="Ikke aktuelt"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="1002" ItemType="2" VarName="VAR1002" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21884" OrderNumber="60" ItemText="Åndelige/eksistensielle behov er vurdert hos PASIENTEN" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58860" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58861" OrderNumber="2" OptionText="Nei"/>
+                                <Answer AnswerId="58862" OrderNumber="3" OptionText="Komatøs"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1008" ItemType="2" VarName="VAR1008" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21885" OrderNumber="61" ItemText="Åndelige/eksistensielle behov er vurdert hos PÅRØRENDE" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58865" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58866" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1012" ItemType="2" VarName="LS1_LIVSSYN_KJENT" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21886" OrderNumber="62" ItemText="Pasientens trosretning eller livssyn er kjent" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58736" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58737" OrderNumber="2" OptionText="Nei"/>
+                                <Answer AnswerId="10742" OrderNumber="3" OptionText="Ikke aktuelt"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7466" PageNumber="20" PageTitle="livssyn spes*">
-      <Item ItemId="1044" ItemType="4" VarName="LS1_LIVSSYN" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="21887" OrderNumber="63" ItemText="Pasientens trosretning eller livssyn:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
+        <Item ItemId="1044" ItemType="4" VarName="LS1_LIVSSYN" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="21887" OrderNumber="63" ItemText="Pasientens trosretning eller livssyn:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7467" PageNumber="21" PageTitle="Prest / kontaktperson*">
-      <Item ItemId="10464" ItemType="2" VarName="LS1_PREST_TILBUD" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21573" OrderNumber="64" ItemText="Gitt tilbud om kontakt med prest / annen kontaktperson" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58587" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58588" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="58589" OrderNumber="3" OptionText="Ikke aktuelt"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="10464" ItemType="2" VarName="LS1_PREST_TILBUD" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21573" OrderNumber="64" ItemText="Gitt tilbud om kontakt med prest / annen kontaktperson" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58587" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58588" OrderNumber="2" OptionText="Nei"/>
+                                <Answer AnswerId="58589" OrderNumber="3" OptionText="Ikke aktuelt"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7469" PageNumber="22" PageTitle="prest spes*">
-      <Item ItemId="1046" ItemType="4" VarName="LS1_PREST_NAVN" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="21889" OrderNumber="65" ItemHeader="Navn" ItemText="Navn på prest / kontaktperson" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1047" ItemType="4" VarName="LS1_PREST_TELEFON" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="21890" OrderNumber="66" ItemHeader="Telefon" ItemText="Telefon-nummer til prest / kontaktperson" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1045" ItemType="5" VarName="LS1_PREST_TILBUD_DATO" LoincScale="DATE" DisplayFormat="">
-        <FormItem FormItemId="21888" OrderNumber="67" ItemHeader="Tilbudet gitt" ItemText="Dato når tilbudet ble gitt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
+        <Item ItemId="1046" ItemType="4" VarName="LS1_PREST_NAVN" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="21889" OrderNumber="65" ItemHeader="Navn" ItemText="Navn på prest / kontaktperson" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1047" ItemType="4" VarName="LS1_PREST_TELEFON" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="21890" OrderNumber="66" ItemHeader="Telefon" ItemText="Telefon-nummer til prest / kontaktperson" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1045" ItemType="5" VarName="LS1_PREST_TILBUD_DATO" LoincScale="DATE" DisplayFormat="">
+                <FormItem FormItemId="21888" OrderNumber="67" ItemHeader="Tilbudet gitt" ItemText="Dato når tilbudet ble gitt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7483" PageNumber="23" PageTitle="Kommentarer*">
-      <Item ItemId="1048" ItemType="4" VarName="LS1_LIVSSYN_BEHOV" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="21891" OrderNumber="68" ItemText="Kommentarer" ItemHelp="Spesielle behov nå, i forbindelse med dødsfallet, etter dødsfallet" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
+        <Item ItemId="1048" ItemType="4" VarName="LS1_LIVSSYN_BEHOV" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="21891" OrderNumber="68" ItemText="Kommentarer" ItemHelp="Spesielle behov nå, i forbindelse med dødsfallet, etter dødsfallet" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7470" PageNumber="24" PageTitle="Mål 7 - Det er avtalt hvordan pårørende skal informeres ved forandring i pasientens tilstand">
-      <Item ItemId="10462" ItemType="2" VarName="LS1_VARSLING_AVTALT" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21651" OrderNumber="69" ItemText="Det er avtalt hvordan pårørende skal informeres ved forandring i pasientens tilstand" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58569" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58570" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="10462" ItemType="2" VarName="LS1_VARSLING_AVTALT" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21651" OrderNumber="69" ItemText="Det er avtalt hvordan pårørende skal informeres ved forandring i pasientens tilstand" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58569" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58570" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7486" PageNumber="25" PageTitle="Pårørende 2*">
-      <Item ItemId="1049" ItemType="2" VarName="LS1_VARSLING_PLAN" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21892" OrderNumber="70" ItemText="Hvordan ønsker pårørende å bli informert ved forandring av pasientens tilstand?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58874" OrderNumber="1" OptionText="Uansett tidspunkt på døgnet"/>
-          <Answer AnswerId="58875" OrderNumber="2" OptionText="Ikke om natten"/>
-          <Answer AnswerId="58876" OrderNumber="3" OptionText="Pårørende overnatter på sykehjemmet"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="1049" ItemType="2" VarName="LS1_VARSLING_PLAN" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21892" OrderNumber="70" ItemText="Hvordan ønsker pårørende å bli informert ved forandring av pasientens tilstand?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58874" OrderNumber="1" OptionText="Uansett tidspunkt på døgnet"/>
+                                <Answer AnswerId="58875" OrderNumber="2" OptionText="Ikke om natten"/>
+                                <Answer AnswerId="58876" OrderNumber="3" OptionText="Pårørende overnatter på sykehjemmet"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7485" PageNumber="26" PageTitle="Pårørende 3*">
-      <Item ItemId="122" ItemType="2" VarName="NEXTOFKIN_TYPE" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21648" OrderNumber="71" ItemHeader="Nærmeste pårørende" ItemText="Hva er pasientens relasjon til nærmeste pårørende?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="180" OrderNumber="1" OptionText="ektefelle" VerboseText="Ektefelle:"/>
-          <Answer AnswerId="181" OrderNumber="2" OptionText="datter/sønn" VerboseText="Datter/sønn:"/>
-          <Answer AnswerId="182" OrderNumber="3" OptionText="bror/søster" VerboseText="Bror/søster:"/>
-          <Answer AnswerId="183" OrderNumber="4" OptionText="annet slektskap" VerboseText="Slektning:"/>
-          <Answer AnswerId="184" OrderNumber="5" OptionText="samboer" VerboseText="Samboer:"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3426" ItemType="4" VarName="NEXTOFKIN_NAME" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="21527" OrderNumber="72" ItemHeader="Navn*" ItemText="Nærmeste pårørende" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3425" ItemType="4" VarName="NEXTOFKIN_PHONE" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="21649" OrderNumber="73" ItemHeader="Telefon" ItemText="Telefonnumre for nærmeste pårørende" ItemHelp="Skriv gjerne flere telefonnumre, skilt med komma." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="1410" ItemType="4" VarName="OTHEROFKIN_DETAILS" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="21650" OrderNumber="74" ItemHeader="Andre pårørende" ItemText="Opplysninger om  andre pårørende" ItemHelp="Fornavn, etternavn, telefonnummer.  Gi så utfyllende opplysninger som mulig, gjerne om flere pårørende.  Skal brukes i kritiske situasjoner, skriv nærmeste pårørende først." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
+        <Item ItemId="122" ItemType="2" VarName="NEXTOFKIN_TYPE" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21648" OrderNumber="71" ItemHeader="Nærmeste pårørende" ItemText="Hva er pasientens relasjon til nærmeste pårørende?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="180" OrderNumber="1" OptionText="ektefelle" VerboseText="Ektefelle:"/>
+                                <Answer AnswerId="181" OrderNumber="2" OptionText="datter/sønn" VerboseText="Datter/sønn:"/>
+                                <Answer AnswerId="182" OrderNumber="3" OptionText="bror/søster" VerboseText="Bror/søster:"/>
+                                <Answer AnswerId="183" OrderNumber="4" OptionText="annet slektskap" VerboseText="Slektning:"/>
+                                <Answer AnswerId="184" OrderNumber="5" OptionText="samboer" VerboseText="Samboer:"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3426" ItemType="4" VarName="NEXTOFKIN_NAME" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="21527" OrderNumber="72" ItemHeader="Navn*" ItemText="Nærmeste pårørende" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3425" ItemType="4" VarName="NEXTOFKIN_PHONE" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="21649" OrderNumber="73" ItemHeader="Telefon" ItemText="Telefonnumre for nærmeste pårørende" ItemHelp="Skriv gjerne flere telefonnumre, skilt med komma." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="1410" ItemType="4" VarName="OTHEROFKIN_DETAILS" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="21650" OrderNumber="74" ItemHeader="Andre pårørende" ItemText="Opplysninger om  andre pårørende" ItemHelp="Fornavn, etternavn, telefonnummer.  Gi så utfyllende opplysninger som mulig, gjerne om flere pårørende.  Skal brukes i kritiske situasjoner, skriv nærmeste pårørende først." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7484" PageNumber="27" PageTitle="Mål 8 - Pårørende er gitt informasjon om sykehjemmet">
-      <Item ItemId="10457" ItemType="2" VarName="VAR10457" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21578" OrderNumber="75" ItemText="Pårørende er gitt informasjon om sykehjemmet" ItemHelp="Skriftlig informasjon om parkering, telefon, mat og drikke, overnatting og annen praktisk informasjon." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58518" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58519" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="10457" ItemType="2" VarName="VAR10457" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21578" OrderNumber="75" ItemText="Pårørende er gitt informasjon om sykehjemmet" ItemHelp="Skriftlig informasjon om parkering, telefon, mat og drikke, overnatting og annen praktisk informasjon." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58518" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58519" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7472" PageNumber="28" PageTitle="Mål 9 - Pasientens fastlege er klar over pasientens tilstand" PageIntroduction="Målet er kun aktuelt dersom korttidsopphold">
-      <Item ItemId="1050" ItemType="2" VarName="VAR1050" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem FormItemId="21893" OrderNumber="76" ItemText="Pasientens fastlege er klar over pasientens tilstand" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="58879" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58880" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="10461" ItemType="2" VarName="VAR10461" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21580" OrderNumber="77" ItemText="Hjemmesykepleien er informert dersom de er tjenesteyter" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58559" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58560" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="58563" OrderNumber="3" OptionText="Ikke aktuelt"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="1050" ItemType="2" VarName="VAR1050" LoincScale="ORD" DisplayFormat="Vertical">
+                <FormItem FormItemId="21893" OrderNumber="76" ItemText="Pasientens fastlege er klar over pasientens tilstand" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+                                <Answer AnswerId="58879" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58880" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10461" ItemType="2" VarName="VAR10461" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21580" OrderNumber="77" ItemText="Hjemmesykepleien er informert dersom de er tjenesteyter" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58559" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58560" OrderNumber="2" OptionText="Nei"/>
+                                <Answer AnswerId="58563" OrderNumber="3" OptionText="Ikke aktuelt"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7476" PageNumber="29" PageTitle="Mål 10 - Plan for videre behandling og pleie er forklart for og drøftet med ...">
-      <Item ItemId="10460" ItemType="2" VarName="VAR10460" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21582" OrderNumber="78" ItemHeader="Pasienten" ItemText="Planen er forklart for og drøftet med pasienten" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58538" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58539" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="58540" OrderNumber="3" OptionText="Komatøs"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="10459" ItemType="2" VarName="VAR10459" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21581" OrderNumber="79" ItemHeader="Pårørende" ItemText="Planen er forklart for og drøftet med pårørende" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58534" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58535" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="10460" ItemType="2" VarName="VAR10460" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21582" OrderNumber="78" ItemHeader="Pasienten" ItemText="Planen er forklart for og drøftet med pasienten" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58538" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58539" OrderNumber="2" OptionText="Nei"/>
+                                <Answer AnswerId="58540" OrderNumber="3" OptionText="Komatøs"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10459" ItemType="2" VarName="VAR10459" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21581" OrderNumber="79" ItemHeader="Pårørende" ItemText="Planen er forklart for og drøftet med pårørende" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58534" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58535" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7480" PageNumber="30" PageTitle="Mål 11 - De pårørende gir uttrykk for at de forstår hva som er planen videre" PageIntroduction="Selve plandokumentet kan drøftes hvis dette vurderes som hensiktsmessig.&#xA;Skriftlig informasjon kan være aktuelt, evt. tilpasset alder og språk.">
-      <Item ItemId="10458" ItemType="2" VarName="VAR10458" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="21583" OrderNumber="80" ItemText="De pårørende gir uttrykk for at de forstår hva som er planen videre" ItemHelp="Pårørende er klar over at videre behandling og pleie har fokus på at pasienten er døende. Pårørende har fortalt om sine ønsker og bekymringer og disse er dokumentert." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="58526" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="58527" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="10458" ItemType="2" VarName="VAR10458" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="21583" OrderNumber="80" ItemText="De pårørende gir uttrykk for at de forstår hva som er planen videre" ItemHelp="Pårørende er klar over at videre behandling og pleie har fokus på at pasienten er døende. Pårørende har fortalt om sine ønsker og bekymringer og disse er dokumentert." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="58526" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="58527" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="7583" PageNumber="31" PageTitle="Utdyping">
-      <Item ItemId="1051" ItemType="8" VarName="VAR1051" LoincScale="MSG" DisplayFormat="">
-        <FormItem FormItemId="21894" OrderNumber="81" ItemHeader="Utdyping" ItemText="Hvis du har svart &quot;Nei&quot; på noen av delmålene bør du utdype svaret i kommentarfeltet. Skriv nummeret på delmålet/-ene først i kommentaren." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
+        <Item ItemId="1051" ItemType="8" VarName="VAR1051" LoincScale="MSG" DisplayFormat="">
+                <FormItem FormItemId="21894" OrderNumber="81" ItemHeader="Utdyping" ItemText="Hvis du har svart &quot;Nei&quot; på noen av delmålene bør du utdype svaret i kommentarfeltet. Skriv nummeret på delmålet/-ene først i kommentaren." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
   </Form>
   <Actions>
     <PageAction MasterId="10441">
-      <Activate EnumVal="1" PageConditionId="5716" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="1" PageConditionId="5716" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6487">
-      <Activate EnumVal="2" PageConditionId="6202" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="2" PageConditionId="6202" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="1011">
-      <Activate EnumVal="1" PageConditionId="5709" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="1" PageConditionId="5709" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="1028">
-      <Activate EnumVal="1" PageConditionId="5710" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="1" PageConditionId="5710" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10469">
-      <Activate EnumVal="1" PageConditionId="5662" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="1" PageConditionId="5662" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10468">
-      <Activate EnumVal="1" PageConditionId="5660" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="2" PageConditionId="5661" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="1" PageConditionId="5660" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="2" PageConditionId="5661" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="1012">
-      <Activate EnumVal="1" PageConditionId="5711" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="1" PageConditionId="5711" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10464">
-      <Activate EnumVal="1" PageConditionId="5717" PageNumber="22" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="1" PageConditionId="5717" PageNumber="22" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10462">
-      <Activate EnumVal="1" PageConditionId="5659" PageNumber="25" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="1" PageConditionId="5659" PageNumber="25" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>

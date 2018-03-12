@@ -1,414 +1,293 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
-  <Form FormId="951" FormName="DiaEpikrise" FormTitle="Epikrise diabetes (Copy)">
-    <Page PageId="8995" PageNumber="1" PageTitle="Kjønn*">
-      <Item ItemId="4255" ItemType="2" VarName="SEX" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25778" OrderNumber="1" ItemText="Kjønn" ItemHelp="Skjult" Expression="Patient.GenderId" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="0">
-          <Answer AnswerId="22860" OrderNumber="1" OptionText="Mann" ShortCode="M"/>
-          <Answer AnswerId="22861" OrderNumber="2" OptionText="Kvinne" ShortCode="K"/>
-        </FormItem>
-      </Item>
+  <Form FormId="951" FormName="INSULIN_PUMP1" FormTitle="Insulinpumpe - Standarddosering">
+    <Page PageId="9458" PageNumber="1" PageTitle="Bakgrunn">
+        <Item ItemId="3322" ItemType="2" VarName="NDV_TREATMENT_TYPE" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="26836" OrderNumber="1" ItemHeader="Behandlingsstrategi" ItemText="Diabetes behandles ved hjelp av" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="16425" OrderNumber="1" OptionText="Kun kost/aktivitet."/>
+                                <Answer AnswerId="16426" OrderNumber="2" OptionText="Andre blodsukkersenkende midler enn insulin."/>
+                                <Answer AnswerId="16427" OrderNumber="3" OptionText="Kun insulinbehandlet."/>
+                                <Answer AnswerId="16479" OrderNumber="4" OptionText="Insulin pluss andre blodsukkersenkende midler."/>
+                                <Answer AnswerId="16480" OrderNumber="5" OptionText="Ukjent"/>
+                </FormItem>
+        </Item>
     </Page>
-    <Page PageId="8996" PageNumber="2" PageTitle="Aktuelt">
-      <Item ItemId="8967" ItemType="4" VarName="VAR8967" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="25790" OrderNumber="2" ItemText="Innleggelsesårsak" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
+    <Page PageId="9459" PageNumber="2" PageTitle="Feilmelding*">
+        <Item ItemId="8975" ItemType="8" VarName="VAR8975" LoincScale="MSG" DisplayFormat="">
+                <FormItem FormItemId="26876" OrderNumber="2" ItemHeader="Ugyldig svar" ItemText="Dette skjemaet forutsetter at pasienten bruker insulinpumpe, og alternativ 4 og 5 er de eneste naturlige på variabel 3322. Kontroller svaret ditt." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
-    <Page PageId="8997" PageNumber="3" PageTitle="Bakgrunn">
-      <Item ItemId="3196" ItemType="2" VarName="NDV_TYPE" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25749" OrderNumber="3" ItemText="Diabetes type" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="15986" OrderNumber="1" OptionText="Type 1 (inkl. LADA)" VerboseText="Type 1 diabetes." ShortCode="1" ICD10="E10"/>
-          <Answer AnswerId="15987" OrderNumber="2" OptionText="Type 2" VerboseText="Type 2 diabetes." ShortCode="2" ICD10="E11"/>
-          <Answer AnswerId="15988" OrderNumber="3" OptionText="Annen diabetestype (inkl. pankreatitt, MODY)." ShortCode="A"/>
-          <Answer AnswerId="16137" OrderNumber="4" OptionText="er ikke avklart." ShortCode="U" ICD10="E14"/>
-          <Answer AnswerId="40942" OrderNumber="5" OptionText="Svangerskapsdiabetes." ShortCode="S" ICD10="O24"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3389" ItemType="2" VarName="NDV_CONSENT" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25759" OrderNumber="4" ItemText="Samtykke for diabetesregisteret" ItemHelp="Norsk diabetesregister for voksne. Kontaktperson Karianne Fjeld Løvaas." MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="16869" OrderNumber="1" OptionText="Ja" VerboseText="Samtykke gitt til diabetesregisteret." ShortCode="J"/>
-          <Answer AnswerId="16870" OrderNumber="2" OptionText="Nei" VerboseText="Ikke samtykke til diabetesregisteret." ShortCode="N"/>
-          <Answer AnswerId="19223" OrderNumber="3" OptionText="Trukket tilbake" VerboseText="Samtykke til diabetesregisteret trukket tilbake." ShortCode="Tr"/>
-          <Answer AnswerId="20850" OrderNumber="4" OptionText="Ukjent*" ShortCode="U"/>
-        </FormItem>
-      </Item>
+    <Page PageId="9460" PageNumber="3" PageTitle="Utlevering">
+        <Item ItemId="6774" ItemType="5" VarName="INSPUMP_START_FIRST" LoincScale="DATE" DisplayFormat="">
+                <FormItem FormItemId="26872" OrderNumber="3" ItemHeader="Første pumpe" ItemText="Når begynte du med insulinpumpe første gang?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="6775" ItemType="5" VarName="INSPUMP_START_CURRENT" LoincScale="DATE" DisplayFormat="">
+                <FormItem FormItemId="26873" OrderNumber="4" ItemHeader="Denne pumpen" ItemText="Utleveringsdato for aktuell insulinpumpe" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3997" ItemType="4" VarName="INSPUMP_NAVN" LoincScale="NAR" DisplayFormat="">
+                <FormItem FormItemId="26865" OrderNumber="5" ItemText="Pumpe type" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
-    <Page PageId="8998" PageNumber="4" PageTitle="Samtykke diabetes biobank*">
-      <Item ItemId="1502" ItemType="2" VarName="NDV_CONSENT_BIOBANK" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25747" OrderNumber="5" ItemHeader="Biobanksamtykke" ItemText="Samtykke for diabetes biobank" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="59660" OrderNumber="1" OptionText="Ja" VerboseText="Samtykke gitt til diabetes biobank," ShortCode="J"/>
-          <Answer AnswerId="59661" OrderNumber="2" OptionText="Nei" VerboseText="Ikke samtykke til diabetes biobank." ShortCode="N"/>
-          <Answer AnswerId="59662" OrderNumber="3" OptionText="Trukket tilbake" VerboseText="Samtykke til diabetes biobank trukket tilbake." ShortCode="Tr"/>
-          <Answer AnswerId="59663" OrderNumber="4" OptionText="Ukjent*" ShortCode="U"/>
-        </FormItem>
-      </Item>
+    <Page PageId="9461" PageNumber="4" PageTitle="Utnyttelse">
+        <Item ItemId="6886" ItemType="1" VarName="INSPUMP_SENSOR_USAGE" LoincScale="QN" UnitStr="%" DisplayFormat="">
+                <FormItem FormItemId="26874" OrderNumber="6" ItemHeader="Bruk av sensorfunksjon" ItemText="Hvor stor del av tiden bruker du sensorfunksjonen? (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="6887" ItemType="1" VarName="INSPUMP_PUMP_USAGE" LoincScale="QN" UnitStr="mnd/år" DisplayFormat="">
+                <FormItem FormItemId="26875" OrderNumber="7" ItemHeader="Bruk av pumpen" ItemText="Hvor stor del av året bruker du pumpen? (mnd/år)" ItemHelp="" MinExpression="0" MaxExpression="12" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
-    <Page PageId="8999" PageNumber="5" PageTitle="Komplikasjoner*">
-      <Item ItemId="4527" ItemType="2" VarName="DIABETESKOMPLIKASJONER" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25782" OrderNumber="6" ItemHeader="Diabeteskomplikasjoner" ItemText="Kjente diabetes senkomplikasjoner" ItemHelp="Nefropati, retinopati, nevropati, koronarsykdom, hjerneslag, arteriell karkirurgi, amputasjon, diabetisk fotsår, erektil dysfunksjon." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="24022" OrderNumber="1" OptionText="Ja*" ShortCode="J"/>
-          <Answer AnswerId="24023" OrderNumber="2" OptionText="Nei" VerboseText="Ingen kjente komplikasjoner." ShortCode="N"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="8972" ItemType="2" VarName="MANN_MED_KOMPLIK" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25792" OrderNumber="7" ItemText="Mann med komplikasjoner" ItemHelp="" Expression="2-ISNULL(Patient.GenderId-1)*ISNULL(DIABETESKOMPLIKASJONER-1)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
-          <Answer AnswerId="50306" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="50307" OrderNumber="2" OptionText="Nei"/>
-        </FormItem>
-      </Item>
+    <Page PageId="9462" PageNumber="5" PageTitle="Basalinsulin enh/time" PageIntroduction="Tips: Du kan kopiere forrige linje ved å trykke F4">
+        <Item ItemId="3924" ItemType="1" VarName="INS_PUMP_00" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26855" OrderNumber="8" ItemText="00-01 (E)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3923" ItemType="1" VarName="INS_PUMP_01" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26854" OrderNumber="9" ItemText="01-02 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3922" ItemType="1" VarName="INS_PUMP_02" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26853" OrderNumber="10" ItemText="02-03 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3921" ItemType="1" VarName="INS_PUMP_03" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26852" OrderNumber="11" ItemText="03-04 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3920" ItemType="1" VarName="INS_PUMP_04" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26851" OrderNumber="12" ItemText="04-05 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3919" ItemType="1" VarName="INS_PUMP_05" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26850" OrderNumber="13" ItemText="05-06 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3918" ItemType="1" VarName="INS_PUMP_06" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26849" OrderNumber="14" ItemText="06-07 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3917" ItemType="1" VarName="INS_PUMP_07" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26848" OrderNumber="15" ItemText="07-08 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3916" ItemType="1" VarName="INS_PUMP_08" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26847" OrderNumber="16" ItemText="08-09 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3915" ItemType="1" VarName="INS_PUMP_09" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26846" OrderNumber="17" ItemText="09-10 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3914" ItemType="1" VarName="INS_PUMP_10" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26845" OrderNumber="18" ItemText="10-11 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3913" ItemType="1" VarName="INS_PUMP_11" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26844" OrderNumber="19" ItemText="11-12 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3912" ItemType="1" VarName="INS_PUMP_12" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26843" OrderNumber="20" ItemText="12-13 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3911" ItemType="1" VarName="INS_PUMP_13" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26842" OrderNumber="21" ItemText="13-14 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3910" ItemType="1" VarName="INS_PUMP_14" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26841" OrderNumber="22" ItemText="14-15 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3925" ItemType="1" VarName="INS_PUMP_15" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26856" OrderNumber="23" ItemText="15-16 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3926" ItemType="1" VarName="INS_PUMP_16" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26857" OrderNumber="24" ItemText="16-17 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3927" ItemType="1" VarName="INS_PUMP_17" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26858" OrderNumber="25" ItemText="17-18 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3928" ItemType="1" VarName="INS_PUMP_18" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26859" OrderNumber="26" ItemText="18-19 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3929" ItemType="1" VarName="INS_PUMP_19" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26860" OrderNumber="27" ItemText="19-20 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3930" ItemType="1" VarName="INS_PUMP_20" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26861" OrderNumber="28" ItemText="20-21 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3931" ItemType="1" VarName="INS_PUMP_21" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26862" OrderNumber="29" ItemText="21-22 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3932" ItemType="1" VarName="INS_PUMP_22" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26863" OrderNumber="30" ItemText="22-23 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3909" ItemType="1" VarName="INS_PUMP_23" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26840" OrderNumber="31" ItemText="23-24 (E)" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3933" ItemType="1" VarName="INS_PUMP_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26864" OrderNumber="32" ItemHeader="Sum fra pumpe" ItemText="Sum enheter insulin pr. døgn fra pumpen (E)" ItemHelp="" Expression="INS_PUMP_00_SCORE + INS_PUMP_01_SCORE + INS_PUMP_02_SCORE + INS_PUMP_03_SCORE + INS_PUMP_04_SCORE + INS_PUMP_05_SCORE + INS_PUMP_06_SCORE + INS_PUMP_07_SCORE + INS_PUMP_08_SCORE + INS_PUMP_09_SCORE + INS_PUMP_10_SCORE + INS_PUMP_11_SCORE + INS_PUMP_12_SCORE + INS_PUMP_13_SCORE + INS_PUMP_14_SCORE + INS_PUMP_15_SCORE + INS_PUMP_16_SCORE + INS_PUMP_17_SCORE + INS_PUMP_18_SCORE + INS_PUMP_19_SCORE + INS_PUMP_20_SCORE + INS_PUMP_21_SCORE + INS_PUMP_22_SCORE + INS_PUMP_23_SCORE" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
-    <Page PageId="9000" PageNumber="6" PageTitle="Komplikasjoner2*">
-      <Item ItemId="3415" ItemType="2" VarName="NDV_NEPHROPATHY" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25764" OrderNumber="8" ItemHeader="Nyrestatus" ItemText="Albuminuri eller nefropati?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="17090" OrderNumber="1" OptionText="Normal nyrestatus."/>
-          <Answer AnswerId="17091" OrderNumber="2" OptionText="Tidligere mikroalbuminuri."/>
-          <Answer AnswerId="17092" OrderNumber="3" OptionText="Mikroalbuminuri." ICD10="N083"/>
-          <Answer AnswerId="21273" OrderNumber="4" OptionText="Proteinuri." ICD10="N083"/>
-          <Answer AnswerId="21274" OrderNumber="5" OptionText="Dialysebehandlet." ICD10="N185"/>
-          <Answer AnswerId="21275" OrderNumber="6" OptionText="Nyretransplantert." ICD10="Z940"/>
-          <Answer AnswerId="23467" OrderNumber="7" OptionText="Ukjent nyrestatus."/>
-        </FormItem>
-      </Item>
+    <Page PageId="9463" PageNumber="6" PageTitle="Måltidsinsulin">
+        <Item ItemId="3206" ItemType="2" VarName="INS_MEAL_YN" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="26834" OrderNumber="33" ItemText="Bruker måltidsinsulin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="16010" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+                                <Answer AnswerId="16011" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+                </FormItem>
+        </Item>
     </Page>
-    <Page PageId="9001" PageNumber="7" PageTitle="Retinopati*">
-      <Item ItemId="4087" ItemType="2" VarName="NDV_RETINOPATHY" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25776" OrderNumber="9" ItemText="Retinopati" ItemHelp="Behandling inkluderer laserbehandling, injeksjonsbehandling og kirurgi." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="21836" OrderNumber="1" OptionText="Nei*" ShortCode="N"/>
-          <Answer AnswerId="21837" OrderNumber="2" OptionText="Retinopati, ubehandlet." ICD10="H360"/>
-          <Answer AnswerId="21838" OrderNumber="3" OptionText="Behandlet retinopati." ICD10="H360"/>
-          <Answer AnswerId="21839" OrderNumber="4" OptionText="Ukjent*"/>
-        </FormItem>
-      </Item>
+    <Page PageId="9464" PageNumber="7" PageTitle="Måltidsinsulin detaljer*">
+        <Item ItemId="2122" ItemType="2" VarName="ATC_A10ABnn" LoincScale="ORD">
+                <FormItem FormItemId="26941" OrderNumber="34" ItemText="Hurtigvirkende insulin" ItemHelp="A10AB: Insulin og analoger til injeksjon, hurtigvirkende." Expression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="11119" OrderNumber="1" OptionText="Actrapid (A10AB01)."/>
+                                <Answer AnswerId="11120" OrderNumber="2" OptionText="Insuman Rapid (A10AB01)."/>
+                                <Answer AnswerId="11121" OrderNumber="3" OptionText="Humalog (A10AB04)."/>
+                                <Answer AnswerId="11122" OrderNumber="4" OptionText="Fiasp (A10AB05)."/>
+                                <Answer AnswerId="11123" OrderNumber="5" OptionText="NovoRapid (A10AB05)."/>
+                                <Answer AnswerId="11124" OrderNumber="6" OptionText="Apidra (A10AB06)."/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3228" ItemType="1" VarName="INS_MEAL_BREAKFAST" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26835" OrderNumber="35" ItemText="Frokost (E)" ItemHelp="" MinExpression="0" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3203" ItemType="1" VarName="INS_MEAL_LUNCH" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26832" OrderNumber="36" ItemText="Lunsj (E)" ItemHelp="" MinExpression="0" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="1" Optional="0" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3204" ItemType="1" VarName="INS_MEAL_DINNER" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26833" OrderNumber="37" ItemText="Middag (E)" ItemHelp="" MinExpression="0" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3200" ItemType="1" VarName="INS_MEAL_SUPPER" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26831" OrderNumber="38" ItemText="Kvelds (E)" ItemHelp="" MinExpression="0" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3905" ItemType="1" VarName="INS_MEAL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26838" OrderNumber="39" ItemText="Sum måltidsinsulin (E)" ItemHelp="" Expression="ISNULL( INS_MEAL_YN-1) * ( INS_MEAL_BREAKFAST_SCORE + INS_MEAL_LUNCH_SCORE + INS_MEAL_DINNER_SCORE + INS_MEAL_SUPPER_SCORE )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
-    <Page PageId="9002" PageNumber="8" PageTitle="Komplikasjoner 3*">
-      <Item ItemId="4521" ItemType="2" VarName="NEVROPATI_KLINISK" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25781" OrderNumber="10" ItemHeader="Nevropati" ItemText="Perifer eller autonom nevropati" ItemHelp="Behandlende leges vurdering" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="24014" OrderNumber="1" OptionText="Ja" VerboseText="Nevropati." ShortCode="J" ICD10="G632"/>
-          <Answer AnswerId="24015" OrderNumber="2" OptionText="Nei" VerboseText="Ingen nevropati." ShortCode="N"/>
-          <Answer AnswerId="24016" OrderNumber="3" OptionText="Ukjent*" ShortCode="U"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3397" ItemType="2" VarName="NDV_CHD" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25761" OrderNumber="11" ItemText="Koronarsykdom" ItemHelp="angina, hjerteinfarkt eller PCI/bypass" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="16884" OrderNumber="1" OptionText="Ja" VerboseText="Koronarsyk." ShortCode="J"/>
-          <Answer AnswerId="16885" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="16886" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
-        </FormItem>
-      </Item>
+    <Page PageId="9465" PageNumber="8" PageTitle="Totalsum">
+        <Item ItemId="3908" ItemType="1" VarName="INS_ALL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
+                <FormItem FormItemId="26839" OrderNumber="40" ItemText="Døgndose (E)" ItemHelp="" Expression="INS_PUMP_SUM + INS_MEAL_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
-    <Page PageId="9003" PageNumber="9" PageTitle="Koronarsykdom debut*">
-      <Item ItemId="4055" ItemType="1" VarName="NDV_CHD_DEBUT" LoincScale="QN" DisplayFormat="">
-        <FormItem FormItemId="25771" OrderNumber="12" ItemText="Debut av koronar hjertesykdom" ItemHelp="Årstall for første tilfelle av enten angina/hjerteinfarkt/bypass /PCI" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
+    <Page PageId="9466" PageNumber="9" PageTitle="Faktorer" PageIntroduction="De to første er estimater, men du kan også registrere faktiske verdier som pasienten bruker.">
+        <Item ItemId="6665" ItemType="1" VarName="INSULIN_KARB_FAKTOR" LoincScale="QN" UnitStr="g/E" DisplayFormat="">
+                <FormItem FormItemId="26870" OrderNumber="41" ItemText="Insulin-karbohydrat faktor (g/E)" ItemHelp="Estimat (500/døgndose insulin) på antall gram karbohydrat som nøytraliseres av 1 enhet insulin." Expression="ISPOS( INS_ALL_SUM ) * 500 / INS_ALL_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="6666" ItemType="1" VarName="INSULIN_SENS_FAKTOR" LoincScale="QN" UnitStr="mmol/L/E" DisplayFormat="">
+                <FormItem FormItemId="26871" OrderNumber="42" ItemText="Insulinfølsomhetsfaktor (mmol/L/E)" ItemHelp="Estimat (100/døgndose insulin) på fall i blodglukose per enhet hurtigvirkende insulin brukt som korrigerende doser." Expression="ISPOS( INS_ALL_SUM ) * 100 / INS_ALL_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10433" ItemType="1" VarName="InsulinCarbFactor" LoincScale="QN" UnitStr="g/E" DisplayFormat="">
+                <FormItem FormItemId="26877" OrderNumber="44" ItemText="Aktuell karbohydrat faktor (g/E)" ItemHelp="Antall gram karbohydrat som nøytraliseres av 1 enhet insulin." MinExpression="1" MaxExpression="40" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10434" ItemType="1" VarName="InsulinSensFactor" LoincScale="QN" UnitStr="mmol/L/E" DisplayFormat="">
+                <FormItem FormItemId="26878" OrderNumber="46" ItemText="Aktuell korreksjonsfaktor (mmol/L/E)" ItemHelp="Fall i blodglukose per enhet hurtigvirkende insulin brukt som korrigerende doser." MinExpression="0.5" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
-    <Page PageId="9004" PageNumber="10" PageTitle="Hjerneslag*">
-      <Item ItemId="3398" ItemType="2" VarName="NDV_STROKE" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem FormItemId="25762" OrderNumber="13" ItemText="Hjerneslag" ItemHelp="Unntatt TIA" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="16887" OrderNumber="1" OptionText="Ja" VerboseText="Hjerneslag." ShortCode="J"/>
-          <Answer AnswerId="16888" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="16889" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9005" PageNumber="11" PageTitle="Hjerneslag debut*">
-      <Item ItemId="4062" ItemType="1" VarName="NDV_STROKE_DEBUT" LoincScale="QN" DisplayFormat="">
-        <FormItem FormItemId="25775" OrderNumber="14" ItemText="Første hjerneslag" ItemHelp="Årstall for første tilfelle av hjerneslag" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9006" PageNumber="12" PageTitle="Karkirurgi*">
-      <Item ItemId="3417" ItemType="2" VarName="NDV_ARTERIAL_SURGERY" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25765" OrderNumber="15" ItemHeader="Arteriell karkirurgi" ItemText="Arteriell karkirurgi distalt for aorta" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="17117" OrderNumber="1" OptionText="Ja" VerboseText="Karkirurgisk behandlet." ShortCode="J"/>
-          <Answer AnswerId="17118" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="17119" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9007" PageNumber="13" PageTitle="Amputasjon*">
-      <Item ItemId="3414" ItemType="2" VarName="NDV_AMPUTATION" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem FormItemId="25763" OrderNumber="16" ItemHeader="Amputasjon" ItemText="Amputasjon (ikke traumatisk)" ItemHelp="Dersom amputasjon på begge føtter, velg høyeste nivå." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="17084" OrderNumber="1" OptionText="Nei*" ShortCode="N"/>
-          <Answer AnswerId="17085" OrderNumber="2" OptionText="fot t.om. ankelledd."/>
-          <Answer AnswerId="17086" OrderNumber="3" OptionText="over ankelnivå."/>
-          <Answer AnswerId="21285" OrderNumber="4" OptionText="Ukjent*"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9008" PageNumber="14" PageTitle="Amputasjon årstall*">
-      <Item ItemId="4054" ItemType="1" VarName="NDV_AMPUTATION_FIRST" LoincScale="QN" DisplayFormat="">
-        <FormItem FormItemId="25770" OrderNumber="17" ItemText="Første større amputasjon" ItemHelp="Amputasjon over ankelledd, ikke gjennom!" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9009" PageNumber="15" PageTitle="Komplikasjoner4*">
-      <Item ItemId="3218" ItemType="2" VarName="NDV_FOOT_ULCER" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25750" OrderNumber="18" ItemHeader="Diabetisk fotsår" ItemText="Har noen gang hatt diabetessår nedenfor ankelen?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="16057" OrderNumber="1" OptionText="Nei, aldri" VerboseText="Aldri fotsår." ShortCode="N"/>
-          <Answer AnswerId="16058" OrderNumber="2" OptionText="Ja, en gang" VerboseText="Har hatt fotsår før." ShortCode="En"/>
-          <Answer AnswerId="21248" OrderNumber="3" OptionText="Ja, flere ganger" VerboseText="Har hatt flere fotsår." ShortCode="Fler"/>
-          <Answer AnswerId="22279" OrderNumber="4" OptionText="Vet ikke" ShortCode="U"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9010" PageNumber="16" PageTitle="Fedmekirurgi*">
-      <Item ItemId="7061" ItemType="2" VarName="NDV_OBESITY_SURGERY" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25788" OrderNumber="19" ItemHeader="Fedmekirurgi" ItemText="Har pasienten gjennomgått fedmekirurgi?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
-          <Answer AnswerId="38884" OrderNumber="1" OptionText="Ja" VerboseText="Operert for fedme." ShortCode="J"/>
-          <Answer AnswerId="38885" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          <Answer AnswerId="38886" OrderNumber="3" OptionText="Ukjent*" ShortCode="U"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9011" PageNumber="17" PageTitle="Årstall fedmekirurgi*">
-      <Item ItemId="7062" ItemType="1" VarName="NDV_OBESITY_SURGERY_YYYY" LoincScale="QN" DisplayFormat="">
-        <FormItem FormItemId="25789" OrderNumber="20" ItemText="Årstall" ItemHelp="Første operasjon hvis operert flere ganger." MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9012" PageNumber="18" PageTitle="Tidligere sykdommer">
-      <Item ItemId="3392" ItemType="4" VarName="DP_DIAGNOSER_TEKST" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="25760" OrderNumber="21" ItemHeader="Kronisk sykdom*" ItemText="Andre kroniske sykdommer" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9013" PageNumber="19" PageTitle="Familiært og sosialt">
-      <Item ItemId="3982" ItemType="2" VarName="NDV_ETHNICITY" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25766" OrderNumber="22" ItemText="Etnisk opprinnelse" ItemHelp="Angi f.eks. asiatisk dersom begge foreldre er asiatiske; ved f.eks. europeisk mor og asiatisk far anføres ”annen”" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="20702" OrderNumber="1" OptionText="Europeisk." ShortCode="E"/>
-          <Answer AnswerId="20703" OrderNumber="2" OptionText="Afrikansk." ShortCode="Afr"/>
-          <Answer AnswerId="20704" OrderNumber="3" OptionText="Asiatisk." ShortCode="As"/>
-          <Answer AnswerId="20705" OrderNumber="4" OptionText="Annen" ShortCode="An"/>
-          <Answer AnswerId="21984" OrderNumber="5" OptionText="Vet ikke" ShortCode="Ukj"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3983" ItemType="4" VarName="YRKE" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="25767" OrderNumber="23" ItemHeader="Yrke*" ItemText="Pasientens yrke og evt. arbeidssted" ItemHelp="F.eks: Pensjonert fisker, renholder på sykehuset." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3984" ItemType="2" VarName="SIVILSTAND_8415" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25768" OrderNumber="24" ItemText="Sivilstand" ItemHelp="Juridisk sivilstand iht. KITH kodeverk 8415.  Samboende er ugift (evt. skilt,enke el.l.)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
-          <Answer AnswerId="20710" OrderNumber="1" OptionText="Ugift."/>
-          <Answer AnswerId="20711" OrderNumber="2" OptionText="Gift."/>
-          <Answer AnswerId="20712" OrderNumber="3" OptionText="Enke(mann)"/>
-          <Answer AnswerId="20713" OrderNumber="4" OptionText="Separert."/>
-          <Answer AnswerId="20714" OrderNumber="5" OptionText="Skilt."/>
-          <Answer AnswerId="20715" OrderNumber="6" OptionText="Registrert partnerskap."/>
-          <Answer AnswerId="20716" OrderNumber="7" OptionText="ukjent."/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3985" ItemType="1" VarName="ANTALL_BARN" LoincScale="QN" DisplayFormat="">
-        <FormItem FormItemId="25769" OrderNumber="25" ItemText="Barn" ItemHelp="" MinExpression="0" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3342" ItemType="2" VarName="NDV_FAM_CHD" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25758" OrderNumber="26" ItemText="Tidlig koronarsykdom hos foreldre/søsken" ItemHelp="Før 55/65 år hos menn/kvinner, kun biologiske foreldre/søsken" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="16605" OrderNumber="1" OptionText="Ja" VerboseText="Tidlig koronarsykdom i familien." ShortCode="J"/>
-          <Answer AnswerId="16606" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="16607" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9014" PageNumber="22" PageTitle="Erektil dysfunksjon*">
-      <Item ItemId="4845" ItemType="2" VarName="ICPC_Y07" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25786" OrderNumber="27" ItemText="Erektil dysfunksjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
-          <Answer AnswerId="27234" OrderNumber="1" OptionText="Ja" VerboseText="Erektil dysfunksjon." ShortCode="J" ICD10="F522|N484"/>
-          <Answer AnswerId="27235" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          <Answer AnswerId="27236" OrderNumber="3" OptionText="Vet ikke*" ShortCode="V"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9015" PageNumber="23" PageTitle="Antidiabetisk behandling">
-      <Item ItemId="3322" ItemType="2" VarName="NDV_TREATMENT_TYPE" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25757" OrderNumber="28" ItemHeader="Behandlingsstrategi" ItemText="Diabetes behandles ved hjelp av" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="16425" OrderNumber="1" OptionText="Kun kost/aktivitet."/>
-          <Answer AnswerId="16426" OrderNumber="2" OptionText="Andre blodsukkersenkende midler enn insulin."/>
-          <Answer AnswerId="16427" OrderNumber="3" OptionText="Kun insulinbehandlet."/>
-          <Answer AnswerId="16479" OrderNumber="4" OptionText="Insulin pluss andre blodsukkersenkende midler."/>
-          <Answer AnswerId="16480" OrderNumber="5" OptionText="Ukjent"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9016" PageNumber="24" PageTitle="Administrasjonsmåte for insulin*">
-      <Item ItemId="4056" ItemType="2" VarName="NDV_INSULIN_DEVICE" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25772" OrderNumber="29" ItemText="Insulinadministrasjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="21306" OrderNumber="1" OptionText="Insulinpenn/sprøyte."/>
-          <Answer AnswerId="21307" OrderNumber="2" OptionText="Insulinpumpe."/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9017" PageNumber="25" PageTitle="Fortsettelse*">
-      <Item ItemId="4058" ItemType="2" VarName="NDV_SELFMON" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25773" OrderNumber="30" ItemText="Måler glukose selv" ItemHelp="" Expression="GLUC_SELFMON_SCORE" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="21313" OrderNumber="1" OptionText="ukentlig eller oftere."/>
-          <Answer AnswerId="21314" OrderNumber="2" OptionText="sjeldnere enn ukentlig." VerboseText="Måler glukose sjeldnere enn ukentlig."/>
-          <Answer AnswerId="21315" OrderNumber="3" OptionText="Nei" VerboseText="Måler ikke glukose selv."/>
-          <Answer AnswerId="21316" OrderNumber="4" OptionText="Vet ikke*"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9018" PageNumber="26" PageTitle="Egenmåling*">
-      <Item ItemId="4059" ItemType="1" VarName="NDV_SELFMON_COUNT" LoincScale="QN" UnitStr="ganger/uke" DisplayFormat="">
-        <FormItem FormItemId="25774" OrderNumber="31" ItemText="Antall egenmålinger per uke (ganger/uke)" ItemHelp="" MinExpression="0" MaxExpression="140" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9019" PageNumber="27" PageTitle="Funn ved innkomst">
-      <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        <FormItem FormItemId="25752" OrderNumber="32" ItemText="Høyde (cm)" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        <FormItem FormItemId="25751" OrderNumber="33" ItemText="Vekt (kg)" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-        <FormItem FormItemId="25756" OrderNumber="34" ItemText="BMI (kg/m2)" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3230" ItemType="1" VarName="SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem FormItemId="25754" OrderNumber="35" ItemText="Systolisk blodtrykk (mmHg)" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" FormatStr="Blodtrykk %s">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3231" ItemType="1" VarName="DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem FormItemId="25755" OrderNumber="36" ItemText="Diastolisk blodtrykk (mmHg)" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" FormatStr="¬/%s mmHg.">
-          <Answer/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9020" PageNumber="28" PageTitle="Midjemål*">
-      <Item ItemId="3226" ItemType="1" VarName="WAIST" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        <FormItem FormItemId="25753" OrderNumber="37" ItemText="Midjemål (cm)" ItemHelp="Midt mellom ribbensbue og hoftekam, målt etter ekspirasjon" MinExpression="40" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9021" PageNumber="29" PageTitle="Status presens organundersøkelse*">
-      <Item ItemId="8969" ItemType="4" VarName="VAR8969" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="25791" OrderNumber="38" ItemHeader="Organundersøkelse:" ItemText="Beskriv kort funn fra organundersøkelsen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9022" PageNumber="30" PageTitle="Injeksjonssted*">
-      <Item ItemId="3193" ItemType="2" VarName="NDR4V_INJECTION_SITE" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25748" OrderNumber="39" ItemText="Injekssjonssted har" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="15968" OrderNumber="1" OptionText="normalt utseende.*"/>
-          <Answer AnswerId="15969" OrderNumber="2" OptionText="fortykket hud."/>
-          <Answer AnswerId="16061" OrderNumber="3" OptionText="lipohypertrofi."/>
-          <Answer AnswerId="20908" OrderNumber="4" OptionText="lipoatrofi."/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9023" PageNumber="31" PageTitle="Fotstatus*">
-      <Item ItemId="4636" ItemType="2" VarName="NDV_FOOT_SENS" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem FormItemId="25783" OrderNumber="40" ItemText="Normal sensibilitet på føtter" ItemHelp="Vibrasjon normal eller monofilament 4/4" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="25140" OrderNumber="1" OptionText="Ja, begge føtter" VerboseText="Normal fotsensibilitet bilateralt."/>
-          <Answer AnswerId="25141" OrderNumber="2" OptionText="Ja, høyre fot" VerboseText="Normal fotsensibilitet kun høyre side."/>
-          <Answer AnswerId="25142" OrderNumber="3" OptionText="Ja, venstre fot" VerboseText="Normal fotsensibilitet kun venstre side."/>
-          <Answer AnswerId="25143" OrderNumber="4" OptionText="Nei" VerboseText="Nedsatt fotsensibilitet begge sider."/>
-          <Answer AnswerId="25144" OrderNumber="5" OptionText="Ikke undersøkt" VerboseText="Fotsensibilitet ikke undersøkt."/>
-        </FormItem>
-      </Item>
-      <Item ItemId="4637" ItemType="2" VarName="NDV_FOOT_PULSE" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem FormItemId="25784" OrderNumber="41" ItemText="Fotpuls" ItemHelp="Puls på fotrygg eller bak mediale malleol" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="25158" OrderNumber="1" OptionText="Ja, palpabel begge sider" VerboseText="Fotpuls bilateralt."/>
-          <Answer AnswerId="25159" OrderNumber="2" OptionText="Ja, men bare på høyre side" VerboseText="Fotpuls kun høyre side."/>
-          <Answer AnswerId="25160" OrderNumber="3" OptionText="Ja, men bare på venstre side" VerboseText="Fotpuls kun venstre side."/>
-          <Answer AnswerId="25161" OrderNumber="4" OptionText="Nei" VerboseText="Ingen fotpuls."/>
-          <Answer AnswerId="25162" OrderNumber="5" OptionText="ikke undersøkt."/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9024" PageNumber="32" PageTitle="EKG">
-      <Item ItemId="4642" ItemType="2" VarName="NDV_AF" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25785" OrderNumber="42" ItemText="Atrieflimmer" ItemHelp="Noen gang hatt atrieflimmer" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
-          <Answer AnswerId="25232" OrderNumber="1" OptionText="Ja" VerboseText="Har/hatt atrieflimmer." ShortCode="J"/>
-          <Answer AnswerId="25233" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="25234" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="4257" ItemType="2" VarName="DIAPOL_EKG" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="25779" OrderNumber="43" ItemText="Andre EKG-forandringer." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          <Answer AnswerId="22866" OrderNumber="1" OptionText="Ja" VerboseText="Har EKG-forandringer." ShortCode="J"/>
-          <Answer AnswerId="22867" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          <Answer AnswerId="22868" OrderNumber="3" OptionText="Ukjent*" ShortCode="U"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9025" PageNumber="33" PageTitle="Kommentar til EKG*">
-      <Item ItemId="4258" ItemType="4" VarName="EKG_COMMENT" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="25780" OrderNumber="44" ItemText="Kommentarer" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageId="9026" PageNumber="34" PageTitle="Vurdering, forløp og behandling">
-      <Item ItemId="4088" ItemType="4" VarName="DP_AVTALER" LoincScale="NAR" DisplayFormat="">
-        <FormItem FormItemId="25777" OrderNumber="45" ItemHeader="Vurdering*" ItemText="Vurdering og plan videre" ItemHelp="Inkludert eventuelle avtaler gjort med pasienten, unntatt timeavtale som er eget punkt." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
+    <Page PageId="9467" PageNumber="10" PageTitle="Registervariable" PageIntroduction="Disse lagres med faste verdier basert på at skjemaet lagres.">
+        <Item ItemId="4056" ItemType="2" VarName="NDV_INSULIN_DEVICE" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="26866" OrderNumber="43" ItemText="Insulinadministrasjon" ItemHelp="" Expression="2" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+                                <Answer AnswerId="21306" OrderNumber="1" OptionText="Insulinpenn/sprøyte."/>
+                                <Answer AnswerId="21307" OrderNumber="2" OptionText="Insulinpumpe."/>
+                </FormItem>
+        </Item>
+        <Item ItemId="4207" ItemType="2" VarName="NDV_NONPHARMA_ONLY" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="26867" OrderNumber="45" ItemText="Kun kost/aktivitet" ItemHelp="" Expression="2" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+                                <Answer AnswerId="22300" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="22301" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+                                <Answer AnswerId="22302" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3332" ItemType="2" VarName="ATC_A10A" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="26837" OrderNumber="47" ItemText="Injeksjonsbehandling med insulin" ItemHelp="" Expression="1" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+                                <Answer AnswerId="16524" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="16525" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+                                <Answer AnswerId="16526" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="4726" ItemType="2" VarName="NDV_INSULINADM" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="26869" OrderNumber="48" ItemText="Insulinbruker" ItemHelp="" Expression="3" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+                                <Answer AnswerId="25473" OrderNumber="1" OptionText="Nei"/>
+                                <Answer AnswerId="25474" OrderNumber="2" OptionText="Sprøyte/penn"/>
+                                <Answer AnswerId="25475" OrderNumber="3" OptionText="Pumpe"/>
+                                <Answer AnswerId="25476" OrderNumber="4" OptionText="Vet ikke"/>
+                </FormItem>
+        </Item>
     </Page>
   </Form>
   <Actions>
-    <PageAction MasterId="4527">
-      <Activate EnumVal="1" PageConditionId="6615" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="6622" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="6621" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="3397">
-      <Activate EnumVal="1" PageConditionId="6609" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="4527">
-      <Activate EnumVal="1" PageConditionId="6616" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="3398">
-      <Activate EnumVal="1" PageConditionId="6612" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="4527">
-      <Activate EnumVal="1" PageConditionId="6617" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="6618" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="3414">
-      <Activate EnumVal="2" PageConditionId="6610" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="3" PageConditionId="6611" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="4527">
-      <Activate EnumVal="1" PageConditionId="6620" PageNumber="15" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="3196">
-      <Activate EnumVal="2" PageConditionId="6626" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="7061">
-      <Activate EnumVal="1" PageConditionId="6625" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="8972">
-      <Activate EnumVal="1" PageConditionId="6629" PageNumber="22" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
     <PageAction MasterId="3322">
-      <Activate EnumVal="3" PageConditionId="6627" PageNumber="24" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="4" PageConditionId="6628" PageNumber="24" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="3" PageConditionId="6613" PageNumber="30" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="4" PageConditionId="6614" PageNumber="30" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="1" PageConditionId="6929" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="2" PageConditionId="6931" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="5" PageConditionId="6930" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
-    <PageAction MasterId="4257">
-      <Activate EnumVal="1" PageConditionId="6619" PageNumber="33" ComparisonType="1" ComparisonDescription="Equal to"/>
+    <PageAction MasterId="3206">
+        <Activate EnumVal="1" PageConditionId="6932" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>

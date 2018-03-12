@@ -2,151 +2,151 @@
 <StudyForm>
   <Form FormId="283" FormName="GBD_MAREVAN" FormTitle="Marevan-dosering" Instructions="Her registreres dagens INR-verdi, ukedosering for neste behandlingsperiode og dato for neste INR-prøve. ">
     <Page PageId="416" PageNumber="1" PageTitle="Marevan-dosering">
-      <Item ItemId="3729" ItemType="5" VarName="MAREVAN_START_DATO" LoincScale="DATE" DisplayFormat="">
-        <FormItem FormItemId="2153" OrderNumber="1" ItemText="Startet med Marevan" ItemHelp="Denne perioden hvis pasienten også har brukt Marevan tidligere." MinExpression="DOB" MaxExpression="FORMDATE+1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3728" ItemType="2" VarName="MAREVAN_LENGDE" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem FormItemId="2152" OrderNumber="2" ItemText="Behandlingstype" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="18909" OrderNumber="1" OptionText="Korttid (3-6 mnd)"/>
-          <Answer AnswerId="18910" OrderNumber="2" OptionText="Langtid (over 6 mnd)"/>
-          <Answer AnswerId="18911" OrderNumber="3" OptionText="Varig behandling"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="3729" ItemType="5" VarName="MAREVAN_START_DATO" LoincScale="DATE" DisplayFormat="">
+                <FormItem FormItemId="2153" OrderNumber="1" ItemText="Startet med Marevan" ItemHelp="Denne perioden hvis pasienten også har brukt Marevan tidligere." MinExpression="DOB" MaxExpression="FORMDATE+1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3728" ItemType="2" VarName="MAREVAN_LENGDE" LoincScale="ORD" DisplayFormat="Vertical">
+                <FormItem FormItemId="2152" OrderNumber="2" ItemText="Behandlingstype" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="18909" OrderNumber="1" OptionText="Korttid (3-6 mnd)"/>
+                                <Answer AnswerId="18910" OrderNumber="2" OptionText="Langtid (over 6 mnd)"/>
+                                <Answer AnswerId="18911" OrderNumber="3" OptionText="Varig behandling"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="417" PageNumber="2" PageTitle="Sluttdato*">
-      <Item ItemId="3742" ItemType="5" VarName="MAREVAN_SLUTT_DATO" LoincScale="DATE" DisplayFormat="">
-        <FormItem FormItemId="2166" OrderNumber="3" ItemText="Planlagt sluttdato" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="6861" ItemType="2" VarName="SLUTTDATO_PASSERT" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="6942" OrderNumber="4" ItemText="Er planlagt sluttdato passert?" ItemHelp="" Expression="2 - ISPOS(Form.Date - MAREVAN_SLUTT_DATO) * ISPOS(MAREVAN_SLUTT_DATO)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
-          <Answer AnswerId="37796" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="37797" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="3742" ItemType="5" VarName="MAREVAN_SLUTT_DATO" LoincScale="DATE" DisplayFormat="">
+                <FormItem FormItemId="2166" OrderNumber="3" ItemText="Planlagt sluttdato" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="6861" ItemType="2" VarName="SLUTTDATO_PASSERT" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="6942" OrderNumber="4" ItemText="Er planlagt sluttdato passert?" ItemHelp="" Expression="2 - ISPOS(Form.Date - MAREVAN_SLUTT_DATO) * ISPOS(MAREVAN_SLUTT_DATO)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+                                <Answer AnswerId="37796" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="37797" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="1998" PageNumber="3" PageTitle="Melding om sluttdato*">
-      <Item ItemId="6860" ItemType="8" VarName="VAR6860" LoincScale="MSG" DisplayFormat="">
-        <FormItem FormItemId="6941" OrderNumber="5" ItemHeader="Ny sluttdato" ItemText="Planlagt sluttdato for behandlingen er passert.  Du bør oppdatere den planlagte sluttdatoen, eventuelt seponere behandlingen." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
+        <Item ItemId="6860" ItemType="8" VarName="VAR6860" LoincScale="MSG" DisplayFormat="">
+                <FormItem FormItemId="6941" OrderNumber="5" ItemHeader="Ny sluttdato" ItemText="Planlagt sluttdato for behandlingen er passert.  Du bør oppdatere den planlagte sluttdatoen, eventuelt seponere behandlingen." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="418" PageNumber="4" PageTitle="INR-verdier">
-      <Item ItemId="3737" ItemType="1" VarName="MAREVAN_INR" LoincScale="QN" UnitStr="enheter" DisplayFormat="">
-        <FormItem FormItemId="2161" OrderNumber="6" ItemText="Siste INR-verdi (enheter)" ItemHelp="" MinExpression="0.5" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3740" ItemType="5" VarName="MAREVAN_INR_DATO" LoincScale="DATE" DisplayFormat="">
-        <FormItem FormItemId="2164" OrderNumber="7" ItemText="Sist målt" ItemHelp="Siste tilgjengelige INR-verdi" MinExpression="FORMDATE-365" MaxExpression="FORMDATE" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
+        <Item ItemId="3737" ItemType="1" VarName="MAREVAN_INR" LoincScale="QN" UnitStr="enheter" DisplayFormat="">
+                <FormItem FormItemId="2161" OrderNumber="6" ItemText="Siste INR-verdi (enheter)" ItemHelp="" MinExpression="0.5" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3740" ItemType="5" VarName="MAREVAN_INR_DATO" LoincScale="DATE" DisplayFormat="">
+                <FormItem FormItemId="2164" OrderNumber="7" ItemText="Sist målt" ItemHelp="Siste tilgjengelige INR-verdi" MinExpression="FORMDATE-365" MaxExpression="FORMDATE" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="419" PageNumber="5" PageTitle="Terapeutisk område">
-      <Item ItemId="3738" ItemType="1" VarName="MAREVAN_INR_NEDRE" LoincScale="QN" UnitStr="enheter" DisplayFormat="">
-        <FormItem FormItemId="2162" OrderNumber="8" ItemText="Nedre terskelverdi INR (enheter)" ItemHelp="Normalt 2.0, men 2.5 ved mekanisk ventil." MinExpression="1.8" MaxExpression="2.5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1" DefaultValue="2.0">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3739" ItemType="1" VarName="MAREVAN_INR_OVRE" LoincScale="QN" UnitStr="enheter" DisplayFormat="">
-        <FormItem FormItemId="2163" OrderNumber="9" ItemText="Øvre terskelverdi INR (enheter)" ItemHelp="Normalt 3.0, men 3.5 ved mekanisk ventil." MinExpression="2.5" MaxExpression="4.0" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1" DefaultValue="3.0">
-          <Answer/>
-        </FormItem>
-      </Item>
+        <Item ItemId="3738" ItemType="1" VarName="MAREVAN_INR_NEDRE" LoincScale="QN" UnitStr="enheter" DisplayFormat="">
+                <FormItem FormItemId="2162" OrderNumber="8" ItemText="Nedre terskelverdi INR (enheter)" ItemHelp="Normalt 2.0, men 2.5 ved mekanisk ventil." MinExpression="1.8" MaxExpression="2.5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1" DefaultValue="2.0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3739" ItemType="1" VarName="MAREVAN_INR_OVRE" LoincScale="QN" UnitStr="enheter" DisplayFormat="">
+                <FormItem FormItemId="2163" OrderNumber="9" ItemText="Øvre terskelverdi INR (enheter)" ItemHelp="Normalt 3.0, men 3.5 ved mekanisk ventil." MinExpression="2.5" MaxExpression="4.0" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1" DefaultValue="3.0">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="420" PageNumber="6" PageTitle="Indikasjoner">
-      <Item ItemId="3723" ItemType="2" VarName="ICD10_I48" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="2147" OrderNumber="10" ItemText="Atrieflimmer:" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="18897" OrderNumber="1" OptionText="Ja" VerboseText="Atrieflimmer." ShortCode="J" ICD10="I48"/>
-          <Answer AnswerId="18898" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3724" ItemType="2" VarName="ICD10_I82" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="2148" OrderNumber="11" ItemText="Dyp venetrombose:" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="18899" OrderNumber="1" OptionText="Ja" VerboseText="DVT." ShortCode="J" ICD10="I82"/>
-          <Answer AnswerId="18900" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3725" ItemType="2" VarName="ICD10_I26" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="2149" OrderNumber="12" ItemText="Lungeemboli:" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="18901" OrderNumber="1" OptionText="Ja" VerboseText="Lungeemboli." ShortCode="J" ICD10="I26"/>
-          <Answer AnswerId="18902" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3726" ItemType="2" VarName="MAREVAN_POSTOP" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="2150" OrderNumber="13" ItemText="Postoperativt:" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="18905" OrderNumber="1" OptionText="Ja" VerboseText="Postoperativt." ShortCode="J"/>
-          <Answer AnswerId="18906" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3727" ItemType="2" VarName="MAREVAN_VENTIL" LoincScale="ORD" DisplayFormat="">
-        <FormItem FormItemId="2151" OrderNumber="14" ItemText="Mekanisk hjerteventil:" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="18907" OrderNumber="1" OptionText="Ja" VerboseText="Mekanisk hjerteventil." ShortCode="J"/>
-          <Answer AnswerId="18908" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        </FormItem>
-      </Item>
+        <Item ItemId="3723" ItemType="2" VarName="ICD10_I48" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="2147" OrderNumber="10" ItemText="Atrieflimmer:" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="18897" OrderNumber="1" OptionText="Ja" VerboseText="Atrieflimmer." ShortCode="J" ICD10="I48"/>
+                                <Answer AnswerId="18898" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3724" ItemType="2" VarName="ICD10_I82" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="2148" OrderNumber="11" ItemText="Dyp venetrombose:" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="18899" OrderNumber="1" OptionText="Ja" VerboseText="DVT." ShortCode="J" ICD10="I82"/>
+                                <Answer AnswerId="18900" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3725" ItemType="2" VarName="ICD10_I26" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="2149" OrderNumber="12" ItemText="Lungeemboli:" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="18901" OrderNumber="1" OptionText="Ja" VerboseText="Lungeemboli." ShortCode="J" ICD10="I26"/>
+                                <Answer AnswerId="18902" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3726" ItemType="2" VarName="MAREVAN_POSTOP" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="2150" OrderNumber="13" ItemText="Postoperativt:" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="18905" OrderNumber="1" OptionText="Ja" VerboseText="Postoperativt." ShortCode="J"/>
+                                <Answer AnswerId="18906" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3727" ItemType="2" VarName="MAREVAN_VENTIL" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="2151" OrderNumber="14" ItemText="Mekanisk hjerteventil:" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="18907" OrderNumber="1" OptionText="Ja" VerboseText="Mekanisk hjerteventil." ShortCode="J"/>
+                                <Answer AnswerId="18908" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="421" PageNumber="7" PageTitle="Dosering">
-      <Item ItemId="3730" ItemType="1" VarName="MAREVAN_MANDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
-        <FormItem FormItemId="2154" OrderNumber="15" ItemText="Mandag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3731" ItemType="1" VarName="MAREVAN_TIRSDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
-        <FormItem FormItemId="2155" OrderNumber="16" ItemText="Tirsdag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3732" ItemType="1" VarName="MAREVAN_ONSDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
-        <FormItem FormItemId="2156" OrderNumber="17" ItemText="Onsdag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3733" ItemType="1" VarName="MAREVAN_TORSDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
-        <FormItem FormItemId="2157" OrderNumber="18" ItemText="Torsdag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3734" ItemType="1" VarName="MAREVAN_FREDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
-        <FormItem FormItemId="2158" OrderNumber="19" ItemText="Fredag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3735" ItemType="1" VarName="MAREVAN_LORDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
-        <FormItem FormItemId="2159" OrderNumber="20" ItemText="Lørdag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3736" ItemType="1" VarName="MAREVAN_SONDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
-        <FormItem FormItemId="2160" OrderNumber="21" ItemText="Søndag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3741" ItemType="1" VarName="MAREVAN_SUM" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
-        <FormItem FormItemId="2165" OrderNumber="22" ItemText="Antall tabletter/uke (tbl)" ItemHelp="" Expression="MAREVAN_MANDAG + MAREVAN_TIRSDAG + MAREVAN_ONSDAG + MAREVAN_TORSDAG + MAREVAN_FREDAG + MAREVAN_LORDAG + MAREVAN_SONDAG" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
-          <Answer/>
-        </FormItem>
-      </Item>
+        <Item ItemId="3730" ItemType="1" VarName="MAREVAN_MANDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
+                <FormItem FormItemId="2154" OrderNumber="15" ItemText="Mandag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3731" ItemType="1" VarName="MAREVAN_TIRSDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
+                <FormItem FormItemId="2155" OrderNumber="16" ItemText="Tirsdag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3732" ItemType="1" VarName="MAREVAN_ONSDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
+                <FormItem FormItemId="2156" OrderNumber="17" ItemText="Onsdag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3733" ItemType="1" VarName="MAREVAN_TORSDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
+                <FormItem FormItemId="2157" OrderNumber="18" ItemText="Torsdag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3734" ItemType="1" VarName="MAREVAN_FREDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
+                <FormItem FormItemId="2158" OrderNumber="19" ItemText="Fredag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3735" ItemType="1" VarName="MAREVAN_LORDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
+                <FormItem FormItemId="2159" OrderNumber="20" ItemText="Lørdag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3736" ItemType="1" VarName="MAREVAN_SONDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
+                <FormItem FormItemId="2160" OrderNumber="21" ItemText="Søndag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3741" ItemType="1" VarName="MAREVAN_SUM" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
+                <FormItem FormItemId="2165" OrderNumber="22" ItemText="Antall tabletter/uke (tbl)" ItemHelp="" Expression="MAREVAN_MANDAG + MAREVAN_TIRSDAG + MAREVAN_ONSDAG + MAREVAN_TORSDAG + MAREVAN_FREDAG + MAREVAN_LORDAG + MAREVAN_SONDAG" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageId="422" PageNumber="8" PageTitle="Neste dosering">
-      <Item ItemId="3999" ItemType="5" VarName="WARFARIN_NEXT" LoincScale="DATE" DisplayFormat="">
-        <FormItem FormItemId="2449" OrderNumber="23" ItemText="Neste doseringstidspunkt" ItemHelp="Tips: Skriv f.eks. +28 for å få dato om fire uker." MinExpression="TRUNC(FORMDATE)+1" MaxExpression="FORMDATE+180" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
+        <Item ItemId="3999" ItemType="5" VarName="WARFARIN_NEXT" LoincScale="DATE" DisplayFormat="">
+                <FormItem FormItemId="2449" OrderNumber="23" ItemText="Neste doseringstidspunkt" ItemHelp="Tips: Skriv f.eks. +28 for å få dato om fire uker." MinExpression="TRUNC(FORMDATE)+1" MaxExpression="FORMDATE+180" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
   </Form>
   <Actions>
     <PageAction MasterId="3728">
-      <Activate EnumVal="3" PageConditionId="592" PageNumber="2" ComparisonType="6" ComparisonDescription="Not Equal"/>
+        <Activate EnumVal="3" PageConditionId="592" PageNumber="2" ComparisonType="6" ComparisonDescription="Not Equal"/>
     </PageAction>
     <PageAction MasterId="6861">
-      <Activate EnumVal="1" PageConditionId="2246" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="1" PageConditionId="2246" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="973" FormName="Glukose24t" FormTitle="Glukosemåling 24 timer (Copy)">
+    <Page PageId="9452" PageNumber="1" PageTitle="Bakgrunn">
+        <Item ItemId="3196" ItemType="2" VarName="NDV_TYPE" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="26798" OrderNumber="1" ItemText="Diabetes type" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="15986" OrderNumber="1" OptionText="Type 1 (inkl. LADA)" VerboseText="Type 1 diabetes." ShortCode="1" ICD10="E10"/>
+                                <Answer AnswerId="15987" OrderNumber="2" OptionText="Type 2" VerboseText="Type 2 diabetes." ShortCode="2" ICD10="E11"/>
+                                <Answer AnswerId="15988" OrderNumber="3" OptionText="Annen diabetestype (inkl. pankreatitt, MODY)." ShortCode="A"/>
+                                <Answer AnswerId="16137" OrderNumber="4" OptionText="er ikke avklart." ShortCode="U" ICD10="E14"/>
+                                <Answer AnswerId="40942" OrderNumber="5" OptionText="Svangerskapsdiabetes." ShortCode="S" ICD10="O24"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3486" ItemType="1" VarName="NDV_DIAGNOSE_YYYY" LoincScale="QN" DisplayFormat="">
+                <FormItem FormItemId="26800" OrderNumber="2" ItemHeader="Debut" ItemText="Diabetes diagnostisert år" ItemHelp="Angi årstall.  Svangerskapsdiabetes unntas." MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3322" ItemType="2" VarName="NDV_TREATMENT_TYPE" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="26799" OrderNumber="3" ItemHeader="Behandlingsstrategi" ItemText="Diabetes behandles ved hjelp av" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="16425" OrderNumber="1" OptionText="Kun kost/aktivitet."/>
+                                <Answer AnswerId="16426" OrderNumber="2" OptionText="Andre blodsukkersenkende midler enn insulin."/>
+                                <Answer AnswerId="16427" OrderNumber="3" OptionText="Kun insulinbehandlet."/>
+                                <Answer AnswerId="16479" OrderNumber="4" OptionText="Insulin pluss andre blodsukkersenkende midler."/>
+                                <Answer AnswerId="16480" OrderNumber="5" OptionText="Ukjent"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="6384" ItemType="1" VarName="VMR_LAB_HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
+                <FormItem FormItemId="26801" OrderNumber="4" ItemText="Siste HbA1c (%)" ItemHelp="Hentes inn automatisk fra labarket, kan ikke redigeres her." Expression="VMR.LAB.HBA1C" MinExpression="3" MaxExpression="15" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+    </Page>
+    <Page PageId="9453" PageNumber="2" PageTitle="Målinger">
+        <Item ItemId="7574" ItemType="2" VarName="VAR7574" LoincScale="ORD" DisplayFormat="">
+                <FormItem FormItemId="26826" OrderNumber="5" ItemText="Nattlige målinger" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+                                <Answer AnswerId="40646" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="40647" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+                </FormItem>
+        </Item>
+    </Page>
+    <Page PageId="9454" PageNumber="3" PageTitle="Morgen*">
+        <Item ItemId="7550" ItemType="1" VarName="S_GLUCOSE.0000H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26802" OrderNumber="6" ItemText="Blodsukker klokken 00-01 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2263" ItemType="2" VarName="S_GLUCOSE.0000_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26827" OrderNumber="7" ItemText="Lavt blodsukker kl 00-01" ItemHelp="" Expression="ISNEG(S_GLUCOSE.0000H-6)*(ISPOS(S_GLUCOSE.0000H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="11273" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="11274" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7551" ItemType="1" VarName="S_GLUCOSE.0100H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26803" OrderNumber="8" ItemText="Blodsukker klokken 01-02 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2264" ItemType="2" VarName="S_GLUCOSE.0100_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26828" OrderNumber="9" ItemText="Lavt blodsukker kl 01-02" ItemHelp="" Expression="ISNEG(S_GLUCOSE.0100H-6)*(ISPOS(S_GLUCOSE.0100H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60463" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60464" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7552" ItemType="1" VarName="S_GLUCOSE.0200H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26804" OrderNumber="10" ItemText="Blodsukker klokken 02-03 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2266" ItemType="2" VarName="S_GLUCOSE.0200_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26945" OrderNumber="11" ItemText="Lavt blodsukker kl 02-03" ItemHelp="" Expression="ISNEG(S_GLUCOSE.0200H-6)*(ISPOS(S_GLUCOSE.0200H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60466" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60467" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7553" ItemType="1" VarName="S_GLUCOSE.0300H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26805" OrderNumber="12" ItemText="Blodsukker klokken 03-04 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2267" ItemType="2" VarName="S_GLUCOSE.0300_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26946" OrderNumber="13" ItemText="Lavt blodsukker kl 03-04" ItemHelp="" Expression="ISNEG(S_GLUCOSE.0300H-6)*(ISPOS(S_GLUCOSE.0300H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60469" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60470" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7554" ItemType="1" VarName="S_GLUCOSE.0400H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26806" OrderNumber="14" ItemText="Blodsukker klokken 04-05 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2268" ItemType="2" VarName="S_GLUCOSE.0400_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26947" OrderNumber="15" ItemText="Lavt blodsukker kl 04-05" ItemHelp="" Expression="ISNEG(S_GLUCOSE.0400H-6)*(ISPOS(S_GLUCOSE.0400H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60472" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60473" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7555" ItemType="1" VarName="S_GLUCOSE.0500H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26807" OrderNumber="16" ItemText="Blodsukker klokken 05-06 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2269" ItemType="2" VarName="S_GLUCOSE.0500_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26948" OrderNumber="17" ItemText="Lavt blodsukker kl 05-06" ItemHelp="" Expression="ISNEG(S_GLUCOSE.0500H-6)*(ISPOS(S_GLUCOSE.0500H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60475" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60476" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+    </Page>
+    <Page PageId="9455" PageNumber="4" PageTitle="Dag*">
+        <Item ItemId="7556" ItemType="1" VarName="S_GLUCOSE.0600H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26808" OrderNumber="18" ItemText="Blodsukker klokken 06-07 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2270" ItemType="2" VarName="S_GLUCOSE.0600_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26950" OrderNumber="19" ItemText="Lavt blodsukker kl 06-07" ItemHelp="" Expression="ISNEG(S_GLUCOSE.0600H-6)*(ISPOS(S_GLUCOSE.0600H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60478" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60479" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7557" ItemType="1" VarName="S_GLUCOSE.0700H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26809" OrderNumber="20" ItemText="Blodsukker klokken 07-08 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2271" ItemType="2" VarName="S_GLUCOSE.0700_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26951" OrderNumber="21" ItemText="Lavt blodsukker kl 07-08" ItemHelp="" Expression="ISNEG(S_GLUCOSE.0700H-6)*(ISPOS(S_GLUCOSE.0700H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60481" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60482" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7558" ItemType="1" VarName="S_GLUCOSE.0800H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26810" OrderNumber="22" ItemText="Blodsukker klokken 08-09 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2272" ItemType="2" VarName="S_GLUCOSE.0800_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26952" OrderNumber="23" ItemText="Lavt blodsukker kl 08-09" ItemHelp="" Expression="ISNEG(S_GLUCOSE.0800H-6)*(ISPOS(S_GLUCOSE.0800H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60484" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60485" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7559" ItemType="1" VarName="S_GLUCOSE.0900H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26811" OrderNumber="24" ItemText="Blodsukker klokken 09-10 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2273" ItemType="2" VarName="S_GLUCOSE.0900_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26953" OrderNumber="25" ItemText="Lavt blodsukker kl 09-10" ItemHelp="" Expression="ISNEG(S_GLUCOSE.0900H-6)*(ISPOS(S_GLUCOSE.0900H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60487" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60488" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7560" ItemType="1" VarName="S_GLUCOSE.1000H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26812" OrderNumber="26" ItemText="Blodsukker klokken 10-11 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2274" ItemType="2" VarName="S_GLUCOSE.1000_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26954" OrderNumber="27" ItemText="Lavt blodsukker kl 10-11" ItemHelp="" Expression="ISNEG(S_GLUCOSE.1000H-6)*(ISPOS(S_GLUCOSE.1000H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60490" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60491" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7561" ItemType="1" VarName="S_GLUCOSE.1100H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26813" OrderNumber="28" ItemText="Blodsukker klokken 11-12 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2275" ItemType="2" VarName="S_GLUCOSE.1100_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26955" OrderNumber="29" ItemText="Lavt blodsukker kl 11-12" ItemHelp="" Expression="ISNEG(S_GLUCOSE.1100H-6)*(ISPOS(S_GLUCOSE.1100H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60493" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60494" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7562" ItemType="1" VarName="S_GLUCOSE.1200H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26814" OrderNumber="30" ItemText="Blodsukker klokken 12-13 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2276" ItemType="2" VarName="S_GLUCOSE.1200_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26956" OrderNumber="31" ItemText="Lavt blodsukker kl 12-13" ItemHelp="" Expression="ISNEG(S_GLUCOSE.1200H-6)*(ISPOS(S_GLUCOSE.1200H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60496" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60497" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7563" ItemType="1" VarName="S_GLUCOSE.1300H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26815" OrderNumber="32" ItemText="Blodsukker klokken 13-14 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2277" ItemType="2" VarName="S_GLUCOSE.1300_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26957" OrderNumber="33" ItemText="Lavt blodsukker kl 13-14" ItemHelp="" Expression="ISNEG(S_GLUCOSE.1300H-6)*(ISPOS(S_GLUCOSE.1300H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60499" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60500" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7564" ItemType="1" VarName="S_GLUCOSE.1400H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26816" OrderNumber="34" ItemText="Blodsukker klokken 14-15 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2278" ItemType="2" VarName="S_GLUCOSE.1400_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26958" OrderNumber="35" ItemText="Lavt blodsukker kl 14-15" ItemHelp="" Expression="ISNEG(S_GLUCOSE.1400H-6)*(ISPOS(S_GLUCOSE.1400H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60502" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60503" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7565" ItemType="1" VarName="S_GLUCOSE.1500H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26817" OrderNumber="36" ItemText="Blodsukker klokken 15-16 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2279" ItemType="2" VarName="S_GLUCOSE.1500_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26959" OrderNumber="37" ItemText="Lavt blodsukker kl 15-16" ItemHelp="" Expression="ISNEG(S_GLUCOSE.1500H-6)*(ISPOS(S_GLUCOSE.1500H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60505" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60506" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7566" ItemType="1" VarName="S_GLUCOSE.1600H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26818" OrderNumber="38" ItemText="Blodsukker klokken 16-17 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2280" ItemType="2" VarName="S_GLUCOSE.1600_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26960" OrderNumber="39" ItemText="Lavt blodsukker kl 16-17" ItemHelp="" Expression="ISNEG(S_GLUCOSE.1600H-6)*(ISPOS(S_GLUCOSE.1600H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60508" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60509" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7567" ItemType="1" VarName="S_GLUCOSE.1700H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26819" OrderNumber="40" ItemText="Blodsukker klokken 17-18 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2281" ItemType="2" VarName="S_GLUCOSE.1700_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26961" OrderNumber="41" ItemText="Lavt blodsukker kl 17-18" ItemHelp="" Expression="ISNEG(S_GLUCOSE.1700H-6)*(ISPOS(S_GLUCOSE.1700H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60511" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60512" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7568" ItemType="1" VarName="S_GLUCOSE.1800H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26820" OrderNumber="42" ItemText="Blodsukker klokken 18-19 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2282" ItemType="2" VarName="S_GLUCOSE.1800_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26962" OrderNumber="43" ItemText="Lavt blodsukker kl 18-19" ItemHelp="" Expression="ISNEG(S_GLUCOSE.1800H-6)*(ISPOS(S_GLUCOSE.1800H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60514" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60515" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7569" ItemType="1" VarName="S_GLUCOSE.1900H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26821" OrderNumber="44" ItemText="Blodsukker klokken 19-20 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2283" ItemType="2" VarName="S_GLUCOSE.1900_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26963" OrderNumber="45" ItemText="Lavt blodsukker kl 19-20" ItemHelp="" Expression="ISNEG(S_GLUCOSE.1900H-6)*(ISPOS(S_GLUCOSE.1900H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60517" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60518" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7570" ItemType="1" VarName="S_GLUCOSE.2000H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26822" OrderNumber="46" ItemText="Blodsukker klokken 20-21 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2284" ItemType="2" VarName="S_GLUCOSE.2000_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26964" OrderNumber="47" ItemText="Lavt blodsukker kl 20-21" ItemHelp="" Expression="ISNEG(S_GLUCOSE.2000H-6)*(ISPOS(S_GLUCOSE.2000H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60520" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60521" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7571" ItemType="1" VarName="S_GLUCOSE.2100H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26823" OrderNumber="48" ItemText="Blodsukker klokken 21-22 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2285" ItemType="2" VarName="S_GLUCOSE.2100_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26965" OrderNumber="49" ItemText="Lavt blodsukker kl 21-22" ItemHelp="" Expression="ISNEG(S_GLUCOSE.2100H-6)*(ISPOS(S_GLUCOSE.2100H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60523" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60524" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+    </Page>
+    <Page PageId="9456" PageNumber="5" PageTitle="Kveld*">
+        <Item ItemId="7572" ItemType="1" VarName="S_GLUCOSE.2200H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26824" OrderNumber="50" ItemText="Blodsukker klokken 22-23 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2286" ItemType="2" VarName="S_GLUCOSE.2200_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26967" OrderNumber="51" ItemText="Lavt blodsukker kl 22-23" ItemHelp="" Expression="ISNEG(S_GLUCOSE.2200H-6)*(ISPOS(S_GLUCOSE.2200H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="60526" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="60527" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7573" ItemType="1" VarName="S_GLUCOSE.2300H" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem FormItemId="26825" OrderNumber="52" ItemText="Blodsukker klokken 23-24 (mmol/l)" ItemHelp="" MinExpression="2" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2289" ItemType="2" VarName="S_GLUCOSE.2300_BELOW6" LoincScale="ORD">
+                <FormItem FormItemId="26968" OrderNumber="53" ItemText="Lavt blodsukker kl 23-24" ItemHelp="" Expression="ISNEG(S_GLUCOSE.2300H-6)*(ISPOS(S_GLUCOSE.2300H-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer AnswerId="11275" OrderNumber="1" OptionText="Ja"/>
+                                <Answer AnswerId="11276" OrderNumber="2" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+    </Page>
+    <Page PageId="9482" PageNumber="7" PageTitle="New*">
+        <Item ItemId="2265" ItemType="1" VarName="S_GLUCOSE_BELOW6_SUM" LoincScale="QN">
+                <FormItem FormItemId="26829" OrderNumber="54" ItemText="Antall ganger målt lavt blodsukker (&lt;6) dette døgn" ItemHelp="" Expression="S_GLUCOSE.0000_BELOW6_SCORE+S_GLUCOSE.0100_BELOW6_SCORE+S_GLUCOSE.0200_BELOW6_SCORE+&#xA;S_GLUCOSE.0300_BELOW6_SCORE+S_GLUCOSE.0400_BELOW6_SCORE+S_GLUCOSE.0500_BELOW6_SCORE+&#xA;S_GLUCOSE.0600_BELOW6_SCORE+S_GLUCOSE.0700_BELOW6_SCORE+S_GLUCOSE.0800_BELOW6_SCORE+&#xA;S_GLUCOSE.0900_BELOW6_SCORE+S_GLUCOSE.1000_BELOW6_SCORE+S_GLUCOSE.1100_BELOW6_SCORE+&#xA;S_GLUCOSE.1200_BELOW6_SCORE+S_GLUCOSE.1300_BELOW6_SCORE+S_GLUCOSE.1400_BELOW6_SCORE+&#xA;S_GLUCOSE.1500_BELOW6_SCORE+S_GLUCOSE.1600_BELOW6_SCORE+S_GLUCOSE.1700_BELOW6_SCORE+&#xA;S_GLUCOSE.1800_BELOW6_SCORE+S_GLUCOSE.1900_BELOW6_SCORE+S_GLUCOSE.2000_BELOW6_SCORE+&#xA;S_GLUCOSE.2100_BELOW6_SCORE+S_GLUCOSE.2200_BELOW6_SCORE+S_GLUCOSE.2300_BELOW6_SCORE" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2290" ItemType="1" VarName="VAR2290" LoincScale="QN">
+                <FormItem FormItemId="26969" OrderNumber="55" ItemText="Antall ganger målt lavt blodsukker (&lt;6) siste måned" ItemHelp="" Expression="SUM(S_GLUCOSE_BELOW6_SUM)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="7574">
+        <Activate EnumVal="1" PageConditionId="6927" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="1" PageConditionId="6928" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>
