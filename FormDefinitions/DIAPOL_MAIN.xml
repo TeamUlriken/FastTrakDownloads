@@ -159,6 +159,27 @@
                 </FormItem>
         </Item>
     </Page>
+    <Page PageTitle="Komorbiditet">
+        <Item ItemId="3392" ItemType="4" VarName="DP_DIAGNOSER_TEKST" LoincScale="NAR" DisplayFormat="">
+                <FormItem ItemHeader="Kronisk sykdom*" ItemText="Andre kroniske sykdommer" ItemHelp="" MinExpression="" MaxExpression="" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+    </Page>
+    <Page PageTitle="Sosiale forhold">
+        <Item ItemId="3983" ItemType="4" VarName="YRKE" LoincScale="NAR" DisplayFormat="">
+                <FormItem ItemHeader="Yrke*" ItemText="Pasientens yrke og evt. arbeidssted" ItemHelp="F.eks: Pensjonert fisker, renholder på sykehuset." MinExpression="" MaxExpression="" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="4002" ItemType="2" VarName="DP_ALENEBOER" LoincScale="ORD" DisplayFormat="">
+                <FormItem ItemHeader="Aleneboende" ItemText="Bor pasienten alene?" ItemHelp="Definisjon: Vanligvis ikke andre personer over 10 år i huset, ingen som er i stand til å kontakte hjelp i en akuttsituasjon, eks. alvorlig føling/hypoglykemi, lårshalsbrudd, slag etc." Expression="" MinExpression="" MaxExpression="" Visibility="1" CarryForward="1" Optional="1">
+                                <Answer AnswerId="20851" OptionText="Ja" VerboseText="Ingen andre voksne i huset vanligvis." ShortCode="J"/>
+                                <Answer AnswerId="20852" OptionText="Nei" ShortCode="N"/>
+                                <Answer AnswerId="20853" OptionText="Ukjent" ShortCode="U"/>
+                </FormItem>
+        </Item>
+    </Page>
     <Page PageTitle="Aktuelt">
         <Item ItemId="6898" ItemType="2" VarName="VAR6898" LoincScale="ORD" DisplayFormat="">
                 <FormItem ItemText="Tilbud herfra" ItemHelp="" MinExpression="" MaxExpression="" Visibility="-1" Optional="1">
@@ -235,6 +256,33 @@
     <Page PageTitle="HbA1c*">
         <Item ItemId="527" ItemType="1" VarName="HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
                 <FormItem ItemText="Pasientnær HbA1c (%)" ItemHelp="Kun hvis tatt i tilknytning til denne kontrollen, altså på skjemaets dato." MinExpression="3" MaxExpression="25" Visibility="1" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+    </Page>
+    <Page PageTitle="Egenmålinger">
+        <Item ItemId="1310" ItemType="2" VarName="NDV_GLUCMON" LoincScale="ORD" DisplayFormat="">
+                <FormItem ItemText="Egenmåling av glukose" ItemHelp="" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="59269" OptionText="CGM" VerboseText="Bruker CGM." Score="1.00" PromText="Kontinuerlig måling"/>
+                                <Answer AnswerId="59270" OptionText="irCGM (FGM)" VerboseText="Bruker infrarød CGM (Flash)." Score="1.00" PromText="Flash Libre"/>
+                                <Answer AnswerId="59271" OptionText="daglig (glukometer)" VerboseText="Måler glukose daglig." Score="1.00" PromText="Glukometer daglig"/>
+                                <Answer AnswerId="59272" OptionText="ukentlig eller oftere (glukometer)" VerboseText="Måler glukose ukentlig eller oftere." Score="1.00" PromText="Glukometer ukentlig"/>
+                                <Answer AnswerId="59273" OptionText="sjeldnere enn ukentlig (glukometer)" VerboseText="Måler glukose sjeldnere enn ukentlig." Score="2.00" PromText="Glukometer sjeldnere enn ukentlig"/>
+                                <Answer AnswerId="59274" OptionText="Nei" VerboseText="Måler ikke glukose selv." Score="3.00" PromText="Måler ikke glukose selv"/>
+                                <Answer AnswerId="59275" OptionText="Vet ikke*" Score="4.00" PromText="Jeg er usikker"/>
+                </FormItem>
+        </Item>
+    </Page>
+    <Page PageTitle="Flash måling*">
+        <Item ItemId="1411" ItemType="1" VarName="NDV_FLASH_COUNT" LoincScale="QN" DisplayFormat="">
+                <FormItem ItemText="Antall &quot;flash&quot;-målinger daglig" ItemHelp="" MinExpression="0" MaxExpression="100" Visibility="1" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+    </Page>
+    <Page PageTitle="Egenmålinger per uke*">
+        <Item ItemId="4059" ItemType="1" VarName="NDV_SELFMON_COUNT" LoincScale="QN" UnitStr="ganger/uke" DisplayFormat="">
+                <FormItem ItemText="Antall egenmålinger per uke (ganger/uke)" ItemHelp="" MinExpression="0" MaxExpression="140" Visibility="1" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -365,6 +413,22 @@
                                 <Answer AnswerId="40491" OptionText="Ukjent LDL."/>
                 </FormItem>
         </Item>
+        <Item ItemId="2144" ItemType="2" VarName="tmpHbA1cAbove9" LoincScale="ORD">
+                <FormItem ItemText="HbA1c over 9%" ItemHelp="" Expression="2 - ISPOS( VMR.LAB.HBA1C - 8.99 )" Visibility="-1" Optional="1">
+                                <Answer AnswerId="11153" OptionText="Ja"/>
+                                <Answer AnswerId="11154" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+    </Page>
+    <Page PageTitle="Tiltak pga. høy HbA1c*">
+        <Item ItemId="2083" ItemType="2" VarName="DP_TILTAK_HBA1C" LoincScale="ORD">
+                <FormItem ItemHeader="Tiltak mot høy HbA1c" ItemText="Er det iverksatt særskilte tiltak mot høy HbA1c?" ItemHelp="Vurder særskilte tiltak fordi HbA1c er på 9% eller mer." Expression="" ExcludeFromText="1" Visibility="1" Optional="1">
+                                <Answer AnswerId="11059" OptionText="Ja"/>
+                                <Answer AnswerId="11060" OptionText="Nei, pasienten ønsker ikke"/>
+                                <Answer AnswerId="11061" OptionText="Nei, ikke aktuelt"/>
+                                <Answer AnswerId="11062" OptionText="Vet ikke / ubesvart"/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageTitle="Oppsummering">
         <Item ItemId="4088" ItemType="4" VarName="DP_AVTALER" LoincScale="NAR" DisplayFormat="">
@@ -403,8 +467,13 @@
         </Item>
     </Page>
     <Page PageTitle="Neste kontroll">
-        <Item ItemId="4089" ItemType="4" VarName="DP_NESTE_KONTROLL" LoincScale="NAR" DisplayFormat="">
-                <FormItem ItemHeader="Neste avtale" ItemText="Avtale og evt tidspunkt for neste konsultasjon" ItemHelp="" MinExpression="" MaxExpression="" Visibility="1" Optional="1">
+        <Item ItemId="2127" ItemType="4" VarName="DP_AVTALE_LEGE" LoincScale="NAR">
+                <FormItem ItemHeader="Lege" ItemText="Avtale og evt tidspunkt for neste konsultasjon hos lege" ItemHelp="" Expression="" Visibility="1" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2128" ItemType="4" VarName="DP_AVTALE_SYKEPLEIER" LoincScale="NAR">
+                <FormItem ItemHeader="Sykepleier" ItemText="Avtale og evt tidspunkt for neste konsultasjon hos sykepleier" ItemHelp="" Expression="" Visibility="1" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -440,9 +509,17 @@
     <PageAction MasterId="5712">
         <Activate EnumVal="1" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
+    <PageAction MasterId="1310">
+        <Activate EnumVal="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
     <PageAction MasterId="4526">
         <Activate EnumVal="1" ComparisonType="1" ComparisonDescription="Equal to"/>
         <Activate EnumVal="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2144">
+        <Activate EnumVal="1" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="7746">
         <Activate EnumVal="1" ComparisonType="1" ComparisonDescription="Equal to"/>

@@ -212,9 +212,16 @@
         </Item>
     </Page>
     <Page PageTitle="Basalinsulin*">
-        <Item ItemId="4214" ItemType="4" VarName="INS_BASAL_NAME" LoincScale="NAR" DisplayFormat="">
-                <FormItem ItemHeader="Preparat" ItemText="Preparatnavn og type penn" ItemHelp="F.eks: Humulin engangspenn, Insulatard Penfill, Lantus SoloStar, Levemir FlexPen" MinExpression="" MaxExpression="" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="0">
-                                <Answer/>
+        <Item ItemId="2121" ItemType="2" VarName="ATC_A10ACnn_OR_A10AEnn" LoincScale="ORD">
+                <FormItem ItemText="Langsomtvirkende insulin" ItemHelp="A10AC: Insulin og analoger til injeksjon, middels lang virketid.&#xA;A10AE: Insulin og analoger til injeksjon, langtidsvirkende." Expression="" ExcludeFromText="1" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="11112" OptionText="Humulin (A10AC01)"/>
+                                <Answer AnswerId="11113" OptionText="Insulatard (A10AC01)"/>
+                                <Answer AnswerId="11114" OptionText="Abasaglar ( A10AE04)"/>
+                                <Answer AnswerId="11115" OptionText="Lantus (A10AE04)"/>
+                                <Answer AnswerId="11116" OptionText="Toujeo (A10AE04)"/>
+                                <Answer AnswerId="11117" OptionText="Levemir (A10AE05)"/>
+                                <Answer AnswerId="11118" OptionText="Tresiba (A10AE06)"/>
+                                <Answer AnswerId="11125" OptionText="Xultophy (A10AE56)"/>
                 </FormItem>
         </Item>
         <Item ItemId="3207" ItemType="1" VarName="INS_BASAL_MORNING" LoincScale="QN" UnitStr="E" DisplayFormat="">
@@ -247,9 +254,14 @@
         </Item>
     </Page>
     <Page PageTitle="Måltidsinsulin*">
-        <Item ItemId="4215" ItemType="4" VarName="INS_MEAL_NAME" LoincScale="NAR" DisplayFormat="">
-                <FormItem ItemHeader="Preparat*" ItemText="Preparatnavn og type penn" ItemHelp="F.eks: Humalog engangspenn, NovoRapid Flexpen, Actrapid Penfill, Apidra SoloStar, Insuman Rapid" MinExpression="" MaxExpression="" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="0">
-                                <Answer/>
+        <Item ItemId="2122" ItemType="2" VarName="ATC_A10ABnn" LoincScale="ORD">
+                <FormItem ItemText="Hurtigvirkende insulin" ItemHelp="A10AB: Insulin og analoger til injeksjon, hurtigvirkende." Expression="" ExcludeFromText="1" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="11119" OptionText="Actrapid (A10AB01)."/>
+                                <Answer AnswerId="11120" OptionText="Insuman Rapid (A10AB01)."/>
+                                <Answer AnswerId="11121" OptionText="Humalog (A10AB04)."/>
+                                <Answer AnswerId="11122" OptionText="Fiasp (A10AB05)."/>
+                                <Answer AnswerId="11123" OptionText="NovoRapid (A10AB05)."/>
+                                <Answer AnswerId="11124" OptionText="Apidra (A10AB06)."/>
                 </FormItem>
         </Item>
         <Item ItemId="3228" ItemType="1" VarName="INS_MEAL_BREAKFAST" LoincScale="QN" UnitStr="E" DisplayFormat="">
@@ -292,9 +304,10 @@
         </Item>
     </Page>
     <Page PageTitle="Premix insulin*">
-        <Item ItemId="4216" ItemType="4" VarName="INS_PREMIX_NAME" LoincScale="NAR" DisplayFormat="">
-                <FormItem ItemHeader="Preparat*" ItemText="Preparatnavn og type penn" ItemHelp="F.eks: Humalog Mix25 engangspenn, NovoMix 30 FlexPen, Insuman Comb 25 OptiSet" MinExpression="" MaxExpression="" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="0">
-                                <Answer/>
+        <Item ItemId="2123" ItemType="2" VarName="ATC_A10ADnn" LoincScale="ORD">
+                <FormItem ItemText="Insulin kombinasjoner" ItemHelp="A10AD: Insulin og analoger til injeksjon, middels eller lang virketid i kombinasjon med hurtigvirkende." Expression="" ExcludeFromText="1" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="11126" OptionText="Humalog Mix 25 (A10AD04)"/>
+                                <Answer AnswerId="11127" OptionText="NovoMix 30 (A10AD05)"/>
                 </FormItem>
         </Item>
         <Item ItemId="3221" ItemType="1" VarName="INS_PREMIX_MORNING" LoincScale="QN" UnitStr="E" DisplayFormat="">
@@ -344,6 +357,16 @@
         </Item>
         <Item ItemId="6666" ItemType="1" VarName="INSULIN_SENS_FAKTOR" LoincScale="QN" UnitStr="mmol/L/E" DisplayFormat="">
                 <FormItem ItemText="Insulinfølsomhetsfaktor (mmol/L/E)" ItemHelp="Estimat (100/døgndose insulin) på fall i blodglukose per enhet hurtigvirkende insulin brukt som korrigerende doser." Expression="ISPOS( INS_ALL_SUM ) * 100 / INS_ALL_SUM" MinExpression="" MaxExpression="" Visibility="1" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10433" ItemType="1" VarName="InsulinCarbFactor" LoincScale="QN" UnitStr="g/E" DisplayFormat="">
+                <FormItem ItemText="Aktuell karbohydrat faktor (g/E)" ItemHelp="Antall gram karbohydrat som nøytraliseres av 1 enhet insulin." MinExpression="1" MaxExpression="40" Visibility="1" CarryForward="1" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10434" ItemType="1" VarName="InsulinSensFactor" LoincScale="QN" UnitStr="mmol/L/E" DisplayFormat="">
+                <FormItem ItemText="Aktuell korreksjonsfaktor (mmol/L/E)" ItemHelp="Fall i blodglukose per enhet hurtigvirkende insulin brukt som korrigerende doser." MinExpression="0.5" MaxExpression="20" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>

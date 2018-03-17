@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
-  <Form FormName="DIAPOL_YEAR" FormTitle="Årskontroll diabetes (full)">
+  <Form FormName="DIAPOL_YEAR" FormTitle="Årskontroll diabetes">
     <Page PageTitle="Kjønn*">
         <Item ItemId="4255" ItemType="2" VarName="SEX" LoincScale="ORD" DisplayFormat="">
                 <FormItem ItemText="Kjønn" ItemHelp="Skjult" Expression="Patient.GenderId" MinExpression="" MaxExpression="" Visibility="-1" ReadOnly="1" Optional="0">
@@ -174,14 +174,14 @@
                 </FormItem>
         </Item>
     </Page>
-    <Page PageTitle="Øyestatus">
-        <Item ItemId="3404" ItemType="2" VarName="NDV_EYESIGHT" LoincScale="ORD" DisplayFormat="">
-                <FormItem ItemText="Sterkt synshemmet" ItemHelp="dårligere enn 6/18 (0.33) på beste øye evt. med egen brille" MinExpression="" MaxExpression="" Visibility="-1" CarryForward="1" Optional="0">
-                                <Answer AnswerId="16926" OptionText="Ja" VerboseText="Sterkt synshemmet." ShortCode="J"/>
-                                <Answer AnswerId="16927" OptionText="Nei" ShortCode="N"/>
-                                <Answer AnswerId="16928" OptionText="Vet ikke" ShortCode="V"/>
+    <Page PageTitle="Komorbiditet">
+        <Item ItemId="3392" ItemType="4" VarName="DP_DIAGNOSER_TEKST" LoincScale="NAR" DisplayFormat="">
+                <FormItem ItemHeader="Kronisk sykdom*" ItemText="Andre kroniske sykdommer" ItemHelp="" MinExpression="" MaxExpression="" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="1">
+                                <Answer/>
                 </FormItem>
         </Item>
+    </Page>
+    <Page PageTitle="Øyestatus">
         <Item ItemId="3353" ItemType="2" VarName="NDV_EYECHECK" LoincScale="ORD" DisplayFormat="">
                 <FormItem ItemText="Øyenbunnsundersøkelse" ItemHelp="øyelege eller øyefoto" MinExpression="" MaxExpression="" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer AnswerId="16727" OptionText="Ja" ShortCode="J"/>
@@ -221,6 +221,18 @@
         </Item>
     </Page>
     <Page PageTitle="Livsstil og helse">
+        <Item ItemId="3983" ItemType="4" VarName="YRKE" LoincScale="NAR" DisplayFormat="">
+                <FormItem ItemHeader="Yrke*" ItemText="Pasientens yrke og evt. arbeidssted" ItemHelp="F.eks: Pensjonert fisker, renholder på sykehuset." MinExpression="" MaxExpression="" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="4002" ItemType="2" VarName="DP_ALENEBOER" LoincScale="ORD" DisplayFormat="">
+                <FormItem ItemHeader="Aleneboende" ItemText="Bor pasienten alene?" ItemHelp="Definisjon: Vanligvis ikke andre personer over 10 år i huset, ingen som er i stand til å kontakte hjelp i en akuttsituasjon, eks. alvorlig føling/hypoglykemi, lårshalsbrudd, slag etc." Expression="" MinExpression="" MaxExpression="" Visibility="1" CarryForward="1" Optional="1">
+                                <Answer AnswerId="20851" OptionText="Ja" VerboseText="Ingen andre voksne i huset vanligvis." ShortCode="J"/>
+                                <Answer AnswerId="20852" OptionText="Nei" ShortCode="N"/>
+                                <Answer AnswerId="20853" OptionText="Ukjent" ShortCode="U"/>
+                </FormItem>
+        </Item>
         <Item ItemId="4047" ItemType="2" VarName="FORERKORT_ABT" LoincScale="ORD" DisplayFormat="">
                 <FormItem ItemText="Førerkort klasse A, B og/eller T" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" Visibility="1" CarryForward="1" Optional="1">
                                 <Answer AnswerId="21179" OptionText="Ja" VerboseText="Har førerkort." ShortCode="J"/>
@@ -276,7 +288,7 @@
                 </FormItem>
         </Item>
     </Page>
-    <Page PageTitle="Antidiabetisk behandling">
+    <Page PageTitle="Antidiabetisk behandling og monitorering">
         <Item ItemId="3322" ItemType="2" VarName="NDV_TREATMENT_TYPE" LoincScale="ORD" DisplayFormat="">
                 <FormItem ItemHeader="Behandlingsstrategi" ItemText="Diabetes behandles ved hjelp av" ItemHelp="" MinExpression="" MaxExpression="" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer AnswerId="16425" OptionText="Kun kost/aktivitet."/>
@@ -371,19 +383,20 @@
         </Item>
     </Page>
     <Page PageTitle="Blodsukkerregulering*">
+        <Item ItemId="3352" ItemType="2" VarName="NDV_KETOACIDOSIS" LoincScale="ORD" DisplayFormat="Vertical">
+                <FormItem ItemHeader="Ketoacidose" ItemText="Innlagt for ketoacidose:" ItemHelp="" Expression="" MinExpression="" MaxExpression="" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="16661" OptionText="Aldri*"/>
+                                <Answer AnswerId="16662" OptionText="en gang."/>
+                                <Answer AnswerId="16663" OptionText="flere ganger."/>
+                                <Answer AnswerId="20903" OptionText="Ukjent*"/>
+                </FormItem>
+        </Item>
         <Item ItemId="3351" ItemType="2" VarName="NDV_HYPOGLYCEMIA" LoincScale="ORD" DisplayFormat="">
                 <FormItem ItemText="Hjelpetrengende pga. hypoglykemi" ItemHelp="Noen gang vært hjelpetrengende pga. hypoglykemi." MinExpression="" MaxExpression="" ExcludeFromText="1" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer AnswerId="16652" OptionText="Aldri"/>
                                 <Answer AnswerId="16653" OptionText="En gang"/>
                                 <Answer AnswerId="16654" OptionText="Flere ganger"/>
                                 <Answer AnswerId="20898" OptionText="Ukjent"/>
-                </FormItem>
-        </Item>
-        <Item ItemId="4002" ItemType="2" VarName="DP_ALENEBOER" LoincScale="ORD" DisplayFormat="">
-                <FormItem ItemHeader="Aleneboende" ItemText="Bor pasienten alene?" ItemHelp="Definisjon: Vanligvis ikke andre personer over 10 år i huset, ingen som er i stand til å kontakte hjelp i en akuttsituasjon, eks. alvorlig føling/hypoglykemi, lårshalsbrudd, slag etc." MinExpression="" MaxExpression="" Visibility="1" CarryForward="1" Optional="1">
-                                <Answer AnswerId="20851" OptionText="Ja" VerboseText="Ingen andre voksne i huset vanligvis." ShortCode="J"/>
-                                <Answer AnswerId="20852" OptionText="Nei" ShortCode="N"/>
-                                <Answer AnswerId="20853" OptionText="Ukjent" ShortCode="U"/>
                 </FormItem>
         </Item>
     </Page>
@@ -400,47 +413,91 @@
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="5715" ItemType="2" VarName="GLUC_SELFMON" LoincScale="ORD" DisplayFormat="">
-                <FormItem ItemText="Egenmåling av glukose" ItemHelp="" MinExpression="" MaxExpression="" Visibility="1" CarryForward="1" Optional="0">
-                                <Answer AnswerId="30547" OptionText="sensor (permanent)" VerboseText="Bruker glukosesensor." Score="1.00"/>
-                                <Answer AnswerId="30548" OptionText="utprøvning av sensor" VerboseText="Prøver glukosesensor." Score="1.00"/>
-                                <Answer AnswerId="30549" OptionText="daglig" VerboseText="Måler glukose daglig." Score="1.00"/>
-                                <Answer AnswerId="30553" OptionText="ukentlig eller oftere" VerboseText="Måler glukose ukentlig eller oftere." Score="1.00"/>
-                                <Answer AnswerId="30554" OptionText="sjeldnere enn ukentlig." VerboseText="Måler glukose sjeldnere enn ukentlig." Score="2.00"/>
-                                <Answer AnswerId="30585" OptionText="Nei" VerboseText="Måler ikke glukose selv" Score="3.00"/>
-                                <Answer AnswerId="30604" OptionText="Vet ikke*" Score="4.00"/>
-                </FormItem>
-        </Item>
-        <Item ItemId="4058" ItemType="2" VarName="NDV_SELFMON" LoincScale="ORD" DisplayFormat="">
-                <FormItem ItemText="Måler glukose selv" ItemHelp="" Expression="GLUC_SELFMON_SCORE" MinExpression="" MaxExpression="" Visibility="-1" Optional="0">
-                                <Answer AnswerId="21313" OptionText="ukentlig eller oftere."/>
-                                <Answer AnswerId="21314" OptionText="sjeldnere enn ukentlig." VerboseText="Måler glukose sjeldnere enn ukentlig."/>
-                                <Answer AnswerId="21315" OptionText="Nei" VerboseText="Måler ikke glukose selv."/>
-                                <Answer AnswerId="21316" OptionText="Vet ikke*"/>
-                </FormItem>
-        </Item>
-    </Page>
-    <Page PageTitle="Utlevering av sensor*">
-        <Item ItemId="5716" ItemType="5" VarName="GLUC_SENSOR_DATE" LoincScale="DATE" DisplayFormat="">
-                <FormItem ItemHeader="Sensor siden" ItemText="Når ble sensoren tatt i bruk?" ItemHelp="Beste estimat ved usikker dato." MinExpression="DOB+365.25*10" MaxExpression="NOW" Visibility="1" CarryForward="1" Optional="0">
-                                <Answer/>
+        <Item ItemId="2126" ItemType="2" VarName="VAR2126" LoincScale="ORD">
+                <FormItem ItemText="Varslingssymptomer" ItemHelp="På dagtid merker pasienten vanligvis hypoglykemi når blodsukker er" Expression="" Visibility="1" Optional="0">
+                                <Answer AnswerId="11128" OptionText="&gt;3 mmol/l" VerboseText="Følingssymptomer merkes vanligvis ved blodsukker &gt;3 mmol/L."/>
+                                <Answer AnswerId="11129" OptionText="2-3 mmol/l" VerboseText="Følingssymptomer merkes vanligvis ved blodsukker 2-3 mmol/L."/>
+                                <Answer AnswerId="11130" OptionText="&lt;2 mmol/l" VerboseText="Følingssymptomer merkes vanligvis ved blodsukker &lt;2 mmol/L."/>
+                                <Answer AnswerId="11131" OptionText="Merker vanligvis ikke" VerboseText="Følingssymptomer merkes vanligvis ikke."/>
                 </FormItem>
         </Item>
     </Page>
     <Page PageTitle="Egenmåling*">
-        <Item ItemId="4059" ItemType="1" VarName="NDV_SELFMON_COUNT" LoincScale="QN" UnitStr="ganger/uke" DisplayFormat="">
-                <FormItem ItemText="Antall egenmålinger per uke (ganger/uke)" ItemHelp="" MinExpression="0" MaxExpression="140" Visibility="1" Optional="0">
+        <Item ItemId="1310" ItemType="2" VarName="NDV_GLUCMON" LoincScale="ORD" DisplayFormat="">
+                <FormItem ItemText="Egenmåling av glukose" ItemHelp="" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="59269" OptionText="CGM" VerboseText="Bruker CGM." Score="1.00" PromText="Kontinuerlig måling"/>
+                                <Answer AnswerId="59270" OptionText="irCGM (FGM)" VerboseText="Bruker infrarød CGM (Flash)." Score="1.00" PromText="Flash Libre"/>
+                                <Answer AnswerId="59271" OptionText="daglig (glukometer)" VerboseText="Måler glukose daglig." Score="1.00" PromText="Glukometer daglig"/>
+                                <Answer AnswerId="59272" OptionText="ukentlig eller oftere (glukometer)" VerboseText="Måler glukose ukentlig eller oftere." Score="1.00" PromText="Glukometer ukentlig"/>
+                                <Answer AnswerId="59273" OptionText="sjeldnere enn ukentlig (glukometer)" VerboseText="Måler glukose sjeldnere enn ukentlig." Score="2.00" PromText="Glukometer sjeldnere enn ukentlig"/>
+                                <Answer AnswerId="59274" OptionText="Nei" VerboseText="Måler ikke glukose selv." Score="3.00" PromText="Måler ikke glukose selv"/>
+                                <Answer AnswerId="59275" OptionText="Vet ikke*" Score="4.00" PromText="Jeg er usikker"/>
+                </FormItem>
+        </Item>
+    </Page>
+    <Page PageTitle="CGM detaljer*">
+        <Item ItemId="2142" ItemType="4" VarName="CGM_NAME" LoincScale="NAR">
+                <FormItem ItemText="Type sensor" ItemHelp="" Expression="" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="5716" ItemType="5" VarName="GLUC_SENSOR_DATE" LoincScale="DATE" DisplayFormat="">
+                <FormItem ItemHeader="Sensor siden" ItemText="Når ble sensoren tatt i bruk?" ItemHelp="Beste estimat ved usikker dato." Expression="" MinExpression="" MaxExpression="" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10284" ItemType="2" VarName="CGM_INDICATION" LoincScale="ORD" DisplayFormat="">
+                <FormItem ItemHeader="Indikasjon" ItemText="Indikasjon for CGM" ItemHelp="Velg den viktigste indikasjonen hvis det er flere." Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="57468" OptionText="Hypoglykemi."/>
+                                <Answer AnswerId="57469" OptionText="Unawareness."/>
+                                <Answer AnswerId="57470" OptionText="Høy HbA1c."/>
+                                <Answer AnswerId="57471" OptionText="Glukosesvingninger."/>
+                                <Answer AnswerId="57472" OptionText="Kompliserende sykdom."/>
+                                <Answer AnswerId="57473" OptionText="Følingsangst."/>
+                                <Answer AnswerId="57476" OptionText="Svangerskap."/>
+                                <Answer AnswerId="57529" OptionText="Jobb/sport/fritidsaktiviteter."/>
+                                <Answer AnswerId="57530" OptionText="Diagnostisk."/>
+                                <Answer AnswerId="57531" OptionText="Annet*"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10285" ItemType="1" VarName="CGM_START_HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
+                <FormItem ItemText="Siste HbA1c før oppstart (%)" ItemHelp="" MinExpression="3" MaxExpression="25" Visibility="1" CarryForward="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10297" ItemType="1" VarName="CGM_HBA1C_6M" LoincScale="QN" UnitStr="%" DisplayFormat="">
+                <FormItem ItemText="HbA1c etter 6-12 mnd (%)" ItemHelp="" MinExpression="3" MaxExpression="25" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10288" ItemType="2" VarName="CGM_STATUS" LoincScale="ORD" DisplayFormat="">
+                <FormItem ItemText="Status" ItemHelp="" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="57542" OptionText="Utprøvning"/>
+                                <Answer AnswerId="57543" OptionText="Langtidsbruk"/>
+                                <Answer AnswerId="57544" OptionText="Avsluttet etter utprøvning."/>
+                                <Answer AnswerId="57545" OptionText="Avsluttet etter langtidsbruk."/>
+                </FormItem>
+        </Item>
+        <Item ItemId="10293" ItemType="2" VarName="CGM_USE" LoincScale="ORD" DisplayFormat="">
+                <FormItem ItemHeader="Bruksprosent" ItemText="Hvor stor del av tiden brukes sensorfunksjonen" ItemHelp="" Visibility="1" Optional="0">
+                                <Answer AnswerId="57580" OptionText="0-25%" VerboseText="Bruker sensor &lt; 25% av tiden."/>
+                                <Answer AnswerId="57581" OptionText="25-50%" VerboseText="Bruker sensor 25-50% av tiden."/>
+                                <Answer AnswerId="57582" OptionText="50-75%" VerboseText="Bruker sensor 50-75% av tiden."/>
+                                <Answer AnswerId="57583" OptionText="Over 75%" VerboseText="Bruker sensor over 75% av tiden."/>
+                </FormItem>
+        </Item>
+    </Page>
+    <Page PageTitle="Flash måling*">
+        <Item ItemId="1411" ItemType="1" VarName="NDV_FLASH_COUNT" LoincScale="QN" DisplayFormat="">
+                <FormItem ItemText="Antall &quot;flash&quot;-målinger daglig" ItemHelp="" MinExpression="0" MaxExpression="100" Visibility="1" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
     </Page>
-    <Page PageTitle="">
-        <Item ItemId="3352" ItemType="2" VarName="NDV_KETOACIDOSIS" LoincScale="ORD" DisplayFormat="Vertical">
-                <FormItem ItemHeader="Ketoacidose" ItemText="Innlagt for ketoacidose:" ItemHelp="" MinExpression="" MaxExpression="" Visibility="1" CarryForward="1" Optional="0">
-                                <Answer AnswerId="16661" OptionText="Aldri*"/>
-                                <Answer AnswerId="16662" OptionText="en gang."/>
-                                <Answer AnswerId="16663" OptionText="flere ganger."/>
-                                <Answer AnswerId="20903" OptionText="Ukjent*"/>
+    <Page PageTitle="Egenmålinger per uke*">
+        <Item ItemId="4059" ItemType="1" VarName="NDV_SELFMON_COUNT" LoincScale="QN" UnitStr="ganger/uke" DisplayFormat="">
+                <FormItem ItemText="Antall egenmålinger per uke (ganger/uke)" ItemHelp="" MinExpression="0" MaxExpression="140" Visibility="1" Optional="0">
+                                <Answer/>
                 </FormItem>
         </Item>
     </Page>
@@ -495,7 +552,7 @@
                 </FormItem>
         </Item>
     </Page>
-    <Page PageTitle="Vitale mål">
+    <Page PageTitle="Klinisk undersøkelse">
         <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
                 <FormItem ItemText="Høyde (cm)" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
@@ -550,6 +607,107 @@
                 </FormItem>
         </Item>
     </Page>
+    <Page PageTitle="Behandlingsmål">
+        <Item ItemId="4526" ItemType="2" VarName="INDIVIDUAL_GOALS" LoincScale="ORD" DisplayFormat="">
+                <FormItem ItemHeader="Individuelle behandlingsmål" ItemText="Vil du angi individuelle behandlingsmål for denne pasienten?" ItemHelp="Blodtrykk, HbA1c og LDL-kolesterol" MinExpression="" MaxExpression="" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer AnswerId="24020" OptionText="Ja" VerboseText="Individuelle mål." ShortCode="J"/>
+                                <Answer AnswerId="24021" OptionText="Nei" VerboseText="Standard mål." ShortCode="N"/>
+                </FormItem>
+        </Item>
+    </Page>
+    <Page PageTitle="Individuelle behandlingsmål">
+        <Item ItemId="3938" ItemType="1" VarName="GOAL_SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+                <FormItem ItemText="Mål systolisk trykk (mmHg)" ItemHelp="" MinExpression="110" MaxExpression="180" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3939" ItemType="1" VarName="GOAL_DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+                <FormItem ItemText="Mål diastolisk trykk (mmHg)" ItemHelp="" MinExpression="60" MaxExpression="120" Visibility="1" CarryForward="1" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="4081" ItemType="1" VarName="GOAL_HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
+                <FormItem ItemText="Mål HbA1c (%)" ItemHelp="" MinExpression="6" MaxExpression="12" Visibility="1" CarryForward="1" Decimals="1" DefaultValue="7">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="4083" ItemType="1" VarName="GOAL_LDL" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem ItemText="Mål LDL-kolesterol (mmol/l)" ItemHelp="" MinExpression="1" MaxExpression="5" Visibility="1" CarryForward="1" Decimals="1" DefaultValue="3">
+                                <Answer/>
+                </FormItem>
+        </Item>
+    </Page>
+    <Page PageTitle="Standard behandlingsmål*">
+        <Item ItemId="4522" ItemType="1" VarName="STDGOAL_SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+                <FormItem ItemText="Mål systolisk blodtrykk (mmHg)" ItemHelp="" Expression="135" MinExpression="" MaxExpression="" Visibility="1" Optional="1" FormatStr="Blodtrykksmål %s">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="4523" ItemType="1" VarName="STDGOAL_DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+                <FormItem ItemText="Mål diastolisk blodtrykk (mmHg)" ItemHelp="" Expression="85" MinExpression="" MaxExpression="" Visibility="1" Optional="1" FormatStr="¬/%s mmHg.">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="4524" ItemType="1" VarName="STDGOAL_LDL" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
+                <FormItem ItemText="Mål LDL (mmol/l)" ItemHelp="" Expression="2.5 - 0.7*ISNULL(NDV_CHD-1)" MinExpression="" MaxExpression="" Visibility="1" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="4525" ItemType="1" VarName="STDGOAL_HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
+                <FormItem ItemText="Mål HbA1c (%)" ItemHelp="Fast verdi, ikke påvirket av alder eller kjønn." Expression="7" MinExpression="" MaxExpression="" Visibility="1" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+    </Page>
+    <Page PageTitle="Måloppnåelse (beregninger)*">
+        <Item ItemId="7512" ItemType="1" VarName="ActualHbA1cGoal" LoincScale="QN" UnitStr="%" DisplayFormat="">
+                <FormItem ItemText="Beregnet aktuelt HbA1c-mål (%)" ItemHelp="Bruker standardmål hvis spørsmål om individuelle mål er besvart med Nei eller ubesvart, evt. besvart med Ja, men individuelt mål likevel ikke er oppgitt.  Hidden men ikke ReadOnly, skal lagres for gjenbruk." Expression="STDGOAL_HBA1C * ISPOS( 1 - ISNULL( INDIVIDUAL_GOALS - 1 ) + ISNEG( GOAL_HBA1C ) ) + &#xA;GOAL_HBA1C * ISNULL( INDIVIDUAL_GOALS - 1 ) * ISPOS(GOAL_HBA1C)" MinExpression="" MaxExpression="" Visibility="-1" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="8974" ItemType="1" VarName="ActualSbpGoal" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+                <FormItem ItemText="Beregnet aktuelt blodtrykksmål (mmHg)" ItemHelp="Bruker standardmål hvis spørsmål om individuelle mål er besvart med Nei eller ubesvart, evt. besvart med Ja, men individuelt mål likevel ikke er oppgitt.  Hidden men ikke ReadOnly, skal lagres for gjenbruk." Expression="STDGOAL_SYSBP * ISPOS( 1 - ISNULL( INDIVIDUAL_GOALS - 1 ) + ISNEG( GOAL_SYSBP ) ) + GOAL_SYSBP * ISNULL( INDIVIDUAL_GOALS - 1 ) * ISPOS(GOAL_SYSBP)" ExcludeFromText="1" Visibility="-1" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7513" ItemType="1" VarName="ActualHbA1c" LoincScale="QN" UnitStr="%" DisplayFormat="">
+                <FormItem ItemText="Beregnet aktuell verdi for HbA1c (%)" ItemHelp="Bruker HbA1c-verdi fra dette skjemaet, alternativt hentes det fra autoklassifiserte journaldata,&#xA;kun til vurdering av måloppnåelse.  Skal ikke lagres i database.  Hidden og ReadOnly." Expression="ISPOS(HBA1C)*HBA1C + ISNEG(HBA1C)*VMR.LAB.HBA1C" MinExpression="" MaxExpression="" Visibility="-1" ReadOnly="1" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="7514" ItemType="1" VarName="ActualLDLGoal" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
+                <FormItem ItemText="Beregnet aktuelt LDL-mål (mmol/L)" ItemHelp="Bruker standardmål hvis spørsmål om individuelle mål er besvart med Nei eller ubesvart, evt. besvart med Ja, men individuelt mål likevel ikke er oppgitt.  Hidden men ikke ReadOnly, skal lagres for gjenbruk." Expression="STDGOAL_LDL * ISPOS( 1 - ISNULL( INDIVIDUAL_GOALS - 1 ) + ISNEG( GOAL_LDL ) ) + GOAL_LDL * ISNULL( INDIVIDUAL_GOALS - 1 ) * ISPOS(GOAL_LDL)" MinExpression="" MaxExpression="" Visibility="-1" Optional="1" Decimals="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="4226" ItemType="2" VarName="HBA1C_GOAL_REACHED" LoincScale="ORD" DisplayFormat="">
+                <FormItem ItemText="HbA1c mål nådd" ItemHelp="" Expression="ISPOS(ActualHbA1c)*(1+ISNEG(ActualHbA1cGoal-ActualHbA1c)) + 3*ISNEG(ActualHbA1c)" MinExpression="" MaxExpression="" Visibility="-1" Optional="1">
+                                <Answer AnswerId="22665" OptionText="Mål nådd."/>
+                                <Answer AnswerId="22666" OptionText="Ikke nådd mål."/>
+                                <Answer AnswerId="22667" OptionText="Ukjent HbA1c."/>
+                </FormItem>
+        </Item>
+        <Item ItemId="4213" ItemType="2" VarName="SYSBP_GOAL_REACHED" LoincScale="ORD" DisplayFormat="Vertical">
+                <FormItem ItemText="Blodtrykksmål nådd" ItemHelp="" Expression="ISPOS(SYSBP) * ( 1+&#xA;ISNEG(STDGOAL_SYSBP-SYSBP)*ISNULL(INDIVIDUAL_GOALS+1)+&#xA;ISNEG(GOAL_SYSBP-SYSBP)*ISNULL(INDIVIDUAL_GOALS-1)+&#xA;ISNEG(STDGOAL_SYSBP-SYSBP)*ISNULL(INDIVIDUAL_GOALS-2) ) +&#xA;ISNEG(SYSBP) * 3" MinExpression="" MaxExpression="" Visibility="0" Optional="1">
+                                <Answer AnswerId="22432" OptionText="Mål nådd."/>
+                                <Answer AnswerId="22433" OptionText="Ikke nådd mål."/>
+                                <Answer AnswerId="22434" OptionText="Ukjent blodtrykk."/>
+                </FormItem>
+        </Item>
+        <Item ItemId="4225" ItemType="2" VarName="LDL_GOAL_REACHED" LoincScale="ORD" DisplayFormat="">
+                <FormItem ItemText="LDL-mål nådd" ItemHelp="" Expression="ISPOS( VMR.LAB.LDL ) * ( 1 + ISNEG( ActualLDLGoal - VMR.LAB.LDL ) ) + 3 * ( 1 - ISPOS( VMR.LAB.LDL ) )" MinExpression="" MaxExpression="" Visibility="-1" Optional="1">
+                                <Answer AnswerId="22651" OptionText="Mål nådd."/>
+                                <Answer AnswerId="22652" OptionText="Ikke nådd mål."/>
+                                <Answer AnswerId="40491" OptionText="Ukjent LDL."/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2144" ItemType="2" VarName="tmpHbA1cAbove9" LoincScale="ORD">
+                <FormItem ItemText="HbA1c over 9%" ItemHelp="" Expression="2 - ISPOS( ActualHbA1c - 8.99 )" Visibility="-1" Optional="1">
+                                <Answer AnswerId="11153" OptionText="Ja"/>
+                                <Answer AnswerId="11154" OptionText="Nei"/>
+                </FormItem>
+        </Item>
+    </Page>
     <Page PageTitle="Fotstatus">
         <Item ItemId="4636" ItemType="2" VarName="NDV_FOOT_SENS" LoincScale="ORD" DisplayFormat="Vertical">
                 <FormItem ItemText="Normal sensibilitet på føtter" ItemHelp="Vibrasjon normal eller monofilament 4/4" MinExpression="" MaxExpression="" Visibility="1" Optional="0">
@@ -569,6 +727,11 @@
                                 <Answer AnswerId="25162" OptionText="ikke undersøkt."/>
                 </FormItem>
         </Item>
+        <Item ItemId="2124" ItemType="4" VarName="NDV_FOOT_COMMENT" LoincScale="NAR">
+                <FormItem ItemHeader="Kommentar" ItemText="Kommentar for beskrivelse av fotdeformitet, charcot, fotsår ol." ItemHelp="" Expression="" Visibility="1" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
     </Page>
     <Page PageTitle="Supplerende undersøkelser">
         <Item ItemId="527" ItemType="1" VarName="HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
@@ -578,6 +741,16 @@
         </Item>
     </Page>
     <Page PageTitle="Oppsummering">
+        <Item ItemId="2083" ItemType="2" VarName="DP_TILTAK_HBA1C" LoincScale="ORD">
+                <FormItem ItemHeader="Tiltak mot høy HbA1c" ItemText="Er det iverksatt særskilte tiltak mot høy HbA1c?" ItemHelp="Vurder særskilte tiltak fordi HbA1c er på 9% eller mer." Expression="" ExcludeFromText="1" Visibility="1" Optional="1">
+                                <Answer AnswerId="11059" OptionText="Ja"/>
+                                <Answer AnswerId="11060" OptionText="Nei, pasienten ønsker ikke"/>
+                                <Answer AnswerId="11061" OptionText="Nei, ikke aktuelt"/>
+                                <Answer AnswerId="11062" OptionText="Vet ikke / ubesvart"/>
+                </FormItem>
+        </Item>
+    </Page>
+    <Page PageTitle="Vurdering og plan videre*">
         <Item ItemId="4088" ItemType="4" VarName="DP_AVTALER" LoincScale="NAR" DisplayFormat="">
                 <FormItem ItemHeader="Vurdering*" ItemText="Vurdering og plan videre" ItemHelp="Inkludert eventuelle avtaler gjort med pasienten, unntatt timeavtale som er eget punkt." MinExpression="" MaxExpression="" ExcludeCaption="1" Visibility="1" Optional="1">
                                 <Answer/>
@@ -590,36 +763,41 @@
                 </FormItem>
         </Item>
     </Page>
-    <Page PageTitle="Ansvar videre*">
+    <Page PageTitle="Tilbakeført fastlege*">
         <Item ItemId="7747" ItemType="2" VarName="DP_TILBAKE_FASTLEGE" LoincScale="ORD" DisplayFormat="">
-                <FormItem ItemText="Tilbakeført fastlege" ItemHelp="" MinExpression="" MaxExpression="" Visibility="1" Optional="1">
+                <FormItem ItemText="Tilbakeført fastlege" ItemHelp="" Expression="" MinExpression="" MaxExpression="" Visibility="1" Optional="1">
                                 <Answer AnswerId="41486" OptionText="Ja" VerboseText="Tilbakeført til fastlegen." ShortCode="J"/>
                                 <Answer AnswerId="41487" OptionText="Nei" ShortCode="N"/>
                 </FormItem>
         </Item>
     </Page>
-    <Page PageTitle="Annen oppfølging*">
+    <Page PageTitle="Tilbakeført annet sted*">
         <Item ItemId="7748" ItemType="4" VarName="DP_TILBAKE_SPESIALIST" LoincScale="NAR" DisplayFormat="">
-                <FormItem ItemText="Annet sykehus/spesialist" ItemHelp="" MinExpression="" MaxExpression="" Visibility="1" Optional="1">
+                <FormItem ItemText="Annet sykehus/spesialist" ItemHelp="" Expression="" MinExpression="" MaxExpression="" Visibility="1" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="7749" ItemType="4" VarName="DP_TILBAKE_ANNET" LoincScale="NAR" DisplayFormat="">
-                <FormItem ItemText="Andre" ItemHelp="" MinExpression="" MaxExpression="" Visibility="1" Optional="1">
+                <FormItem ItemText="Andre" ItemHelp="" Expression="" MinExpression="" MaxExpression="" Visibility="1" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
     </Page>
-    <Page PageTitle="Varsel om statusendring*">
+    <Page PageTitle="Melding*">
         <Item ItemId="8471" ItemType="8" VarName="VAR8471" LoincScale="MSG" DisplayFormat="">
                 <FormItem ItemHeader="Statusendring" ItemText="Husk å bytte status på pasienten oppe til høyre i skjermbildet, f.eks. til Avsluttet eller Flyttet el.l." ItemHelp="" MinExpression="" MaxExpression="" Visibility="1" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
     </Page>
-    <Page PageTitle="Neste kontroll">
-        <Item ItemId="4089" ItemType="4" VarName="DP_NESTE_KONTROLL" LoincScale="NAR" DisplayFormat="">
-                <FormItem ItemHeader="Neste avtale" ItemText="Avtale og evt tidspunkt for neste konsultasjon" ItemHelp="" MinExpression="" MaxExpression="" Visibility="1" Optional="1">
+    <Page PageTitle="Neste avtale">
+        <Item ItemId="2127" ItemType="4" VarName="DP_AVTALE_LEGE" LoincScale="NAR">
+                <FormItem ItemHeader="Lege" ItemText="Avtale og evt tidspunkt for neste konsultasjon hos lege" ItemHelp="" Expression="" Visibility="1" Optional="1">
+                                <Answer/>
+                </FormItem>
+        </Item>
+        <Item ItemId="2128" ItemType="4" VarName="DP_AVTALE_SYKEPLEIER" LoincScale="NAR">
+                <FormItem ItemHeader="Sykepleier" ItemText="Avtale og evt tidspunkt for neste konsultasjon hos sykepleier" ItemHelp="" Expression="" Visibility="1" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -663,7 +841,6 @@
         <Activate EnumVal="1" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="3414">
-        <Activate EnumVal="2" ComparisonType="1" ComparisonDescription="Equal to"/>
         <Activate EnumVal="3" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="4527">
@@ -692,8 +869,9 @@
         <Activate EnumVal="2" ComparisonType="1" ComparisonDescription="Equal to"/>
         <Activate EnumVal="3" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
-    <PageAction MasterId="5715">
+    <PageAction MasterId="1310">
         <Activate EnumVal="1" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="2" ComparisonType="1" ComparisonDescription="Equal to"/>
         <Activate EnumVal="3" ComparisonType="1" ComparisonDescription="Equal to"/>
         <Activate EnumVal="4" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
@@ -710,6 +888,13 @@
         <Activate EnumVal="3" ComparisonType="1" ComparisonDescription="Equal to"/>
         <Activate EnumVal="4" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
+    <PageAction MasterId="4526">
+        <Activate EnumVal="1" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2144">
+        <Activate EnumVal="1" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
     <PageAction MasterId="7746">
         <Activate EnumVal="1" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
@@ -717,7 +902,7 @@
         <Activate EnumVal="2" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="7746">
-        <Activate EnumVal="1" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="2" ComparisonType="1" ComparisonDescription="Equal to"/>
         <Activate EnumVal="2" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
