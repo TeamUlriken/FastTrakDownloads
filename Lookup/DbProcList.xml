@@ -3609,7 +3609,7 @@ BEGIN
   ORDER BY ce.EventTime DESC
 END]]>
 	</row>
-	<row ProcId="1019" StudyName="NDV" ProcName="NDV.ReportProblemAreas" ProcDesc="PAID - rapport" ProcParams=":StudyId" ListId="FR" GrantTo="public" ChkSum="-1003849686" LastUpdate="2015-03-13T12:13:40.827Z">
+	<row ProcId="1019" StudyName="NDV" ProcName="NDV.ReportProblemAreas" ProcDesc="PAID - rapport (gammel)" ProcParams=":StudyId" ListId="FR" GrantTo="public" MaxVersion="6626" ChkSum="-2027718178" LastUpdate="2018-03-12T12:29:19.763Z">
 		<![CDATA[CREATE PROCEDURE NDV.ReportProblemAreas AS
 BEGIN
 SELECT
@@ -4113,6 +4113,66 @@ BEGIN
   ORDER BY mtpg.SortOrder, dt.StartAt;
 END;]]>
 	</row>
+	<row ProcId="1039" StudyName="NDV" ProcName="NDV.ReportPAID" ProcDesc="PAID - rapport for alle som har vært på aktuelt sted" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="6319" ChkSum="315593688" LastUpdate="2018-03-12T12:04:07.317Z">
+		<![CDATA[CREATE PROCEDURE NDV.ReportPAID( @StudyId INT ) AS 
+BEGIN
+
+  SET NOCOUNT ON;
+  SET XACT_ABORT ON;
+
+  -- Convert old PAID forms
+  
+  BEGIN TRANSACTION;
+  UPDATE dbo.ClinDataPoint SET ItemId = ItemId - 2502, Quantity = Quantity-1, EnumVal = EnumVal - 1
+  WHERE ItemId BETWEEN 3960 AND 3979;
+  UPDATE dbo.ClinDataPoint SET ItemId = 1478 WHERE ItemId = 3980;
+  UPDATE dbo.ClinForm SET FormId = 906 WHERE FormId = 298;
+  IF @@TRANCOUNT > 0 COMMIT TRANSACTION;
+       
+  
+  -- Query all forms in new format
+
+  SELECT
+
+    ce.PersonId, v.FullName AS ReverseName,
+    -- Sum is used as the key to join the rest
+    ce.EventTime, csum.Quantity AS PAIDSUM,
+    -- Get all 20 items
+    cdp1.EnumVal AS PAID01,  cdp2.EnumVal AS PAID02,  cdp3.EnumVal AS PAID03,  cdp4.EnumVal AS PAID04,  cdp5.EnumVal AS PAID05,
+    cdp6.EnumVal AS PAID06,  cdp7.EnumVal AS PAID07,  cdp8.EnumVal AS PAID08,  cdp9.EnumVal AS PAID09,  cdp10.EnumVal AS PAID10,
+    cdp11.EnumVal AS PAID11, cdp12.EnumVal AS PAID12, cdp13.EnumVal AS PAID13, cdp14.EnumVal AS PAID14, cdp15.EnumVal AS PAID15,
+    cdp16.EnumVal AS PAID16, cdp17.EnumVal AS PAID17, cdp18.EnumVal AS PAID18, cdp19.EnumVal AS PAID19, cdp20.EnumVal AS PAID20
+  
+  FROM dbo.ClinDataPoint csum
+  JOIN dbo.ClinEvent ce ON ce.EventId = csum.EventId
+  JOIN dbo.ViewCenterCaseListStub v ON v.PersonId = ce.PersonId
+  
+  JOIN dbo.ClinDatapoint cdp1 ON cdp1.EventId = csum.EventId AND cdp1.ItemId=1458
+  JOIN dbo.ClinDatapoint cdp2 ON cdp2.EventId = csum.EventId AND cdp2.ItemId=1459
+  JOIN dbo.ClinDatapoint cdp3 ON cdp3.EventId = csum.EventId AND cdp3.ItemId=1460
+  JOIN dbo.ClinDatapoint cdp4 ON cdp4.EventId = csum.EventId AND cdp4.ItemId=1461
+  JOIN dbo.ClinDatapoint cdp5 ON cdp5.EventId = csum.EventId AND cdp5.ItemId=1462
+  JOIN dbo.ClinDatapoint cdp6 ON cdp6.EventId = csum.EventId AND cdp6.ItemId=1463
+  JOIN dbo.ClinDatapoint cdp7 ON cdp7.EventId = csum.EventId AND cdp7.ItemId=1464
+  JOIN dbo.ClinDatapoint cdp8 ON cdp8.EventId = csum.EventId AND cdp8.ItemId=1465
+  JOIN dbo.ClinDatapoint cdp9 ON cdp9.EventId = csum.EventId AND cdp9.ItemId=1466
+  JOIN dbo.ClinDatapoint cdp10 ON cdp10.EventId = csum.EventId AND cdp10.ItemId=1467
+  JOIN dbo.ClinDatapoint cdp11 ON cdp11.EventId = csum.EventId AND cdp11.ItemId=1468
+  JOIN dbo.ClinDatapoint cdp12 ON cdp12.EventId = csum.EventId AND cdp12.ItemId=1469
+  JOIN dbo.ClinDatapoint cdp13 ON cdp13.EventId = csum.EventId AND cdp13.ItemId=1470
+  JOIN dbo.ClinDatapoint cdp14 ON cdp14.EventId = csum.EventId AND cdp14.ItemId=1471
+  JOIN dbo.ClinDatapoint cdp15 ON cdp15.EventId = csum.EventId AND cdp15.ItemId=1472
+  JOIN dbo.ClinDatapoint cdp16 ON cdp16.EventId = csum.EventId AND cdp16.ItemId=1473
+  JOIN dbo.ClinDatapoint cdp17 ON cdp17.EventId = csum.EventId AND cdp17.ItemId=1474
+  JOIN dbo.ClinDatapoint cdp18 ON cdp18.EventId = csum.EventId AND cdp18.ItemId=1475
+  JOIN dbo.ClinDatapoint cdp19 ON cdp19.EventId = csum.EventId AND cdp19.ItemId=1476
+  JOIN dbo.ClinDatapoint cdp20 ON cdp20.EventId = csum.EventId AND cdp20.ItemId=1477
+
+  WHERE csum.ItemId = 1478 AND v.StudyId = @StudyId
+  ORDER BY ce.PersonId,ce.EventTime;
+
+END]]>
+	</row>
 	<row ProcId="3000" StudyName="ROAS" ProcName="Dash.RoasGroupCount" ProcDesc="Pasienter per behandlingssted" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="-272109820" LastUpdate="2018-03-07T18:54:11.367Z">
 		<![CDATA[CREATE PROCEDURE Dash.RoasGroupCount AS
 BEGIN
@@ -4184,7 +4244,7 @@ BEGIN
   ORDER BY TimeAxis DESC, CenterId;
 END]]>
 	</row>
-	<row ProcId="3002" StudyName="NDV" ProcName="Dash.NdvType1HbA1cAbove9" ProcDesc="Prosentandel Type-1 med HbA1c på 9 eller mer" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="-582414338" LastUpdate="2018-03-07T21:42:19.977Z">
+	<row ProcId="3002" StudyName="NDV" ProcName="Dash.NdvType1HbA1cAbove9" ProcDesc="Prosentandel Type-1 med HbA1c på 9 eller mer" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="-1610609341" LastUpdate="2018-03-12T08:28:06.137Z">
 		<![CDATA[CREATE PROCEDURE Dash.NdvType1HbA1cAbove9 AS
 BEGIN
 
@@ -4210,7 +4270,7 @@ BEGIN
   
     (
       SELECT StartTime FROM Report.TimePeriods ml 
-      WHERE PeriodType = 'MONTH' AND StartTime > DATEADD( YY, -5, GETDATE() ) AND StartTime < GETDATE()
+      WHERE PeriodType = 'MONTH' AND StartTime > DATEADD( YY, -10, GETDATE() ) AND StartTime < GETDATE()
     ) MonthList
   
   CROSS APPLY
@@ -4275,7 +4335,7 @@ BEGIN
 
 END;]]>
 	</row>
-	<row ProcId="3004" StudyName="NDV" ProcName="Dash.NdvType1HbA1cBelow7" ProcDesc="Prosentandel Type-1 med HbA1c under 7" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="78529040" LastUpdate="2018-03-07T21:42:38.283Z">
+	<row ProcId="3004" StudyName="NDV" ProcName="Dash.NdvType1HbA1cBelow7" ProcDesc="Prosentandel Type-1 med HbA1c under 7" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="1834441688" LastUpdate="2018-03-12T08:28:20.983Z">
 		<![CDATA[CREATE PROCEDURE Dash.NdvType1HbA1cBelow7 AS
 BEGIN
   SELECT
@@ -4300,7 +4360,7 @@ BEGIN
   
     (
       SELECT StartTime FROM Report.TimePeriods ml 
-      WHERE PeriodType = 'MONTH' AND StartTime > DATEADD( YEAR, -5, GETDATE() ) AND StartTime < GETDATE()
+      WHERE PeriodType = 'MONTH' AND StartTime > DATEADD( YEAR, -10, GETDATE() ) AND StartTime < GETDATE()
     ) MonthList
   
   CROSS APPLY
@@ -4365,6 +4425,66 @@ BEGIN
   ORDER BY TimeAxis DESC;
   
 END;]]>
+	</row>
+	<row ProcId="3006" StudyName="NDV" ProcName="Dash.NdvType1HbA1cAverage" ProcDesc="Min/max og snittverdi for HbA1c" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="-607228268" LastUpdate="2018-03-12T22:56:24.497Z">
+		<![CDATA[CREATE PROCEDURE Dash.NdvType1HbA1cAverage AS
+BEGIN
+  SELECT
+  
+    Report.PartitionKey( ul.CenterId ) AS PartitionKey,
+    Report.RowKeyReverse( Dataset.TimeAxis ) AS RowKey,
+    'MM' AS TimeResolution,
+    Dataset.*,
+    DataSource.*
+  
+    FROM
+  
+  ( SELECT
+      MonthList.StartTime AS TimeAxis, 
+      AllType1.NumPatients,
+      Agg.MinHbA1c,
+      Agg.AvgHbA1c, 
+      Agg.MaxHbA1c
+    FROM
+  
+    (
+      SELECT StartTime FROM Report.TimePeriods ml 
+      WHERE PeriodType = 'MONTH' AND StartTime > DATEADD( YEAR, -10, GETDATE() ) AND StartTime < GETDATE()
+    ) MonthList
+  
+  CROSS APPLY
+  
+    (
+      SELECT COUNT(Type1.NumResult) AS NumHbA1c,
+        MIN(Type1.NumResult) AS MinHbA1c,
+        MAX(Type1.NumResult) AS MaxHbA1c,
+        AVG(Type1.NumResult) AS AvgHbA1c
+      FROM
+      (
+        SELECT cas.PersonId,lab.NumResult
+        FROM NDV.GetRecentPatientsTable( 1, MonthList.StartTime, 15 ) cas
+        JOIN dbo.GetLastLabDataTable( 45, MonthList.StartTime) lab ON lab.PersonId = cas.PersonId
+      ) Type1
+    ) Agg
+  
+  CROSS APPLY 
+  
+    (
+      SELECT COUNT(*) AS NumPatients FROM NDV.GetRecentPatientsTable( 1, MonthList.StartTime, 15 )
+    ) AllType1
+    WHERE AllType1.NumPatients > 0
+  )  Dataset
+  
+  CROSS JOIN Report.DataSource() AS DataSource
+  
+  JOIN dbo.UserList ul ON ul.UserId = USER_ID()
+  
+  ORDER BY TimeAxis DESC;
+
+END;
+
+
+]]>
 	</row>
 	<row ProcId="5001" StudyName="GBD" ProcName="GBD.UpdateMustScoreForAll" ProcDesc="Oppdatering av MUST for alle, trenger GBD.RuleMust på plass" ProcParams=":StudyId" ListId="UTIL" GrantTo="public" ChkSum="-1790760205" LastUpdate="2016-06-06T12:55:01.353Z">
 		<![CDATA[CREATE PROCEDURE GBD.UpdateMustScoreForAll( @StudyId INT ) AS
