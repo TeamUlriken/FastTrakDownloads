@@ -2219,6 +2219,22 @@ BEGIN
   WHERE v.StudyId=@StudyId;
 END]]>
 	</row>
+	<row ProcId="319" StudyName="NDV" ProcName="NDV.GetCaseListKiosk" ProcDesc="Prosjekter: PROMS fra Kiosk" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6600" ChkSum="-1633592601" LastUpdate="2018-03-19T13:38:51.127Z">
+		<![CDATA[CREATE PROCEDURE NDV.GetCaseListKiosk( @StudyId INT ) AS
+BEGIN
+  SELECT v.PersonId, v.DOB, v.FullName, p.GenderId, 
+   CASE cf.Archived WHEN 1 THEN 'Kontroll' ELSE 'Intervensjon' END AS GroupName, 
+   'Tid ' + dbo.ShortTime( ce.EventTime) + ', Kode: ' + kf.FormTag AS InfoText, 
+    kf.RowId, ce.EventTime, cf.ClinFormId
+  FROM PROM.KioskForm kf
+    JOIN dbo.ClinForm cf ON cf.ClinFormId = kf.ClinFormId AND cf.FormId=906
+    JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId
+    JOIN dbo.ViewCaseListStub v ON v.PersonId = ce.PersonId 
+    JOIN dbo.Person p ON p.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId
+  ORDER BY kf.RowId;
+END;]]>
+	</row>
 	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1529014000" LastUpdate="2013-11-14T14:52:27.327Z">
 		<![CDATA[CREATE PROCEDURE BAR.GetHospitalizedWithoutAdmissionForm( @StudyId INT )
 AS
