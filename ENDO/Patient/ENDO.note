@@ -100,21 +100,27 @@
 	    
 	</TextExport>
 	
-    <TextExport Title="Dagens notat med labdata siste 90 dager (Diabetes)" MatchForm="DIAPOL|DiaInnleggelse" Default="False">
+    <TextExport Title="Dagens notat med labdata siste 45 dager (Diabetes)" MatchForm="DIAPOL|DiaInnleggelse" Default="False">
     
-        <!-- Fargetabell er felles -->
+        <!-- Fargetabell er lik -->
         
         <TextSegment Name="Fargetabell" Comment="Ikke synlig">
             {\colortbl;\red192\green32\blue32;\red192\green64\blue64;\red32\green32\blue64;\red0\green0\blue0;\red255\green0\blue0;}
         </TextSegment>
 
+        <!-- Templates for data og overskrifter er like  -->
+
         <Templates DataTemplate="{\cf4 %s\cf1}" EmptyTemplate="" HeaderTemplate="{\cf3\ul\b %s\b0\ul0\par}" ErrorTemplate="" />
         
-		<TextSegment Name="Background" Header="Bakgrunn">
+        <!-- Her begynner notatet --> 
+        
+		<TextSegment Header="Bakgrunn">
 	    	[SUMMARY.* ClearSkiplist FormHeaderTemplate="{\cf3\ul\b %s\b0\ul0\par}" TextFormat="RTF"]
+	    	[ITEM.YRKE.AsString Format="%s."]
 			[ITEM.NDV_TYPE.OptionText][ITEM.NDV_DIAGNOSE_YYYY Format=", diagnostisert %g.\~"]
-			[ITEM.DIABETESKOMPLIKASJONER.Text]
-		    [SUMMARY.* SkipList="NDV_TYPE,NDV_DIAGNOSE_YYYY,DIABETESKOMPLIKASJONER"]
+			[ITEM.DIABETESKOMPLIKASJONER.Text Format="%s\~"]
+			[ITEM.DP_DIAGNOSER_TEKST.AsString Format="%s\~"]
+		    [SUMMARY.* SkipList="NDV_TYPE,NDV_DIAGNOSE_YYYY,DIABETESKOMPLIKASJONER,DP_AVTALER,DP_AVSLUTTET,DP_TILBAKE_FASTLEGE,DP_TILBAKE_SPESIALIST,DP_TILBAKE_ANNET,DP_AVTALE_LEGE,DP_AVTALE_SYKEPLEIER"]
 		</TextSegment>
 		
 		<TextSegment Name="Complications">
@@ -135,13 +141,13 @@
 		    [SUMMARY.* SkipList="NDV_FAM_CHD,FAM_CHD_COMMENT"]
 		</TextSegment>
 		
-		<TextSegment Name="Consent">
+		<TextSegment Comment="Samtykke">
 			[ITEM.NDV_CONSENT.Text]
 		    [SUMMARY.* SkipList="NDV_CONSENT"]
 			{\par\par}
 		</TextSegment>
 		
-		<TextSegment Name="Forms">
+		<TextSegment Comment="Dagens notat">
 			[SUMMARY.DIAPOL_PRIMARY]
 			[SUMMARY.DIAPOL_GRAVIDE]
 			[SUMMARY.DiaInnleggelse]
@@ -158,13 +164,13 @@
 			[SUMMARY.DIAPOL_EYE]
 			[SUMMARY.DIAPOL_FOOT]
 			[SUMMARY.DIAPOL_PAID]
-			[SUMMARY.PAID]
 			[SUMMARY.ESS]
-			{\par}
+			[SUMMARY.Addison]
+		    {\par}
 		</TextSegment>
 		
 		<TextSegment Name="Lab" Header="Labdata">
-			[LabText.Latest Output="RTF" MaxAge="90"]{\par\par}
+			[LabText.Latest Output="RTF" MaxAge="45"]{\par\par}
 		</TextSegment>
 		
 		<TextSegment Name="Meds" Header="Medikamenter">
@@ -173,8 +179,18 @@
 	    
 		<TextSegment Name="Insuline" VisibilityExpression="ISNULL(ITEM.ATC_A10A.AsInteger-1)">
 			[SUMMARY.DIAPOL_INSULIN|INSULIN_PUMP1 AllUsers MaxAge="365"]
+		    {\par}
 		</TextSegment>			
-
+		
+		<TextSegment Name="Summary" Header="Oppsummering">
+			[FORM.DP_AVTALER.AsString] 
+			[FORM.DP_AVSLUTTET.Text] 
+			[FORM.DP_TILBAKE_FASTLEGE.Text]
+			[FORM.DP_TILBAKE_SPESIALIST.Text]
+			[FORM.DP_TILBAKE_ANNET.Text]
+			[FORM.DP_AVTALE_LEGE.Text]
+			[FORM.DP_AVTALE_SYKEPLEIER.Text]
+		</TextSegment>			
 		
 	</TextExport>
 	
