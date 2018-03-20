@@ -2681,15 +2681,32 @@ END]]>
 	<row ProcId="752" StudyName="ROAS" ProcName="PROM.GetCaseListMyCompletedProms" ProcDesc="PROM: Mine utfylte PROM-skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6631" ChkSum="-403560327" LastUpdate="2017-11-18T08:41:36.077Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="753" StudyName="ROAS" ProcName="ROAS.GetCaseListConsentBefore16" ProcDesc="ROAS: Samtykke før 16" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-497657115" LastUpdate="2018-03-05T08:45:39.570Z">
+	<row ProcId="753" StudyName="ROAS" ProcName="ROAS.GetCaseListConsentBefore16" ProcDesc="Samtykke: Alle med barnesamtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" ChkSum="-336159069" LastUpdate="2018-03-20T10:01:50.260Z">
 		<![CDATA[CREATE PROCEDURE ROAS.GetCaseListConsentBefore16( @StudyId INT )  AS
 BEGIN
   SELECT v.*,s.OptionText AS InfoText  FROM dbo.GetLastEnumValuesTable( 2143, NULL ) s
   JOIN dbo.ViewActiveCaseListStub v ON v.PersonId=s.PersonId
   WHERE s.EnumVal = 2 AND v.StudyId = @StudyId
-  AND DATEDIFF(YEAR,DOB,GETDATE()) >  14
   ORDER BY DOB DESC
 END]]>
+	</row>
+	<row ProcId="754" StudyName="ROAS" ProcName="ROAS.GetCaseListConsentUpdateNeeded" ProcDesc="Samtykke: Trenger nytt samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" ChkSum="-644012716" LastUpdate="2018-03-20T10:02:02.913Z">
+		<![CDATA[CREATE PROCEDURE ROAS.GetCaseListConsentUpdateNeeded( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, s.OptionText AS InfoText 
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.GetLastEnumValuesTable( 2143, NULL ) s ON s.PersonId = v.PersonId
+  WHERE s.EnumVal = 3 AND v.StudyId = @StudyId; 
+END;]]>
+	</row>
+	<row ProcId="755" StudyName="ROAS" ProcName="ROAS.GetCaseListAdultConsentNeeded" ProcDesc="Samtykke: Trenger voksensamtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" ChkSum="805583023" LastUpdate="2018-03-20T10:02:14.433Z">
+		<![CDATA[CREATE PROCEDURE ROAS.GetCaseListAdultConsentNeeded( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, s.OptionText AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.GetLastEnumValuesTable( 2143, NULL ) s ON s.PersonId = v.PersonId
+  WHERE s.EnumVal = 2 AND DATEDIFF( YEAR, v.DOB, GETDATE()) >= 16 AND v.StudyId=@StudyId;
+END;]]>
 	</row>
 	<row ProcId="800" StudyName="HOFTE" ProcName="dbo.GetCaseListLastGamma" ProcDesc="Operasjon: Gammanagling" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1506179999" LastUpdate="2013-09-03T11:41:34.540Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListLastGamma( @StudyId INT ) AS
