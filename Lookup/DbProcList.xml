@@ -198,7 +198,7 @@ BEGIN
   EXEC GetCaseListNewForms @StudyId,7
 END]]>
 	</row>
-	<row ProcId="16" StudyName="*" ProcName="MetadataUpdate" ProcDesc="Superbruker: Oppdater metadata" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="328844482" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="16" StudyName="*" ProcName="dbo.MetadataUpdate" ProcDesc="Superbruker: Oppdater metadata" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-445211586" LastUpdate="2018-03-23T11:34:49.477Z">
 		<![CDATA[CREATE PROCEDURE dbo.MetadataUpdate( @StudyId INT ) AS
 BEGIN
   SET NOCOUNT ON;
@@ -1294,6 +1294,24 @@ FROM
   WHERE v.StudyId=@StudyId
 ) population
 ORDER BY FastAntall DESC, BehovAntall DESC;
+END;]]>
+	</row>
+	<row ProcId="176" StudyName="GBD" ProcName="GBD.GetCaseListGlobalB12" ProcDesc="Forskning: B12-behandling" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-55569013" LastUpdate="2018-03-23T11:33:56.047Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListGlobalB12( @StudyId INT ) AS
+BEGIN
+  SELECT
+    sc.PersonId, p.DOB, 
+      case p.GenderId when 1 THEN 'Mann' WHEN 2 THEN 'Kvinne' END AS FullName,
+	  ss.StatusText as GroupName,
+    p.GenderId,
+    ISNULL(ot.EnumVal,0) AS Oppholdstype, ISNULL(ot.OptionText,'Variabel 121 mangler.' ) AS InfoText, -- Adminskjema 
+    ss.StatusId
+  FROM dbo.StudCase sc 
+  JOIN Person p ON p.PersonId = sc.PersonId
+  JOIN dbo.StudyGroup sg ON sg.StudyId = sc.StudyId and sg.GroupId = sc.GroupId AND sg.GroupActive = 1
+  JOIN dbo.StudyStatus ss ON ss.StudyId = sc.StudyId and ss.StatusId = sc.FinState AND ss.StatusActive = 1
+  LEFT OUTER JOIN dbo.GetLastEnumValuesTable( 121, GETDATE() ) ot ON ot.PersonId = sc.PersonId
+  WHERE ( sc.StudyId = @StudyId ) AND  ( ( ss.StatusId = 7 ) OR ( ot.EnumVal =  5 ) );
 END;]]>
 	</row>
 	<row ProcId="201" StudyName="NDV.BASE" ProcName="NDV.GetPumpWithHighHbA1c" ProcDesc="Utvalg av Type-1 m/pumpe basert på alder og HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="462939626" LastUpdate="2015-06-12T07:59:28.400Z">
@@ -4231,6 +4249,27 @@ BEGIN
   WHERE csum.ItemId = 1478 AND v.StudyId = @StudyId
   ORDER BY ce.PersonId,ce.EventTime;
 
+END]]>
+	</row>
+	<row ProcId="2001" StudyName="*" ProcName="Report.GetFormData" ProcDesc="QuickStat: Skjemadata for et skjema og en person" ProcParams=":PersonId, :FormName" ListId="QS" GrantTo="public" MinVersion="6634" ChkSum="582821676" LastUpdate="2018-03-26T07:39:19.097Z">
+		<![CDATA[CREATE PROCEDURE Report.GetFormData( @PersonId INT, @FormName VARCHAR(32) ) AS
+BEGIN
+  -- Retrieve data actually registered on specific form with latest data first
+  -- The date conversion in DATEDIFF makes the quantity compatible with Excel dates.
+  -- Excel has a bug for the year 1900, See https://www.joelonsoftware.com/2006/06/16/my-first-billg-review/.
+  SELECT a.* FROM
+  (
+    SELECT ce.PersonId, mi.VarName, ISNULL(dp.Quantity, ISNULL(DATEDIFF(DD,'1899-12-30',dp.DTVal),DATALENGTH(dp.TextVal))) AS Quantity, ce.EventTime, dp.RowId,
+      RANK() OVER ( PARTITION BY mi.ItemId ORDER BY ce.EventTime, dp.RowId DESC ) AS OrderBy 
+    FROM dbo.ClinDatapoint dp 
+      JOIN dbo.ClinEvent ce ON ce.EventId = dp.EventId
+      JOIN dbo.ClinForm cf ON cf.EventId = ce.EventId
+      JOIN dbo.MetaItem mi ON mi.ItemId = dp.ItemId
+      JOIN dbo.MetaFormItem mfi ON mfi.FormId = cf.FormId AND mfi.ItemId = mi.ItemId
+      JOIN dbo.MetaForm mf ON mf.FormId = mfi.FormId 
+    WHERE mf.FormName = @FormName AND ce.PersonId = @PersonId
+  ) a
+  WHERE a.OrderBy = 1;
 END]]>
 	</row>
 	<row ProcId="3000" StudyName="ROAS" ProcName="Dash.RoasGroupCount" ProcDesc="Pasienter per behandlingssted" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="-272109820" LastUpdate="2018-03-07T18:54:11.367Z">
