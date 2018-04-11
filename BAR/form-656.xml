@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<form form_id="656" form_uid="BAR_ADMISSION_NEW" title="New Admission" calculate_invalid="False" rating_scale="False" status="Open" repeatable="1" >
+<form form_id="656" form_uid="BAR_ADMISSION_NEW" title="F. New Admission" calculate_invalid="False" rating_scale="False" status="Open" repeatable="1" >
 <instructions></instructions>
 
 <!-- Start: Form enums, generated XML -->
@@ -117,26 +117,26 @@
 <!-- Start: Form items, generated XML -->
 
 <question item_id="6169" mid="BarInclusion" datatype="DATE" page_number="1" page_title="Admission" question_text="Date of first contact" optional="0" carry_forward="1" read_only="1" min_value="Patient.DOB" max_value="NOW" help_text="Same as admission date if hospitalised" group_id="BarInclusion" />
-<question item_id="6170" mid="BarInclusionAge" datatype="QN" page_number="1" page_title="Admission" question_text="Age at first contact (years)" optional="0" carry_forward="1" units="years" decimals="1" expression="(BarInclusion - Patient.DOB ) / 365.25" group_id="BarInclusionAge" />
+<question item_id="6170" mid="BarInclusionAge" datatype="QN" page_number="1" page_title="Admission" question_text="Age at first contact (years)" optional="1" carry_forward="1" units="years" decimals="1" expression="(BarInclusion - Patient.DOB ) / 365.25" group_id="BarInclusionAge" />
 <question item_id="8091" mid="VAR8091" datatype="ORD" page_number="1" page_title="Admission" question_text="Hospital admission" optional="1" enumeration_uid="8091" />
 <question item_id="4210" mid="ZIP" datatype="NAR" page_number="2" question_text="Postnummer" optional="0" multiline="0" group_id="ZIP" />
 <question item_id="6168" mid="BarReferredFrom" datatype="ORD" page_number="2" question_text="Referred from" optional="0" enumeration_uid="6168" group_id="BarReferredFrom" />
 <question item_id="6167" mid="BarTrial" datatype="ORD" page_number="2" question_text="Trial" optional="0" carry_forward="1" enumeration_uid="6167" group_id="BarTrial" />
 <question item_id="3225" mid="HEIGHT" datatype="QN" page_number="3" page_title="Vitals" question_text="Height (cm)" optional="0" min_value="50" max_value="220" units="cm" help_text="Uten sko." group_id="HEIGHT" />
 <question item_id="3224" mid="WEIGHT" datatype="QN" page_number="3" page_title="Vitals" question_text="Weight (kg)" optional="0" min_value="10" max_value="400" units="kg" decimals="1" help_text="Uten sko og yttert&#248;y." group_id="WEIGHT" />
-<question item_id="3310" mid="BMI" datatype="QN" page_number="3" page_title="Vitals" question_text="BMI (kg/m2)" optional="0" min_value="5" max_value="150" units="kg/m2" decimals="1" expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" help_text="Beregnes automatisk" group_id="BMI" />
+<question item_id="3310" mid="BMI" datatype="QN" page_number="3" page_title="Vitals" question_text="BMI" optional="1" min_value="5" max_value="150" units="kg/m2" decimals="1" expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" help_text="Beregnes automatisk" group_id="BMI" />
 <question item_id="6030" mid="BarFamilyHistory" datatype="ORD" page_number="4" page_title="Family" question_text="Aneurysm in family" optional="0" carry_forward="1" enumeration_uid="6030" group_id="BarFamilyHistory" />
 <question item_id="6031" mid="BarFamilySiblings" datatype="ORD" page_number="5" question_text="Sibling" optional="0" enumeration_uid="6031" group_id="BarFamilySiblings" />
 <question item_id="6032" mid="BarFamilyParents" datatype="ORD" page_number="5" question_text="Parents" optional="0" enumeration_uid="6032" group_id="BarFamilyParents" />
 <question item_id="6033" mid="BarFamilyOther" datatype="ORD" page_number="5" question_text="Andre" optional="0" enumeration_uid="6033" group_id="BarFamilyOther" />
-<question item_id="6173" mid="BarFamliyError" datatype="ORD" page_number="5" question_text="Error in family" optional="0" visible="-1" expression="2-ISNULL(BarFamilyParents-2)*ISNULL(BarFamilySiblings-2)*ISNULL(BarFamilyOther-2)*ISNULL(BarFamilyHistory-1)" enumeration_uid="6173" group_id="BarFamliyError" />
+<question item_id="6173" mid="BarFamliyError" datatype="ORD" page_number="5" question_text="Error in family" optional="1" visible="-1" expression="2-ISNULL(BarFamilyParents-2)*ISNULL(BarFamilySiblings-2)*ISNULL(BarFamilyOther-2)*ISNULL(BarFamilyHistory-1)" enumeration_uid="6173" group_id="BarFamliyError" />
 <question item_id="6172" mid="VAR6172" datatype="MSG" page_number="6" header="Feil i data" question_text="Du har svart Ja p&#229; at det er aneurysme i familien, men Nei p&#229; alle alternativene. Kontroller svarene." optional="1" />
 <question item_id="6034" mid="VAR6034" datatype="NAR" page_number="7" question_text="Hvem?" optional="0" multiline="0" help_text="Skriv familierelasjon, alder ved debut." />
 <question item_id="6152" mid="VAR6152" datatype="QN" page_number="8" question_text="Family number" optional="0" visible="-1" min_value="1" max_value="9" help_text="Skjult variabel, skal ikke brukes." />
 <question item_id="6035" mid="VAR6035" datatype="ORD" page_number="9" page_title="Smoking" question_text="Regular smoker" optional="0" enumeration_uid="6035" />
 <question item_id="6153" mid="CigsPerDay" datatype="QN" page_number="10" question_text="Daily consumption (cigarettes)" optional="0" min_value="1" max_value="99" units="cigarettes" group_id="CigsPerDay" />
 <question item_id="6154" mid="SmokingYears" datatype="QN" page_number="10" question_text="No of years smoking (years)" optional="0" min_value="0" max_value="TRUNC(Patient.Age-10)" units="years" decimals="1" group_id="SmokingYears" />
-<question item_id="6155" mid="PackYears" datatype="QN" page_number="10" question_text="Pack years (py)" optional="0" units="py" decimals="1" expression="CigsPerDay * SmokingYears / 20" group_id="PackYears" />
+<question item_id="6155" mid="PackYears" datatype="QN" page_number="10" question_text="Pack years (py)" optional="1" units="py" decimals="1" expression="CigsPerDay * SmokingYears / 20" group_id="PackYears" />
 <question item_id="6156" mid="BarCardio" datatype="ORD" page_number="11" page_title="Other details" question_text="Cardiovascular" optional="0" enumeration_uid="6156" group_id="BarCardio" />
 <question item_id="6157" mid="BarAVM" datatype="ORD" page_number="11" page_title="Other details" question_text="Cerebral AVM" optional="0" enumeration_uid="6157" group_id="BarAVM" />
 <question item_id="6158" mid="BarPCKD" datatype="ORD" page_number="11" page_title="Other details" question_text="Polycystic kidney disease" optional="0" enumeration_uid="6158" group_id="BarPCKD" />
@@ -147,7 +147,7 @@
 <question item_id="6163" mid="BarAnticoagulation" datatype="ORD" page_number="11" page_title="Other details" question_text="Antithrombotic treatment" optional="0" enumeration_uid="6163" help_text="Inkluderer platehemming (Albyl-E) og antikoagulasjon (Warfarin), eller andre (Plavix)." group_id="BarAnticoagulation" />
 <question item_id="6164" mid="BarSulfaAllergy" datatype="ORD" page_number="11" page_title="Other details" question_text="Sulfa Allergy" optional="0" enumeration_uid="6164" group_id="BarSulfaAllergy" />
 <question item_id="6165" mid="BarOther" datatype="ORD" page_number="11" page_title="Other details" question_text="Other" optional="0" enumeration_uid="6165" group_id="BarOther" />
-<question item_id="6171" mid="VAR6171" datatype="ORD" page_number="11" page_title="Other details" question_text="None of the above" optional="0" visible="-1" expression="2-ISNULL(BarCardio + BarAVM + BarPCKD + BarDM + BarICH + BarAlcohol + BarHypertension + BarAnticoagulation + BarSulfaAllergy + BarOther - 20)" enumeration_uid="6171" />
+<question item_id="6171" mid="VAR6171" datatype="ORD" page_number="11" page_title="Other details" question_text="None of the above" optional="1" visible="-1" expression="2-ISNULL(BarCardio + BarAVM + BarPCKD + BarDM + BarICH + BarAlcohol + BarHypertension + BarAnticoagulation + BarSulfaAllergy + BarOther - 20)" enumeration_uid="6171" />
 <question item_id="6166" mid="VAR6166" datatype="NAR" page_number="12" question_text="Comment" optional="0" multiline="1" />
 
 <!-- Start: Form actions, generated XML -->
