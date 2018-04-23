@@ -1096,7 +1096,7 @@ BEGIN
   
 END]]>
 	</row>
-	<row ProcId="164" StudyName="GBD" ProcName="GBD.GetCaseListProblemI50" ProcDesc="Diagnose: Hjertevikt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-776533468" LastUpdate="2016-02-28T14:14:34.790Z">
+	<row ProcId="164" StudyName="GBD" ProcName="GBD.GetCaseListProblemI50" ProcDesc="Diagnose: Hjertesvikt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1330447466" LastUpdate="2018-04-12T09:21:47.990Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListProblemI50( @StudyId INT ) AS
 BEGIN 
   EXECUTE dbo.GetCaseListProblem @StudyId,'I50%'
@@ -1315,6 +1315,29 @@ END;]]>
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListGlobalLongterm( @StudyId INT ) AS
 BEGIN
   EXEC dbo.GetCaseListGlobalByStatusId @StudyId, 7;
+END;]]>
+	</row>
+	<row ProcId="177" StudyName="GBD" ProcName="dbo.GetCaseListN05AexLowDoseH04" ProcDesc="Medikamentbruk: Antipsykotika (N05A) unntatt lavdose N05AH04" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-34614722" LastUpdate="2018-04-12T13:26:06.833Z">
+		<![CDATA[CREATE PROCEDURE dbo.GetCaseListN05AexLowDoseH04( @StudyId INT ) AS
+BEGIN
+  SET LANGUAGE Norwegian;
+  SELECT v.PersonId, v.DOB, v.FullName, v.GenderId, v.GroupName,
+  DrugName + ' ' + ISNULL(FORMAT( agg.Dose24hDD, 'N'  ),'?') + '/24h (' + ATC + ')' AS  InfoText
+  FROM 
+  (
+    SELECT *, RANK() OVER ( PARTITION BY PersonId ORDER BY TreatId DESC ) AS ReverseOrderNo
+    FROM
+    ( 
+      SELECT PersonId, TreatId, ATC, DrugName, ot1.Dose24hDD FROM OngoingTreatment ot1 
+      WHERE ATC  LIKE 'N05A%' AND TreatType = 'F'
+      EXCEPT 
+      SELECT PersonId, TreatId, ATC, DrugName, ot2.Dose24hDD FROM OngoingTreatment ot2
+      WHERE ATC = 'N05AH04' AND ot2.Dose24hDD < 100
+    ) ot
+  ) agg
+  JOIN dbo.ViewActiveCaseListStub v ON v.PersonId = agg.PersonId
+  WHERE  agg.ReverseOrderNo = 1
+  ORDER BY v.FullName;
 END;]]>
 	</row>
 	<row ProcId="201" StudyName="NDV.BASE" ProcName="NDV.GetPumpWithHighHbA1c" ProcDesc="Utvalg av Type-1 m/pumpe basert på alder og HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="462939626" LastUpdate="2015-06-12T07:59:28.400Z">
