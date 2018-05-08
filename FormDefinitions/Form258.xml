@@ -59,27 +59,27 @@
     </Page>
     <Page PageId="334" PageNumber="3" PageTitle="Antropometri (se Poliklinisk kontroll)">
         <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-                <FormItem FormItemId="1417" OrderNumber="8" ItemText="Høyde (cm)" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0">
+                <FormItem FormItemId="1417" OrderNumber="8" ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-                <FormItem FormItemId="1397" OrderNumber="9" ItemText="Vekt (kg)" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" Decimals="1">
+                <FormItem FormItemId="1397" OrderNumber="9" ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-                <FormItem FormItemId="1564" OrderNumber="10" ItemText="BMI (kg/m2)" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Highlight="1" Optional="0" Decimals="1">
+                <FormItem FormItemId="1564" OrderNumber="10" ItemText="BMI" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Highlight="1" Optional="1" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="3230" ItemType="1" VarName="SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-                <FormItem FormItemId="1459" OrderNumber="11" ItemText="Systolisk blodtrykk (mmHg)" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" FormatStr="Blodtrykk %s">
+                <FormItem FormItemId="1459" OrderNumber="11" ItemText="Systolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" FormatStr="Blodtrykk %s">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="3231" ItemType="1" VarName="DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-                <FormItem FormItemId="1467" OrderNumber="12" ItemText="Diastolisk blodtrykk (mmHg)" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" FormatStr="¬/%s mmHg.">
+                <FormItem FormItemId="1467" OrderNumber="12" ItemText="Diastolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" FormatStr="¬/%s mmHg.">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -95,14 +95,14 @@
                 </FormItem>
         </Item>
         <Item ItemId="4207" ItemType="2" VarName="NDV_NONPHARMA_ONLY" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="2809" OrderNumber="14" ItemText="Kun kost/aktivitet" ItemHelp="" Expression="ISNULL(NDV_TREATMENT_TYPE-1)+2*ISPOS(NDV_TREATMENT_TYPE-1)+ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" ReadOnly="1" Highlight="1" Optional="0">
+                <FormItem FormItemId="2809" OrderNumber="14" ItemText="Kun kost/aktivitet" ItemHelp="" Expression="ISNULL(NDV_TREATMENT_TYPE-1)+2*ISPOS(NDV_TREATMENT_TYPE-1)+ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" ReadOnly="1" Highlight="1" Optional="1">
                                 <Answer AnswerId="22300" OrderNumber="1" OptionText="Ja"/>
                                 <Answer AnswerId="22301" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
                                 <Answer AnswerId="22302" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
                 </FormItem>
         </Item>
         <Item ItemId="3332" ItemType="2" VarName="ATC_A10A" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="1613" OrderNumber="15" ItemText="Injeksjonsbehandling med insulin" ItemHelp="" Expression="ISPOS(ISNULL(NDV_TREATMENT_TYPE-3)+ISNULL(NDV_TREATMENT_TYPE-4)) + 2*ISNEG(NDV_TREATMENT_TYPE-3) + 3*ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Highlight="1" Optional="0">
+                <FormItem FormItemId="1613" OrderNumber="15" ItemText="Injeksjonsbehandling med insulin" ItemHelp="" Expression="ISPOS(ISNULL(NDV_TREATMENT_TYPE-3)+ISNULL(NDV_TREATMENT_TYPE-4)) + 2*ISNEG(NDV_TREATMENT_TYPE-3) + 3*ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Highlight="1" Optional="1">
                                 <Answer AnswerId="16524" OrderNumber="1" OptionText="Ja"/>
                                 <Answer AnswerId="16525" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
                                 <Answer AnswerId="16526" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
@@ -134,7 +134,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="4726" ItemType="2" VarName="NDV_INSULINADM" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="3411" OrderNumber="19" ItemText="Insulinbruker" ItemHelp="" Expression="1*ISNULL(ATC_A10A-2) + 2*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-1) + 3*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-2) + 4*ISNULL(ATC_A10A-3)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Highlight="1" Optional="0">
+                <FormItem FormItemId="3411" OrderNumber="19" ItemText="Insulinbruker" ItemHelp="" Expression="1*ISNULL(ATC_A10A-2) + 2*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-1) + 3*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-2) + 4*ISNULL(ATC_A10A-3)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Highlight="1" Optional="1">
                                 <Answer AnswerId="25473" OrderNumber="1" OptionText="Nei"/>
                                 <Answer AnswerId="25474" OrderNumber="2" OptionText="Sprøyte/penn"/>
                                 <Answer AnswerId="25475" OrderNumber="3" OptionText="Pumpe"/>
@@ -260,7 +260,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="4638" ItemType="2" VarName="NDV_EXERCISE_CAT" LoincScale="ORD" DisplayFormat="Vertical">
-                <FormItem FormItemId="3373" OrderNumber="36" ItemText="Regelmessig fysisk aktivitet" ItemHelp="Antall dager per uke med minst 30 min. rask gange eller tilsvarende" Expression="1 * ISNULL(NDV_EXERCISE-2) + &#xA;2 * ISNULL(NDV_EXERCISE-1) * ISPOS(NDV_EXERCISE_DAYS)  *ISNEG(NDV_EXERCISE_DAYS-3) + &#xA;3 * ISNULL(NDV_EXERCISE-1) * ISPOS(NDV_EXERCISE_DAYS-2)*ISNEG(NDV_EXERCISE_DAYS-6) + &#xA;4 * ISNULL(NDV_EXERCISE-1) * ISPOS(NDV_EXERCISE_DAYS-5)*ISNEG(NDV_EXERCISE_DAYS-8) + &#xA;5 * ISNULL(NDV_EXERCISE-3) + &#xA;6 * ISNULL(NDV_EXERCISE-4)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" ReadOnly="1" Highlight="1" Optional="0">
+                <FormItem FormItemId="3373" OrderNumber="36" ItemText="Regelmessig fysisk aktivitet" ItemHelp="Antall dager per uke med minst 30 min. rask gange eller tilsvarende" Expression="1 * ISNULL(NDV_EXERCISE-2) + &#xA;2 * ISNULL(NDV_EXERCISE-1) * ISPOS(NDV_EXERCISE_DAYS)  *ISNEG(NDV_EXERCISE_DAYS-3) + &#xA;3 * ISNULL(NDV_EXERCISE-1) * ISPOS(NDV_EXERCISE_DAYS-2)*ISNEG(NDV_EXERCISE_DAYS-6) + &#xA;4 * ISNULL(NDV_EXERCISE-1) * ISPOS(NDV_EXERCISE_DAYS-5)*ISNEG(NDV_EXERCISE_DAYS-8) + &#xA;5 * ISNULL(NDV_EXERCISE-3) + &#xA;6 * ISNULL(NDV_EXERCISE-4)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" ReadOnly="1" Highlight="1" Optional="1">
                                 <Answer AnswerId="25198" OrderNumber="1" OptionText="Nei" VerboseText="Er ikke fysisk aktiv."/>
                                 <Answer AnswerId="25199" OrderNumber="2" OptionText="1 til 2 dager / uke."/>
                                 <Answer AnswerId="25200" OrderNumber="3" OptionText="3 til 5 dager / uke."/>
@@ -452,27 +452,27 @@
     </Page>
     <Page PageId="360" PageNumber="33" PageTitle="Laboratoriedata">
         <Item ItemId="527" ItemType="1" VarName="HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
-                <FormItem FormItemId="15611" OrderNumber="60" ItemText="B-HbA1c (%)" ItemHelp="HbA1c-verdien gjenspeiler det gjennomsnittlige blodsukkeret de siste 6 - 8 uker før prøvetakingen. Høye verdier ses derfor ved økt gjennomsnittlig blodglukose. Lave verdier kan ses ved økt hemoglobinomsetning som ved hemolytiske anemier." MinExpression="3" MaxExpression="25" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" Decimals="1">
+                <FormItem FormItemId="15611" OrderNumber="60" ItemText="B-HbA1c" ItemHelp="HbA1c-verdien gjenspeiler det gjennomsnittlige blodsukkeret de siste 6 - 8 uker før prøvetakingen. Høye verdier ses derfor ved økt gjennomsnittlig blodglukose. Lave verdier kan ses ved økt hemoglobinomsetning som ved hemolytiske anemier." MinExpression="3" MaxExpression="25" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="1294" ItemType="1" VarName="CHOL" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
-                <FormItem FormItemId="547" OrderNumber="61" ItemText="S-Kolesterol (mmol/L)" ItemHelp="Høye verdier ved primære og sekundære hyperlipoproteinemier. De sekundære ses bl.a. ved hypothyreose, nefrotisk syndrom, obstruktive leversykdommer og diabetes mellitus. Lave verdier ved hyperthyreose, malabsorpsjon, medfødt beta-lipoproteinmangel (acanthocytose)." MinExpression="0.5" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" Decimals="1">
+                <FormItem FormItemId="547" OrderNumber="61" ItemText="S-Kolesterol" ItemHelp="Høye verdier ved primære og sekundære hyperlipoproteinemier. De sekundære ses bl.a. ved hypothyreose, nefrotisk syndrom, obstruktive leversykdommer og diabetes mellitus. Lave verdier ved hyperthyreose, malabsorpsjon, medfødt beta-lipoproteinmangel (acanthocytose)." MinExpression="0.5" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="1296" ItemType="1" VarName="HDL" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
-                <FormItem FormItemId="556" OrderNumber="62" ItemText="S-HDL-kolesterol (mmol/L)" ItemHelp="Høye verdier betyr oftest minsket risiko for hjerte-/karsykdom. De kan være arvelig betinget og kan også skyldes østrogenpåvirkning eller høy fysisk aktivitet. Alkoholinntak tenderer også til å øke HDL-kolesterol. Lave verdier kan skyldes inflammatoriske prosesser, særlig virushepatitt. De kan også være arvelig betinget (Tangiers sykdom, LCAT-mangel)." MinExpression="0" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" Decimals="2">
+                <FormItem FormItemId="556" OrderNumber="62" ItemText="S-HDL-kolesterol" ItemHelp="Høye verdier betyr oftest minsket risiko for hjerte-/karsykdom. De kan være arvelig betinget og kan også skyldes østrogenpåvirkning eller høy fysisk aktivitet. Alkoholinntak tenderer også til å øke HDL-kolesterol. Lave verdier kan skyldes inflammatoriske prosesser, særlig virushepatitt. De kan også være arvelig betinget (Tangiers sykdom, LCAT-mangel)." MinExpression="0" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" Decimals="2">
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="1884" ItemType="1" VarName="LDL" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
-                <FormItem FormItemId="951" OrderNumber="63" ItemText="S-LDL-kolesterol (mmol/l)" ItemHelp="Høye verdier ved primære og sekundære hyperlipoproteinemier. De sekundære ses blant annet ved hypothyreose, nefrotisk syndrom, obstruktive leversykdommer og diabetes mellitus. Lave verdier ved hyperthyreose, malabsorpsjon, medfødt beta-lipoproteinmangel (acanthocytose)." MinExpression="0.2" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" Decimals="1">
+        <Item ItemId="1884" ItemType="1" VarName="LDL" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
+                <FormItem FormItemId="951" OrderNumber="63" ItemText="S-LDL-kolesterol" ItemHelp="Høye verdier ved primære og sekundære hyperlipoproteinemier. De sekundære ses blant annet ved hypothyreose, nefrotisk syndrom, obstruktive leversykdommer og diabetes mellitus. Lave verdier ved hyperthyreose, malabsorpsjon, medfødt beta-lipoproteinmangel (acanthocytose)." MinExpression="0.2" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="3488" ItemType="1" VarName="TRIG" LoincScale="QN" UnitStr="mmol/l" DisplayFormat="">
-                <FormItem FormItemId="1947" OrderNumber="64" ItemText="S-Triglycerider (mmol/l)" ItemHelp="fastende eller ikke-fastende" MinExpression="0.1" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" Decimals="2">
+        <Item ItemId="3488" ItemType="1" VarName="TRIG" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
+                <FormItem FormItemId="1947" OrderNumber="64" ItemText="S-Triglycerider" ItemHelp="fastende eller ikke-fastende" MinExpression="0.1" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" Decimals="2">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -482,7 +482,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="3311" ItemType="1" VarName="UACR" LoincScale="QN" UnitStr="mg/mmol" DisplayFormat="">
-                <FormItem FormItemId="1580" OrderNumber="66" ItemText="U-Albumin/Kreatinin-ratio (mg/mmol)" ItemHelp="" MinExpression="0" MaxExpression="7500" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" Decimals="1">
+                <FormItem FormItemId="1580" OrderNumber="66" ItemText="U-Albumin/Kreatinin-ratio" ItemHelp="" MinExpression="0" MaxExpression="7500" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -494,7 +494,7 @@
     </Page>
     <Page PageId="4749" PageNumber="34" PageTitle="Utgåtte variable">
         <Item ItemId="3226" ItemType="1" VarName="WAIST" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-                <FormItem FormItemId="15608" OrderNumber="68" ItemText="Midjemål (cm)" ItemHelp="Midt mellom ribbensbue og hoftekam, målt etter ekspirasjon" MinExpression="40" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="1">
+                <FormItem FormItemId="15608" OrderNumber="68" ItemText="Midjemål" ItemHelp="Midt mellom ribbensbue og hoftekam, målt etter ekspirasjon" MinExpression="40" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>

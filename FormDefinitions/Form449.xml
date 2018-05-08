@@ -3,17 +3,17 @@
   <Form FormId="449" FormName="SAMTALE_KOST" FormTitle="Kostsamtale ved innkomst">
     <Page PageId="1288" PageNumber="1" PageTitle="Høyde og vekt">
         <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-                <FormItem FormItemId="1432" OrderNumber="1" ItemText="Høyde (cm)" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                <FormItem FormItemId="1432" OrderNumber="1" ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-                <FormItem FormItemId="1414" OrderNumber="2" ItemText="Vekt (kg)" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+                <FormItem FormItemId="1414" OrderNumber="2" ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-                <FormItem FormItemId="1577" OrderNumber="3" ItemText="BMI (kg/m2)" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                <FormItem FormItemId="1577" OrderNumber="3" ItemText="BMI" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -55,7 +55,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="4770" ItemType="2" VarName="MNA_F" LoincScale="ORD" DisplayFormat="Vertical">
-                <FormItem FormItemId="3499" OrderNumber="9" ItemText="Kroppsmasseindeks" ItemHelp="" Expression="1 + ISPOS(BMI-18.99) + ISPOS(BMI-20.99) + ISPOS(BMI-22.99)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="0">
+                <FormItem FormItemId="3499" OrderNumber="9" ItemText="Kroppsmasseindeks" ItemHelp="" Expression="1 + ISPOS(BMI-18.99) + ISPOS(BMI-20.99) + ISPOS(BMI-22.99)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="1">
                                 <Answer AnswerId="26671" OrderNumber="1" OptionText="BMI mindre enn 19." ShortCode="0p" Score="0.00"/>
                                 <Answer AnswerId="26672" OrderNumber="2" OptionText="BMI 19 til mindre enn 21." ShortCode="1p" Score="1.00"/>
                                 <Answer AnswerId="26673" OrderNumber="3" OptionText="BMI 21 til mindre enn 23." ShortCode="2p" Score="2.00"/>
@@ -77,7 +77,7 @@
         </Item>
     </Page>
     <Page PageId="1291" PageNumber="4" PageTitle="Beboers vurdering av nødvendige ernæringstiltak*">
-        <Item ItemId="5472" ItemType="4" VarName="MAT_Egenvurdering" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="5472" ItemType="4" VarName="MAT_Egenvurdering" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="4113" OrderNumber="12" ItemHeader="Egenvurdering" ItemText="Beboers egen vurdering (ev. pårørendes inntrykk) av hva som skal til for å bedre/opprettholde ernæringstilstanden." ItemHelp="F.eks. Bedre matlyst? Endret måltidssituasjon?" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -141,7 +141,7 @@
         </Item>
     </Page>
     <Page PageId="1295" PageNumber="9" PageTitle="Ernæringstiltak fra før*">
-        <Item ItemId="5459" ItemType="4" VarName="MAT_Hensyn" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="5459" ItemType="4" VarName="MAT_Hensyn" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="4073" OrderNumber="20" ItemText="Miljø- og måltids- hensyn" ItemHelp="Eventuelle tilpasninger i spisesituasjonen, f.eks assistanse, medspising (helsepersonell/pårørende), har skjermingsbehov, liker små porsjoner, eller å spise sent på rommet." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -154,7 +154,7 @@
         </Item>
     </Page>
     <Page PageId="1296" PageNumber="10" PageTitle="beskrivelse beriket kost*">
-        <Item ItemId="5461" ItemType="4" VarName="KOST_BeriketTekst" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="5461" ItemType="4" VarName="KOST_BeriketTekst" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="4080" OrderNumber="22" ItemHeader="Beskrivelse" ItemText="Beskrivelse av type og mengde ovenfornevnte kalori-tilskudd som tilbys eller tillages daglig" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -192,7 +192,7 @@
         </Item>
     </Page>
     <Page PageId="1300" PageNumber="14" PageTitle="beskrivelse sondemat*">
-        <Item ItemId="5467" ItemType="4" VarName="MAT_SondeTekst" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="5467" ItemType="4" VarName="MAT_SondeTekst" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="4099" OrderNumber="27" ItemHeader="Type og mengde" ItemText="Type og mengde sonde-ernæring" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -207,29 +207,29 @@
         </Item>
     </Page>
     <Page PageId="1302" PageNumber="16" PageTitle="beskrivelse iv*">
-        <Item ItemId="5469" ItemType="4" VarName="MAT_ParenteralTekst" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="5469" ItemType="4" VarName="MAT_ParenteralTekst" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="4109" OrderNumber="29" ItemHeader="Type og mengde" ItemText="Type og mengde intravenøs ernæring" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
     </Page>
     <Page PageId="1303" PageNumber="17" PageTitle="Matkort">
-        <Item ItemId="5249" ItemType="4" VarName="MAT_Frokost" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="5249" ItemType="4" VarName="MAT_Frokost" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="3866" OrderNumber="30" ItemText="Frokost" ItemHelp="Eksempler fast føde: fine eller grove skiver, havre- eller semule-grøt, frokostblanding, egg. Eksempler drikke: melk, juice, vann, kaffe, te." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="5250" ItemType="4" VarName="MAT_Lunsj" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="5250" ItemType="4" VarName="MAT_Lunsj" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="3869" OrderNumber="31" ItemText="Lunsj" ItemHelp="Eksempler fast føde: Fine eller grove skiver, havre- eller semulegrøt, suppe, frukt, egg. Eksempler drikke: melk, juice, vann, kaffe, eller te." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="5251" ItemType="4" VarName="MAT_Middag" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="5251" ItemType="4" VarName="MAT_Middag" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="3872" OrderNumber="32" ItemText="Middag" ItemHelp="Eksempler fast føde: kjøtt, fisk, grønnsaker, supper, dessert. Eksempler drikke: melk, juice, vann, kaffe, eller te." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="5252" ItemType="4" VarName="MAT_Kvelds" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="5252" ItemType="4" VarName="MAT_Kvelds" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="3875" OrderNumber="33" ItemText="Kvelds" ItemHelp="Eksempler fast føde: fine eller grove skiver, havre- eller semule-grøt, frokostblanding. Eksempler drikke: melk, juice, kaffe, te, vann." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>

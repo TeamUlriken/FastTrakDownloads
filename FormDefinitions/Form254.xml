@@ -81,7 +81,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="3318" ItemType="2" VarName="NDV_FOOTPULSE" LoincScale="ORD" DisplayFormat="Vertical">
-                <FormItem FormItemId="1583" OrderNumber="12" ItemHeader="Fotpuls" ItemText="Palpabel puls på fotrygg eller bak med.malleol på begge føtter" ItemHelp="" Expression="2-ISNULL(DIAPOL_FOOTPULSE-4)+ISNULL(DIAPOL_FOOTPULSE+1)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="0">
+                <FormItem FormItemId="1583" OrderNumber="12" ItemHeader="Fotpuls" ItemText="Palpabel puls på fotrygg eller bak med.malleol på begge føtter" ItemHelp="" Expression="2-ISNULL(DIAPOL_FOOTPULSE-4)+ISNULL(DIAPOL_FOOTPULSE+1)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="1">
                                 <Answer AnswerId="16401" OrderNumber="1" OptionText="Ja"/>
                                 <Answer AnswerId="16402" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
                                 <Answer AnswerId="16403" OrderNumber="3" OptionText="Ikke undersøkt"/>
@@ -111,7 +111,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="3319" ItemType="2" VarName="NDV_NEUROPATHY" LoincScale="ORD" DisplayFormat="Horizontal">
-                <FormItem FormItemId="1588" OrderNumber="17" ItemHeader="Normal sensibilitet i føtter" ItemText="Monofilament 8/8 eller normal vibrasjonssans ved stortåens ytterledd på begge føtter" ItemHelp="Kjenner vibrasjon. Stemmegaffel på 128 Hz eller monofilament 8/8 må brukes (ellers anføres ”ikke undersøkt”).  Det er nok med ett unormalt funn for å svare Nei." Expression="1 + ISNULL( ISNULL( DIAPOL_MONOFIL_LEFT + DIAPOL_MONOFIL_RIGHT - 8 ) + ISNULL( DIAPOL_MONOFIL_LEFT + DIAPOL_MONOFIL_RIGHT + 2 ) + ISNULL( DIAPOL_MONOFIL_LEFT + DIAPOL_MONOFIL_RIGHT - 3 ) + ISPOS( ISNULL(DIAPOL_VIBR_LEFT + DIAPOL_VIBR_RIGHT-2) +  ISNULL(DIAPOL_VIBR_LEFT + DIAPOL_VIBR_RIGHT+2) + ISNULL(DIAPOL_VIBR_LEFT + DIAPOL_VIBR_RIGHT) ) - 2)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="0">
+                <FormItem FormItemId="1588" OrderNumber="17" ItemHeader="Normal sensibilitet i føtter" ItemText="Monofilament 8/8 eller normal vibrasjonssans ved stortåens ytterledd på begge føtter" ItemHelp="Kjenner vibrasjon. Stemmegaffel på 128 Hz eller monofilament 8/8 må brukes (ellers anføres ”ikke undersøkt”).  Det er nok med ett unormalt funn for å svare Nei." Expression="1 + ISNULL( ISNULL( DIAPOL_MONOFIL_LEFT + DIAPOL_MONOFIL_RIGHT - 8 ) + ISNULL( DIAPOL_MONOFIL_LEFT + DIAPOL_MONOFIL_RIGHT + 2 ) + ISNULL( DIAPOL_MONOFIL_LEFT + DIAPOL_MONOFIL_RIGHT - 3 ) + ISPOS( ISNULL(DIAPOL_VIBR_LEFT + DIAPOL_VIBR_RIGHT-2) +  ISNULL(DIAPOL_VIBR_LEFT + DIAPOL_VIBR_RIGHT+2) + ISNULL(DIAPOL_VIBR_LEFT + DIAPOL_VIBR_RIGHT) ) - 2)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="1">
                                 <Answer AnswerId="16413" OrderNumber="1" OptionText="Ja"/>
                                 <Answer AnswerId="16414" OrderNumber="2" OptionText="Nei" VerboseText="Perifer nevropati." ShortCode="N"/>
                                 <Answer AnswerId="16415" OrderNumber="3" OptionText="Ikke undersøkt"/>
@@ -130,7 +130,7 @@
         </Item>
     </Page>
     <Page PageId="300" PageNumber="6" PageTitle="Kommentar callus*">
-        <Item ItemId="3273" ItemType="4" VarName="DIAPOL_CALLUS_COMMENT" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="3273" ItemType="4" VarName="DIAPOL_CALLUS_COMMENT" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="1529" OrderNumber="19" ItemText="Kommentar callus:" ItemHelp="Gi en kort beskrivelse" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
@@ -138,37 +138,37 @@
     </Page>
     <Page PageId="301" PageNumber="7" PageTitle="Perifert blodtrykk">
         <Item ItemId="1816" ItemType="1" VarName="REFBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-                <FormItem FormItemId="851" OrderNumber="20" ItemText="Referanseblodtrykk for indekser (mmHg)" ItemHelp="Systolisk blodtrykk målt på armen like før ankeltrykksmåling" MinExpression="50" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="851" OrderNumber="20" ItemText="Referanseblodtrykk for indekser" ItemHelp="Systolisk blodtrykk målt på armen like før ankeltrykksmåling" MinExpression="50" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="1817" ItemType="1" VarName="ANKLEPRESSLEFT" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-                <FormItem FormItemId="856" OrderNumber="21" ItemText="Ankeltrykk venstre (mmHg)" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="856" OrderNumber="21" ItemText="Ankeltrykk venstre" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="1818" ItemType="1" VarName="ANKLEPRESSRIGHT" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-                <FormItem FormItemId="861" OrderNumber="22" ItemText="Ankeltrykk høyre (mmHg)" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="861" OrderNumber="22" ItemText="Ankeltrykk høyre" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="1819" ItemType="1" VarName="ABILEFT" LoincScale="QN" DisplayFormat="">
-                <FormItem FormItemId="866" OrderNumber="23" ItemText="Ankel-brachial indeks - venstre" ItemHelp="" Expression="ANKLEPRESSLEFT/REFBP" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="2">
+                <FormItem FormItemId="866" OrderNumber="23" ItemText="Ankel-brachial indeks - venstre" ItemHelp="" Expression="ANKLEPRESSLEFT/REFBP" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="2">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="1820" ItemType="1" VarName="ABIRIGHT" LoincScale="QN" DisplayFormat="">
-                <FormItem FormItemId="871" OrderNumber="24" ItemText="Ankel-brachial indeks - høyre" ItemHelp="" Expression="ANKLEPRESSRIGHT/REFBP" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="2">
+                <FormItem FormItemId="871" OrderNumber="24" ItemText="Ankel-brachial indeks - høyre" ItemHelp="" Expression="ANKLEPRESSRIGHT/REFBP" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="2">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="4006" ItemType="1" VarName="TOEPRESS_LEFT" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-                <FormItem FormItemId="2462" OrderNumber="25" ItemText="Tåtrykk venstre (mmHg)" ItemHelp="Unngå å blåse opp mansjett til over 200mmHg." MinExpression="0" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+                <FormItem FormItemId="2462" OrderNumber="25" ItemText="Tåtrykk venstre" ItemHelp="Unngå å blåse opp mansjett til over 200mmHg." MinExpression="0" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="4007" ItemType="1" VarName="TOEPRESS_RIGHT" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-                <FormItem FormItemId="2464" OrderNumber="26" ItemText="Tåtrykk høyre (mmHg)" ItemHelp="Unngå å blåse opp mansjett til over 200mmHg." MinExpression="0" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+                <FormItem FormItemId="2464" OrderNumber="26" ItemText="Tåtrykk høyre" ItemHelp="Unngå å blåse opp mansjett til over 200mmHg." MinExpression="0" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -219,7 +219,7 @@
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="4264" ItemType="4" VarName="ULCER_AB_DRUG" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="4264" ItemType="4" VarName="ULCER_AB_DRUG" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="2920" OrderNumber="33" ItemText="Preparat og dosering" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
@@ -241,7 +241,7 @@
                                 <Answer AnswerId="20913" OrderNumber="5" OptionText="Annen*"/>
                 </FormItem>
         </Item>
-        <Item ItemId="4381" ItemType="4" VarName="ULCER1_LOC_TEXT" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="4381" ItemType="4" VarName="ULCER1_LOC_TEXT" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="3102" OrderNumber="36" ItemText="Kommentar" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
@@ -306,7 +306,7 @@
         </Item>
     </Page>
     <Page PageId="308" PageNumber="14" PageTitle="Kommentar første fotsår*">
-        <Item ItemId="3254" ItemType="4" VarName="ULCER1_COMMENT" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="3254" ItemType="4" VarName="ULCER1_COMMENT" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="1504" OrderNumber="46" ItemText="Kommentar" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -406,7 +406,7 @@
                                 <Answer AnswerId="20923" OrderNumber="5" OptionText="Annen*"/>
                 </FormItem>
         </Item>
-        <Item ItemId="4383" ItemType="4" VarName="ULCER2_LOC_TEXT" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="4383" ItemType="4" VarName="ULCER2_LOC_TEXT" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="3104" OrderNumber="60" ItemText="Kommentar" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
@@ -469,7 +469,7 @@
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="3256" ItemType="4" VarName="ULCER2_COMMENT" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="3256" ItemType="4" VarName="ULCER2_COMMENT" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="1508" OrderNumber="70" ItemText="Kommentar" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -491,7 +491,7 @@
                                 <Answer AnswerId="20943" OrderNumber="5" OptionText="Annen*"/>
                 </FormItem>
         </Item>
-        <Item ItemId="4384" ItemType="4" VarName="ULCER3_LOC_TEXT" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="4384" ItemType="4" VarName="ULCER3_LOC_TEXT" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="3106" OrderNumber="73" ItemText="Kommentar" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
@@ -554,7 +554,7 @@
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="3258" ItemType="4" VarName="ULCER3_COMMENT" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="3258" ItemType="4" VarName="ULCER3_COMMENT" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="1512" OrderNumber="83" ItemText="Kommentar" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -609,12 +609,12 @@
         </Item>
     </Page>
     <Page PageId="315" PageNumber="21" PageTitle="Vurdering og avtaler">
-        <Item ItemId="4265" ItemType="4" VarName="DIAPOL_FOOT_EVAL" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="4265" ItemType="4" VarName="DIAPOL_FOOT_EVAL" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="2922" OrderNumber="91" ItemText="Vurdering og avtaler" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="4266" ItemType="4" VarName="DIAPOL_FOOT_NEXT" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="4266" ItemType="4" VarName="DIAPOL_FOOT_NEXT" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="2924" OrderNumber="92" ItemText="Neste kontroll:" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>

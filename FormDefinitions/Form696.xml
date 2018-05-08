@@ -17,7 +17,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="6384" ItemType="1" VarName="VMR_LAB_HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
-                <FormItem FormItemId="21505" OrderNumber="3" ItemText="Siste HbA1c (%)" ItemHelp="Hentes inn automatisk fra labarket, kan ikke redigeres her." Expression="VMR.LAB.HBA1C" MinExpression="3" MaxExpression="15" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="0" Decimals="1">
+                <FormItem FormItemId="21505" OrderNumber="3" ItemText="Siste HbA1c (%)" ItemHelp="Hentes inn automatisk fra labarket, kan ikke redigeres her." Expression="VMR.LAB.HBA1C" MinExpression="3" MaxExpression="15" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -50,7 +50,7 @@
         </Item>
     </Page>
     <Page PageId="7403" PageNumber="5" PageTitle="Basalinsulin 2*">
-        <Item ItemId="4214" ItemType="4" VarName="INS_BASAL_NAME" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="4214" ItemType="4" VarName="INS_BASAL_NAME" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="21510" OrderNumber="7" ItemHeader="Preparat" ItemText="Preparatnavn og type penn" ItemHelp="F.eks: Humulin engangspenn, Insulatard Penfill, Lantus SoloStar, Levemir FlexPen" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -71,7 +71,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="3906" ItemType="1" VarName="INS_BASAL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-                <FormItem FormItemId="21521" OrderNumber="11" ItemText="Sum basalinsulin (E)" ItemHelp="" Expression="IS_NULL(INS_BASAL_YN-1) * ( INS_BASAL_MORNING*ISPOS(INS_BASAL_MORNING+1) + INS_BASAL_NOON*ISPOS(INS_BASAL_NOON+1)+ INS_BASAL_EVENING *ISPOS(INS_BASAL_EVENING+1))" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+                <FormItem FormItemId="21521" OrderNumber="11" ItemText="Sum basalinsulin (E)" ItemHelp="" Expression="IS_NULL(INS_BASAL_YN-1) * ( INS_BASAL_MORNING*ISPOS(INS_BASAL_MORNING+1) + INS_BASAL_NOON*ISPOS(INS_BASAL_NOON+1)+ INS_BASAL_EVENING *ISPOS(INS_BASAL_EVENING+1))" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -122,7 +122,7 @@
         </Item>
     </Page>
     <Page PageId="7409" PageNumber="10" PageTitle="Hypoglykemi" PageIntroduction="Tilfeller av hypoglykemi skal dokumenteres i journalen.">
-        <Item ItemId="10437" ItemType="4" VarName="VAR10437" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="10437" ItemType="4" VarName="VAR10437" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="21523" OrderNumber="18" ItemText="Plan for screening" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
                                 <Answer/>
                 </FormItem>
@@ -132,7 +132,7 @@
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="10439" ItemType="4" VarName="VAR10439" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="10439" ItemType="4" VarName="VAR10439" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="21525" OrderNumber="20" ItemText="Tiltak ved hypoglykemi" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
                                 <Answer/>
                 </FormItem>

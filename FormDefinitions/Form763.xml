@@ -3,12 +3,12 @@
   <Form FormId="763" FormName="BAR_INCLUSION" FormTitle="A. First contact">
     <Page PageId="4931" PageNumber="1" PageTitle="First contact" PageIntroduction="First contact date is the same as form date.  Move form on the timeline to make it correct.">
         <Item ItemId="6169" ItemType="5" VarName="BarInclusion" LoincScale="DATE" DisplayFormat="">
-                <FormItem FormItemId="16439" OrderNumber="1" ItemText="Date of first contact" ItemHelp="Same as admission date if hospitalised" Expression="TRUNC(FORM.DATE)" MinExpression="Patient.DOB" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="16439" OrderNumber="1" ItemText="Date of first contact" ItemHelp="Same as admission date if hospitalised" Expression="TRUNC(FORM.DATE)" MinExpression="Patient.DOB" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="6170" ItemType="1" VarName="BarInclusionAge" LoincScale="QN" UnitStr="years" DisplayFormat="">
-                <FormItem FormItemId="16440" OrderNumber="2" ItemText="Age at first contact (years)" ItemHelp="" Expression="(BarInclusion - Patient.DOB ) / 365.25" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+                <FormItem FormItemId="16440" OrderNumber="2" ItemText="Age at first contact (years)" ItemHelp="" Expression="(BarInclusion - Patient.DOB ) / 365.25" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -38,7 +38,7 @@
         </Item>
     </Page>
     <Page PageId="4945" PageNumber="4" PageTitle="Comments">
-        <Item ItemId="6166" ItemType="4" VarName="VAR6166" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="6166" ItemType="4" VarName="VAR6166" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="16436" OrderNumber="6" ItemText="Comment" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>

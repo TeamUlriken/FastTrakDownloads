@@ -10,7 +10,7 @@
         </Item>
     </Page>
     <Page PageId="424" PageNumber="2" PageTitle="Basalinsulin*">
-        <Item ItemId="4214" ItemType="4" VarName="INS_BASAL_NAME" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="4214" ItemType="4" VarName="INS_BASAL_NAME" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="2822" OrderNumber="2" ItemHeader="Preparat" ItemText="Preparatnavn og type penn" ItemHelp="F.eks: Humulin engangspenn, Insulatard Penfill, Lantus SoloStar, Levemir FlexPen" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -31,7 +31,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="3906" ItemType="1" VarName="INS_BASAL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-                <FormItem FormItemId="2222" OrderNumber="6" ItemText="Sum basalinsulin (E)" ItemHelp="" Expression="IS_NULL(INS_BASAL_YN-1) * ( INS_BASAL_MORNING*ISPOS(INS_BASAL_MORNING+1) + INS_BASAL_NOON*ISPOS(INS_BASAL_NOON+1)+ INS_BASAL_EVENING *ISPOS(INS_BASAL_EVENING+1))" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="2222" OrderNumber="6" ItemText="Sum basalinsulin (E)" ItemHelp="" Expression="IS_NULL(INS_BASAL_YN-1) * ( INS_BASAL_MORNING*ISPOS(INS_BASAL_MORNING+1) + INS_BASAL_NOON*ISPOS(INS_BASAL_NOON+1)+ INS_BASAL_EVENING *ISPOS(INS_BASAL_EVENING+1))" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -45,7 +45,7 @@
         </Item>
     </Page>
     <Page PageId="426" PageNumber="4" PageTitle="Måltidsinsulin*">
-        <Item ItemId="4215" ItemType="4" VarName="INS_MEAL_NAME" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="4215" ItemType="4" VarName="INS_MEAL_NAME" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="2827" OrderNumber="8" ItemHeader="Preparat*" ItemText="Preparatnavn og type penn" ItemHelp="F.eks: Humalog engangspenn, NovoRapid Flexpen, Actrapid Penfill, Apidra SoloStar, Insuman Rapid" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -76,7 +76,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="3905" ItemType="1" VarName="INS_MEAL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-                <FormItem FormItemId="2217" OrderNumber="14" ItemText="Sum måltidsinsulin (E)" ItemHelp="" Expression="IS_NULL(INS_MEAL_YN-1) * ( INS_MEAL_BREAKFAST*ISPOS(INS_MEAL_BREAKFAST+1) + INS_MEAL_BRUNCH*ISPOS(INS_MEAL_BRUNCH+1) + INS_MEAL_LUNCH*ISPOS(INS_MEAL_LUNCH+1) + INS_MEAL_DINNER*ISPOS(INS_MEAL_DINNER+1) + INS_MEAL_SUPPER*ISPOS(INS_MEAL_SUPPER+1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+                <FormItem FormItemId="2217" OrderNumber="14" ItemText="Sum måltidsinsulin (E)" ItemHelp="" Expression="IS_NULL(INS_MEAL_YN-1) * ( INS_MEAL_BREAKFAST*ISPOS(INS_MEAL_BREAKFAST+1) + INS_MEAL_BRUNCH*ISPOS(INS_MEAL_BRUNCH+1) + INS_MEAL_LUNCH*ISPOS(INS_MEAL_LUNCH+1) + INS_MEAL_DINNER*ISPOS(INS_MEAL_DINNER+1) + INS_MEAL_SUPPER*ISPOS(INS_MEAL_SUPPER+1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -90,7 +90,7 @@
         </Item>
     </Page>
     <Page PageId="428" PageNumber="6" PageTitle="Premix insulin*">
-        <Item ItemId="4216" ItemType="4" VarName="INS_PREMIX_NAME" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="4216" ItemType="4" VarName="INS_PREMIX_NAME" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="2832" OrderNumber="16" ItemHeader="Preparat*" ItemText="Preparatnavn og type penn" ItemHelp="F.eks: Humalog Mix25 engangspenn, NovoMix 30 FlexPen, Insuman Comb 25 OptiSet" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -111,14 +111,14 @@
                 </FormItem>
         </Item>
         <Item ItemId="3907" ItemType="1" VarName="INS_PREMIX_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-                <FormItem FormItemId="2227" OrderNumber="20" ItemText="Sum premix-insulin (E)" ItemHelp="" Expression="IS_NULL(INS_PREMIX_YN-1) * ( INS_PREMIX_MORNING*ISPOS(INS_PREMIX_MORNING+1) + INS_PREMIX_NOON*ISPOS(INS_PREMIX_NOON+1) + INS_PREMIX_EVENING*ISPOS(INS_PREMIX_EVENING+1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="2227" OrderNumber="20" ItemText="Sum premix-insulin (E)" ItemHelp="" Expression="IS_NULL(INS_PREMIX_YN-1) * ( INS_PREMIX_MORNING*ISPOS(INS_PREMIX_MORNING+1) + INS_PREMIX_NOON*ISPOS(INS_PREMIX_NOON+1) + INS_PREMIX_EVENING*ISPOS(INS_PREMIX_EVENING+1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
     </Page>
     <Page PageId="429" PageNumber="7" PageTitle="Totalsum og injeksjonssted">
         <Item ItemId="3908" ItemType="1" VarName="INS_ALL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-                <FormItem FormItemId="2232" OrderNumber="21" ItemText="Døgndose (E)" ItemHelp="" Expression="INS_MEAL_SUM + INS_BASAL_SUM + INS_PREMIX_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0" Decimals="1">
+                <FormItem FormItemId="2232" OrderNumber="21" ItemText="Døgndose (E)" ItemHelp="" Expression="INS_MEAL_SUM + INS_BASAL_SUM + INS_PREMIX_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="1" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>

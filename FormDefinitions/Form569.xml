@@ -10,17 +10,17 @@
     </Page>
     <Page PageId="8499" PageNumber="2" PageTitle="Høyde og vekt">
         <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-                <FormItem FormItemId="22219" OrderNumber="2" ItemText="Høyde (cm)" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0">
+                <FormItem FormItemId="22219" OrderNumber="2" ItemText="Høyde" ItemHelp="Uten sko." Expression="" MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-                <FormItem FormItemId="22218" OrderNumber="3" ItemText="Vekt (kg)" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0" Decimals="1">
+                <FormItem FormItemId="22218" OrderNumber="3" ItemText="Vekt" ItemHelp="Uten sko og yttertøy." Expression="" MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-                <FormItem FormItemId="22217" OrderNumber="4" ItemText="BMI (kg/m2)" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
+                <FormItem FormItemId="22217" OrderNumber="4" ItemText="BMI" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -90,13 +90,13 @@
     </Page>
     <Page PageId="8501" PageNumber="4" PageTitle="Flacker Kiely dødsrisiko (12 mnd) skår" PageIntroduction="Totalskår og tolkning er skjult på grunn av at skjemaet er en del av et forskningsprosjekt">
         <Item ItemId="4255" ItemType="2" VarName="SEX" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="22207" OrderNumber="13" ItemText="Kjønn" ItemHelp="Skjult" Expression="Patient.GenderId" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="0">
+                <FormItem FormItemId="22207" OrderNumber="13" ItemText="Kjønn" ItemHelp="Skjult" Expression="Patient.GenderId" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="1">
                                 <Answer AnswerId="22860" OrderNumber="1" OptionText="Mann" ShortCode="M"/>
                                 <Answer AnswerId="22861" OrderNumber="2" OptionText="Kvinne" ShortCode="K"/>
                 </FormItem>
         </Item>
         <Item ItemId="1129" ItemType="2" VarName="FK_B_01" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="22203" OrderNumber="14" ItemHeader="Funksjonsevne skår" ItemText="Funksjonsevne skår høyere enn 4." ItemHelp="" Expression="2 - isPos(FK_A_SUM - 4)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                <FormItem FormItemId="22203" OrderNumber="14" ItemHeader="Funksjonsevne skår" ItemText="Funksjonsevne skår høyere enn 4." ItemHelp="" Expression="2 - isPos(FK_A_SUM - 4)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
                                 <Answer AnswerId="10028" OrderNumber="1" OptionText="Ja" Score="2.50"/>
                                 <Answer AnswerId="10029" OrderNumber="2" OptionText="Nei" Score="0.00"/>
                 </FormItem>
@@ -120,7 +120,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="1125" ItemType="2" VarName="FK_B_05" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="22210" OrderNumber="18" ItemHeader="Lav BMI" ItemText="Er BMI under 22?" ItemHelp="" Expression="2 - IsNeg(BMI-22)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                <FormItem FormItemId="22210" OrderNumber="18" ItemHeader="Lav BMI" ItemText="Er BMI under 22?" ItemHelp="" Expression="2 - IsNeg(BMI-22)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
                                 <Answer AnswerId="58985" OrderNumber="1" OptionText="Ja" Score="1.75"/>
                                 <Answer AnswerId="58986" OrderNumber="2" OptionText="Nei" Score="0.00"/>
                 </FormItem>
@@ -132,15 +132,15 @@
                 </FormItem>
         </Item>
         <Item ItemId="1127" ItemType="2" VarName="FK_B_07" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="22212" OrderNumber="20" ItemHeader="Alder over 88 år" ItemText="Dersom pasienten er over 88 år gammel." ItemHelp="" Expression="2 - IsPos(AGE - 88)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                <FormItem FormItemId="22212" OrderNumber="20" ItemHeader="Alder over 88 år" ItemText="Dersom pasienten er over 88 år gammel." ItemHelp="" Expression="2 - IsPos(AGE - 88)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
                                 <Answer AnswerId="58993" OrderNumber="1" OptionText="Ja" Score="1.48"/>
                                 <Answer AnswerId="58994" OrderNumber="2" OptionText="Nei" Score="0.00"/>
                 </FormItem>
         </Item>
     </Page>
     <Page PageId="8502" PageNumber="5" PageTitle="Oppsummering">
-        <Item ItemId="1128" ItemType="1" VarName="FK_B_SUM" LoincScale="QN" DisplayFormat="">
-                <FormItem FormItemId="22213" OrderNumber="21" ItemText="Sum Flacker dødsrisiko skår (skår)" ItemHelp="" Expression="IsZero(SEX-1)*1.76 + FK_B_01_SCORE + FK_B_02_SCORE + FK_B_03_SCORE + FK_B_04_SCORE + FK_B_05_SCORE + FK_B_06_SCORE + FK_B_07_SCORE" MinExpression="0" MaxExpression="14,89" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="2">
+        <Item ItemId="1128" ItemType="1" VarName="FK_B_SUM" LoincScale="QN" UnitStr="skår" DisplayFormat="">
+                <FormItem FormItemId="22213" OrderNumber="21" ItemText="Sum Flacker dødsrisiko skår" ItemHelp="" Expression="IsZero(SEX-1)*1.76 + FK_B_01_SCORE + FK_B_02_SCORE + FK_B_03_SCORE + FK_B_04_SCORE + FK_B_05_SCORE + FK_B_06_SCORE + FK_B_07_SCORE" MinExpression="0" MaxExpression="14.89" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
                                 <Answer/>
                 </FormItem>
         </Item>

@@ -3,7 +3,7 @@
   <Form FormId="466" FormName="CTS_PREOPERATIVE" FormTitle="CTS Preop vurdering">
     <Page PageId="1380" PageNumber="1" PageTitle="Vitale mål">
         <Item ItemId="4255" ItemType="2" VarName="SEX" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="10163" OrderNumber="1" ItemText="Kjønn" ItemHelp="Skjult" Expression="Patient.GenderId" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="0">
+                <FormItem FormItemId="10163" OrderNumber="1" ItemText="Kjønn" ItemHelp="Skjult" Expression="Patient.GenderId" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="1">
                                 <Answer AnswerId="22860" OrderNumber="1" OptionText="Mann" ShortCode="M"/>
                                 <Answer AnswerId="22861" OrderNumber="2" OptionText="Kvinne" ShortCode="K"/>
                 </FormItem>
@@ -15,23 +15,23 @@
                 </FormItem>
         </Item>
         <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-                <FormItem FormItemId="4407" OrderNumber="3" ItemText="Høyde (cm)" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="0">
+                <FormItem FormItemId="4407" OrderNumber="3" ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-                <FormItem FormItemId="4408" OrderNumber="4" ItemText="Vekt (kg)" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="0" Decimals="1">
+                <FormItem FormItemId="4408" OrderNumber="4" ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="0" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-                <FormItem FormItemId="4409" OrderNumber="5" ItemText="BMI (kg/m2)" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1" Decimals="1">
+                <FormItem FormItemId="4409" OrderNumber="5" ItemText="BMI" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
     </Page>
     <Page PageId="1381" PageNumber="2" PageTitle="Bakgrunn">
-        <Item ItemId="3983" ItemType="4" VarName="YRKE" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="3983" ItemType="4" VarName="YRKE" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="4410" OrderNumber="6" ItemHeader="Yrke*" ItemText="Pasientens yrke og evt. arbeidssted" ItemHelp="F.eks: Pensjonert fisker, renholder på sykehuset." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="-1" CarryForward="1" Optional="1">
                                 <Answer/>
                 </FormItem>
@@ -149,7 +149,7 @@
         </Item>
     </Page>
     <Page PageId="6056" PageNumber="8" PageTitle="Andre faste medisiner*">
-        <Item ItemId="10032" ItemType="4" VarName="VAR10032" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="10032" ItemType="4" VarName="VAR10032" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="19503" OrderNumber="20" ItemHeader="Hvilke*" ItemText="Hvilke andre faste medisiner?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="-1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -180,7 +180,7 @@
         </Item>
     </Page>
     <Page PageId="6108" PageNumber="10" PageTitle="Tidligere operasjoner for CTS*">
-        <Item ItemId="10053" ItemType="4" VarName="VAR10053" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="10053" ItemType="4" VarName="VAR10053" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="19643" OrderNumber="24" ItemHeader="Hvor og når*" ItemText="Hvor or når ble du operert for karpaltunnelsyndrom?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -217,7 +217,7 @@
         </Item>
     </Page>
     <Page PageId="6136" PageNumber="14" PageTitle="Kommentar nevrografi*">
-        <Item ItemId="5850" ItemType="4" VarName="CTS_NEVROGRAFI_TEKST" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="5850" ItemType="4" VarName="CTS_NEVROGRAFI_TEKST" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="10141" OrderNumber="29" ItemText="Kommentar" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
@@ -352,7 +352,7 @@
         </Item>
     </Page>
     <Page PageId="6571" PageNumber="20" PageTitle="">
-        <Item ItemId="10069" ItemType="4" VarName="VAR10069" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="10069" ItemType="4" VarName="VAR10069" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="19718" OrderNumber="47" ItemText="Kommentarer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>

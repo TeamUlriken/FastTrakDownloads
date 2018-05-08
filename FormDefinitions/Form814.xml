@@ -41,7 +41,7 @@
         </Item>
     </Page>
     <Page PageId="6313" PageNumber="3" PageTitle="">
-        <Item ItemId="7120" ItemType="4" VarName="BASEREG_OTHERDISEASEWHAT" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="7120" ItemType="4" VarName="BASEREG_OTHERDISEASEWHAT" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="18044" OrderNumber="7" ItemText="Hva" ItemHelp="Skriv diagnosen(e) så kortfattet som mulig" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -49,7 +49,7 @@
     </Page>
     <Page PageId="6340" PageNumber="5" PageTitle="">
         <Item ItemId="7122" ItemType="1" VarName="BASEREG_OSMRS" LoincScale="QN" UnitStr="poeng" DisplayFormat="">
-                <FormItem FormItemId="18046" OrderNumber="8" ItemText="OS-MRS, Obesity Surgery Mortality Risk Score (poeng)" ItemHelp="Utregningen gjøres av systemet.&#xA;OS-MRS er en risikoscore for kirurgi på fedmepasienter.&#xA;Minst risiko = 0 poeng. Høyest risiko = 5 poeng.&#xA;Beregnes som følger: Kjønn. Kvinne = 0 Mann = 1&#xA;Alder. &lt;45år = 0 &gt;45 år = 1&#xA;Hypertoni. Nei = 0 Ja = 1&#xA;BMI. &lt;50 = 0 &gt;50 = 1&#xA;Tidligere DVT/PE. Nei = 0 Ja = 1" Expression="ISNULL( Patient.Sex - 1 ) + ISPOS( Patient.Age - 45 ) + ISPOS( BASEREG_HYPERTENSION ) + ISPOS( BASEREG_BMI - 49.999 ) + ISPOS( BASEREG_PREVIOUSDVT )" MinExpression="0" MaxExpression="5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="18046" OrderNumber="8" ItemText="OS-MRS, Obesity Surgery Mortality Risk Score (poeng)" ItemHelp="Utregningen gjøres av systemet.&#xA;OS-MRS er en risikoscore for kirurgi på fedmepasienter.&#xA;Minst risiko = 0 poeng. Høyest risiko = 5 poeng.&#xA;Beregnes som følger: Kjønn. Kvinne = 0 Mann = 1&#xA;Alder. &lt;45år = 0 &gt;45 år = 1&#xA;Hypertoni. Nei = 0 Ja = 1&#xA;BMI. &lt;50 = 0 &gt;50 = 1&#xA;Tidligere DVT/PE. Nei = 0 Ja = 1" Expression="ISNULL( Patient.Sex - 1 ) + ISPOS( Patient.Age - 45 ) + ISPOS( BASEREG_HYPERTENSION ) + ISPOS( BASEREG_BMI - 49.999 ) + ISPOS( BASEREG_PREVIOUSDVT )" MinExpression="0" MaxExpression="5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>

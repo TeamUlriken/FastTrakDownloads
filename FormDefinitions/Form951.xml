@@ -3,7 +3,7 @@
   <Form FormId="951" FormName="INSULIN_PUMP1" FormTitle="Insulinpumpe - Standarddosering">
     <Page PageId="9458" PageNumber="1" PageTitle="Bakgrunn">
         <Item ItemId="3322" ItemType="2" VarName="NDV_TREATMENT_TYPE" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="26836" OrderNumber="1" ItemHeader="Behandlingsstrategi" ItemText="Diabetes behandles ved hjelp av" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+                <FormItem FormItemId="26836" OrderNumber="1" ItemHeader="Behandlingsstrategi" ItemText="Diabetes behandles ved hjelp av" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
                                 <Answer AnswerId="16425" OrderNumber="1" OptionText="Kun kost/aktivitet."/>
                                 <Answer AnswerId="16426" OrderNumber="2" OptionText="Andre blodsukkersenkende midler enn insulin."/>
                                 <Answer AnswerId="16427" OrderNumber="3" OptionText="Kun insulinbehandlet."/>
@@ -30,7 +30,7 @@
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="3997" ItemType="4" VarName="INSPUMP_NAVN" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="3997" ItemType="4" VarName="INSPUMP_NAVN" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="26865" OrderNumber="5" ItemText="Pumpe type" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -185,13 +185,13 @@
     </Page>
     <Page PageId="9464" PageNumber="7" PageTitle="Måltidsinsulin detaljer*">
         <Item ItemId="2122" ItemType="2" VarName="ATC_A10ABnn" LoincScale="ORD">
-                <FormItem FormItemId="26941" OrderNumber="34" ItemText="Hurtigvirkende insulin" ItemHelp="A10AB: Insulin og analoger til injeksjon, hurtigvirkende." Expression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-                                <Answer AnswerId="11119" OrderNumber="1" OptionText="Actrapid (A10AB01)."/>
-                                <Answer AnswerId="11120" OrderNumber="2" OptionText="Insuman Rapid (A10AB01)."/>
-                                <Answer AnswerId="11121" OrderNumber="3" OptionText="Humalog (A10AB04)."/>
-                                <Answer AnswerId="11122" OrderNumber="4" OptionText="Fiasp (A10AB05)."/>
-                                <Answer AnswerId="11123" OrderNumber="5" OptionText="NovoRapid (A10AB05)."/>
-                                <Answer AnswerId="11124" OrderNumber="6" OptionText="Apidra (A10AB06)."/>
+                <FormItem FormItemId="26941" OrderNumber="34" ItemText="Hurtigvirkende insulin" ItemHelp="A10AB: Insulin og analoger til injeksjon, hurtigvirkende." Expression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="11119" OrderNumber="1" OptionText="Actrapid." ShortCode="B01a"/>
+                                <Answer AnswerId="11120" OrderNumber="2" OptionText="Insuman Rapid." ShortCode="B01b"/>
+                                <Answer AnswerId="11121" OrderNumber="3" OptionText="Humalog." ShortCode="B04a"/>
+                                <Answer AnswerId="11122" OrderNumber="4" OptionText="Fiasp." ShortCode="B05a"/>
+                                <Answer AnswerId="11123" OrderNumber="5" OptionText="NovoRapid." ShortCode="B05b"/>
+                                <Answer AnswerId="11124" OrderNumber="6" OptionText="Apidra." ShortCode="B06a"/>
                 </FormItem>
         </Item>
         <Item ItemId="3228" ItemType="1" VarName="INS_MEAL_BREAKFAST" LoincScale="QN" UnitStr="E" DisplayFormat="">
@@ -215,14 +215,14 @@
                 </FormItem>
         </Item>
         <Item ItemId="3905" ItemType="1" VarName="INS_MEAL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-                <FormItem FormItemId="26838" OrderNumber="39" ItemText="Sum måltidsinsulin (E)" ItemHelp="" Expression="ISNULL( INS_MEAL_YN-1) * ( INS_MEAL_BREAKFAST_SCORE + INS_MEAL_LUNCH_SCORE + INS_MEAL_DINNER_SCORE + INS_MEAL_SUPPER_SCORE )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+                <FormItem FormItemId="26838" OrderNumber="39" ItemText="Sum måltidsinsulin (E)" ItemHelp="" Expression="ISNULL( INS_MEAL_YN-1) * ( INS_MEAL_BREAKFAST_SCORE + INS_MEAL_LUNCH_SCORE + INS_MEAL_DINNER_SCORE + INS_MEAL_SUPPER_SCORE )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
     </Page>
     <Page PageId="9465" PageNumber="8" PageTitle="Totalsum">
         <Item ItemId="3908" ItemType="1" VarName="INS_ALL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-                <FormItem FormItemId="26839" OrderNumber="40" ItemText="Døgndose (E)" ItemHelp="" Expression="INS_PUMP_SUM + INS_MEAL_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+                <FormItem FormItemId="26839" OrderNumber="40" ItemText="Døgndose (E)" ItemHelp="" Expression="INS_PUMP_SUM + INS_MEAL_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="1" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -234,7 +234,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="6666" ItemType="1" VarName="INSULIN_SENS_FAKTOR" LoincScale="QN" UnitStr="mmol/L/E" DisplayFormat="">
-                <FormItem FormItemId="26871" OrderNumber="42" ItemText="Insulinfølsomhetsfaktor (mmol/L/E)" ItemHelp="Estimat (100/døgndose insulin) på fall i blodglukose per enhet hurtigvirkende insulin brukt som korrigerende doser." Expression="ISPOS( INS_ALL_SUM ) * 100 / INS_ALL_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                <FormItem FormItemId="26871" OrderNumber="42" ItemText="Insulinfølsomhetsfaktor" ItemHelp="Estimat (100/døgndose insulin) på fall i blodglukose per enhet hurtigvirkende insulin brukt som korrigerende doser." Expression="ISPOS( INS_ALL_SUM ) * 100 / INS_ALL_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -244,34 +244,34 @@
                 </FormItem>
         </Item>
         <Item ItemId="10434" ItemType="1" VarName="InsulinSensFactor" LoincScale="QN" UnitStr="mmol/L/E" DisplayFormat="">
-                <FormItem FormItemId="26878" OrderNumber="46" ItemText="Aktuell korreksjonsfaktor (mmol/L/E)" ItemHelp="Fall i blodglukose per enhet hurtigvirkende insulin brukt som korrigerende doser." MinExpression="0.5" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1" Decimals="1">
+                <FormItem FormItemId="26878" OrderNumber="46" ItemText="Aktuell korreksjonsfaktor" ItemHelp="Fall i blodglukose per enhet hurtigvirkende insulin brukt som korrigerende doser." MinExpression="0.5" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
     </Page>
     <Page PageId="9467" PageNumber="10" PageTitle="Registervariable" PageIntroduction="Disse lagres med faste verdier basert på at skjemaet lagres.">
         <Item ItemId="4056" ItemType="2" VarName="NDV_INSULIN_DEVICE" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="26866" OrderNumber="43" ItemText="Insulinadministrasjon" ItemHelp="" Expression="2" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="26866" OrderNumber="43" ItemText="Insulinadministrasjon" ItemHelp="" Expression="2" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Highlight="1" Optional="1">
                                 <Answer AnswerId="21306" OrderNumber="1" OptionText="Insulinpenn/sprøyte."/>
                                 <Answer AnswerId="21307" OrderNumber="2" OptionText="Insulinpumpe."/>
                 </FormItem>
         </Item>
         <Item ItemId="4207" ItemType="2" VarName="NDV_NONPHARMA_ONLY" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="26867" OrderNumber="45" ItemText="Kun kost/aktivitet" ItemHelp="" Expression="2" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="26867" OrderNumber="45" ItemText="Kun kost/aktivitet" ItemHelp="" Expression="2" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Highlight="1" Optional="1">
                                 <Answer AnswerId="22300" OrderNumber="1" OptionText="Ja"/>
                                 <Answer AnswerId="22301" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
                                 <Answer AnswerId="22302" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
                 </FormItem>
         </Item>
         <Item ItemId="3332" ItemType="2" VarName="ATC_A10A" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="26837" OrderNumber="47" ItemText="Injeksjonsbehandling med insulin" ItemHelp="" Expression="1" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="26837" OrderNumber="47" ItemText="Injeksjonsbehandling med insulin" ItemHelp="" Expression="1" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Highlight="1" Optional="1">
                                 <Answer AnswerId="16524" OrderNumber="1" OptionText="Ja"/>
                                 <Answer AnswerId="16525" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
                                 <Answer AnswerId="16526" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
                 </FormItem>
         </Item>
         <Item ItemId="4726" ItemType="2" VarName="NDV_INSULINADM" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="26869" OrderNumber="48" ItemText="Insulinbruker" ItemHelp="" Expression="3" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="26869" OrderNumber="48" ItemText="Insulinbruker" ItemHelp="" Expression="3" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Highlight="1" Optional="1">
                                 <Answer AnswerId="25473" OrderNumber="1" OptionText="Nei"/>
                                 <Answer AnswerId="25474" OrderNumber="2" OptionText="Sprøyte/penn"/>
                                 <Answer AnswerId="25475" OrderNumber="3" OptionText="Pumpe"/>

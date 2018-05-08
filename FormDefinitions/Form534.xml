@@ -22,7 +22,7 @@
     </Page>
     <Page PageId="1912" PageNumber="3" PageTitle="Avledede variable">
         <Item ItemId="4207" ItemType="2" VarName="NDV_NONPHARMA_ONLY" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="6608" OrderNumber="3" ItemText="Kun kost/aktivitet" ItemHelp="" Expression="ISNULL(NDV_TREATMENT_TYPE-1)+2*ISPOS(NDV_TREATMENT_TYPE-1)+ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Highlight="1" Optional="0">
+                <FormItem FormItemId="6608" OrderNumber="3" ItemText="Kun kost/aktivitet" ItemHelp="" Expression="ISNULL(NDV_TREATMENT_TYPE-1)+2*ISPOS(NDV_TREATMENT_TYPE-1)+ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Highlight="1" Optional="1">
                                 <Answer AnswerId="22300" OrderNumber="1" OptionText="Ja"/>
                                 <Answer AnswerId="22301" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
                                 <Answer AnswerId="22302" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
@@ -36,7 +36,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="4726" ItemType="2" VarName="NDV_INSULINADM" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="6612" OrderNumber="5" ItemText="Insulinbruker" ItemHelp="" Expression="1*ISNULL(ATC_A10A-2) + 2*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-1) + 3*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-2) + 4*ISNULL(ATC_A10A-3)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Highlight="1" Optional="0">
+                <FormItem FormItemId="6612" OrderNumber="5" ItemText="Insulinbruker" ItemHelp="" Expression="1*ISNULL(ATC_A10A-2) + 2*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-1) + 3*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-2) + 4*ISNULL(ATC_A10A-3)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Highlight="1" Optional="1">
                                 <Answer AnswerId="25473" OrderNumber="1" OptionText="Nei"/>
                                 <Answer AnswerId="25474" OrderNumber="2" OptionText="Sprøyte/penn"/>
                                 <Answer AnswerId="25475" OrderNumber="3" OptionText="Pumpe"/>
@@ -60,7 +60,7 @@
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="3997" ItemType="4" VarName="INSPUMP_NAVN" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="3997" ItemType="4" VarName="INSPUMP_NAVN" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="6606" OrderNumber="9" ItemText="Pumpe type" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -212,7 +212,7 @@
         </Item>
     </Page>
     <Page PageId="1916" PageNumber="7" PageTitle="Basalinsulin*">
-        <Item ItemId="4214" ItemType="4" VarName="INS_BASAL_NAME" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="4214" ItemType="4" VarName="INS_BASAL_NAME" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="6609" OrderNumber="38" ItemHeader="Preparat" ItemText="Preparatnavn og type penn" ItemHelp="F.eks: Humulin engangspenn, Insulatard Penfill, Lantus SoloStar, Levemir FlexPen" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -233,7 +233,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="3906" ItemType="1" VarName="INS_BASAL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-                <FormItem FormItemId="6577" OrderNumber="42" ItemText="Sum basalinsulin (E)" ItemHelp="" Expression="IS_NULL(INS_BASAL_YN-1) * ( INS_BASAL_MORNING*ISPOS(INS_BASAL_MORNING+1) + INS_BASAL_NOON*ISPOS(INS_BASAL_NOON+1)+ INS_BASAL_EVENING *ISPOS(INS_BASAL_EVENING+1))" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                <FormItem FormItemId="6577" OrderNumber="42" ItemText="Sum basalinsulin (E)" ItemHelp="" Expression="IS_NULL(INS_BASAL_YN-1) * ( INS_BASAL_MORNING*ISPOS(INS_BASAL_MORNING+1) + INS_BASAL_NOON*ISPOS(INS_BASAL_NOON+1)+ INS_BASAL_EVENING *ISPOS(INS_BASAL_EVENING+1))" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -247,7 +247,7 @@
         </Item>
     </Page>
     <Page PageId="1918" PageNumber="9" PageTitle="Måltidsinsulin*">
-        <Item ItemId="4215" ItemType="4" VarName="INS_MEAL_NAME" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="4215" ItemType="4" VarName="INS_MEAL_NAME" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="6610" OrderNumber="44" ItemHeader="Preparat*" ItemText="Preparatnavn og type penn" ItemHelp="F.eks: Humalog engangspenn, NovoRapid Flexpen, Actrapid Penfill, Apidra SoloStar, Insuman Rapid" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -278,7 +278,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="3905" ItemType="1" VarName="INS_MEAL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-                <FormItem FormItemId="6576" OrderNumber="50" ItemText="Sum måltidsinsulin (E)" ItemHelp="" Expression="IS_NULL(INS_MEAL_YN-1) * ( INS_MEAL_BREAKFAST*ISPOS(INS_MEAL_BREAKFAST+1) + INS_MEAL_BRUNCH*ISPOS(INS_MEAL_BRUNCH+1) + INS_MEAL_LUNCH*ISPOS(INS_MEAL_LUNCH+1) + INS_MEAL_DINNER*ISPOS(INS_MEAL_DINNER+1) + INS_MEAL_SUPPER*ISPOS(INS_MEAL_SUPPER+1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+                <FormItem FormItemId="6576" OrderNumber="50" ItemText="Sum måltidsinsulin (E)" ItemHelp="" Expression="IS_NULL(INS_MEAL_YN-1) * ( INS_MEAL_BREAKFAST*ISPOS(INS_MEAL_BREAKFAST+1) + INS_MEAL_BRUNCH*ISPOS(INS_MEAL_BRUNCH+1) + INS_MEAL_LUNCH*ISPOS(INS_MEAL_LUNCH+1) + INS_MEAL_DINNER*ISPOS(INS_MEAL_DINNER+1) + INS_MEAL_SUPPER*ISPOS(INS_MEAL_SUPPER+1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -292,7 +292,7 @@
         </Item>
     </Page>
     <Page PageId="1920" PageNumber="11" PageTitle="Premix insulin*">
-        <Item ItemId="4216" ItemType="4" VarName="INS_PREMIX_NAME" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="4216" ItemType="4" VarName="INS_PREMIX_NAME" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="6611" OrderNumber="52" ItemHeader="Preparat*" ItemText="Preparatnavn og type penn" ItemHelp="F.eks: Humalog Mix25 engangspenn, NovoMix 30 FlexPen, Insuman Comb 25 OptiSet" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -313,14 +313,14 @@
                 </FormItem>
         </Item>
         <Item ItemId="3907" ItemType="1" VarName="INS_PREMIX_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-                <FormItem FormItemId="6578" OrderNumber="56" ItemText="Sum premix-insulin (E)" ItemHelp="" Expression="IS_NULL(INS_PREMIX_YN-1) * ( INS_PREMIX_MORNING*ISPOS(INS_PREMIX_MORNING+1) + INS_PREMIX_NOON*ISPOS(INS_PREMIX_NOON+1) + INS_PREMIX_EVENING*ISPOS(INS_PREMIX_EVENING+1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                <FormItem FormItemId="6578" OrderNumber="56" ItemText="Sum premix-insulin (E)" ItemHelp="" Expression="IS_NULL(INS_PREMIX_YN-1) * ( INS_PREMIX_MORNING*ISPOS(INS_PREMIX_MORNING+1) + INS_PREMIX_NOON*ISPOS(INS_PREMIX_NOON+1) + INS_PREMIX_EVENING*ISPOS(INS_PREMIX_EVENING+1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
     </Page>
     <Page PageId="1921" PageNumber="12" PageTitle="Totalsum">
         <Item ItemId="3908" ItemType="1" VarName="INS_ALL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-                <FormItem FormItemId="6579" OrderNumber="57" ItemText="Døgndose (E)" ItemHelp="" Expression="INS_MEAL_SUM + INS_BASAL_SUM + INS_PREMIX_SUM + INS_PUMP_SUM *ISNULL (NDV_INSULIN_DEVICE-2)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0" Decimals="1">
+                <FormItem FormItemId="6579" OrderNumber="57" ItemText="Døgndose (E)" ItemHelp="" Expression="INS_MEAL_SUM + INS_BASAL_SUM + INS_PREMIX_SUM + INS_PUMP_SUM *ISNULL (NDV_INSULIN_DEVICE-2)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="1" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -343,7 +343,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="6666" ItemType="1" VarName="INSULIN_SENS_FAKTOR" LoincScale="QN" UnitStr="mmol/L/E" DisplayFormat="">
-                <FormItem FormItemId="6614" OrderNumber="60" ItemText="Insulinfølsomhetsfaktor (mmol/L/E)" ItemHelp="Estimat (100/døgndose insulin) på fall i blodglukose per enhet hurtigvirkende insulin brukt som korrigerende doser." Expression="ISPOS( INS_ALL_SUM ) * 100 / INS_ALL_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+                <FormItem FormItemId="6614" OrderNumber="60" ItemText="Insulinfølsomhetsfaktor" ItemHelp="Estimat (100/døgndose insulin) på fall i blodglukose per enhet hurtigvirkende insulin brukt som korrigerende doser." Expression="ISPOS( INS_ALL_SUM ) * 100 / INS_ALL_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>

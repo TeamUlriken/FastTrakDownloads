@@ -2,12 +2,12 @@
 <StudyForm>
   <Form FormId="824" FormName="GbdAvvik" FormTitle="Avvik">
     <Page PageId="5750" PageNumber="1" PageTitle="Om avviket">
-        <Item ItemId="8518" ItemType="4" VarName="AvvikStikkord" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="8518" ItemType="4" VarName="AvvikStikkord" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="18896" OrderNumber="1" ItemHeader="Stikkord" ItemText="Skriv bare noen få stikkord om avviket her, felt for utfyllende informasjon kommer senere." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="9993" ItemType="4" VarName="AvvikTekst" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="9993" ItemType="4" VarName="AvvikTekst" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="18899" OrderNumber="2" ItemHeader="Beskrivelse" ItemText="Hva skjedde? Beskriv hendelsesforløpet slik at din leder kan danne seg et godt bilde av hva som har skjedd." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -34,7 +34,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="3580" ItemType="2" VarName="SKADE_FALL" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="18914" OrderNumber="5" ItemHeader="Fall eller skade" ItemText="Var dette en fallskade eller annen skade?" ItemHelp="" Expression="ISNULL(AvvikType-1)*ISNULL(AvvikSkade-1)+2*ISNULL(AvvikType-8)*ISNULL(AvvikSkade-1)&#xA;+3*ISNULL(AvvikType-1)*ISPOS(AvvikSkade-1)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="18914" OrderNumber="5" ItemHeader="Fall eller skade" ItemText="Var dette en fallskade eller annen skade?" ItemHelp="" Expression="ISNULL(AvvikType-1)*ISNULL(AvvikSkade-1)+2*ISNULL(AvvikType-8)*ISNULL(AvvikSkade-1)&#xA;+3*ISNULL(AvvikType-1)*ISPOS(AvvikSkade-1)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
                                 <Answer AnswerId="18336" OrderNumber="1" OptionText="Fall med skade."/>
                                 <Answer AnswerId="18337" OrderNumber="2" OptionText="Skade av annen årsak enn fall."/>
                                 <Answer AnswerId="37866" OrderNumber="3" OptionText="Fall uten sikker skade."/>
@@ -109,7 +109,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="8507" ItemType="2" VarName="AvvikAlvorlighet" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="18887" OrderNumber="14" ItemText="Alvorlighetsgrad for rapportering (3 kategorier)" ItemHelp="" Expression="1 * ISPOS( ISNULL(EVENT_SEVERITY-1) + ISNULL (EVENT_SEVERITY-2) ) +&#xA;2 * ISPOS( ISNULL(EVENT_SEVERITY-3) ) +&#xA;3 * ISPOS( ISNULL(EVENT_SEVERITY-4) + ISNULL (EVENT_SEVERITY-5) + ISNULL ( EVENT_SEVERITY-6) )" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="18887" OrderNumber="14" ItemText="Alvorlighetsgrad for rapportering (3 kategorier)" ItemHelp="" Expression="1 * ISPOS( ISNULL(EVENT_SEVERITY-1) + ISNULL (EVENT_SEVERITY-2) ) +&#xA;2 * ISPOS( ISNULL(EVENT_SEVERITY-3) ) +&#xA;3 * ISPOS( ISNULL(EVENT_SEVERITY-4) + ISNULL (EVENT_SEVERITY-5) + ISNULL ( EVENT_SEVERITY-6) )" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
                                 <Answer AnswerId="47319" OrderNumber="1" OptionText="Liten"/>
                                 <Answer AnswerId="47320" OrderNumber="2" OptionText="Middels"/>
                                 <Answer AnswerId="47321" OrderNumber="3" OptionText="Stor"/>
@@ -162,7 +162,7 @@
         </Item>
     </Page>
     <Page PageId="5756" PageNumber="9" PageTitle="Forslag" PageIntroduction="Den som registrerer avviket kan foreslå tiltak for å hindre gjentagelse.">
-        <Item ItemId="6410" ItemType="4" VarName="AvvikForslag" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="6410" ItemType="4" VarName="AvvikForslag" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="18886" OrderNumber="21" ItemText="Forslag til korrigerende tiltak" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
@@ -178,7 +178,7 @@
         </Item>
     </Page>
     <Page PageId="5759" PageNumber="11" PageTitle="Kommentarer*">
-        <Item ItemId="9515" ItemType="4" VarName="AvvikResponsAvd" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="9515" ItemType="4" VarName="AvvikResponsAvd" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="18898" OrderNumber="23" ItemHeader="Tilbakemelding" ItemText="Tilbakemelding fra avdelingsleder til den som har registrert avviket" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>

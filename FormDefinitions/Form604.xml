@@ -15,7 +15,7 @@
     </Page>
     <Page PageId="2506" PageNumber="2" PageTitle="Beregning av liggetid" PageIntroduction="Beregninger skjer automatisk, skal ikke utfylles.">
         <Item ItemId="6709" ItemType="1" VarName="PreopLiggetid" LoincScale="QN" UnitStr="døgn" DisplayFormat="">
-                <FormItem FormItemId="9084" OrderNumber="3" ItemText="Preoperative liggedøgn (døgn)" ItemHelp="" Expression="OP_OPERATIONDATE - OpInnDato" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="9084" OrderNumber="3" ItemText="Preoperative liggedøgn (døgn)" ItemHelp="" Expression="OP_OPERATIONDATE - OpInnDato" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -36,7 +36,7 @@
         </Item>
     </Page>
     <Page PageId="2504" PageNumber="4" PageTitle="Hvilken profylakse*">
-        <Item ItemId="7255" ItemType="4" VarName="OP_OTHERDRUG" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="7255" ItemType="4" VarName="OP_OTHERDRUG" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="9064" OrderNumber="6" ItemText="Hvilken profylakse" ItemHelp="Skriv det eller de preparater som planlegges:" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -152,7 +152,7 @@
         </Item>
     </Page>
     <Page PageId="2480" PageNumber="10" PageTitle="Hva*">
-        <Item ItemId="7155" ItemType="4" VarName="OP_WHATINDICATION" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="7155" ItemType="4" VarName="OP_WHATINDICATION" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="8964" OrderNumber="22" ItemText="Hva" ItemHelp="Skriv operasjonsindikasjon(er) så kortfattet som mulig" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -213,7 +213,7 @@
         </Item>
     </Page>
     <Page PageId="2483" PageNumber="13" PageTitle="Hva*">
-        <Item ItemId="7164" ItemType="4" VarName="OP_CONVERSIONWHAT" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="7164" ItemType="4" VarName="OP_CONVERSIONWHAT" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="8973" OrderNumber="31" ItemText="Hva" ItemHelp="Skriv orsaken(erna) så kortfattat som möjligt" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -312,7 +312,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="7490" ItemType="2" VarName="OpGbpSutur" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="9087" OrderNumber="42" ItemText="Sutur benyttet" ItemHelp="" Expression="1 + ISPOS( ISPOS(OP_GBPSPACEMESO) + ISPOS(OP_GBPSPACEPETER) + ISPOS(OP_GBPSPACEEA) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="9087" OrderNumber="42" ItemText="Sutur benyttet" ItemHelp="" Expression="1 + ISPOS( ISPOS(OP_GBPSPACEMESO) + ISPOS(OP_GBPSPACEPETER) + ISPOS(OP_GBPSPACEEA) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
                                 <Answer AnswerId="40104" OrderNumber="1" OptionText="Nei"/>
                                 <Answer AnswerId="40105" OrderNumber="2" OptionText="Ja"/>
                 </FormItem>
@@ -675,7 +675,7 @@
         </Item>
     </Page>
     <Page PageId="2492" PageNumber="33" PageTitle="Annen obesitasoperasjon (ØVR)">
-        <Item ItemId="7248" ItemType="4" VarName="OP_TYPEOFOP" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="7248" ItemType="4" VarName="OP_TYPEOFOP" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="9057" OrderNumber="87" ItemText="Type operasjon" ItemHelp="Beskriv så kortfattet som mulig hvilken metode som er utført." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -692,7 +692,7 @@
                                 <Answer AnswerId="39311" OrderNumber="6" OptionText="Annet"/>
                 </FormItem>
         </Item>
-        <Item ItemId="7250" ItemType="4" VarName="OP_REVNOCHANGEWHAT" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="7250" ItemType="4" VarName="OP_REVNOCHANGEWHAT" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="9059" OrderNumber="89" ItemText="Annet" ItemHelp="Beskriv så kortfattet som mulig hva som er blitt gjort" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -746,7 +746,7 @@
         </Item>
     </Page>
     <Page PageId="2498" PageNumber="39" PageTitle="Hva*">
-        <Item ItemId="7261" ItemType="4" VarName="OP_OTHERCOMPLWHAT" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="7261" ItemType="4" VarName="OP_OTHERCOMPLWHAT" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="9070" OrderNumber="96" ItemText="Hva" ItemHelp="Beskriv komplikasjonen så kortfattet som mulig" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -799,7 +799,7 @@
         </Item>
     </Page>
     <Page PageId="2501" PageNumber="42" PageTitle="Hva*">
-        <Item ItemId="7269" ItemType="4" VarName="OP_OTHERSURGWHAT" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="7269" ItemType="4" VarName="OP_OTHERSURGWHAT" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="9078" OrderNumber="104" ItemText="Hva" ItemHelp="Beskriv tiltaket så kortfattet som mulig." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>

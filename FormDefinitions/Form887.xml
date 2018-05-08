@@ -41,7 +41,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="1022" ItemType="2" VarName="LS1_TILLEGG_OPPFYLT" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="21862" OrderNumber="7" ItemText="To eller flere kriterier oppfylt" ItemHelp="" Expression="2-ISPOS( ISNULL(LS1_SENG-1) + ISNULL(LS1_KONTAKT-1) + ISNULL(LS1_DRIKKE-1) + ISNULL(LS1_TABLETT-1) - 1 )" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                <FormItem FormItemId="21862" OrderNumber="7" ItemText="To eller flere kriterier oppfylt" ItemHelp="" Expression="2-ISPOS( ISNULL(LS1_SENG-1) + ISNULL(LS1_KONTAKT-1) + ISNULL(LS1_DRIKKE-1) + ISNULL(LS1_TABLETT-1) - 1 )" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
                                 <Answer AnswerId="58764" OrderNumber="1" OptionText="Ja"/>
                                 <Answer AnswerId="58765" OrderNumber="2" OptionText="Nei (LCP bør ikke iverksettes)"/>
                 </FormItem>
@@ -59,16 +59,16 @@
     </Page>
     <Page PageId="7420" PageNumber="3" PageTitle="Diagnose og personopplysninger">
         <Item ItemId="4085" ItemType="5" VarName="GBD_INNDATO" LoincScale="DATE" DisplayFormat="">
-                <FormItem FormItemId="21848" OrderNumber="10" ItemHeader="Ankom" ItemText="Når kom pasienten kom inn på sykehjemmet?" ItemHelp="Gjelder aktuelt opphold." MinExpression="DOB" MaxExpression="FORMDATE+7" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Optional="0">
+                <FormItem FormItemId="21848" OrderNumber="10" ItemHeader="Ankom" ItemText="Når kom pasienten inn på sykehjemmet?" ItemHelp="Gjelder aktuelt opphold." MinExpression="DOB" MaxExpression="FORMDATE+7" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="1016" ItemType="4" VarName="LS1_HOVEDDIAGNOSE" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="1016" ItemType="4" VarName="LS1_HOVEDDIAGNOSE" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="21856" OrderNumber="11" ItemHeader="Hoveddiagnose" ItemText="Hva er hovedårsaken til at pasienten er døende?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="1017" ItemType="4" VarName="LS1_BIDIAGNOSER" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="1017" ItemType="4" VarName="LS1_BIDIAGNOSER" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="21857" OrderNumber="12" ItemHeader="Bidiagnoser" ItemText="Andre alvorlige tilstander" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -81,19 +81,19 @@
         </Item>
     </Page>
     <Page PageId="8378" PageNumber="4" PageTitle="Utenlandsk nasjonalitet*">
-        <Item ItemId="6488" ItemType="4" VarName="VAR6488" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="6488" ItemType="4" VarName="VAR6488" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="23983" OrderNumber="14" ItemText="Spesifiser utenlandsk nasjonalitet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
     </Page>
     <Page PageId="8377" PageNumber="5" PageTitle="Beslutning">
-        <Item ItemId="1006" ItemType="4" VarName="LS1_BESLUTNING_TATT" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="1006" ItemType="4" VarName="LS1_BESLUTNING_TATT" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="24167" OrderNumber="15" ItemText="Beslutning om bruk tatt" ItemHelp="Dato og klokkeslett for når bruken av planen ble bestemt." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="1018" ItemType="4" VarName="LS1_BESLUTNINGSTAKERE" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="1018" ItemType="4" VarName="LS1_BESLUTNINGSTAKERE" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="21858" OrderNumber="16" ItemHeader="Beslutningstakere" ItemText="Hvem inngår i det tverrfaglige teamet som tar beslutningen?" ItemHelp="Minst én sykepleier og én lege." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -200,7 +200,7 @@
         </Item>
     </Page>
     <Page PageId="7582" PageNumber="8" PageTitle="Annet*">
-        <Item ItemId="10472" ItemType="4" VarName="LS1_ANNET_TEKST" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="10472" ItemType="4" VarName="LS1_ANNET_TEKST" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="21549" OrderNumber="33" ItemHeader="Beskrivelse" ItemText="Beskriv kort andre symptomer og funn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -281,7 +281,7 @@
                                 <Answer AnswerId="58821" OrderNumber="2" OptionText="Nei"/>
                 </FormItem>
         </Item>
-        <Item ItemId="1692" ItemType="4" VarName="LS1_SEP_ANNET" LoincScale="NAR">
+        <Item ItemId="1692" ItemType="4" VarName="LS1_SEP_ANNET" LoincScale="NAR" Multiline="1">
                 <FormItem FormItemId="23981" OrderNumber="45" ItemText="Eventuelle andre tiltak seponert" ItemHelp="Beskriv hvis aktuelt" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
                                 <Answer/>
                 </FormItem>
@@ -297,12 +297,12 @@
         </Item>
     </Page>
     <Page PageId="7487" PageNumber="13" PageTitle="ICD Lege*">
-        <Item ItemId="10470" ItemType="4" VarName="LS1_ICD_LEGE" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="10470" ItemType="4" VarName="LS1_ICD_LEGE" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="21655" OrderNumber="47" ItemText="Legens navn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="10471" ItemType="4" VarName="LS1_ICD_TIDSPUNKT" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="10471" ItemType="4" VarName="LS1_ICD_TIDSPUNKT" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="21656" OrderNumber="48" ItemText="Dato og klokkeslett" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -326,12 +326,12 @@
         </Item>
     </Page>
     <Page PageId="7447" PageNumber="16" PageTitle="Tiltak*">
-        <Item ItemId="10466" ItemType="4" VarName="LS1_PUMPE_SYKEPLEIER" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="10466" ItemType="4" VarName="LS1_PUMPE_SYKEPLEIER" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="21653" OrderNumber="51" ItemText="Sykepleierens navn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="10467" ItemType="4" VarName="LS1_PUMPE_TIDSPUNKT" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="10467" ItemType="4" VarName="LS1_PUMPE_TIDSPUNKT" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="21654" OrderNumber="52" ItemText="Dato og klokkeslett" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -410,7 +410,7 @@
         </Item>
     </Page>
     <Page PageId="7466" PageNumber="20" PageTitle="livssyn spes*">
-        <Item ItemId="1044" ItemType="4" VarName="LS1_LIVSSYN" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="1044" ItemType="4" VarName="LS1_LIVSSYN" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="21887" OrderNumber="63" ItemText="Pasientens trosretning eller livssyn:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -426,12 +426,12 @@
         </Item>
     </Page>
     <Page PageId="7469" PageNumber="22" PageTitle="prest spes*">
-        <Item ItemId="1046" ItemType="4" VarName="LS1_PREST_NAVN" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="1046" ItemType="4" VarName="LS1_PREST_NAVN" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="21889" OrderNumber="65" ItemHeader="Navn" ItemText="Navn på prest / kontaktperson" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="1047" ItemType="4" VarName="LS1_PREST_TELEFON" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="1047" ItemType="4" VarName="LS1_PREST_TELEFON" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="21890" OrderNumber="66" ItemHeader="Telefon" ItemText="Telefon-nummer til prest / kontaktperson" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -443,7 +443,7 @@
         </Item>
     </Page>
     <Page PageId="7483" PageNumber="23" PageTitle="Kommentarer*">
-        <Item ItemId="1048" ItemType="4" VarName="LS1_LIVSSYN_BEHOV" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="1048" ItemType="4" VarName="LS1_LIVSSYN_BEHOV" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="21891" OrderNumber="68" ItemText="Kommentarer" ItemHelp="Spesielle behov nå, i forbindelse med dødsfallet, etter dødsfallet" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -474,19 +474,20 @@
                                 <Answer AnswerId="182" OrderNumber="3" OptionText="bror/søster" VerboseText="Bror/søster:"/>
                                 <Answer AnswerId="183" OrderNumber="4" OptionText="annet slektskap" VerboseText="Slektning:"/>
                                 <Answer AnswerId="184" OrderNumber="5" OptionText="samboer" VerboseText="Samboer:"/>
+                                <Answer AnswerId="11420" OrderNumber="6" OptionText="annen relasjon" VerboseText="Annen relasjon:"/>
                 </FormItem>
         </Item>
-        <Item ItemId="3426" ItemType="4" VarName="NEXTOFKIN_NAME" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="3426" ItemType="4" VarName="NEXTOFKIN_NAME" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="21527" OrderNumber="72" ItemHeader="Navn*" ItemText="Nærmeste pårørende" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="3425" ItemType="4" VarName="NEXTOFKIN_PHONE" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="3425" ItemType="4" VarName="NEXTOFKIN_PHONE" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="21649" OrderNumber="73" ItemHeader="Telefon" ItemText="Telefonnumre for nærmeste pårørende" ItemHelp="Skriv gjerne flere telefonnumre, skilt med komma." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="1410" ItemType="4" VarName="OTHEROFKIN_DETAILS" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="1410" ItemType="4" VarName="OTHEROFKIN_DETAILS" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="21650" OrderNumber="74" ItemHeader="Andre pårørende" ItemText="Opplysninger om  andre pårørende" ItemHelp="Fornavn, etternavn, telefonnummer.  Gi så utfyllende opplysninger som mulig, gjerne om flere pårørende.  Skal brukes i kritiske situasjoner, skriv nærmeste pårørende først." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
                                 <Answer/>
                 </FormItem>

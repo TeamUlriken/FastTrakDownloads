@@ -42,17 +42,17 @@
         </Item>
     </Page>
     <Page PageId="1439" PageNumber="3" PageTitle="Fastlege">
-        <Item ItemId="3428" ItemType="4" VarName="DOCNAME" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="3428" ItemType="4" VarName="DOCNAME" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="4555" OrderNumber="4" ItemHeader="Navn*" ItemText="Din fastlege" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="5718" ItemType="4" VarName="DOC_OFFICE" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="5718" ItemType="4" VarName="DOC_OFFICE" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="4556" OrderNumber="5" ItemText="Legekontor" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
-        <Item ItemId="5719" ItemType="4" VarName="DOC_MUNICIPALITY" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="5719" ItemType="4" VarName="DOC_MUNICIPALITY" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="4557" OrderNumber="6" ItemHeader="Kommune" ItemText="Legekontorets kommune" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
@@ -78,7 +78,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="3196" ItemType="2" VarName="NDV_TYPE" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="4537" OrderNumber="10" ItemText="Diabetes type" ItemHelp="" Expression="1*ISNULL(NP_DM_TYPE-1) + 2*ISNULL(NP_DM_TYPE-2)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="0">
+                <FormItem FormItemId="4537" OrderNumber="10" ItemText="Diabetes type" ItemHelp="" Expression="1*ISNULL(NP_DM_TYPE-1) + 2*ISNULL(NP_DM_TYPE-2)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="1">
                                 <Answer AnswerId="15986" OrderNumber="1" OptionText="Type 1 (inkl. LADA)" VerboseText="Type 1 diabetes." ShortCode="1" ICD10="E10"/>
                                 <Answer AnswerId="15987" OrderNumber="2" OptionText="Type 2" VerboseText="Type 2 diabetes." ShortCode="2" ICD10="E11"/>
                                 <Answer AnswerId="15988" OrderNumber="3" OptionText="Annen diabetestype (inkl. pankreatitt, MODY)." ShortCode="A"/>
@@ -87,12 +87,12 @@
                 </FormItem>
         </Item>
         <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-                <FormItem FormItemId="4538" OrderNumber="11" ItemText="Høyde (cm)" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="4538" OrderNumber="11" ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-                <FormItem FormItemId="4539" OrderNumber="12" ItemText="Vekt (kg)" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+                <FormItem FormItemId="4539" OrderNumber="12" ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -129,7 +129,7 @@
         </Item>
     </Page>
     <Page PageId="1444" PageNumber="8" PageTitle="Antidiabetika preparatnavn*">
-        <Item ItemId="5728" ItemType="4" VarName="NP_A10B_NAMES" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="5728" ItemType="4" VarName="NP_A10B_NAMES" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="4569" OrderNumber="17" ItemText="Navn på tabletter mot diabetes" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
@@ -137,7 +137,7 @@
     </Page>
     <Page PageId="6393" PageNumber="9" PageTitle="">
         <Item ItemId="3322" ItemType="2" VarName="NDV_TREATMENT_TYPE" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="4541" OrderNumber="18" ItemHeader="Behandlingsstrategi" ItemText="Diabetes behandles ved hjelp av" ItemHelp="" Expression="ISNULL( ISNULL(ATC_A10A-2)+ISNULL(ATC_A10B-2) - 2 ) +&#xA;ISNULL( ISNULL(ATC_A10A-2)+ISNULL(ATC_A10B-1) - 2 )*2 +&#xA;ISNULL( ISNULL(ATC_A10A-1)+ISNULL(ATC_A10B-2) - 2 )*3 +&#xA;ISNULL( ISNULL(ATC_A10A-1)+ISNULL(ATC_A10B-1) - 2 )*4 +&#xA;ISPOS( ISNULL(ATC_A10A-3)+ISNULL(ATC_A10B-3) )* 5" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="0">
+                <FormItem FormItemId="4541" OrderNumber="18" ItemHeader="Behandlingsstrategi" ItemText="Diabetes behandles ved hjelp av" ItemHelp="" Expression="ISNULL( ISNULL(ATC_A10A-2)+ISNULL(ATC_A10B-2) - 2 ) +&#xA;ISNULL( ISNULL(ATC_A10A-2)+ISNULL(ATC_A10B-1) - 2 )*2 +&#xA;ISNULL( ISNULL(ATC_A10A-1)+ISNULL(ATC_A10B-2) - 2 )*3 +&#xA;ISNULL( ISNULL(ATC_A10A-1)+ISNULL(ATC_A10B-1) - 2 )*4 +&#xA;ISPOS( ISNULL(ATC_A10A-3)+ISNULL(ATC_A10B-3) )* 5" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="1">
                                 <Answer AnswerId="16425" OrderNumber="1" OptionText="Kun kost/aktivitet."/>
                                 <Answer AnswerId="16426" OrderNumber="2" OptionText="Andre blodsukkersenkende midler enn insulin."/>
                                 <Answer AnswerId="16427" OrderNumber="3" OptionText="Kun insulinbehandlet."/>
@@ -146,7 +146,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="4207" ItemType="2" VarName="NDV_NONPHARMA_ONLY" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="4673" OrderNumber="19" ItemText="Kun kost/aktivitet" ItemHelp="" Expression="ISNULL(NDV_TREATMENT_TYPE-1)+2*ISPOS(NDV_TREATMENT_TYPE-1)+ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="4673" OrderNumber="19" ItemText="Kun kost/aktivitet" ItemHelp="" Expression="ISNULL(NDV_TREATMENT_TYPE-1)+2*ISPOS(NDV_TREATMENT_TYPE-1)+ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
                                 <Answer AnswerId="22300" OrderNumber="1" OptionText="Ja"/>
                                 <Answer AnswerId="22301" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
                                 <Answer AnswerId="22302" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
@@ -161,7 +161,7 @@
         </Item>
     </Page>
     <Page PageId="1445" PageNumber="10" PageTitle="Lipidsenkende preparatnavn*">
-        <Item ItemId="5725" ItemType="4" VarName="NP_C10A_NAMES" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="5725" ItemType="4" VarName="NP_C10A_NAMES" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="4564" OrderNumber="21" ItemText="Navn på kolesterolsenkende tabletter" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
@@ -177,7 +177,7 @@
         </Item>
     </Page>
     <Page PageId="1447" PageNumber="12" PageTitle="Blodtrykk preparatnavn*">
-        <Item ItemId="5720" ItemType="4" VarName="NP_BPDRUG_NAMES" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="5720" ItemType="4" VarName="NP_BPDRUG_NAMES" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="4558" OrderNumber="23" ItemText="Navn på blodtrykkstabletter" ItemHelp="Husk å skrive hele navnet på kombinasjonspreparater, dvs. ta med Comp, Plus Co- og HCT i navnet." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
@@ -193,7 +193,7 @@
         </Item>
     </Page>
     <Page PageId="6477" PageNumber="14" PageTitle="">
-        <Item ItemId="5724" ItemType="4" VarName="NP_B01A_NAMES" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="5724" ItemType="4" VarName="NP_B01A_NAMES" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="4563" OrderNumber="25" ItemText="Navn på blodfortynnende tabletter" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
@@ -260,7 +260,7 @@
     </Page>
     <Page PageId="1454" PageNumber="22" PageTitle="Avledet røykestatus*">
         <Item ItemId="3227" ItemType="2" VarName="NDV_SMOKING" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="4559" OrderNumber="33" ItemText="Røykestatus" ItemHelp="Velg Dagligrøyker hvis sluttet for mindre enn 3 mnd siden." Expression="ISNULL(SMOKER_3M-3) + ISNULL(SMOKER_YN-1)*2 + ISNULL(SMOKER_YN-2) * ISNULL( SMOKER_3M-2) * 2 + ISNULL(SMOKER_3M-1)*3" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="0">
+                <FormItem FormItemId="4559" OrderNumber="33" ItemText="Røykestatus" ItemHelp="Velg Dagligrøyker hvis sluttet for mindre enn 3 mnd siden." Expression="ISNULL(SMOKER_3M-3) + ISNULL(SMOKER_YN-1)*2 + ISNULL(SMOKER_YN-2) * ISNULL( SMOKER_3M-2) * 2 + ISNULL(SMOKER_3M-1)*3" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="1">
                                 <Answer AnswerId="16138" OrderNumber="1" OptionText="Aldri røykt daglig."/>
                                 <Answer AnswerId="16139" OrderNumber="2" OptionText="Dagligrøyker."/>
                                 <Answer AnswerId="16140" OrderNumber="3" OptionText="Eks-dagligrøyker."/>
@@ -310,7 +310,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="4087" ItemType="2" VarName="NDV_RETINOPATHY" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="4551" OrderNumber="39" ItemText="Retinopati" ItemHelp="Behandling inkluderer laserbehandling, injeksjonsbehandling og kirurgi." Expression="ISNULL(NP_LASER - 1)*3" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="0">
+                <FormItem FormItemId="4551" OrderNumber="39" ItemText="Retinopati" ItemHelp="Behandling inkluderer laserbehandling, injeksjonsbehandling og kirurgi." Expression="ISNULL(NP_LASER - 1)*3" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="1">
                                 <Answer AnswerId="21836" OrderNumber="1" OptionText="Nei*" ShortCode="N"/>
                                 <Answer AnswerId="21837" OrderNumber="2" OptionText="Retinopati, ubehandlet." ICD10="H360"/>
                                 <Answer AnswerId="21838" OrderNumber="3" OptionText="Behandlet retinopati." ICD10="H360"/>
@@ -400,7 +400,7 @@
     </Page>
     <Page PageId="6735" PageNumber="35" PageTitle="">
         <Item ItemId="3342" ItemType="2" VarName="NDV_FAM_CHD" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="4655" OrderNumber="50" ItemText="Tidlig koronarsykdom hos foreldre/søsken" ItemHelp="Før 55/65 år hos menn/kvinner, kun biologiske foreldre/søsken" Expression="1 * ISNULL(NP_FAMCHD-1)*ISNULL(NP_FAMCHD_EARLY-1) + &#xA;2 * ISNULL(NP_FAMCHD-1)*ISNULL(NP_FAMCHD_EARLY-2) +&#xA;3 * ISNULL(NP_FAMCHD-1)*ISNULL(NP_FAMCHD_EARLY-3) +&#xA;2 * ISNULL(NP_FAMCHD-2) +&#xA;3 * ISNULL(NP_FAMCHD-3)&#xA;&#xA;" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="0">
+                <FormItem FormItemId="4655" OrderNumber="50" ItemText="Tidlig koronarsykdom hos foreldre/søsken" ItemHelp="Før 55/65 år hos menn/kvinner, kun biologiske foreldre/søsken" Expression="1 * ISNULL(NP_FAMCHD-1)*ISNULL(NP_FAMCHD_EARLY-1) + &#xA;2 * ISNULL(NP_FAMCHD-1)*ISNULL(NP_FAMCHD_EARLY-2) +&#xA;3 * ISNULL(NP_FAMCHD-1)*ISNULL(NP_FAMCHD_EARLY-3) +&#xA;2 * ISNULL(NP_FAMCHD-2) +&#xA;3 * ISNULL(NP_FAMCHD-3)&#xA;&#xA;" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="1">
                                 <Answer AnswerId="16605" OrderNumber="1" OptionText="Ja" VerboseText="Tidlig koronarsykdom i familien." ShortCode="J"/>
                                 <Answer AnswerId="16606" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
                                 <Answer AnswerId="16607" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>

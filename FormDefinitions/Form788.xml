@@ -2,7 +2,7 @@
 <StudyForm>
   <Form FormId="788" FormName="GbdAvvik" FormTitle="Avvik">
     <Page PageId="5162" PageNumber="1" PageTitle="Om avviket" PageIntroduction="Type og stikkord for avviket, detaljer i kommentarfeltet nederst.">
-        <Item ItemId="8518" ItemType="4" VarName="AvvikStikkord" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="8518" ItemType="4" VarName="AvvikStikkord" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="17093" OrderNumber="1" ItemHeader="Stikkord" ItemText="Skriv bare noen få stikkord om avviket her, felt for utfyllende informasjon kommer senere." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
                                 <Answer/>
                 </FormItem>
@@ -102,7 +102,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="8507" ItemType="2" VarName="AvvikAlvorlighet" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="17082" OrderNumber="13" ItemText="Alvorlighetsgrad for rapportering (3 kategorier)" ItemHelp="" Expression="1 * ISPOS( ISNULL(EVENT_SEVERITY-1) + ISNULL (EVENT_SEVERITY-2) ) +&#xA;2 * ISPOS( ISNULL(EVENT_SEVERITY-3) ) +&#xA;3 * ISPOS( ISNULL(EVENT_SEVERITY-4) + ISNULL (EVENT_SEVERITY-5) + ISNULL ( EVENT_SEVERITY-6) )" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="0">
+                <FormItem FormItemId="17082" OrderNumber="13" ItemText="Alvorlighetsgrad for rapportering (3 kategorier)" ItemHelp="" Expression="1 * ISPOS( ISNULL(EVENT_SEVERITY-1) + ISNULL (EVENT_SEVERITY-2) ) +&#xA;2 * ISPOS( ISNULL(EVENT_SEVERITY-3) ) +&#xA;3 * ISPOS( ISNULL(EVENT_SEVERITY-4) + ISNULL (EVENT_SEVERITY-5) + ISNULL ( EVENT_SEVERITY-6) )" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
                                 <Answer AnswerId="47319" OrderNumber="1" OptionText="Liten"/>
                                 <Answer AnswerId="47320" OrderNumber="2" OptionText="Middels"/>
                                 <Answer AnswerId="47321" OrderNumber="3" OptionText="Stor"/>
@@ -148,7 +148,7 @@
         </Item>
     </Page>
     <Page PageId="5100" PageNumber="8" PageTitle="Forslag" PageIntroduction="Den som registrerer avviket kan foreslå tiltak for å hindre gjentagelse.">
-        <Item ItemId="6410" ItemType="4" VarName="AvvikForslag" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="6410" ItemType="4" VarName="AvvikForslag" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="17081" OrderNumber="19" ItemText="Forslag til korrigerende tiltak" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
@@ -164,14 +164,14 @@
         </Item>
     </Page>
     <Page PageId="5102" PageNumber="10" PageTitle="Lukket av*">
-        <Item ItemId="8513" ItemType="4" VarName="AvvikLukketAv" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="8513" ItemType="4" VarName="AvvikLukketAv" LoincScale="NAR" DisplayFormat="" Multiline="0">
                 <FormItem FormItemId="17088" OrderNumber="21" ItemText="Avviket er lukket av" ItemHelp="Skriv inn navnet ditt når lukker avviket, før du signerer skjemaet.  Eks. &quot;Avdelingsleder&quot;, &quot;Primærkontakt&quot; el.l." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
     </Page>
     <Page PageId="5103" PageNumber="11" PageTitle="Kommentarer*">
-        <Item ItemId="9515" ItemType="4" VarName="AvvikResponsAvd" LoincScale="NAR" DisplayFormat="">
+        <Item ItemId="9515" ItemType="4" VarName="AvvikResponsAvd" LoincScale="NAR" DisplayFormat="" Multiline="1">
                 <FormItem FormItemId="17096" OrderNumber="22" ItemHeader="Tilbakemelding" ItemText="Tilbakemelding fra avdelingsleder til den som har registrert avviket" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
