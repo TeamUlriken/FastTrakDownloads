@@ -696,7 +696,7 @@ BEGIN
   SELECT Personid,DOB,FullName,GroupName,InfoText FROM #temp order by GFR;
 END]]>
 	</row>
-	<row ProcId="128" StudyName="GBD" ProcName="GetCaseListProBNP" ProcDesc="Underbehandling: ProBNP &gt; 180 uten ACEI/A2RB" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MaxVersion="6621" ChkSum="989815114" LastUpdate="2018-01-25T09:51:07.877Z">
+	<row ProcId="128" StudyName="GBD" ProcName="GetCaseListProBNP" ProcDesc="Underbehandling: ProBNP &gt; 180 uten ACEI/A2RB" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6009" MaxVersion="6621" ChkSum="-998832459" LastUpdate="2018-04-17T08:43:39.827Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListProBNP (@StudyId INT) AS
 BEGIN
   SET NOCOUNT ON;
@@ -790,7 +790,7 @@ BEGIN
   EXEC dbo.GetCaseListDrug @StudyId,'C03%'
 END]]>
 	</row>
-	<row ProcId="140" StudyName="GBD" ProcName="GetCaseListProBNPgt223" ProcDesc="Forskning: ProBNP &gt; 223" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MaxVersion="6621" ChkSum="-86625962" LastUpdate="2018-01-25T09:52:02.230Z">
+	<row ProcId="140" StudyName="GBD" ProcName="GetCaseListProBNPgt223" ProcDesc="Forskning: ProBNP &gt; 223" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6009" MaxVersion="6621" ChkSum="73291433" LastUpdate="2018-04-17T08:43:41.843Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListProBNPgt223 (@StudyId INT) AS
 BEGIN
   SET NOCOUNT ON;
@@ -2290,20 +2290,20 @@ BEGIN
   WHERE v.StudyId=@StudyId;
 END]]>
 	</row>
-	<row ProcId="319" StudyName="NDV" ProcName="NDV.GetCaseListKiosk" ProcDesc="Prosjekter: PROMS fra Kiosk" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6600" ChkSum="-1633592601" LastUpdate="2018-03-19T13:38:51.127Z">
+	<row ProcId="319" StudyName="NDV" ProcName="NDV.GetCaseListKiosk" ProcDesc="Prosjekter: PROMS fra Kiosk" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6600" ChkSum="-2126140237" LastUpdate="2018-04-17T21:21:22.010Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetCaseListKiosk( @StudyId INT ) AS
-BEGIN
-  SELECT v.PersonId, v.DOB, v.FullName, p.GenderId, 
-   CASE cf.Archived WHEN 1 THEN 'Kontroll' ELSE 'Intervensjon' END AS GroupName, 
-   'Tid ' + dbo.ShortTime( ce.EventTime) + ', Kode: ' + kf.FormTag AS InfoText, 
-    kf.RowId, ce.EventTime, cf.ClinFormId
-  FROM PROM.KioskForm kf
-    JOIN dbo.ClinForm cf ON cf.ClinFormId = kf.ClinFormId AND cf.FormId=906
-    JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId
-    JOIN dbo.ViewCaseListStub v ON v.PersonId = ce.PersonId 
-    JOIN dbo.Person p ON p.PersonId = v.PersonId
-  WHERE v.StudyId = @StudyId
-  ORDER BY kf.RowId;
+BEGIN   
+  SELECT DISTINCT v.PersonId, v.DOB, v.FullName, p.GenderId,     
+    CASE cf.Archived WHEN 1 THEN 'Kontroll' ELSE 'Intervensjon' END AS GroupName,     
+    'Tid ' + dbo.ShortTime( ce.EventTime) + ', Kode: ' + kf.FormTag AS InfoText,      
+    ce.EventTime, cf.ClinFormId   
+  FROM PROM.KioskForm kf     
+  JOIN dbo.ClinForm cf ON cf.ClinFormId = kf.ClinFormId AND cf.FormId = 906 AND cf.DeletedAt IS NULL
+  JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId     
+  JOIN dbo.ViewCaseListStub v ON v.PersonId = ce.PersonId      
+  JOIN dbo.Person p ON p.PersonId = v.PersonId   
+  WHERE v.StudyId = @StudyId 
+  ORDER BY ce.EventTime DESC;
 END;]]>
 	</row>
 	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1529014000" LastUpdate="2013-11-14T14:52:27.327Z">
