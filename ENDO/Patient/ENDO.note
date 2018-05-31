@@ -188,8 +188,11 @@
 			[FORM.DP_TILBAKE_FASTLEGE.Text]
 			[FORM.DP_TILBAKE_SPESIALIST.Text]
 			[FORM.DP_TILBAKE_ANNET.Text]
-			[FORM.DP_AVTALE_LEGE.Text]
-			[FORM.DP_AVTALE_SYKEPLEIER.Text]
+			[FORM.DP_AVTALE_LEGE.AsString Format="Neste avtale lege: %s \~"]
+		</TextSegment>	
+
+		<TextSegment Name="Summary" VisibilityExpression="ISPOS(ClinData.DP_AVTALE_SYKEPLEIER.EventTime-FORM.Date+1)">
+			[FORM.DP_AVTALE_SYKEPLEIER.AsString Format="Neste avtale sykepleier: %s"]
 		</TextSegment>			
 		
 	</TextExport>
