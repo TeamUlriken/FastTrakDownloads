@@ -32,7 +32,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="3389" ItemType="2" VarName="NDV_CONSENT" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="26050" OrderNumber="5" ItemText="Samtykke for diabetesregisteret" ItemHelp="Norsk diabetesregister for voksne. Kontaktperson Karianne Fjeld Løvaas." Expression="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
+                <FormItem FormItemId="26050" OrderNumber="5" ItemText="Samtykke for diabetesregisteret" ItemHelp="Norsk diabetesregister for voksne. Kontaktperson Karianne Fjeld Løvaas." MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
                                 <Answer AnswerId="16869" OrderNumber="1" OptionText="Ja" VerboseText="Samtykke gitt til diabetesregisteret." ShortCode="J"/>
                                 <Answer AnswerId="16870" OrderNumber="2" OptionText="Nei" VerboseText="Ikke samtykke til diabetesregisteret." ShortCode="N"/>
                                 <Answer AnswerId="19223" OrderNumber="3" OptionText="Trukket tilbake" VerboseText="Samtykke til diabetesregisteret trukket tilbake." ShortCode="Tr"/>
@@ -42,7 +42,7 @@
     </Page>
     <Page PageId="9123" PageNumber="4" PageTitle="Samtykke diabetes biobank*">
         <Item ItemId="1502" ItemType="2" VarName="NDV_CONSENT_BIOBANK" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="26035" OrderNumber="6" ItemHeader="Biobanksamtykke" ItemText="Samtykke for diabetes biobank" ItemHelp="" Expression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="1">
+                <FormItem FormItemId="26035" OrderNumber="6" ItemHeader="Biobanksamtykke" ItemText="Samtykke for diabetes biobank" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="1">
                                 <Answer AnswerId="59660" OrderNumber="1" OptionText="Ja" VerboseText="Samtykke gitt til diabetes biobank," ShortCode="J"/>
                                 <Answer AnswerId="59661" OrderNumber="2" OptionText="Nei" VerboseText="Ikke samtykke til diabetes biobank." ShortCode="N"/>
                                 <Answer AnswerId="59662" OrderNumber="3" OptionText="Trukket tilbake" VerboseText="Samtykke til diabetes biobank trukket tilbake." ShortCode="Tr"/>
@@ -302,64 +302,76 @@
                 </FormItem>
         </Item>
     </Page>
-    <Page PageId="9213" PageNumber="28" PageTitle="Flash måling*">
+    <Page PageId="9675" PageNumber="28" PageTitle="CGM*">
+        <Item ItemId="5716" ItemType="5" VarName="GLUC_SENSOR_DATE" LoincScale="DATE" DisplayFormat="">
+                <FormItem FormItemId="27600" OrderNumber="37" ItemHeader="CGM sensor siden" ItemText="Når ble sensoren tatt i bruk?" ItemHelp="Beste estimat ved usikker dato." MinExpression="DOB+365.25*10" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
+    </Page>
+    <Page PageId="9213" PageNumber="29" PageTitle="Flash måling og sensor siden*">
+        <Item ItemId="2477" ItemType="5" VarName="VAR2477" LoincScale="DATE">
+                <FormItem FormItemId="27630" OrderNumber="38" ItemHeader="irCGM (FGM) sensor siden" ItemText="Når ble irCGM (FGM) tatt i bruk?" ItemHelp="Beste estimat ved usikker dato" MinExpression="DOB+365.25*10" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+                                <Answer/>
+                </FormItem>
+        </Item>
         <Item ItemId="1411" ItemType="1" VarName="NDV_FLASH_COUNT" LoincScale="QN" DisplayFormat="">
-                <FormItem FormItemId="26090" OrderNumber="37" ItemText="Antall &quot;flash&quot;-målinger daglig" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="0">
+                <FormItem FormItemId="26090" OrderNumber="39" ItemText="Antall &quot;flash&quot;-målinger daglig" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
     </Page>
-    <Page PageId="9214" PageNumber="29" PageTitle="Egenmålinger per uke*">
+    <Page PageId="9214" PageNumber="30" PageTitle="Egenmålinger per uke*">
         <Item ItemId="4059" ItemType="1" VarName="NDV_SELFMON_COUNT" LoincScale="QN" UnitStr="ganger/uke" DisplayFormat="">
-                <FormItem FormItemId="26091" OrderNumber="38" ItemText="Antall egenmålinger per uke (ganger/uke)" ItemHelp="" MinExpression="0" MaxExpression="140" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="0">
+                <FormItem FormItemId="26091" OrderNumber="40" ItemText="Antall egenmålinger per uke (ganger/uke)" ItemHelp="" MinExpression="0" MaxExpression="140" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
     </Page>
-    <Page PageId="9146" PageNumber="30" PageTitle="Status presens">
+    <Page PageId="9146" PageNumber="31" PageTitle="Status presens">
         <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-                <FormItem FormItemId="26041" OrderNumber="39" ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+                <FormItem FormItemId="26041" OrderNumber="41" ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-                <FormItem FormItemId="26040" OrderNumber="40" ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0" Decimals="1">
+                <FormItem FormItemId="26040" OrderNumber="42" ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-                <FormItem FormItemId="26047" OrderNumber="41" ItemText="BMI" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="1" Decimals="1">
+                <FormItem FormItemId="26047" OrderNumber="43" ItemText="BMI" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="1" Decimals="1">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="3230" ItemType="1" VarName="SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-                <FormItem FormItemId="26045" OrderNumber="42" ItemText="Systolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0" FormatStr="Blodtrykk %s">
+                <FormItem FormItemId="26045" OrderNumber="44" ItemText="Systolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0" FormatStr="Blodtrykk %s">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="3231" ItemType="1" VarName="DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-                <FormItem FormItemId="26046" OrderNumber="43" ItemText="Diastolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0" FormatStr="¬/%s mmHg.">
+                <FormItem FormItemId="26046" OrderNumber="45" ItemText="Diastolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0" FormatStr="¬/%s mmHg.">
                                 <Answer/>
                 </FormItem>
         </Item>
     </Page>
-    <Page PageId="9147" PageNumber="31" PageTitle="Midjemål*">
+    <Page PageId="9147" PageNumber="32" PageTitle="Midjemål*">
         <Item ItemId="3226" ItemType="1" VarName="WAIST" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-                <FormItem FormItemId="26042" OrderNumber="44" ItemText="Midjemål" ItemHelp="Midt mellom ribbensbue og hoftekam, målt etter ekspirasjon" MinExpression="40" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Highlight="1" Optional="1">
+                <FormItem FormItemId="26042" OrderNumber="46" ItemText="Midjemål" ItemHelp="Midt mellom ribbensbue og hoftekam, målt etter ekspirasjon" MinExpression="40" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Highlight="1" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
     </Page>
-    <Page PageId="9148" PageNumber="32" PageTitle="Status presens organundersøkelse*">
+    <Page PageId="9148" PageNumber="33" PageTitle="Status presens organundersøkelse*">
         <Item ItemId="8969" ItemType="4" VarName="VAR8969" LoincScale="NAR" DisplayFormat="" Multiline="1">
-                <FormItem FormItemId="26086" OrderNumber="45" ItemHeader="Organundersøkelse:" ItemText="Beskriv kort funn fra organundersøkelsen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+                <FormItem FormItemId="26086" OrderNumber="47" ItemHeader="Organundersøkelse:" ItemText="Beskriv kort funn fra organundersøkelsen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
     </Page>
-    <Page PageId="9149" PageNumber="33" PageTitle="Injeksjonssted*">
+    <Page PageId="9149" PageNumber="34" PageTitle="Injeksjonssted*">
         <Item ItemId="3193" ItemType="2" VarName="NDR4V_INJECTION_SITE" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="26036" OrderNumber="46" ItemText="Injeksjonssted har" ItemHelp="" Expression="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+                <FormItem FormItemId="26036" OrderNumber="48" ItemText="Injeksjonssted har" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
                                 <Answer AnswerId="15968" OrderNumber="1" OptionText="normalt utseende.*"/>
                                 <Answer AnswerId="15969" OrderNumber="2" OptionText="fortykket hud."/>
                                 <Answer AnswerId="16061" OrderNumber="3" OptionText="lipohypertrofi."/>
@@ -367,9 +379,9 @@
                 </FormItem>
         </Item>
     </Page>
-    <Page PageId="9150" PageNumber="34" PageTitle="Fotstatus*">
+    <Page PageId="9150" PageNumber="35" PageTitle="Fotstatus*">
         <Item ItemId="4636" ItemType="2" VarName="NDV_FOOT_SENS" LoincScale="ORD" DisplayFormat="Vertical">
-                <FormItem FormItemId="26077" OrderNumber="47" ItemText="Normal sensibilitet på føtter" ItemHelp="Vibrasjon normal eller monofilament 4/4" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0">
+                <FormItem FormItemId="26077" OrderNumber="49" ItemText="Normal sensibilitet på føtter" ItemHelp="Vibrasjon normal eller monofilament 4/4" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0">
                                 <Answer AnswerId="25140" OrderNumber="1" OptionText="Ja, begge føtter" VerboseText="Normal fotsensibilitet bilateralt."/>
                                 <Answer AnswerId="25141" OrderNumber="2" OptionText="Ja, høyre fot" VerboseText="Normal fotsensibilitet kun høyre side."/>
                                 <Answer AnswerId="25142" OrderNumber="3" OptionText="Ja, venstre fot" VerboseText="Normal fotsensibilitet kun venstre side."/>
@@ -378,7 +390,7 @@
                 </FormItem>
         </Item>
         <Item ItemId="4637" ItemType="2" VarName="NDV_FOOT_PULSE" LoincScale="ORD" DisplayFormat="Vertical">
-                <FormItem FormItemId="26078" OrderNumber="48" ItemText="Fotpuls" ItemHelp="Puls på fotrygg eller bak mediale malleol" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0">
+                <FormItem FormItemId="26078" OrderNumber="50" ItemText="Fotpuls" ItemHelp="Puls på fotrygg eller bak mediale malleol" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0">
                                 <Answer AnswerId="25158" OrderNumber="1" OptionText="Ja, palpabel begge sider" VerboseText="Fotpuls bilateralt."/>
                                 <Answer AnswerId="25159" OrderNumber="2" OptionText="Ja, men bare på høyre side" VerboseText="Fotpuls kun høyre side."/>
                                 <Answer AnswerId="25160" OrderNumber="3" OptionText="Ja, men bare på venstre side" VerboseText="Fotpuls kun venstre side."/>
@@ -387,32 +399,32 @@
                 </FormItem>
         </Item>
     </Page>
-    <Page PageId="9151" PageNumber="35" PageTitle="EKG">
+    <Page PageId="9151" PageNumber="36" PageTitle="EKG">
         <Item ItemId="4642" ItemType="2" VarName="NDV_AF" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="26079" OrderNumber="49" ItemText="Atrieflimmer" ItemHelp="Noen gang hatt atrieflimmer" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1">
+                <FormItem FormItemId="26079" OrderNumber="51" ItemText="Atrieflimmer" ItemHelp="Noen gang hatt atrieflimmer" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1">
                                 <Answer AnswerId="25232" OrderNumber="1" OptionText="Ja" VerboseText="Har/hatt atrieflimmer." ShortCode="J"/>
                                 <Answer AnswerId="25233" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
                                 <Answer AnswerId="25234" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
                 </FormItem>
         </Item>
         <Item ItemId="4257" ItemType="2" VarName="DIAPOL_EKG" LoincScale="ORD" DisplayFormat="">
-                <FormItem FormItemId="26073" OrderNumber="50" ItemText="Andre EKG-forandringer." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+                <FormItem FormItemId="26073" OrderNumber="52" ItemText="Andre EKG-forandringer." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer AnswerId="22866" OrderNumber="1" OptionText="Ja" VerboseText="Har EKG-forandringer." ShortCode="J"/>
                                 <Answer AnswerId="22867" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
                                 <Answer AnswerId="22868" OrderNumber="3" OptionText="Ukjent*" ShortCode="U"/>
                 </FormItem>
         </Item>
     </Page>
-    <Page PageId="9152" PageNumber="36" PageTitle="Kommentar til EKG*">
+    <Page PageId="9152" PageNumber="37" PageTitle="Kommentar til EKG*">
         <Item ItemId="4258" ItemType="4" VarName="EKG_COMMENT" LoincScale="NAR" DisplayFormat="" Multiline="1">
-                <FormItem FormItemId="26074" OrderNumber="51" ItemText="Kommentarer" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+                <FormItem FormItemId="26074" OrderNumber="53" ItemText="Kommentarer" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
     </Page>
-    <Page PageId="9153" PageNumber="37" PageTitle="Resymé">
+    <Page PageId="9153" PageNumber="38" PageTitle="Resymé">
         <Item ItemId="4088" ItemType="4" VarName="DP_AVTALER" LoincScale="NAR" DisplayFormat="" Multiline="1">
-                <FormItem FormItemId="26070" OrderNumber="52" ItemHeader="Vurdering*" ItemText="Vurdering og plan videre" ItemHelp="Inkludert eventuelle avtaler gjort med pasienten, unntatt timeavtale som er eget punkt." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
+                <FormItem FormItemId="26070" OrderNumber="54" ItemHeader="Vurdering*" ItemText="Vurdering og plan videre" ItemHelp="Inkludert eventuelle avtaler gjort med pasienten, unntatt timeavtale som er eget punkt." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -458,16 +470,17 @@
         <Activate EnumVal="4" PageConditionId="6705" PageNumber="26" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="1310">
-        <Activate EnumVal="2" PageConditionId="7030" PageNumber="28" ComparisonType="1" ComparisonDescription="Equal to"/>
-        <Activate EnumVal="3" PageConditionId="6749" PageNumber="29" ComparisonType="1" ComparisonDescription="Equal to"/>
-        <Activate EnumVal="4" PageConditionId="6750" PageNumber="29" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="1" PageConditionId="7045" PageNumber="28" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="2" PageConditionId="7052" PageNumber="29" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="3" PageConditionId="6749" PageNumber="30" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="4" PageConditionId="6750" PageNumber="30" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="3322">
-        <Activate EnumVal="3" PageConditionId="6689" PageNumber="33" ComparisonType="1" ComparisonDescription="Equal to"/>
-        <Activate EnumVal="4" PageConditionId="6690" PageNumber="33" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="3" PageConditionId="6689" PageNumber="34" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="4" PageConditionId="6690" PageNumber="34" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="4257">
-        <Activate EnumVal="1" PageConditionId="6695" PageNumber="36" ComparisonType="1" ComparisonDescription="Equal to"/>
+        <Activate EnumVal="1" PageConditionId="6695" PageNumber="37" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
