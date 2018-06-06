@@ -1972,7 +1972,7 @@ END]]>
 	<row ProcId="293" StudyName="ENDO" ProcName="NDV.GetCaseListConsentNegative" ProcDesc="Samtykke NDV: Nei / Trukket" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="696359776" LastUpdate="2014-11-06T07:29:25.630Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="294" StudyName="NDV" ProcName="NDV.GetCaseListUserVsConsent" ProcDesc="Samtykke: Positive per behandler" ProcParams=":StudyId" ListId="CASE" GrantTo="superuser" MinVersion="6000" ChkSum="1750847198" LastUpdate="2017-05-31T09:51:07.577Z">
+	<row ProcId="294" StudyName="NDV" ProcName="NDV.GetCaseListUserVsConsent" ProcDesc="Samtykke: Positive per behandler siste 365 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="superuser" MinVersion="6000" ChkSum="-815912172" LastUpdate="2018-06-05T10:08:05.603Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetCaseListUserVsConsent( @StudyId INT ) AS
 BEGIN
 	SELECT p.PersonId, p.DOB, p.FullName, p.GenderId, c.CenterName AS GroupName, Rapport.*, 100.0 * Ja / Total AS JaProsent,
