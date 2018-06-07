@@ -183,16 +183,17 @@
 		</TextSegment>			
 		
 		<TextSegment Name="Summary" Header="Oppsummering" VisibilityExpression="ISPOS(ClinData.DP_AVTALER.EventTime-FORM.Date+1)">
-			[FORM.DP_AVTALER.AsString] 
+			[FORM.DP_AVTALER.AsString Format="%s\~"] 
 			[FORM.DP_AVSLUTTET.Text] 
 			[FORM.DP_TILBAKE_FASTLEGE.Text]
 			[FORM.DP_TILBAKE_SPESIALIST.Text]
 			[FORM.DP_TILBAKE_ANNET.Text]
-			[FORM.DP_AVTALE_LEGE.AsString Format="Neste avtale lege: %s \~"]
 		</TextSegment>	
 
-		<TextSegment Name="Summary" VisibilityExpression="ISPOS(ClinData.DP_AVTALE_SYKEPLEIER.EventTime-FORM.Date+1)">
-			[FORM.DP_AVTALE_SYKEPLEIER.AsString Format="Neste avtale sykepleier: %s"]
+		<TextSegment Name="Avtaler">
+			[FORM.DP_NESTE_KONTROLL.AsString Format="Neste avtale: %s."]
+			[FORM.DP_AVTALE_LEGE.AsString Format="Neste avtale lege: %s. \~"]
+			[FORM.DP_AVTALE_SYKEPLEIER.AsString Format="Neste avtale sykepleier: %s."]
 		</TextSegment>			
 		
 	</TextExport>
