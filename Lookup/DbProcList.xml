@@ -1972,8 +1972,8 @@ END]]>
 	<row ProcId="293" StudyName="ENDO" ProcName="NDV.GetCaseListConsentNegative" ProcDesc="Samtykke NDV: Nei / Trukket" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="696359776" LastUpdate="2014-11-06T07:29:25.630Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="294" StudyName="NDV" ProcName="NDV.GetCaseListUserVsConsent" ProcDesc="Samtykke: Positive per behandler siste 365 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="superuser" MinVersion="6000" ChkSum="-815912172" LastUpdate="2018-06-05T10:08:05.603Z">
-		<![CDATA[CREATE PROCEDURE NDV.GetCaseListUserVsConsent( @StudyId INT ) AS
+	<row ProcId="294" StudyName="NDV*" ProcName="NDV.GetCaseListUserVsConsent" ProcDesc="Samtykke: Positive per behandler siste x dager" ProcParams=":StudyId, :DayCount" ListId="CASE" GrantTo="superuser" MinVersion="6000" ChkSum="-1598648479" LastUpdate="2018-06-07T08:27:53.190Z">
+		<![CDATA[CREATE PROCEDURE NDV.GetCaseListUserVsConsent( @StudyId INT, @DayCount INT ) AS
 BEGIN
 	SELECT p.PersonId, p.DOB, p.FullName, p.GenderId, c.CenterName AS GroupName, Rapport.*, 100.0 * Ja / Total AS JaProsent,
 		'Ja = ' + CONVERT(VARCHAR, CONVERT(DECIMAL(3, 0), 100.0 * Ja / Total)) + '%, n = ' + CONVERT(VARCHAR, Total) AS InfoText
@@ -2003,7 +2003,7 @@ BEGIN
 							CreatedBy,
 							RANK() OVER (PARTITION BY PersonId ORDER BY CreatedAt DESC) AS ReverseOrder
 						FROM dbo.ClinEvent
-						WHERE CreatedAt > GETDATE() - 365) LastVisit
+						WHERE CreatedAt > GETDATE() - @DayCount ) LastVisit
 						ON LastVisit.ReverseOrder = 1
 						AND LastVisit.PersonId = diat.PersonId AND diat.EnumVal IN (1,2)) v) br
 			PIVOT
@@ -2305,6 +2305,12 @@ BEGIN
   WHERE v.StudyId = @StudyId 
   ORDER BY ce.EventTime DESC;
 END;]]>
+	</row>
+	<row ProcId="320" StudyName="NDV" ProcName="NDV.GetCaseListUserVsConsent" ProcDesc="Samtykke: Positive per behandler siste 365 dager" ProcParams=":StudyId, 365" ListId="CASE" GrantTo="public" ChkSum="1848714623" LastUpdate="2018-06-07T08:28:44.337Z">
+		<![CDATA[]]>
+	</row>
+	<row ProcId="321" StudyName="NDV" ProcName="NDV.GetCaseListUserVsConsent" ProcDesc="Samtykke: Positive per behander siste 30 dager" ProcParams=":StudyId, 30" ListId="CASE" GrantTo="public" ChkSum="697590371" LastUpdate="2018-06-07T08:29:32.597Z">
+		<![CDATA[]]>
 	</row>
 	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1529014000" LastUpdate="2013-11-14T14:52:27.327Z">
 		<![CDATA[CREATE PROCEDURE BAR.GetHospitalizedWithoutAdmissionForm( @StudyId INT )
