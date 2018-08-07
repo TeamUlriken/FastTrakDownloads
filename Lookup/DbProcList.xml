@@ -1972,7 +1972,7 @@ END]]>
 	<row ProcId="293" StudyName="ENDO" ProcName="NDV.GetCaseListConsentNegative" ProcDesc="Samtykke NDV: Nei / Trukket" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="696359776" LastUpdate="2014-11-06T07:29:25.630Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="294" StudyName="NDV*" ProcName="NDV.GetCaseListUserVsConsent" ProcDesc="Samtykke: Positive per behandler siste x dager" ProcParams=":StudyId, :DayCount" ListId="CASE" GrantTo="superuser" MinVersion="6000" ChkSum="-1598648479" LastUpdate="2018-06-07T08:27:53.190Z">
+	<row ProcId="294" StudyName="NDV*" ProcName="NDV.GetCaseListUserVsConsent" ProcDesc="Samtykke: Positive per behandler siste x dager" ProcParams=":StudyId, :DayCount" ListId="CASE" GrantTo="Leder" MinVersion="6000" ChkSum="1285571035" LastUpdate="2018-06-07T08:34:59.203Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetCaseListUserVsConsent( @StudyId INT, @DayCount INT ) AS
 BEGIN
 	SELECT p.PersonId, p.DOB, p.FullName, p.GenderId, c.CenterName AS GroupName, Rapport.*, 100.0 * Ja / Total AS JaProsent,
@@ -2306,10 +2306,10 @@ BEGIN
   ORDER BY ce.EventTime DESC;
 END;]]>
 	</row>
-	<row ProcId="320" StudyName="NDV" ProcName="NDV.GetCaseListUserVsConsent" ProcDesc="Samtykke: Positive per behandler siste 365 dager" ProcParams=":StudyId, 365" ListId="CASE" GrantTo="public" ChkSum="1848714623" LastUpdate="2018-06-07T08:28:44.337Z">
+	<row ProcId="320" StudyName="NDV" ProcName="NDV.GetCaseListUserVsConsent" ProcDesc="Samtykke: Positive per behandler siste 365 dager" ProcParams=":StudyId, 365" ListId="CASE" GrantTo="Leder" MinVersion="6000" ChkSum="-3163075" LastUpdate="2018-06-07T08:35:22.633Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="321" StudyName="NDV" ProcName="NDV.GetCaseListUserVsConsent" ProcDesc="Samtykke: Positive per behander siste 30 dager" ProcParams=":StudyId, 30" ListId="CASE" GrantTo="public" ChkSum="697590371" LastUpdate="2018-06-07T08:29:32.597Z">
+	<row ProcId="321" StudyName="NDV" ProcName="NDV.GetCaseListUserVsConsent" ProcDesc="Samtykke: Positive per behander siste 30 dager" ProcParams=":StudyId, 30" ListId="CASE" GrantTo="Leder" MinVersion="6000" ChkSum="-1200948447" LastUpdate="2018-06-07T08:35:24.040Z">
 		<![CDATA[]]>
 	</row>
 	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1529014000" LastUpdate="2013-11-14T14:52:27.327Z">
