@@ -101,22 +101,22 @@
                 </FormItem>
         </Item>
         <Item ItemId="2327" ItemType="1" VarName="VAR2327" LoincScale="QN" UnitStr="mmol/L">
-                <FormItem FormItemId="27116" OrderNumber="16" ItemText="Første terskelverdi blodsukker før administrering av ekstradose" ItemHelp="" MinExpression="12" MaxExpression="25" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+                <FormItem FormItemId="27116" OrderNumber="16" ItemText="Første terskelverdi blodsukker før administrering av ekstradose" ItemHelp="" MinExpression="12" MaxExpression="25" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="2328" ItemType="1" VarName="VAR2328" LoincScale="QN" UnitStr="E">
-                <FormItem FormItemId="27117" OrderNumber="17" ItemText="Antall enheter hurtigvirkende insulinanalog ved blodsukker over første terskelverdi (E)" ItemHelp="Eksempler på hurtigvirkende insulinanaloger: Actrapid, NovoRapid, Humalog, Apidra. &#xA;Disse må ordineres som medikamenter ved behov i medikamentmodulen, med henvisning til Behandlingsplan diabetes for dosering." MinExpression="2" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+                <FormItem FormItemId="27117" OrderNumber="17" ItemText="Antall enheter hurtigvirkende insulinanalog ved blodsukker over første terskelverdi (E)" ItemHelp="Eksempler på hurtigvirkende insulinanaloger: Actrapid, NovoRapid, Humalog, Apidra. &#xA;Disse må ordineres som medikamenter ved behov i medikamentmodulen, med henvisning til eget skjema for dosering." MinExpression="2" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="2329" ItemType="1" VarName="VAR2329" LoincScale="QN" UnitStr="mmol/L">
-                <FormItem FormItemId="27118" OrderNumber="18" ItemText="Andre terskelverdi blodsukker før administrering av ekstradose" ItemHelp="" MinExpression="15" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+                <FormItem FormItemId="27118" OrderNumber="18" ItemText="Andre terskelverdi blodsukker før administrering av ekstradose" ItemHelp="" MinExpression="15" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
         <Item ItemId="2331" ItemType="1" VarName="VAR2331" LoincScale="QN" UnitStr="E">
-                <FormItem FormItemId="27119" OrderNumber="19" ItemText="Antall enheter hurtigvirkende insulinanalog ved blodsukker over andre terskelverdi (E)" ItemHelp="Eksempler på hurtigvirkende insulinanaloger: Actrapid, NovoRapid, Humalog, Apidra. &#xA;Disse må ordineres som medikamenter ved behov i medikamentmodulen, med henvisning til Behandlingsplan diabetes for dosering." MinExpression="2" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+                <FormItem FormItemId="27119" OrderNumber="19" ItemText="Antall enheter hurtigvirkende insulinanalog ved blodsukker over andre terskelverdi (E)" ItemHelp="Eksempler på hurtigvirkende insulinanaloger: Actrapid, NovoRapid, Humalog, Apidra. &#xA;Disse må ordineres som medikamenter ved behov i medikamentmodulen, med henvisning til eget skjema for dosering." MinExpression="2" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
                                 <Answer/>
                 </FormItem>
         </Item>
@@ -268,7 +268,7 @@
     </Page>
     <Page PageId="8652" PageNumber="20" PageTitle="Diabeteskomplikasjoner">
         <Item ItemId="2047" ItemType="2" VarName="VAR2047" LoincScale="ORD">
-                <FormItem FormItemId="24907" OrderNumber="37" ItemText="Nefropati" ItemHelp="Unormal urin-albumin/kreatinin-ratio, s-kreatinin og eGFR?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+                <FormItem FormItemId="24907" OrderNumber="37" ItemText="Nefropati" ItemHelp="Unormal urin-albumin/kreatinin-ratio (over 3) og/eller eGFR (under 45)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
                                 <Answer AnswerId="11011" OrderNumber="1" OptionText="Ja"/>
                                 <Answer AnswerId="11012" OrderNumber="2" OptionText="Nei"/>
                                 <Answer AnswerId="11013" OrderNumber="3" OptionText="Usikker"/>
@@ -309,14 +309,22 @@
                                 <Answer AnswerId="60389" OrderNumber="3" OptionText="Usikker"/>
                 </FormItem>
         </Item>
-        <Item ItemId="2147" ItemType="2" VarName="VAR2147" LoincScale="ORD" DisplayFormat="Vertical">
+        <Item ItemId="2147" ItemType="2" VarName="tmpAMPUTASJON" LoincScale="ORD" DisplayFormat="Vertical">
                 <FormItem FormItemId="26474" OrderNumber="44" ItemHeader="Amputasjon" ItemText="Amputasjon (ikke traumatisk)" ItemHelp="Dersom amputasjon på begge føtter, velg høyeste nivå." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-                                <Answer AnswerId="60391" OrderNumber="1" OptionText="Nei*" ShortCode="N"/>
-                                <Answer AnswerId="60392" OrderNumber="2" OptionText="tå/tær."/>
-                                <Answer AnswerId="60393" OrderNumber="3" OptionText="fot t.om. ankelledd."/>
-                                <Answer AnswerId="60394" OrderNumber="4" OptionText="legg."/>
-                                <Answer AnswerId="11181" OrderNumber="5" OptionText="over kne."/>
-                                <Answer AnswerId="11182" OrderNumber="6" OptionText="Ukjent*"/>
+                                <Answer AnswerId="60391" OrderNumber="1" OptionText="Nei*" ShortCode="N" Score="1.00"/>
+                                <Answer AnswerId="60392" OrderNumber="2" OptionText="tå/tær." Score="2.00"/>
+                                <Answer AnswerId="60393" OrderNumber="3" OptionText="fot t.om. ankelledd." Score="2.00"/>
+                                <Answer AnswerId="60394" OrderNumber="4" OptionText="legg." Score="3.00"/>
+                                <Answer AnswerId="11181" OrderNumber="5" OptionText="over kne." Score="3.00"/>
+                                <Answer AnswerId="11182" OrderNumber="6" OptionText="Ukjent*" Score="4.00"/>
+                </FormItem>
+        </Item>
+        <Item ItemId="3414" ItemType="2" VarName="NDV_AMPUTATION" LoincScale="ORD" DisplayFormat="Vertical">
+                <FormItem FormItemId="27873" OrderNumber="46" ItemHeader="Amputasjon" ItemText="Amputasjon (ikke traumatisk)" ItemHelp="Dersom amputasjon på begge føtter, velg høyeste nivå." Expression="tmpAMPUTASJON_SCORE" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="0">
+                                <Answer AnswerId="17084" OrderNumber="1" OptionText="Nei*" ShortCode="N"/>
+                                <Answer AnswerId="17085" OrderNumber="2" OptionText="fot t.om. ankelledd."/>
+                                <Answer AnswerId="17086" OrderNumber="3" OptionText="over ankelnivå."/>
+                                <Answer AnswerId="21285" OrderNumber="4" OptionText="Ukjent*"/>
                 </FormItem>
         </Item>
     </Page>
@@ -331,7 +339,7 @@
     </Page>
     <Page PageId="8664" PageNumber="22" PageTitle="Auto*" PageIntroduction="This page was autogenerated">
         <Item ItemId="3354" ItemType="5" VarName="NDV_EYECHECK_DATE" LoincScale="DATE" DisplayFormat="">
-                <FormItem FormItemId="24917" OrderNumber="46" ItemText="Siste besøk hos øyelege" ItemHelp="Beste estimat ved usikker dato." MinExpression="DOB" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+                <FormItem FormItemId="24917" OrderNumber="47" ItemText="Siste besøk hos øyelege" ItemHelp="Beste estimat ved usikker dato." MinExpression="DOB" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
                                 <Answer/>
                 </FormItem>
         </Item>
