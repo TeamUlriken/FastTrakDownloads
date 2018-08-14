@@ -3909,11 +3909,11 @@ BEGIN
     ORDER BY ReverseName;
 END]]>
 	</row>
-	<row ProcId="1028" StudyName="*" ProcName="dbo.RapportDokumentasjonsfrekvens" ProcDesc="Dokumentasjonsfrekvens" ListId="FR" GrantTo="superuser" ChkSum="-2016712974" LastUpdate="2015-05-18T09:22:49.530Z">
+	<row ProcId="1028" StudyName="*" ProcName="dbo.RapportDokumentasjonsfrekvens" ProcDesc="Dokumentasjonsfrekvens" ListId="FR" GrantTo="superuser" ChkSum="-197030421" LastUpdate="2018-07-06T12:11:13.630Z">
 		<![CDATA[CREATE PROCEDURE dbo.RapportDokumentasjonsfrekvens
 AS
 BEGIN
-  SELECT ul.UserId,p.ReverseName, LastThreeMonths.CountLastThreeMonths, LastMonth.CountLastMonth, LastWeek.CountLastWeek
+  SELECT ul.UserId,p.ReverseName, LastThreeMonths.CountLastThreeMonths, LastMonth.CountLastMonth, LastWeek.CountLastWeek, mp.ProfName
     FROM (
       SELECT ul1.UserId, COUNT(*) CountLastThreeMonths
         FROM dbo.ClinForm cf
@@ -3935,8 +3935,9 @@ BEGIN
         JOIN dbo.UserList ul2 ON ul2.CenterId = ul1.CenterId AND ul2.UserId = USER_ID()
         WHERE cf.CreatedAt > DATEADD(DAY, -7, GETDATE())
         GROUP BY ul1.UserId) LastWeek ON LastWeek.UserId = LastThreeMonths.UserId
-    JOIN UserList ul ON ul.UserId = LastThreeMonths.UserId
-    JOIN Person p ON p.PersonId = ul.PersonId
+    JOIN dbo.UserList ul ON ul.UserId = LastThreeMonths.UserId
+    JOIN dbo.Person p ON p.PersonId = ul.PersonId
+    LEFT JOIN dbo.MetaProfession mp ON mp.ProfId = ul.ProfId
     WHERE ul.UserId > 0
     ORDER BY LastThreeMonths.CountLastThreeMonths DESC;
 END]]>
