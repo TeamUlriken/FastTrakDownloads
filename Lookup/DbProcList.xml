@@ -2802,8 +2802,8 @@ BEGIN
   WHERE @StudyId = @StudyId;
 END]]>
 	</row>
-	<row ProcId="1001" StudyName="GBD" ProcName="GBD.RapportAvvik" ProcDesc="Avviksrapport" ProcParams=":StudyId, :StartAt, :StopAt, :OrderBy" ListId="FR" GrantTo="public" ChkSum="-1287264417" LastUpdate="2017-05-08T09:32:24.437Z">
-		<![CDATA[CREATE PROCEDURE GBD.RapportAvvik ( @StudyId INT, @StartAt DateTime = NULL, @StopAt DateTime = NULL, @OrderBy INT = 0 ) AS
+	<row ProcId="1001" StudyName="GBD" ProcName="GBD.RapportAvvik" ProcDesc="Avviksrapport" ProcParams=":StudyId, :StartAt, :StopAt, :OrderBy" ListId="FR" GrantTo="public" ChkSum="-1602235700" LastUpdate="2018-07-09T09:13:04.857Z">
+		<![CDATA[CREATE PROCEDURE [GBD].[RapportAvvik] ( @StudyId INT, @StartAt DateTime = NULL, @StopAt DateTime = NULL, @OrderBy INT = 0 ) AS
 BEGIN
   SET LANGUAGE Norwegian; 
   IF @StartAt IS NULL SET @StartAt = GETDATE()-365;
@@ -2890,6 +2890,8 @@ BEGIN
     SELECT * FROM #temp ORDER BY E9105, EventTime;
   IF @OrderBy=3 
     SELECT * FROM #temp ORDER BY T8512, EventTime;
+  IF @OrderBy=4
+    SELECT * FROM #temp ORDER BY E8507, EventTime;
 END]]>
 	</row>
 	<row ProcId="1002" StudyName="GBD" ProcName="GBD.RapportBeslutninger" ProcDesc="Beslutninger" ProcParams=":StudyId" ListId="FR" GrantTo="public" ChkSum="1180507643" LastUpdate="2014-05-13T13:22:27.940Z">
