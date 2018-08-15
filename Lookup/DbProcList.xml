@@ -4354,7 +4354,7 @@ BEGIN
   ORDER BY TimeAxis,GroupId
 END]]>
 	</row>
-	<row ProcId="3001" StudyName="NDV" ProcName="Dash.NdvType1Consent" ProcDesc="Prosentandel Type-1 med positivt samtykke" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="-501959455" LastUpdate="2018-03-07T21:42:09.053Z">
+	<row ProcId="3001" StudyName="NDV" ProcName="Dash.NdvType1Consent" ProcDesc="Prosentandel Type-1 med positivt samtykke" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="2107533312" LastUpdate="2018-08-07T08:45:04.607Z">
 		<![CDATA[CREATE PROCEDURE Dash.NdvType1Consent AS
 BEGIN
   SELECT 
@@ -4376,7 +4376,7 @@ BEGIN
       (
         SELECT StartTime, EndTime 
         FROM Report.TimePeriods ml
-        WHERE PeriodType = 'MONTH' AND StartTime > DATEADD( YY, -5, GETDATE() ) AND EndTime < GETDATE()
+        WHERE PeriodType = 'MONTH' AND StartTime > DATEADD( MM, -12, GETDATE() ) AND EndTime < GETDATE()
       ) MonthList
   
       CROSS APPLY
