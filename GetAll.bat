@@ -6,6 +6,7 @@ git clone https://bitbucket.org/emetra/fettvest.git FettVest
 git clone https://bitbucket.org/emetra/gbd.git GBD
 git clone https://bitbucket.org/emetra/hand.git HAND
 git clone https://bitbucket.org/emetra/hofte.git HOFTE
+git clone https://bitbucket.org/emetra/langtid.git LANGTID
 git clone https://bitbucket.org/emetra/lipid.git LIPID
 git clone https://bitbucket.org/emetra/ndv.git NDV
 git clone https://bitbucket.org/emetra/overvekt.git OVERVEKT
