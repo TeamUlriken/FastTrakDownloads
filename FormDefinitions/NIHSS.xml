@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  
+  <Form FormId="554" FormName="NIHSS" FormTitle="NIH Stroke Scale">
+    
+    <Page PageId="2053" PageNumber="1" PageTitle="Sykdomsstart">
+      
+      <Item ItemId="6931" ItemType="5" VarName="VAR6931" LoincScale="DATE" DisplayFormat="">
+        
+        <FormItem FormItemId="7136" OrderNumber="1" ItemText="Dato" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6932" ItemType="1" VarName="VAR6932" LoincScale="QN" DisplayFormat="">
+        
+        <FormItem FormItemId="7137" OrderNumber="2" ItemText="Klokken" ItemHelp="" MinExpression="0" MaxExpression="24" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="2056" PageNumber="2" PageTitle="Tidspunkt for observasjon" PageIntroduction="Vi må vurdere om de to neste variablene skal være med.  Skjemaets plassering på tidslinjen (under &quot;Hendelser&quot;) er det som avgjør observasjonstidspunktet. Disse variablene kan evt. brukes som en kontroll av at skjemaet er plassert riktig.">
+      
+      <Item ItemId="6936" ItemType="5" VarName="ObsDate" LoincScale="DATE" DisplayFormat="">
+        
+        <FormItem FormItemId="7141" OrderNumber="3" ItemText="Dato" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6935" ItemType="1" VarName="ObsTime" LoincScale="QN" DisplayFormat="">
+        
+        <FormItem FormItemId="7140" OrderNumber="4" ItemText="Klokken" ItemHelp="" MinExpression="0" MaxExpression="24" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6937" ItemType="1" VarName="EditOffset" LoincScale="QN" UnitStr="timer" DisplayFormat="">
+        
+        <FormItem FormItemId="7142" OrderNumber="5" ItemText="Avvik fra tidspunkt på tidslinjen (timer)" ItemHelp="" Expression="24*(ObsDate + ObsTime/24 - FORM.DATE)" MinExpression="-24000" MaxExpression="24000" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6939" ItemType="2" VarName="NeedsMoving" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="7144" OrderNumber="6" ItemText="Avvik &gt; 2 timer" ItemHelp="" Expression="2-ISPOS(ABS(EditOffset)-1)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+          
+          <Answer AnswerId="38498" OrderNumber="1" OptionText="Ja"/>
+          
+          <Answer AnswerId="38499" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="2057" PageNumber="3" PageTitle="Varsel om tidssavvik*">
+      
+      <Item ItemId="6938" ItemType="8" VarName="VAR6938" LoincScale="MSG" DisplayFormat="">
+        
+        <FormItem FormItemId="7143" OrderNumber="7" ItemHeader="Skjemaet må flyttes" ItemText="Det er ikke samsvar mellom tidspunktet du har registrert i skjemaet og hvor skjemaet ligger på tidslinjen.  Du kan evt. flytte skjemaet på tidslinjen slik at det er samsvar mellom de to datoene." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="2054" PageNumber="4" PageTitle="Scoring">
+      
+      <Item ItemId="6918" ItemType="2" VarName="NIHSS_BEVISSTHET" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="7123" OrderNumber="8" ItemText="Bevissthetsnivå" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="38439" OrderNumber="0" OptionText="Våken"/>
+          
+          <Answer AnswerId="38440" OrderNumber="1" OptionText="Døsig, reagerer adekvat ved lett stimulering"/>
+          
+          <Answer AnswerId="38441" OrderNumber="2" OptionText="Døsig, reagerer først ved kraftigere/gjentatt stimulering"/>
+          
+          <Answer AnswerId="38442" OrderNumber="3" OptionText="Reagerer ikke, eller bare med ikke-målrettet bevegelse"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6919" ItemType="2" VarName="NIHSS_ORIENTERING" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="7124" OrderNumber="9" ItemText="Orientering" ItemHelp="Spør om måned + alder" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="38443" OrderNumber="0" OptionText="Svarer riktig på to spørsmål"/>
+          
+          <Answer AnswerId="38444" OrderNumber="1" OptionText="Svarer riktig på ett spørsmål (eller ved alvorlig dysartri)"/>
+          
+          <Answer AnswerId="38445" OrderNumber="2" OptionText="Svarer ikke riktig på noe spørsmål"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6920" ItemType="2" VarName="NIHSS_RESPONS" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="7125" OrderNumber="10" ItemText="Respons på kommando" ItemHelp="Lukke øyne + knytte hånd" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="38446" OrderNumber="0" OptionText="Utfører begge kommandoer korrekt"/>
+          
+          <Answer AnswerId="38447" OrderNumber="1" OptionText="Utfører en kommando korrekt"/>
+          
+          <Answer AnswerId="38448" OrderNumber="2" OptionText="Utfører ingen korrekt"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6921" ItemType="2" VarName="NIHSS_BLIKK" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="7126" OrderNumber="11" ItemText="Blikkbevegelse" ItemHelp="Horisontal bevegelse til begge sider" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="38449" OrderNumber="0" OptionText="Normal"/>
+          
+          <Answer AnswerId="38450" OrderNumber="1" OptionText="Delvis blikkparese (eller ved øyenmuskelparese)"/>
+          
+          <Answer AnswerId="38451" OrderNumber="2" OptionText="Fiksert blikkdreining til siden eller total blikkparese"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6922" ItemType="2" VarName="NIHSS_SYNSFELT" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="7127" OrderNumber="12" ItemText="Synsfelt" ItemHelp="Bevege fingre/fingertelling i laterale synsfelt" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="38452" OrderNumber="0" OptionText="Normalt"/>
+          
+          <Answer AnswerId="38453" OrderNumber="1" OptionText="Delvis hemianopsi"/>
+          
+          <Answer AnswerId="38454" OrderNumber="2" OptionText="Total hemianopsi"/>
+          
+          <Answer AnswerId="38455" OrderNumber="3" OptionText="Bilateral hemianopsi / blind"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6923" ItemType="2" VarName="NIHSS_ANSIKT" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="7128" OrderNumber="13" ItemText="Ansikt" ItemHelp="Vise tenner, knipe igjen øynene, løfte øyenbryn" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="38456" OrderNumber="0" OptionText="Normal"/>
+          
+          <Answer AnswerId="38457" OrderNumber="1" OptionText="Utvisket nasolabialfure, asymmetri ved smil"/>
+          
+          <Answer AnswerId="38458" OrderNumber="2" OptionText="Betydelig lammelse i nedre ansiktshavdel"/>
+          
+          <Answer AnswerId="38459" OrderNumber="3" OptionText="Total lammelse i halve ansiktet (eller ved coma)"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6924" ItemType="2" VarName="NIHSS_ARM" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="7129" OrderNumber="14" ItemText="Kraft i armen" ItemHelp="Holde armen utstrakt 45&amp;deg; i 10 sekunder" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="38460" OrderNumber="0" OptionText="Normal  (også ved &quot;ikke testbar&quot;)"/>
+          
+          <Answer AnswerId="38461" OrderNumber="1" OptionText="Drifter til lavere posisjon"/>
+          
+          <Answer AnswerId="38462" OrderNumber="2" OptionText="Noe bevegelse mot tyngdekraften, drifter til sengen"/>
+          
+          <Answer AnswerId="38463" OrderNumber="3" OptionText="Kun små muskelbevegelser, faller til sengen"/>
+          
+          <Answer AnswerId="38464" OrderNumber="4" OptionText="Ingen bevegelse"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6925" ItemType="2" VarName="NIHSS_BEIN" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="7130" OrderNumber="15" ItemText="Kraft i benet" ItemHelp="Holde armen utstrakt 30&amp;deg; i 5 sekunder" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="38467" OrderNumber="0" OptionText="Normal  (også ved &quot;ikke testbar&quot;)"/>
+          
+          <Answer AnswerId="38468" OrderNumber="1" OptionText="Drifter til lavere posisjon"/>
+          
+          <Answer AnswerId="38469" OrderNumber="2" OptionText="Noe bevegelse mot tyngdekraften, drifter til sengen"/>
+          
+          <Answer AnswerId="38470" OrderNumber="3" OptionText="Kun små muskelbevegelser, faller til sengen"/>
+          
+          <Answer AnswerId="38471" OrderNumber="4" OptionText="Ingen bevegelse"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6926" ItemType="2" VarName="NIHSS_ATAXI" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="7131" OrderNumber="16" ItemText="Koordinasjon / ataxi" ItemHelp="Finger-nese-prøve / hæl-kne-prøve" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="38477" OrderNumber="0" OptionText="Normal  (også ved &quot;ikke testbar&quot; eller ved coma)"/>
+          
+          <Answer AnswerId="38478" OrderNumber="1" OptionText="Ataksi i arm ELLER ben"/>
+          
+          <Answer AnswerId="38479" OrderNumber="2" OptionText="Ataksi i arm OG ben"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6929" ItemType="2" VarName="NIHSS_HUD" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="7134" OrderNumber="17" ItemText="Hudfølelse" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="38490" OrderNumber="0" OptionText="Normal"/>
+          
+          <Answer AnswerId="38491" OrderNumber="1" OptionText="Lettere sensibilitetsnedsettelse"/>
+          
+          <Answer AnswerId="38492" OrderNumber="2" OptionText="Markert sensibilitetstap (også ved coma, tertraparese)"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6927" ItemType="2" VarName="NIHSS_AFASI" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="7132" OrderNumber="18" ItemText="Språk /afasi" ItemHelp="Spontan tale, taleforståelse, leseforståelse, benevning" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="38483" OrderNumber="0" OptionText="Normal"/>
+          
+          <Answer AnswerId="38484" OrderNumber="1" OptionText="Moderat afasi, samtale mulig"/>
+          
+          <Answer AnswerId="38485" OrderNumber="2" OptionText="Markert afasi, samtale svært vanskelig eller umulig"/>
+          
+          <Answer AnswerId="38486" OrderNumber="3" OptionText="Ikke språk (også ved coma)"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6928" ItemType="2" VarName="NIHSS_DYSARTRI" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="7133" OrderNumber="19" ItemText="Tale / dysartri" ItemHelp="Spontan tale" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="38487" OrderNumber="0" OptionText="Normal"/>
+          
+          <Answer AnswerId="38488" OrderNumber="1" OptionText="Mild - moderat dysartri"/>
+          
+          <Answer AnswerId="38489" OrderNumber="2" OptionText="Nær uforståelig tale eller anartri (også ved coma)"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6930" ItemType="2" VarName="NIHSS_NEGLECT" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="7135" OrderNumber="20" ItemText="&quot;Neglect&quot;" ItemHelp="Bilateral simultan stimulering av syn og hudsensibilitet" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="38493" OrderNumber="0" OptionText="Normal (også ved hemianopsi med normal sensibilitet)"/>
+          
+          <Answer AnswerId="38494" OrderNumber="1" OptionText="Neglect i en sansemodalitet"/>
+          
+          <Answer AnswerId="38495" OrderNumber="2" OptionText="Neglect i begge sansemodaliteter"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="2055" PageNumber="5" PageTitle="Oppsummering">
+      
+      <Item ItemId="6933" ItemType="1" VarName="NIHSS_SCORE" LoincScale="QN" UnitStr="poeng" DisplayFormat="">
+        
+        <FormItem FormItemId="7138" OrderNumber="21" ItemText="Total NIHSS-Score (poeng)" ItemHelp="" Expression="NIHSS_BEVISSTHET + NIHSS_ORIENTERING + NIHSS_RESPONS + NIHSS_BLIKK + NIHSS_SYNSFELT + NIHSS_ANSIKT + NIHSS_ARM + NIHSS_BEIN + NIHSS_ATAXI + NIHSS_HUD + NIHSS_AFASI + NIHSS_DYSARTRI" MinExpression="0" MaxExpression="34" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+  
+  </Form>
+  
+  <Actions>
+    
+    <PageAction MasterId="6939">
+      
+      <Activate EnumVal="1" PageConditionId="2326" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+    
+    </PageAction>
+  
+  </Actions>
+
+</StudyForm>
