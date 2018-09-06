@@ -1,0 +1,1224 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="1003" FormName="FORM1003" FormTitle="NPI sykehjemsversjonen">
+    <Page PageId="9791" PageNumber="1" PageTitle="A. Vrangforestillinger">
+      <Item ItemId="2653" ItemType="2" VarName="NPINH_A" LoincScale="ORD">
+        <FormItem FormItemId="27886" OrderNumber="1" ItemText="Har beboeren oppfatninger som du vet ikke er riktige?" ItemHelp="For eksempel, insistere på at folk prøver å skade ham/henne eller stjele fra ham/henne. Har han/hun sagt at familiemedlemmer eller personale ikke er den de utgir seg for å være, eller at ektefellen er utro? Har beboeren hatt andre uvanlige oppfatninger?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11615" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11616" OrderNumber="2" OptionText="Nei" Score="20.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page>
+      <Item ItemId="2654" ItemType="2" VarName="NPINH_FARE" LoincScale="ORD">
+        <FormItem FormItemId="27887" OrderNumber="2" ItemText="Tror beboeren at han/hun er i fare - at andre planlegger å skade ham/henne eller har skadet ham/henne?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11617" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11618" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2655" ItemType="2" VarName="NPINH_STJELE" LoincScale="ORD">
+        <FormItem FormItemId="27888" OrderNumber="3" ItemText="Tror beboeren at andre stjeler fra ham/henne?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11619" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11620" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2656" ItemType="2" VarName="NPINH_UTRO" LoincScale="ORD">
+        <FormItem FormItemId="27889" OrderNumber="4" ItemText="Tror beboeren at ektefellen hans/hennes har et utenomekteskapelig forhold?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11621" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11622" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2657" ItemType="2" VarName="NPINH_LOEGN" LoincScale="ORD">
+        <FormItem FormItemId="27890" OrderNumber="5" ItemText="Tror pasienten at ektefellen, personale eller andre ikke er den de påstår å være?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11623" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11624" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2658" ItemType="2" VarName="NPINH_TV" LoincScale="ORD">
+        <FormItem FormItemId="27891" OrderNumber="6" ItemText="Tror pasienten at personer fra fjernsyn eller blader faktisk er tilstede i hjemmet?" ItemHelp="Prøver han/hun å snakke til dem?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11625" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11626" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2659" ItemType="2" VarName="NPINH_ANNET" LoincScale="ORD">
+        <FormItem FormItemId="27892" OrderNumber="7" ItemText="Har han/hun andre uvanlige oppfatninger som jeg ikke har spurt om?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11627" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11628" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2660" ItemType="4" VarName="VAR2660" LoincScale="NAR" Multiline="1">
+        <FormItem FormItemId="27893" OrderNumber="8" ItemText="Kommentarer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2676" ItemType="2" VarName="VAR2676" LoincScale="ORD">
+        <FormItem FormItemId="28333" OrderNumber="9" ItemText="Vrangforestillinger bekreftet" ItemHelp="" Expression="ISNEG(NPINH_FARE_SCORE + NPINH_STJELE_SCORE + NPINH_UTRO_SCORE + NPINH_LOEGN_SCORE + NPINH_TV_SCORE + NPINH_ANNET_SCORE + NPINH_A_SCORE - 13) + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11658" OrderNumber="1" OptionText="Nei"/>
+          <Answer AnswerId="11659" OrderNumber="2" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2661" ItemType="2" VarName="NPINH_HYPPIGHET1" LoincScale="ORD">
+        <FormItem FormItemId="27894" OrderNumber="10" ItemText="Hyppighet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11629" OrderNumber="1" OptionText="Av og til - sjeldnere enn en gang per uke"/>
+          <Answer AnswerId="11630" OrderNumber="2" OptionText="Ofte - omtrent en gang per uke"/>
+          <Answer AnswerId="11631" OrderNumber="3" OptionText="Hyppig - flere ganger per uke men sjeldnere enn hver dag"/>
+          <Answer AnswerId="11632" OrderNumber="4" OptionText="Svært hyppig - daglig eller oftere"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2662" ItemType="2" VarName="NPINH_INTENSITET1" LoincScale="ORD">
+        <FormItem FormItemId="27895" OrderNumber="11" ItemText="Intensitet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11633" OrderNumber="1" OptionText="Mild - vrangforestillinger tilstede men virker harmløse og medfører liten belastning for beboeren"/>
+          <Answer AnswerId="11634" OrderNumber="2" OptionText="Moderat - vrangforestillingene er belastende og forstyrrende for beboeren og forårsaker uvanlig eller merkelig atferd"/>
+          <Answer AnswerId="11635" OrderNumber="3" OptionText="Alvorlig - vrangforestillingene er svært forstyrrende og forårsaker mye uvanlig eller merkelig atferd"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2814" ItemType="1" VarName="NPINH_HYPPIGHET1xINTENSI" LoincScale="QN">
+        <FormItem FormItemId="28095" OrderNumber="12" ItemText="Hyppighet x Intensitet" ItemHelp="" Expression="NPINH_HYPPIGHET1_SCORE*NPINH_INTENSITET1_SCORE" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2663" ItemType="2" VarName="NPINH_BELASTNING1" LoincScale="ORD">
+        <FormItem FormItemId="27896" OrderNumber="13" ItemHeader="Belastning" ItemText="I hvor stor grad belaster denne atferden deg og/eller skaper merarbeid for deg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11636" OrderNumber="0" OptionText="Ikke i det hele tatt" Score="0.00"/>
+          <Answer AnswerId="11637" OrderNumber="1" OptionText="Minimalt" Score="1.00"/>
+          <Answer AnswerId="11638" OrderNumber="2" OptionText="Mild" Score="2.00"/>
+          <Answer AnswerId="11639" OrderNumber="3" OptionText="Moderat" Score="3.00"/>
+          <Answer AnswerId="11640" OrderNumber="4" OptionText="Alvorlig" Score="4.00"/>
+          <Answer AnswerId="11641" OrderNumber="5" OptionText="Svært alvorlig eller ekstremt" Score="5.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9792" PageNumber="4" PageTitle="B. Hallusinasjoner">
+      <Item ItemId="2664" ItemType="2" VarName="NPINH_B" LoincScale="ORD">
+        <FormItem FormItemId="27897" OrderNumber="14" ItemText="Har beboeren hallusinasjoner, det vil si ser, hører eller opplever ting som ikke er til stede?" ItemHelp="Hvis ja, be om et eksempel for å verifisere at det virkelig er en hallusinasjon. Snakker beboeren til personer som ikke er der?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11642" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11643" OrderNumber="2" OptionText="Nei" Score="20.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page>
+      <Item ItemId="2665" ItemType="2" VarName="NPINH_STEMMER" LoincScale="ORD">
+        <FormItem FormItemId="27898" OrderNumber="15" ItemText="Oppfører beboeren seg som om han hører stemmer eller beskriver å høre stemmer?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11644" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11645" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2666" ItemType="2" VarName="NPINH_SNAKKER" LoincScale="ORD">
+        <FormItem FormItemId="27899" OrderNumber="16" ItemText="Snakker beboeren til folk som ikke er tilstede?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11646" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11647" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2667" ItemType="2" VarName="NPINH_SER" LoincScale="ORD">
+        <FormItem FormItemId="27900" OrderNumber="17" ItemText="Ser beboeren ting som ikke er tilstede eller oppfører seg som om han/hun ser ting som ikke er tilstede (personer, dyr, lys, etc)?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11648" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11649" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2668" ItemType="2" VarName="NPINH_LUKTER" LoincScale="ORD">
+        <FormItem FormItemId="27901" OrderNumber="18" ItemText="Kjenner beboeren lukter som andre ikke kan kjenne?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11650" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11651" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2669" ItemType="2" VarName="NPINH_FOELER" LoincScale="ORD">
+        <FormItem FormItemId="27902" OrderNumber="19" ItemText="Forteller beboeren at han/hun kjenner ting på huden, eller oppfører han/hun seg som om noe&#xA;kribler eller berører ham/henne?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11652" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11653" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2670" ItemType="2" VarName="NPINH_SMAKER" LoincScale="ORD">
+        <FormItem FormItemId="27903" OrderNumber="20" ItemText="Sier beboeren eller oppfører han/hun seg som om han/hun smaker ting som ikke er tilstede?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11654" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11655" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2671" ItemType="2" VarName="NPINH_HALUSINASJON" LoincScale="ORD">
+        <FormItem FormItemId="27904" OrderNumber="21" ItemHeader="Beskriver beboeren andre uvanlige sanse-opplevelser?" ItemText="Beskriver beboeren andre uvanlige sanse-opplevelser?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11656" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11657" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2672" ItemType="4" VarName="VAR2672" LoincScale="NAR" Multiline="1">
+        <FormItem FormItemId="27905" OrderNumber="22" ItemText="Kommentarer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2677" ItemType="2" VarName="VAR2677" LoincScale="ORD">
+        <FormItem FormItemId="27915" OrderNumber="23" ItemText="Halusinasjoner bekreftet" ItemHelp="" Expression="ISNEG(NPINH_STEMMER_SCORE + NPINH_SNAKKER_SCORE + NPINH_SER_SCORE + NPINH_LUKTER_SCORE + &#xA;NPINH_FOELER_SCORE + NPINH_SMAKER_SCORE + NPINH_HALUSINASJON_SCORE + NPINH_B_SCORE - 15) + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="60682" OrderNumber="1" OptionText="Nei"/>
+          <Answer AnswerId="60683" OrderNumber="2" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9793" PageNumber="6" PageTitle="New*">
+      <Item ItemId="2673" ItemType="2" VarName="NPINH_HYPPIGHET2" LoincScale="ORD">
+        <FormItem FormItemId="27907" OrderNumber="24" ItemText="Hyppighet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60667" OrderNumber="1" OptionText="Av og til - sjeldnere enn en gang per uke"/>
+          <Answer AnswerId="60668" OrderNumber="2" OptionText="Ofte - omtrent en gang per uke"/>
+          <Answer AnswerId="60669" OrderNumber="3" OptionText="Hyppig - flere ganger per uke men sjeldnere enn hver dag"/>
+          <Answer AnswerId="60670" OrderNumber="4" OptionText="Svært hyppig - daglig eller oftere"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2674" ItemType="2" VarName="NPINH_INTENSITET2" LoincScale="ORD">
+        <FormItem FormItemId="27909" OrderNumber="25" ItemText="Intensitet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60672" OrderNumber="1" OptionText="Mild - hallusinasjonene er tilstede men virker harmløse og medfører liten belastning for pasienten"/>
+          <Answer AnswerId="60673" OrderNumber="2" OptionText="Moderat - hallusinasjonene er belastende og forstyrrende og forårsaker uvanlig eller merkelig atferd"/>
+          <Answer AnswerId="60674" OrderNumber="3" OptionText="Alvorlig - hallusinasjonene er svært forstyrrende og forårsaker mye uvanlig eller merkelig atferd (Eventuellmedisin kan være nødvendig for å kontrollere dem)"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2815" ItemType="1" VarName="NPINH_HYPPIGHET2xINTENSI" LoincScale="QN">
+        <FormItem FormItemId="28096" OrderNumber="26" ItemText="Hyppighet x Intensitet" ItemHelp="" Expression="NPINH_HYPPIGHET2_SCORE*NPINH_INTENSITET2_SCORE" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2675" ItemType="2" VarName="NPINH_BELASTNING2" LoincScale="ORD">
+        <FormItem FormItemId="27911" OrderNumber="27" ItemHeader="Belastning" ItemText="I hvor stor grad belaster denne atferden deg og/eller skaper merarbeid for deg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60675" OrderNumber="0" OptionText="Ikke i det hele tatt" Score="0.00"/>
+          <Answer AnswerId="60676" OrderNumber="1" OptionText="Minimalt" Score="1.00"/>
+          <Answer AnswerId="60677" OrderNumber="2" OptionText="Mild" Score="2.00"/>
+          <Answer AnswerId="60678" OrderNumber="3" OptionText="Moderat" Score="3.00"/>
+          <Answer AnswerId="60679" OrderNumber="4" OptionText="Alvorlig" Score="4.00"/>
+          <Answer AnswerId="60680" OrderNumber="5" OptionText="Svært alvorlig eller ekstremt" Score="5.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9794" PageNumber="7" PageTitle="C. Agitasjon/aggresjon">
+      <Item ItemId="2678" ItemType="2" VarName="NPINH_C" LoincScale="ORD">
+        <FormItem FormItemId="27916" OrderNumber="28" ItemText="Tegn til agitasjon/aggresjon?" ItemHelp="Har beboeren perioder der han/hun motsetter seg hjelp fra andre? Er han/hun vanskelig å ha med å&#xA;gjøre? Skaper han/hun mye støy eller samarbeider dårlig? Prøver beboeren å skade eller slå andre?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11660" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11661" OrderNumber="2" OptionText="Nei" Score="20.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page>
+      <Item ItemId="2679" ItemType="2" VarName="NPINH_STELL" LoincScale="ORD">
+        <FormItem FormItemId="27917" OrderNumber="29" ItemText="Blir beboeren irritert når folk prøver å stelle for ham/henne, eller motsetter seg aktiviteter som bading eller klesskift?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11662" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11663" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2680" ItemType="2" VarName="NPINH_EGEN" LoincScale="ORD">
+        <FormItem FormItemId="27918" OrderNumber="30" ItemText="Ønsker beboeren alltid å gjøre tingene på sin egen måte?&#xA;" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11664" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11665" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2681" ItemType="2" VarName="NPINH_SAMARBEID" LoincScale="ORD">
+        <FormItem FormItemId="27919" OrderNumber="31" ItemText="Samarbeider beboeren dårlig og motsetter seg hjelp fra andre?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11666" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11667" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2682" ItemType="2" VarName="NPINH_VANSKELIGATFERD" LoincScale="ORD">
+        <FormItem FormItemId="27920" OrderNumber="32" ItemText="Har beboeren annen type atferd som gjør ham vanskelig å ha med å gjøre?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11668" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11669" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2683" ItemType="2" VarName="NPINH_ROPER" LoincScale="ORD">
+        <FormItem FormItemId="27921" OrderNumber="33" ItemText="Roper, bråker eller banner beboeren sint?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11670" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11671" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2684" ItemType="2" VarName="NPINH_SLAMRER" LoincScale="ORD">
+        <FormItem FormItemId="27922" OrderNumber="34" ItemText="Slamrer beboeren med dørene, sparker i møbler, eller kaster ting rundt?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11672" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11673" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2685" ItemType="2" VarName="NPINH_SKADE" LoincScale="ORD">
+        <FormItem FormItemId="27923" OrderNumber="35" ItemText="Prøver beboeren å skade eller slå andre?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11674" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11675" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2686" ItemType="2" VarName="NPINH_AGITASJON" LoincScale="ORD">
+        <FormItem FormItemId="27924" OrderNumber="36" ItemText="Viser beboeren andre tegn på aggressiv eller agitert atferd?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11676" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11677" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2687" ItemType="4" VarName="VAR2687" LoincScale="NAR" Multiline="1">
+        <FormItem FormItemId="27925" OrderNumber="37" ItemText="Kommentarer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2688" ItemType="2" VarName="VAR2688" LoincScale="ORD">
+        <FormItem FormItemId="27927" OrderNumber="38" ItemText="Agitasjon/aggresjon bekreftet" ItemHelp="" Expression="ISNEG(NPINH_STELL_SCORE + NPINH_EGEN_SCORE + NPINH_SAMARBEID_SCORE + NPINH_VANSKELIGATFERD_SCORE + NPINH_ROPER_SCORE + NPINH_SLAMRER_SCORE + NPINH_SKADE_SCORE + NPINH_AGITASJON_SCORE + NPINH_C_SCORE - 17) + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="60685" OrderNumber="1" OptionText="Nei"/>
+          <Answer AnswerId="60686" OrderNumber="2" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9795" PageNumber="9" PageTitle="New*">
+      <Item ItemId="2689" ItemType="2" VarName="NPINH_HYPPIGHET3" LoincScale="ORD">
+        <FormItem FormItemId="27929" OrderNumber="39" ItemText="Hyppighet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60688" OrderNumber="1" OptionText="Av og til - sjeldnere enn en gang per uke"/>
+          <Answer AnswerId="60689" OrderNumber="2" OptionText="Ofte - omtrent en gang per uke"/>
+          <Answer AnswerId="60690" OrderNumber="3" OptionText="Hyppig - flere ganger per uke men sjeldnere enn hver dag"/>
+          <Answer AnswerId="60691" OrderNumber="4" OptionText="Svært hyppig - daglig eller oftere"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2690" ItemType="2" VarName="NPINH_INTENSITET3" LoincScale="ORD">
+        <FormItem FormItemId="27931" OrderNumber="40" ItemText="Intensitet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60693" OrderNumber="1" OptionText="Mild - atferden er belastende for beboeren men kan håndteres av pleieren"/>
+          <Answer AnswerId="60694" OrderNumber="2" OptionText="Moderat - atferden er forstyrrende for beboeren og vanskelig å kontrollere"/>
+          <Answer AnswerId="60695" OrderNumber="3" OptionText="Alvorlig - agitasjonen er veldig belastende og plagsom for beboeren og er veldig vanskelig eller umulig å kontrollere. Det er muligheter for at beboeren kan skade seg selv og medikamenter er ofte nødvendig"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2816" ItemType="1" VarName="NPINH_HYPPIGHET3xINTENSI" LoincScale="QN">
+        <FormItem FormItemId="28098" OrderNumber="41" ItemText="Hyppighet x Intensitet" ItemHelp="" Expression="NPINH_HYPPIGHET3_SCORE*NPINH_INTENSITET3_SCORE" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2691" ItemType="2" VarName="NPINH_BELASTNING3" LoincScale="ORD">
+        <FormItem FormItemId="27933" OrderNumber="42" ItemHeader="Belastning" ItemText="I hvor stor grad belaster denne atferden deg og/eller skaper merarbeid for deg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60696" OrderNumber="0" OptionText="Ikke i det hele tatt" Score="0.00"/>
+          <Answer AnswerId="60697" OrderNumber="1" OptionText="Minimalt" Score="1.00"/>
+          <Answer AnswerId="60698" OrderNumber="2" OptionText="Mild" Score="2.00"/>
+          <Answer AnswerId="60699" OrderNumber="3" OptionText="Moderat" Score="3.00"/>
+          <Answer AnswerId="60700" OrderNumber="4" OptionText="Alvorlig" Score="4.00"/>
+          <Answer AnswerId="60701" OrderNumber="5" OptionText="Svært alvorlig eller ekstremt" Score="5.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9798" PageNumber="10" PageTitle="D. Depresjon/dysfori">
+      <Item ItemId="2694" ItemType="2" VarName="NPINH_D" LoincScale="ORD">
+        <FormItem FormItemId="27944" OrderNumber="43" ItemText="Tegn til depresjon/dysfori?" ItemHelp="Virker beboeren trist eller deprimert? Sier han/hun at han/hun føler seg trist eller deprimert? Hender&#xA;det at beboeren gråter?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11680" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11681" OrderNumber="2" OptionText="Nei" Score="20.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page>
+      <Item ItemId="2695" ItemType="2" VarName="NPINH_GRAATER" LoincScale="ORD">
+        <FormItem FormItemId="27945" OrderNumber="44" ItemText="Hender det at beboeren gråter?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11682" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11683" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2696" ItemType="2" VarName="NPINH_DEPRIMERT" LoincScale="ORD">
+        <FormItem FormItemId="27946" OrderNumber="45" ItemText="Sier eller oppfører beboeren seg som om han/hun er deprimert?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11684" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11685" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2699" ItemType="2" VarName="NPINH_MISLYKKET" LoincScale="ORD">
+        <FormItem FormItemId="27949" OrderNumber="46" ItemText="Bebreider beboeren seg selv eller sier at han/hun føler seg som en mislykket person?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11691" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11692" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2700" ItemType="2" VarName="NPINH_STRAFFET" LoincScale="ORD">
+        <FormItem FormItemId="27950" OrderNumber="47" ItemText="Sier beboeren at han/hun er et dårlig menneske eller fortjener å bli straffet?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11693" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11694" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2701" ItemType="2" VarName="NPINH_MOTLOS" LoincScale="ORD">
+        <FormItem FormItemId="27951" OrderNumber="48" ItemText="Virker beboeren svært motløs eller sier at han/hun ikke har noen fremtid?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11695" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11696" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2702" ItemType="2" VarName="NPINH_FAMILIE" LoincScale="ORD">
+        <FormItem FormItemId="27952" OrderNumber="49" ItemText="Sier beboeren at han/hun er en belastning for familien eller at familien ville hatt det bedre uten&#xA;ham/henne?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11697" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11698" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2703" ItemType="2" VarName="NPINH_SUICIDAL" LoincScale="ORD">
+        <FormItem FormItemId="27953" OrderNumber="50" ItemText="Utrykker beboeren dødsønsker eller snakker han/hun om å ta livet av seg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11699" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11700" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2704" ItemType="2" VarName="NPINH_DEPRESJON" LoincScale="ORD">
+        <FormItem FormItemId="27954" OrderNumber="51" ItemText="Viser pasienten noen andre tegn på depresjon eller tristhet?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11701" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11702" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2705" ItemType="4" VarName="VAR2705" LoincScale="NAR" Multiline="1">
+        <FormItem FormItemId="27955" OrderNumber="52" ItemText="Kommentarer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2706" ItemType="2" VarName="VAR2706" LoincScale="ORD">
+        <FormItem FormItemId="27956" OrderNumber="53" ItemText="Depresjon/dysfori bekreftet" ItemHelp="" Expression="ISNEG(NPINH_GRAATER_SCORE + NPINH_DEPRIMERT_SCORE + NPINH_MISLYKKET_SCORE + NPINH_STRAFFET_SCORE + NPINH_MOTLOS_SCORE + NPINH_FAMILIE_SCORE + NPINH_SUICIDAL_SCORE + NPINH_DEPRESJON_SCORE + NPINH_D_SCORE - 17)+ 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11703" OrderNumber="1" OptionText="Nei"/>
+          <Answer AnswerId="11704" OrderNumber="2" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9800" PageNumber="12" PageTitle="New*">
+      <Item ItemId="2707" ItemType="2" VarName="NPINH_HYPPIGHET4" LoincScale="ORD">
+        <FormItem FormItemId="27958" OrderNumber="54" ItemText="Hyppighet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60710" OrderNumber="1" OptionText="Av og til - sjeldnere enn en gang per uke"/>
+          <Answer AnswerId="60711" OrderNumber="2" OptionText="Ofte - omtrent en gang per uke"/>
+          <Answer AnswerId="60712" OrderNumber="3" OptionText="Hyppig - flere ganger per uke men sjeldnere enn hver dag"/>
+          <Answer AnswerId="60713" OrderNumber="4" OptionText="Svært hyppig - daglig eller oftere"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2708" ItemType="2" VarName="NPINH_INTENSITET4" LoincScale="ORD">
+        <FormItem FormItemId="27960" OrderNumber="55" ItemText="Intensitet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60715" OrderNumber="1" OptionText="Mild - depresjonen er plagsom for beboeren men påvirkes ofte etter hjelp av pleieren"/>
+          <Answer AnswerId="60716" OrderNumber="2" OptionText="Moderat - depresjonen er plagsom, og er vanskelig å påvirke for pleieren"/>
+          <Answer AnswerId="60717" OrderNumber="3" OptionText="Alvorlig - depresjonen er svært plagsom og forstyrrende og er veldig vanskelig eller umulig å påvirke"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2817" ItemType="1" VarName="NPINH_HYPPIGHET4xINTENSI" LoincScale="QN">
+        <FormItem FormItemId="28100" OrderNumber="56" ItemText="Hyppighet x Intensitet" ItemHelp="" Expression="NPINH_HYPPIGHET4_SCORE*NPINH_INTENSITET4_SCORE" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2710" ItemType="2" VarName="NPINH_BELASTNING4" LoincScale="ORD">
+        <FormItem FormItemId="27964" OrderNumber="57" ItemHeader="Belastning" ItemText="I hvor stor grad belaster denne atferden deg og/eller skaper merarbeid for deg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60725" OrderNumber="0" OptionText="Ikke i det hele tatt" Score="0.00"/>
+          <Answer AnswerId="60726" OrderNumber="1" OptionText="Minimalt" Score="1.00"/>
+          <Answer AnswerId="60727" OrderNumber="2" OptionText="Mild" Score="2.00"/>
+          <Answer AnswerId="60728" OrderNumber="3" OptionText="Moderat" Score="3.00"/>
+          <Answer AnswerId="60729" OrderNumber="4" OptionText="Alvorlig" Score="4.00"/>
+          <Answer AnswerId="60730" OrderNumber="5" OptionText="Svært alvorlig eller ekstremt" Score="5.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9801" PageNumber="13" PageTitle="E. Angst">
+      <Item ItemId="2711" ItemType="2" VarName="NPINH_E" LoincScale="ORD">
+        <FormItem FormItemId="27965" OrderNumber="58" ItemText="Tegn til angst?" ItemHelp="Er beboeren svært nervøs, bekymret eller skremt uten noen åpenbar grunn? Virker han/hun veldig anspent eller ute av stand til å slappe av? Er beboeren redd for å være adskilt fra deg eller andre som han/hun stoler på?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11705" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11706" OrderNumber="2" OptionText="Nei" Score="20.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page>
+      <Item ItemId="2712" ItemType="2" VarName="NPINH_BEKYMRING" LoincScale="ORD">
+        <FormItem FormItemId="27966" OrderNumber="59" ItemText="Uttrykker beboeren bekymring for planlagte begivenheter slik som avtaler eller besøk fra familien?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11707" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11708" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2713" ItemType="2" VarName="NPINH_ANSPENT" LoincScale="ORD">
+        <FormItem FormItemId="27967" OrderNumber="60" ItemText="Har beboeren perioder der han/hun føler seg skjelven, ikke klarer å slappe av, eller føler seg veldig anspent?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11709" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11710" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2714" ItemType="2" VarName="NPINH_DYSPNOE" LoincScale="ORD">
+        <FormItem FormItemId="27968" OrderNumber="61" ItemText="Har beboeren perioder med (eller klager over) tungpustenhet, gisping etter luft eller sukking uten annen åpenbar grunn enn nervøsitet?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11711" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11712" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2715" ItemType="2" VarName="NPINH_NERVOS" LoincScale="ORD">
+        <FormItem FormItemId="27969" OrderNumber="62" ItemText="Klager beboeren over sommerfugler i magen, rask puls eller hjertebank fordi han/hun er nervøs?" ItemHelp="Symptomet skyldes ikke dårlig kroppslig helse" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11713" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11714" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2716" ItemType="2" VarName="NPINH_UNNGAAELSE" LoincScale="ORD">
+        <FormItem FormItemId="27970" OrderNumber="63" ItemText="Unngår beboeren bestemte steder eller situasjoner som gjør ham/henne mer nervøs, slik som å treffe venner, eller delta i aktiviteter på avdelingen?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11715" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11716" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2717" ItemType="2" VarName="NPINH_ADSKILT" LoincScale="ORD">
+        <FormItem FormItemId="27971" OrderNumber="64" ItemText="Blir beboeren nervøs og urolig når han/hun er adskilt fra deg eller andre han/hun stoler på?" ItemHelp="Klamrer han/hun seg til deg for å hindre deg i forlate ham/henne?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11717" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11718" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2718" ItemType="2" VarName="NPINH_ANGST" LoincScale="ORD">
+        <FormItem FormItemId="27972" OrderNumber="65" ItemText="Viser beboeren noen andre tegn på angst?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11719" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11720" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2719" ItemType="4" VarName="VAR2719" LoincScale="NAR" Multiline="1">
+        <FormItem FormItemId="27973" OrderNumber="66" ItemText="Kommentarer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2720" ItemType="2" VarName="VAR2720" LoincScale="ORD">
+        <FormItem FormItemId="27974" OrderNumber="67" ItemText="Angst bekreftet" ItemHelp="" Expression="ISNEG(NPINH_BEKYMRING_SCORE + NPINH_ANSPENT_SCORE + NPINH_DYSPNOE_SCORE + NPINH_NERVOS_SCORE + NPINH_UNNGAAELSE_SCORE + NPINH_ADSKILT_SCORE + NPINH_ANGST_SCORE + NPINH_E_SCORE - 15)+ 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11721" OrderNumber="1" OptionText="Nei"/>
+          <Answer AnswerId="11722" OrderNumber="2" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9802" PageNumber="15" PageTitle="New*">
+      <Item ItemId="2722" ItemType="2" VarName="NPINH_HYPPIGHET5" LoincScale="ORD">
+        <FormItem FormItemId="27977" OrderNumber="68" ItemText="Hyppighet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60732" OrderNumber="1" OptionText="Av og til - sjeldnere enn en gang per uke"/>
+          <Answer AnswerId="60733" OrderNumber="2" OptionText="Ofte - omtrent en gang per uke"/>
+          <Answer AnswerId="60734" OrderNumber="3" OptionText="Hyppig - flere ganger per uke men sjeldnere enn hver dag"/>
+          <Answer AnswerId="60735" OrderNumber="4" OptionText="Svært hyppig - daglig eller oftere"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2723" ItemType="2" VarName="NPINH_INTENSITET5" LoincScale="ORD">
+        <FormItem FormItemId="27979" OrderNumber="69" ItemText="Intensitet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60737" OrderNumber="1" OptionText="Mild - angsten er plagsom men lar seg vanligvis påvirke ved hjelp av en pleier"/>
+          <Answer AnswerId="60738" OrderNumber="2" OptionText="Moderat - angsten er plagsom for beboeren og er vanskelig å påvirke for pleieren"/>
+          <Answer AnswerId="60739" OrderNumber="3" OptionText="Alvorlig - angsten er svært plagsom og forstyrrende og er veldig vanskelig eller umulig å påvirke"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2818" ItemType="1" VarName="NPINH_HYPPIGHET5xINTENSI" LoincScale="QN">
+        <FormItem FormItemId="28102" OrderNumber="70" ItemText="Hyppighet x Intensitet" ItemHelp="" Expression="NPINH_HYPPIGHET5_SCORE*NPINH_INTENSITET5_SCORE" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2724" ItemType="2" VarName="NPINH_BELASTNING5" LoincScale="ORD">
+        <FormItem FormItemId="27981" OrderNumber="71" ItemHeader="Belastning" ItemText="I hvor stor grad belaster denne atferden deg og/eller skaper merarbeid for deg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60741" OrderNumber="0" OptionText="Ikke i det hele tatt" Score="0.00"/>
+          <Answer AnswerId="60742" OrderNumber="1" OptionText="Minimalt" Score="1.00"/>
+          <Answer AnswerId="60743" OrderNumber="2" OptionText="Mild" Score="2.00"/>
+          <Answer AnswerId="60744" OrderNumber="3" OptionText="Moderat" Score="3.00"/>
+          <Answer AnswerId="60745" OrderNumber="4" OptionText="Alvorlig" Score="4.00"/>
+          <Answer AnswerId="60746" OrderNumber="5" OptionText="Svært alvorlig eller ekstremt" Score="5.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9803" PageNumber="16" PageTitle="F. Oppstemthet/Eufori">
+      <Item ItemId="2725" ItemType="2" VarName="NPINH_F" LoincScale="ORD">
+        <FormItem FormItemId="27982" OrderNumber="72" ItemText="Tegn til oppstemthet/eufori?" ItemHelp="Virker beboeren altfor munter eller altfor lykkelig uten spesiell grunn? Jeg mener ikke normal glede,&#xA;men for eksempel det å le av ting som andre ikke synes er morsomme?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11723" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11724" OrderNumber="2" OptionText="Nei" Score="20.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page>
+      <Item ItemId="2726" ItemType="2" VarName="NPINH_LYKKELIG" LoincScale="ORD">
+        <FormItem FormItemId="27983" OrderNumber="73" ItemText="Synes beboeren å føle seg FOR vel eller FOR lykkelig?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11725" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11726" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2727" ItemType="2" VarName="NPINH_MORSOMT" LoincScale="ORD">
+        <FormItem FormItemId="27984" OrderNumber="74" ItemText="Ser beboeren humoristisk på, eller ler av ting som andre ikke synes er morsomt?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11727" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11728" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2728" ItemType="2" VarName="NPINH_UPASSENDE" LoincScale="ORD">
+        <FormItem FormItemId="27985" OrderNumber="75" ItemText="Synes beboeren å ha en barnslig form for humor med tendens til å fnise eller le upassende (som når noe uheldig skjer med andre)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11729" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11730" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2729" ItemType="2" VarName="NPINH_UMORSOM" LoincScale="ORD">
+        <FormItem FormItemId="27986" OrderNumber="76" ItemText="Forteller beboeren vitser eller kommer med bemerkninger som ikke er morsomme for andre enn ham/henne selv?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11731" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11732" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2730" ItemType="2" VarName="NPINH_BARNSLIG" LoincScale="ORD">
+        <FormItem FormItemId="27987" OrderNumber="77" ItemText="Gjør han/hun barnslige skøyerstreker slik som å klype eller leke gjemsel for moro skyld?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11733" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11734" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2731" ItemType="2" VarName="NPINH_EUFORI" LoincScale="ORD">
+        <FormItem FormItemId="27988" OrderNumber="78" ItemText="Viser beboeren noen andre tegn på å føle seg for vel eller for lykkelig?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11735" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11736" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2732" ItemType="4" VarName="VAR2732" LoincScale="NAR" Multiline="1">
+        <FormItem FormItemId="27989" OrderNumber="79" ItemText="Kommentarer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2733" ItemType="2" VarName="VAR2733" LoincScale="ORD">
+        <FormItem FormItemId="27991" OrderNumber="80" ItemText="Eufori bekreftet" ItemHelp="" Expression="ISNEG(NPINH_LYKKELIG_SCORE + NPINH_MORSOMT_SCORE + NPINH_UPASSENDE_SCORE + NPINH_UMORSOM_SCORE + NPINH_BARNSLIG_SCORE + NPINH_EUFORI_SCORE + NPINH_F_SCORE - 13)+ 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="60748" OrderNumber="1" OptionText="Nei"/>
+          <Answer AnswerId="60749" OrderNumber="2" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9804" PageNumber="18" PageTitle="New*">
+      <Item ItemId="2734" ItemType="2" VarName="NPINH_HYPPIGHET6" LoincScale="ORD">
+        <FormItem FormItemId="27993" OrderNumber="81" ItemText="Hyppighet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60751" OrderNumber="1" OptionText="Av og til - sjeldnere enn en gang per uke"/>
+          <Answer AnswerId="60752" OrderNumber="2" OptionText="Ofte - omtrent en gang per uke"/>
+          <Answer AnswerId="60753" OrderNumber="3" OptionText="Hyppig - flere ganger per uke men sjeldnere enn hver dag"/>
+          <Answer AnswerId="60754" OrderNumber="4" OptionText="Svært hyppig - daglig eller oftere"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2735" ItemType="2" VarName="NPINH_INTENSITET6" LoincScale="ORD">
+        <FormItem FormItemId="27995" OrderNumber="82" ItemText="Intensitet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60756" OrderNumber="1" OptionText="Mild - beboeren er for lykkelig av og til"/>
+          <Answer AnswerId="60757" OrderNumber="2" OptionText="Moderat - beboeren er for lykkelig av og til og dette kan forårsake merkelig  atferd"/>
+          <Answer AnswerId="60758" OrderNumber="3" OptionText="Alvorlig - beboeren er nesten alltid for lykkelig og synes alt er morsomt"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2819" ItemType="1" VarName="NPINH_HYPPIGHET6xINTENSI" LoincScale="QN">
+        <FormItem FormItemId="28104" OrderNumber="83" ItemText="Hyppighet x Intensitet" ItemHelp="" Expression="NPINH_HYPPIGHET6_SCORE*NPINH_INTENSITET6_SCORE" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2736" ItemType="2" VarName="NPINH_BELASTNING6" LoincScale="ORD">
+        <FormItem FormItemId="27997" OrderNumber="84" ItemHeader="Belastning" ItemText="I hvor stor grad belaster denne atferden deg og/eller skaper merarbeid for deg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60760" OrderNumber="0" OptionText="Ikke i det hele tatt" Score="0.00"/>
+          <Answer AnswerId="60761" OrderNumber="1" OptionText="Minimalt" Score="1.00"/>
+          <Answer AnswerId="60762" OrderNumber="2" OptionText="Mild" Score="2.00"/>
+          <Answer AnswerId="60763" OrderNumber="3" OptionText="Moderat" Score="3.00"/>
+          <Answer AnswerId="60764" OrderNumber="4" OptionText="Alvorlig" Score="4.00"/>
+          <Answer AnswerId="60765" OrderNumber="5" OptionText="Svært alvorlig eller ekstremt" Score="5.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9805" PageNumber="19" PageTitle="G. Apati/Likegyldighet">
+      <Item ItemId="2737" ItemType="2" VarName="NPINH_G" LoincScale="ORD">
+        <FormItem FormItemId="27998" OrderNumber="85" ItemText="Tegn til apati/likegyldighet?" ItemHelp="Sitter beboeren rolig uten å legge merke til ting som foregår rundt ham/henne? Har han/hun mistet interessen for å gjøre ting eller mangler motivasjon for å delta i aktiviteter? Er det vanskelig å engasjere ham/hun i samtale eller felles aktiviteter?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11737" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11738" OrderNumber="2" OptionText="Nei" Score="20.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page>
+      <Item ItemId="2738" ItemType="2" VarName="NPINH_VERDEN" LoincScale="ORD">
+        <FormItem FormItemId="27999" OrderNumber="86" ItemText="Har beboeren mistet interessen for verden omkring ham/henne?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11739" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11740" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2739" ItemType="2" VarName="NPINH_SAMTALE" LoincScale="ORD">
+        <FormItem FormItemId="28000" OrderNumber="87" ItemText="Begynner beboeren aldri en samtale?" ItemHelp="Skåres &quot;Ja&quot; bare hvis samtale er mulig" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11741" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11742" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2740" ItemType="2" VarName="NPINH_GLEDE" LoincScale="ORD">
+        <FormItem FormItemId="28001" OrderNumber="88" ItemText="Klarer ikke beboeren å vise følelsesmessige reaksjoner som man ville forvente?" ItemHelp="Glede over besøk av en venn eller familiemedlem, interesse for nyheter, sport etc." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11743" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11744" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2741" ItemType="2" VarName="NPINH_FAMILE" LoincScale="ORD">
+        <FormItem FormItemId="28002" OrderNumber="89" ItemText="Har beboeren mistet interessen for venner og familiemedlemmer?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11745" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11746" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2742" ItemType="2" VarName="NPINH_INTERESSER" LoincScale="ORD">
+        <FormItem FormItemId="28003" OrderNumber="90" ItemText="Er beboeren mindre entusiastisk i forhold til hans/hennes vanlige interesser?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11747" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11748" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2743" ItemType="2" VarName="NPINH_SLOV" LoincScale="ORD">
+        <FormItem FormItemId="28004" OrderNumber="91" ItemText="Sitter beboeren rolig uten å legge merke til hva som skjer rundt ham/henne?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11749" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11750" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2744" ItemType="2" VarName="NPINH_APATI" LoincScale="ORD">
+        <FormItem FormItemId="28005" OrderNumber="92" ItemText="Viser pasienten noen andre tegn på at han/hun ikke bryr seg om å gjøre nye ting?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11751" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11752" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2745" ItemType="4" VarName="VAR2745" LoincScale="NAR" Multiline="1">
+        <FormItem FormItemId="28006" OrderNumber="93" ItemText="Kommentarer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2746" ItemType="2" VarName="VAR2746" LoincScale="ORD">
+        <FormItem FormItemId="28007" OrderNumber="94" ItemText="Apati/likegyldighet bekreftet" ItemHelp="" Expression="ISNEG(NPINH_VERDEN_SCORE + NPINH_SAMTALE_SCORE + NPINH_GLEDE_SCORE + NPINH_FAMILE_SCORE + NPINH_INTERESSER_SCORE + NPINH_SLOV_SCORE + NPINH_APATI_SCORE + NPINH_G_SCORE - 15)+ 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11753" OrderNumber="1" OptionText="Nei"/>
+          <Answer AnswerId="11754" OrderNumber="2" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9806" PageNumber="21" PageTitle="New*">
+      <Item ItemId="2747" ItemType="2" VarName="NPINH_HYPPIGHET7" LoincScale="ORD">
+        <FormItem FormItemId="28009" OrderNumber="95" ItemText="Hyppighet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60767" OrderNumber="1" OptionText="Av og til - sjeldnere enn en gang per uke"/>
+          <Answer AnswerId="60768" OrderNumber="2" OptionText="Ofte - omtrent en gang per uke"/>
+          <Answer AnswerId="60769" OrderNumber="3" OptionText="Hyppig - flere ganger per uke men sjeldnere enn hver dag"/>
+          <Answer AnswerId="60770" OrderNumber="4" OptionText="Svært hyppig - daglig eller oftere"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2748" ItemType="2" VarName="NPINH_INTENSITET7" LoincScale="ORD">
+        <FormItem FormItemId="28011" OrderNumber="96" ItemText="Intensitet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60772" OrderNumber="1" OptionText="Mild - beboeren er av og til uten interesse for ting, men dette påvirker i liten grad oppførselen eller deltakelse i aktiviteter"/>
+          <Answer AnswerId="60773" OrderNumber="2" OptionText="Moderat - beboeren har i stor grad mistet interessen for ting, og dette endres bare ved betydningsfulle hendelser som besøk av nære slektninger eller familiemedlemmer"/>
+          <Answer AnswerId="60774" OrderNumber="3" OptionText="Alvorlig - beboeren har fullstendig mistet interesse og motivasjon"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2820" ItemType="1" VarName="NPINH_HYPPIGHET7xINTENSI" LoincScale="QN">
+        <FormItem FormItemId="28106" OrderNumber="97" ItemText="Hyppighet x Intensitet" ItemHelp="" Expression="NPINH_HYPPIGHET7_SCORE*NPINH_INTENSITET7_SCORE" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2749" ItemType="2" VarName="NPINH_BELASTNING7" LoincScale="ORD">
+        <FormItem FormItemId="28013" OrderNumber="98" ItemHeader="Belastning" ItemText="I hvor stor grad belaster denne atferden deg og/eller skaper merarbeid for deg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60776" OrderNumber="0" OptionText="Ikke i det hele tatt" Score="0.00"/>
+          <Answer AnswerId="60777" OrderNumber="1" OptionText="Minimalt" Score="1.00"/>
+          <Answer AnswerId="60778" OrderNumber="2" OptionText="Mild" Score="2.00"/>
+          <Answer AnswerId="60779" OrderNumber="3" OptionText="Moderat" Score="3.00"/>
+          <Answer AnswerId="60780" OrderNumber="4" OptionText="Alvorlig" Score="4.00"/>
+          <Answer AnswerId="60781" OrderNumber="5" OptionText="Svært alvorlig eller ekstremt" Score="5.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9807" PageNumber="22" PageTitle="H. Manglende hemning">
+      <Item ItemId="2750" ItemType="2" VarName="NPINH_H" LoincScale="ORD">
+        <FormItem FormItemId="28014" OrderNumber="99" ItemText="Tegn til manglende hemning?" ItemHelp="Gjør eller sier beboeren ting som man vanligvis ikke gjør eller sier offentlig? Virker det som om han/hun handler impulsivt uten å tenke? Sier beboeren ting som er ufølsomme eller sårende?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11755" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11756" OrderNumber="2" OptionText="Nei" Score="20.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page>
+      <Item ItemId="2751" ItemType="2" VarName="NPINH_IMPULSIV" LoincScale="ORD">
+        <FormItem FormItemId="28015" OrderNumber="100" ItemText="Handler beboeren impulsivt uten å vurdere konsekvensene?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11757" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11758" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2752" ItemType="2" VarName="NPINH_FREMMEDE" LoincScale="ORD">
+        <FormItem FormItemId="28016" OrderNumber="101" ItemText="Snakker beboeren til helt fremmede personer som om han/hun kjente dem?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11759" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11760" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2753" ItemType="2" VarName="NPINH_UFOLSOM" LoincScale="ORD">
+        <FormItem FormItemId="28017" OrderNumber="102" ItemText="Sier beboeren ufølsomme eller sårende ting til folk?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11761" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11762" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2754" ItemType="2" VarName="NPINH_SEKSUELT" LoincScale="ORD">
+        <FormItem FormItemId="28018" OrderNumber="103" ItemText="Kommer beboeren med grovheter eller kommer med upassende seksuelle kommentarer?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11763" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11764" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2755" ItemType="2" VarName="NPINH_UBLYG" LoincScale="ORD">
+        <FormItem FormItemId="28019" OrderNumber="104" ItemText="Snakker beboeren åpent om veldig personlige eller private forhold som man vanligvis ikke diskuterer offentlig?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11765" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11766" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2756" ItemType="2" VarName="NPINH_TAFSER" LoincScale="ORD">
+        <FormItem FormItemId="28020" OrderNumber="105" ItemText="Beføler, berører eller klemmer beboeren andre på en upassende måte?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11767" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11768" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2757" ItemType="2" VarName="NPINH_IMPULS" LoincScale="ORD">
+        <FormItem FormItemId="28021" OrderNumber="106" ItemText="Viser pasienten noen andre tegn på tap av impulskontroll?&#xA;" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11769" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11770" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2758" ItemType="4" VarName="VAR2758" LoincScale="NAR" Multiline="1">
+        <FormItem FormItemId="28022" OrderNumber="107" ItemText="Kommentarer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2759" ItemType="2" VarName="VAR2759" LoincScale="ORD">
+        <FormItem FormItemId="28024" OrderNumber="108" ItemText="Manglende hemning bekreftet" ItemHelp="" Expression="ISNEG(NPINH_IMPULSIV_SCORE + NPINH_FREMMEDE_SCORE + NPINH_UFOLSOM_SCORE + NPINH_SEKSUELT_SCORE + NPINH_UBLYG_SCORE + NPINH_TAFSER_SCORE + NPINH_IMPULS_SCORE + NPINH_H_SCORE - 15)+ 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="60783" OrderNumber="1" OptionText="Nei"/>
+          <Answer AnswerId="60784" OrderNumber="2" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9808" PageNumber="24" PageTitle="New*">
+      <Item ItemId="2760" ItemType="2" VarName="NPINH_HYPPIGHET8" LoincScale="ORD">
+        <FormItem FormItemId="28026" OrderNumber="109" ItemText="Hyppighet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60786" OrderNumber="1" OptionText="Av og til - sjeldnere enn en gang per uke"/>
+          <Answer AnswerId="60787" OrderNumber="2" OptionText="Ofte - omtrent en gang per uke"/>
+          <Answer AnswerId="60788" OrderNumber="3" OptionText="Hyppig - flere ganger per uke men sjeldnere enn hver dag"/>
+          <Answer AnswerId="60789" OrderNumber="4" OptionText="Svært hyppig - daglig eller oftere"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2761" ItemType="2" VarName="NPINH_INTENSITET8" LoincScale="ORD">
+        <FormItem FormItemId="28028" OrderNumber="110" ItemText="Intensitet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60791" OrderNumber="1" OptionText="Mild - handler av og til impulsivt, men atferden kan lett endres av pleier"/>
+          <Answer AnswerId="60792" OrderNumber="2" OptionText="Moderat - beboeren er meget impulsiv og denne atferden er vanskelig å endre for pleieren"/>
+          <Answer AnswerId="60793" OrderNumber="3" OptionText="Alvorlig - beboeren er nesten alltid impulsiv og denne atferden er det nesten umulig å endre"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2821" ItemType="1" VarName="NPINH_HYPPIGHET8xINTENSI" LoincScale="QN">
+        <FormItem FormItemId="28108" OrderNumber="111" ItemText="Hyppighet x Intensitet" ItemHelp="" Expression="NPINH_HYPPIGHET8_SCORE*NPINH_INTENSITET8_SCORE" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2762" ItemType="2" VarName="NPINH_BELASTNING8" LoincScale="ORD">
+        <FormItem FormItemId="28030" OrderNumber="112" ItemHeader="Belastning" ItemText="I hvor stor grad belaster denne atferden deg og/eller skaper merarbeid for deg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60795" OrderNumber="0" OptionText="Ikke i det hele tatt" Score="0.00"/>
+          <Answer AnswerId="60796" OrderNumber="1" OptionText="Minimalt" Score="1.00"/>
+          <Answer AnswerId="60797" OrderNumber="2" OptionText="Mild" Score="2.00"/>
+          <Answer AnswerId="60798" OrderNumber="3" OptionText="Moderat" Score="3.00"/>
+          <Answer AnswerId="60799" OrderNumber="4" OptionText="Alvorlig" Score="4.00"/>
+          <Answer AnswerId="60800" OrderNumber="5" OptionText="Svært alvorlig eller ekstremt" Score="5.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9809" PageNumber="25" PageTitle="I. Irritabilitet/Labilitet">
+      <Item ItemId="2763" ItemType="2" VarName="NPINH_I" LoincScale="ORD">
+        <FormItem FormItemId="28031" OrderNumber="113" ItemText="Tegn til irritabilitet/labilitet?" ItemHelp="Blir pasienten lett irritert eller urolig? Er humøret hans/hennes svært skiftende? Er han/hun ekstremt utålmodig?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11771" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11772" OrderNumber="2" OptionText="Nei" Score="20.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page>
+      <Item ItemId="2764" ItemType="2" VarName="NPINH_HISSIG" LoincScale="ORD">
+        <FormItem FormItemId="28032" OrderNumber="114" ItemText="Er beboeren hissig og farer opp på grunn av småting?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11773" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11774" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2765" ItemType="2" VarName="NPINH_SVINGNINGER" LoincScale="ORD">
+        <FormItem FormItemId="28033" OrderNumber="115" ItemText="Har beboeren humørsvingninger, fra å være fin til å bli sint på et øyeblikk?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11775" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11776" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2766" ItemType="2" VarName="NPINH_RASERI" LoincScale="ORD">
+        <FormItem FormItemId="28034" OrderNumber="116" ItemText="Får beboeren plutselige raserianfall?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11777" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11778" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2767" ItemType="2" VarName="NPINH_UTAALMODIG" LoincScale="ORD">
+        <FormItem FormItemId="28035" OrderNumber="117" ItemText="Er beboeren utålmodig, har vanskelig for å takle forsinkelser eller venting på planlagte aktiviteter eller andre ting?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11779" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11780" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2768" ItemType="2" VarName="NPINH_IRRITERT" LoincScale="ORD">
+        <FormItem FormItemId="28036" OrderNumber="118" ItemText="Blir beboeren lett irritert?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11781" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11782" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2769" ItemType="2" VarName="NPINH_KRANGLER" LoincScale="ORD">
+        <FormItem FormItemId="28037" OrderNumber="119" ItemText="Er beboeren kranglevoren og vanskelig å komme overens med?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11783" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11784" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2770" ItemType="2" VarName="NPINH_IRRITABILITET" LoincScale="ORD">
+        <FormItem FormItemId="28038" OrderNumber="120" ItemText="Viser beboeren noen andre tegn på irritabilitet?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11785" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11786" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2771" ItemType="4" VarName="VAR2771" LoincScale="NAR" Multiline="1">
+        <FormItem FormItemId="28039" OrderNumber="121" ItemText="Kommentarer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2772" ItemType="2" VarName="VAR2772" LoincScale="ORD">
+        <FormItem FormItemId="28041" OrderNumber="122" ItemText="Irritabilitet bekreftet" ItemHelp="" Expression="ISNEG(NPINH_HISSIG_SCORE + NPINH_SVINGNINGER_SCORE + NPINH_RASERI_SCORE + NPINH_UTAALMODIG_SCORE + NPINH_IRRITERT_SCORE + NPINH_KRANGLER_SCORE + NPINH_IRRITABILITET_SCORE + NPINH_I_SCORE - 15)+ 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="60802" OrderNumber="1" OptionText="Nei"/>
+          <Answer AnswerId="60803" OrderNumber="2" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9810" PageNumber="27" PageTitle="New*">
+      <Item ItemId="2773" ItemType="2" VarName="NPINH_HYPPIGHET9" LoincScale="ORD">
+        <FormItem FormItemId="28043" OrderNumber="123" ItemText="Hyppighet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60805" OrderNumber="1" OptionText="Av og til - sjeldnere enn en gang per uke"/>
+          <Answer AnswerId="60806" OrderNumber="2" OptionText="Ofte - omtrent en gang per uke"/>
+          <Answer AnswerId="60807" OrderNumber="3" OptionText="Hyppig - flere ganger per uke men sjeldnere enn hver dag"/>
+          <Answer AnswerId="60808" OrderNumber="4" OptionText="Svært hyppig - daglig eller oftere"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2774" ItemType="2" VarName="NPINH_INTENSITET9" LoincScale="ORD">
+        <FormItem FormItemId="28045" OrderNumber="124" ItemText="Intensitet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60810" OrderNumber="1" OptionText="Mild - beboeren er av og til irritabel, men atferden lar seg uten vanskeligheter endre av pleieren"/>
+          <Answer AnswerId="60811" OrderNumber="2" OptionText="Moderat - beboeren er veldig irritabel og denne atferden er vanskelig å endre for pleieren"/>
+          <Answer AnswerId="60812" OrderNumber="3" OptionText="Alvorlig - beboeren er nesten alltid irritabel og denn atferden er nesten umulig å endre"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2822" ItemType="1" VarName="NPINH_HYPPIGHET9xINTENSI" LoincScale="QN">
+        <FormItem FormItemId="28110" OrderNumber="125" ItemText="Hyppighet x Intensitet" ItemHelp="" Expression="NPINH_HYPPIGHET9_SCORE*NPINH_INTENSITET9_SCORE" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2775" ItemType="2" VarName="NPINH_BELASTNING9" LoincScale="ORD">
+        <FormItem FormItemId="28047" OrderNumber="126" ItemHeader="Belastning" ItemText="I hvor stor grad belaster denne atferden deg og/eller skaper merarbeid for deg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60814" OrderNumber="0" OptionText="Ikke i det hele tatt" Score="0.00"/>
+          <Answer AnswerId="60815" OrderNumber="1" OptionText="Minimalt" Score="1.00"/>
+          <Answer AnswerId="60816" OrderNumber="2" OptionText="Mild" Score="2.00"/>
+          <Answer AnswerId="60817" OrderNumber="3" OptionText="Moderat" Score="3.00"/>
+          <Answer AnswerId="60818" OrderNumber="4" OptionText="Alvorlig" Score="4.00"/>
+          <Answer AnswerId="60819" OrderNumber="5" OptionText="Svært alvorlig eller ekstremt" Score="5.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9811" PageNumber="28" PageTitle="J. Avvikende motorisk atferd">
+      <Item ItemId="2776" ItemType="2" VarName="NPINH_J" LoincScale="ORD">
+        <FormItem FormItemId="28048" OrderNumber="127" ItemText="Har beboeren gjentatte handlinger eller “vaner” som han/hun utfører om og om igjen, slik som&#xA;vandring, kjøre rullestol fram og tilbake, plukke på ting eller tvinne på tråder og snorer?" ItemHelp="Ikke inkluder vanlig tremor eller tungebevegelser" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11787" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11788" OrderNumber="2" OptionText="Nei" Score="20.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page>
+      <Item ItemId="2777" ItemType="2" VarName="NPINH_VANDRER" LoincScale="ORD">
+        <FormItem FormItemId="28049" OrderNumber="128" ItemText="Vandrer beboeren eller kjører rullestol i avdelingen uten mål og mening?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11789" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11790" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2778" ItemType="2" VarName="NPINH_SKUFFER" LoincScale="ORD">
+        <FormItem FormItemId="28050" OrderNumber="129" ItemText="Åpner og tømmer beboeren skuffer og skap om og om igjen?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11791" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11792" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2779" ItemType="2" VarName="NPINH_AVKLER" LoincScale="ORD">
+        <FormItem FormItemId="28051" OrderNumber="130" ItemText="Kler beboeren stadig av og på seg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11793" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11794" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2780" ItemType="2" VarName="NPINH_GJENTAGELSE" LoincScale="ORD">
+        <FormItem FormItemId="28052" OrderNumber="131" ItemText="Har pasienten gjentatte handlinger som han/hun utfører om og om igjen slik som å fikle med knapper, tvinne snorer, skifte sengetøy etc?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11795" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11796" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2781" ItemType="2" VarName="NPINH_VANER" LoincScale="ORD">
+        <FormItem FormItemId="28053" OrderNumber="132" ItemText="Har beboeren gjentatte handlinger eller “vaner” som han/hun utfører om og om igjen?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11797" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11798" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2782" ItemType="4" VarName="VAR2782" LoincScale="NAR" Multiline="1">
+        <FormItem FormItemId="28054" OrderNumber="133" ItemText="Kommentarer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2783" ItemType="2" VarName="VAR2783" LoincScale="ORD">
+        <FormItem FormItemId="28055" OrderNumber="134" ItemText="Avvikende motorisk atferd bekreftet" ItemHelp="" Expression="ISNEG(NPINH_VANDRER_SCORE + NPINH_SKUFFER_SCORE + NPINH_AVKLER_SCORE + NPINH_GJENTAGELSE_SCORE + NPINH_VANER_SCORE + NPINH_J_SCORE - 11)+ 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11799" OrderNumber="1" OptionText="Nei"/>
+          <Answer AnswerId="11800" OrderNumber="2" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9812" PageNumber="30" PageTitle="New*">
+      <Item ItemId="2784" ItemType="2" VarName="NPINH_HYPPIGHET10" LoincScale="ORD">
+        <FormItem FormItemId="28057" OrderNumber="135" ItemText="Hyppighet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60821" OrderNumber="1" OptionText="Av og til - sjeldnere enn en gang per uke"/>
+          <Answer AnswerId="60822" OrderNumber="2" OptionText="Ofte - omtrent en gang per uke"/>
+          <Answer AnswerId="60823" OrderNumber="3" OptionText="Hyppig - flere ganger per uke men sjeldnere enn hver dag"/>
+          <Answer AnswerId="60824" OrderNumber="4" OptionText="Svært hyppig - daglig eller oftere"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2785" ItemType="2" VarName="NPINH_INTENSITET10" LoincScale="ORD">
+        <FormItem FormItemId="28059" OrderNumber="136" ItemText="Intensitet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60826" OrderNumber="1" OptionText="Mild - beboeren har av og til avvikende motorisk atferd, men denne påvirker lite de daglige rutiner"/>
+          <Answer AnswerId="60827" OrderNumber="2" OptionText="Moderat - beboerens avvikende motorisk atferd er veldig tydelig men kan overvinnes av pleieren"/>
+          <Answer AnswerId="60828" OrderNumber="3" OptionText="Alvorlig - avvikende motorisk atferd er veldig tydelig og forstyrrende for beboeren og er vanskelig eller umulig å kontrollere for pleieren"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2823" ItemType="1" VarName="NPINH_HYPPIGHET10xINTENS" LoincScale="QN">
+        <FormItem FormItemId="28112" OrderNumber="137" ItemText="Hyppighet x Intensitet" ItemHelp="" Expression="NPINH_HYPPIGHET10_SCORE*NPINH_INTENSITET10_SCORE" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2786" ItemType="2" VarName="NPINH_BELASTNING10" LoincScale="ORD">
+        <FormItem FormItemId="28061" OrderNumber="138" ItemHeader="Belastning" ItemText="I hvor stor grad belaster denne atferden deg og/eller skaper merarbeid for deg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60830" OrderNumber="0" OptionText="Ikke i det hele tatt" Score="0.00"/>
+          <Answer AnswerId="60831" OrderNumber="1" OptionText="Minimalt" Score="1.00"/>
+          <Answer AnswerId="60832" OrderNumber="2" OptionText="Mild" Score="2.00"/>
+          <Answer AnswerId="60833" OrderNumber="3" OptionText="Moderat" Score="3.00"/>
+          <Answer AnswerId="60834" OrderNumber="4" OptionText="Alvorlig" Score="4.00"/>
+          <Answer AnswerId="60835" OrderNumber="5" OptionText="Svært alvorlig eller ekstremt" Score="5.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9813" PageNumber="31" PageTitle="K. Søvn">
+      <Item ItemId="2787" ItemType="8" VarName="VAR2787" LoincScale="MSG">
+        <FormItem FormItemId="28062" OrderNumber="139" ItemText="Disse spørsmål bør bare stilles til pleiere som arbeider nattevakt og observerer beboeren direkte, eller som har tilstrekkelig kjennskap til (f.eks. mottar regelmessig morgenrapport) beboerens nattlige atferd. Hvis pleieren ikke har kjennskap til beboerens nattlige atferd, skår denne kategorien “NA”." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2788" ItemType="2" VarName="NPINH_K" LoincScale="ORD">
+        <FormItem FormItemId="28063" OrderNumber="140" ItemText="Tegn på søvnproblemer?" ItemHelp="Har beboeren søvnvansker (symptomet er ikke til stede hvis pasienten må opp på toalettet en eller to ganger om natten for deretter straks å sovne igjen)? Er han/hun våken om nettene? Vandrer han/hun om nettene, kler på seg, eller går inn på andres rom?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11801" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11802" OrderNumber="2" OptionText="Nei" Score="20.00"/>
+          <Answer AnswerId="11820" OrderNumber="3" OptionText="NA" Score="20.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page>
+      <Item ItemId="2789" ItemType="2" VarName="NPINH_INNSOVNING" LoincScale="ORD">
+        <FormItem FormItemId="28064" OrderNumber="141" ItemText="Har beboeren vansker med å sovne?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11803" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11804" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2790" ItemType="2" VarName="NPINH_STAAROPP" LoincScale="ORD">
+        <FormItem FormItemId="28065" OrderNumber="142" ItemText="Står beboeren opp om natten?" ItemHelp="Ikke skår hvis pasienten må opp på toalettet en eller to ganger om natten for deretter straks å sovne igjen" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11805" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11806" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2791" ItemType="2" VarName="NPINH_NATTEVANDRING" LoincScale="ORD">
+        <FormItem FormItemId="28066" OrderNumber="143" ItemText="Vandrer beboeren rundt omkring eller gjør andre upassende ting om natten?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11807" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11808" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2792" ItemType="2" VarName="NPINH_KLERPAASEG" LoincScale="ORD">
+        <FormItem FormItemId="28067" OrderNumber="144" ItemText="Våkner beboeren om natten, kler på seg, og planlegger å gå ut fordi han tror det er morgen og på tide å begynne dagen?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11809" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11810" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2793" ItemType="2" VarName="NPINH_TIDLIG" LoincScale="ORD">
+        <FormItem FormItemId="28068" OrderNumber="145" ItemText="Våkner beboeren for tidlig om morgenen (tidligere enn de andre beboerne)?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11811" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11812" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2794" ItemType="2" VarName="NPINH_NATTURO" LoincScale="ORD">
+        <FormItem FormItemId="28069" OrderNumber="146" ItemText="Har beboeren annen nattlig atferd som vi ikke har snakket om?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11813" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11814" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2795" ItemType="4" VarName="VAR2795" LoincScale="NAR" Multiline="1">
+        <FormItem FormItemId="28070" OrderNumber="147" ItemText="Kommentarer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2796" ItemType="2" VarName="VAR2796" LoincScale="ORD">
+        <FormItem FormItemId="28071" OrderNumber="148" ItemText="Søvnproblem bekreftet" ItemHelp="" Expression="ISNEG(NPINH_INNSOVNING_SCORE + NPINH_STAAROPP_SCORE + NPINH_NATTEVANDRING_SCORE + NPINH_KLERPAASEG_SCORE + NPINH_TIDLIG_SCORE + NPINH_NATTURO_SCORE + NPINH_K_SCORE - 13)+ 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11815" OrderNumber="1" OptionText="Nei"/>
+          <Answer AnswerId="11816" OrderNumber="2" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9814" PageNumber="33" PageTitle="New*">
+      <Item ItemId="2797" ItemType="2" VarName="NPINH_HYPPIGHET11" LoincScale="ORD">
+        <FormItem FormItemId="28073" OrderNumber="149" ItemText="Hyppighet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60837" OrderNumber="1" OptionText="Av og til - sjeldnere enn en gang per uke"/>
+          <Answer AnswerId="60838" OrderNumber="2" OptionText="Ofte - omtrent en gang per uke"/>
+          <Answer AnswerId="60839" OrderNumber="3" OptionText="Hyppig - flere ganger per uke men sjeldnere enn hver dag"/>
+          <Answer AnswerId="60840" OrderNumber="4" OptionText="Svært hyppig - daglig eller oftere"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2798" ItemType="2" VarName="NPINH_INTENSITET11" LoincScale="ORD">
+        <FormItem FormItemId="28075" OrderNumber="150" ItemText="Intensitet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60842" OrderNumber="1" OptionText="Mild - nattlig atferd forekommer men er ikke for belastende for beboeren"/>
+          <Answer AnswerId="60843" OrderNumber="2" OptionText="Moderat - nattlig atferd forekommer og forstyrrer andre på avdelingen; flere typer med forstyrret nattlig atferd kan forekomme"/>
+          <Answer AnswerId="60844" OrderNumber="3" OptionText="Alvorlig - forstyrret natteatferd forekommer og beboeren er svært forstyrret om natten"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2824" ItemType="1" VarName="NPINH_HYPPIGHET11xINTENS" LoincScale="QN">
+        <FormItem FormItemId="28114" OrderNumber="151" ItemText="Hyppighet x Intensitet" ItemHelp="" Expression="NPINH_HYPPIGHET11_SCORE*NPINH_INTENSITET11_SCORE" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2799" ItemType="2" VarName="NPINH_BELASTNING11" LoincScale="ORD">
+        <FormItem FormItemId="28077" OrderNumber="152" ItemHeader="Belastning" ItemText="I hvor stor grad belaster denne atferden deg og/eller skaper merarbeid for deg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60846" OrderNumber="0" OptionText="Ikke i det hele tatt" Score="0.00"/>
+          <Answer AnswerId="60847" OrderNumber="1" OptionText="Minimalt" Score="1.00"/>
+          <Answer AnswerId="60848" OrderNumber="2" OptionText="Mild" Score="2.00"/>
+          <Answer AnswerId="60849" OrderNumber="3" OptionText="Moderat" Score="3.00"/>
+          <Answer AnswerId="60850" OrderNumber="4" OptionText="Alvorlig" Score="4.00"/>
+          <Answer AnswerId="60851" OrderNumber="5" OptionText="Svært alvorlig eller ekstremt" Score="5.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9815" PageNumber="34" PageTitle="L. Appetitt- og spiseforstyrrelser">
+      <Item ItemId="2800" ItemType="2" VarName="NPINH_L" LoincScale="ORD">
+        <FormItem FormItemId="28078" OrderNumber="153" ItemText="Tegn til appetitt- eller spiseforstyrrelser?" ItemHelp="Har beboeren hatt en ekstremt god eller dårlig matlyst, vektendring, eller uvanlige spisevaner (skår som &quot;NA&quot; hvis pasienten ikke er i stand til å spise selv og må mates)? Har det vært noen endring i type mat han/hun foretrekker?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11817" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11818" OrderNumber="2" OptionText="Nei" Score="20.00"/>
+          <Answer AnswerId="11819" OrderNumber="3" OptionText="NA" Score="20.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page>
+      <Item ItemId="2801" ItemType="2" VarName="NPINH_DAARLIGMATLYST" LoincScale="ORD">
+        <FormItem FormItemId="28079" OrderNumber="154" ItemText="Har han/hun dårlig matlyst?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11821" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11822" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2802" ItemType="2" VarName="NPINH_STORMATLYST" LoincScale="ORD">
+        <FormItem FormItemId="28080" OrderNumber="155" ItemText="Har han/hun uvanlig god matlyst?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11823" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11824" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2803" ItemType="2" VarName="NPINH_VEKTNEDGANG" LoincScale="ORD">
+        <FormItem FormItemId="28081" OrderNumber="156" ItemText="Har han/hun gått ned i vekt?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11825" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11826" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2804" ItemType="2" VarName="NPINH_VEKTOPPGANG" LoincScale="ORD">
+        <FormItem FormItemId="28082" OrderNumber="157" ItemText="Har han/hun gått opp i vekt?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11827" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11828" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2805" ItemType="2" VarName="NPINH_SPISEATFERD" LoincScale="ORD">
+        <FormItem FormItemId="28083" OrderNumber="158" ItemText="Har han/hun endret spiseatferd, slik som å stappe for mye mat i munnen på en gang?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11829" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11830" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2806" ItemType="2" VarName="NPINH_ENDRETPREFERANSE" LoincScale="ORD">
+        <FormItem FormItemId="28084" OrderNumber="159" ItemText="Har han/hun endret typen mat han/hun foretrekker, slik som å ønske seg for mye søtsaker eller andre spesielle matsorter?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11831" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11832" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2807" ItemType="2" VarName="NPINH_REKKEFOLGE" LoincScale="ORD">
+        <FormItem FormItemId="28085" OrderNumber="160" ItemText="Har han/hun utviklet spisemønster slik som å spise nøyaktig den samme maten hver dag, eller spise maten i nøyaktig samme rekkefølgen?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11833" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11834" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2808" ItemType="2" VarName="NPINH_SPISEFORSTYRRELSE" LoincScale="ORD">
+        <FormItem FormItemId="28086" OrderNumber="161" ItemText="Har det vært noen andre endringer i matlyst eller spisemønster som jeg ikke har spurt om?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11835" OrderNumber="1" OptionText="Ja" Score="1.00"/>
+          <Answer AnswerId="11836" OrderNumber="2" OptionText="Nei" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2809" ItemType="4" VarName="VAR2809" LoincScale="NAR" Multiline="1">
+        <FormItem FormItemId="28087" OrderNumber="162" ItemText="Kommentarer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2810" ItemType="2" VarName="VAR2810" LoincScale="ORD">
+        <FormItem FormItemId="28088" OrderNumber="163" ItemText="Spiseproblem bekreftet" ItemHelp="" Expression="ISNEG(NPINH_DAARLIGMATLYST_SCORE + NPINH_STORMATLYST_SCORE + NPINH_VEKTNEDGANG_SCORE + NPINH_VEKTOPPGANG_SCORE + NPINH_SPISEATFERD_SCORE + NPINH_ENDRETPREFERANSE_SCORE + NPINH_REKKEFOLGE_SCORE + NPINH_SPISEFORSTYRRELSE_SCORE + NPINH_L_SCORE - 17)+ 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11837" OrderNumber="1" OptionText="Nei"/>
+          <Answer AnswerId="11838" OrderNumber="2" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9816" PageNumber="36" PageTitle="New*">
+      <Item ItemId="2811" ItemType="2" VarName="NPINH_HYPPIGHET12" LoincScale="ORD">
+        <FormItem FormItemId="28090" OrderNumber="164" ItemText="Hyppighet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60853" OrderNumber="1" OptionText="Av og til - sjeldnere enn en gang per uke"/>
+          <Answer AnswerId="60854" OrderNumber="2" OptionText="Ofte - omtrent en gang per uke"/>
+          <Answer AnswerId="60855" OrderNumber="3" OptionText="Hyppig - flere ganger per uke men sjeldnere enn hver dag"/>
+          <Answer AnswerId="60856" OrderNumber="4" OptionText="Svært hyppig - daglig eller oftere"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2812" ItemType="2" VarName="NPINH_INTENSITET12" LoincScale="ORD">
+        <FormItem FormItemId="28092" OrderNumber="165" ItemText="Intensitet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60858" OrderNumber="1" OptionText="Mild - endret matlyst eller spisemønster er tilstede men har ikke ført til vektendring og er ikke forstyrrende"/>
+          <Answer AnswerId="60859" OrderNumber="2" OptionText="Moderat -endret matlyst eller spisemønster er tilstede og forårsaker mindre vektendringer"/>
+          <Answer AnswerId="60860" OrderNumber="3" OptionText="Alvorlig - tydelig endret matlyst eller spisemønster er tilstede og forårsaker vektendringer, er unormale, eller forstyrrer beboeren"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2825" ItemType="1" VarName="NPINH_HYPPIGHET12xINTENS" LoincScale="QN">
+        <FormItem FormItemId="28116" OrderNumber="166" ItemText="Hyppighet x Intensitet" ItemHelp="" Expression="NPINH_HYPPIGHET12_SCORE*NPINH_INTENSITET12_SCORE" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2813" ItemType="2" VarName="NPINH_BELASTNING12" LoincScale="ORD">
+        <FormItem FormItemId="28094" OrderNumber="167" ItemHeader="Belastning" ItemText="I hvor stor grad belaster denne atferden deg og/eller skaper merarbeid for deg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="60862" OrderNumber="0" OptionText="Ikke i det hele tatt" Score="0.00"/>
+          <Answer AnswerId="60863" OrderNumber="1" OptionText="Minimalt" Score="1.00"/>
+          <Answer AnswerId="60864" OrderNumber="2" OptionText="Mild" Score="2.00"/>
+          <Answer AnswerId="60865" OrderNumber="3" OptionText="Moderat" Score="3.00"/>
+          <Answer AnswerId="60866" OrderNumber="4" OptionText="Alvorlig" Score="4.00"/>
+          <Answer AnswerId="60867" OrderNumber="5" OptionText="Svært alvorlig eller ekstremt" Score="5.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9817" PageNumber="37" PageTitle="Totalskår">
+      <Item ItemId="2826" ItemType="1" VarName="VAR2826" LoincScale="QN">
+        <FormItem FormItemId="28117" OrderNumber="168" ItemText="Intensitet x Hyppighet (Totalskår)" ItemHelp="" Expression="NPINH_HYPPIGHET1_SCORE*NPINH_INTENSITET1_SCORE+NPINH_HYPPIGHET2_SCORE*NPINH_INTENSITET2_SCORE+&#xA;NPINH_HYPPIGHET3_SCORE*NPINH_INTENSITET3_SCORE+NPINH_HYPPIGHET4_SCORE*NPINH_INTENSITET4_SCORE+&#xA;NPINH_HYPPIGHET5_SCORE*NPINH_INTENSITET5_SCORE+NPINH_HYPPIGHET6_SCORE*NPINH_INTENSITET6_SCORE+&#xA;NPINH_HYPPIGHET7_SCORE*NPINH_INTENSITET7_SCORE+NPINH_HYPPIGHET8_SCORE*NPINH_INTENSITET8_SCORE+&#xA;NPINH_HYPPIGHET9_SCORE*NPINH_INTENSITET9_SCORE+NPINH_HYPPIGHET10_SCORE*NPINH_INTENSITET10_SCORE+&#xA;NPINH_HYPPIGHET11_SCORE*NPINH_INTENSITET11_SCORE+NPINH_HYPPIGHET12_SCORE*NPINH_INTENSITET12_SCORE" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2827" ItemType="1" VarName="VAR2827" LoincScale="QN">
+        <FormItem FormItemId="28118" OrderNumber="169" ItemText="Belastning (Totalskår)" ItemHelp="" Expression="NPINH_BELASTNING1_SCORE+NPINH_BELASTNING2_SCORE+NPINH_BELASTNING3_SCORE+NPINH_BELASTNING4_SCORE+&#xA;NPINH_BELASTNING5_SCORE+NPINH_BELASTNING6_SCORE+NPINH_BELASTNING7_SCORE+NPINH_BELASTNING8_SCORE+&#xA;NPINH_BELASTNING9_SCORE+NPINH_BELASTNING10_SCORE+NPINH_BELASTNING11_SCORE+NPINH_BELASTNING12_SCORE" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="2653">
+      <Activate EnumVal="1" PageConditionId="7137" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2676">
+      <Activate EnumVal="2" PageConditionId="7238" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2664">
+      <Activate EnumVal="1" PageConditionId="7141" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2677">
+      <Activate EnumVal="2" PageConditionId="7191" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2678">
+      <Activate EnumVal="1" PageConditionId="7139" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2688">
+      <Activate EnumVal="2" PageConditionId="7192" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2694">
+      <Activate EnumVal="1" PageConditionId="7156" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2706">
+      <Activate EnumVal="2" PageConditionId="7193" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2711">
+      <Activate EnumVal="1" PageConditionId="7157" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2720">
+      <Activate EnumVal="2" PageConditionId="7194" PageNumber="15" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2725">
+      <Activate EnumVal="1" PageConditionId="7146" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2733">
+      <Activate EnumVal="2" PageConditionId="7195" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2737">
+      <Activate EnumVal="1" PageConditionId="7158" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2746">
+      <Activate EnumVal="2" PageConditionId="7196" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2750">
+      <Activate EnumVal="1" PageConditionId="7161" PageNumber="23" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2759">
+      <Activate EnumVal="2" PageConditionId="7197" PageNumber="24" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2763">
+      <Activate EnumVal="1" PageConditionId="7149" PageNumber="26" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2772">
+      <Activate EnumVal="2" PageConditionId="7198" PageNumber="27" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2776">
+      <Activate EnumVal="1" PageConditionId="7159" PageNumber="29" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2783">
+      <Activate EnumVal="2" PageConditionId="7199" PageNumber="30" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2788">
+      <Activate EnumVal="1" PageConditionId="7152" PageNumber="32" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2796">
+      <Activate EnumVal="2" PageConditionId="7200" PageNumber="33" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2800">
+      <Activate EnumVal="1" PageConditionId="7154" PageNumber="35" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2810">
+      <Activate EnumVal="2" PageConditionId="7201" PageNumber="36" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>
