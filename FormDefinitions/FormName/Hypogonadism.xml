@@ -1,406 +1,204 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
-  
   <Form FormId="536" FormName="Hypogonadism" FormTitle="Primær hypogonadisme">
-    
     <Page PageId="1943" PageNumber="1" PageTitle="Hidden*">
-      
       <Item ItemId="4255" ItemType="2" VarName="SEX" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="6657" OrderNumber="1" ItemText="Kjønn" ItemHelp="Skjult" Expression="Patient.GenderId" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="1">
-          
           <Answer AnswerId="22860" OrderNumber="1" OptionText="Mann" ShortCode="M"/>
-          
           <Answer AnswerId="22861" OrderNumber="2" OptionText="Kvinne" ShortCode="K"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="4661" PageNumber="2" PageTitle="Aktuelt" PageIntroduction="Ved sekundær eller legemiddelutløst hypogonadisme, benytt skjema for hypofysesvikt eller generell endokrinologi.">
-      
       <Item ItemId="4237" ItemType="4" VarName="DP_PROBLEMSTILLING" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="14947" OrderNumber="2" ItemHeader="Aktuelt" ItemText="Dagens problemstilling" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="1937" PageNumber="3" PageTitle="Ovariesvikt-diagnosen">
-      
       <Item ItemId="6318" ItemType="2" VarName="ICD10_E283" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="6658" OrderNumber="3" ItemText="Primær ovarialsvikt" ItemHelp="Amenore med forhøyede gonadotropin-nivåer, Svarer til ICD-10 E28.3." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
-          
           <Answer AnswerId="33432" OrderNumber="1" OptionText="Ja" VerboseText="Primær ovarialsvikt." ShortCode="J" ICD10="E283"/>
-          
           <Answer AnswerId="33433" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="36170" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig primær ovarialsvikt." ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="1942" PageNumber="4" PageTitle="Alder ved menopause*">
-      
       <Item ItemId="6334" ItemType="1" VarName="MenopauseAge" LoincScale="QN" UnitStr="år" DisplayFormat="">
-        
         <FormItem FormItemId="6659" OrderNumber="4" ItemText="Alder ved menopause (år)" ItemHelp="" MinExpression="15" MaxExpression="TRUNC(Patient.Age)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="6329" ItemType="1" VarName="MenopauseYear" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="6660" OrderNumber="5" ItemHeader="Diagnoseår" ItemText="Diagnoseår prematur menopause" ItemHelp="" Expression="DOB_YYYY + MenopauseAge" MinExpression="DOB_YYYY+10" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="9125" ItemType="2" VarName="ICD10_Q96" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="16189" OrderNumber="6" ItemText="Turners syndrom" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          
           <Answer AnswerId="50912" OrderNumber="1" OptionText="Ja" VerboseText="Turners syndrom." ICD10="Q96"/>
-          
           <Answer AnswerId="50913" OrderNumber="2" OptionText="Nei*"/>
-          
           <Answer AnswerId="50914" OrderNumber="3" OptionText="Ukjent*"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="1936" PageNumber="5" PageTitle="Testikkelsvikt-diagnosen">
-      
       <Item ItemId="6679" ItemType="2" VarName="ICD10_E291" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="6661" OrderNumber="7" ItemText="Testikulær hypofunksjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          
           <Answer AnswerId="36176" OrderNumber="1" OptionText="Ja" VerboseText="Testikulær hypofunksjon." ICD10="E291"/>
-          
           <Answer AnswerId="36177" OrderNumber="2" OptionText="Nei" VerboseText="Ikke testikulær hypofunksjon." ShortCode="N"/>
-          
           <Answer AnswerId="36178" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="1935" PageNumber="6" PageTitle="Årstall*">
-      
       <Item ItemId="6680" ItemType="1" VarName="VAR6680" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="6662" OrderNumber="8" ItemHeader="Diagnoseår" ItemText="Diagnoseår for testikkelsvikt" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="9124" ItemType="2" VarName="ICD10_Q98" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="16188" OrderNumber="9" ItemText="Klinefelters syndrom" ItemHelp="Inkluderer andre kromosomavvik under Q98." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          
           <Answer AnswerId="50909" OrderNumber="1" OptionText="Ja" VerboseText="Klinefelters syndrom." ICD10="Q98"/>
-          
           <Answer AnswerId="50910" OrderNumber="2" OptionText="Nei*"/>
-          
           <Answer AnswerId="50911" OrderNumber="3" OptionText="Ukjent*"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="1934" PageNumber="7" PageTitle="Autoimmunitet">
-      
       <Item ItemId="6806" ItemType="2" VarName="VAR6806" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="6866" OrderNumber="10" ItemText="Positive antistoffer" ItemHelp="Enten 21-hydroksylase, 17-hydroksylase eller SCC-antistoff. Tilstrekkelig at én er positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
-          
           <Answer AnswerId="37180" OrderNumber="1" OptionText="Ja" VerboseText="Positive antistoffer."/>
-          
           <Answer AnswerId="37181" OrderNumber="2" OptionText="Nei" VerboseText="Negative antistoffer." ShortCode="N"/>
-          
           <Answer AnswerId="37182" OrderNumber="3" OptionText="Ukjent*" ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="6607" ItemType="2" VarName="VAR6607" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="6656" OrderNumber="11" ItemText="Polyendokrint syndrom" ItemHelp="Variablen beregnes i skjema Bakgrunn - Autoimmunitet, og kan ikke redigeres her." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
-          
           <Answer AnswerId="35465" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="35466" OrderNumber="1" OptionText="APS I" VerboseText="APS I foreligger." ShortCode="I"/>
-          
           <Answer AnswerId="35467" OrderNumber="2" OptionText="APS II" VerboseText="APS II foreligger." ShortCode="II"/>
-          
           <Answer AnswerId="35471" OrderNumber="3" OptionText="APS III." ShortCode="III"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="4879" PageNumber="8" PageTitle="Bakgrunn">
-      
       <Item ItemId="3392" ItemType="4" VarName="DP_DIAGNOSER_TEKST" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="16163" OrderNumber="12" ItemHeader="Kronisk sykdom*" ItemText="Andre kroniske sykdommer" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="3989" PageNumber="9" PageTitle="Symptomer">
-      
       <Item ItemId="5917" ItemType="2" VarName="VAR5917" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="13462" OrderNumber="13" ItemText="Menstruasjonsforstyrrelser" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="31761" OrderNumber="1" OptionText="Ja" VerboseText="Menstruasjonsforstyrrelser." ShortCode="J"/>
-          
           <Answer AnswerId="31762" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="31763" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="4868" PageNumber="10" PageTitle="Impotens*">
-      
       <Item ItemId="7505" ItemType="2" VarName="VAR7505" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="14951" OrderNumber="14" ItemText="Impotens" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="40420" OrderNumber="1" OptionText="Ja" VerboseText="Impotens." ShortCode="J"/>
-          
           <Answer AnswerId="40421" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="40422" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="4673" PageNumber="11" PageTitle="Infertilitet*">
-      
       <Item ItemId="8759" ItemType="2" VarName="VAR8759" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="13461" OrderNumber="15" ItemText="Infertilitet" ItemHelp="Ikke oppnådd graviditet etter 1 års forsøk siste år" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="49314" OrderNumber="1" OptionText="Ja"/>
-          
           <Answer AnswerId="49315" OrderNumber="2" OptionText="Nei"/>
-          
           <Answer AnswerId="49316" OrderNumber="3" OptionText="Usikker"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="6022" ItemType="2" VarName="Slapphet" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="16157" OrderNumber="16" ItemText="Slapphet" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="32073" OrderNumber="1" OptionText="Ja" VerboseText="Slapp." ShortCode="J"/>
-          
           <Answer AnswerId="32074" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="36163" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="1933" PageNumber="12" PageTitle="Kliniske funn">
-      
       <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        
         <FormItem FormItemId="6653" OrderNumber="17" ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        
         <FormItem FormItemId="6654" OrderNumber="18" ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-        
         <FormItem FormItemId="6655" OrderNumber="19" ItemText="BMI" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="3230" ItemType="1" VarName="SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        
         <FormItem FormItemId="16155" OrderNumber="20" ItemText="Systolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" FormatStr="Blodtrykk %s">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="3231" ItemType="1" VarName="DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        
         <FormItem FormItemId="16156" OrderNumber="21" ItemText="Diastolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" FormatStr="¬/%s mmHg.">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="9509" ItemType="4" VarName="VAR9509" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="17070" OrderNumber="22" ItemHeader="Sekundære kjønnskarakteristika" ItemText="Endrede kjønnskarakteristika (hårvekst, bryst, penis)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5086" PageNumber="13" PageTitle="Testikler*">
-      
       <Item ItemId="9510" ItemType="1" VarName="VAR9510" LoincScale="QN" UnitStr="ml" DisplayFormat="">
-        
         <FormItem FormItemId="17071" OrderNumber="23" ItemHeader="Testikkelvolum" ItemText="Testikkelvolum målt med orkidometer (ml)" ItemHelp="Bare volumet av den største testikkelen skal oppgis." MinExpression="5" MaxExpression="40" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="9511" ItemType="4" VarName="VAR9511" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="17072" OrderNumber="24" ItemText="Testikkelbeskrivelse" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="4667" PageNumber="14" PageTitle="Vurdering og plan">
-      
       <Item ItemId="4088" ItemType="4" VarName="DP_AVTALER" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="14948" OrderNumber="25" ItemHeader="Vurdering" ItemText="Vurdering og plan videre" ItemHelp="Inkludert eventuelle avtaler gjort med pasienten, unntatt timeavtale som er eget punkt." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="4089" ItemType="4" VarName="DP_NESTE_KONTROLL" LoincScale="NAR" DisplayFormat="" Multiline="0">
-        
         <FormItem FormItemId="17073" OrderNumber="27" ItemHeader="Neste avtale" ItemText="Avtale og evt tidspunkt for neste konsultasjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-  
   </Form>
-  
   <Actions>
-    
     <PageAction MasterId="4255">
-      
       <Activate EnumVal="2" PageConditionId="2203" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="6318">
-      
       <Activate EnumVal="1" PageConditionId="2204" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="4255">
-      
       <Activate EnumVal="1" PageConditionId="2205" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="6679">
-      
       <Activate EnumVal="1" PageConditionId="2206" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="4255">
-      
       <Activate EnumVal="2" PageConditionId="4485" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
-      
       <Activate EnumVal="1" PageConditionId="4403" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
-      
       <Activate EnumVal="1" PageConditionId="4619" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-  
   </Actions>
-
 </StudyForm>

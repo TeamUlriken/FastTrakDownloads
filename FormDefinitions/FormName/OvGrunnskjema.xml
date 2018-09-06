@@ -1,1318 +1,660 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
-  
   <Form FormId="815" FormName="OvGrunnskjema" FormTitle="Grunnskjema - Poliklinikk for overvekt" Copyright="SOREG">
-    
     <Page PageId="5449" PageNumber="1" PageTitle="Datoer" PageIntroduction="Besøksdato er satt til skjemaet dato og kan ikke endres.  Flytt eventuelt skjemaet på tidslinjen hvis dataene etterregistreres.">
-      
       <Item ItemId="4255" ItemType="2" VarName="SEX" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18309" OrderNumber="1" ItemText="Kjønn" ItemHelp="Skjult" Expression="Patient.GenderId" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="1">
-          
           <Answer AnswerId="22860" OrderNumber="1" OptionText="Mann" ShortCode="M"/>
-          
           <Answer AnswerId="22861" OrderNumber="2" OptionText="Kvinne" ShortCode="K"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7063" ItemType="5" VarName="BASEREG_REFERALDATE" LoincScale="DATE" DisplayFormat="">
-        
         <FormItem FormItemId="18204" OrderNumber="2" ItemText="Henvisningsdato" ItemHelp="Angi dato henvisning fra primærhelsetjeneste er registrert mottatt i spesialisthelsetenesten (kirurgisk eller medisinsk). Tenk ut i fra pasientens perspektiv: Når startet forløpet for å bli operert ?" MinExpression="DOB" MaxExpression="FORM.DATE-1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7064" ItemType="5" VarName="BASEREG_DATE" LoincScale="DATE" DisplayFormat="">
-        
         <FormItem FormItemId="18205" OrderNumber="3" ItemText="Besøksdato" ItemHelp="Angi dato for pasientbesøket der basisregistreringen gjøres. Har pasienten vært på flere besøk før operasjon angi det siste besøket før operasjon men før eventuell preoperativ vektreduksjon starter." Expression="TRUNC(FORM.DATE)" MinExpression="DOB" MaxExpression="NOW+1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5450" PageNumber="2" PageTitle="Sosiale forhold">
-      
       <Item ItemId="6682" ItemType="2" VarName="OID8414" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="19662" OrderNumber="4" ItemText="Samlivsstatus" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="36213" OrderNumber="1" OptionText="Lever ikke i parforhold." ShortCode="N"/>
-          
           <Answer AnswerId="36214" OrderNumber="2" OptionText="Lever i parforhold." ShortCode="J"/>
-          
           <Answer AnswerId="36215" OrderNumber="3" OptionText="Ukjent*" ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7135" ItemType="2" VarName="BASEREG_EDUCATION" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18144" OrderNumber="5" ItemText="Utdanningsnivå" ItemHelp="Oppgi antallet år som pasienten har gått på skole.  Ta med kun heltidsstudier.&#xA;Opp til 9 år = grunnskole, 9-12 år = gymnas/videregående, og over 12 år = høyskole/universitet.&#xA;Ta ikke med forskole, deltidsstudier eller kortere kurs som ikke har gitt eksamen." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39024" OrderNumber="1" OptionText="10 års skolegang eller mindre"/>
-          
           <Answer AnswerId="39025" OrderNumber="2" OptionText="11-13 års skolegang"/>
-          
           <Answer AnswerId="39026" OrderNumber="3" OptionText="Mer enn 13 års skolegang"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="9818" ItemType="2" VarName="EV_BASEREG_WORK" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="19660" OrderNumber="6" ItemText="Er pasienten i inntektsgivende arbeid ?" ItemHelp="Nei (Student, pensjonist, sosialstønad etc)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="53732" OrderNumber="0" OptionText="Nei" VerboseText="Ikke i inntektsgivende arbeid." ShortCode="N"/>
-          
           <Answer AnswerId="53733" OrderNumber="1" OptionText="Ja" VerboseText="Er i inntektsgivende arbeid." ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6119" PageNumber="3" PageTitle="Stillingsprosent*">
-      
       <Item ItemId="9819" ItemType="1" VarName="EV_BASEREG_EMPLOYMENT" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        
         <FormItem FormItemId="19661" OrderNumber="7" ItemHeader="Stillingsprosent" ItemText="Hvor stor er pasientens stillingsprosent i jobb? (%)" ItemHelp="Bruk 100 også hvis mer enn full jobb." MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6120" PageNumber="4" PageTitle="Diabetes">
-      
       <Item ItemId="10055" ItemType="2" VarName="tmpDiabetesType" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="19667" OrderNumber="8" ItemText="Diabetes" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="56083" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="56084" OrderNumber="1" OptionText="Type 1" VerboseText="Type-1 diabetes." ShortCode="1"/>
-          
           <Answer AnswerId="56085" OrderNumber="2" OptionText="Type 2 kostregulert" VerboseText="Type-2 kostregulert diabetes." ShortCode="2K"/>
-          
           <Answer AnswerId="56086" OrderNumber="3" OptionText="Type 2 medikamentelt behandlet" VerboseText="Type-2 diabetes." ShortCode="2M"/>
-          
           <Answer AnswerId="56087" OrderNumber="4" OptionText="Annen type (MODY, pankreatitt etc.)" VerboseText="Diabetes av annen type." ShortCode="A"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7114" ItemType="2" VarName="BASEREG_DIABETIC" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18307" OrderNumber="9" ItemText="Diabetes" ItemHelp="Farmakologisk behandling av diabetes. Kostholdbehandlet diabetes oppgis ikke." Expression="ISPOS(ISNULL(tmpDiabetesType-1)+ISPOS(tmpDiabetesType-2))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="39007" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39008" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5523" PageNumber="7" PageTitle="Diabetes detaljer*">
-      
       <Item ItemId="7136" ItemType="1" VarName="BASEREG_DIABETICYEAR" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="18145" OrderNumber="10" ItemText="Siden år" ItemHelp="Årstall for debut av farmakologisk behandling av diabetes." MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="9801" ItemType="2" VarName="BASEREG_DIABETICTREATMEN" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18306" OrderNumber="11" ItemText="Type diabetesbehandling" ItemHelp="Kostholdsbehandlet diabetes oppgis ikke.&#xA;Tablettbehandling = diabetes som kun er behandlet med tabletter.&#xA;Insulinbehandling = diabetes som kun behandles med insulin.&#xA;Tablett og insulinbehandling = diabetes som behandles med både tabletter og insulin.&#xA;Annen behandling = feks GLP-1 analoger alene eller i kombinasjon med noen av de ovennevnte." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="53698" OrderNumber="1" OptionText="Tablettbehandling."/>
-          
           <Answer AnswerId="53699" OrderNumber="2" OptionText="Insulinbehandling."/>
-          
           <Answer AnswerId="53700" OrderNumber="3" OptionText="Tablett og insulinbehandling."/>
-          
           <Answer AnswerId="53701" OrderNumber="4" OptionText="Annen behandling"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5458" PageNumber="8" PageTitle="Luftveier">
-      
       <Item ItemId="7123" ItemType="2" VarName="BASEREG_SMOKING" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18308" OrderNumber="12" ItemText="Røyking" ItemHelp="Ja om vanerøyker, &quot;festrøyker&quot; teller ikke.&#xA;Sluttet å røyke = har vært røykfri i over 6 måneder.&#xA;Tilfeldig røykeslutt før operasjon = de som har sluttet å røyke 0-6 måneder før operasjonen, bruk dette alternativ uansett om pasienten begynner å røyke igjen etter operasjonen eller ikke" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39021" OrderNumber="0" OptionText="Nei" VerboseText="Aldri røykt." ShortCode="N"/>
-          
           <Answer AnswerId="39022" OrderNumber="1" OptionText="Ja" VerboseText="Dagligrøyker." ShortCode="J"/>
-          
           <Answer AnswerId="39023" OrderNumber="2" OptionText="Sluttet" VerboseText="Eks-røyker."/>
-          
           <Answer AnswerId="53734" OrderNumber="3" OptionText="Tilfeldig røykeslutt før operasjon" VerboseText="Sluttet å røyke i forbindelse med operasjon for overvekt."/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7491" ItemType="2" VarName="SovnApnea" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18146" OrderNumber="13" ItemText="Nattlige pusteproblemer" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="40120" OrderNumber="1" OptionText="Ingen" VerboseText="Ingen nattlige pusteproblemer."/>
-          
           <Answer AnswerId="40121" OrderNumber="2" OptionText="Snorking - ubehandlet" VerboseText="Snorker, ubehandlet."/>
-          
           <Answer AnswerId="40122" OrderNumber="3" OptionText="CPAP" VerboseText="Bruker CPAP."/>
-          
           <Answer AnswerId="40123" OrderNumber="4" OptionText="BiPAP" VerboseText="Bruker BiPAP."/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7530" ItemType="2" VarName="ICD10.J449" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18153" OrderNumber="14" ItemText="Kronisk obstruktiv luftveissykdom" ItemHelp="Kronisk obstruktiv sykdom i lunge-/luftveier uten nærmere spesifikasjon (ICD-10 J44.9)." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="40569" OrderNumber="1" OptionText="Ja" VerboseText="Kronisk obstruktiv lungesykdom." ShortCode="J" ICD10="J449"/>
-          
           <Answer AnswerId="40570" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="40571" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7531" ItemType="2" VarName="VAR7531" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18154" OrderNumber="15" ItemText="Annen lungesykdom" ItemHelp="Som har betydning for anestesi/operasjon" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="40578" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-          
           <Answer AnswerId="40579" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="40580" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5459" PageNumber="9" PageTitle="Annen lungesykdom*">
-      
       <Item ItemId="7532" ItemType="4" VarName="VAR7532" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="18155" OrderNumber="16" ItemHeader="Hva*" ItemText="Beskriv lungesykdom" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5461" PageNumber="10" PageTitle="Hjerte/kar">
-      
       <Item ItemId="7113" ItemType="2" VarName="BASEREG_HYPERTENSION" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18139" OrderNumber="17" ItemText="Hypertoni" ItemHelp="Farmakologisk behandlet hypertensjon." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39005" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39006" OrderNumber="1" OptionText="Ja" VerboseText="Behandles for hypertensjon." ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7115" ItemType="2" VarName="BASEREG_DYSLIPAEMIA" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18141" OrderNumber="18" ItemText="Dyslipidemi" ItemHelp="Farmakologisk behandlet dyslipidemi" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39009" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39010" OrderNumber="1" OptionText="Ja" VerboseText="Behandles for hyperlipidemi." ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="3397" ItemType="2" VarName="NDV_CHD" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18102" OrderNumber="19" ItemText="Koronarsykdom" ItemHelp="angina, hjerteinfarkt eller PCI/bypass" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="16884" OrderNumber="1" OptionText="Ja" VerboseText="Koronarsyk." ShortCode="J"/>
-          
           <Answer AnswerId="16885" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="16886" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5463" PageNumber="11" PageTitle="Koronarsykdom detaljer*">
-      
       <Item ItemId="6691" ItemType="2" VarName="ICD10.I20" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18111" OrderNumber="20" ItemText="Angina pectoris" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="36229" OrderNumber="1" OptionText="Ja" VerboseText="Angina pectoris." ShortCode="J" ICD10="I20"/>
-          
           <Answer AnswerId="36230" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          
           <Answer AnswerId="36231" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig angina pectoris." ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7533" ItemType="2" VarName="ICD10.I252" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18156" OrderNumber="21" ItemText="Gjennomgått hjerteinfarkt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="40583" OrderNumber="1" OptionText="Ja" VerboseText="Har hatt hjerteinfarkt." ShortCode="J" ICD10="I252"/>
-          
           <Answer AnswerId="40584" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          
           <Answer AnswerId="40585" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig hjerteinfarkt tidligere." ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7534" ItemType="2" VarName="VAR7534" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18157" OrderNumber="22" ItemText="ACB-operert" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="40591" OrderNumber="1" OptionText="Ja" VerboseText="ACB-Operert." ShortCode="J"/>
-          
           <Answer AnswerId="40592" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          
           <Answer AnswerId="40593" OrderNumber="3" OptionText="Usikker*" ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7535" ItemType="2" VarName="VAR7535" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18158" OrderNumber="23" ItemText="PCI gjennomført" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="40599" OrderNumber="1" OptionText="Ja" VerboseText="Gjennomgått PCI." ShortCode="J"/>
-          
           <Answer AnswerId="40600" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          
           <Answer AnswerId="40601" OrderNumber="3" OptionText="Usikker*" ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5464" PageNumber="12" PageTitle="Lungeemboli/venetrombose*">
-      
       <Item ItemId="7492" ItemType="2" VarName="HX.ICD10.I26" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18147" OrderNumber="24" ItemText="Lungeemboli" ItemHelp="Har hatt noen gang" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="40171" OrderNumber="1" OptionText="Ja" VerboseText="Har hatt lungeemboli."/>
-          
           <Answer AnswerId="40172" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          
           <Answer AnswerId="40173" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig lungeemboli tidligere." ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="6828" ItemType="2" VarName="HX.ICD10.I82" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18124" OrderNumber="25" ItemText="Dyp venetrombose" ItemHelp="Har hatt noen gang" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="37432" OrderNumber="1" OptionText="Ja" VerboseText="Har hatt DVT." ShortCode="J"/>
-          
           <Answer AnswerId="37433" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          
           <Answer AnswerId="37434" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig DVT tidligere." ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5465" PageNumber="13" PageTitle="Komplikasjoner*">
-      
       <Item ItemId="7536" ItemType="2" VarName="VAR7536" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18159" OrderNumber="26" ItemText="Annen hjerte-/karsykdom" ItemHelp="Cerebrovaskulær sykdom, claudicatio, hjertesvikt, rytmeforstyrrelser, klaffefeil o.l." MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="40610" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-          
           <Answer AnswerId="40611" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="40612" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5466" PageNumber="14" PageTitle="Annen hjerte-/karsykdom*">
-      
       <Item ItemId="7537" ItemType="4" VarName="VAR7537" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="18160" OrderNumber="27" ItemHeader="Hva*" ItemText="Beskriv annen hjerte-/karsykdom." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5467" PageNumber="15" PageTitle="Psykiske plager">
-      
       <Item ItemId="6817" ItemType="2" VarName="TREAT_F41" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18118" OrderNumber="28" ItemHeader="Behandlet for angst" ItemText="Har pasienten blitt behandlet for angst noen gang?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="37393" OrderNumber="1" OptionText="Nei*" ShortCode="N"/>
-          
           <Answer AnswerId="37394" OrderNumber="2" OptionText="Ja, nå" VerboseText="Behandles for angst nå." ShortCode="J"/>
-          
           <Answer AnswerId="37395" OrderNumber="3" OptionText="Ja, tidligere" VerboseText="Behandlet for angst tidligere." ShortCode="T"/>
-          
           <Answer AnswerId="37404" OrderNumber="4" OptionText="Ukjent*" ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5524" PageNumber="16" PageTitle="Depresjon*">
-      
       <Item ItemId="10056" ItemType="2" VarName="tmpDepresjonBehandling" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="19671" OrderNumber="29" ItemHeader="Antidepressiv behandling" ItemText="Har pasienten blitt behandlet for depresjon med medisiner noen gang?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="56179" OrderNumber="1" OptionText="Nei*"/>
-          
           <Answer AnswerId="56180" OrderNumber="2" OptionText="Ja, nå" VerboseText="Behandles med antidepressiva nå."/>
-          
           <Answer AnswerId="56181" OrderNumber="3" OptionText="Ja, tidligere" VerboseText="Behandlet med antidepressiva tidligere."/>
-          
           <Answer AnswerId="56182" OrderNumber="4" OptionText="Ukjent*"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5525" PageNumber="17" PageTitle="Spiseforstyrrelser*">
-      
       <Item ItemId="7797" ItemType="2" VarName="HX.ICD10.F509" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18162" OrderNumber="30" ItemText="Spiseforstyrrelser" ItemHelp="Tidligere bulimi, anoreksi eller andre spiseforstyrrelser." MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41794" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-          
           <Answer AnswerId="41795" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="41796" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5526" PageNumber="18" PageTitle="Kommentar spiseforstyrrelser*">
-      
       <Item ItemId="7798" ItemType="4" VarName="VAR7798" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="18163" OrderNumber="31" ItemHeader="Spiseforstyrrelse*" ItemText="Gi en beskrivelse av spiseforstyrrelser, type, når, hvor lenge etc." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5470" PageNumber="19" PageTitle="Annen komorbiditet">
-      
       <Item ItemId="6695" ItemType="2" VarName="HX.ICD10.K80" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18113" OrderNumber="32" ItemText="Gallestein" ItemHelp="Har hatt symptomgivende gallestein noen gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="36259" OrderNumber="1" OptionText="Ja" VerboseText="Har hatt gallestein." ShortCode="J"/>
-          
           <Answer AnswerId="36260" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          
           <Answer AnswerId="36261" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig gallestein." ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7116" ItemType="2" VarName="BASEREG_DYSPEPSIA" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18286" OrderNumber="33" ItemText="Dyspepsi" ItemHelp="Dyspepsi behandlet daglig med syrehemmende midler den siste måneden." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39011" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39012" OrderNumber="1" OptionText="Ja" VerboseText="Tar syrehemmende midler mot dyspepsi." ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="9814" ItemType="2" VarName="EV_BASEREG_URINARY_LEAKA" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="19665" OrderNumber="34" ItemText="Urinlekkasje (stressinkontinens)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="53724" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="53725" OrderNumber="1" OptionText="Ja" VerboseText="Har stressinkontinens." ShortCode="J" ICD10="N393"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7117" ItemType="2" VarName="BASEREG_DIARRHEA" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18287" OrderNumber="35" ItemText="Diaré" ItemHelp="Diaré behandlet daglig med antidiaré-midler den siste måneden." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39013" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39014" OrderNumber="1" OptionText="Ja" VerboseText="Bruker medisiner mot diaré." ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="9802" ItemType="2" VarName="BASEREG_MUSCLEPAIN" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18288" OrderNumber="36" ItemText="Muskel/skjelettsmerter" ItemHelp="Smerter i muskler og/eller skjelett, uansett underliggende diagnose, som krever regelmessig behandling med smertestillende og/eller betennelsesdempende medisin feks NSAID eller paracetamol" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="53702" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="53703" OrderNumber="1" OptionText="Ja" VerboseText="Bruker smertestillende mot muskel-/skjelettplager." ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5519" PageNumber="20" PageTitle="Kommentar muskelsmerter*">
-      
       <Item ItemId="9803" ItemType="4" VarName="BASEREG_BASE_MUSCLEPAIN" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="18290" OrderNumber="37" ItemText="Kommentar" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5474" PageNumber="22" PageTitle="Andre momenter fra sykehistorien">
-      
       <Item ItemId="7538" ItemType="4" VarName="VAR7538" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="18161" OrderNumber="38" ItemHeader="Annet*" ItemText="Andre vesentlige momenter fra sykehistorien" ItemHelp="Spesielt ADHD, Asperger, irritabel tarm, inflammatorisk tarmsykdom, redusert fysisk kapasitet, siden disse er variable i SOREG-N. For kvinner skal også infertilitet nevnes spesielt." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5475" PageNumber="23" PageTitle="Vekthistorie">
-      
       <Item ItemId="7824" ItemType="1" VarName="VAR7824" LoincScale="QN" UnitStr="år" DisplayFormat="">
-        
         <FormItem FormItemId="18189" OrderNumber="39" ItemHeader="Vektproblem fra" ItemText="Hvor gammel var du da du første gang så på vekten din som et problem? (år)" ItemHelp="" MinExpression="1" MaxExpression="TRUNC(AGE)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7815" ItemType="2" VarName="VAR7815" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18180" OrderNumber="40" ItemText="Er andre i din nærmeste familie overvektige?" ItemHelp="Foreldre, søsken, barn." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41878" OrderNumber="1" OptionText="Ja" VerboseText="Overvekt i familien." ShortCode="J"/>
-          
           <Answer AnswerId="41879" OrderNumber="2" OptionText="Nei" VerboseText="Ikke overvekt i familien." ShortCode="N"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5479" PageNumber="27" PageTitle="Spesiell hendelse*">
-      
       <Item ItemId="7821" ItemType="2" VarName="VAR7821" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18186" OrderNumber="41" ItemText="Har vært en spesiell hendelse/situasjon i livet ditt som gjorde at du begynte å bli overvektig?" ItemHelp="Eks. Fødsel, parforhold, medikamenter, sykdom el.l." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41932" OrderNumber="1" OptionText="Ja" VerboseText="Spesiell hendelse førte til overvekt." ShortCode="J"/>
-          
           <Answer AnswerId="41933" OrderNumber="2" OptionText="Nei" VerboseText="Ingen spesiell hendelse førte til overvekt." ShortCode="N"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5480" PageNumber="28" PageTitle="Hendelse beskrivelse*">
-      
       <Item ItemId="7822" ItemType="4" VarName="VAR7822" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="18187" OrderNumber="42" ItemHeader="Fortell*" ItemText="Fortell litt om hva du mener førte til at du ble overvektig" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6121" PageNumber="29" PageTitle="Endringer i livet m.m.*">
-      
       <Item ItemId="7823" ItemType="2" VarName="VAR7823" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18188" OrderNumber="43" ItemText="Har det nylig vært noen endringer i livet ditt som kan påvirke vekten?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          
           <Answer AnswerId="41934" OrderNumber="1" OptionText="Ja" VerboseText="Vekten kan påvirkes av endringer i livssituasjonen." ShortCode="J"/>
-          
           <Answer AnswerId="41935" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6979" PageNumber="30" PageTitle="Livsendringer detaljer*">
-      
       <Item ItemId="10245" ItemType="4" VarName="VAR10245" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="20296" OrderNumber="44" ItemHeader="Hvilke*" ItemText="Hvilke endringer i livssituasjonen din tror du kan påvirke vekten?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6978" PageNumber="31" PageTitle="Tidligere forsøk*">
-      
       <Item ItemId="7826" ItemType="2" VarName="VAR7826" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18191" OrderNumber="45" ItemText="Har du prøvd å gå ned i vekt tidligere" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41946" OrderNumber="1" OptionText="Ja*" ShortCode="J"/>
-          
           <Answer AnswerId="41947" OrderNumber="2" OptionText="Nei" VerboseText="Ikke prøvd å gå ned i vekt tidligere." ShortCode="N"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5481" PageNumber="32" PageTitle="På egen hånd / internett*">
-      
       <Item ItemId="7827" ItemType="2" VarName="VAR7827" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18192" OrderNumber="46" ItemText="På egen hånd" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41950" OrderNumber="1" OptionText="Ja" VerboseText="Forsøkt vektreduksjon på egen hånd." ShortCode="J"/>
-          
           <Answer AnswerId="41951" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7828" ItemType="2" VarName="VAR7828" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18193" OrderNumber="47" ItemText="Vektklubb på internett" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41956" OrderNumber="1" OptionText="Ja" VerboseText="Vektklubb på internett." ShortCode="J"/>
-          
           <Answer AnswerId="41957" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5482" PageNumber="33" PageTitle="Diett*">
-      
       <Item ItemId="7829" ItemType="2" VarName="VAR7829" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18194" OrderNumber="48" ItemText="Diett" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41960" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-          
           <Answer AnswerId="41961" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5483" PageNumber="34" PageTitle="Hvilke dietter*">
-      
       <Item ItemId="7834" ItemType="4" VarName="VAR7834" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="18199" OrderNumber="49" ItemHeader="Dietter" ItemText="Hvilke dietter?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5484" PageNumber="35" PageTitle="Fastlege/fysiolog etc.*">
-      
       <Item ItemId="7831" ItemType="2" VarName="VAR7831" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18196" OrderNumber="50" ItemText="Ernæringsfysiolog" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41968" OrderNumber="1" OptionText="Ja" VerboseText="Har vært til ernæringsfysiolog." ShortCode="J"/>
-          
           <Answer AnswerId="41969" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7833" ItemType="2" VarName="VAR7833" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18198" OrderNumber="51" ItemText="Fedmeklinikk" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41976" OrderNumber="1" OptionText="Ja" VerboseText="Har fått oppfølging på fedmeklinikk." ShortCode="J"/>
-          
           <Answer AnswerId="41977" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7832" ItemType="2" VarName="VAR7832" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18197" OrderNumber="52" ItemText="Medikamenter" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41972" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-          
           <Answer AnswerId="41973" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5485" PageNumber="36" PageTitle="Hvilke medikamenter*">
-      
       <Item ItemId="7835" ItemType="4" VarName="VAR7835" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="18200" OrderNumber="53" ItemHeader="Medikamenter" ItemText="Hvilke medikamenter mot overvekt?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5486" PageNumber="37" PageTitle="Kjevelås/fedmekirurgi*">
-      
       <Item ItemId="7061" ItemType="2" VarName="NDV_OBESITY_SURGERY" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18130" OrderNumber="54" ItemHeader="Fedmekirurgi" ItemText="Har pasienten gjennomgått fedmekirurgi?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="38884" OrderNumber="1" OptionText="Ja" VerboseText="Operert for fedme." ShortCode="J"/>
-          
           <Answer AnswerId="38885" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          
           <Answer AnswerId="38886" OrderNumber="3" OptionText="Ukjent*" ShortCode="U"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5487" PageNumber="38" PageTitle="Detaljer om kirurgi*">
-      
       <Item ItemId="7062" ItemType="1" VarName="NDV_OBESITY_SURGERY_YYYY" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="18131" OrderNumber="55" ItemText="Årstall" ItemHelp="Første operasjon hvis operert flere ganger." MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7837" ItemType="4" VarName="VAR7837" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="18202" OrderNumber="56" ItemText="Metode og andre detaljer" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5488" PageNumber="39" PageTitle="Formål">
-      
       <Item ItemId="7799" ItemType="2" VarName="VAR7799" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18164" OrderNumber="57" ItemText="For å unngå helseproblemer i fremtiden" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41803" OrderNumber="1" OptionText="Ja" VerboseText="Unngå helseproblemer i fremtiden." ShortCode="J"/>
-          
           <Answer AnswerId="41804" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7800" ItemType="2" VarName="VAR7800" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18165" OrderNumber="58" ItemText="For redusere nåværende helseplager" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41807" OrderNumber="1" OptionText="Ja" VerboseText="Redusere nåværende helseplager." ShortCode="J"/>
-          
           <Answer AnswerId="41808" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7801" ItemType="2" VarName="VAR7801" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18166" OrderNumber="59" ItemText="For å unngå negative holdninger fra andre" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41813" OrderNumber="1" OptionText="Ja" VerboseText="Unngå negative holdinger fra andre." ShortCode="J"/>
-          
           <Answer AnswerId="41814" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7802" ItemType="2" VarName="VAR7802" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18167" OrderNumber="60" ItemText="For å bedre selvbildet" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41819" OrderNumber="1" OptionText="Ja" VerboseText="Bedre selvbildet." ShortCode="J"/>
-          
           <Answer AnswerId="41820" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7803" ItemType="2" VarName="VAR7803" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18168" OrderNumber="61" ItemText="Andre grunner" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41825" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-          
           <Answer AnswerId="41826" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5489" PageNumber="40" PageTitle="Andre grunner*">
-      
       <Item ItemId="7804" ItemType="4" VarName="VAR7804" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="18169" OrderNumber="62" ItemHeader="Andre grunner" ItemText="Hvilke andre grunner?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5492" PageNumber="43" PageTitle="Tilbud som ønskes">
-      
       <Item ItemId="7809" ItemType="2" VarName="VAR7809" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18174" OrderNumber="63" ItemText="Jeg er mest interessert i" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41852" OrderNumber="1" OptionText="Operasjon" VerboseText="Interessert i operasjon."/>
-          
           <Answer AnswerId="41853" OrderNumber="2" OptionText="Livsstilskurs" VerboseText="Interessert i livsstilskurs."/>
-          
           <Answer AnswerId="41854" OrderNumber="3" OptionText="Rehabiliteringsopphold" VerboseText="Interessert i rehabiliteringsopphold."/>
-          
           <Answer AnswerId="41858" OrderNumber="4" OptionText="Ingen av delene" VerboseText="Ikke interessert i operasjon, kurs eller rehabiliteringsopphold."/>
-          
           <Answer AnswerId="57205" OrderNumber="5" OptionText="Livsstilskurs og operasjon" VerboseText="Interessert i både livsstilskurs og operasjon."/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5493" PageNumber="44" PageTitle="Fysisk aktivitet">
-      
       <Item ItemId="7810" ItemType="2" VarName="VAR7810" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18175" OrderNumber="64" ItemText="Hvor ofte driver du mosjon" ItemHelp="Ta et gjennomsnitt" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41859" OrderNumber="1" OptionText="Aldri" VerboseText="Mosjonerer aldri."/>
-          
           <Answer AnswerId="41860" OrderNumber="2" OptionText="Sjeldnere enn en gang i uken" VerboseText="Mosjon sjeldnere enn en gang i uken."/>
-          
           <Answer AnswerId="41861" OrderNumber="3" OptionText="En gang i uken" VerboseText="Mosjonerer omtrent en gang i uken."/>
-          
           <Answer AnswerId="41862" OrderNumber="4" OptionText="2-3 ganger i uken" VerboseText="Mosjonerer 2-3 ganger i uken."/>
-          
           <Answer AnswerId="41863" OrderNumber="5" OptionText="Omtrent hver dag" VerboseText="Mosjonerer omtrent hver dag."/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5494" PageNumber="45" PageTitle="Omfang av fysisk aktivitet*">
-      
       <Item ItemId="7811" ItemType="2" VarName="VAR7811" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18176" OrderNumber="65" ItemText="Dersom du driver slik mosjon, så ofte som en eller flere ganger i uka; hvor hardt mosjonerer du?" ItemHelp="Ta et gjennomsnitt" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41864" OrderNumber="1" OptionText="Tar det rolig uten å bli andpusten eller svett" VerboseText="Tar det rolig."/>
-          
           <Answer AnswerId="41865" OrderNumber="2" OptionText="Tar det så hardt at jeg blir andpusten og svett" VerboseText="Blir andpusten og svett."/>
-          
           <Answer AnswerId="41866" OrderNumber="3" OptionText="Tar meg nesten helt ut" VerboseText="Tar seg nesten helt ut."/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7812" ItemType="2" VarName="VAR7812" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18177" OrderNumber="66" ItemText="Hvor lenge holder du på hver gang" ItemHelp="Ta et gjennomsnitt" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41869" OrderNumber="1" OptionText="Mindre enn 15 minutter" VerboseText="Varighet under 15 minutter."/>
-          
           <Answer AnswerId="41870" OrderNumber="2" OptionText="15-29 minutter" VerboseText="Varighet 15-29 minutter."/>
-          
           <Answer AnswerId="41871" OrderNumber="3" OptionText="30 minutter - 1 time" VerboseText="Varighet 30-60 minutter."/>
-          
           <Answer AnswerId="41875" OrderNumber="4" OptionText="Mer enn 1 time" VerboseText="Varighet 1 time eller mer."/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5495" PageNumber="46" PageTitle="Stillesitting*">
-      
       <Item ItemId="7813" ItemType="2" VarName="VAR7813" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18178" OrderNumber="67" ItemText="Har du vanligvis minst 30 minutter fysisk aktivitet daglig på arbeid og/eller i fritida?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="41876" OrderNumber="1" OptionText="Ja" VerboseText="Har over 30 minutter fysisk aktivitet daglig." ShortCode="J"/>
-          
           <Answer AnswerId="41877" OrderNumber="2" OptionText="Nei" VerboseText="Har ikke 30 minutter fysisk aktivitet daglig." ShortCode="N"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5496" PageNumber="47" PageTitle="Antropometri" PageIntroduction="Dagens målinger">
-      
       <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        
         <FormItem FormItemId="18095" OrderNumber="68" ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        
         <FormItem FormItemId="18094" OrderNumber="69" ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-        
         <FormItem FormItemId="18099" OrderNumber="70" ItemText="BMI" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5497" PageNumber="48" PageTitle="Blodtrykk*">
-      
       <Item ItemId="3230" ItemType="1" VarName="SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        
         <FormItem FormItemId="18097" OrderNumber="71" ItemText="Systolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" FormatStr="Blodtrykk %s">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="3231" ItemType="1" VarName="DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        
         <FormItem FormItemId="18098" OrderNumber="72" ItemText="Diastolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" FormatStr="¬/%s mmHg.">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5498" PageNumber="49" PageTitle="Plan">
-      
       <Item ItemId="4088" ItemType="4" VarName="DP_AVTALER" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="18106" OrderNumber="73" ItemHeader="Vurdering" ItemText="Vurdering og plan videre" ItemHelp="Inkludert eventuelle avtaler gjort med pasienten, unntatt timeavtale som er eget punkt." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="5522" PageNumber="50" PageTitle="Avledete variable SOREG">
-      
       <Item ItemId="7118" ItemType="2" VarName="BASEREG_DEPRESSION" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18310" OrderNumber="74" ItemText="Depresjon" ItemHelp="Depresjon behandlet med antidepressiva." Expression="ISNULL( tmpDepresjonBehandling - 2 )" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="39015" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39016" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="9809" ItemType="2" VarName="EV_BASEREG_TREATMENTDEPR" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="19664" OrderNumber="75" ItemText="Tidligere behandlingskrevende depresjon" ItemHelp="Depresjon behandlet med antidepressiva" Expression="ISNULL( tmpDepresjonBehandling - 3)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="53714" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="53715" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7068" ItemType="1" VarName="BASEREG_BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-        
         <FormItem FormItemId="18305" OrderNumber="76" ItemText="KMI (kg/m2)" ItemHelp="Utregningen gjøres av systemet" Expression="BMI" MinExpression="5" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1" Decimals="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7067" ItemType="1" VarName="BASEREG_WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        
         <FormItem FormItemId="18304" OrderNumber="77" ItemText="Vekt (kg)" ItemHelp="Kroppsvekt i hele kg." Expression="WEIGHT" MinExpression="30" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7112" ItemType="2" VarName="BASEREG_SLEEPAPNEA" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="18303" OrderNumber="78" ItemText="Søvnapne" ItemHelp="Søvnapne behandlet med CPAP eller BiPAP." Expression="ISPOS(SovnApnea-2)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="39003" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39004" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7066" ItemType="1" VarName="BASEREG_HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        
         <FormItem FormItemId="18299" OrderNumber="79" ItemText="Høyde (cm)" ItemHelp="Pasientens høyde i centimeter" Expression="HEIGHT" MinExpression="125" MaxExpression="240" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7109" ItemType="1" VarName="BASEREG_SYSTOLIC" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        
         <FormItem FormItemId="18298" OrderNumber="80" ItemText="Systolisk" ItemHelp="Angis i mm Hg" Expression="SYSBP" MinExpression="70" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7110" ItemType="1" VarName="BASEREG_DIASTOLIC" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        
         <FormItem FormItemId="18297" OrderNumber="81" ItemText="Diastolisk" ItemHelp="Angis i mm Hg" Expression="DIABP" MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="9813" ItemType="2" VarName="EV_BASEREG_SNORING" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="19663" OrderNumber="82" ItemText="Snorking" ItemHelp="" Expression="ISPOS(SovnApnea-1)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="53722" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="53723" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7121" ItemType="2" VarName="BASEREG_PREVIOUSDVT" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="19666" OrderNumber="83" ItemText="Tidligere DVT eller PE" ItemHelp="Har pasienten hatt dyp trombose (DVT) eller lungeemboli (PE)" Expression="ISPOS(ISNULL(HX.ICD10.I26-1)+ISNULL(HX.ICD10.I82-1))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="39019" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39020" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="9804" ItemType="2" VarName="EV_BASEREG_DIABETESTYPE1" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="19668" OrderNumber="85" ItemText="Diabetes type 1" ItemHelp="" Expression="ISNULL(tmpDiabetesType-1)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="53704" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="53705" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="9805" ItemType="2" VarName="EV_BASEREG_DIABETESTYPE2" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="19669" OrderNumber="86" ItemText="Diabetes type 2" ItemHelp="" Expression="ISNULL(tmpDiabetesType-2)+ISNULL(tmpDiabetesType-3)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="53706" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="53707" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="9806" ItemType="2" VarName="EV_BASEREG_DIETTREATED" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="19670" OrderNumber="88" ItemText="Diabetes kostbehandlet" ItemHelp="" Expression="ISNULL(tmpDiabetesType-2)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="53708" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="53709" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-  
   </Form>
-  
   <Actions>
-    
     <PageAction MasterId="9818">
-      
       <Activate EnumVal="1" PageConditionId="5397" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7114">
-      
       <Activate EnumVal="1" PageConditionId="4856" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7531">
-      
       <Activate EnumVal="1" PageConditionId="4829" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="3397">
-      
       <Activate EnumVal="1" PageConditionId="4830" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7536">
-      
       <Activate EnumVal="1" PageConditionId="4831" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7797">
-      
       <Activate EnumVal="1" PageConditionId="4838" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="9802">
-      
       <Activate EnumVal="1" PageConditionId="4855" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7821">
-      
       <Activate EnumVal="1" PageConditionId="4841" PageNumber="28" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7823">
-      
       <Activate EnumVal="1" PageConditionId="5398" PageNumber="30" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7829">
-      
       <Activate EnumVal="1" PageConditionId="4842" PageNumber="34" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7832">
-      
       <Activate EnumVal="1" PageConditionId="4840" PageNumber="36" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7061">
-      
       <Activate EnumVal="1" PageConditionId="4839" PageNumber="38" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7803">
-      
       <Activate EnumVal="1" PageConditionId="4846" PageNumber="40" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7810">
-      
       <Activate EnumVal="3" PageConditionId="4843" PageNumber="45" ComparisonType="1" ComparisonDescription="Equal to"/>
-      
       <Activate EnumVal="4" PageConditionId="4844" PageNumber="45" ComparisonType="1" ComparisonDescription="Equal to"/>
-      
       <Activate EnumVal="5" PageConditionId="4845" PageNumber="45" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-  
   </Actions>
-
 </StudyForm>

@@ -1,1806 +1,904 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
-  
   <Form FormId="604" FormName="FV_OPERASJON" FormTitle="Operasjon (primær)" Copyright="SOREG">
-    
     <Page PageId="2476" PageNumber="1" PageTitle="Operasjonsdata">
-      
       <Item ItemId="6706" ItemType="5" VarName="OpInnDato" LoincScale="DATE" DisplayFormat="">
-        
         <FormItem FormItemId="9082" OrderNumber="1" ItemText="Inn dato" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7137" ItemType="5" VarName="OP_OPERATIONDATE" LoincScale="DATE" DisplayFormat="">
-        
         <FormItem FormItemId="8946" OrderNumber="2" ItemText="Operasjonsdato" ItemHelp="Angi operasjonsdato.&lt;br&gt;Merk. Om operasjonsvedtaksdato på basisregistreringen ikke er fyllt ut kan kun dagens dato angis som operasjonsdato" MinExpression="DOB" MaxExpression="FORM_DATE+1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2506" PageNumber="2" PageTitle="Beregning av liggetid" PageIntroduction="Beregninger skjer automatisk, skal ikke utfylles.">
-      
       <Item ItemId="6709" ItemType="1" VarName="PreopLiggetid" LoincScale="QN" UnitStr="døgn" DisplayFormat="">
-        
         <FormItem FormItemId="9084" OrderNumber="3" ItemText="Preoperative liggedøgn (døgn)" ItemHelp="" Expression="OP_OPERATIONDATE - OpInnDato" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2496" PageNumber="3" PageTitle="Profylakse">
-      
       <Item ItemId="7253" ItemType="2" VarName="OP_ANTIBIOTICS" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9062" OrderNumber="4" ItemText="Antibiotikaprofylakse" ItemHelp="&lt;br&gt;Antibiotikaprofylakse = antibiotika som gis i sammenheng med operasjonsstart og som avsluttes innen et døgn.&lt;br&gt;Om antibiotika gis i mer enn ett døgn vurder å registrere komplikasjon." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39318" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39848" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7254" ItemType="2" VarName="OP_DVTPROFYLAXIS" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9063" OrderNumber="5" ItemText="Tromboseprofylakse" ItemHelp="&lt;br&gt;Trombosprofylakse = legemiddel som gis i sammenheng med operasjonen for å motvirke trombose.&lt;br&gt;Om annen dose av lavmolekylært heparin enn 5000IE/døgn planlegges velg &quot;annen profylakse&quot; og angi dosen.&lt;br&gt;Om annet preparat eller kombinasjon av lavmolekylært heparin 5000IE/døgn og annet preparat planlegges velg &quot;Annen profylakse&quot; og beskriv." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39319" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39320" OrderNumber="1" OptionText="Lavmolekylært heparin 5000IE/dygn"/>
-          
           <Answer AnswerId="39849" OrderNumber="2" OptionText="Annen profylakse"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2504" PageNumber="4" PageTitle="Hvilken profylakse*">
-      
       <Item ItemId="7255" ItemType="4" VarName="OP_OTHERDRUG" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="9064" OrderNumber="6" ItemText="Hvilken profylakse" ItemHelp="Skriv det eller de preparater som planlegges:" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2505" PageNumber="5" PageTitle="Profylaksens varighet*">
-      
       <Item ItemId="7256" ItemType="1" VarName="OP_LENGTHOFPROF" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="9065" OrderNumber="7" ItemText="Profylaksens lengde" ItemHelp="Angi den planlagte tromboseprofylaksens lengde. Om flere preparater benyttes angi lengde for det preparat som gis lengst." MinExpression="1" MaxExpression="99" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2477" PageNumber="6" PageTitle="Tidligere kirurgi">
-      
       <Item ItemId="7141" ItemType="2" VarName="OP_CHOLECYSTECTOMY" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8950" OrderNumber="8" ItemText="Er pasienten tidligere kolecystektomert?" ItemHelp="Her henvises det til åpen eller laparoskopisk kolecystektomi. ERCP inklusive eventuelle tiltak teller ikke." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39029" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39749" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7142" ItemType="2" VarName="OP_REFLUXSURGERY" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8951" OrderNumber="9" ItemText="Har pasienten tidligere gjenomgått antirefluxkirurgi?" ItemHelp="Her registreres åpen eller laparoskopisk antirefluxkirurgi, f.eks. Toupé, Nissen. Endoskopiske ingrep registreres ikke." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39030" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39751" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7143" ItemType="2" VarName="OP_PREVBARIATRICOP" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8952" OrderNumber="10" ItemText="Tidligere fedmeoperasjon" ItemHelp="Fedmeoperasjon = operasjon i mage-tarmkanalen for å redusere pasientens vekt, inkluderer også endoluminale operasjoner/tiltak. Innebefatter IKKE fettsuging, plastiske operasjoner eller lignende.&lt;br/&gt;&lt;br/&gt;Primæroperasjon = den første fedmeoperasjonen. Inkluderer også en påbegynt, ikke avsluttet, operasjon. I ett spesialtilfelle er den oppdelt i primæroperasjon steg 1 og primæroperasjon steg 2.&lt;br/&gt;&lt;br/&gt;Nei = ingen tidligere fedmeoperasjoner er gjort og den påbegynte registreringen er en primæroperasjon&lt;br/&gt;&lt;br/&gt;Ja = en eller flere fedmeoperasjoner er gjort og den påbegynte regisreringen er en revisjonsoperasjon eller en primæroperasjon steg 2." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39031" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39799" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2478" PageNumber="7" PageTitle="Tidligere obesitasoperasjon*">
-      
       <Item ItemId="7144" ItemType="2" VarName="OP_WHATPREVOP" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8953" OrderNumber="11" ItemText="Hvilken operasjon?" ItemHelp="Velg den operasjonstype som ble utført. Om flere operasjoner ble utført angi den siste." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39032" OrderNumber="1" OptionText="Gastric bypass med Roux (GBP)"/>
-          
           <Answer AnswerId="39035" OrderNumber="2" OptionText="Gastric bypass med loop (GBPloop)"/>
-          
           <Answer AnswerId="39036" OrderNumber="3" OptionText="Vertical banded gastroplasty (VBG)"/>
-          
           <Answer AnswerId="39037" OrderNumber="4" OptionText="Gastric banding med fiksert bånd (GBfix)"/>
-          
           <Answer AnswerId="39038" OrderNumber="5" OptionText="Gastric banding med variabelt bånd (GB)"/>
-          
           <Answer AnswerId="39039" OrderNumber="6" OptionText="Biliopankreatisk diversjon med duodenal switch (DS)"/>
-          
           <Answer AnswerId="39040" OrderNumber="7" OptionText="Sleeve gastrectomy (SG)"/>
-          
           <Answer AnswerId="39041" OrderNumber="8" OptionText="Biliopankreatisk diversjon am Scopinaro (SCOP)"/>
-          
           <Answer AnswerId="39042" OrderNumber="9" OptionText="Tynntarmsshunt (ØVR)"/>
-          
           <Answer AnswerId="39033" OrderNumber="10" OptionText="Annen eller ukjent fedmeoperasjon (ØVR)"/>
-          
           <Answer AnswerId="39034" OrderNumber="11" OptionText="Påbegynt ikke fullført operasjon. (AVBRUTT OP)"/>
-          
           <Answer AnswerId="53809" OrderNumber="12" OptionText="Gastric plication (GP)"/>
-          
           <Answer AnswerId="53810" OrderNumber="13" OptionText="Endoluminal (Endo)"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7145" ItemType="1" VarName="OP_OTHEROBESOPYEAR" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="8954" OrderNumber="12" ItemText="Årstall for tidligere fedmekirurgi" ItemHelp="Om flere operasjoner er blitt utført så angis årstallet for den siste operasjonen" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2479" PageNumber="8" PageTitle="Aktuell operasjonsindikasjon">
-      
       <Item ItemId="7146" ItemType="2" VarName="OP_SECONDSTAGE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8955" OrderNumber="13" ItemText="Primæroperasjon steg 2" ItemHelp="Dette alternativet velges kun som steg 2 i en initialt planlagt 2-stegs operasjon med først sleeve gastrectomy og siden duodenal switch." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39043" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39044" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6398" PageNumber="9" PageTitle="">
-      
       <Item ItemId="7147" ItemType="2" VarName="OP_HIGHWEIGHT" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8956" OrderNumber="14" ItemText="For høy vekt" ItemHelp="Utilstrekkelig vektnedgang uansett årsak." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39045" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39046" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7148" ItemType="2" VarName="OP_OESOPHAGUS" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8957" OrderNumber="15" ItemText="Øsofagussykdom" ItemHelp="Inkluderer refluxproblematikk, dilatasjon og annen øsofagus sykdom" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39047" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39048" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7149" ItemType="2" VarName="OP_VOMITING" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8958" OrderNumber="16" ItemText="Oppkast" ItemHelp="Hyppige oppkast" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39049" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39050" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7150" ItemType="2" VarName="OP_DIARRHEA" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8959" OrderNumber="17" ItemText="Diaré" ItemHelp="Hyppige diaréer" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39051" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39052" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7151" ItemType="2" VarName="OP_MALNUTRITION" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8960" OrderNumber="18" ItemText="Malnutrisjon" ItemHelp="Malnutrisjon av betydning" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39053" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39054" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7152" ItemType="2" VarName="OP_INFECTCOMPL" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8961" OrderNumber="19" ItemText="Infeksjonskomplikasjon" ItemHelp="Infeksjon f.eks. ved bandmigrering, abscess uansett årsak." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39055" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39056" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7153" ItemType="2" VarName="OP_INTERRUPTED" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8962" OrderNumber="20" ItemText="Tidligere avbrutt operasjon" ItemHelp="Har man tidligere påbegynt en fedmeoperasjon som er blitt avbrutt?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39057" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39058" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7154" ItemType="2" VarName="OP_OTHERINDICA" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8963" OrderNumber="21" ItemText="Annet" ItemHelp="Annen årsak av betydning for beslutningen om revisjonsoperasjon." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39059" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39060" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2480" PageNumber="10" PageTitle="Hva*">
-      
       <Item ItemId="7155" ItemType="4" VarName="OP_WHATINDICATION" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="8964" OrderNumber="22" ItemText="Hva" ItemHelp="Skriv operasjonsindikasjon(er) så kortfattet som mulig" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2481" PageNumber="11" PageTitle="Kirurgisk aksess">
-      
       <Item ItemId="7156" ItemType="2" VarName="OP_ACCESS" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8965" OrderNumber="23" ItemText="Tilgang" ItemHelp="Konvertert = planlagt laparoskopisk operasjon som under knivtiden gjøres om til åpen operasjon. Om pasienten på nytt åpnes etter lukkingen av operasjonssåret (åpent eller laparoskopisk) så angis dette på &quot;Postop data og 6-ukersregistrering&quot; under feltet &quot;operasjoner&quot;.&lt;br/&gt;&lt;br/&gt;Endoluminal= innkluderer alle typer endoluminale metoder slik som gastric balloon, EndoBarrier, endoskopisk plication, endoskopisk lommereduktion m.m." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39061" OrderNumber="1" OptionText="Laparoskopisk"/>
-          
           <Answer AnswerId="39062" OrderNumber="2" OptionText="Åpen"/>
-          
           <Answer AnswerId="39775" OrderNumber="3" OptionText="Konvertert"/>
-          
           <Answer AnswerId="53811" OrderNumber="4" OptionText="Endoluminal"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2482" PageNumber="12" PageTitle="Hvorfor konvertert*">
-      
       <Item ItemId="7157" ItemType="2" VarName="OP_CONVERBLEEDING" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8966" OrderNumber="24" ItemText="Konvertert pga blødning" ItemHelp="Blødning som medvirkende årsak til konvertering" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39063" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39064" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7158" ItemType="2" VarName="OP_CONVERLIVER" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8967" OrderNumber="25" ItemText="Konvertert pga stor lever" ItemHelp="Stor lever som medvirkende årsak til konvertering" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39065" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39066" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7159" ItemType="2" VarName="OP_CONVERSIONMESO" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8968" OrderNumber="26" ItemText="Konvertert pga kort meso" ItemHelp="Kort tynntarmsmesentrium som medvirkende årsak til konvertering" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39067" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39068" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7160" ItemType="2" VarName="OP_CONVERSIONPORT" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8969" OrderNumber="27" ItemText="Konvertert pga problem med porter" ItemHelp="Problem med porter som medvirkende årsak til konvertering" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39069" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39070" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7161" ItemType="2" VarName="OP_CONVERADHESION" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8970" OrderNumber="28" ItemText="Konvertert pga adheranser" ItemHelp="Adheranser som medvirkende årsak til konvertering." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39071" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39072" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7162" ItemType="2" VarName="OP_CONVERINSTRUMENT" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8971" OrderNumber="29" ItemText="Konvertert pga instrumentproblem" ItemHelp="Instrumentproblem som medvirkende årsak til konvertering." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39073" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39074" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7163" ItemType="2" VarName="OP_CONVERSIONOTHER" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8972" OrderNumber="30" ItemText="Konvertert pga annen årsak" ItemHelp="Annen årsak til konvertering" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39075" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          
           <Answer AnswerId="39076" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2483" PageNumber="13" PageTitle="Hva*">
-      
       <Item ItemId="7164" ItemType="4" VarName="OP_CONVERSIONWHAT" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="8973" OrderNumber="31" ItemText="Hva" ItemHelp="Skriv orsaken(erna) så kortfattat som möjligt" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2484" PageNumber="14" PageTitle="Operasjonsmetode">
-      
       <Item ItemId="7165" ItemType="2" VarName="OP_SURGERYMETHOD" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8974" OrderNumber="32" ItemText="Operasjonsmetode" ItemHelp="Velg aktuell operasjonsmetode. Legg merke til at alternativ der påbegynt ikke fullført operasjon skal registreres. En operasjon anses i denne sammenheng startet i og med anestesiinduksjon." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39760" OrderNumber="1" OptionText="Gastric bypass (GBP)"/>
-          
           <Answer AnswerId="39079" OrderNumber="2" OptionText="Vertical banded gastroplasty (VBG)"/>
-          
           <Answer AnswerId="39080" OrderNumber="3" OptionText="Gastric banding (GB)"/>
-          
           <Answer AnswerId="39081" OrderNumber="4" OptionText="Biliopancreatic diversion med duodenal switch (DS)"/>
-          
           <Answer AnswerId="39082" OrderNumber="5" OptionText="Biliopancreatic diversion am Scopinaro (SCOP)"/>
-          
           <Answer AnswerId="39083" OrderNumber="6" OptionText="Sleeve gastrectomy (bare) (SG)"/>
-          
           <Answer AnswerId="39084" OrderNumber="7" OptionText="Duodenal switch (Sleeve gastrectomy allerede gjort) (DSsteg2)"/>
-          
           <Answer AnswerId="39085" OrderNumber="8" OptionText="Annen fedmeoperasjon(ÖVR)"/>
-          
           <Answer AnswerId="39086" OrderNumber="9" OptionText="Revisjon uten endring av grunnmetode (REV)"/>
-          
           <Answer AnswerId="39077" OrderNumber="10" OptionText="Tilbakekopling til normal anatomi (ÅTER)"/>
-          
           <Answer AnswerId="39078" OrderNumber="11" OptionText="Påbegynt ikke fullført operasjon (AVBRUTT OP)"/>
-          
           <Answer AnswerId="53812" OrderNumber="12" OptionText="Gastric Plication (GP)"/>
-          
           <Answer AnswerId="53813" OrderNumber="13" OptionText="Endoluminal metode (Endo)"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2485" PageNumber="15" PageTitle="Gastric bypass (GBP)">
-      
       <Item ItemId="7174" ItemType="2" VarName="OP_GBPGETECH" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8983" OrderNumber="33" ItemText="GE teknikk" ItemHelp="Teknikk for konstruksjon av gastro-enteroanastomosen&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39094" OrderNumber="1" OptionText="Håndsydd"/>
-          
           <Answer AnswerId="39095" OrderNumber="2" OptionText="Sirkulært staplet"/>
-          
           <Answer AnswerId="39096" OrderNumber="3" OptionText="Linjært staplet"/>
-          
           <Answer AnswerId="39097" OrderNumber="4" OptionText="Linjært staplet + håndsydd"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7179" ItemType="2" VarName="OP_GBPEATECH" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8988" OrderNumber="34" ItemText="EA teknikk" ItemHelp="Teknikk for konstruksjon av entero-enteroanastomosen&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39112" OrderNumber="1" OptionText="Håndsydd"/>
-          
           <Answer AnswerId="39113" OrderNumber="2" OptionText="Sirkulært staplet"/>
-          
           <Answer AnswerId="39114" OrderNumber="3" OptionText="Linjært staplet"/>
-          
           <Answer AnswerId="39115" OrderNumber="4" OptionText="Linjært staplet + håndsydd"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7183" ItemType="1" VarName="OP_DISTANCETREITZEA" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="8992" OrderNumber="35" ItemText="Avstand Treitz-EA" ItemHelp="Estimering av avstanden mellom Treitz ligament og entero-enteroanastomosen." MinExpression="20" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7184" ItemType="1" VarName="OP_DISTANCEGEEA" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="8993" OrderNumber="36" ItemText="Avstand GE-EA" ItemHelp="Estimering av avstanden mellom gastro-enteroanastomosen og entero-enteroanastomosen" MinExpression="20" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7185" ItemType="2" VarName="OP_OMENTDIVIDED" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8994" OrderNumber="37" ItemText="Er omentet delt?" ItemHelp="Angi om omentum majus er delt eller ikke." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39128" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39129" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7187" ItemType="2" VarName="OP_ROUXPOSITION" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8996" OrderNumber="38" ItemText="Roux-benets stilling" ItemHelp="Angi om roux-benet ligger antekolisk eller retrokolisk" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39130" OrderNumber="1" OptionText="Antekolisk"/>
-          
           <Answer AnswerId="39131" OrderNumber="2" OptionText="Retrokolisk"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6518" PageNumber="16" PageTitle="">
-      
       <Item ItemId="7188" ItemType="2" VarName="OP_GBPSPACEMESO" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8997" OrderNumber="39" ItemText="Lukking av mesoslitsen" ItemHelp="Har hullet i mesocolon blitt suturert? Z-sutur og tobakkspungsutur regnes som fortløpende sutur." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39132" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39133" OrderNumber="1" OptionText="Ja enkeltstående sutur"/>
-          
           <Answer AnswerId="39134" OrderNumber="2" OptionText="Ja fortløpende sutur"/>
-          
           <Answer AnswerId="53816" OrderNumber="3" OptionText="Ja klips enkel rad"/>
-          
           <Answer AnswerId="53817" OrderNumber="4" OptionText="Ja klips to eller flere rader"/>
-          
           <Answer AnswerId="53818" OrderNumber="5" OptionText="Ja på annet vis"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6531" PageNumber="17" PageTitle="">
-      
       <Item ItemId="7189" ItemType="2" VarName="OP_GBPSPACEPETER" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8998" OrderNumber="40" ItemText="Lukking av Petersens rom" ItemHelp="Petersens rom er slitsen mellom tynntarm og colonmesentriet-ventrikkel. Svar &quot;ja&quot; om den infrakoliske delen eller mer av Petersens rom er blitt suturert. Ved retrokolisk konstruksjon menes det her slitsen mellom Roux-benet og mesocolon. Z-sutur og tobakkspungsutur regnes som fortløpende sutur." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39135" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39136" OrderNumber="1" OptionText="Ja enkeltstående sutur"/>
-          
           <Answer AnswerId="39137" OrderNumber="2" OptionText="Ja fortløpende sutur"/>
-          
           <Answer AnswerId="53819" OrderNumber="3" OptionText="Ja klips enkel rad"/>
-          
           <Answer AnswerId="53820" OrderNumber="4" OptionText="Ja klips to eller flere rader"/>
-          
           <Answer AnswerId="53821" OrderNumber="5" OptionText="Ja på annet vis"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7190" ItemType="2" VarName="OP_GBPSPACEEA" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="8999" OrderNumber="41" ItemText="Lukking av EA slitsen" ItemHelp="Her menes den slitsen som dannes ved konstruksjon av entero-enteroanastomosen. Z-sutur og tobakkspungsutur regnes som fortløpende sutur." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39138" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39139" OrderNumber="1" OptionText="Ja enkeltstående sutur"/>
-          
           <Answer AnswerId="39140" OrderNumber="2" OptionText="Ja fortløpende sutur"/>
-          
           <Answer AnswerId="53822" OrderNumber="3" OptionText="Ja klips enkel rad"/>
-          
           <Answer AnswerId="53823" OrderNumber="4" OptionText="Ja klips to eller flere rader"/>
-          
           <Answer AnswerId="53824" OrderNumber="5" OptionText="Ja på annet vis"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7490" ItemType="2" VarName="OpGbpSutur" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9087" OrderNumber="42" ItemText="Sutur benyttet" ItemHelp="" Expression="1 + ISPOS( ISPOS(OP_GBPSPACEMESO) + ISPOS(OP_GBPSPACEPETER) + ISPOS(OP_GBPSPACEEA) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
-          
           <Answer AnswerId="40104" OrderNumber="1" OptionText="Nei"/>
-          
           <Answer AnswerId="40105" OrderNumber="2" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6543" PageNumber="18" PageTitle="">
-      
       <Item ItemId="7191" ItemType="2" VarName="OP_GBPSPACESUTURETYPE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9000" OrderNumber="43" ItemText="Hvilket lukkemateriale ble benyttet?" ItemHelp="Angi suturmateriale som ble benyttet ved lukking av slitsen(e)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39141" OrderNumber="1" OptionText="Ikke resorberbar sutur"/>
-          
           <Answer AnswerId="39142" OrderNumber="2" OptionText="Resorberbar sutur"/>
-          
           <Answer AnswerId="39143" OrderNumber="3" OptionText="Forskjellige materialer eller annet vis"/>
-          
           <Answer AnswerId="53825" OrderNumber="5" OptionText="Knuteløs ikke resorberbar sutur"/>
-          
           <Answer AnswerId="53826" OrderNumber="6" OptionText="Knuteløs resorberbar sutur"/>
-          
           <Answer AnswerId="53827" OrderNumber="7" OptionText="Klips ikke resorberbar"/>
-          
           <Answer AnswerId="53828" OrderNumber="8" OptionText="Klips resorberbar"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2486" PageNumber="19" PageTitle="Vertical banded gastroplasty (VBG)">
-      
       <Item ItemId="4364" ItemType="2" VarName="SOVEMEDISIN" LoincScale="ORD" DisplayFormat="Horizontal">
-        
         <FormItem FormItemId="21468" OrderNumber="41" ItemText="Bruker sovemedisin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          
           <Answer AnswerId="23419" OrderNumber="1" OptionText="Ja" VerboseText="Bruker sovemedisin." ShortCode="J"/>
-          
           <Answer AnswerId="23420" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7193" ItemType="2" VarName="OP_DIVIDESTAPLE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9002" OrderNumber="44" ItemText="Delt staple-rad" ItemHelp="Angir den vertikale staple-raden på ventrikkelen." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39148" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39149" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7194" ItemType="2" VarName="OP_VBGBANDMATERIAL" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9003" OrderNumber="45" ItemText="Båndmateriale" ItemHelp="Angi hvilken type båndmateriale som har blitt benyttet." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39150" OrderNumber="1" OptionText="SAGB"/>
-          
           <Answer AnswerId="39151" OrderNumber="2" OptionText="Lapband"/>
-          
           <Answer AnswerId="39152" OrderNumber="3" OptionText="Annet variabelt band"/>
-          
           <Answer AnswerId="39153" OrderNumber="4" OptionText="Fix marley"/>
-          
           <Answer AnswerId="39154" OrderNumber="5" OptionText="Text missing"/>
-          
           <Answer AnswerId="39155" OrderNumber="6" OptionText="Fix silikon"/>
-          
           <Answer AnswerId="39156" OrderNumber="7" OptionText="Annet fast bånd"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2487" PageNumber="20" PageTitle="Gastric banding (GB)">
-      
       <Item ItemId="7195" ItemType="2" VarName="OP_GBBANDMATERIAL" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9004" OrderNumber="46" ItemText="Bandmateriale" ItemHelp="Angi type bandmateriale som ble benyttet." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39157" OrderNumber="1" OptionText="SAGB"/>
-          
           <Answer AnswerId="39158" OrderNumber="2" OptionText="Lapband"/>
-          
           <Answer AnswerId="39159" OrderNumber="3" OptionText="Annet variabelt band"/>
-          
           <Answer AnswerId="39160" OrderNumber="4" OptionText="Fast band"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2488" PageNumber="21" PageTitle="Biliopancreatic diversjon med duodenal switch (DS)">
-      
       <Item ItemId="7196" ItemType="1" VarName="OP_BPDBOOGIESIZE" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="9005" OrderNumber="47" ItemText="Boogie diameter" ItemHelp="Boogie = den sonden som ligger i den gjenværende delen av ventrikkelen under reseksjonen. Boogiens størrelse angis i French (=omkrets i millimeter eller diameter i millimeter x pi). Om ingen boogie har blitt benyttet, skriv &quot;0&quot;." MinExpression="0" MaxExpression="80" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7197" ItemType="1" VarName="OP_RESECTSTART" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="9006" OrderNumber="48" ItemText="Hvor langt fra pylorus begynte reseksjonen?" ItemHelp="Estimering av avstanden mellom pylorus og punktet for ventrikkelreseksjonens start. Angis i hele cm." MinExpression="2" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7198" ItemType="2" VarName="OP_BPDGSSTAPLEHEIGHT" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9007" OrderNumber="49" ItemText="Hvilken stiftehøyde har blitt benyttet?" ItemHelp="Angi stiftehøyden på magasinet som ble benyttet for gastrektomien ifølge den fargekoding som de fleste fabrikanter benytter." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39161" OrderNumber="1" OptionText="Grønt"/>
-          
           <Answer AnswerId="39162" OrderNumber="2" OptionText="Blått"/>
-          
           <Answer AnswerId="39163" OrderNumber="3" OptionText="Hvitt"/>
-          
           <Answer AnswerId="39164" OrderNumber="4" OptionText="Beige"/>
-          
           <Answer AnswerId="39165" OrderNumber="5" OptionText="Lilla"/>
-          
           <Answer AnswerId="39166" OrderNumber="6" OptionText="Sort"/>
-          
           <Answer AnswerId="39167" OrderNumber="7" OptionText="Forskjellige typer har blitt benyttet"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7199" ItemType="2" VarName="OP_BPDSTAPLESUTURE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9008" OrderNumber="50" ItemText="Har staple-raden blitt forsterket?" ItemHelp="&lt;br&gt;&lt;br&gt;Svar &quot;nei&quot; om ingen forsterkning har blitt gjort.&lt;br&gt;Delvis = deler av staple raden har blitt sydd over som direkte sutur eller invaginerende sutur.&lt;br&gt;Direkte sutur = sydd over hele staple-raden uten å invaginere.&lt;br&gt;Invaginerende sutur = hele stapleraden invaginert.&lt;br&gt;Staple line reinforcement = resorberbare eller ikke resorberbare materialer som benyttes sammen med stapler. f.eks. seamguard, surgisis." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39168" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39169" OrderNumber="1" OptionText="Ja, direkte sutur"/>
-          
           <Answer AnswerId="39170" OrderNumber="2" OptionText="Ja, invaginerende sutur"/>
-          
           <Answer AnswerId="39171" OrderNumber="3" OptionText="Ja, staple line reinforcement"/>
-          
           <Answer AnswerId="39172" OrderNumber="4" OptionText="Ja, kombinasjoner av ovennevnte eller på annet vis"/>
-          
           <Answer AnswerId="53833" OrderNumber="5" OptionText="Ja, delvis"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7200" ItemType="1" VarName="OP_BPDCOMMONCHANNEL" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="9009" OrderNumber="51" ItemText="Common channel" ItemHelp="Estimering av avstanden mellom entero-enteroanastomosen og Valvula Bauhini" MinExpression="20" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7201" ItemType="1" VarName="OP_BPDALIMENTARYLIMB" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="9010" OrderNumber="52" ItemText="Alimentary limb" ItemHelp="Estimering av avstanden mellom duodeno-enteroanastomosen og entero-enteroanastomosen." MinExpression="100" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7202" ItemType="2" VarName="OP_BPDBILIARYLIMB" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9011" OrderNumber="53" ItemText="Biliary limb" ItemHelp="Har man aktivt målt avstanden mellom Treitz ligamentet og entero-enteroanastomosen?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39173" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39174" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6603" PageNumber="22" PageTitle="">
-      
       <Item ItemId="7203" ItemType="1" VarName="OP_BPDBILIARYLENGTH" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="9012" OrderNumber="54" ItemText="Biliary limb" ItemHelp="Estimering av avstanden mellom Treitz ligamentet og entero-enteroanastomosen." MinExpression="50" MaxExpression="500" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6617" PageNumber="23" PageTitle="">
-      
       <Item ItemId="7204" ItemType="2" VarName="OP_BPDUPEATECH" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9013" OrderNumber="55" ItemText="Teknikk øvre anastomose" ItemHelp="Teknikk for konstruksjon av duodeno-enteroanastomosen.&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39175" OrderNumber="1" OptionText="Håndsydd"/>
-          
           <Answer AnswerId="39176" OrderNumber="2" OptionText="Sirkulært staplet"/>
-          
           <Answer AnswerId="39177" OrderNumber="3" OptionText="Linjært staplet"/>
-          
           <Answer AnswerId="39178" OrderNumber="4" OptionText="Linjært staplet + håndsydd"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6625" PageNumber="24" PageTitle="">
-      
       <Item ItemId="7208" ItemType="2" VarName="OP_BPDEATECH" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9017" OrderNumber="56" ItemText="EA teknikk" ItemHelp="Teknikk for konstruksjon av entero-enteroanastomosen&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39191" OrderNumber="1" OptionText="Håndsydd"/>
-          
           <Answer AnswerId="39192" OrderNumber="2" OptionText="Sirkulært staplet"/>
-          
           <Answer AnswerId="39193" OrderNumber="3" OptionText="Linjært staplet"/>
-          
           <Answer AnswerId="39194" OrderNumber="4" OptionText="Linjært staplet + håndsydd"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7212" ItemType="2" VarName="OP_BPDSPACECLOSE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9021" OrderNumber="57" ItemText="Sutur av slitser" ItemHelp="Svar &quot;ja&quot; om en eller flere slitser er suturert." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39207" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39208" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6639" PageNumber="25" PageTitle="">
-      
       <Item ItemId="7213" ItemType="2" VarName="OP_BPDSUTURETYPE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9022" OrderNumber="58" ItemText="Hvilke suturtype ble benyttet for lukking?" ItemHelp="Angi suturtype som ble benyttet ved lukking av slitsen(e)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39209" OrderNumber="1" OptionText="Ikke resorberbar sutur"/>
-          
           <Answer AnswerId="39210" OrderNumber="2" OptionText="Resorberbar sutur"/>
-          
           <Answer AnswerId="39211" OrderNumber="3" OptionText="Ulike materialer eller annen måte"/>
-          
           <Answer AnswerId="53846" OrderNumber="5" OptionText="Knuteløs ikke resorberbar sutur"/>
-          
           <Answer AnswerId="53847" OrderNumber="6" OptionText="Knuteløs resorberbar sutur"/>
-          
           <Answer AnswerId="53848" OrderNumber="7" OptionText="Klips ikke resorberbar"/>
-          
           <Answer AnswerId="53849" OrderNumber="8" OptionText="Klips resorberbar"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2489" PageNumber="26" PageTitle="Biliopancreatic diversjon Scopinaro (SCOP)">
-      
       <Item ItemId="7214" ItemType="1" VarName="OP_SCOPCOMMONCHANNEL" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="9023" OrderNumber="59" ItemText="Common channel" ItemHelp="Estimat av avstanden mellom entero-enteroanastomosen og Valvula Bauhini" MinExpression="20" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7215" ItemType="1" VarName="OP_SCOPALIMENTLIMB" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="9024" OrderNumber="60" ItemText="Alimentary limb" ItemHelp="Estimering av avstanden mellom gastro-enteroanastomosen og entero-enteroanastomosen." MinExpression="100" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7216" ItemType="2" VarName="OP_SCOPBILIARYLIMB" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9025" OrderNumber="61" ItemText="Biliary limb målt" ItemHelp="Har man aktivt målt avstanden mellom Treitz ligament og entero-enteroanastomosen?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39212" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39213" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6670" PageNumber="27" PageTitle="">
-      
       <Item ItemId="7217" ItemType="1" VarName="OP_SCOPBILIARYLENGTH" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="9026" OrderNumber="62" ItemText="Biliary limb" ItemHelp="Estimering av avstanden mellom Treitz ligament og entero-enteroanastomosen." MinExpression="50" MaxExpression="500" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6680" PageNumber="28" PageTitle="">
-      
       <Item ItemId="7218" ItemType="2" VarName="OP_SCOPGETECH" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9027" OrderNumber="63" ItemText="GE teknikk" ItemHelp="Teknikk for konstruksjon av gastro-enteroanastomosen&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39214" OrderNumber="1" OptionText="Håndsydd"/>
-          
           <Answer AnswerId="39215" OrderNumber="2" OptionText="Sirkulært staplet"/>
-          
           <Answer AnswerId="39216" OrderNumber="3" OptionText="Linjært staplet"/>
-          
           <Answer AnswerId="39217" OrderNumber="4" OptionText="Linjært staplet + håndsydd"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7222" ItemType="2" VarName="OP_SCOPEATECH" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9031" OrderNumber="64" ItemText="EA teknikk" ItemHelp="Teknikk for konstruksjon av entero-enteroanastomosen&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39230" OrderNumber="1" OptionText="Håndsydd"/>
-          
           <Answer AnswerId="39231" OrderNumber="2" OptionText="Sirkulært staplet"/>
-          
           <Answer AnswerId="39232" OrderNumber="3" OptionText="Linjært staplet"/>
-          
           <Answer AnswerId="39233" OrderNumber="4" OptionText="Linjært staplet + håndsydd"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7226" ItemType="2" VarName="OP_SCOPSPACECLOSE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9035" OrderNumber="65" ItemText="Lukking av slitser" ItemHelp="Svar &quot;ja&quot; om en eller flere slitser ble lukket." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39246" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39247" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6692" PageNumber="29" PageTitle="">
-      
       <Item ItemId="7227" ItemType="2" VarName="OP_SCOPSPACESUTURETYPE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9036" OrderNumber="66" ItemText="Hvilket lukkemateriale ble benyttet?" ItemHelp="Angi suturmaterialet som ble anvendt ved lukking av slitsen(e)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39248" OrderNumber="1" OptionText="Ikke resorberbar sutur"/>
-          
           <Answer AnswerId="39249" OrderNumber="2" OptionText="Resorberbar sutur"/>
-          
           <Answer AnswerId="39250" OrderNumber="3" OptionText="Ulike materialer eller annet vis"/>
-          
           <Answer AnswerId="53850" OrderNumber="5" OptionText="Knuteløs ikke resorberbar sutur"/>
-          
           <Answer AnswerId="53851" OrderNumber="6" OptionText="Knuteløs resorberbar sutur"/>
-          
           <Answer AnswerId="53852" OrderNumber="7" OptionText="Klips ikke resorberbar"/>
-          
           <Answer AnswerId="53853" OrderNumber="8" OptionText="Klips resorberbar"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6702" PageNumber="30" PageTitle="">
-      
       <Item ItemId="7228" ItemType="2" VarName="OP_DISTALGASTRIC" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9037" OrderNumber="67" ItemText="Distale ventrikkeldelen" ItemHelp="Angi hvordan den distale ventrikkeldelen har blitt håndtert." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39251" OrderNumber="1" OptionText="Reseksjon"/>
-          
           <Answer AnswerId="39252" OrderNumber="2" OptionText="Etterlatt"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2490" PageNumber="31" PageTitle="Sleeve gastrectomy (SG) (kun)">
-      
       <Item ItemId="7229" ItemType="2" VarName="OP_FUTUREPLAN" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9038" OrderNumber="68" ItemText="Er denne operasjonen steg 1 i en duodenal switch operasjon?" ItemHelp="Svar &quot;ja&quot; om en duodenal switch operasjon er planlagt utført senere.&lt;br&gt;Svar &quot;nei&quot; om sleeve gastrectomy er tenkt som eneste tiltak. Dette inkluderer også &quot;vent og se hvordan det går&quot;." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39253" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39254" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7230" ItemType="1" VarName="OP_SGBOOGIESIZE" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="9039" OrderNumber="69" ItemText="Boogie diameter" ItemHelp="Boogie = den sonden som ligger i den gjenværende delen av ventrikkelen under reseksjonen. Boogiens størrelse angis i French (=omkrets i millimeter eller diameter i millimeter x pi). Om ingen boogie har blitt benyttet, skriv &quot;0&quot;." MinExpression="10" MaxExpression="80" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7231" ItemType="1" VarName="OP_SGRESECTSTART" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="9040" OrderNumber="70" ItemText="Hvor langt fra pylorus begynner reseksjonen?" ItemHelp="Estimat av avstanden mellom pylorus og og punktet for ventrikkelreseksjonens start. Angis i hele cm." MinExpression="2" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7232" ItemType="2" VarName="OP_GSSTAPLEHEIGHT" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9041" OrderNumber="71" ItemText="Hvilken stiftehøyde har blitt benyttet?" ItemHelp="Angi stiftehøyden på magasinene som ble benyttet for gastrektomien i henhold til den fargemarkering som de fleste fabrikanter benytter." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39255" OrderNumber="1" OptionText="Grønt"/>
-          
           <Answer AnswerId="39256" OrderNumber="2" OptionText="Blått"/>
-          
           <Answer AnswerId="39257" OrderNumber="3" OptionText="Hvitt"/>
-          
           <Answer AnswerId="39258" OrderNumber="4" OptionText="Beige"/>
-          
           <Answer AnswerId="39259" OrderNumber="5" OptionText="Lilla"/>
-          
           <Answer AnswerId="39260" OrderNumber="6" OptionText="Svart"/>
-          
           <Answer AnswerId="39261" OrderNumber="7" OptionText="Flere typer har blitt benyttet"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7233" ItemType="2" VarName="OP_GSSTAPLESUTURE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9042" OrderNumber="72" ItemText="Har stifteraden blitt forsterket?" ItemHelp="&lt;br&gt;&lt;br&gt;Svar &quot;nei&quot; om ingen forsterkning har blitt gjort.&lt;br&gt;Delvis = deler av stapleraden har blitt sydd over enten som direkte sutur eller invaginerende sutur.&lt;br&gt;Dirkete sutur = sydd over hele stapleraden uten å invaginere.&lt;br&gt;Invaginerende sutur = hele stapleraden invaginert.&lt;br&gt;Staple line reinforcement = resorberbare eller ikke resorberbare materialer som blir benyttet sammen med staple, f.eks seamguard, surgisis." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39262" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39263" OrderNumber="1" OptionText="Ja, delvis"/>
-          
           <Answer AnswerId="39264" OrderNumber="2" OptionText="Ja, direkte sutur"/>
-          
           <Answer AnswerId="39265" OrderNumber="3" OptionText="Ja, invaginerende sutur"/>
-          
           <Answer AnswerId="39266" OrderNumber="4" OptionText="Ja, staple line reinforcement"/>
-          
           <Answer AnswerId="53856" OrderNumber="5" OptionText="Ja, kombinasjoner av ovennevnte eller på annet vis"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2491" PageNumber="32" PageTitle="Duodenal switch (DSsteg2) (Sleeve gastrectomy allerede gjort)">
-      
       <Item ItemId="7234" ItemType="1" VarName="OP_DSCOMMONCHANNEL" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="9043" OrderNumber="73" ItemText="Common channel" ItemHelp="Estimering av avstanden mellom entero-enteroanastomosen og Valvula Bauhini" MinExpression="20" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7235" ItemType="1" VarName="OP_DSALIMENTARYLIMB" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="9044" OrderNumber="74" ItemText="Alimentary limb" ItemHelp="Estimering av avstanden mellom duodeno-enteroanastomosen og entero-enteroanastomosen." MinExpression="100" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7236" ItemType="2" VarName="OP_DSBILIARYLIMB" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9045" OrderNumber="75" ItemText="Biliary limb målt" ItemHelp="Har man aktivt målt avstanden mellom Treitz ligament og entero-enteroanastomosen?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39267" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39268" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7237" ItemType="1" VarName="OP_DSBILIARYLENGTH" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="9046" OrderNumber="76" ItemText="Biliary limb" ItemHelp="Estimering av avstanden mellom Treitz ligament og entero-enteroanastomosen." MinExpression="50" MaxExpression="500" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7238" ItemType="2" VarName="OP_DSUPEATECH" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9047" OrderNumber="77" ItemText="Teknikk øvre anastomose" ItemHelp="Teknikk for konstruksjon av duodeno-enteroanastomosen.&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39269" OrderNumber="1" OptionText="Håndsydd"/>
-          
           <Answer AnswerId="39270" OrderNumber="2" OptionText="Sirkulært staplet"/>
-          
           <Answer AnswerId="39271" OrderNumber="3" OptionText="Linjært staplet"/>
-          
           <Answer AnswerId="39272" OrderNumber="4" OptionText="Linjært staplet + håndsydd"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7239" ItemType="2" VarName="OP_DSUPEASTAPLEHEIGHT" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9048" OrderNumber="78" ItemText="Stapler: Stiftehøyde" ItemHelp="Angi stiftehøyden på magasinet for konstruksjon av duodeno-enteroanastomosen i henhold til den fargekoding som de fleste fabrikanter benytter." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39273" OrderNumber="1" OptionText="Grønt"/>
-          
           <Answer AnswerId="39274" OrderNumber="2" OptionText="Blått"/>
-          
           <Answer AnswerId="39275" OrderNumber="3" OptionText="Hvitt"/>
-          
           <Answer AnswerId="39276" OrderNumber="4" OptionText="Beige"/>
-          
           <Answer AnswerId="39277" OrderNumber="5" OptionText="Lilla"/>
-          
           <Answer AnswerId="39278" OrderNumber="6" OptionText="Svart"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7240" ItemType="2" VarName="OP_DSUPEASUTURETYPE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9049" OrderNumber="79" ItemText="Suturmateriale" ItemHelp="Angi det hovedsaklige suturmaterialet" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39279" OrderNumber="1" OptionText="Monofilament"/>
-          
           <Answer AnswerId="39280" OrderNumber="2" OptionText="Polyfilament"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7241" ItemType="2" VarName="OP_DSUPEASTAPLESIZE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9050" OrderNumber="80" ItemText="Stapler: Diameter" ItemHelp="Angi diameter på den stapler som har blitt benyttet." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39281" OrderNumber="1" OptionText="21 mm"/>
-          
           <Answer AnswerId="39282" OrderNumber="2" OptionText="25 mm"/>
-          
           <Answer AnswerId="39283" OrderNumber="3" OptionText="28 mm"/>
-          
           <Answer AnswerId="39284" OrderNumber="4" OptionText="Annen diameter"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7242" ItemType="2" VarName="OP_DSEATECH" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9051" OrderNumber="81" ItemText="EA teknikk" ItemHelp="Teknikk for konstruksjon av entero-enteroanastomosen&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39285" OrderNumber="1" OptionText="Håndsydd"/>
-          
           <Answer AnswerId="39286" OrderNumber="2" OptionText="Sirkulært staplet"/>
-          
           <Answer AnswerId="39287" OrderNumber="3" OptionText="Linjært staplet"/>
-          
           <Answer AnswerId="39288" OrderNumber="4" OptionText="Linjært staplet + håndsydd"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7243" ItemType="2" VarName="OP_DSEASTAPLEHEIGHT" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9052" OrderNumber="82" ItemText="Stapler: Stiftehøyde" ItemHelp="Angi stiftehøyden på magasinet for konstruksjon av entero-enteroanastomosen i henhold til den fargekoding de fleste fabrikantene benytter." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39289" OrderNumber="1" OptionText="Grønt"/>
-          
           <Answer AnswerId="39290" OrderNumber="2" OptionText="Blått"/>
-          
           <Answer AnswerId="39291" OrderNumber="3" OptionText="Hvitt"/>
-          
           <Answer AnswerId="39292" OrderNumber="4" OptionText="Beige"/>
-          
           <Answer AnswerId="39293" OrderNumber="5" OptionText="Lilla"/>
-          
           <Answer AnswerId="39294" OrderNumber="6" OptionText="Sort"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7244" ItemType="2" VarName="OP_DSEASUTURETYPE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9053" OrderNumber="83" ItemText="Suturmateriale" ItemHelp="Angi det hovedsaklige suturmaterialet" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39295" OrderNumber="1" OptionText="Monofilament"/>
-          
           <Answer AnswerId="39296" OrderNumber="2" OptionText="Polyfilament"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7245" ItemType="2" VarName="OP_DSEASTAPLESIZE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9054" OrderNumber="84" ItemText="Stapler: Diameter" ItemHelp="Angi diameter på den stapler om har blitt benyttet" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39297" OrderNumber="1" OptionText="21 mm"/>
-          
           <Answer AnswerId="39298" OrderNumber="2" OptionText="25 mm"/>
-          
           <Answer AnswerId="39299" OrderNumber="3" OptionText="28 mm"/>
-          
           <Answer AnswerId="39300" OrderNumber="4" OptionText="Annen diameter"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7246" ItemType="2" VarName="OP_DSSPACEDCLOSE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9055" OrderNumber="85" ItemText="Lukking av slitser" ItemHelp="Svar &quot;Ja&quot; om en eller flere slitser har blitt lukket" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39301" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39302" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7247" ItemType="2" VarName="OP_DSSPACESUTURE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9056" OrderNumber="86" ItemText="Hva ble benyttet til lukking av slitser?" ItemHelp="Angi hva som ble benyttet til lukking av slitsen(e)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39303" OrderNumber="1" OptionText="Ikke resorberbar sutur"/>
-          
           <Answer AnswerId="39304" OrderNumber="2" OptionText="Resorberbar sutur"/>
-          
           <Answer AnswerId="39305" OrderNumber="3" OptionText="Ulike materialer eller på annet vis"/>
-          
           <Answer AnswerId="53869" OrderNumber="5" OptionText="Knuteløs ikke resorberbar sutur"/>
-          
           <Answer AnswerId="53870" OrderNumber="6" OptionText="Knuteløs resorberbar sutur"/>
-          
           <Answer AnswerId="53871" OrderNumber="7" OptionText="Clips ikke resorberbar"/>
-          
           <Answer AnswerId="53872" OrderNumber="8" OptionText="Clips resorberbar"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2492" PageNumber="33" PageTitle="Annen obesitasoperasjon (ØVR)">
-      
       <Item ItemId="7248" ItemType="4" VarName="OP_TYPEOFOP" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="9057" OrderNumber="87" ItemText="Type operasjon" ItemHelp="Beskriv så kortfattet som mulig hvilken metode som er utført." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2493" PageNumber="34" PageTitle="Revisjon uten endring av grunnmetode (REV)">
-      
       <Item ItemId="7249" ItemType="2" VarName="OP_REVNOCHANGE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9058" OrderNumber="88" ItemText="Hvilken endring har blitt gjort?" ItemHelp="Velg det mest passende alternativet" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39306" OrderNumber="1" OptionText="Loop til roux"/>
-          
           <Answer AnswerId="39307" OrderNumber="2" OptionText="Lommereduksjon, restapling"/>
-          
           <Answer AnswerId="39308" OrderNumber="3" OptionText="Forlenging av roux, alimentary limb"/>
-          
           <Answer AnswerId="39309" OrderNumber="4" OptionText="Forkortning av common channel"/>
-          
           <Answer AnswerId="39310" OrderNumber="5" OptionText="Bandbytte, korrigering av band/krage"/>
-          
           <Answer AnswerId="39311" OrderNumber="6" OptionText="Annet"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7250" ItemType="4" VarName="OP_REVNOCHANGEWHAT" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="9059" OrderNumber="89" ItemText="Annet" ItemHelp="Beskriv så kortfattet som mulig hva som er blitt gjort" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2494" PageNumber="35" PageTitle="Påbegynt ikke fullført operasjon (AVBRUTT OP)">
-      
       <Item ItemId="7251" ItemType="2" VarName="OP_WHYNOTCOMPL" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9060" OrderNumber="90" ItemText="Hvorfor ble ikke operasjonen fullført?" ItemHelp="Eventuell komplikasjon angis lengre ned på siden. Alvorlige anatomiske tilstander er for eksempel stor lever, adheranser og eksempel på ikke forventet alvorlig sykdom er skrumplever" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39312" OrderNumber="1" OptionText="Kirurgisk komplikasjon"/>
-          
           <Answer AnswerId="39313" OrderNumber="2" OptionText="Anestesiologisk komplikasjon"/>
-          
           <Answer AnswerId="39314" OrderNumber="3" OptionText="Vanskelige anatomiske tilstander"/>
-          
           <Answer AnswerId="39315" OrderNumber="4" OptionText="Annen ikke forventet alvorlig sykdom"/>
-          
           <Answer AnswerId="39316" OrderNumber="5" OptionText="Annen grunn"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2495" PageNumber="36" PageTitle="Lekkasjetest">
-      
       <Item ItemId="7252" ItemType="2" VarName="OP_LEAKTEST" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9061" OrderNumber="91" ItemText="Lekkasjetest utført" ItemHelp="Svar ja om lekkasjetest har blitt utført på en eller flere anastomoser med methylenblått, luft/vann eller annen teknikk." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39317" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39847" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2497" PageNumber="37" PageTitle="Peroperativ komplikasjon">
-      
       <Item ItemId="7257" ItemType="2" VarName="OP_PERIOPCOMPL" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9066" OrderNumber="92" ItemText="Peroperative komplikasjoner" ItemHelp="Utilsiktet hendelse under operasjon som medførte risikoøkning for inngrepet og ledet til noen form for tiltak." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39321" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39755" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="6758" PageNumber="38" PageTitle="">
-      
       <Item ItemId="7258" ItemType="2" VarName="OP_SPLENICINJURY" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9067" OrderNumber="93" ItemText="Miltskade" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39322" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39757" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7259" ItemType="2" VarName="OP_GUTPERF" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9068" OrderNumber="94" ItemText="Utilsiktet tarmperforasjon" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39323" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39759" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7260" ItemType="2" VarName="OP_OTHERCOMPL" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9069" OrderNumber="95" ItemText="Annen komplikasjon" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39324" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39761" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2498" PageNumber="39" PageTitle="Hva*">
-      
       <Item ItemId="7261" ItemType="4" VarName="OP_OTHERCOMPLWHAT" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="9070" OrderNumber="96" ItemText="Hva" ItemHelp="Beskriv komplikasjonen så kortfattet som mulig" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2499" PageNumber="40" PageTitle="Annen samtidig operasjon">
-      
       <Item ItemId="7262" ItemType="2" VarName="OP_TYPEOFCONOP" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9071" OrderNumber="97" ItemText="Annen samtidig operasjon" ItemHelp="&lt;br&gt;Operasjon som gjøres i samme seanse i tillegg til det fedmekirurgiske inngrepet. &lt;br&gt;MERK! Om denne operasjon er en komplikasjon så skal den også registreres under neste post &quot;peroperativ komplikasjon&quot;.&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39325" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39753" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2500" PageNumber="41" PageTitle="Hvilke*">
-      
       <Item ItemId="7263" ItemType="2" VarName="OP_GALLOP" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9072" OrderNumber="98" ItemText="Kolecystektomi" ItemHelp="Om annet galleveisinngrep, f.eks ERCP er blitt utført angi dette under &quot;annet&quot; nedenfor." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39326" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39327" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7264" ItemType="2" VarName="OP_GYNOP" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9073" OrderNumber="99" ItemText="Gynekologisk operasjon" ItemHelp="F.eks. Sterilisering" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39328" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39329" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7265" ItemType="2" VarName="OP_HERNIAREPAIR" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9074" OrderNumber="100" ItemText="Arrbrokk eller navlebrokk" ItemHelp="Registrer kun brokk som er fullstendig behandlet. Ikke f.eks reponering av brokksekkinnhold" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39330" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39331" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7266" ItemType="2" VarName="OP_SPLENEKTOMY" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9075" OrderNumber="101" ItemText="Splenektomi" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39332" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39333" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7267" ItemType="2" VarName="OP_ADHESIONLYSIS" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9076" OrderNumber="102" ItemText="Adheranseløsning mer enn 10 min" ItemHelp="Adherenseløsning som krever at operasjonstiden er mer enn 10 min&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39334" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39335" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7268" ItemType="2" VarName="OP_OTHERSURGERY" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9077" OrderNumber="103" ItemText="Annet" ItemHelp="Annen betydningsfull operasjon." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39336" OrderNumber="0" OptionText="Nei"/>
-          
           <Answer AnswerId="39337" OrderNumber="1" OptionText="Ja"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2501" PageNumber="42" PageTitle="Hva*">
-      
       <Item ItemId="7269" ItemType="4" VarName="OP_OTHERSURGWHAT" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="9078" OrderNumber="104" ItemText="Hva" ItemHelp="Beskriv tiltaket så kortfattet som mulig." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="2502" PageNumber="43" PageTitle="Operasjonstid og blødning">
-      
       <Item ItemId="7270" ItemType="1" VarName="OP_OPTIME" LoincScale="QN" UnitStr="minutter" DisplayFormat="">
-        
         <FormItem FormItemId="9079" OrderNumber="105" ItemText="Operasjonstid (minutter)" ItemHelp="Angi knivtiden i minutter" MinExpression="0" MaxExpression="999" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="7271" ItemType="2" VarName="OP_AMOUNTBLEED" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="9080" OrderNumber="106" ItemText="Blødningsmengde" ItemHelp="Peroperativ blødning registreres i milliliter i gitte intervaller. Benytt den anslåtte blødningsmengde som angis på narkosekurven." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="39338" OrderNumber="1" OptionText="0-99"/>
-          
           <Answer AnswerId="39339" OrderNumber="2" OptionText="100-499"/>
-          
           <Answer AnswerId="39340" OrderNumber="3" OptionText="500-1500 ml"/>
-          
           <Answer AnswerId="39341" OrderNumber="4" OptionText="&gt;1500 ml"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-  
   </Form>
-  
   <Actions>
-    
     <PageAction MasterId="7254">
-      
       <Activate EnumVal="2" PageConditionId="2681" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
-      
       <Activate EnumVal="1" PageConditionId="2682" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
-      
       <Activate EnumVal="2" PageConditionId="2683" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7143">
-      
       <Activate EnumVal="1" PageConditionId="2674" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
-      
       <Activate EnumVal="1" PageConditionId="2679" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
-      
       <Activate EnumVal="1" PageConditionId="2680" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7154">
-      
       <Activate EnumVal="1" PageConditionId="2678" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7156">
-      
       <Activate EnumVal="3" PageConditionId="2665" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7163">
-      
       <Activate EnumVal="1" PageConditionId="2675" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7165">
-      
       <Activate EnumVal="1" PageConditionId="2677" PageNumber="15" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7187">
-      
       <Activate EnumVal="2" PageConditionId="2696" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7165">
-      
       <Activate EnumVal="1" PageConditionId="2705" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7490">
-      
       <Activate EnumVal="2" PageConditionId="2698" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7165">
-      
       <Activate EnumVal="2" PageConditionId="2669" PageNumber="19" ComparisonType="1" ComparisonDescription="Equal to"/>
-      
       <Activate EnumVal="3" PageConditionId="2670" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
-      
       <Activate EnumVal="4" PageConditionId="2666" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7202">
-      
       <Activate EnumVal="1" PageConditionId="2684" PageNumber="22" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7165">
-      
       <Activate EnumVal="4" PageConditionId="2689" PageNumber="23" ComparisonType="1" ComparisonDescription="Equal to"/>
-      
       <Activate EnumVal="4" PageConditionId="2690" PageNumber="24" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7212">
-      
       <Activate EnumVal="1" PageConditionId="2686" PageNumber="25" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7165">
-      
       <Activate EnumVal="5" PageConditionId="2668" PageNumber="26" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7216">
-      
       <Activate EnumVal="1" PageConditionId="2699" PageNumber="27" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7165">
-      
       <Activate EnumVal="5" PageConditionId="2700" PageNumber="28" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7226">
-      
       <Activate EnumVal="1" PageConditionId="2703" PageNumber="29" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7165">
-      
       <Activate EnumVal="5" PageConditionId="2704" PageNumber="30" ComparisonType="1" ComparisonDescription="Equal to"/>
-      
       <Activate EnumVal="6" PageConditionId="2667" PageNumber="31" ComparisonType="1" ComparisonDescription="Equal to"/>
-      
       <Activate EnumVal="7" PageConditionId="2671" PageNumber="32" ComparisonType="1" ComparisonDescription="Equal to"/>
-      
       <Activate EnumVal="8" PageConditionId="2672" PageNumber="33" ComparisonType="1" ComparisonDescription="Equal to"/>
-      
       <Activate EnumVal="9" PageConditionId="2676" PageNumber="34" ComparisonType="1" ComparisonDescription="Equal to"/>
-      
       <Activate EnumVal="11" PageConditionId="2673" PageNumber="35" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7257">
-      
       <Activate EnumVal="1" PageConditionId="2706" PageNumber="38" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7260">
-      
       <Activate EnumVal="1" PageConditionId="2707" PageNumber="39" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7262">
-      
       <Activate EnumVal="1" PageConditionId="2664" PageNumber="41" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-    
     <PageAction MasterId="7268">
-      
       <Activate EnumVal="1" PageConditionId="2663" PageNumber="42" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-  
   </Actions>
-
 </StudyForm>

@@ -1,141 +1,72 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
-  
   <Form FormId="751" FormName="VOSSBAR_PREOP" FormTitle="Preoperative registreringer">
-    
     <Page PageId="4840" PageNumber="1" PageTitle="Datoer">
-      
       <Item ItemId="8908" ItemType="5" VarName="HjnOpDate" LoincScale="DATE" DisplayFormat="">
-        
         <FormItem FormItemId="16084" OrderNumber="1" ItemHeader="Operasjonsdato" ItemText="Dato for primæroperasjon bariatri" ItemHelp="" Expression="TRUNC(Form.Date)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="4841" PageNumber="2" PageTitle="Anestesirisiko">
-      
       <Item ItemId="8201" ItemType="2" VarName="ASA_ANESTESI" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="16079" OrderNumber="2" ItemText="ASA-klasse" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="43897" OrderNumber="1" OptionText="Frisk"/>
-          
           <Answer AnswerId="43898" OrderNumber="2" OptionText="Asymptomatisk tilstand som gir økt risiko"/>
-          
           <Answer AnswerId="43899" OrderNumber="3" OptionText="Symptomatisk sykdom"/>
-          
           <Answer AnswerId="43900" OrderNumber="4" OptionText="Livstruende sykdom"/>
-          
           <Answer AnswerId="43901" OrderNumber="5" OptionText="Moribund"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="9078" ItemType="2" VarName="MALLAMPATI" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="16089" OrderNumber="3" ItemText="Mallampati-score" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer AnswerId="50525" OrderNumber="1" OptionText="Bløte gane, drøvel, svelg og pillarer synlig." ShortCode="I"/>
-          
           <Answer AnswerId="50526" OrderNumber="2" OptionText="Bløte gane, drøvel og svelg synlig." ShortCode="II"/>
-          
           <Answer AnswerId="50527" OrderNumber="3" OptionText="Bløte gane og roten av drøvel synlig." ShortCode="III"/>
-          
           <Answer AnswerId="50528" OrderNumber="4" OptionText="Kun harde gane er synlig." ShortCode="IV"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="4843" PageNumber="3" PageTitle="Høyde og vekt">
-      
       <Item ItemId="8825" ItemType="1" VarName="HjnHeight" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        
         <FormItem FormItemId="16090" OrderNumber="4" ItemText="Høyde (cm)" ItemHelp="" MinExpression="120" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="8827" ItemType="1" VarName="HjnOpWeight" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        
         <FormItem FormItemId="16080" OrderNumber="5" ItemText="Operasjonsvekt (kg)" ItemHelp="" MinExpression="50" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="6836" ItemType="1" VarName="PreopBMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-        
         <FormItem FormItemId="16078" OrderNumber="6" ItemText="Preoperativ KMI (kg/m2)" ItemHelp="" Expression="HjnOpWeight/HjnHeight/HjnHeight*10000*ISPOS(HjnHeight)*ISPOS(HjnOpWeight)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="4842" PageNumber="4" PageTitle="P-Possum" PageIntroduction="Utregninger skal gjøres via websiden for P-Possum.">
-      
       <Item ItemId="9071" ItemType="1" VarName="PossumPhysiology" LoincScale="QN" UnitStr="points" DisplayFormat="">
-        
         <FormItem FormItemId="16086" OrderNumber="7" ItemText="Physiology score (points)" ItemHelp="" MinExpression="12" MaxExpression="88" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="9070" ItemType="1" VarName="PossumSurgery" LoincScale="QN" UnitStr="points" DisplayFormat="">
-        
         <FormItem FormItemId="16085" OrderNumber="8" ItemText="Operative severity score (points)" ItemHelp="" MinExpression="6" MaxExpression="48" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="9072" ItemType="1" VarName="PPossumMorbidity" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        
         <FormItem FormItemId="16087" OrderNumber="9" ItemHeader="Morbiditet" ItemText="P-Possum forventet morbiditet (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="2">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="9073" ItemType="1" VarName="PPossumMortality" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        
         <FormItem FormItemId="16088" OrderNumber="10" ItemHeader="Mortalitet" ItemText="P-Possum forventet mortalitet (%)" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="2">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-  
   </Form>
-  
   <Actions>
 	</Actions>
-
 </StudyForm>

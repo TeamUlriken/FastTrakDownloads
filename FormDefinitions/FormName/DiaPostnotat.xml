@@ -1,158 +1,80 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
-  
   <Form FormId="861" FormName="DiaPostnotat" FormTitle="Postnotat diabetes">
-    
     <Page PageId="7074" PageNumber="1" PageTitle="Nøkkeldata">
-      
       <Item ItemId="3196" ItemType="2" VarName="NDV_TYPE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="20511" OrderNumber="2" ItemText="Diabetes type" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
-          
           <Answer AnswerId="15986" OrderNumber="1" OptionText="Type 1 (inkl. LADA)" VerboseText="Type 1 diabetes." ShortCode="1" ICD10="E10"/>
-          
           <Answer AnswerId="15987" OrderNumber="2" OptionText="Type 2" VerboseText="Type 2 diabetes." ShortCode="2" ICD10="E11"/>
-          
           <Answer AnswerId="15988" OrderNumber="3" OptionText="Annen diabetestype (inkl. pankreatitt, MODY)." ShortCode="A"/>
-          
           <Answer AnswerId="16137" OrderNumber="4" OptionText="er ikke avklart." ShortCode="U" ICD10="E14"/>
-          
           <Answer AnswerId="40942" OrderNumber="5" OptionText="Svangerskapsdiabetes." ShortCode="S" ICD10="O24"/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="3486" ItemType="1" VarName="NDV_DIAGNOSE_YYYY" LoincScale="QN" DisplayFormat="">
-        
         <FormItem FormItemId="20519" OrderNumber="6" ItemHeader="Debut" ItemText="Diabetes diagnostisert år" ItemHelp="Angi årstall.  Svangerskapsdiabetes unntas." MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="7075" PageNumber="2" PageTitle="Antropometri">
-      
       <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        
         <FormItem FormItemId="20514" OrderNumber="7" ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        
         <FormItem FormItemId="20515" OrderNumber="9" ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1" Decimals="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-        
         <FormItem FormItemId="20516" OrderNumber="11" ItemText="BMI" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1" Decimals="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="3230" ItemType="1" VarName="SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        
         <FormItem FormItemId="20517" OrderNumber="12" ItemText="Systolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-      
       <Item ItemId="3231" ItemType="1" VarName="DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        
         <FormItem FormItemId="20518" OrderNumber="13" ItemText="Diastolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="7077" PageNumber="3" PageTitle="Behandling">
-      
       <Item ItemId="3322" ItemType="2" VarName="NDV_TREATMENT_TYPE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="20521" OrderNumber="14" ItemHeader="Behandlingsstrategi" ItemText="Diabetes behandles ved hjelp av" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
-          
           <Answer AnswerId="16425" OrderNumber="1" OptionText="Kun kost/aktivitet."/>
-          
           <Answer AnswerId="16426" OrderNumber="2" OptionText="Andre blodsukkersenkende midler enn insulin."/>
-          
           <Answer AnswerId="16427" OrderNumber="3" OptionText="Kun insulinbehandlet."/>
-          
           <Answer AnswerId="16479" OrderNumber="4" OptionText="Insulin pluss andre blodsukkersenkende midler."/>
-          
           <Answer AnswerId="16480" OrderNumber="5" OptionText="Ukjent"/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="7079" PageNumber="4" PageTitle="Insulinadministrasjon*">
-      
       <Item ItemId="4056" ItemType="2" VarName="NDV_INSULIN_DEVICE" LoincScale="ORD" DisplayFormat="">
-        
         <FormItem FormItemId="20524" OrderNumber="15" ItemText="Insulinadministrasjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
-          
           <Answer AnswerId="21306" OrderNumber="1" OptionText="Insulinpenn/sprøyte."/>
-          
           <Answer AnswerId="21307" OrderNumber="2" OptionText="Insulinpumpe."/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-    
     <Page PageId="7078" PageNumber="5" PageTitle="Vurdering">
-      
       <Item ItemId="10259" ItemType="4" VarName="VAR10259" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        
         <FormItem FormItemId="20520" OrderNumber="17" ItemText="Vurdering" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          
           <Answer/>
-        
         </FormItem>
-      
       </Item>
-    
     </Page>
-  
   </Form>
-  
   <Actions>
-    
     <PageAction MasterId="3322">
-      
       <Activate EnumVal="3" PageConditionId="5423" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
-      
       <Activate EnumVal="4" PageConditionId="5424" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
-    
     </PageAction>
-  
   </Actions>
-
 </StudyForm>
