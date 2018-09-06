@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
   
-  <Form FormId="362" FormName="DIAPOL_PRIMARY" FormTitle="Grunndata diabetes">
+  <Form FormId="649" FormName="DIAPOL_PRIMARY" FormTitle="Grunndata diabetes">
     
-    <Page PageId="799" PageNumber="1" PageTitle="Diagnose">
+    <Page PageId="3118" PageNumber="1" PageTitle="Diagnose">
       
       <Item ItemId="3196" ItemType="2" VarName="NDV_TYPE" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="1307" OrderNumber="1" ItemText="Diabetes type" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem FormItemId="10990" OrderNumber="1" ItemText="Diabetes type" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
           
           <Answer AnswerId="15986" OrderNumber="1" OptionText="Type 1 (inkl. LADA)" VerboseText="Type 1 diabetes." ShortCode="1" ICD10="E10"/>
           
@@ -25,7 +25,7 @@
       
       <Item ItemId="3486" ItemType="1" VarName="NDV_DIAGNOSE_YYYY" LoincScale="QN" DisplayFormat="">
         
-        <FormItem FormItemId="1943" OrderNumber="2" ItemHeader="Debut" ItemText="Diabetes diagnostisert år" ItemHelp="Angi årstall.  Svangerskapsdiabetes unntas." MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem FormItemId="11001" OrderNumber="2" ItemHeader="Debut" ItemText="Diabetes diagnostisert år" ItemHelp="Angi årstall.  Svangerskapsdiabetes unntas." MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
           
           <Answer/>
         
@@ -35,7 +35,7 @@
       
       <Item ItemId="3981" ItemType="2" VarName="NDV_ANTIBODY" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="2414" OrderNumber="3" ItemHeader="Positive diabetes-antistoffer" ItemText="Positive auto-antistoffer mot beta-cellene i pankreas" ItemHelp="F.eks. GAD, IA2, insulin-antistoff eller anti-ZnT8.  Det er nok at én er positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem FormItemId="11002" OrderNumber="3" ItemHeader="Positive diabetes-antistoffer" ItemText="Positive auto-antistoffer mot beta-cellene i pankreas" ItemHelp="F.eks. GAD, IA2, insulin-antistoff eller anti-ZnT8.  Det er nok at én er positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           
           <Answer AnswerId="20696" OrderNumber="1" OptionText="Ja" VerboseText="Positive antistoffer mot beta-celler." ShortCode="Pos"/>
           
@@ -46,10 +46,28 @@
         </FormItem>
       
       </Item>
+    
+    </Page>
+    
+    <Page PageId="4703" PageNumber="2" PageTitle="Kommentar antistoffer*">
+      
+      <Item ItemId="9002" ItemType="4" VarName="VAR9002" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        
+        <FormItem FormItemId="15507" OrderNumber="4" ItemText="Kommentar antistoffer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="4704" PageNumber="3" PageTitle="Fortsettelse*">
       
       <Item ItemId="3998" ItemType="2" VarName="NDV_STARTKURS" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="2446" OrderNumber="4" ItemText="Gjennomgått startkurs" ItemHelp="Kurs arrangert av sykehus" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem FormItemId="11007" OrderNumber="5" ItemText="Gjennomgått startkurs" ItemHelp="Kurs arrangert av sykehus" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
           
           <Answer AnswerId="20768" OrderNumber="1" OptionText="Ja" VerboseText="Gjennomgått startkurs." ShortCode="J"/>
           
@@ -63,7 +81,7 @@
       
       <Item ItemId="3389" ItemType="2" VarName="NDV_CONSENT" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="1726" OrderNumber="5" ItemText="Samtykke for diabetesregisteret" ItemHelp="Norsk diabetesregister for voksne. Kontaktperson Karianne Fjeld Løvaas." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem FormItemId="10993" OrderNumber="6" ItemText="Samtykke for diabetesregisteret" ItemHelp="Norsk diabetesregister for voksne. Kontaktperson Karianne Fjeld Løvaas." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
           
           <Answer AnswerId="16869" OrderNumber="1" OptionText="Ja" VerboseText="Samtykke gitt til diabetesregisteret." ShortCode="J"/>
           
@@ -79,11 +97,31 @@
     
     </Page>
     
-    <Page PageId="800" PageNumber="2" PageTitle="Arv/genetikk">
+    <Page PageId="8034" PageNumber="4" PageTitle="Samtykke diabetes biobank*">
+      
+      <Item ItemId="1502" ItemType="2" VarName="NDV_CONSENT_BIOBANK" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="23179" OrderNumber="7" ItemHeader="Biobanksamtykke" ItemText="Samtykke for diabetes biobank" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="1">
+          
+          <Answer AnswerId="59660" OrderNumber="1" OptionText="Ja" VerboseText="Samtykke gitt til diabetes biobank," ShortCode="J"/>
+          
+          <Answer AnswerId="59661" OrderNumber="2" OptionText="Nei" VerboseText="Ikke samtykke til diabetes biobank." ShortCode="N"/>
+          
+          <Answer AnswerId="59662" OrderNumber="3" OptionText="Trukket tilbake" VerboseText="Samtykke til diabetes biobank trukket tilbake." ShortCode="Tr"/>
+          
+          <Answer AnswerId="59663" OrderNumber="4" OptionText="Ukjent*" ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="3119" PageNumber="5" PageTitle="Arv/genetikk">
       
       <Item ItemId="3982" ItemType="2" VarName="NDV_ETHNICITY" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="2418" OrderNumber="6" ItemText="Etnisk opprinnelse" ItemHelp="Angi f.eks. asiatisk dersom begge foreldre er asiatiske; ved f.eks. europeisk mor og asiatisk far anføres ”annen”" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem FormItemId="11003" OrderNumber="8" ItemText="Etnisk opprinnelse" ItemHelp="Angi f.eks. asiatisk dersom begge foreldre er asiatiske; ved f.eks. europeisk mor og asiatisk far anføres ”annen”" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
           
           <Answer AnswerId="20702" OrderNumber="1" OptionText="Europeisk." ShortCode="E"/>
           
@@ -101,7 +139,7 @@
       
       <Item ItemId="3229" ItemType="2" VarName="DP_FORELDRE_BARN_DM" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="1457" OrderNumber="7" ItemText="Diabetes hos foreldre eller barn" ItemHelp="Biologiske foreldre/barn" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem FormItemId="10991" OrderNumber="9" ItemText="Diabetes hos foreldre eller barn" ItemHelp="Biologiske foreldre/barn" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
           
           <Answer AnswerId="16168" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           
@@ -115,7 +153,7 @@
       
       <Item ItemId="3195" ItemType="2" VarName="DP_SOSKEN_DM" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="1302" OrderNumber="8" ItemText="Diabetes hos søsken" ItemHelp="Biologiske søsken" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem FormItemId="10989" OrderNumber="10" ItemText="Diabetes hos søsken" ItemHelp="Biologiske søsken" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
           
           <Answer AnswerId="15971" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           
@@ -129,7 +167,7 @@
       
       <Item ItemId="4204" ItemType="2" VarName="NDV_FAM_DM" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="2797" OrderNumber="9" ItemText="Diabetes hos foreldre/barn/søsken" ItemHelp="" Expression="ISPOS(ISNULL(DP_FORELDRE_BARN_DM-1)+ISNULL(DP_SOSKEN_DM-1))&#xA;+ 2*(ISNULL(DP_FORELDRE_BARN_DM-2)*ISNULL(DP_SOSKEN_DM-2))&#xA;+ 3*ISPOS(DP_FORELDRE_BARN_DM+DP_SOSKEN_DM-4)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1">
+        <FormItem FormItemId="11015" OrderNumber="11" ItemText="Diabetes hos foreldre/barn/søsken" ItemHelp="" Expression="ISPOS(ISNULL(DP_FORELDRE_BARN_DM-1)+ISNULL(DP_SOSKEN_DM-1))&#xA;+ 2*(ISNULL(DP_FORELDRE_BARN_DM-2)*ISNULL(DP_SOSKEN_DM-2))&#xA;+ 3*ISPOS(DP_FORELDRE_BARN_DM+DP_SOSKEN_DM-4)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1">
           
           <Answer AnswerId="22251" OrderNumber="1" OptionText="Ja" VerboseText="Diabetes i nær familie." ShortCode="J"/>
           
@@ -140,10 +178,28 @@
         </FormItem>
       
       </Item>
+    
+    </Page>
+    
+    <Page PageId="5094" PageNumber="6" PageTitle="Diabetes i familien*">
+      
+      <Item ItemId="9512" ItemType="4" VarName="VAR9512" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        
+        <FormItem FormItemId="17077" OrderNumber="12" ItemHeader="Kommentar" ItemText="Hvem, type diabetes, alder ved debut?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="5093" PageNumber="7" PageTitle="Koronarsykdom*">
       
       <Item ItemId="3342" ItemType="2" VarName="NDV_FAM_CHD" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="1658" OrderNumber="10" ItemText="Tidlig koronarsykdom hos foreldre/søsken" ItemHelp="Før 55/65 år hos menn/kvinner, kun biologiske foreldre/søsken" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem FormItemId="10992" OrderNumber="13" ItemText="Tidlig koronarsykdom hos foreldre/søsken" ItemHelp="Før 55/65 år hos menn/kvinner, kun biologiske foreldre/søsken" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
           
           <Answer AnswerId="16605" OrderNumber="1" OptionText="Ja" VerboseText="Tidlig koronarsykdom i familien." ShortCode="J"/>
           
@@ -157,11 +213,11 @@
     
     </Page>
     
-    <Page PageId="6289" PageNumber="3" PageTitle="">
+    <Page PageId="4869" PageNumber="8" PageTitle="Koronarsykdom detaljer*">
       
       <Item ItemId="6380" ItemType="4" VarName="FAM_CHD_COMMENT" LoincScale="NAR" DisplayFormat="" Multiline="1">
         
-        <FormItem FormItemId="5888" OrderNumber="11" ItemHeader="Kommentar" ItemText="Hvem, hva, alder ved debut?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem FormItemId="11019" OrderNumber="14" ItemHeader="Kommentar" ItemText="Hvem, hva, alder ved debut?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           
           <Answer/>
         
@@ -171,11 +227,11 @@
     
     </Page>
     
-    <Page PageId="801" PageNumber="4" PageTitle="Sosiale forhold">
+    <Page PageId="3120" PageNumber="9" PageTitle="Sosiale forhold">
       
       <Item ItemId="4218" ItemType="2" VarName="AGE_UNDER_30" LoincScale="ORD" DisplayFormat="Vertical">
         
-        <FormItem FormItemId="2843" OrderNumber="14" ItemText="Under 30 år" ItemHelp="" Expression="2-ISNEG(AGE-30)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="1">
+        <FormItem FormItemId="11016" OrderNumber="17" ItemText="Under 30 år" ItemHelp="" Expression="2-ISNEG(AGE-30)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           
           <Answer AnswerId="22583" OrderNumber="1" OptionText="Ja"/>
           
@@ -187,11 +243,11 @@
     
     </Page>
     
-    <Page PageId="802" PageNumber="5" PageTitle="Sosialt forts*">
+    <Page PageId="3121" PageNumber="10" PageTitle="Sosialt forts*">
       
       <Item ItemId="4051" ItemType="2" VarName="UNDER_UTDANNING" LoincScale="ORD" DisplayFormat="Vertical">
         
-        <FormItem FormItemId="2526" OrderNumber="15" ItemText="Under utdanning" ItemHelp="Skal denne være med uansett alder?  Det er kanskje mest aktuelt mellom 16 og 30?" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="0" CarryForward="1" Optional="1">
+        <FormItem FormItemId="11012" OrderNumber="18" ItemText="Under utdanning" ItemHelp="Skal denne være med uansett alder?  Det er kanskje mest aktuelt mellom 16 og 30?" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="1">
           
           <Answer AnswerId="21206" OrderNumber="1" OptionText="Nei" ShortCode="N"/>
           
@@ -207,25 +263,17 @@
     
     </Page>
     
-    <Page PageId="803" PageNumber="6" PageTitle="Sosialt forts*">
+    <Page PageId="3122" PageNumber="11" PageTitle="Sosialt forts*">
       
-      <Item ItemId="3984" ItemType="2" VarName="SIVILSTAND_8415" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="6682" ItemType="2" VarName="OID8414" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="2426" OrderNumber="16" ItemText="Sivilstand" ItemHelp="Juridisk sivilstand iht. KITH kodeverk 8415.  Samboende er ugift (evt. skilt,enke el.l.)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem FormItemId="11005" OrderNumber="19" ItemText="Samlivsstatus" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           
-          <Answer AnswerId="20710" OrderNumber="1" OptionText="Ugift."/>
+          <Answer AnswerId="36213" OrderNumber="1" OptionText="Lever ikke i parforhold." ShortCode="N"/>
           
-          <Answer AnswerId="20711" OrderNumber="2" OptionText="Gift."/>
+          <Answer AnswerId="36214" OrderNumber="2" OptionText="Lever i parforhold." ShortCode="J"/>
           
-          <Answer AnswerId="20712" OrderNumber="3" OptionText="Enke(mann)"/>
-          
-          <Answer AnswerId="20713" OrderNumber="4" OptionText="Separert."/>
-          
-          <Answer AnswerId="20714" OrderNumber="5" OptionText="Skilt."/>
-          
-          <Answer AnswerId="20715" OrderNumber="6" OptionText="Registrert partnerskap."/>
-          
-          <Answer AnswerId="20716" OrderNumber="7" OptionText="ukjent."/>
+          <Answer AnswerId="36215" OrderNumber="3" OptionText="Ukjent*" ShortCode="U"/>
         
         </FormItem>
       
@@ -233,7 +281,7 @@
       
       <Item ItemId="3983" ItemType="4" VarName="YRKE" LoincScale="NAR" DisplayFormat="" Multiline="0">
         
-        <FormItem FormItemId="2422" OrderNumber="17" ItemHeader="Yrke*" ItemText="Pasientens yrke og evt. arbeidssted" ItemHelp="F.eks: Pensjonert fisker, renholder på sykehuset." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem FormItemId="11004" OrderNumber="20" ItemHeader="Yrke*" ItemText="Pasientens yrke og evt. arbeidssted" ItemHelp="F.eks: Pensjonert fisker, renholder på sykehuset." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="1">
           
           <Answer/>
         
@@ -243,7 +291,7 @@
       
       <Item ItemId="4002" ItemType="2" VarName="DP_ALENEBOER" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="2452" OrderNumber="18" ItemHeader="Aleneboende" ItemText="Bor pasienten alene?" ItemHelp="Definisjon: Vanligvis ikke andre personer over 10 år i huset, ingen som er i stand til å kontakte hjelp i en akuttsituasjon, eks. alvorlig føling/hypoglykemi, lårhalsbrudd, slag etc." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem FormItemId="11008" OrderNumber="21" ItemHeader="Aleneboende" ItemText="Bor pasienten alene?" ItemHelp="Definisjon: Vanligvis ikke andre personer over 10 år i huset, ingen som er i stand til å kontakte hjelp i en akuttsituasjon, eks. alvorlig føling/hypoglykemi, lårhalsbrudd, slag etc." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           
           <Answer AnswerId="20851" OrderNumber="1" OptionText="Ja" VerboseText="Ingen andre voksne i huset vanligvis." ShortCode="J"/>
           
@@ -257,7 +305,7 @@
       
       <Item ItemId="3985" ItemType="1" VarName="ANTALL_BARN" LoincScale="QN" DisplayFormat="">
         
-        <FormItem FormItemId="2428" OrderNumber="19" ItemText="Barn" ItemHelp="" MinExpression="0" MaxExpression="15" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem FormItemId="11006" OrderNumber="22" ItemText="Barn" ItemHelp="" MinExpression="0" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           
           <Answer/>
         
@@ -267,11 +315,11 @@
     
     </Page>
     
-    <Page PageId="804" PageNumber="7" PageTitle="Førerkort">
+    <Page PageId="3123" PageNumber="12" PageTitle="Førerkort">
       
       <Item ItemId="4047" ItemType="2" VarName="FORERKORT_ABT" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="2520" OrderNumber="20" ItemText="Førerkort klasse A, B og/eller T" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem FormItemId="11009" OrderNumber="23" ItemText="Førerkort klasse A, B og/eller T" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           
           <Answer AnswerId="21179" OrderNumber="1" OptionText="Ja" VerboseText="Har førerkort." ShortCode="J"/>
           
@@ -285,11 +333,23 @@
     
     </Page>
     
-    <Page PageId="805" PageNumber="8" PageTitle="Utvidet førerkort*">
+    <Page PageId="3124" PageNumber="13" PageTitle="Utvidet førerkort*">
+      
+      <Item ItemId="9349" ItemType="2" VarName="VAR9349" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="16554" OrderNumber="24" ItemText="Gitt muntlig advarsel om førerkort" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          
+          <Answer AnswerId="51332" OrderNumber="1" OptionText="Ja" VerboseText="Muntlig advarsel om førerkort gitt." ShortCode="J"/>
+          
+          <Answer AnswerId="51333" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
+        
+        </FormItem>
+      
+      </Item>
       
       <Item ItemId="4520" ItemType="2" VarName="FORERKORT_UTVIDET" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="3242" OrderNumber="21" ItemText="Utvidet førerkort (klasse C, D eller drosjeseddel)" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem FormItemId="11018" OrderNumber="25" ItemText="Utvidet førerkort (klasse C, D eller drosjeseddel)" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           
           <Answer AnswerId="24004" OrderNumber="1" OptionText="Ja" VerboseText="Utvidet førerkort:" ShortCode="J"/>
           
@@ -301,11 +361,11 @@
     
     </Page>
     
-    <Page PageId="806" PageNumber="9" PageTitle="Førerkort C eller D*">
+    <Page PageId="3125" PageNumber="14" PageTitle="Førerkort C eller D*">
       
       <Item ItemId="4053" ItemType="2" VarName="FORERKORT_C1" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="2530" OrderNumber="22" ItemText="Førerkort klasse C1" ItemHelp="Lett lastebil" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem FormItemId="11014" OrderNumber="26" ItemText="Førerkort klasse C1" ItemHelp="Lett lastebil" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           
           <Answer AnswerId="21234" OrderNumber="1" OptionText="Ja" VerboseText="C1" ShortCode="J"/>
           
@@ -319,7 +379,7 @@
       
       <Item ItemId="4048" ItemType="2" VarName="FORERKORT_C" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="2522" OrderNumber="23" ItemText="Førerkort klasse C" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem FormItemId="11010" OrderNumber="27" ItemText="Førerkort klasse C" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           
           <Answer AnswerId="21182" OrderNumber="1" OptionText="Ja" VerboseText="C" ShortCode="J"/>
           
@@ -333,7 +393,7 @@
       
       <Item ItemId="4236" ItemType="2" VarName="FORERKORT_D1" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="2883" OrderNumber="24" ItemText="Førerkort klasse D1" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem FormItemId="11017" OrderNumber="28" ItemText="Førerkort klasse D1" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           
           <Answer AnswerId="22847" OrderNumber="1" OptionText="Ja" VerboseText="D1" ShortCode="J"/>
           
@@ -347,7 +407,7 @@
       
       <Item ItemId="4052" ItemType="2" VarName="FORERKORT_D" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="2528" OrderNumber="25" ItemText="Førerkort klasse D" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem FormItemId="11013" OrderNumber="29" ItemText="Førerkort klasse D" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           
           <Answer AnswerId="21225" OrderNumber="1" OptionText="Ja" VerboseText="D" ShortCode="J"/>
           
@@ -361,11 +421,11 @@
     
     </Page>
     
-    <Page PageId="807" PageNumber="10" PageTitle="Drosjeseddel*">
+    <Page PageId="3126" PageNumber="15" PageTitle="Drosjeseddel*">
       
       <Item ItemId="4049" ItemType="2" VarName="FORERKORT_DROSJE" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="2524" OrderNumber="26" ItemText="Drosjeseddel" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem FormItemId="11011" OrderNumber="30" ItemText="Drosjeseddel" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           
           <Answer AnswerId="21191" OrderNumber="1" OptionText="Ja" VerboseText="Drosjeseddel." ShortCode="J"/>
           
@@ -379,11 +439,11 @@
     
     </Page>
     
-    <Page PageId="808" PageNumber="11" PageTitle="Komorbiditet">
+    <Page PageId="3127" PageNumber="16" PageTitle="Komorbiditet">
       
       <Item ItemId="3393" ItemType="2" VarName="ICD10_F50" LoincScale="ORD" DisplayFormat="Vertical">
         
-        <FormItem FormItemId="1732" OrderNumber="27" ItemText="Spiseforstyrrelser" ItemHelp="i voksen alder" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="1" Optional="1">
+        <FormItem FormItemId="10995" OrderNumber="31" ItemText="Spiseforstyrrelser" ItemHelp="i voksen alder" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="1" Optional="1">
           
           <Answer AnswerId="16881" OrderNumber="1" OptionText="Ja" VerboseText="Obs spiseforstyrrelse." ShortCode="J" ICD10="F50"/>
           
@@ -397,11 +457,11 @@
     
     </Page>
     
-    <Page PageId="809" PageNumber="12" PageTitle="Kommentar spiseforstyrrelser*">
+    <Page PageId="3128" PageNumber="17" PageTitle="Kommentar spiseforstyrrelser*">
       
       <Item ItemId="3394" ItemType="4" VarName="DP_SPISE_TEKST" LoincScale="NAR" DisplayFormat="" Multiline="1">
         
-        <FormItem FormItemId="1734" OrderNumber="28" ItemText="Kommentar" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="1" Optional="0">
+        <FormItem FormItemId="10996" OrderNumber="32" ItemText="Kommentar" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           
           <Answer/>
         
@@ -411,11 +471,11 @@
     
     </Page>
     
-    <Page PageId="810" PageNumber="13" PageTitle="Komorbiditet*">
+    <Page PageId="3129" PageNumber="18" PageTitle="Komorbiditet*">
       
       <Item ItemId="3408" ItemType="2" VarName="DP_THYROIDEA" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="1767" OrderNumber="29" ItemText="Tyreoideasykdom" ItemHelp="Har hatt noen gang" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="1" Optional="1">
+        <FormItem FormItemId="10997" OrderNumber="33" ItemText="Tyreoideasykdom" ItemHelp="Har hatt noen gang" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           
           <Answer AnswerId="16950" OrderNumber="1" OptionText="Ja" VerboseText="Obs thyroidea." ShortCode="J"/>
           
@@ -427,23 +487,9 @@
       
       </Item>
       
-      <Item ItemId="3409" ItemType="2" VarName="DP_BINYRER" LoincScale="ORD" DisplayFormat="Vertical">
-        
-        <FormItem FormItemId="1769" OrderNumber="30" ItemText="Binyresvikt" ItemHelp="Har hatt noen gang" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="1">
-          
-          <Answer AnswerId="16956" OrderNumber="1" OptionText="Ja" VerboseText="Binyresvikt." ShortCode="J"/>
-          
-          <Answer AnswerId="16957" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          
-          <Answer AnswerId="16958" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
-        
-        </FormItem>
-      
-      </Item>
-      
       <Item ItemId="3410" ItemType="2" VarName="ICD10_K900" LoincScale="ORD" DisplayFormat="">
         
-        <FormItem FormItemId="1771" OrderNumber="31" ItemText="Cøliaki" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem FormItemId="10999" OrderNumber="34" ItemText="Cøliaki" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="1" Optional="1">
           
           <Answer AnswerId="16962" OrderNumber="1" OptionText="Ja" VerboseText="Cøliaki." ShortCode="J" ICD10="K900"/>
           
@@ -454,28 +500,14 @@
         </FormItem>
       
       </Item>
-      
-      <Item ItemId="3411" ItemType="2" VarName="ICD10_L80" LoincScale="ORD" DisplayFormat="">
-        
-        <FormItem FormItemId="1773" OrderNumber="32" ItemText="Vitiligo" ItemHelp="Har hatt noen gang" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="1">
-          
-          <Answer AnswerId="16968" OrderNumber="1" OptionText="Ja" VerboseText="Vitiligo." ShortCode="J" ICD10="L80"/>
-          
-          <Answer AnswerId="16969" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          
-          <Answer AnswerId="16970" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
-        
-        </FormItem>
-      
-      </Item>
     
     </Page>
     
-    <Page PageId="811" PageNumber="14" PageTitle="Komorbiditet*">
+    <Page PageId="3130" PageNumber="19" PageTitle="Komorbiditet*">
       
       <Item ItemId="3392" ItemType="4" VarName="DP_DIAGNOSER_TEKST" LoincScale="NAR" DisplayFormat="" Multiline="1">
         
-        <FormItem FormItemId="1730" OrderNumber="33" ItemHeader="Kronisk sykdom*" ItemText="Andre kroniske sykdommer" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem FormItemId="10994" OrderNumber="35" ItemHeader="Kronisk sykdom*" ItemText="Andre kroniske sykdommer" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="1">
           
           <Answer/>
         
@@ -489,29 +521,41 @@
   
   <Actions>
     
+    <PageAction MasterId="4204">
+      
+      <Activate EnumVal="1" PageConditionId="4620" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+    
+    </PageAction>
+    
     <PageAction MasterId="3342">
       
-      <Activate EnumVal="1" PageConditionId="1929" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3245" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
     
     </PageAction>
     
     <PageAction MasterId="4047">
       
-      <Activate EnumVal="1" PageConditionId="1122" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3243" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
     
     </PageAction>
     
     <PageAction MasterId="4520">
       
-      <Activate EnumVal="1" PageConditionId="903" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3241" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
       
-      <Activate EnumVal="1" PageConditionId="904" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3242" PageNumber="15" ComparisonType="1" ComparisonDescription="Equal to"/>
+    
+    </PageAction>
+    
+    <PageAction MasterId="3393">
+      
+      <Activate EnumVal="1" PageConditionId="4729" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
     
     </PageAction>
     
     <PageAction MasterId="3196">
       
-      <Activate EnumVal="1" PageConditionId="1915" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3244" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
     
     </PageAction>
   

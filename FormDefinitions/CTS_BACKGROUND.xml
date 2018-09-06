@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  
+  <Form FormId="841" FormName="CTS_BACKGROUND" FormTitle="CTS Preop pasientskjema">
+    
+    <Page PageId="6092" PageNumber="1" PageTitle="Vitale mål">
+      
+      <Item ItemId="4255" ItemType="2" VarName="SEX" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19605" OrderNumber="1" ItemText="Kjønn" ItemHelp="Skjult" Expression="Patient.GenderId" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="1">
+          
+          <Answer AnswerId="22860" OrderNumber="1" OptionText="Mann" ShortCode="M"/>
+          
+          <Answer AnswerId="22861" OrderNumber="2" OptionText="Kvinne" ShortCode="K"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6377" ItemType="2" VarName="ChildBearingAge" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19620" OrderNumber="2" ItemText="Kvinne i fertil alder" ItemHelp="" Expression="2-ISNULL(Patient.GenderId-2)*ISPOS(Patient.Age-15)*ISNEG(Patient.Age-55)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+          
+          <Answer AnswerId="33731" OrderNumber="1" OptionText="Ja"/>
+          
+          <Answer AnswerId="33732" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        
+        <FormItem FormItemId="19600" OrderNumber="3" ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
+        
+        <FormItem FormItemId="19599" OrderNumber="4" ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
+        
+        <FormItem FormItemId="19601" OrderNumber="5" ItemText="BMI" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6093" PageNumber="2" PageTitle="Bakgrunn">
+      
+      <Item ItemId="3983" ItemType="4" VarName="YRKE" LoincScale="NAR" DisplayFormat="" Multiline="0">
+        
+        <FormItem FormItemId="19603" OrderNumber="6" ItemHeader="Yrke*" ItemText="Pasientens yrke og evt. arbeidssted" ItemHelp="F.eks: Pensjonert fisker, renholder på sykehuset." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="7755" ItemType="2" VarName="VAR7755" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19628" OrderNumber="7" ItemText="Yrkesklasse" ItemHelp="Basert på ISCO-08 yrkesklassifisering" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="41518" OrderNumber="0" OptionText="Mililtære yrker og uoppgitt"/>
+          
+          <Answer AnswerId="41509" OrderNumber="1" OptionText="Leder"/>
+          
+          <Answer AnswerId="41510" OrderNumber="2" OptionText="Akademisk yrke"/>
+          
+          <Answer AnswerId="41511" OrderNumber="3" OptionText="Høyskoleyrke"/>
+          
+          <Answer AnswerId="41512" OrderNumber="4" OptionText="Kontoryrke"/>
+          
+          <Answer AnswerId="41513" OrderNumber="5" OptionText="Salgs- og serviceyrke"/>
+          
+          <Answer AnswerId="41514" OrderNumber="6" OptionText="Bonde/fisker e.l."/>
+          
+          <Answer AnswerId="41515" OrderNumber="7" OptionText="Håndverker"/>
+          
+          <Answer AnswerId="41516" OrderNumber="8" OptionText="Prosess- og maskinoperatører, transportarbeider el.l."/>
+          
+          <Answer AnswerId="41517" OrderNumber="9" OptionText="Renholder. hjelpearbeider el.l."/>
+          
+          <Answer AnswerId="41529" OrderNumber="99" OptionText="Flere yrker"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6094" PageNumber="3" PageTitle="Komorbiditet">
+      
+      <Item ItemId="7763" ItemType="2" VarName="ICD10.M069" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19633" OrderNumber="8" ItemText="Revmatoid artritt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="41610" OrderNumber="1" OptionText="Ja" VerboseText="Revmatoid artritt." ShortCode="J" ICD10="M069"/>
+          
+          <Answer AnswerId="41611" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="41612" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="7765" ItemType="2" VarName="ICD10.M109" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19634" OrderNumber="9" ItemText="Urinsyregikt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="41626" OrderNumber="1" OptionText="Ja" VerboseText="Urinsyregikt." ShortCode="J" ICD10="M109"/>
+          
+          <Answer AnswerId="41627" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="41628" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6812" ItemType="2" VarName="ICD10.I10" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19621" OrderNumber="10" ItemText="Hypertensjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="37361" OrderNumber="1" OptionText="Ja" VerboseText="Hypertensjon." ShortCode="J" ICD10="I1[01235]"/>
+          
+          <Answer AnswerId="37362" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="37363" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6115" PageNumber="4" PageTitle="Diabetes*">
+      
+      <Item ItemId="6814" ItemType="2" VarName="ICD10.E14" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19622" OrderNumber="11" ItemText="Diabetes mellitus" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="37367" OrderNumber="1" OptionText="Ja" ShortCode="J" ICD10="E14"/>
+          
+          <Answer AnswerId="37368" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="37369" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6116" PageNumber="5" PageTitle="Diabetes type*">
+      
+      <Item ItemId="3196" ItemType="2" VarName="NDV_TYPE" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19598" OrderNumber="12" ItemText="Diabetes type" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="15986" OrderNumber="1" OptionText="Type 1 (inkl. LADA)" VerboseText="Type 1 diabetes." ShortCode="1" ICD10="E10"/>
+          
+          <Answer AnswerId="15987" OrderNumber="2" OptionText="Type 2" VerboseText="Type 2 diabetes." ShortCode="2" ICD10="E11"/>
+          
+          <Answer AnswerId="15988" OrderNumber="3" OptionText="Annen diabetestype (inkl. pankreatitt, MODY)." ShortCode="A"/>
+          
+          <Answer AnswerId="16137" OrderNumber="4" OptionText="er ikke avklart." ShortCode="U" ICD10="E14"/>
+          
+          <Answer AnswerId="40942" OrderNumber="5" OptionText="Svangerskapsdiabetes." ShortCode="S" ICD10="O24"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6095" PageNumber="6" PageTitle="Komorbidtet etter diabetes*">
+      
+      <Item ItemId="7767" ItemType="2" VarName="ICD10.E039" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19636" OrderNumber="13" ItemText="Hypothyreose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="41642" OrderNumber="1" OptionText="Ja" VerboseText="Hypothyreose." ShortCode="J" ICD10="E039"/>
+          
+          <Answer AnswerId="41643" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="41644" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="7766" ItemType="2" VarName="ICD10.N19" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19635" OrderNumber="14" ItemText="Nyresvikt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="41634" OrderNumber="1" OptionText="Ja" VerboseText="Nyresvikt." ShortCode="J" ICD10="N19"/>
+          
+          <Answer AnswerId="41635" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="41636" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="5741" ItemType="2" VarName="ICD10_E220" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19614" OrderNumber="15" ItemHeader="Akromegali" ItemText="Har pasienten veksthormonproduserende hypofysesvulst/akromegali?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="30677" OrderNumber="1" OptionText="Ja" VerboseText="Akromegali." ShortCode="J" ICD10="E220"/>
+          
+          <Answer AnswerId="30678" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="30679" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6096" PageNumber="7" PageTitle="Graviditet*">
+      
+      <Item ItemId="7768" ItemType="2" VarName="ICD10.Z33" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19637" OrderNumber="16" ItemText="Graviditet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="41650" OrderNumber="1" OptionText="Ja" VerboseText="Er gravid." ShortCode="J" ICD10="Z33"/>
+          
+          <Answer AnswerId="41651" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="41652" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6097" PageNumber="8" PageTitle="Medikamenter">
+      
+      <Item ItemId="3336" ItemType="2" VarName="ATC_B01AC" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19602" OrderNumber="17" ItemHeader="Bruker platehemmer" ItemText="Bruker pasienten platehemmer nå?" ItemHelp="Acetylsalicylsyre, Albyl-E&amp;reg;, Asasantin Retard&amp;reg;, Persantin&amp;reg;, Plavix&amp;reg; Ticlid&amp;reg;, evt. andre i ATC gruppe B01AC." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="16545" OrderNumber="1" OptionText="Ja" VerboseText="Bruker platehemmer." ShortCode="J"/>
+          
+          <Answer AnswerId="16546" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="16547" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="4003" ItemType="2" VarName="ATC_B01AA" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19604" OrderNumber="18" ItemText="Antikoagulasjonsbehandling" ItemHelp="Marevan&amp;reg;, Warfarin, Pradaxa&amp;reg;, Eliquis&amp;reg;, Xarelto&amp;reg;" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="20865" OrderNumber="1" OptionText="Ja" VerboseText="Antikoagulert." ShortCode="J"/>
+          
+          <Answer AnswerId="20866" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="20867" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="10031" ItemType="2" VarName="VAR10031" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19640" OrderNumber="19" ItemText="Andre faste medisiner" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="55731" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          
+          <Answer AnswerId="55732" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="55733" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6098" PageNumber="9" PageTitle="Andre faste medisiner*">
+      
+      <Item ItemId="10032" ItemType="4" VarName="VAR10032" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        
+        <FormItem FormItemId="19641" OrderNumber="20" ItemHeader="Hvilke*" ItemText="Hvilke andre faste medisiner?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6099" PageNumber="10" PageTitle="Aktuelt">
+      
+      <Item ItemId="10054" ItemType="2" VarName="VAR10054" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19645" OrderNumber="21" ItemHeader="Side med plager" ItemText="Hvilken hånd har du plager fra?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="55948" OrderNumber="1" OptionText="Høyre hånd" VerboseText="Plager fra høyre hånd." ShortCode="H"/>
+          
+          <Answer AnswerId="55949" OrderNumber="2" OptionText="Venstre hånd" VerboseText="Plager fra venstre hånd." ShortCode="V"/>
+          
+          <Answer AnswerId="55950" OrderNumber="3" OptionText="Begge hender" VerboseText="Plager fra begge hender." ShortCode="B"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="5690" ItemType="2" VarName="VAR5690" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19606" OrderNumber="22" ItemHeader="Tidligere operasjon" ItemText="Er du operert tidligere for karpaltunnelsyndrom?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="30363" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="30364" OrderNumber="1" OptionText="Høyre hånd" VerboseText="Tidligere operert høyre hånd." ShortCode="H"/>
+          
+          <Answer AnswerId="30365" OrderNumber="2" OptionText="Venstre hånd" VerboseText="Tidligere operert venstre hånd." ShortCode="V"/>
+          
+          <Answer AnswerId="30366" OrderNumber="3" OptionText="Begge hender" VerboseText="Tidligere operert begge hender." ShortCode="B"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6107" PageNumber="11" PageTitle="Tidligere operasjoner for CTS*">
+      
+      <Item ItemId="10053" ItemType="4" VarName="VAR10053" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        
+        <FormItem FormItemId="19642" OrderNumber="23" ItemHeader="Hvor og når*" ItemText="Hvor or når ble du operert for karpaltunnelsyndrom?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6110" PageNumber="12" PageTitle="Symptomvarighet*">
+      
+      <Item ItemId="5847" ItemType="1" VarName="CTS_MONTHS" LoincScale="QN" UnitStr="mnd" DisplayFormat="">
+        
+        <FormItem FormItemId="19615" OrderNumber="24" ItemHeader="Symptomvarighet" ItemText="Hvor mange måneder har symptomene vart (mnd)" ItemHelp="Aktuell side, beste estimat." MinExpression="0.5" MaxExpression="120" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="5691" ItemType="2" VarName="VAR5691" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="19607" OrderNumber="25" ItemText="Dominant hånd" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="30367" OrderNumber="1" OptionText="Høyre" VerboseText="Høyrehendt." ShortCode="H"/>
+          
+          <Answer AnswerId="30368" OrderNumber="2" OptionText="Venstre" VerboseText="Venstrehendt." ShortCode="V"/>
+          
+          <Answer AnswerId="30369" OrderNumber="3" OptionText="Ingen" VerboseText="Ingen dominant hånd." ShortCode="X"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6105" PageNumber="13" PageTitle="Påminnelse*">
+      
+      <Item ItemId="9903" ItemType="8" VarName="VAR9903" LoincScale="MSG" DisplayFormat="">
+        
+        <FormItem FormItemId="19639" OrderNumber="26" ItemHeader="Husk Kvikk-DASH" ItemText="Husk at pasienten også skal fylle ut skjemaet Kvikk - DASH før operasjon." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+  
+  </Form>
+  
+  <Actions>
+    
+    <PageAction MasterId="6814">
+      
+      <Activate EnumVal="1" PageConditionId="5211" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+    
+    </PageAction>
+    
+    <PageAction MasterId="6377">
+      
+      <Activate EnumVal="1" PageConditionId="5212" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+    
+    </PageAction>
+    
+    <PageAction MasterId="10031">
+      
+      <Activate EnumVal="1" PageConditionId="5213" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+    
+    </PageAction>
+    
+    <PageAction MasterId="5690">
+      
+      <Activate EnumVal="1" PageConditionId="5219" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
+      
+      <Activate EnumVal="2" PageConditionId="5220" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
+      
+      <Activate EnumVal="3" PageConditionId="5221" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
+    
+    </PageAction>
+  
+  </Actions>
+
+</StudyForm>

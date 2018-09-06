@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  
+  <Form FormId="657" FormName="BAR_DEATH" FormTitle="X. Death">
+    
+    <Page PageId="3186" PageNumber="1" PageTitle="Date and cause of death">
+      
+      <Item ItemId="8094" ItemType="5" VarName="BarDeathDate" LoincScale="DATE" DisplayFormat="">
+        
+        <FormItem FormItemId="11266" OrderNumber="1" ItemText="Date of death" ItemHelp="Must be same as form date, move form if necessary." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="4951" PageNumber="2" PageTitle="Rating scales*">
+      
+      <Item ItemId="6273" ItemType="2" VarName="EGOS" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="11250" OrderNumber="2" ItemHeader="GOS-E" ItemText="Extended Glasgow Outcome Scale" ItemHelp="" Expression="ISPOS(BarDeathDate)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          
+          <Answer AnswerId="33064" OrderNumber="1" OptionText="Dead"/>
+          
+          <Answer AnswerId="33065" OrderNumber="2" OptionText="Vegetative state"/>
+          
+          <Answer AnswerId="33066" OrderNumber="3" OptionText="Lower severe disability"/>
+          
+          <Answer AnswerId="33067" OrderNumber="4" OptionText="Upper severe disability"/>
+          
+          <Answer AnswerId="33068" OrderNumber="5" OptionText="Lower moderate disability"/>
+          
+          <Answer AnswerId="33069" OrderNumber="6" OptionText="Upper moderate disability"/>
+          
+          <Answer AnswerId="33070" OrderNumber="7" OptionText="Lower good recovery"/>
+          
+          <Answer AnswerId="33071" OrderNumber="8" OptionText="Upper good recovery"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6369" ItemType="2" VarName="BarSurvival" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="11257" OrderNumber="3" ItemText="Survival" ItemHelp="" Expression="ISNULL(EGOS-1) + ISNULL(EGOS-2)*2 + ISPOS(EGOS-2)*3" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          
+          <Answer AnswerId="33685" OrderNumber="1" OptionText="Dead"/>
+          
+          <Answer AnswerId="33686" OrderNumber="2" OptionText="Vegetative"/>
+          
+          <Answer AnswerId="33687" OrderNumber="3" OptionText="Yes"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="8095" ItemType="2" VarName="BarRankinDeath" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="11267" OrderNumber="4" ItemText="Modified Rankin Scale (Death)" ItemHelp="" Expression="7*ISNULL(EGOS-1)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          
+          <Answer AnswerId="43263" OrderNumber="0" OptionText="No symptoms at all"/>
+          
+          <Answer AnswerId="43264" OrderNumber="1" OptionText="No significant disability despite symptoms; able to carry out all usual duties and activities."/>
+          
+          <Answer AnswerId="43265" OrderNumber="2" OptionText="Slight disability; unable to carry out all previous activites, but able to look after own affairs without assistance."/>
+          
+          <Answer AnswerId="43266" OrderNumber="3" OptionText="Moderate disability; requiring some help, but able to walk without assistance."/>
+          
+          <Answer AnswerId="43267" OrderNumber="4" OptionText="Moderately severe disability; unable to walk without assistance and unable to attend to own bodily needs without assistance."/>
+          
+          <Answer AnswerId="43268" OrderNumber="5" OptionText="Severe disability; bedridden, incontinent and requiring constant nursing care and attention."/>
+          
+          <Answer AnswerId="43269" OrderNumber="6" OptionText="Intubated/sedate; unable to classify"/>
+          
+          <Answer AnswerId="43270" OrderNumber="7" OptionText="Dead"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="4949" PageNumber="3" PageTitle="Cause of death*">
+      
+      <Item ItemId="6373" ItemType="2" VarName="BarCauseOfDeath" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="11261" OrderNumber="5" ItemText="Cause of death" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          
+          <Answer AnswerId="33719" OrderNumber="1" OptionText="Primary SAH"/>
+          
+          <Answer AnswerId="33720" OrderNumber="2" OptionText="Rebleeding before treatment"/>
+          
+          <Answer AnswerId="33721" OrderNumber="3" OptionText="Rebleeding after treatment"/>
+          
+          <Answer AnswerId="33722" OrderNumber="4" OptionText="SAH, another aneurysm rupture"/>
+          
+          <Answer AnswerId="33723" OrderNumber="5" OptionText="Brain infarction, main vessel occluded"/>
+          
+          <Answer AnswerId="33724" OrderNumber="6" OptionText="Brain infarction, spasm"/>
+          
+          <Answer AnswerId="33725" OrderNumber="7" OptionText="Post-op hematoma"/>
+          
+          <Answer AnswerId="33726" OrderNumber="8" OptionText="Other"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="4950" PageNumber="4" PageTitle="Cause of death comment*">
+      
+      <Item ItemId="6374" ItemType="4" VarName="VAR6374" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        
+        <FormItem FormItemId="11262" OrderNumber="6" ItemText="Comment" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="3191" PageNumber="5" PageTitle="Location at death">
+      
+      <Item ItemId="8096" ItemType="2" VarName="VAR8096" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="11268" OrderNumber="7" ItemHeader="Location" ItemText="Where did the patient die?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          
+          <Answer AnswerId="43281" OrderNumber="1" OptionText="Home"/>
+          
+          <Answer AnswerId="43282" OrderNumber="2" OptionText="Local hospital"/>
+          
+          <Answer AnswerId="43283" OrderNumber="3" OptionText="Rehabilitation center"/>
+          
+          <Answer AnswerId="50183" OrderNumber="4" OptionText="Haukeland SH"/>
+          
+          <Answer AnswerId="43284" OrderNumber="8" OptionText="Other"/>
+          
+          <Answer AnswerId="43289" OrderNumber="9" OptionText="Unknown"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="8097" ItemType="4" VarName="VAR8097" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        
+        <FormItem FormItemId="11269" OrderNumber="8" ItemText="Comment" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+  
+  </Form>
+  
+  <Actions>
+    
+    <PageAction MasterId="6273">
+      
+      <Activate EnumVal="1" PageConditionId="3319" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+      
+      <Activate EnumVal="1" PageConditionId="3324" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+    
+    </PageAction>
+  
+  </Actions>
+
+</StudyForm>

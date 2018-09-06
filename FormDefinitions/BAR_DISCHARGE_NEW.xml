@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  
+  <Form FormId="668" FormName="BAR_DISCHARGE_NEW" FormTitle="F. Discharge (New Admission)">
+    
+    <Page PageId="3280" PageNumber="1" PageTitle="Discharge summary">
+      
+      <Item ItemId="6272" ItemType="5" VarName="BarDepartureDate" LoincScale="DATE" DisplayFormat="">
+        
+        <FormItem FormItemId="11559" OrderNumber="1" ItemText="Date of departure" ItemHelp="Move form on timeline to get correct date." Expression="TRUNC(FORM.Date)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6371" ItemType="2" VarName="BarDischargedTo" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="11560" OrderNumber="2" ItemText="Discharged to" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="33715" OrderNumber="1" OptionText="Home"/>
+          
+          <Answer AnswerId="33716" OrderNumber="2" OptionText="Local hospital"/>
+          
+          <Answer AnswerId="33717" OrderNumber="3" OptionText="Rehabilitation center"/>
+          
+          <Answer AnswerId="33718" OrderNumber="4" OptionText="Other"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="3281" PageNumber="2" PageTitle="Where to*">
+      
+      <Item ItemId="6372" ItemType="4" VarName="BarDischargeLocation" LoincScale="NAR" DisplayFormat="" Multiline="0">
+        
+        <FormItem FormItemId="11561" OrderNumber="3" ItemText="Where" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+  
+  </Form>
+  
+  <Actions>
+    
+    <PageAction MasterId="6371">
+      
+      <Activate EnumVal="1" PageConditionId="3391" PageNumber="2" ComparisonType="6" ComparisonDescription="Not Equal"/>
+    
+    </PageAction>
+  
+  </Actions>
+
+</StudyForm>

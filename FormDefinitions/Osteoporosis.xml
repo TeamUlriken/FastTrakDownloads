@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  
+  <Form FormId="640" FormName="Osteoporosis" FormTitle="Osteoporose">
+    
+    <Page PageId="2979" PageNumber="1" PageTitle="Kjønn*" PageIntroduction="Siden skal alltid være skjult">
+      
+      <Item ItemId="4255" ItemType="2" VarName="SEX" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="10668" OrderNumber="1" ItemText="Kjønn" ItemHelp="Skjult" Expression="Patient.GenderId" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="1">
+          
+          <Answer AnswerId="22860" OrderNumber="1" OptionText="Mann" ShortCode="M"/>
+          
+          <Answer AnswerId="22861" OrderNumber="2" OptionText="Kvinne" ShortCode="K"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6377" ItemType="2" VarName="ChildBearingAge" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="10669" OrderNumber="2" ItemText="Kvinne i fertil alder" ItemHelp="" Expression="2-ISNULL(Patient.GenderId-2)*ISPOS(Patient.Age-15)*ISNEG(Patient.Age-55)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+          
+          <Answer AnswerId="33731" OrderNumber="1" OptionText="Ja"/>
+          
+          <Answer AnswerId="33732" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="2988" PageNumber="2" PageTitle="Aktuelt">
+      
+      <Item ItemId="4237" ItemType="4" VarName="DP_PROBLEMSTILLING" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        
+        <FormItem FormItemId="10670" OrderNumber="3" ItemHeader="Aktuelt" ItemText="Dagens problemstilling" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="4125" PageNumber="3" PageTitle="Bakgrunn">
+      
+      <Item ItemId="3392" ItemType="4" VarName="DP_DIAGNOSER_TEKST" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        
+        <FormItem FormItemId="10671" OrderNumber="4" ItemHeader="Kronisk sykdom*" ItemText="Andre kroniske sykdommer" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="3227" ItemType="2" VarName="NDV_SMOKING" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="11165" OrderNumber="5" ItemText="Røykestatus" ItemHelp="Velg Dagligrøyker hvis sluttet for mindre enn 3 mnd siden." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          
+          <Answer AnswerId="16138" OrderNumber="1" OptionText="Aldri røykt daglig."/>
+          
+          <Answer AnswerId="16139" OrderNumber="2" OptionText="Dagligrøyker."/>
+          
+          <Answer AnswerId="16140" OrderNumber="3" OptionText="Eks-dagligrøyker."/>
+          
+          <Answer AnswerId="16141" OrderNumber="4" OptionText="Røykestatus ukjent.*"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6326" PageNumber="4" PageTitle="">
+      
+      <Item ItemId="6318" ItemType="2" VarName="ICD10_E283" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="11166" OrderNumber="6" ItemText="Primær ovarialsvikt" ItemHelp="Amenore med forhøyede gonadotropin-nivåer, Svarer til ICD-10 E28.3." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          
+          <Answer AnswerId="33432" OrderNumber="1" OptionText="Ja" VerboseText="Primær ovarialsvikt." ShortCode="J" ICD10="E283"/>
+          
+          <Answer AnswerId="33433" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="36170" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig primær ovarialsvikt." ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="6334" ItemType="1" VarName="MenopauseAge" LoincScale="QN" UnitStr="år" DisplayFormat="">
+        
+        <FormItem FormItemId="11167" OrderNumber="7" ItemText="Alder ved menopause (år)" ItemHelp="" MinExpression="15" MaxExpression="TRUNC(Patient.Age)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="2989" PageNumber="5" PageTitle="Brudd">
+      
+      <Item ItemId="7994" ItemType="2" VarName="VAR7994" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="10693" OrderNumber="8" ItemText="Patologisk brudd" ItemHelp="Noensinne hatt patologisk brudd" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          
+          <Answer AnswerId="42604" OrderNumber="1" OptionText="Ja" VerboseText="Har hatt patologisk brudd." ShortCode="J"/>
+          
+          <Answer AnswerId="42605" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
+          
+          <Answer AnswerId="42606" OrderNumber="3" OptionText="Usikker*" ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6351" PageNumber="6" PageTitle="">
+      
+      <Item ItemId="7995" ItemType="1" VarName="VAR7995" LoincScale="QN" DisplayFormat="">
+        
+        <FormItem FormItemId="10694" OrderNumber="9" ItemText="Antall patologiske brudd" ItemHelp="" MinExpression="0" MaxExpression="99" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="7996" ItemType="2" VarName="VAR7996" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="10695" OrderNumber="10" ItemText="Kompresjonsfraktur i ryggen" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          
+          <Answer AnswerId="42610" OrderNumber="1" OptionText="Ja"/>
+          
+          <Answer AnswerId="42611" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="42612" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6365" PageNumber="7" PageTitle="">
+      
+      <Item ItemId="7997" ItemType="4" VarName="VAR7997" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        
+        <FormItem FormItemId="10696" OrderNumber="11" ItemText="Beskrivelse av kompresjonsbrudd" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6387" PageNumber="8" PageTitle="">
+      
+      <Item ItemId="7998" ItemType="2" VarName="VAR7998" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="10697" OrderNumber="12" ItemText="Brudd i rørknokler" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          
+          <Answer AnswerId="42613" OrderNumber="1" OptionText="Ja"/>
+          
+          <Answer AnswerId="42614" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="42615" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6402" PageNumber="9" PageTitle="">
+      
+      <Item ItemId="7999" ItemType="4" VarName="VAR7999" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        
+        <FormItem FormItemId="10698" OrderNumber="13" ItemText="Beskrivelse av brudd i rørknokler" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="4126" PageNumber="10" PageTitle="Kliniske funn">
+      
+      <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        
+        <FormItem FormItemId="13676" OrderNumber="14" ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
+        
+        <FormItem FormItemId="13677" OrderNumber="15" ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
+        
+        <FormItem FormItemId="13678" OrderNumber="16" ItemText="BMI" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="3230" ItemType="1" VarName="SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+        
+        <FormItem FormItemId="13679" OrderNumber="17" ItemText="Systolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" FormatStr="Blodtrykk %s">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="3231" ItemType="1" VarName="DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+        
+        <FormItem FormItemId="13680" OrderNumber="18" ItemText="Diastolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" FormatStr="¬/%s mmHg.">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="2976" PageNumber="11" PageTitle="Supplerende undersøkelser">
+      
+      <Item ItemId="6993" ItemType="2" VarName="VAR6993" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="10672" OrderNumber="19" ItemText="Bentetthetsmåling" ItemHelp="" MinExpression="" MaxExpression="" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          
+          <Answer AnswerId="38674" OrderNumber="1" OptionText="Ja"/>
+          
+          <Answer AnswerId="38675" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="38676" OrderNumber="3" OptionText="Ukjent"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="2978" PageNumber="12" PageTitle="Resultater beintetthetsmåling*">
+      
+      <Item ItemId="6994" ItemType="5" VarName="VAR6994" LoincScale="DATE" DisplayFormat="">
+        
+        <FormItem FormItemId="10673" OrderNumber="20" ItemText="Bentetthetsmåling utført" ItemHelp="Dato for siste måling." MinExpression="DOB" MaxExpression="Form.Date" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="7037" ItemType="1" VarName="VAR7037" LoincScale="QN" DisplayFormat="">
+        
+        <FormItem FormItemId="10674" OrderNumber="21" ItemText="T-score rygg" ItemHelp="L2-L4" MinExpression="-5" MaxExpression="5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="7038" ItemType="1" VarName="VAR7038" LoincScale="QN" DisplayFormat="">
+        
+        <FormItem FormItemId="10675" OrderNumber="22" ItemText="T-score hofte" ItemHelp="Dårligste side" MinExpression="-5" MaxExpression="5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="2977" PageNumber="13" PageTitle="Oppsummering">
+      
+      <Item ItemId="7510" ItemType="2" VarName="VAR7510" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="10699" OrderNumber="23" ItemText="Osteoporose" ItemHelp="Definert som BMD T-Score i rygg eller hofte under -2.5 eller patologisk brudd.  Svarer til ICD-10 koder M80 og M81." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          
+          <Answer AnswerId="40467" OrderNumber="1" OptionText="Ja" VerboseText="Kjent osteoporose." ShortCode="J" ICD10="M8[01]9$"/>
+          
+          <Answer AnswerId="40468" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="40469" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6494" PageNumber="14" PageTitle="">
+      
+      <Item ItemId="8000" ItemType="2" VarName="VAR8000" LoincScale="ORD" DisplayFormat="">
+        
+        <FormItem FormItemId="10700" OrderNumber="24" ItemText="Sekundær osteoporose" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          
+          <Answer AnswerId="42622" OrderNumber="1" OptionText="Ja"/>
+          
+          <Answer AnswerId="42623" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          
+          <Answer AnswerId="42624" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+    
+    <Page PageId="6508" PageNumber="15" PageTitle="">
+      
+      <Item ItemId="4088" ItemType="4" VarName="DP_AVTALER" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        
+        <FormItem FormItemId="10460" OrderNumber="25" ItemHeader="Vurdering" ItemText="Vurdering og plan videre" ItemHelp="Inkludert eventuelle avtaler gjort med pasienten, unntatt timeavtale som er eget punkt." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+      
+      <Item ItemId="4089" ItemType="4" VarName="DP_NESTE_KONTROLL" LoincScale="NAR" DisplayFormat="" Multiline="0">
+        
+        <FormItem FormItemId="10461" OrderNumber="26" ItemHeader="Neste avtale" ItemText="Avtale og evt tidspunkt for neste konsultasjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          
+          <Answer/>
+        
+        </FormItem>
+      
+      </Item>
+    
+    </Page>
+  
+  </Form>
+  
+  <Actions>
+    
+    <PageAction MasterId="4255">
+      
+      <Activate EnumVal="2" PageConditionId="3294" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+    
+    </PageAction>
+    
+    <PageAction MasterId="7994">
+      
+      <Activate EnumVal="1" PageConditionId="3163" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+    
+    </PageAction>
+    
+    <PageAction MasterId="7996">
+      
+      <Activate EnumVal="1" PageConditionId="3162" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+    
+    </PageAction>
+    
+    <PageAction MasterId="7994">
+      
+      <Activate EnumVal="1" PageConditionId="3164" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+    
+    </PageAction>
+    
+    <PageAction MasterId="7998">
+      
+      <Activate EnumVal="1" PageConditionId="3165" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+    
+    </PageAction>
+    
+    <PageAction MasterId="6993">
+      
+      <Activate EnumVal="1" PageConditionId="3158" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+    
+    </PageAction>
+    
+    <PageAction MasterId="7510">
+      
+      <Activate EnumVal="1" PageConditionId="3166" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
+    
+    </PageAction>
+  
+  </Actions>
+
+</StudyForm>
