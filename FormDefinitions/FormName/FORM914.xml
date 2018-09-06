@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="914" FormName="FORM914" FormTitle="Sampling">
+    <Page PageId="9763" PageNumber="1" PageTitle="Clinical Study" PageIntroduction="Clinical Study is selected on the Inclusion form and is shown here for information only.">
+      <Item ItemId="1160" ItemType="2" VarName="VAR1160" LoincScale="ORD">
+        <FormItem FormItemId="23237" OrderNumber="1" ItemText="Clinical Study" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="0">
+          <Answer AnswerId="10466" OrderNumber="1" OptionText="X - Deprecated" ShortCode="NORM"/>
+          <Answer AnswerId="10467" OrderNumber="2" OptionText="Y - Deprecated" ShortCode="D2DV"/>
+          <Answer AnswerId="10468" OrderNumber="3" OptionText="Z - Deprecated" ShortCode="COMP"/>
+          <Answer AnswerId="10469" OrderNumber="4" OptionText="B - Diagnosis of Cushing's syndrome" ShortCode="CUSH"/>
+          <Answer AnswerId="10470" OrderNumber="5" OptionText="B - Monitoring of adrenal insufficiency" ShortCode="ADRE"/>
+          <Answer AnswerId="10471" OrderNumber="6" OptionText="B - Monitoring of CAH" ShortCode="CAHM"/>
+          <Answer AnswerId="10472" OrderNumber="7" OptionText="B - Diagnosis of primary hyperaldosteronism" ShortCode="ALDO"/>
+          <Answer AnswerId="10473" OrderNumber="8" OptionText="B - Diagnosis and treatment of acromegaly" ShortCode="ACRO"/>
+          <Answer AnswerId="10474" OrderNumber="9" OptionText="B - Diagnosis of growth hormone deficiency" ShortCode="GROW"/>
+          <Answer AnswerId="11587" OrderNumber="10" OptionText="A - Healthy Controls" ShortCode="CTRL"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8055" PageNumber="2" PageTitle="Sampling details" PageIntroduction="The sampling date should match the form date.  The form can be moved with &quot;Move form&quot; menu option in the event list.">
+      <Item ItemId="1503" ItemType="1" VarName="SubjectId" LoincScale="QN">
+        <FormItem FormItemId="23240" OrderNumber="2" ItemText="SubjectId" ItemHelp="" Expression="PersonId" MinExpression="1" MaxExpression="99999" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="1504" ItemType="1" VarName="SamplingId" LoincScale="QN">
+        <FormItem FormItemId="23193" OrderNumber="3" ItemText="SamplingId" ItemHelp="" Expression="ClinForm.ClinFormId" MinExpression="1" MaxExpression="999999" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="1534" ItemType="5" VarName="SamplingDate" LoincScale="DATE">
+        <FormItem FormItemId="23239" OrderNumber="4" ItemText="Sampling date" ItemHelp="" MinExpression="FORM.DATE-365" MaxExpression="FORM.DATE+365" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8056" PageNumber="3" PageTitle="Sampling purpose*" PageIntroduction="Sampling purpose is only relevant for three of the substudies, Diagnosis of ...">
+      <Item ItemId="1532" ItemType="2" VarName="SamplingPurpose" LoincScale="ORD">
+        <FormItem FormItemId="23235" OrderNumber="5" ItemText="Sampling purpose (patients)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="10475" OrderNumber="1" OptionText="After treatment"/>
+          <Answer AnswerId="10476" OrderNumber="2" OptionText="Diagnostic"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="9762" PageNumber="4" PageTitle="Healthy control substudy*" PageIntroduction="This question is relevant only for healthy controls">
+      <Item ItemId="2618" ItemType="2" VarName="HealthySubstudy" LoincScale="ORD">
+        <FormItem FormItemId="27809" OrderNumber="6" ItemText="Sampling purpose (controls)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11584" OrderNumber="1" OptionText="Normal 24h profile" ShortCode="NORM"/>
+          <Answer AnswerId="11585" OrderNumber="2" OptionText="Day to day variability" ShortCode="D2DV"/>
+          <Answer AnswerId="11586" OrderNumber="3" OptionText="Comparison of tissue and blood hormones" ShortCode="COMP"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8181" PageNumber="5" PageTitle="Sampling success*">
+      <Item ItemId="1209" ItemType="2" VarName="VAR1209" LoincScale="ORD">
+        <FormItem FormItemId="23524" OrderNumber="7" ItemText="Technically successful sampling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="10639" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="10640" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8182" PageNumber="6" PageTitle="Sample approval status">
+      <Item ItemId="1391" ItemType="2" VarName="VAR1391" LoincScale="ORD">
+        <FormItem FormItemId="23525" OrderNumber="8" ItemText="Sample approval status" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="59700" OrderNumber="1" OptionText="Include"/>
+          <Answer AnswerId="59701" OrderNumber="2" OptionText="Sampling issue (discarded)"/>
+          <Answer AnswerId="10641" OrderNumber="3" OptionText="Transport issue (discarded)"/>
+          <Answer AnswerId="10642" OrderNumber="4" OptionText="Analysis  issue (discarded)"/>
+          <Answer AnswerId="10643" OrderNumber="5" OptionText="Other issue (discarded)"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="8183" PageNumber="7" PageTitle="Comment to approval status*">
+      <Item ItemId="1392" ItemType="4" VarName="VAR1392" LoincScale="NAR" Multiline="1">
+        <FormItem FormItemId="23526" OrderNumber="9" ItemText="Comment" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="1160">
+      <Activate EnumVal="4" PageConditionId="5960" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="7" PageConditionId="5961" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="8" PageConditionId="6053" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="9" PageConditionId="6054" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="7108" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="10" PageConditionId="7111" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="7109" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="7110" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="1391">
+      <Activate EnumVal="2" PageConditionId="6055" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="6056" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="6057" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="5" PageConditionId="6058" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

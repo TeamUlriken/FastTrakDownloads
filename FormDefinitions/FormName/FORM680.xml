@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="680" FormName="FORM680" FormTitle="Insulinpumpe - Intervalldosering">
+    <Page PageId="3432" PageNumber="1" PageTitle="Første intervall" PageIntroduction="Første intervall starter klokken 00:00.">
+      <Item ItemId="8453" ItemType="1" VarName="InsDos2Dose1" LoincScale="QN" UnitStr="E/time" DisplayFormat="">
+        <FormItem FormItemId="12051" OrderNumber="1" ItemText="Dosering (E/time)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8437" ItemType="1" VarName="InsDos2StopHr1" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="12029" OrderNumber="2" ItemText="Frem til klokken" ItemHelp="" MinExpression="0" MaxExpression="24" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8455" ItemType="2" VarName="InsDos2Dose1Last" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="12058" OrderNumber="3" ItemText="Første er siste intervall" ItemHelp="" Expression="2-ISNULL(InsDos2StopHr1-24)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+          <Answer AnswerId="46702" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="46703" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3438" PageNumber="2" PageTitle="Detaljer på første intervall*">
+      <Item ItemId="8445" ItemType="1" VarName="InsDos2StopMin1" LoincScale="QN" UnitStr="min" DisplayFormat="">
+        <FormItem FormItemId="12037" OrderNumber="4" ItemText="Sluttminutt intervall 1 (min)" ItemHelp="" MinExpression="0" MaxExpression="59" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8462" ItemType="1" VarName="InsDos2Length1" LoincScale="QN" UnitStr="timer" DisplayFormat="">
+        <FormItem FormItemId="12065" OrderNumber="5" ItemText="Lengde av intervall 1 (timer)" ItemHelp="Beregnet verdi" Expression="InsDos2StopHr1 + (InsDos2StopMin1 / 60)" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8454" ItemType="1" VarName="InsDos2Subtotal1" LoincScale="QN" UnitStr="E" DisplayFormat="">
+        <FormItem FormItemId="12052" OrderNumber="6" ItemText="Subtotal første intervall (E)" ItemHelp="" Expression="InsDos2Length1 * InsDos2Dose1" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3433" PageNumber="3" PageTitle="Andre intervall" PageIntroduction="Intervallet starter når det forrige slutter">
+      <Item ItemId="8456" ItemType="1" VarName="InsDos2Dose2" LoincScale="QN" UnitStr="E/time" DisplayFormat="">
+        <FormItem FormItemId="12054" OrderNumber="7" ItemText="Dosering (E/time)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8457" ItemType="1" VarName="InsDos2StopHr2" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="12056" OrderNumber="8" ItemText="Frem til klokken" ItemHelp="" MinExpression="0" MaxExpression="24" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8458" ItemType="2" VarName="InsDos2Dose2Last" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="12059" OrderNumber="9" ItemText="Andre er siste intervall" ItemHelp="" Expression="2-ISNULL(InsDos2StopHr2-24)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+          <Answer AnswerId="46706" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="46707" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3436" PageNumber="4" PageTitle="Detaljer på andre intervall*">
+      <Item ItemId="8459" ItemType="1" VarName="InsDos2StopMin2" LoincScale="QN" UnitStr="min" DisplayFormat="">
+        <FormItem FormItemId="12061" OrderNumber="10" ItemText="Sluttminutt intervall 2 (min)" ItemHelp="" MinExpression="0" MaxExpression="59" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8461" ItemType="1" VarName="InsDos2Length2" LoincScale="QN" UnitStr="timer" DisplayFormat="">
+        <FormItem FormItemId="12064" OrderNumber="11" ItemText="Lengde av intervall 2 (timer)" ItemHelp="Beregnet verdi" Expression="( InsDos2StopHr2 - InsDos2StopHr1 ) + ( ISPOS(InsDos2StopMin2)*InsDos2StopMin2 - ISPOS(InsDos2StopMin1)*InsDos2StopMin1 ) / 60" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8460" ItemType="1" VarName="InsDos2Subtotal2" LoincScale="QN" UnitStr="E" DisplayFormat="">
+        <FormItem FormItemId="12063" OrderNumber="12" ItemText="Subtotal andre intervall (E)" ItemHelp="" Expression="InsDos2Length2 * InsDos2Dose2" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3435" PageNumber="5" PageTitle="Tredje intervall" PageIntroduction="Intervallet starter når det forrige slutter">
+      <Item ItemId="8464" ItemType="1" VarName="InsDos2Dose3" LoincScale="QN" UnitStr="E/time" DisplayFormat="">
+        <FormItem FormItemId="12067" OrderNumber="13" ItemText="Dosering (E/time)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8465" ItemType="1" VarName="InsDos2StopHr3" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="12068" OrderNumber="14" ItemText="Frem til klokken" ItemHelp="" MinExpression="0" MaxExpression="24" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8466" ItemType="2" VarName="InsDos2Dose3Last" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="12069" OrderNumber="15" ItemText="Tredje er siste intervall" ItemHelp="" Expression="2-ISNULL(InsDos2StopHr3-24)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+          <Answer AnswerId="46712" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="46713" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3437" PageNumber="6" PageTitle="Detaljer på tredje intervall*">
+      <Item ItemId="8467" ItemType="1" VarName="InsDos2StopMin3" LoincScale="QN" UnitStr="min" DisplayFormat="">
+        <FormItem FormItemId="12070" OrderNumber="16" ItemText="Sluttminutt intervall 3 (min)" ItemHelp="" MinExpression="0" MaxExpression="59" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8469" ItemType="1" VarName="InsDos2Length3" LoincScale="QN" UnitStr="timer" DisplayFormat="">
+        <FormItem FormItemId="12072" OrderNumber="17" ItemText="Lengde av intervall 3 (timer)" ItemHelp="Beregnet verdi" Expression="( InsDos2StopHr3 - InsDos2StopHr2 ) + ( ISPOS(InsDos2StopMin3) * InsDos2StopMin3 - ISPOS(InsDos2StopMin2)*InsDos2StopMin2 ) / 60" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8468" ItemType="1" VarName="InsDos2Subtotal3" LoincScale="QN" UnitStr="E" DisplayFormat="">
+        <FormItem FormItemId="12071" OrderNumber="18" ItemText="Subtotal tredje intervall (E)" ItemHelp="" Expression="InsDos2Length3 * InsDos2Dose3" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="3434" PageNumber="7" PageTitle="Døgndosering" PageIntroduction="Fyll ut skjemaet helt komplett for å få beregnet døgndosering riktig!">
+      <Item ItemId="8463" ItemType="1" VarName="InsDos2GrandTotal" LoincScale="QN" UnitStr="E/døgn" DisplayFormat="">
+        <FormItem FormItemId="12066" OrderNumber="19" ItemText="Sum dosering (E/døgn)" ItemHelp="" Expression="InsDos2Subtotal1 + InsDos2Subtotal2 + InsDos2Subtotal3" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="8455">
+      <Activate EnumVal="2" PageConditionId="3455" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="3454" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="8458">
+      <Activate EnumVal="2" PageConditionId="3451" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="8466">
+      <Activate EnumVal="2" PageConditionId="3453" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

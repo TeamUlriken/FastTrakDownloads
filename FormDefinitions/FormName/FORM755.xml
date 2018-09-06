@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="755" FormName="FORM755" FormTitle="Test av Insulinfølsomhet">
+    <Page PageId="7380" PageNumber="1" PageTitle="Beregninger">
+      <Item ItemId="10433" ItemType="1" VarName="InsulinCarbFactor" LoincScale="QN" UnitStr="g/E" DisplayFormat="">
+        <FormItem FormItemId="21436" OrderNumber="1" ItemText="Aktuell karbohydrat faktor (g/E)" ItemHelp="Antall gram karbohydrat som nøytraliseres av 1 enhet insulin." MinExpression="1" MaxExpression="40" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10434" ItemType="1" VarName="InsulinSensFactor" LoincScale="QN" UnitStr="mmol/L/E" DisplayFormat="">
+        <FormItem FormItemId="21439" OrderNumber="2" ItemText="Aktuell korreksjonsfaktor" ItemHelp="Fall i blodglukose per enhet hurtigvirkende insulin brukt som korrigerende doser." MinExpression="0.5" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10435" ItemType="1" VarName="CarbToInsulin" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="21437" OrderNumber="3" ItemText="Karbohydrat til insulin ratio" ItemHelp="" Expression="InsulinCarbFactor * InsulinSensFactor" MinExpression="1" MaxExpression="800" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6665" ItemType="1" VarName="INSULIN_KARB_FAKTOR" LoincScale="QN" UnitStr="g/E" DisplayFormat="">
+        <FormItem FormItemId="21440" OrderNumber="4" ItemText="Insulin-karbohydrat faktor (g/E)" ItemHelp="Estimat (500/døgndose insulin) på antall gram karbohydrat som nøytraliseres av 1 enhet insulin." Expression="ISPOS( INS_ALL_SUM ) * 500 / INS_ALL_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6666" ItemType="1" VarName="INSULIN_SENS_FAKTOR" LoincScale="QN" UnitStr="mmol/L/E" DisplayFormat="">
+        <FormItem FormItemId="21441" OrderNumber="5" ItemText="Insulinfølsomhetsfaktor" ItemHelp="Estimat (100/døgndose insulin) på fall i blodglukose per enhet hurtigvirkende insulin brukt som korrigerende doser." Expression="ISPOS( INS_ALL_SUM ) * 100 / INS_ALL_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+	</Actions>
+</StudyForm>

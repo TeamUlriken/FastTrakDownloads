@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="602" FormName="FORM602" FormTitle="Postoperativt" Copyright="SOREG">
+    <Page PageId="2456" PageNumber="1" PageTitle="Postop data og 6-veckorskontroll">
+      <Item ItemId="7406" ItemType="5" VarName="FUP1_DISCHARGEDATE" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="8857" OrderNumber="1" ItemText="Utskrivningsdato" ItemHelp="&lt;br&gt;Ange det datum som patienten skrevs ut från sjukhus efter det kirurgiska ingreppet. Inkludera även vård som skett på andra kliniker eller sjukhus i direkt anslutning till operationen, tex vård på en kardiologavdelning för en peroperativ hjärtinfarkt. Om den sammanlagda vårdtiden överstiger 6 v görs denna registrering i samband med utskrivningen från sjukhus.&lt;br&gt;" MinExpression="opDate" MaxExpression="today" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7407" ItemType="1" VarName="FUP1_POSTOPHOSPDAYS" LoincScale="QN" UnitStr="dager" DisplayFormat="">
+        <FormItem FormItemId="8858" OrderNumber="2" ItemText="Postoperativ liggetid (dager)" ItemHelp="Beregnes av systemet" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7274" ItemType="2" VarName="PATIENT_EXCLUDEPATIENT" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8859" OrderNumber="3" ItemText="Har pasienten utgått fra registeret" ItemHelp="Patienten kan utgå ur registret av de skäl som anges nedan. Om patienten begär att bli helt borttagen ur registret så ska registerhållaren kontaktas för att verkställa denna begäran. OBSERVERA Att operationskliniken inte planerar någon uppföljning eller att patienten flyttat till annan ort i Sverige eller att patienten inte svarar på brev eller telefon avses ej." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="39344" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39850" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2466" PageNumber="2" PageTitle="Avliden*">
+      <Item ItemId="7275" ItemType="2" VarName="PATIENT_DECEASED" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8860" OrderNumber="4" ItemText="Avgått med døden" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="39345" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39346" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2467" PageNumber="3" PageTitle="Dödsdatum och orsak*">
+      <Item ItemId="7276" ItemType="5" VarName="PATIENT_DATEOFDEATH" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="8861" OrderNumber="5" ItemText="Dødsdato" ItemHelp="Datum anges som ÅÅÅÅ-MM-DD" MinExpression="DOB" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7277" ItemType="2" VarName="PATIENT_CAUSEOFDEATH" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8862" OrderNumber="6" ItemText="Dødsårsak" ItemHelp="Registreras enligt ICD kod där den huvudsakliga dödsorsaken ska anges." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="39347" OrderNumber="1" OptionText="Infeksjonssykdom ICD A+B"/>
+          <Answer AnswerId="39348" OrderNumber="2" OptionText="Tumorsykdom ICD C"/>
+          <Answer AnswerId="39349" OrderNumber="3" OptionText="Hjerte- Karsykdom ICD I"/>
+          <Answer AnswerId="39350" OrderNumber="4" OptionText="Lungesykdom ICD J"/>
+          <Answer AnswerId="39351" OrderNumber="5" OptionText="Ulykkestilfelle og suicid ICD S-Y"/>
+          <Answer AnswerId="39352" OrderNumber="6" OptionText="øvrige ICD koder"/>
+          <Answer AnswerId="39353" OrderNumber="9" OptionText="ukjent dødsårsak"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2468" PageNumber="4" PageTitle="Annan orsak*">
+      <Item ItemId="7278" ItemType="2" VarName="PATIENT_OTHERCAUSE" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8863" OrderNumber="7" ItemText="Annen årsak" ItemHelp="&quot;Vägrar medverka&quot; gäller patienter som från och med ett visst datum säger att de inte vill vara med i registret. Om patienten begär att få sin identitet och ALLA uppgifter i registret raderade ska registerhållaren kontaktas.&lt;br&gt;&quot;Övriga orsaker&quot; gäller patienter som inte är möjliga att följa upp, tex flyttat utomlands, psykisk sjukdom etc. OBSERVERA Att operationskliniken inte planerar någon uppföljning eller att patienten flyttat till annan ort i Sverige eller att patienten inte svarar på brev eller telefon avses ej." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39354" OrderNumber="1" OptionText="Ønsker ikke å delta"/>
+          <Answer AnswerId="39355" OrderNumber="2" OptionText="Andre årsaker"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2469" PageNumber="5" PageTitle="Fortsättning*">
+      <Item ItemId="7408" ItemType="2" VarName="FUP1_TREATOTHERHOSP" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8864" OrderNumber="8" ItemText="Har pasienten vært behandlet på egen eller annan klinikk dag 0-30 postoperativt." ItemHelp="Avser återinläggning på egen klinik, all vård på annan klinik eller annat sjukhus även om denna skett i direkt anslutning till den postoperativa vården på egen klinik. Gå igenom samtliga journaler, vid behov rekvirera journaler från andra vårdgivare för att dokumentera eventuella komplikationer.&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39851" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39852" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="39853" OrderNumber="2" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7409" ItemType="2" VarName="FUP1_EMERGENCYOP" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8865" OrderNumber="9" ItemText="Er pasienten operert dag 0-30 postoperativt?" ItemHelp="Alla operationer omfattas, även sådana som inte är relaterade till det obesitaskirurgiska ingreppet. Bortse från mindre operationer i lokalbedövning." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39854" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39855" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2471" PageNumber="6" PageTitle="Opererat dag 0-30*">
+      <Item ItemId="7410" ItemType="2" VarName="FUP1_REVOP" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8866" OrderNumber="10" ItemText="Er en revisjonsoperasjon gjort?" ItemHelp="När en revisionsoperation är gjord ska eventuella komplikationer fram till revisionsoperationsdatum registreras nedan. Klarmarkera och spara sidan. Gå sedan till patientuppgifter och skapa en revisionsoperations-registrering.&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39856" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39857" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7411" ItemType="2" VarName="FUP1_COMPLICATIONOP" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8867" OrderNumber="11" ItemText="Operert for en komplikasjon?" ItemHelp="Registrera relevant komplikation längre ner på sidan." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39858" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39859" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7412" ItemType="2" VarName="FUP1_NOOBESRELOP" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8868" OrderNumber="12" ItemText="Operasjon uten relasjon til fedmekirurgien" ItemHelp="Tex gallvägskirurgi, gynekologisk kirurgi eller plastikkirurgiska operationer. Registrera operationen längre ner på sidan." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39860" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39861" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7413" ItemType="2" VarName="FUP1_OPNOCAUSE" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8869" OrderNumber="13" ItemText="Operert i buken uten sikker diagnose?" ItemHelp="Markera här om patienten genomgått en bukoperation utan postoperativ diagnos tex explorativ laparotomi/laparoskopi pga smärta där man inte hittar någon orsak." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39862" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39863" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2470" PageNumber="7" PageTitle="Vad*">
+      <Item ItemId="7414" ItemType="2" VarName="FUP1_OPDESCRIBE" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8870" OrderNumber="14" ItemText="Hva" ItemHelp="Välj det alternativ som passar bäst. Observera att alternativen suturering av slitsar, adherenslösning och övrig operation EJ får markeras här om de ingår i behandlingen av en komplikation. Alla komplikationer registreras längre ner på sidan." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39864" OrderNumber="1" OptionText="Laparotomi/laparoskopi, ingen tiltak"/>
+          <Answer AnswerId="39865" OrderNumber="2" OptionText="Suturering av en eller flere slisser"/>
+          <Answer AnswerId="39866" OrderNumber="3" OptionText="Deling av adheranser"/>
+          <Answer AnswerId="39867" OrderNumber="4" OptionText="Annet"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2457" PageNumber="8" PageTitle="Substitution">
+      <Item ItemId="7415" ItemType="2" VarName="FUP1_SUBSTITUTION" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8871" OrderNumber="15" ItemText="Ordinert substitusjon" ItemHelp="Ange den substitution som patienten ordinerats vid utskrivningen från opererande enhet.&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39868" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39869" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2458" PageNumber="9" PageTitle="Substitution detaljer*">
+      <Item ItemId="7416" ItemType="2" VarName="FUP1_MULTIVITAMIN" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8872" OrderNumber="16" ItemText="Multivitamin med eller uten jern" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39870" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39871" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7417" ItemType="2" VarName="FUP1_B12" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8873" OrderNumber="17" ItemText="B12" ItemHelp="Tabletter eller injektioner." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39872" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39873" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7418" ItemType="2" VarName="FUP1_FOLICACID" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8874" OrderNumber="18" ItemText="Folsyra" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39874" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39875" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7419" ItemType="2" VarName="FUP1_VITAMIND" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8875" OrderNumber="19" ItemText="D-vit+Ca" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39876" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39877" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7420" ItemType="2" VarName="FUP1_ORALIRON" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8876" OrderNumber="20" ItemText="Oralt jern" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39878" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39879" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7421" ItemType="2" VarName="FUP1_PARENTERALIRON" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8877" OrderNumber="21" ItemText="Parenteralt jern" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39880" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39881" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2459" PageNumber="10" PageTitle="Ulcusprofylax">
+      <Item ItemId="7422" ItemType="2" VarName="FUP1_ULCERPROPHY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8878" OrderNumber="22" ItemText="Ordinert ulcusprofylakse" ItemHelp="Har patienten postoperativt ordinerats ulcusprofylax med PPI-hämmare under minst 4 veckor. Inkludera även patienter som preoperativt kontinuerligt intagit PPI-hämmare och som ordinerats fortsätta denna medicinering minst 4 veckor postoperativt." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39882" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39883" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2460" PageNumber="11" PageTitle="Komplikation">
+      <Item ItemId="7423" ItemType="2" VarName="FUP1_POSTOPCOMPL" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8879" OrderNumber="23" ItemText="Postoperativ komplikasjon" ItemHelp="Här avses komplikationer som inträffat under de första 30 postoperativa dagarna eller under hela det primära vårdtillfället om det varat mer än 30 dagar. Om en revisionsoperation görs inom 30 dagar eller under det primära vårdtillfället avses tiden fram till revisionsoperationen.&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39884" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39885" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2461" PageNumber="12" PageTitle="Komplikation detaljer*">
+      <Item ItemId="7424" ItemType="2" VarName="FUP1_ANASTOMOSLEAK" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8880" OrderNumber="24" ItemText="Lekkasje" ItemHelp="Läckage ska vara påvisat med röntgen, vid endoskopi, under operation eller på annat sätt. Abscess/djup infektion utan påvisat läckage anges under denna rubrik nedan." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39886" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39887" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6466" PageNumber="13" PageTitle="">
+      <Item ItemId="7425" ItemType="2" VarName="FUP1_COMPLSEVLEAK" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8881" OrderNumber="25" ItemText="Komplikasjonens alvorlighetsgrad" ItemHelp="Välj ett alternativ. Välj den mest allvarliga svårighetsgraden för just denna komplikation. Vid multipla komplikationer försök uppskatta svårighetsgraden för varje enskild komplikation. Operationer i lokalanestesi och elektiva operationer i generell anestesi (tex ärrbråcksoperation) räknas som svårighetsgrad 3" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39888" OrderNumber="1" OptionText="Ingen signifikante tiltak"/>
+          <Answer AnswerId="39889" OrderNumber="2" OptionText="Signifikante farmakologiske tiltak"/>
+          <Answer AnswerId="39890" OrderNumber="3" OptionText="Signifikante radiologiske eller endoskopiske tiltak"/>
+          <Answer AnswerId="39891" OrderNumber="4" OptionText="Intensivbehandling/akutt operasjon"/>
+          <Answer AnswerId="39892" OrderNumber="5" OptionText="Mors"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7426" ItemType="2" VarName="FUP1_OPFORLEAK" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8882" OrderNumber="26" ItemText="Operasjon" ItemHelp="Här avses operation till följd av läckage" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39893" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39894" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7427" ItemType="2" VarName="FUP1_STENT" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8883" OrderNumber="27" ItemText="Stenting" ItemHelp="Användes stent för behandling av läckage?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39895" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39896" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7428" ItemType="2" VarName="FUP1_DRAINFORLEAK" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8884" OrderNumber="28" ItemText="Drenasje/lavage og lignende" ItemHelp="Bestod den operativa åtgärden av dränage, lavage eller liknande.&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39897" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39898" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7429" ItemType="2" VarName="FUP1_SUTUREFORLEAK" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8885" OrderNumber="29" ItemText="Suturering/stapling og lignende" ItemHelp="Åtgärdades läckage med suturering, stapling, resektion eller liknande." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39899" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39900" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7430" ItemType="2" VarName="FUP1_REVERSEFORLEAK" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8886" OrderNumber="30" ItemText="Frakobling" ItemHelp="Kopplades den obesitaskirurgiska konstruktionen ur?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39901" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39902" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7431" ItemType="2" VarName="FUP1_SITEOFLEAKGBP" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8887" OrderNumber="31" ItemText="Lekkasjens lokalisasjon" ItemHelp="Välj det alternativ som passar bäst med hänsyn till den operationsmetod som använts. Tex välj proximal ventrikel om läckaget sitter på ventrikelfickan vid GBP operation." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39903" OrderNumber="1" OptionText="Proximal ventrikkel/øsofagus"/>
+          <Answer AnswerId="39904" OrderNumber="2" OptionText="Distale eller midterste ventrikkel"/>
+          <Answer AnswerId="39905" OrderNumber="3" OptionText="Gastro-entero eller duodeno-enteroanastomose"/>
+          <Answer AnswerId="39906" OrderNumber="4" OptionText="Tynntarm"/>
+          <Answer AnswerId="39907" OrderNumber="5" OptionText="Entero-enteroanastomose"/>
+          <Answer AnswerId="39908" OrderNumber="6" OptionText="Multiple lokalisasjoner"/>
+          <Answer AnswerId="39909" OrderNumber="7" OptionText="Annen eller ukjent lokalisasjon"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6489" PageNumber="14" PageTitle="">
+      <Item ItemId="7432" ItemType="2" VarName="FUP1_BLEEDING" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8888" OrderNumber="32" ItemText="Blødning" ItemHelp="Påvisad blödning som föranlett extra övervakning eller provtagning." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39910" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39911" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6503" PageNumber="15" PageTitle="">
+      <Item ItemId="7433" ItemType="2" VarName="FUP1_COMPLSEVBLEED" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8889" OrderNumber="33" ItemText="Komplikasjonens alvorlighetsgrad" ItemHelp="Välj ett alternativ. Välj den mest allvarliga svårighetsgraden för just denna komplikation. &lt;br&gt;Vid multipla komplikationer försök uppskatta svårighetsgraden för varje enskild komplikation.&lt;br&gt;Blodtransfusion räknas som svårighetsgrad 2 om inte patienten vårdats på IVA pga blödning.&lt;br&gt;Operationer i lokalanestesi och elektiva operationer i generell anestesi (tex ärrbråcksoperation) räknas som svårighetsgrad 3." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39912" OrderNumber="1" OptionText="Ingen signifikante tiltak"/>
+          <Answer AnswerId="39913" OrderNumber="2" OptionText="Signifikante farmakologiske tiltak"/>
+          <Answer AnswerId="39914" OrderNumber="3" OptionText="Signifikante radiologiske eller endoskopiske tiltak"/>
+          <Answer AnswerId="39915" OrderNumber="4" OptionText="Intensivbehandling/akutt operasjon"/>
+          <Answer AnswerId="39916" OrderNumber="5" OptionText="Mors"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6517" PageNumber="16" PageTitle="">
+      <Item ItemId="7434" ItemType="2" VarName="FUP1_MOFS" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8890" OrderNumber="34" ItemText="Multippel organsvikt" ItemHelp="Påtaglig dysfunktion i två eller flera av följande organ: hjärta, lunga, njure, lever, blodsystem, tarmkanal eller CNS.&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39917" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39918" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6530" PageNumber="17" PageTitle="">
+      <Item ItemId="7435" ItemType="2" VarName="FUP1_COMPLISEVMOFS" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8891" OrderNumber="35" ItemText="Komplikasjonens alvorlighetsgrad" ItemHelp="Välj ett alternativ. Välj den mest allvarliga svårighetsgraden för just denna komplikation. Vid multipla komplikationer försök uppskatta svårighetsgraden för varje enskild komplikation. Operationer i lokalanestesi och elektiva operationer i generell anestesi (tex ärrbråcksoperation) räknas som svårighetsgrad 3" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39919" OrderNumber="1" OptionText="Ingen signifikante tiltak"/>
+          <Answer AnswerId="39920" OrderNumber="2" OptionText="Signifikante farmakologiske tiltak"/>
+          <Answer AnswerId="39921" OrderNumber="3" OptionText="Signifikante radiologiske eller endoskopiske tiltak"/>
+          <Answer AnswerId="39922" OrderNumber="4" OptionText="Intensivbehandling/akutt operasjon"/>
+          <Answer AnswerId="39923" OrderNumber="5" OptionText="Mors"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6542" PageNumber="18" PageTitle="">
+      <Item ItemId="7436" ItemType="2" VarName="FUP1_ABSCESS" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8892" OrderNumber="36" ItemText="Abscess/dyp infeksjon" ItemHelp="Avser infektion och abscess som ligger innanför fasciaplanet. Här inkluderas också sepsis och mediastinit som inte registrerats på något annat ställe. Diagnostiserat läckage med därtill relaterad infektion/abscess registreras under &quot;läckage&quot; och inte här.&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39924" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39925" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6560" PageNumber="19" PageTitle="">
+      <Item ItemId="7437" ItemType="2" VarName="FUP1_COMPLSEVABSCESS" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8893" OrderNumber="37" ItemText="Komplikasjonens alvorlighetsgrad" ItemHelp="Välj ett alternativ. Välj den mest allvarliga svårighetsgraden för just denna komplikation. &lt;br&gt;Vid multipla komplikationer försök uppskatta svårighetsgraden för varje enskild komplikation." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39926" OrderNumber="1" OptionText="Ingen signifikante tiltak"/>
+          <Answer AnswerId="39927" OrderNumber="2" OptionText="Signifikante farmakologiske tiltak"/>
+          <Answer AnswerId="39928" OrderNumber="3" OptionText="Signifikante radiologiske eller endoskopiske tiltak"/>
+          <Answer AnswerId="39929" OrderNumber="4" OptionText="Intensivbehandling/akutt operasjon"/>
+          <Answer AnswerId="39930" OrderNumber="5" OptionText="Mors"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6573" PageNumber="20" PageTitle="">
+      <Item ItemId="7438" ItemType="2" VarName="FUP1_WOUNDDEHESION" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8894" OrderNumber="38" ItemText="Sårruptur" ItemHelp="Endast vid öppen operation. Använd &quot;portrelaterad komplikation&quot; vid laparoskopisk operation." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39931" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39932" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6590" PageNumber="21" PageTitle="">
+      <Item ItemId="7439" ItemType="2" VarName="FUP1_COMPLSEVDEHESION" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8895" OrderNumber="39" ItemText="Komplikasjonens alvorlighetsgrad" ItemHelp="Välj ett alternativ. Välj den mest allvarliga svårighetsgraden för just denna komplikation. Vid multipla komplikationer försök uppskatta svårighetsgraden för varje enskild komplikation. Operationer i lokalanestesi och elektiva operationer i generell anestesi (tex ärrbråcksoperation) räknas som svårighetsgrad 3" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39933" OrderNumber="1" OptionText="Ingen signifikante tiltak"/>
+          <Answer AnswerId="39934" OrderNumber="2" OptionText="Signifikante farmakologiske tiltak"/>
+          <Answer AnswerId="39935" OrderNumber="3" OptionText="Signifikante radiologiske eller endoskopiske tiltak"/>
+          <Answer AnswerId="39936" OrderNumber="4" OptionText="Intensivbehandling/akutt operasjon"/>
+          <Answer AnswerId="39937" OrderNumber="5" OptionText="Mors"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6602" PageNumber="22" PageTitle="">
+      <Item ItemId="7440" ItemType="2" VarName="FUP1_OTHERWOUNDCOMPL" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8896" OrderNumber="40" ItemText="Annan sårkomplikasjon inklusive overfladisk sårinfeksjon" ItemHelp="Alla typer av sårkomplikationer förutom sårruptur. Här registreras alla infektioner inklusive abscesser som ligger utanför fasciaplanet.&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39938" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39939" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6616" PageNumber="23" PageTitle="">
+      <Item ItemId="7441" ItemType="2" VarName="FUP1_COMPLSEVWOUND" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8897" OrderNumber="41" ItemText="Komplikasjonens alvorlighetsgrad" ItemHelp="Välj ett alternativ. Välj den mest allvarliga svårighetsgraden för just denna komplikation. Vid multipla komplikationer försök uppskatta svårighetsgraden för varje enskild komplikation. Operationer i lokalanestesi och elektiva operationer i generell anestesi (tex ärrbråcksoperation) räknas som svårighetsgrad 3" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39940" OrderNumber="1" OptionText="Ingen signifikante tiltak"/>
+          <Answer AnswerId="39941" OrderNumber="2" OptionText="Signifikante farmakologiske tiltak"/>
+          <Answer AnswerId="39942" OrderNumber="3" OptionText="Signifikante radiologiske eller endoskopiske tiltak"/>
+          <Answer AnswerId="39943" OrderNumber="4" OptionText="Intensivbehandling/akutt operasjon"/>
+          <Answer AnswerId="39944" OrderNumber="5" OptionText="Mors"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6624" PageNumber="24" PageTitle="">
+      <Item ItemId="7442" ItemType="2" VarName="FUP1_OBSTRUCTION" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8898" OrderNumber="42" ItemText="Ileus/langvarig paralyse" ItemHelp="Ileus eller långvarig paralys diagnostiserat vid operation eller med röntgen i kombination med klinik.&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39945" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39946" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6638" PageNumber="25" PageTitle="">
+      <Item ItemId="7443" ItemType="2" VarName="FUP1_COMPLSEVILEUS" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8899" OrderNumber="43" ItemText="Komplikasjonens alvorlighetsgrad" ItemHelp="Välj ett alternativ. Välj den mest allvarliga svårighetsgraden för just denna komplikation. Vid multipla komplikationer försök uppskatta svårighetsgraden för varje enskild komplikation. Operationer i lokalanestesi och elektiva operationer i generell anestesi (tex ärrbråcksoperation) räknas som svårighetsgrad 3" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39947" OrderNumber="1" OptionText="Ingen signifikante tiltak"/>
+          <Answer AnswerId="39948" OrderNumber="2" OptionText="Signifikante farmakologiske tiltak"/>
+          <Answer AnswerId="39949" OrderNumber="3" OptionText="Signifikante radiologiske eller endoskopiske tiltak"/>
+          <Answer AnswerId="39950" OrderNumber="4" OptionText="Intensivbehandling/akutt operasjon"/>
+          <Answer AnswerId="39951" OrderNumber="5" OptionText="Mors"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7444" ItemType="2" VarName="FUP1_ILEUSSURGERY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8900" OrderNumber="44" ItemText="Operasjon" ItemHelp="Opererades patienten på grund av ileus?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39952" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39953" OrderNumber="1" OptionText="Ja åpen operasjon"/>
+          <Answer AnswerId="39954" OrderNumber="2" OptionText="Ja laparoskopisk operasjon"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7445" ItemType="2" VarName="FUP1_ILEUSSURGERYWHAT" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8901" OrderNumber="45" ItemText="Ble slissene suturert?" ItemHelp="Ange hur slitsarna hanterades vid ileusoperationen." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39955" OrderNumber="1" OptionText="Nei, slissene etterlatt åpne"/>
+          <Answer AnswerId="39956" OrderNumber="2" OptionText="Nei, slissene var alt suturerte"/>
+          <Answer AnswerId="39957" OrderNumber="3" OptionText="Ja, en sliss suturert"/>
+          <Answer AnswerId="39958" OrderNumber="4" OptionText="Ja, samtliga slitsar suturerades"/>
+          <Answer AnswerId="39959" OrderNumber="5" OptionText="Ikke relevant for operasjonen"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7446" ItemType="2" VarName="FUP1_BOWELRESEKTION" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8902" OrderNumber="46" ItemText="Tynntarmsreseksjon" ItemHelp="Ange om tunntarmsresektion gjordes och i så fall hur stor del av tunntarmen som recesserades." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39960" OrderNumber="1" OptionText="Nei"/>
+          <Answer AnswerId="39961" OrderNumber="2" OptionText="under 1 meter reseksjon"/>
+          <Answer AnswerId="39962" OrderNumber="3" OptionText="over 1 meter reseksjon men mer enn 1,5 meter gjenstår"/>
+          <Answer AnswerId="39963" OrderNumber="4" OptionText="mindre enn 1,5 meter tynntarm gjenstår"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7447" ItemType="2" VarName="FUP1_CAUSEOFILEUS" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8903" OrderNumber="47" ItemText="Ileusmekanisme" ItemHelp="Ange den huvudsakliga ileusmekanismen." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39964" OrderNumber="1" OptionText="EA slissen"/>
+          <Answer AnswerId="39965" OrderNumber="2" OptionText="Petersens space"/>
+          <Answer AnswerId="39966" OrderNumber="3" OptionText="Brid/adheranse"/>
+          <Answer AnswerId="39967" OrderNumber="4" OptionText="Mesoslissen"/>
+          <Answer AnswerId="39968" OrderNumber="5" OptionText="Langvarig paralyse"/>
+          <Answer AnswerId="39969" OrderNumber="6" OptionText="Invaginasjon"/>
+          <Answer AnswerId="39970" OrderNumber="7" OptionText="Knekkdannelse"/>
+          <Answer AnswerId="39971" OrderNumber="8" OptionText="Mat/fremmedlegeme"/>
+          <Answer AnswerId="39972" OrderNumber="9" OptionText="Multiple"/>
+          <Answer AnswerId="39973" OrderNumber="10" OptionText="Annet/ukjent"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6653" PageNumber="26" PageTitle="">
+      <Item ItemId="7448" ItemType="4" VarName="FUP1_CAUSEOFILEUSWHAT" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        <FormItem FormItemId="8904" OrderNumber="48" ItemText="Hva" ItemHelp="Beskriv så kortfattat som möjligt." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6669" PageNumber="27" PageTitle="">
+      <Item ItemId="7449" ItemType="2" VarName="FUP1_BANDRELATEDCOMPL" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8905" OrderNumber="49" ItemText="Båndrelatert komplikasjon" ItemHelp="Alla typer av komplikationer relaterade till band anges här." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39974" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39975" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6679" PageNumber="28" PageTitle="">
+      <Item ItemId="7450" ItemType="2" VarName="FUP1_COMPLSEVBAND" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8906" OrderNumber="50" ItemText="Komplikasjonens alvorlighetsgrad" ItemHelp="Välj ett alternativ. Välj den mest allvarliga svårighetsgraden för just denna komplikation. Vid multipla komplikationer försök uppskatta svårighetsgraden för varje enskild komplikation. Operationer i lokalanestesi och elektiva operationer i generell anestesi (tex ärrbråcksoperation) räknas som svårighetsgrad 3" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39976" OrderNumber="1" OptionText="Ingen signifikante tiltak"/>
+          <Answer AnswerId="39977" OrderNumber="2" OptionText="Signifikante farmakologiske tiltak"/>
+          <Answer AnswerId="39978" OrderNumber="3" OptionText="Signifikante radiologiske eller endoskopiske tiltak"/>
+          <Answer AnswerId="39979" OrderNumber="4" OptionText="Intensivbehandling/akutt operasjon"/>
+          <Answer AnswerId="39980" OrderNumber="5" OptionText="Mors"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6691" PageNumber="29" PageTitle="">
+      <Item ItemId="7451" ItemType="2" VarName="FUP1_PORTCOMPL" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8907" OrderNumber="51" ItemText="Portrelatert komplikasjon" ItemHelp="Alla typer av komplikationer relaterade till port/porthål anges här. Svara nej om öppen operation utförts" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39981" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39982" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6701" PageNumber="30" PageTitle="">
+      <Item ItemId="7452" ItemType="2" VarName="FUP1_COMPLSEVPORT" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8908" OrderNumber="52" ItemText="Komplikasjonens alvorlighetsgrad" ItemHelp="Välj ett alternativ. Välj den mest allvarliga svårighetsgraden för just denna komplikation. Vid multipla komplikationer försök uppskatta svårighetsgraden för varje enskild komplikation. Operationer i lokalanestesi och elektiva operationer i generell anestesi (tex ärrbråcksoperation) räknas som svårighetsgrad 3" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39983" OrderNumber="1" OptionText="Ingen signifikante tiltak"/>
+          <Answer AnswerId="39984" OrderNumber="2" OptionText="Signifikante farmakologiske tiltak"/>
+          <Answer AnswerId="39985" OrderNumber="3" OptionText="Signifikante radiologiske eller endoskopiske tiltak"/>
+          <Answer AnswerId="39986" OrderNumber="4" OptionText="Intensivbehandling/akutt operasjon"/>
+          <Answer AnswerId="39987" OrderNumber="5" OptionText="Mors"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6711" PageNumber="31" PageTitle="">
+      <Item ItemId="7453" ItemType="2" VarName="FUP1_STRICTURE" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8909" OrderNumber="53" ItemText="Striktur" ItemHelp="Alla symtomgivande strikturer som diagnostiserats med röntgen eller vid endoskopi.&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39988" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39989" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6717" PageNumber="32" PageTitle="">
+      <Item ItemId="7454" ItemType="2" VarName="FUP1_DILATATION" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8910" OrderNumber="54" ItemText="Dilatasjon" ItemHelp="Dilaterades strikturen?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39990" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39991" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7455" ItemType="1" VarName="FUP1_HOWMANYDIL" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="8911" OrderNumber="55" ItemText="Hvor mange ganger" ItemHelp="Ange antalet genomförda dilatationer." MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7456" ItemType="2" VarName="FUP1_COMPLSEVSTRICT" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8912" OrderNumber="56" ItemText="Komplikasjonens alvorlighetsgrad" ItemHelp="Välj ett alternativ. Välj den mest allvarliga svårighetsgraden för just denna komplikation. Vid multipla komplikationer försök uppskatta svårighetsgraden för varje enskild komplikation. Operationer i lokalanestesi och elektiva operationer i generell anestesi (tex ärrbråcksoperation) räknas som svårighetsgrad 3" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39992" OrderNumber="1" OptionText="Ingen signifikante tiltak"/>
+          <Answer AnswerId="39993" OrderNumber="2" OptionText="Signifikante farmakologiske tiltak"/>
+          <Answer AnswerId="39994" OrderNumber="3" OptionText="Signifikante radiologiske eller endoskopiske tiltak"/>
+          <Answer AnswerId="39995" OrderNumber="4" OptionText="Intensivbehandling og/eller akutt operasjon"/>
+          <Answer AnswerId="39996" OrderNumber="5" OptionText="Mors"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6723" PageNumber="33" PageTitle="">
+      <Item ItemId="7457" ItemType="2" VarName="FUP1_MARGINALULCER" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8913" OrderNumber="57" ItemText="Stomale ulcus" ItemHelp="Stomala ulcus som diagnostiserats vid endoskopi eller vid röntgen." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39997" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="39998" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6729" PageNumber="34" PageTitle="">
+      <Item ItemId="7458" ItemType="2" VarName="FUP1_COMPLSEVULCUS" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8914" OrderNumber="58" ItemText="Komplikasjonens alvorlighetsgrad" ItemHelp="Välj ett alternativ. Välj den mest allvarliga svårighetsgraden för just denna komplikation. &lt;br&gt;Vid multipla komplikationer försök uppskatta svårighetsgraden för varje enskild komplikation.&lt;br&gt;Dilatation räknas som en endoskopisk åtgärd.&lt;br&gt;Operationer i lokalanestesi och elektiva operationer i generell anestesi (tex ärrbråcksoperation) räknas som svårighetsgrad 3." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="39999" OrderNumber="1" OptionText="Ingen signifikante tiltak"/>
+          <Answer AnswerId="40000" OrderNumber="2" OptionText="Signifikante farmakologiske tiltak"/>
+          <Answer AnswerId="40001" OrderNumber="3" OptionText="Signifikante radiologiske eller endoskopiske tiltak"/>
+          <Answer AnswerId="40002" OrderNumber="4" OptionText="Intensivbehandling og/eller akutt operasjon"/>
+          <Answer AnswerId="40003" OrderNumber="5" OptionText="Mors"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6736" PageNumber="35" PageTitle="">
+      <Item ItemId="7459" ItemType="2" VarName="FUP1_CARDIOCOMPL" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8915" OrderNumber="59" ItemText="Kardiovaskulær komplikasjon" ItemHelp="Alla typer av kardiella och vaskulära komplikationer förutom lungemboli/djup ventrombos.&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40004" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="40005" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6744" PageNumber="36" PageTitle="">
+      <Item ItemId="7460" ItemType="2" VarName="FUP1_COMPLSEVCARDIO" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8916" OrderNumber="60" ItemText="Komplikasjonens alvorlighetsgrad" ItemHelp="Välj ett alternativ. Välj den mest allvarliga svårighetsgraden för just denna komplikation. Vid multipla komplikationer försök uppskatta svårighetsgraden för varje enskild komplikation. Operationer i lokalanestesi och elektiva operationer i generell anestesi (tex ärrbråcksoperation) räknas som svårighetsgrad 3" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40006" OrderNumber="1" OptionText="Ingen signifikante tiltak"/>
+          <Answer AnswerId="40007" OrderNumber="2" OptionText="Signifikante farmakologiske tiltak"/>
+          <Answer AnswerId="40008" OrderNumber="3" OptionText="Signifikante radiologiske eller endoskopiske tiltak"/>
+          <Answer AnswerId="40009" OrderNumber="4" OptionText="Intensivbehandling/akutt operasjon"/>
+          <Answer AnswerId="40010" OrderNumber="5" OptionText="Mors"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6751" PageNumber="37" PageTitle="">
+      <Item ItemId="7461" ItemType="2" VarName="FUP1_DVTPE" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8917" OrderNumber="61" ItemText="DVT/PE" ItemHelp="Radiologiskt diagnostiserad djup ventrombos(DVT) eller lungemboli(PE)." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40011" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="40012" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6757" PageNumber="38" PageTitle="">
+      <Item ItemId="7462" ItemType="2" VarName="FUP1_COMPLSEVDVT" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8918" OrderNumber="62" ItemText="Komplikasjonens alvorlighetsgrad" ItemHelp="Välj ett alternativ. Välj den mest allvarliga svårighetsgraden för just denna komplikation. Vid multipla komplikationer försök uppskatta svårighetsgraden för varje enskild komplikation. Operationer i lokalanestesi och elektiva operationer i generell anestesi (tex ärrbråcksoperation) räknas som svårighetsgrad 3" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40013" OrderNumber="1" OptionText="Ingen signifikante tiltak"/>
+          <Answer AnswerId="40014" OrderNumber="2" OptionText="Signifikante farmakologiske tiltak"/>
+          <Answer AnswerId="40015" OrderNumber="3" OptionText="Signifikante radiologiske eller endoskopiske tiltak"/>
+          <Answer AnswerId="40016" OrderNumber="4" OptionText="Intensivbehandling og/eller akutt operasjon"/>
+          <Answer AnswerId="40017" OrderNumber="5" OptionText="Mors"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6764" PageNumber="39" PageTitle="">
+      <Item ItemId="7463" ItemType="2" VarName="FUP1_LUNGCOMPL" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8919" OrderNumber="63" ItemText="Pulmonal komplikasjon" ItemHelp="Alla typer av pulmonella komplikationer förutom lungemboli tex pneumoni, symtomgivande atelektas eller pleurit. Även sepsis som anses pneumoniorsakad registreras här.&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40018" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="40019" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6770" PageNumber="40" PageTitle="">
+      <Item ItemId="7464" ItemType="2" VarName="FUP1_COMPLSEVLUNG" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8920" OrderNumber="64" ItemText="Komplikasjonens alvorlighetsgrad" ItemHelp="Välj ett alternativ. Välj den mest allvarliga svårighetsgraden för just denna komplikation. Vid multipla komplikationer försök uppskatta svårighetsgraden för varje enskild komplikation. Operationer i lokalanestesi och elektiva operationer i generell anestesi (tex ärrbråcksoperation) räknas som svårighetsgrad 3" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40020" OrderNumber="1" OptionText="Ingen signifikante tiltak"/>
+          <Answer AnswerId="40021" OrderNumber="2" OptionText="Signifikante farmakologiske tiltak"/>
+          <Answer AnswerId="40022" OrderNumber="3" OptionText="Signifikante radiologiske eller endoskopiske tiltak"/>
+          <Answer AnswerId="40023" OrderNumber="4" OptionText="Intensivbehandling og/eller akutt operasjon"/>
+          <Answer AnswerId="40024" OrderNumber="5" OptionText="Mors"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6776" PageNumber="41" PageTitle="">
+      <Item ItemId="7465" ItemType="2" VarName="FUP1_UTI" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8921" OrderNumber="65" ItemText="Urinveisinfeksjon" ItemHelp="Symtom samt positiv odling. Inkluderar pyelonefrit och sepsis utgången från urinvägarna.&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40025" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="40026" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6781" PageNumber="42" PageTitle="">
+      <Item ItemId="7466" ItemType="2" VarName="FUP1_COMPLSEVUTI" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8922" OrderNumber="66" ItemText="Komplikasjonens alvorlighetsgrad" ItemHelp="Välj ett alternativ. Välj den mest allvarliga svårighetsgraden för just denna komplikation. Vid multipla komplikationer försök uppskatta svårighetsgraden för varje enskild komplikation. Operationer i lokalanestesi och elektiva operationer i generell anestesi (tex ärrbråcksoperation) räknas som svårighetsgrad 3" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40027" OrderNumber="1" OptionText="Ingen signifikante tiltak"/>
+          <Answer AnswerId="40028" OrderNumber="2" OptionText="Signifikante farmakologiske tiltak"/>
+          <Answer AnswerId="40029" OrderNumber="3" OptionText="Signifikante radiologiske eller endoskopiske tiltak"/>
+          <Answer AnswerId="40030" OrderNumber="4" OptionText="Intensivbehandling og/eller akutt operasjon"/>
+          <Answer AnswerId="40031" OrderNumber="5" OptionText="Mors"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="6785" PageNumber="43" PageTitle="">
+      <Item ItemId="7467" ItemType="2" VarName="FUP1_OTHERCOMPL" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8923" OrderNumber="67" ItemText="Annen komplikasjon" ItemHelp="Komplikation som inte passar in i någon av kategorierna ovan." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40032" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="40033" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2474" PageNumber="44" PageTitle="Vad*">
+      <Item ItemId="7468" ItemType="4" VarName="FUP1_OTHERCOMPLWHAT" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        <FormItem FormItemId="8924" OrderNumber="68" ItemText="Hva" ItemHelp="Beskriv så kortfattet som mulig" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2475" PageNumber="45" PageTitle="Svårighetsgrad*">
+      <Item ItemId="7469" ItemType="2" VarName="FUP1_COMPLSEVOTHER" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8925" OrderNumber="69" ItemText="Komplikasjonens alvorlighetsgrad" ItemHelp="Välj ett alternativ. Välj den mest allvarliga svårighetsgraden för just denna komplikation. Vid multipla komplikationer försök uppskatta svårighetsgraden för varje enskild komplikation. Operationer i lokalanestesi och elektiva operationer i generell anestesi (tex ärrbråcksoperation) räknas som svårighetsgrad 3" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40034" OrderNumber="1" OptionText="Ingen signifikante tiltak"/>
+          <Answer AnswerId="40035" OrderNumber="2" OptionText="Signifikante farmakologiske tiltak"/>
+          <Answer AnswerId="40036" OrderNumber="3" OptionText="Signifikante radiologiske eller endoskopiske tiltak"/>
+          <Answer AnswerId="40037" OrderNumber="4" OptionText="Intensivbehandling og/eller akutt operasjon"/>
+          <Answer AnswerId="40038" OrderNumber="5" OptionText="Mors"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2462" PageNumber="46" PageTitle="Övriga operationer">
+      <Item ItemId="7470" ItemType="2" VarName="FUP1_OTHERSURG" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8926" OrderNumber="70" ItemText="Annen operasjon sidan forrige registrering" ItemHelp="Här anges operationer som ej är en komplikation eller direkt obesitasrelaterade" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40039" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="40040" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2472" PageNumber="47" PageTitle="Övriga operationer detaljer*">
+      <Item ItemId="7471" ItemType="2" VarName="FUP1_CHOLECYSTECTOMY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8927" OrderNumber="71" ItemText="Kolecystektomi" ItemHelp="Är patienten kolecystektomerad?&lt;br&gt;Gallvägsoperationer som ej innefattar kolecystektomi tex ERCP med papillotomi, koledochotomi utan kolecystektomi, registreras som annan operation nedan.&lt;br&gt;" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40041" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="40042" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7472" ItemType="2" VarName="FUP1_GYNESURGERY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8928" OrderNumber="72" ItemText="Gynekologisk operasjon" ItemHelp="Här avses intraabdominella och vaginal operationer av signifikans. Bortse från mindre operationer i lokalbedövning." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40043" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="40044" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7473" ItemType="2" VarName="FUP1_PLASTICSURGERY" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8929" OrderNumber="73" ItemText="Plastikkirurgisk operasjon" ItemHelp="Alla typer av plastikkirurgiska operationer." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40045" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="40046" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7474" ItemType="2" VarName="FUP1_SURGOTHER" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8930" OrderNumber="74" ItemText="Annen operasjon" ItemHelp="Annan signifikant operation tex för tumörsjukdom eller fraktur." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40047" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="40048" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2473" PageNumber="48" PageTitle="Vilken annan*">
+      <Item ItemId="7475" ItemType="4" VarName="FUP1_SURGOTHERWHAT" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        <FormItem FormItemId="8931" OrderNumber="75" ItemText="Hvilken annen operasjon" ItemHelp="Beskriv så kortfattet som mulig" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2463" PageNumber="49" PageTitle="Typ av 6-veckors kontroll">
+      <Item ItemId="7476" ItemType="2" VarName="FUP1_FOLLOWUPTYPE" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8932" OrderNumber="76" ItemText="6-ukers kontroll" ItemHelp="Ange hur patienten följts upp." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40049" OrderNumber="1" OptionText="Besøk"/>
+          <Answer AnswerId="40050" OrderNumber="2" OptionText="Per telefon"/>
+          <Answer AnswerId="40051" OrderNumber="3" OptionText="Per brev/mail eller på annen måte"/>
+          <Answer AnswerId="40052" OrderNumber="4" OptionText="Ingen kontakt med pasienten tross gjentatte forsøk"/>
+          <Answer AnswerId="40053" OrderNumber="5" OptionText="Ingen forsøk gjort på å følge opp pasienten"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7477" ItemType="5" VarName="FUP1_DATEOFVISIT" LoincScale="DATE" DisplayFormat="">
+        <FormItem FormItemId="8933" OrderNumber="77" ItemText="Besøksdato" ItemHelp="Besöksdatum eller datum för telefon eller brevuppföljning. Om vårdtiden är mer än 30 dagar är besöksdatum lika med utskrivningsdatum." MinExpression="opDate" MaxExpression="today" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2464" PageNumber="50" PageTitle="Antropometri">
+      <Item ItemId="7478" ItemType="1" VarName="FUP1_HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        <FormItem FormItemId="8934" OrderNumber="78" ItemText="Høyde (cm)" ItemHelp="Längden från basregistreringen följer automatiskt med men går att ändra vid behov. Om patienten bytt klinik måste längden anges igen." MinExpression="135" MaxExpression="230" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7479" ItemType="1" VarName="FUP1_WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
+        <FormItem FormItemId="8935" OrderNumber="79" ItemText="Vekt (kg)" ItemHelp="Kroppsvikt uttryckt i hela kg." MinExpression="30" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7480" ItemType="1" VarName="FUP1_WEIGHTLOSS" LoincScale="QN" UnitStr="kg" DisplayFormat="">
+        <FormItem FormItemId="8936" OrderNumber="80" ItemText="Vekttap (kg)" ItemHelp="Utgångsvärde är vikten vid basregistreringen&lt;br&gt;Uträkning görs av systemet." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7481" ItemType="1" VarName="FUP1_BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
+        <FormItem FormItemId="8937" OrderNumber="81" ItemText="BMI (kg/m2)" ItemHelp="Beregnes av systemet" Expression="FUP1_WEIGHT / FUP1_HEIGHT / FUP1_HEIGHT * 10000 * ISPOS( FUP1_WEIGHT ) * ISPOS( FUP1_HEIGHT )" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7482" ItemType="1" VarName="FUP1_BMILOSS" LoincScale="QN" DisplayFormat="">
+        <FormItem FormItemId="8938" OrderNumber="82" ItemText="BMI-reduksjon" ItemHelp="Utgångsvärde är vikten vid basregistreringen&lt;br&gt;Uträkning görs av systemet." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7483" ItemType="1" VarName="FUP1_EWL" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem FormItemId="8939" OrderNumber="83" ItemText="EWL (%)" ItemHelp="EWL = Excess Weight Loss. Utgångsvärde är vikten vid basregistreringen&lt;br&gt;Uträkning görs av systemet." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7484" ItemType="1" VarName="FUP1_WAISTCIRCUM" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        <FormItem FormItemId="8940" OrderNumber="84" ItemText="Bukomfåag (cm)" ItemHelp="Mäts i cm med måttband i höjd med spina iliaca anterior superior på stående patient." MinExpression="50" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageId="2465" PageNumber="51" PageTitle="Uppföljning">
+      <Item ItemId="7485" ItemType="2" VarName="FUP1_FOLLOWUPPLAN" LoincScale="ORD" DisplayFormat="">
+        <FormItem FormItemId="8941" OrderNumber="85" ItemText="Hvor er neste kontroll planlagt" ItemHelp="Denna klinik = den klinik som användaren är inloggad i.&lt;br&gt;Annan klinik = Alla andra kliniker." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="40054" OrderNumber="1" OptionText="Denne klinikken"/>
+          <Answer AnswerId="40055" OrderNumber="2" OptionText="Annen klinikk"/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="7274">
+      <Activate EnumVal="1" PageConditionId="2617" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7275">
+      <Activate EnumVal="1" PageConditionId="2614" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7409">
+      <Activate EnumVal="1" PageConditionId="2620" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7413">
+      <Activate EnumVal="1" PageConditionId="2619" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7415">
+      <Activate EnumVal="1" PageConditionId="2615" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7423">
+      <Activate EnumVal="1" PageConditionId="2616" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7424">
+      <Activate EnumVal="1" PageConditionId="2626" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7423">
+      <Activate EnumVal="1" PageConditionId="2637" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7432">
+      <Activate EnumVal="1" PageConditionId="2627" PageNumber="15" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7423">
+      <Activate EnumVal="1" PageConditionId="2638" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7434">
+      <Activate EnumVal="1" PageConditionId="2628" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7423">
+      <Activate EnumVal="1" PageConditionId="2639" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7436">
+      <Activate EnumVal="1" PageConditionId="2629" PageNumber="19" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7423">
+      <Activate EnumVal="1" PageConditionId="2641" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7438">
+      <Activate EnumVal="1" PageConditionId="2630" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7423">
+      <Activate EnumVal="1" PageConditionId="2642" PageNumber="22" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7440">
+      <Activate EnumVal="1" PageConditionId="2644" PageNumber="23" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7423">
+      <Activate EnumVal="1" PageConditionId="2643" PageNumber="24" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7442">
+      <Activate EnumVal="1" PageConditionId="2645" PageNumber="25" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7447">
+      <Activate EnumVal="10" PageConditionId="2631" PageNumber="26" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7423">
+      <Activate EnumVal="1" PageConditionId="2648" PageNumber="27" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7449">
+      <Activate EnumVal="1" PageConditionId="2649" PageNumber="28" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7423">
+      <Activate EnumVal="1" PageConditionId="2646" PageNumber="29" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7451">
+      <Activate EnumVal="1" PageConditionId="2647" PageNumber="30" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7423">
+      <Activate EnumVal="1" PageConditionId="2650" PageNumber="31" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7453">
+      <Activate EnumVal="1" PageConditionId="2651" PageNumber="32" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7423">
+      <Activate EnumVal="1" PageConditionId="2652" PageNumber="33" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7457">
+      <Activate EnumVal="1" PageConditionId="2636" PageNumber="34" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7423">
+      <Activate EnumVal="1" PageConditionId="2640" PageNumber="35" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7459">
+      <Activate EnumVal="1" PageConditionId="2635" PageNumber="36" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7423">
+      <Activate EnumVal="1" PageConditionId="2655" PageNumber="37" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7461">
+      <Activate EnumVal="1" PageConditionId="2634" PageNumber="38" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7423">
+      <Activate EnumVal="1" PageConditionId="2653" PageNumber="39" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7463">
+      <Activate EnumVal="1" PageConditionId="2633" PageNumber="40" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7423">
+      <Activate EnumVal="1" PageConditionId="2654" PageNumber="41" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7465">
+      <Activate EnumVal="1" PageConditionId="2632" PageNumber="42" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7423">
+      <Activate EnumVal="1" PageConditionId="2657" PageNumber="43" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7467">
+      <Activate EnumVal="1" PageConditionId="2625" PageNumber="44" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="2656" PageNumber="45" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7470">
+      <Activate EnumVal="1" PageConditionId="2623" PageNumber="47" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7474">
+      <Activate EnumVal="1" PageConditionId="2624" PageNumber="48" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>
