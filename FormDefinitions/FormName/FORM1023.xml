@@ -95,34 +95,56 @@
     </Page>
     <Page PageTitle="Hydromorfon*">
       <Item ItemId="2938" ItemType="2" VarName="PAINPUMP_HYDROMORFONSTRE" LoincScale="ORD">
-        <FormItem ItemText="Hydromorfon (Palladon) styrke" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="11935" OrderNumber="2" OptionText="2 mg/ml"/>
-          <Answer AnswerId="11936" OrderNumber="10" OptionText="10 mg/ml"/>
-          <Answer AnswerId="11937" OrderNumber="20" OptionText="20 mg/ml"/>
-          <Answer AnswerId="11938" OrderNumber="50" OptionText="50 mg/ml"/>
+        <FormItem ItemText="Hydromorfon/Palladon styrke" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11935" OrderNumber="2" OptionText="2 mg/ml" Score="2.00"/>
+          <Answer AnswerId="11936" OrderNumber="10" OptionText="10 mg/ml" Score="10.00"/>
+          <Answer AnswerId="11937" OrderNumber="20" OptionText="20 mg/ml" Score="20.00"/>
+          <Answer AnswerId="11938" OrderNumber="50" OptionText="50 mg/ml" Score="50.00"/>
         </FormItem>
       </Item>
       <Item ItemId="2943" ItemType="1" VarName="PAINPUMP_HYDROMORFONVOLU" LoincScale="QN" UnitStr="ml">
-        <FormItem ItemText="Morfin volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Hydromorfon/Palladon volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="2944" ItemType="1" VarName="VAR2944" LoincScale="QN">
-        <FormItem ItemText="Hydromorfon (Palladon) mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_HYDROMORFONSTRENGTH * 	PAINPUMP_HYDROMORFONVOLUME" MinExpression="0" MaxExpression="1000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="2944" ItemType="1" VarName="VAR2944" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Hydromorfon/Palladon mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_HYDROMORFONSTRENGTH * PAINPUMP_HYDROMORFONVOLUME" MinExpression="0" MaxExpression="1000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="New*">
-      <Item ItemId="2939" ItemType="2" VarName="VAR2939" LoincScale="ORD">
-        <FormItem ItemText="Oksykodon (Oxynorm) styrke" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="11939" OrderNumber="1" OptionText="10 mg/ml"/>
-          <Answer AnswerId="11940" OrderNumber="2" OptionText="50 mg/ml"/>
+    <Page PageTitle="Oksykodon*">
+      <Item ItemId="2939" ItemType="2" VarName="PAINPUMP_OKSYKODONSTRENG" LoincScale="ORD">
+        <FormItem ItemText="Oksykodon/Oxynorm styrke" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11939" OrderNumber="10" OptionText="10 mg/ml"/>
+          <Answer AnswerId="11940" OrderNumber="50" OptionText="50 mg/ml"/>
         </FormItem>
       </Item>
-      <Item ItemId="2940" ItemType="2" VarName="VAR2940" LoincScale="ORD">
-        <FormItem ItemText="Ketobemidon (Ketorax) styrke" ItemHelp="" Expression="ISNULL (PAINPUMP_OPIAT - 4)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="0">
-          <Answer AnswerId="11941" OrderNumber="1" OptionText="5 mg/ml"/>
+      <Item ItemId="2946" ItemType="1" VarName="PAINPUMP_OKSYKODONVOLUME" LoincScale="QN" UnitStr="ml">
+        <FormItem ItemText="Oksykodon/Oxynorm volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2947" ItemType="1" VarName="VAR2947" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Oksykodon/Oxynorm mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_OKSYKODONSTRENGTH * PAINPUMP_OKSYKODONVOLUME" MinExpression="0" MaxExpression="1000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Ketobemidon*">
+      <Item ItemId="2940" ItemType="2" VarName="PAINPUMP_KETOBEMIDONSTRE" LoincScale="ORD">
+        <FormItem ItemText="Ketobemidon/Ketorax styrke" ItemHelp="" Expression="ISNULL (PAINPUMP_OPIAT - 4) + 4" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="0">
+          <Answer AnswerId="11941" OrderNumber="5" OptionText="5 mg/ml"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2948" ItemType="1" VarName="PAINPUMP_KETOBEMIDONVOLU" LoincScale="QN" UnitStr="ml">
+        <FormItem ItemText="Ketobemidon/Ketorax volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2949" ItemType="1" VarName="VAR2949" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Ketobemidon/Ketorax mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_KETOBEMIDONVOLUME" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
         </FormItem>
       </Item>
     </Page>
