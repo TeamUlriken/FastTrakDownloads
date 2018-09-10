@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
-  <Form FormId="977" FormName="DIAPOL_INSULIN" FormTitle="Insulinbehandling (GBD)">
-    <Page PageTitle="Behandlingsopplegg" PageIntroduction="Medikamentene forordnes i legemiddelmodulen, med følgende anvendelsestekst: &quot;Se eget skjema for dosering&quot; ">
+  <Form FormId="953" FormName="DIAPOL_INSULIN" FormTitle="Insulinbehandling">
+    <Page PageTitle="Behandlingsopplegg">
       <Item ItemId="3322" ItemType="2" VarName="NDV_TREATMENT_TYPE" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Behandlingsstrategi" ItemText="Diabetes behandles ved hjelp av" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
           <Answer AnswerId="16425" OrderNumber="1" OptionText="Kun kost/aktivitet."/>
@@ -254,14 +254,14 @@
       </Item>
     </Page>
     <Page PageTitle="Måltidsinsulin*">
-      <Item ItemId="2692" ItemType="2" VarName="VAR2692" LoincScale="ORD">
+      <Item ItemId="2122" ItemType="2" VarName="ATC_A10ABnn" LoincScale="ORD">
         <FormItem ItemText="Hurtigvirkende insulin" ItemHelp="A10AB: Insulin og analoger til injeksjon, hurtigvirkende." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60703" OrderNumber="1" OptionText="Actrapid." ShortCode="B01a"/>
-          <Answer AnswerId="60704" OrderNumber="2" OptionText="Insuman Rapid." ShortCode="B01b"/>
-          <Answer AnswerId="60705" OrderNumber="3" OptionText="Humalog." ShortCode="B04a"/>
-          <Answer AnswerId="60706" OrderNumber="4" OptionText="Fiasp." ShortCode="B05a"/>
-          <Answer AnswerId="60707" OrderNumber="5" OptionText="NovoRapid." ShortCode="B05b"/>
-          <Answer AnswerId="60708" OrderNumber="6" OptionText="Apidra." ShortCode="B06a"/>
+          <Answer AnswerId="11119" OrderNumber="1" OptionText="Actrapid." ShortCode="B01a"/>
+          <Answer AnswerId="11120" OrderNumber="2" OptionText="Insuman Rapid." ShortCode="B01b"/>
+          <Answer AnswerId="11121" OrderNumber="3" OptionText="Humalog." ShortCode="B04a"/>
+          <Answer AnswerId="11122" OrderNumber="4" OptionText="Fiasp." ShortCode="B05a"/>
+          <Answer AnswerId="11123" OrderNumber="5" OptionText="NovoRapid." ShortCode="B05b"/>
+          <Answer AnswerId="11124" OrderNumber="6" OptionText="Apidra." ShortCode="B06a"/>
         </FormItem>
       </Item>
       <Item ItemId="3228" ItemType="1" VarName="INS_MEAL_BREAKFAST" LoincScale="QN" UnitStr="E" DisplayFormat="">
@@ -331,54 +331,42 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Totalsum fast dosering">
+    <Page PageTitle="Totalsum">
       <Item ItemId="3908" ItemType="1" VarName="INS_ALL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
         <FormItem ItemText="Døgndose (E)" ItemHelp="" Expression="INS_MEAL_SUM + INS_BASAL_SUM + INS_PREMIX_SUM + INS_PUMP_SUM *ISNULL (NDV_INSULIN_DEVICE-2)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Behovsdoser ved hyperglykemi" PageIntroduction="Ved vedvarende høye blodsukker etter ekstradose, observeres pasienten i 2-4 timer før evt. ny ekstradose gis. ">
-      <Item ItemId="2693" ItemType="2" VarName="VAR2693" LoincScale="ORD">
-        <FormItem ItemText="Egen behovsdosering ved hyperglykemi" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="11678" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="11679" OrderNumber="2" OptionText="Nei"/>
+    <Page PageTitle="Diabetestype*" PageIntroduction="Siden er skjult.  Variablen er bare med for å styre neste avsnitt.">
+      <Item ItemId="3196" ItemType="2" VarName="NDV_TYPE" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Diabetes type" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="1" Highlight="1" Optional="0">
+          <Answer AnswerId="15986" OrderNumber="1" OptionText="Type 1 (inkl. LADA)" VerboseText="Type 1 diabetes." ShortCode="1" ICD10="E10"/>
+          <Answer AnswerId="15987" OrderNumber="2" OptionText="Type 2" VerboseText="Type 2 diabetes." ShortCode="2" ICD10="E11"/>
+          <Answer AnswerId="15988" OrderNumber="3" OptionText="Annen diabetestype (inkl. pankreatitt, MODY)." ShortCode="A"/>
+          <Answer AnswerId="16137" OrderNumber="4" OptionText="er ikke avklart." ShortCode="U" ICD10="E14"/>
+          <Answer AnswerId="40942" OrderNumber="5" OptionText="Svangerskapsdiabetes." ShortCode="S" ICD10="O24"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Behovsdoser ved hyperglykemi*">
-      <Item ItemId="2074" ItemType="4" VarName="VAR2074" LoincScale="NAR" Multiline="1">
-        <FormItem ItemText="Strategi ved høyt blodsukker/hyperglykemi" ItemHelp="Bruk av hurtigvirkende insulinanaloger ved tilfeldig målt høyt blodsukker bør som hovedregel begrenses. Juster heller diabetesbehandlingen, med mål om å unngå problemet. Enkeltstående høye verdier (&lt;25) observeres 2-4 timer for å se om de går tilbake spontant." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+    <Page PageTitle="Følsomhet etc.*">
+      <Item ItemId="6665" ItemType="1" VarName="INSULIN_KARB_FAKTOR" LoincScale="QN" UnitStr="g/E" DisplayFormat="">
+        <FormItem ItemText="Insulin-karbohydrat faktor (g/E)" ItemHelp="Estimat (500/døgndose insulin) på antall gram karbohydrat som nøytraliseres av 1 enhet insulin." Expression="ISPOS( INS_ALL_SUM ) * 500 / INS_ALL_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="2122" ItemType="2" VarName="ATC_A10ABnn" LoincScale="ORD">
-        <FormItem ItemText="Hurtigvirkende insulin" ItemHelp="A10AB: Insulin og analoger til injeksjon, hurtigvirkende." Expression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="11119" OrderNumber="1" OptionText="Actrapid." ShortCode="B01a"/>
-          <Answer AnswerId="11120" OrderNumber="2" OptionText="Insuman Rapid." ShortCode="B01b"/>
-          <Answer AnswerId="11121" OrderNumber="3" OptionText="Humalog." ShortCode="B04a"/>
-          <Answer AnswerId="11122" OrderNumber="4" OptionText="Fiasp." ShortCode="B05a"/>
-          <Answer AnswerId="11123" OrderNumber="5" OptionText="NovoRapid." ShortCode="B05b"/>
-          <Answer AnswerId="11124" OrderNumber="6" OptionText="Apidra." ShortCode="B06a"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="2327" ItemType="1" VarName="VAR2327" LoincScale="QN" UnitStr="mmol/L">
-        <FormItem ItemText="Gi laveste ekstradose ved blodsukker over" ItemHelp="" MinExpression="12" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+      <Item ItemId="6666" ItemType="1" VarName="INSULIN_SENS_FAKTOR" LoincScale="QN" UnitStr="mmol/L/E" DisplayFormat="">
+        <FormItem ItemText="Insulinfølsomhetsfaktor" ItemHelp="Estimat (100/døgndose insulin) på fall i blodglukose per enhet hurtigvirkende insulin brukt som korrigerende doser." Expression="ISPOS( INS_ALL_SUM ) * 100 / INS_ALL_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="2328" ItemType="1" VarName="VAR2328" LoincScale="QN" UnitStr="Enheter">
-        <FormItem ItemText="Laveste ekstradose (Enheter)" ItemHelp="&#xA;" MinExpression="2" MaxExpression="8" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+      <Item ItemId="10433" ItemType="1" VarName="InsulinCarbFactor" LoincScale="QN" UnitStr="g/E" DisplayFormat="">
+        <FormItem ItemText="Aktuell karbohydrat faktor (g/E)" ItemHelp="Antall gram karbohydrat som nøytraliseres av 1 enhet insulin." MinExpression="1" MaxExpression="40" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="2329" ItemType="1" VarName="VAR2329" LoincScale="QN" UnitStr="mmol/L">
-        <FormItem ItemText="Gi høyeste ekstradose ved blodsukker over" ItemHelp="" MinExpression="20" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="2331" ItemType="1" VarName="VAR2331" LoincScale="QN" UnitStr="Enheter">
-        <FormItem ItemText="Høyeste ekstradose(Enheter)" ItemHelp="" MinExpression="4" MaxExpression="12" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+      <Item ItemId="10434" ItemType="1" VarName="InsulinSensFactor" LoincScale="QN" UnitStr="mmol/L/E" DisplayFormat="">
+        <FormItem ItemText="Aktuell korreksjonsfaktor" ItemHelp="Fall i blodglukose per enhet hurtigvirkende insulin brukt som korrigerende doser." MinExpression="0.5" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -386,34 +374,34 @@
   </Form>
   <Actions>
     <PageAction MasterId="3322">
-      <Activate EnumVal="3" PageConditionId="6986" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="4" PageConditionId="6987" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="6933" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="6934" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="4056">
-      <Activate EnumVal="2" PageConditionId="6988" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="2" PageConditionId="6989" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="6990" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="6935" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="6936" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6937" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="3209">
-      <Activate EnumVal="1" PageConditionId="6991" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6938" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="3332">
-      <Activate EnumVal="1" PageConditionId="6992" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6939" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="3206">
-      <Activate EnumVal="1" PageConditionId="6993" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6940" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="4056">
-      <Activate EnumVal="1" PageConditionId="6994" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6941" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="3201">
-      <Activate EnumVal="1" PageConditionId="6995" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6942" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="3332">
-      <Activate EnumVal="1" PageConditionId="6996" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6943" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
-    <PageAction MasterId="2693">
-      <Activate EnumVal="1" PageConditionId="7140" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
+    <PageAction MasterId="3196">
+      <Activate EnumVal="1" PageConditionId="6944" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
