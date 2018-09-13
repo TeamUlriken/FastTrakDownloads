@@ -2,38 +2,43 @@
 <StudyForm>
   <Form FormId="1023" FormName="FORM1023" FormTitle="Smertepumpe - Dosering">
     <Page>
+      <Item ItemId="2998" ItemType="8" VarName="VAR2998" LoincScale="MSG">
+        <FormItem ItemHeader="Husk legemiddelkortet" ItemText="Husk at alle medikamenter skal registreres i legemiddelmodulen med tekst: &quot;Doseres i subkutan smertepumpe etter eget skjema&quot;" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
       <Item ItemId="2927" ItemType="2" VarName="PAINPUMP_SYRINGESIZE" LoincScale="ORD">
         <FormItem ItemText="Størrelse på sprøyte til smertepumpe" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="11924" OrderNumber="1" OptionText="10 ml" Score="10.00"/>
-          <Answer AnswerId="11925" OrderNumber="2" OptionText="20 ml" Score="20.00"/>
+          <Answer AnswerId="11924" OrderNumber="10" OptionText="10 ml" Score="10.00"/>
+          <Answer AnswerId="11925" OrderNumber="20" OptionText="20 ml" Score="20.00"/>
         </FormItem>
       </Item>
       <Item ItemId="2926" ItemType="2" VarName="PAINPUMP_INFUSIONTIME" LoincScale="ORD">
         <FormItem ItemText="Infusjonstid for smertepumpe" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="11921" OrderNumber="1" OptionText="12 timer"/>
-          <Answer AnswerId="11922" OrderNumber="2" OptionText="24 timer"/>
+          <Answer AnswerId="11921" OrderNumber="12" OptionText="12 timer"/>
+          <Answer AnswerId="11922" OrderNumber="24" OptionText="24 timer"/>
         </FormItem>
       </Item>
       <Item ItemId="2929" ItemType="2" VarName="INFUSIONTIME1" LoincScale="ORD">
-        <FormItem ItemText="10 ml på 12 timer" ItemHelp="" Expression="ISNULL (PAINPUMP_SYRINGESIZE -1) * ISNULL (PAINPUMP_INFUSIONTIME - 1)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="10 ml på 12 timer" ItemHelp="" Expression="ISNULL (PAINPUMP_SYRINGESIZE -10) * ISNULL (PAINPUMP_INFUSIONTIME - 12)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="11923" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="11926" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
       <Item ItemId="2930" ItemType="2" VarName="INFUSIONTIME2" LoincScale="ORD">
-        <FormItem ItemText="10 ml på 24 timer" ItemHelp="" Expression="ISNULL (PAINPUMP_SYRINGESIZE -1) * ISNULL (PAINPUMP_INFUSIONTIME - 2)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="10 ml på 24 timer" ItemHelp="" Expression="ISNULL (PAINPUMP_SYRINGESIZE -10) * ISNULL (PAINPUMP_INFUSIONTIME - 24)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="61007" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="61008" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
       <Item ItemId="2931" ItemType="2" VarName="INFUSIONTIME3" LoincScale="ORD">
-        <FormItem ItemText="20 ml på 12 timer" ItemHelp="" Expression="ISNULL (PAINPUMP_SYRINGESIZE -2) * ISNULL (PAINPUMP_INFUSIONTIME - 1)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="20 ml på 12 timer" ItemHelp="" Expression="ISNULL (PAINPUMP_SYRINGESIZE -20) * ISNULL (PAINPUMP_INFUSIONTIME - 12)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="61010" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="61011" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
       <Item ItemId="2932" ItemType="2" VarName="INFUSIONTIME4" LoincScale="ORD">
-        <FormItem ItemText="20 ml på 24 timer" ItemHelp="" Expression="ISNULL (PAINPUMP_SYRINGESIZE -2) * ISNULL (PAINPUMP_INFUSIONTIME - 2)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="20 ml på 24 timer" ItemHelp="" Expression="ISNULL (PAINPUMP_SYRINGESIZE -20) * ISNULL (PAINPUMP_INFUSIONTIME - 24)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="61013" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="61014" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
@@ -63,87 +68,351 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Innhold i smertepumpen">
+    <Page PageTitle="Smertestillende - Opiat">
       <Item ItemId="2936" ItemType="2" VarName="PAINPUMP_OPIAT" LoincScale="ORD">
-        <FormItem ItemText="Smertestillende" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="11927" OrderNumber="1" OptionText="Morfin"/>
-          <Answer AnswerId="11928" OrderNumber="2" OptionText="Hydromorfon (Palladon)"/>
-          <Answer AnswerId="11929" OrderNumber="3" OptionText="Oksykodon (Oxynorm)"/>
-          <Answer AnswerId="11930" OrderNumber="4" OptionText="Ketobemidon (Ketorax)"/>
-          <Answer AnswerId="11931" OrderNumber="5" OptionText="Ikke smertestillende i pumpen"/>
+        <FormItem ItemText="Opiat" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11927" OrderNumber="1" OptionText="Morfin" ShortCode="A01"/>
+          <Answer AnswerId="11928" OrderNumber="2" OptionText="Hydromorfon/Palladon" ShortCode="A03"/>
+          <Answer AnswerId="11929" OrderNumber="3" OptionText="Oksykodon/Oxynorm" ShortCode="A05"/>
+          <Answer AnswerId="11930" OrderNumber="4" OptionText="Ketobemidon/Ketorax" ShortCode="B01"/>
+          <Answer AnswerId="11931" OrderNumber="99" OptionText="Ikke opiat i pumpen" ShortCode="N/A"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Morfin*">
-      <Item ItemId="2937" ItemType="2" VarName="PAINPUMP_MORFINESTRENGTH" LoincScale="ORD">
+      <Item ItemId="2937" ItemType="2" VarName="PAINPUMP_MORFINE_S" LoincScale="ORD">
         <FormItem ItemText="Morfin styrke" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="11932" OrderNumber="10" OptionText="10 mg/ml" Score="10.00"/>
-          <Answer AnswerId="11933" OrderNumber="20" OptionText="20 mg/ml" Score="20.00"/>
-          <Answer AnswerId="11934" OrderNumber="40" OptionText="40 mg/ml" Score="40.00"/>
+          <Answer AnswerId="11932" OrderNumber="10" OptionText="10 mg/ml"/>
+          <Answer AnswerId="11933" OrderNumber="20" OptionText="20 mg/ml"/>
+          <Answer AnswerId="11934" OrderNumber="40" OptionText="40 mg/ml"/>
         </FormItem>
       </Item>
-      <Item ItemId="2941" ItemType="1" VarName="PAINPUMP_MORFINEVOLUME" LoincScale="QN" UnitStr="ml">
-        <FormItem ItemText="Morfin volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+      <Item ItemId="2941" ItemType="1" VarName="PAINPUMP_MORFINE_V" LoincScale="QN" UnitStr="ml">
+        <FormItem ItemText="Morfin volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="2942" ItemType="1" VarName="VAR2942" LoincScale="QN" UnitStr="mg">
-        <FormItem ItemText="Morfin mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_MORFINESTRENGTH * PAINPUMP_MORFINEVOLUME" MinExpression="0" MaxExpression="800" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
+      <Item ItemId="2942" ItemType="1" VarName="PAINPUMP_MORFINE_SY" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Morfin mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_MORFINE_S * PAINPUMP_MORFINE_V * ISPOS (PAINPUMP_MORFINE_S)" MinExpression="0" MaxExpression="800" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2951" ItemType="1" VarName="VAR2951" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Morfin mengde per døgn (mg)" ItemHelp="" Expression="PAINPUMP_MORFINE_SY * (ISNULL (PAINPUMP_INFUSIONTIME-12)+1)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Hydromorfon*">
-      <Item ItemId="2938" ItemType="2" VarName="PAINPUMP_HYDROMORFONSTRE" LoincScale="ORD">
+      <Item ItemId="2938" ItemType="2" VarName="PAINPUMP_HYDROMORFON_S" LoincScale="ORD">
         <FormItem ItemText="Hydromorfon/Palladon styrke" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="11935" OrderNumber="2" OptionText="2 mg/ml" Score="2.00"/>
-          <Answer AnswerId="11936" OrderNumber="10" OptionText="10 mg/ml" Score="10.00"/>
-          <Answer AnswerId="11937" OrderNumber="20" OptionText="20 mg/ml" Score="20.00"/>
-          <Answer AnswerId="11938" OrderNumber="50" OptionText="50 mg/ml" Score="50.00"/>
+          <Answer AnswerId="11935" OrderNumber="2" OptionText="2 mg/ml"/>
+          <Answer AnswerId="11936" OrderNumber="10" OptionText="10 mg/ml"/>
+          <Answer AnswerId="11937" OrderNumber="20" OptionText="20 mg/ml"/>
+          <Answer AnswerId="11938" OrderNumber="50" OptionText="50 mg/ml"/>
         </FormItem>
       </Item>
-      <Item ItemId="2943" ItemType="1" VarName="PAINPUMP_HYDROMORFONVOLU" LoincScale="QN" UnitStr="ml">
-        <FormItem ItemText="Hydromorfon/Palladon volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+      <Item ItemId="2943" ItemType="1" VarName="PAINPUMP_HYDROMORFON_V" LoincScale="QN" UnitStr="ml">
+        <FormItem ItemText="Hydromorfon/Palladon volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="2944" ItemType="1" VarName="VAR2944" LoincScale="QN" UnitStr="mg">
-        <FormItem ItemText="Hydromorfon/Palladon mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_HYDROMORFONSTRENGTH * PAINPUMP_HYDROMORFONVOLUME" MinExpression="0" MaxExpression="1000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="2944" ItemType="1" VarName="PAINPUMP_HYDROMORFON_SY" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Hydromorfon/Palladon mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_HYDROMORFON_S * PAINPUMP_HYDROMORFON_V * ISPOS (PAINPUMP_HYDROMORFON_S)" MinExpression="0" MaxExpression="1000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2971" ItemType="1" VarName="VAR2971" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Hydromorfon/Palladol per døgn (mg)" ItemHelp="" Expression="PAINPUMP_HYDROMORFON_SY * (ISNULL (PAINPUMP_INFUSIONTIME-12)+1)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Oksykodon*">
-      <Item ItemId="2939" ItemType="2" VarName="PAINPUMP_OKSYKODONSTRENG" LoincScale="ORD">
+      <Item ItemId="2939" ItemType="2" VarName="PAINPUMP_OKSYKODON_S" LoincScale="ORD">
         <FormItem ItemText="Oksykodon/Oxynorm styrke" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="11939" OrderNumber="10" OptionText="10 mg/ml"/>
           <Answer AnswerId="11940" OrderNumber="50" OptionText="50 mg/ml"/>
         </FormItem>
       </Item>
-      <Item ItemId="2946" ItemType="1" VarName="PAINPUMP_OKSYKODONVOLUME" LoincScale="QN" UnitStr="ml">
-        <FormItem ItemText="Oksykodon/Oxynorm volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+      <Item ItemId="2946" ItemType="1" VarName="PAINPUMP_OKSYKODON_V" LoincScale="QN" UnitStr="ml">
+        <FormItem ItemText="Oksykodon/Oxynorm volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="2947" ItemType="1" VarName="VAR2947" LoincScale="QN" UnitStr="mg">
-        <FormItem ItemText="Oksykodon/Oxynorm mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_OKSYKODONSTRENGTH * PAINPUMP_OKSYKODONVOLUME" MinExpression="0" MaxExpression="1000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="2947" ItemType="1" VarName="PAINPUMP_OKSYKODON_SY" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Oksykodon/Oxynorm mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_OKSYKODON_S * PAINPUMP_OKSYKODON_V * ISPOS (PAINPUMP_OKSYKODON_S)" MinExpression="0" MaxExpression="1000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2972" ItemType="1" VarName="VAR2972" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Oksykodon/Oxynorm per døgn (mg)" ItemHelp="" Expression="PAINPUMP_OKSYKODON_SY * (ISNULL (PAINPUMP_INFUSIONTIME-12)+1)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Ketobemidon*">
-      <Item ItemId="2940" ItemType="2" VarName="PAINPUMP_KETOBEMIDONSTRE" LoincScale="ORD">
-        <FormItem ItemText="Ketobemidon/Ketorax styrke" ItemHelp="" Expression="ISNULL (PAINPUMP_OPIAT - 4) + 4" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="0">
-          <Answer AnswerId="11941" OrderNumber="5" OptionText="5 mg/ml"/>
+      <Item ItemId="2940" ItemType="2" VarName="PAINPUMP_KETOBEMIDON_S" LoincScale="ORD">
+        <FormItem ItemText="Ketobemidon/Ketorax styrke" ItemHelp="" Expression="ISNULL (PAINPUMP_OPIAT - 4) + 4" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11945" OrderNumber="5" OptionText="5 mg/ml"/>
         </FormItem>
       </Item>
-      <Item ItemId="2948" ItemType="1" VarName="PAINPUMP_KETOBEMIDONVOLU" LoincScale="QN" UnitStr="ml">
-        <FormItem ItemText="Ketobemidon/Ketorax volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+      <Item ItemId="2948" ItemType="1" VarName="PAINPUMP_KETOBEMIDON_V" LoincScale="QN" UnitStr="ml">
+        <FormItem ItemText="Ketobemidon/Ketorax volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="2949" ItemType="1" VarName="VAR2949" LoincScale="QN" UnitStr="mg">
-        <FormItem ItemText="Ketobemidon/Ketorax mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_KETOBEMIDONVOLUME" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="2949" ItemType="1" VarName="PAINPUMP_KETOBEMIDON_SY" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Ketobemidon/Ketorax mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_KETOBEMIDON_V * PAINPUMP_KETOBEMIDON_S * ISPOS (PAINPUMP_KETOBEMIDON_S)" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2973" ItemType="1" VarName="VAR2973" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Ketobemidon/Ketorax mengde per døgn (mg)" ItemHelp="" Expression="PAINPUMP_KETOBEMIDON_SY * (ISNULL (PAINPUMP_INFUSIONTIME-12)+1)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle=" Smertestillende - Anestetikum">
+      <Item ItemId="2974" ItemType="2" VarName="PAINPUMP_ANESTETIC" LoincScale="ORD">
+        <FormItem ItemText="Anestetikum" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11956" OrderNumber="1" OptionText="Ketamin/Ketalar" ShortCode="N01A"/>
+          <Answer AnswerId="11957" OrderNumber="99" OptionText="Ikke anestetikum i pumpen" ShortCode="N/A"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Ketamin*">
+      <Item ItemId="2975" ItemType="2" VarName="PAINPUMP_KETAMIN_S" LoincScale="ORD">
+        <FormItem ItemText="Ketamin/Ketalar styrke" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11958" OrderNumber="10" OptionText="10 mg/ml"/>
+          <Answer AnswerId="11959" OrderNumber="50" OptionText="50 mg/ml"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2976" ItemType="1" VarName="PAINPUMP_KETAMIN_V" LoincScale="QN" UnitStr="ml">
+        <FormItem ItemText="Ketamin/Ketalar volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2977" ItemType="1" VarName="PAINPUMP_KETAMIN_SY" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Ketamin/Ketalar mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_KETAMIN_V * PAINPUMP_KETAMIN_S * ISPOS (PAINPUMP_KETAMIN_S)" MinExpression="0" MaxExpression="1000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2978" ItemType="1" VarName="VAR2978" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Ketamin/Ketalar mengde per døgn (mg)" ItemHelp="" Expression="PAINPUMP_KETAMIN_SY * (ISNULL (PAINPUMP_INFUSIONTIME-12)+1)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Angstdempende/beroligende">
+      <Item ItemId="2952" ItemType="2" VarName="VAR2952" LoincScale="ORD">
+        <FormItem ItemText="Benzodiazepin" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11941" OrderNumber="1" OptionText="Midazolam" ShortCode="N05C"/>
+          <Answer AnswerId="11942" OrderNumber="99" OptionText="Ikke angstdempende/beroligende i pumpen" ShortCode="N/A"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Midazolam*">
+      <Item ItemId="2953" ItemType="2" VarName="PAINPUMP_MIDAZOLAM_S" LoincScale="ORD">
+        <FormItem ItemText="Midazolam styrke" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11943" OrderNumber="1" OptionText="1 mg/ml"/>
+          <Answer AnswerId="11944" OrderNumber="5" OptionText="5 mg/ml"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2954" ItemType="1" VarName="PAINPUMP_MIDAZOLAM_V" LoincScale="QN" UnitStr="ml">
+        <FormItem ItemText="Midazolam volum per sprøyte(ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2955" ItemType="1" VarName="PAINPUMP_MIDAZOLAM_SY" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Midazolam mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_MIDAZOLAM_S * PAINPUMP_MIDAZOLAM_V * ISPOS (PAINPUMP_MIDAZOLAM_S)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2956" ItemType="1" VarName="VAR2956" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Midazolam mengde per døgn (mg)" ItemHelp="" Expression="PAINPUMP_MIDAZOLAM_SY * (ISNULL (PAINPUMP_INFUSIONTIME-12)+1)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Kvalmestillende">
+      <Item ItemId="2957" ItemType="2" VarName="PAINPUMP_ANTIEMETIC" LoincScale="ORD">
+        <FormItem ItemText="Kvalmestillende" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11946" OrderNumber="1" OptionText="Haloperidol/Haldol" ShortCode="N05A"/>
+          <Answer AnswerId="11947" OrderNumber="2" OptionText="Metoklopramid/Afipran" ShortCode="A03F"/>
+          <Answer AnswerId="11948" OrderNumber="3" OptionText="Ondansetron/Zofran" ShortCode="A04A"/>
+          <Answer AnswerId="11949" OrderNumber="99" OptionText="Ikke kvalmestillende i pumpen" ShortCode="N/A"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Haloperidol*">
+      <Item ItemId="2958" ItemType="2" VarName="PAINPUMP_HALOPERIDOL_S" LoincScale="ORD">
+        <FormItem ItemText="Haloperidol/Haldol styrke" ItemHelp="" Expression="ISNULL (PAINPUMP_ANTIEMETIC - 1) + 4" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11950" OrderNumber="5" OptionText="5 mg/ml"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2959" ItemType="1" VarName="PAINPUMP_HALOPERIDOL_V" LoincScale="QN" UnitStr="ml">
+        <FormItem ItemText="Haloperidol/Haldol volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2960" ItemType="1" VarName="PAINPUMP_HALOPERIDOL_SY" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Haloperidol/Haldol mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_HALOPERIDOL_S * PAINPUMP_HALOPERIDOL_V * ISPOS (PAINPUMP_HALOPERIDOL_S)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2961" ItemType="1" VarName="VAR2961" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Haloperidol/Haldol mengde per døgn (mg)" ItemHelp="" Expression="PAINPUMP_HALOPERIDOL_SY * (ISNULL (PAINPUMP_INFUSIONTIME-12)+1)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Metoklopramid*">
+      <Item ItemId="2962" ItemType="2" VarName="PAINPUMP_METOKLOPRAMID_S" LoincScale="ORD">
+        <FormItem ItemText="Metoklopramid/Afipran styrke" ItemHelp="" Expression="ISNULL (PAINPUMP_ANTIEMETIC - 2) + 4" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11951" OrderNumber="5" OptionText="5 mg/ml"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2963" ItemType="1" VarName="PAINPUMP_METOKLOPRAMID_V" LoincScale="QN" UnitStr="ml">
+        <FormItem ItemText="Metoklopramid/Afipran volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2964" ItemType="1" VarName="PAINPUMP_METOKLOPR_SY" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Metoklopramid/Afipran mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_METOKLOPRAMID_S * PAINPUMP_METOKLOPRAMID_V * ISPOS (PAINPUMP_METOKLOPRAMID_S)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2965" ItemType="1" VarName="VAR2965" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Metoklopramid/Afipran mengde per døgn (mg)" ItemHelp="" Expression="PAINPUMP_METOKLOPR_SY * (ISNULL (PAINPUMP_INFUSIONTIME-12)+1)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Ondansetron*">
+      <Item ItemId="2966" ItemType="2" VarName="PAINPUMP_ONDANSETRON_S" LoincScale="ORD">
+        <FormItem ItemText="Ondansetron/Zofran styrke" ItemHelp="" Expression="ISNULL (PAINPUMP_ANTIEMETIC - 3) + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11952" OrderNumber="2" OptionText="2 mg/ml"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2967" ItemType="1" VarName="PAINPUMP_ONDANSETRON_V" LoincScale="QN" UnitStr="ml">
+        <FormItem ItemText="Ondansetron/Zofran volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2968" ItemType="1" VarName="PAINPUMP_ONDANSETRON_SY" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Ondansetron/Zofran mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_ONDANSETRON_S * PAINPUMP_ONDANSETRON_V * ISPOS (PAINPUMP_ONDANSETRON_S)" MinExpression="0" MaxExpression="40" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2979" ItemType="1" VarName="VAR2979" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Ondansetron/Zofran mengde per døgn (mg)" ItemHelp="" Expression="PAINPUMP_ONDANSETRON_SY * (ISNULL (PAINPUMP_INFUSIONTIME-12)+1)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Antikolinergika - sekresjonshemmende">
+      <Item ItemId="2980" ItemType="2" VarName="PAINPUMP_ANTICOLINERGIC" LoincScale="ORD">
+        <FormItem ItemText="Antikolinergika" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11960" OrderNumber="1" OptionText="Glykopyrron/Robinul" ShortCode="A03A"/>
+          <Answer AnswerId="11961" OrderNumber="2" OptionText="Skopolamin" ShortCode="A04A"/>
+          <Answer AnswerId="11962" OrderNumber="3" OptionText="Butylskopolamin/Buscopan" ShortCode="A03B"/>
+          <Answer AnswerId="11963" OrderNumber="99" OptionText="Ikke antikolinergika i pumpen" ShortCode="N/A"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Glykopyrron*">
+      <Item ItemId="2981" ItemType="2" VarName="PAINPUMP_GLYKOPYRRON_S" LoincScale="ORD">
+        <FormItem ItemText="Glykopyrron/Robinul styrke" ItemHelp="" Expression="ISNULL (PAINPUMP_ANTICOLINERGIC-1)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11964" OrderNumber="1" OptionText="0,2 mg/ml" ShortCode="0,2"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2982" ItemType="1" VarName="PAINPUMP_GLYKOPYRRON_V" LoincScale="QN" UnitStr="ml">
+        <FormItem ItemText="Glykopyrron/Robinul volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2983" ItemType="1" VarName="PAINPUMP_GLYKOPYRRON_SY" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Glykopyrron/Robinul mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_GLYKOPYRRON_S * PAINPUMP_GLYKOPYRRON_V /5" MinExpression="0" MaxExpression="1000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2984" ItemType="1" VarName="VAR2984" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Glykopyrron/Robinul mengde per døgn (mg)" ItemHelp="" Expression="PAINPUMP_GLYKOPYRRON_SY * (ISNULL (PAINPUMP_INFUSIONTIME-12)+1)" MinExpression="0" MaxExpression="1000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Skopolamin*">
+      <Item ItemId="2985" ItemType="2" VarName="PAINPUMP_SKOPOLAMIN_S" LoincScale="ORD">
+        <FormItem ItemText="Skopolamin styrke" ItemHelp="" Expression="ISNULL (PAINPUMP_ANTICOLINERGIC-2)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
+          <Answer AnswerId="61016" OrderNumber="1" OptionText="0,3 mg/ml" ShortCode="0,3"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2986" ItemType="1" VarName="PAINPUMP_SKOPOLAMIN_V" LoincScale="QN" UnitStr="ml">
+        <FormItem ItemText="Skopolamin volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2987" ItemType="1" VarName="PAINPUMP_SKOPOLAMIN_SY" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Skopolamin mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_SKOPOLAMIN_S * PAINPUMP_SKOPOLAMIN_V * 3/10" MinExpression="0" MaxExpression="1000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2988" ItemType="1" VarName="VAR2988" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Skopolamin mengde per døgn (mg)" ItemHelp="" Expression="PAINPUMP_SKOPOLAMIN_SY * (ISNULL(PAINPUMP_INFUSIONTIME-12)+1)" MinExpression="0" MaxExpression="1000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Buscopan*">
+      <Item ItemId="2989" ItemType="2" VarName="PAINPUMP_BUSCOPAN_S" LoincScale="ORD">
+        <FormItem ItemText="Butylskopolamin/Buscopan styrke" ItemHelp="" Expression="ISNULL (PAINPUMP_ANTICOLINERGIC-3)+19" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11965" OrderNumber="20" OptionText="20 mg/ml"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2990" ItemType="1" VarName="PAINPUMP_BUSCOPAN_V" LoincScale="QN" UnitStr="ml">
+        <FormItem ItemText="Butylskopolamin/Buscopan volum per sprøyte (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1" DefaultValue="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2991" ItemType="1" VarName="PAINPUMP_BUSCOPAN_SY" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Butylskopolamin/Buscopan mengde per sprøyte (mg)" ItemHelp="" Expression="PAINPUMP_BUSCOPAN_S * PAINPUMP_BUSCOPAN_V" MinExpression="0" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2992" ItemType="1" VarName="VAR2992" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Butylskopolamin/Buscopan mengde per døgn (mg)" ItemHelp="" Expression="PAINPUMP_BUSCOPAN_SY * (ISNULL (PAINPUMP_INFUSIONTIME-12)+1)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Etterfylling til standard volum (10 eller 20 ml)">
+      <Item ItemId="2993" ItemType="2" VarName="VAR2993" LoincScale="ORD">
+        <FormItem ItemHeader="Løsning for etterfylling" ItemText="Sprøyten må fylles til standard volum som vil være 10 ml eller 20 ml" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11966" OrderNumber="1" OptionText="NaCl 9 mg/ml" ShortCode="NaCl"/>
+          <Answer AnswerId="11967" OrderNumber="2" OptionText="Glucose 50 mg/ml" ShortCode="Glu"/>
+          <Answer AnswerId="11968" OrderNumber="99" OptionText="Ikke aktuelt*" ShortCode="N/A"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Glucose*">
+      <Item ItemId="2994" ItemType="1" VarName="PAINPUMP_GLUCOSE_V" LoincScale="QN" UnitStr="ml">
+        <FormItem ItemText="Mengde Glucose 50 mg/ml (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1" DefaultValue="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="NaCl*">
+      <Item ItemId="2995" ItemType="1" VarName="PAINPUMP_NACL_V" LoincScale="QN" UnitStr="ml">
+        <FormItem ItemText="Mengde NaCl 9 mg/ml (ml)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1" DefaultValue="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Kontroller at totalvolum er lik sprøytestørrelsen">
+      <Item ItemId="2996" ItemType="1" VarName="VAR2996" LoincScale="QN" UnitStr="ml">
+        <FormItem ItemText="Totalvolum (ml)" ItemHelp="" Expression="PAINPUMP_MORFINE_V * (ISPOS (PAINPUMP_MORFINE_V)) + &#xA;PAINPUMP_HYDROMORFON_V * (ISPOS (PAINPUMP_HYDROMORFON_V))+ &#xA;PAINPUMP_OKSYKODON_V * (ISPOS (PAINPUMP_OKSYKODON_V))+ &#xA;PAINPUMP_KETOBEMIDON_V * (ISPOS (PAINPUMP_KETOBEMIDON_V))+&#xA;PAINPUMP_KETAMIN_V * (ISPOS (PAINPUMP_KETAMIN_V))+&#xA;PAINPUMP_MIDAZOLAM_V * (ISPOS (PAINPUMP_MIDAZOLAM_V))+&#xA;PAINPUMP_HALOPERIDOL_V * (ISPOS (PAINPUMP_HALOPERIDOL_V))+&#xA;PAINPUMP_METOKLOPRAMID_V * (ISPOS (PAINPUMP_METOKLOPRAMID_V))+&#xA;PAINPUMP_ONDANSETRON_V * (ISPOS (PAINPUMP_ONDANSETRON_V))+&#xA;PAINPUMP_GLYKOPYRRON_V * (ISPOS (PAINPUMP_GLYKOPYRRON_V))+&#xA;PAINPUMP_SKOPOLAMIN_V * (ISPOS (PAINPUMP_SKOPOLAMIN_V))+&#xA;PAINPUMP_BUSCOPAN_V * (ISPOS (PAINPUMP_BUSCOPAN_V))+&#xA;PAINPUMP_GLUCOSE_V * (ISPOS (PAINPUMP_GLUCOSE_V))+&#xA;PAINPUMP_NACL_V * (ISPOS (PAINPUMP_NACL_V))" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -167,6 +436,26 @@
       <Activate EnumVal="2" PageConditionId="7511" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
       <Activate EnumVal="3" PageConditionId="7512" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
       <Activate EnumVal="4" PageConditionId="7517" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2974">
+      <Activate EnumVal="1" PageConditionId="7532" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2952">
+      <Activate EnumVal="1" PageConditionId="7527" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2957">
+      <Activate EnumVal="1" PageConditionId="7528" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="7529" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="7530" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2980">
+      <Activate EnumVal="1" PageConditionId="7533" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="7534" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="7535" PageNumber="22" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2993">
+      <Activate EnumVal="2" PageConditionId="7536" PageNumber="24" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="7537" PageNumber="25" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
