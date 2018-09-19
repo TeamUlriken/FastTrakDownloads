@@ -6256,4 +6256,24 @@ BEGIN
         @AlertMsg;
 END]]>
 	</row>
+	<row ProcId="10030" StudyName="GBD" ProcName="GBD.RuleBarthel" ProcDesc="Barthel hver 6 m�ned" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-82260524" LastUpdate="2018-08-23T10:10:43.860Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleBarthel( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'BARTHEL',180,2;
+END;
+]]>
+	</row>
+	<row ProcId="10031" StudyName="GBD" ProcName="GBD.RuleKDV" ProcDesc="KDV hver 6 m�ned" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-1534882079" LastUpdate="2018-08-23T10:14:45.310Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleKDV( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'KDV',180,2;
+END;
+]]>
+	</row>
+	<row ProcId="10032" StudyName="GBD" ProcName="GBD.RuleQualid" ProcDesc="Qualid hver 6 m�ned" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-1744014554" LastUpdate="2018-09-02T16:29:02.430Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleQualid( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'QUALID',180,2
+END;]]>
+	</row>
 </DbProcList>
