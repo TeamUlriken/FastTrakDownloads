@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
   <Form FormId="964" FormName="OvaryInsufficiency" FormTitle="Primær ovarialinsuffisiens">
+    <Page PageTitle="Aktuelt">
+      <Item ItemId="4237" ItemType="4" VarName="DP_PROBLEMSTILLING" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        <FormItem ItemHeader="Aktuelt" ItemText="Dagens problemstilling" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
     <Page PageTitle="Bakgrunn">
       <Item ItemId="6682" ItemType="2" VarName="OID8414" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Samlivsstatus" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
@@ -46,6 +53,14 @@
       </Item>
     </Page>
     <Page PageTitle="Svangerskapshistorie">
+      <Item ItemId="2999" ItemType="2" VarName="ICD10_N910" LoincScale="ORD">
+        <FormItem ItemText="Primær amenore" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11972" OrderNumber="1" OptionText="Ja" VerboseText="Primær amenore." ShortCode="J" ICD10="N910"/>
+          <Answer AnswerId="11973" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Sekundær amenore*">
       <Item ItemId="9776" ItemType="1" VarName="VAR9776" LoincScale="QN" UnitStr="år" DisplayFormat="">
         <FormItem ItemText="Alder ved menarche (år)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
           <Answer/>
@@ -396,38 +411,48 @@
         </FormItem>
       </Item>
     </Page>
+    <Page PageTitle="Vurdering">
+      <Item ItemId="4088" ItemType="4" VarName="DP_AVTALER" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        <FormItem ItemHeader="Vurdering" ItemText="Vurdering og plan videre" ItemHelp="Inkludert eventuelle avtaler gjort med pasienten, unntatt timeavtale som er eget punkt." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
   </Form>
   <Actions>
+    <PageAction MasterId="2999">
+      <Activate EnumVal="2" PageConditionId="7538" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
     <PageAction MasterId="2910">
-      <Activate EnumVal="1" PageConditionId="7483" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="7483" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="2921">
-      <Activate EnumVal="1" PageConditionId="7494" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="7494" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="2920">
-      <Activate EnumVal="1" PageConditionId="7495" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="7495" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="2969">
-      <Activate EnumVal="1" PageConditionId="7531" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="7531" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6299">
-      <Activate EnumVal="1" PageConditionId="7487" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="7488" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="7487" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="7488" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6314">
-      <Activate EnumVal="1" PageConditionId="7489" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="7489" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6312">
-      <Activate EnumVal="1" PageConditionId="7490" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="7490" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6313">
-      <Activate EnumVal="1" PageConditionId="7491" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="7491" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="3411">
-      <Activate EnumVal="1" PageConditionId="7492" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="7492" PageNumber="22" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10379">
-      <Activate EnumVal="1" PageConditionId="7493" PageNumber="26" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="7493" PageNumber="28" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
