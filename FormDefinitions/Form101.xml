@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="101" FormName="HBA1C_VARS" FormTitle="NDV HbA1c">
+    <Page PageTitle="HbA1c verdier og mål" PageIntroduction="Her må hele variablen erstattes">
+      <Item ItemId="527" ItemType="1" VarName="HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem ItemText="B-HbA1c" ItemHelp="HbA1c-verdien gjenspeiler det gjennomsnittlige blodsukkeret de siste 6 - 8 uker før prøvetakingen. Høye verdier ses derfor ved økt gjennomsnittlig blodglukose. Lave verdier kan ses ved økt hemoglobinomsetning som ved hemolytiske anemier." MinExpression="3" MaxExpression="25" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="1408" ItemType="1" VarName="HBA1C_EARLY" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem ItemText="Tidlig HbA1c-verdi (%)" ItemHelp="" MinExpression="5.9" MaxExpression="6.49" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6093" ItemType="1" VarName="RoasHbA1cDiagnose" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem ItemText="B-HbA1c (%)" ItemHelp="" MinExpression="3" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6384" ItemType="1" VarName="VMR_LAB_HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem ItemText="Siste HbA1c (%)" ItemHelp="Hentes inn automatisk fra labarket, kan ikke redigeres her." MinExpression="3" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7513" ItemType="1" VarName="ActualHbA1c" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem ItemText="Beregnet aktuell verdi for HbA1c (%)" ItemHelp="Bruker HbA1c-verdi fra dette skjemaet, alternativt hentes det fra autoklassifiserte journaldata,&#xA;kun til vurdering av måloppnåelse.  Skal ikke lagres i database.  Hidden og ReadOnly." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="HbA1c-målverdi">
+      <Item ItemId="4081" ItemType="1" VarName="GOAL_HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem ItemText="Mål HbA1c (%)" ItemHelp="" Expression="" MinExpression="6" MaxExpression="12" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1" DefaultValue="7">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4525" ItemType="1" VarName="STDGOAL_HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem ItemText="Mål HbA1c (%)" ItemHelp="Fast verdi, ikke påvirket av alder eller kjønn." Expression="7" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7512" ItemType="1" VarName="ActualHbA1cGoal" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem ItemText="Beregnet aktuelt HbA1c-mål (%)" ItemHelp="Bruker standardmål hvis spørsmål om individuelle mål er besvart med Nei eller ubesvart, evt. besvart med Ja, men individuelt mål likevel ikke er oppgitt.  Hidden men ikke ReadOnly, skal lagres for gjenbruk." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="HbA1c er nevnt i hjelpetekst med verdi" PageIntroduction="Her må hjelpeteksten oppdateres på skjema når variabel endres">
+      <Item ItemId="2083" ItemType="2" VarName="DP_TILTAK_HBA1C" LoincScale="ORD">
+        <FormItem ItemHeader="Tiltak mot høy HbA1c" ItemText="Er det iverksatt særskilte tiltak mot høy HbA1c?" ItemHelp="Vurder særskilte tiltak fordi HbA1c er på 75 mmol/mol (9%) eller mer." Expression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11059" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="11060" OrderNumber="2" OptionText="Nei, pasienten ønsker ikke"/>
+          <Answer AnswerId="11061" OrderNumber="3" OptionText="Nei, ikke aktuelt"/>
+          <Answer AnswerId="11062" OrderNumber="4" OptionText="Vet ikke / ubesvart"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="1379" ItemType="2" VarName="GRAV_HYPERGLYKEMI" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Hyperglykemi i tidligere svangerskap" ItemHelp="Diabetes i svangerskap: Fastende blodsukker &gt;= 7.0 mmol/L og/eller 2-timersverdi &gt;=11.1 mmol/L og/eller HbA1c &gt;= 6.5% evt. 48 mmol/mol.&#xA;Svangerskapsdiabetes: Fastende blodsukker 5.3 - 6.9 mmol/L og/eller 2-timersverdi 9.0 - 11.0 mmol/L." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="59489" OrderNumber="1" OptionText="Diabetes i svangerskap"/>
+          <Answer AnswerId="59490" OrderNumber="2" OptionText="Svangerskapsdiabetes"/>
+          <Answer AnswerId="59491" OrderNumber="9" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Hjelpevariable som bruker HbA1c" PageIntroduction="Formlene må oppdateres fordi de vil referere seg til en ny variabel">
+      <Item ItemId="4226" ItemType="2" VarName="HBA1C_GOAL_REACHED" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="HbA1c mål nådd" ItemHelp="" Expression="ISPOS(ActualHbA1c)*(1+ISNEG(ActualHbA1cGoal-ActualHbA1c)) + 3*ISNEG(ActualHbA1c)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="22665" OrderNumber="1" OptionText="Mål nådd."/>
+          <Answer AnswerId="22666" OrderNumber="2" OptionText="Ikke nådd mål."/>
+          <Answer AnswerId="22667" OrderNumber="3" OptionText="Ukjent HbA1c."/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2144" ItemType="2" VarName="tmpHbA1cAbove9" LoincScale="ORD">
+        <FormItem ItemText="HbA1c over 9%" ItemHelp="" Expression="2 - ISPOS( VMR.LAB.HBA1C - 8.99 )" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11153" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="11154" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="1569" ItemType="2" VarName="tmpHbA1cFound" LoincScale="ORD">
+        <FormItem ItemText="HbA1c utfylt" ItemHelp="" Expression="2-ISPOS(HBA1C_EARLY)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="10532" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="10533" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="HbA1c-verdier registrering i forbindelse med oppstart av CGM" PageIntroduction="De som fortsatt er i bruk må erstattes.  Verdi for 3 mnd er ikke lenger i bruk.">
+      <Item ItemId="10285" ItemType="1" VarName="CGM_START_HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem ItemText="Siste HbA1c før oppstart" ItemHelp="" MinExpression="3" MaxExpression="25" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10297" ItemType="1" VarName="CGM_HBA1C_6M" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem ItemText="HbA1c etter 6-12 mnd" ItemHelp="" MinExpression="3" MaxExpression="25" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10301" ItemType="1" VarName="CGM_HBA1C_3M" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem ItemText="HbA1c etter 3 mnd" ItemHelp="" MinExpression="3" MaxExpression="25" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="HbA1c - verdier fra prosjekter" PageIntroduction="Disse er det ikke nødvendigvis behov for å gjøre noe med">
+      <Item ItemId="7071" ItemType="1" VarName="BASEREG_HBA1C_NEW" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem ItemText="HbA1c - NY metod/enhet (%)" ItemHelp="Oppgis i % med én desimal." Expression="" MinExpression="5.0" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7295" ItemType="1" VarName="FUPN_HBA1C" LoincScale="QN" DisplayFormat="">
+        <FormItem ItemText="HbA1c (gammel metode/enhet)" ItemHelp="Oppgis i % med én desimal." Expression="" MinExpression="1.0" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7296" ItemType="1" VarName="FUPN_HBA1C_NEW" LoincScale="QN" DisplayFormat="">
+        <FormItem ItemText="HbA1c (NY metode/enhet)" ItemHelp="Oppgis i % med én desimal." Expression="" MinExpression="5.0" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7070" ItemType="1" VarName="BASEREG_HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem ItemText="B-HbA1c (%)" ItemHelp="Angis i % med en desimal. Omregningsformel fra gammel til ny enhet: 10,45 x Gammel enhet (%) - 10,62 = Ny enhet (mmol/mol)." Expression="" MinExpression="4" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8995" ItemType="1" VarName="HjnHbA1c" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem ItemText="S-HbA1c (%)" ItemHelp="" Expression="" MinExpression="4.2" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="1258" ItemType="1" VarName="HBA1C_REFERRAL" LoincScale="QN" UnitStr="%" DisplayFormat="">
+        <FormItem ItemText="HbA1c fra henvisning" ItemHelp="" MinExpression="4" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Dato for HbA1c-målinger" PageIntroduction="Disse trenger vi ikke endre på">
+      <Item ItemId="1311" ItemType="1" VarName="GRAV_UKE_DX" LoincScale="QN" UnitStr="svangerskapsuke" DisplayFormat="">
+        <FormItem ItemText="Svangerskapsuke der diabetes/forhøyet HbA1c ble oppdaget (svangerskapsuke)" ItemHelp="" Expression="" MinExpression="1" MaxExpression="42" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="1415" ItemType="5" VarName="GRAV_DATO_DX_HBA1C" LoincScale="DATE" DisplayFormat="">
+        <FormItem ItemHeader="Dato HbA1c" ItemText="Dato for &quot;diagnostisk&quot; HbA1c" ItemHelp="" Expression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9354" ItemType="5" VarName="LastHbA1cDate" LoincScale="DATE" DisplayFormat="">
+        <FormItem ItemHeader="Målt" ItemText="Dato for siste HbA1c-måling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Variable der HbA1c er nevnt bare i hjelpetekst uten tallverdi" PageIntroduction="Disse variablene trenger vi ikke gjøre endringer på">
+      <Item ItemId="4526" ItemType="2" VarName="INDIVIDUAL_GOALS" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemHeader="Individuelle behandlingsmål" ItemText="Vil du angi individuelle behandlingsmål for denne pasienten?" ItemHelp="Blodtrykk, HbA1c og LDL-kolesterol" Expression="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="24020" OrderNumber="1" OptionText="Ja" VerboseText="Individuelle mål." ShortCode="J"/>
+          <Answer AnswerId="24021" OrderNumber="2" OptionText="Nei" VerboseText="Standard mål." ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9770" ItemType="2" VarName="VAR9770" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Fastende blodprøver ved 0 mnd bestilt?" ItemHelp="Totalkolesterol, HDL, LDL, TG, ASAT, ALAT, Gamma-GT, Bilirubin, kreatinin, HbA1c, fastende Insulin, C-Peptid og glukose, TSH, fT4, CRP." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="53418" OrderNumber="1" OptionText="Ja" VerboseText="Fastende blodprøver bestilt." ShortCode="J"/>
+          <Answer AnswerId="53419" OrderNumber="2" OptionText="Nei" VerboseText="Fastende blodprøver er ikke bestilt." ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10020" ItemType="2" VarName="VAR10020" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Fastende blodprøver ved 12 mnd bestilt?" ItemHelp="Totalkolesterol, HDL, LDL, TG, ASAT, ALAT, Gamma-GT, Bilirubin, kreatinin, HbA1c, fastende Insulin, C-Peptid og glukose, TSH, fT4, CRP." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="55584" OrderNumber="1" OptionText="Ja" VerboseText="Fastende blodprøver bestilt." ShortCode="J"/>
+          <Answer AnswerId="55585" OrderNumber="2" OptionText="Nei" VerboseText="Fastende blodprøver er ikke bestilt." ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10021" ItemType="2" VarName="VAR10021" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Fastende blodprøver ved 24 mnd bestilt?" ItemHelp="Totalkolesterol, HDL, LDL, TG, ASAT, ALAT, Gamma-GT, Bilirubin, kreatinin, HbA1c, fastende Insulin, C-Peptid og glukose, TSH, fT4, CRP." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="55590" OrderNumber="1" OptionText="Ja" VerboseText="Fastende blodprøver bestilt." ShortCode="J"/>
+          <Answer AnswerId="55591" OrderNumber="2" OptionText="Nei" VerboseText="Fastende blodprøver er ikke bestilt." ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10046" ItemType="2" VarName="VAR10046" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Fastende blodprøver ved 36 mnd bestilt?" ItemHelp="Totalkolesterol, HDL, LDL, TG, ASAT, ALAT, Gamma-GT, Bilirubin, kreatinin, HbA1c, fastende Insulin, C-Peptid og glukose, TSH, fT4, CRP." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="55872" OrderNumber="1" OptionText="Ja" VerboseText="Fastende blodprøver bestilt." ShortCode="J"/>
+          <Answer AnswerId="55873" OrderNumber="2" OptionText="Nei" VerboseText="Fastende blodprøver er ikke bestilt." ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10248" ItemType="2" VarName="VAR10248" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Fastende blodprøver ved 48 mnd bestilt?" ItemHelp="Totalkolesterol, HDL, LDL, TG, ASAT, ALAT, Gamma-GT, Bilirubin, kreatinin, HbA1c, fastende Insulin, C-Peptid og glukose, TSH, fT4, CRP." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="57262" OrderNumber="1" OptionText="Ja" VerboseText="Fastende blodprøver bestilt."/>
+          <Answer AnswerId="57263" OrderNumber="2" OptionText="Nei" VerboseText="Fastende blodprøver er ikke bestilt."/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10256" ItemType="2" VarName="VAR10256" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Fastende blodprøver ved 60 mnd bestilt?" ItemHelp="Totalkolesterol, HDL, LDL, TG, ASAT, ALAT, Gamma-GT, Bilirubin, kreatinin, HbA1c, fastende Insulin, C-Peptid og glukose, TSH, fT4, CRP." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="57325" OrderNumber="1" OptionText="Ja" VerboseText="Fastende blodprøver bestilt."/>
+          <Answer AnswerId="57326" OrderNumber="2" OptionText="Nei" VerboseText="Fastende blodprøver er ikke bestilt."/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+	</Actions>
+</StudyForm>
