@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <DbProcList>
-	<row ProcId="-2" StudyName="*" ProcName="NDV.MergeHbA1cToLabdata" ProcDesc="Flytter labdata fra skjema til labtabell" ListId="UTIL" GrantTo="public" MinVersion="6401" ChkSum="711347070" LastUpdate="2018-09-07T12:19:54.220Z">
+	<row ProcId="-2" StudyName="*" ProcName="NDV.MergeHbA1cToLabdata" ProcDesc="Flytter labdata fra skjema til labtabell" ListId="UTIL" GrantTo="public" MinVersion="6401" ChkSum="-450886666" LastUpdate="2018-10-03T16:29:04.150Z">
 		<![CDATA[CREATE PROCEDURE NDV.MergeHbA1cToLabdata AS
 BEGIN
   DECLARE @MergedName VARCHAR(32);
@@ -11,11 +11,11 @@ BEGIN
   SELECT @LabCodeId = LabCodeId FROM dbo.LabCode WHERE LabName = @MergedName;
   IF @LabCodeId IS NULL
   BEGIN
-    INSERT INTO dbo.LabCode ( LabName, VarName, LabClassId ) VALUES( @MergedName, 'HBA1C', 45);
+    INSERT INTO dbo.LabCode ( LabName, VarName, LabClassId ) VALUES( @MergedName, 'HBA1C_MMOL', 1058);
 	SET @LabCodeId = SCOPE_IDENTITY();
   END
   ELSE  
-    UPDATE dbo.LabCode SET LabClassId = 45 WHERE LabCodeId = @LabCodeId;
+    UPDATE dbo.LabCode SET LabClassId = 1058 WHERE LabCodeId = @LabCodeId;
 
   -- Merge new data from forms into labdata
   MERGE dbo.LabData AS trg 
@@ -24,12 +24,12 @@ BEGIN
     SELECT ce.PersonId, ce.EventTime, cdp.Quantity 
     FROM dbo.ClinDataPoint cdp
     JOIN dbo.ClinEvent ce ON ce.EventId = cdp.EventId
-    WHERE cdp.ItemId = 527 AND Quantity > 0
+    WHERE cdp.ItemId = 3018 AND Quantity > 0
   ) src
   ON trg.PersonId = src.PersonId AND trg.LabDate = src.EventTime AND trg.LabCodeId = @LabCodeId
   WHEN NOT MATCHED THEN
     INSERT ( PersonId, LabDate, LabCodeId, NumResult, UnitStr )
-    VALUES ( src.PersonId, src.EventTime, @LabCodeId, src.Quantity, '%' )
+    VALUES ( src.PersonId, src.EventTime, @LabCodeId, src.Quantity, 'mmol/mol' )
   WHEN MATCHED THEN
     UPDATE SET NumResult = src.Quantity;
 END]]>
