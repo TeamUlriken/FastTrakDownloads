@@ -1561,40 +1561,40 @@ BEGIN
   WHERE v.StudyId=@StudyId AND dbo.GetLastEnumVal( v.PersonId, 'NDV_INSULIN_DEVICE') = 2
 END]]>
 	</row>
-	<row ProcId="252" StudyName="NDV" ProcName="NDV.GetPumpAge21To25HbA1cAbove9" ProcDesc="Type 1 m/pumpe: Alder 21-25, HbA1c &gt;= 9" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1701515960" LastUpdate="2015-06-12T08:13:55.917Z">
+	<row ProcId="252" StudyName="NDV" ProcName="NDV.GetPumpAge21To25HbA1cAbove9" ProcDesc="Type 1 m/pumpe: Alder 21-25, HbA1c &gt;= 75 (9%)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1538203066" LastUpdate="2018-10-03T15:20:10.450Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpAge21To25Hba1cAbove9( @StudyId INT ) AS
 BEGIN 
-  EXECUTE NDV.GetPumpWithHighHbA1c @StudyId,21,26,9
+  EXECUTE NDV.GetPumpWithHighHbA1c @StudyId,21,26,75
 END]]>
 	</row>
-	<row ProcId="253" StudyName="NDV" ProcName="NDV.GetPumpAge26To99HbA1cAbove9" ProcDesc="Type 1 m/pumpe: Alder 26+, HbA1c &gt;= 9" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-7300887" LastUpdate="2015-06-12T08:13:58.837Z">
+	<row ProcId="253" StudyName="NDV" ProcName="NDV.GetPumpAge26To99HbA1cAbove9" ProcDesc="Type 1 m/pumpe: Alder 26+, HbA1c &gt;= 75 (9%)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="432326290" LastUpdate="2018-10-03T15:20:53.450Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpAge26To99Hba1cAbove9( @StudyId INT ) AS 
 BEGIN
-  EXECUTE NDV.GetPumpWithHighHbA1c @StudyId,26,99,9
+  EXECUTE NDV.GetPumpWithHighHbA1c @StudyId,26,99,75
 END]]>
 	</row>
-	<row ProcId="254" StudyName="NDV" ProcName="NDV.GetPumpHbA1cAbove7" ProcDesc="Type 1 m/pumpe: HbA1c &gt; 7" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1713999446" LastUpdate="2015-06-12T08:14:00.977Z">
+	<row ProcId="254" StudyName="NDV" ProcName="NDV.GetPumpHbA1cAbove7" ProcDesc="Type 1 m/pumpe: HbA1c &gt; 53 (7%)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1034862001" LastUpdate="2018-10-03T15:22:06.260Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpHbA1cAbove7( @StudyId INT ) AS 
 BEGIN
-  EXECUTE NDV.GetPumpWithHighHbA1c @StudyId,0,99,7.01
+  EXECUTE NDV.GetPumpWithHighHbA1c @StudyId,0,99,53.1
 END]]>
 	</row>
-	<row ProcId="255" StudyName="NDV" ProcName="NDV.GetNonPumpAge21To25HbA1cAbove9" ProcDesc="Type 1 u/pumpe: Alder 21-25, HbA1c &gt;= 9" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="268047221" LastUpdate="2015-06-12T08:14:03.510Z">
+	<row ProcId="255" StudyName="NDV" ProcName="NDV.GetNonPumpAge21To25HbA1cAbove9" ProcDesc="Type 1 u/pumpe: Alder 21-25, HbA1c &gt;= 75 (9%)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1980740275" LastUpdate="2018-10-03T15:24:43.460Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetNonPumpAge21To25HbA1cAbove9( @StudyId INT ) AS 
 BEGIN
-  EXECUTE NDV.GetNonPumpWithHighHbA1c @StudyId,21,26,9
+  EXECUTE NDV.GetNonPumpWithHighHbA1c @StudyId,21,26,75;
 END]]>
 	</row>
-	<row ProcId="256" StudyName="NDV" ProcName="NDV.GetNonPumpAge26To99HbA1cAbove9" ProcDesc="Type 1 u/pumpe: Alder 26+, HbA1c &gt;= 9" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1393643298" LastUpdate="2015-06-12T08:14:06.663Z">
+	<row ProcId="256" StudyName="NDV" ProcName="NDV.GetNonPumpAge26To99HbA1cAbove9" ProcDesc="Type 1 u/pumpe: Alder 26+, HbA1c &gt;= 75 (9%)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1566787472" LastUpdate="2018-10-03T15:24:36.013Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetNonPumpAge26To99HbA1cAbove9( @StudyId INT ) AS 
 BEGIN
-  EXECUTE NDV.GetNonPumpWithHighHbA1c @StudyId,26,99,9
+  EXECUTE NDV.GetNonPumpWithHighHbA1c @StudyId,26,99,75;
 END]]>
 	</row>
-	<row ProcId="257" StudyName="NDV" ProcName="NDV.GetNonPumpHbA1cAbove7" ProcDesc="Type 1 u/pumpe: HbA1c &gt; 7" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="590196014" LastUpdate="2015-06-12T07:37:04.117Z">
+	<row ProcId="257" StudyName="NDV" ProcName="NDV.GetNonPumpHbA1cAbove7" ProcDesc="Type 1 u/pumpe: HbA1c &gt; 53 (7%)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="123012614" LastUpdate="2018-10-03T15:23:33.733Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetNonPumpHbA1cAbove7( @StudyId INT ) AS 
 BEGIN
-  EXECUTE NDV.GetNonPumpWithHighHbA1c @StudyId,0,99,7.01
+  EXECUTE NDV.GetNonPumpWithHighHbA1c @StudyId,0,99,53.1
 END]]>
 	</row>
 	<row ProcId="258" StudyName="NDV" ProcName="NDV.GetActiveWithEyecheck" ProcDesc="Prosess: Siste hos øyelege" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="470408971" LastUpdate="2013-01-22T12:27:10.913Z">
@@ -1637,16 +1637,16 @@ BEGIN
   ORDER BY EventsPerDay 
 END]]>
 	</row>
-	<row ProcId="260" StudyName="NDV" ProcName="NDV.GetPumpAge0To21HbA1cAbove9" ProcDesc="Type 1 m/pumpe:Alder &lt; 21, HbA1c &gt;= 9" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1126751113" LastUpdate="2015-06-12T08:14:24.870Z">
+	<row ProcId="260" StudyName="NDV" ProcName="NDV.GetPumpAge0To21HbA1cAbove9" ProcDesc="Type 1 m/pumpe:Alder &lt; 21, HbA1c &gt;= 75 (9%)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="936658535" LastUpdate="2018-10-03T15:24:28.703Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpAge0To21Hba1cAbove9( @StudyId INT ) AS 
 BEGIN
-  EXECUTE NDV.GetPumpWithHighHbA1c @StudyId,0,21,9
+  EXECUTE NDV.GetPumpWithHighHbA1c @StudyId,0,21,75;
 END]]>
 	</row>
-	<row ProcId="261" StudyName="NDV" ProcName="NDV.GetNonPumpAge0To21HbA1cAbove9" ProcDesc="Type 1 u/pumpe: Alder &lt; 21, HbA1c &gt;= 9" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-405807553" LastUpdate="2015-06-12T08:14:28.447Z">
+	<row ProcId="261" StudyName="NDV" ProcName="NDV.GetNonPumpAge0To21HbA1cAbove9" ProcDesc="Type 1 u/pumpe: Alder &lt; 21, HbA1c &gt;= 75 (9%)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1371894644" LastUpdate="2018-10-03T15:24:23.140Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetNonPumpAge0To21HbA1cAbove9( @StudyId INT ) AS 
 BEGIN
-  EXECUTE NDV.GetNonPumpWithHighHbA1c @StudyId,0,21,9
+  EXECUTE NDV.GetNonPumpWithHighHbA1c @StudyId,0,21,75;
 END]]>
 	</row>
 	<row ProcId="262" StudyName="NDV" ProcName="NDV.GetType2WithBPAbove135" ProcDesc="Type 2: Blodtrykk &gt; 135" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1763936317" LastUpdate="2013-01-22T12:27:10.913Z">
@@ -1667,10 +1667,10 @@ BEGIN
   EXECUTE NDV.GetType2WithHighLDL @StudyId,2.51
 END]]>
 	</row>
-	<row ProcId="266" StudyName="NDV" ProcName="NDV.GetIncretinUsersWithHba1c" ProcDesc="Inkretinbrukere: Etter fallende HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1543197657" LastUpdate="2015-06-12T08:20:18.993Z">
+	<row ProcId="266" StudyName="NDV" ProcName="NDV.GetIncretinUsersWithHba1c" ProcDesc="Inkretinbrukere: Etter fallende HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="219669085" LastUpdate="2018-10-03T16:00:05.190Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetIncretinUsersWithHbA1c ( @StudyId INT ) AS 
 BEGIN
-  EXECUTE NDV.GetIncretinUsersWithHighHbA1c @StudyId,0,99,0.1
+  EXECUTE NDV.GetIncretinUsersWithHighHbA1c @StudyId,0,99,1;
 END]]>
 	</row>
 	<row ProcId="267" StudyName="NDV" ProcName="NDV.GetActiveWithUACRAbove3" ProcDesc="Komplikasjoner: U-ACR &gt; 3" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="2002490644" LastUpdate="2013-01-22T12:27:10.913Z">
@@ -1691,11 +1691,11 @@ BEGIN
   EXECUTE NDV.GetType1WithHighLDL @StudyId,3.51,40
 END]]>
 	</row>
-	<row ProcId="270" StudyName="NDV" ProcName="dbo.GetCaseListHbA1c9Plus" ProcDesc="Behandling: HbA1c &gt; 9" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1012258125" LastUpdate="2017-05-26T08:58:46.073Z">
+	<row ProcId="270" StudyName="NDV" ProcName="dbo.GetCaseListHbA1c9Plus" ProcDesc="Behandling: HbA1c &gt; 75 (9%)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1330759298" LastUpdate="2018-10-03T15:25:41.513Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListHbA1c9Plus( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,
-    dbo.GetLastValue( v.PersonId, 'HBA1C') as HbA1c,
+    dbo.GetLastValue( v.PersonId, 'HBA1C_MMOL') AS HbA1c,
     dbo.GetLastEnumVal( v.PersonId, 'NDV_TYPE') AS DiaType
   INTO #TempTable 
   FROM dbo.ViewActiveCaseListStub v
@@ -1704,7 +1704,7 @@ BEGIN
   ISNULL('Type-' +
     SUBSTRING(CONVERT( VARCHAR,DiaType),1,1),'Uspes') + ', HbA1c: ' +
     SUBSTRING(CONVERT(VARCHAR,ROUND(HbA1c,1)),1,4) AS InfoText
-  FROM #TempTable WHERE HBA1C >= 9 ORDER BY HbA1c DESC
+  FROM #TempTable WHERE HBA1C >= 75 ORDER BY HbA1c DESC;
 END]]>
 	</row>
 	<row ProcId="271" StudyName="NDV" ProcName="NDV.GetCaseListType2WithCHD" ProcDesc="Studier: Leader, koronarsyke &gt; 50 år" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="490" ChkSum="-871912709" LastUpdate="2014-04-25T12:49:50.717Z">
@@ -1739,26 +1739,26 @@ BEGIN
   EXEC GetCaseListNoRecentForm @StudyId,456;
 END]]>
 	</row>
-	<row ProcId="274" StudyName="NDV" ProcName="NDV.GetType1WithHbA1c" ProcDesc="Type 1: Sortert etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6320" ChkSum="700376865" LastUpdate="2017-03-09T21:24:42.677Z">
+	<row ProcId="274" StudyName="NDV" ProcName="NDV.GetType1WithHbA1c" ProcDesc="Type 1: Sortert etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6320" ChkSum="1500546894" LastUpdate="2018-10-03T16:01:02.380Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType1WithHbA1c( @StudyId INT ) AS
 BEGIN
   SELECT p.PersonId,p.DOB,p.FullName,p.GroupName,
     COALESCE(ld.LabName + ' = ' + CONVERT(VARCHAR,ld.NumResult ) +' (' +
     CONVERT(VARCHAR,DATEPART(YYYY,ld.LabDate)) + ')','(ikke målt)') AS InfoText
   FROM NDV.Type1 p
-  LEFT JOIN dbo.GetLastLabDataTable( 45,GETDATE()) ld ON ld.PersonId= p.PersonId
-  ORDER BY ISNULL(ld.NumResult,99) DESC
+  LEFT JOIN dbo.GetLastLabDataTable( 1058, '3000-01-01' ) ld ON ld.PersonId= p.PersonId
+  ORDER BY ISNULL(ld.NumResult,999) DESC
 END]]>
 	</row>
-	<row ProcId="275" StudyName="NDV" ProcName="NDV.GetType2WithHbA1c" ProcDesc="Type 2: Sortert etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6320" ChkSum="-1539528923" LastUpdate="2017-03-09T21:25:43.423Z">
+	<row ProcId="275" StudyName="NDV" ProcName="NDV.GetType2WithHbA1c" ProcDesc="Type 2: Sortert etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6320" ChkSum="502449772" LastUpdate="2018-10-03T16:01:38.177Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType2WithHbA1c( @StudyId INT ) AS
 BEGIN
   SELECT p.PersonId,p.DOB,p.FullName,p.GroupName,
     COALESCE(ld.LabName + ' = ' + CONVERT(VARCHAR,ld.NumResult ) +' (' +
     CONVERT(VARCHAR,DATEPART(YYYY,ld.LabDate)) + ')','(ikke målt)') AS InfoText
   FROM NDV.Type2 p
-  LEFT JOIN dbo.GetLastLabDataTable( 45,GETDATE()) ld ON ld.PersonId= p.PersonId
-  ORDER BY ISNULL(ld.NumResult,99) DESC
+  LEFT JOIN dbo.GetLastLabDataTable( 1058, '3000-01-01' ) ld ON ld.PersonId= p.PersonId
+  ORDER BY ISNULL(ld.NumResult,999) DESC
 END]]>
 	</row>
 	<row ProcId="276" StudyName="NDV" ProcName="NDV.GetCaseListNoForm24Months" ProcDesc="Prosess: Aktive uten skjema siste 24 mnd" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1490685986" LastUpdate="2013-01-22T12:27:10.913Z">
@@ -1817,7 +1817,7 @@ BEGIN
   ORDER BY FullName                                                                            
 END]]>
 	</row>
-	<row ProcId="283" StudyName="NDV" ProcName="NDV.MetforminMonotherapyFallingHbA1c" ProcDesc="Studier: BI 1275.9,  Metformin monoterapi etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="943904494" LastUpdate="2015-06-12T08:05:44.727Z">
+	<row ProcId="283" StudyName="NDV" ProcName="NDV.MetforminMonotherapyFallingHbA1c" ProcDesc="Studier: BI 1275.9,  Metformin monoterapi etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="521" MaxVersion="18000" ChkSum="941891182" LastUpdate="2018-10-03T15:34:11.347Z">
 		<![CDATA[CREATE PROCEDURE NDV.MetforminMonotherapyFallingHbA1c( @StudyId INT ) AS
 BEGIN
 
@@ -2076,10 +2076,10 @@ BEGIN
   ORDER BY FullName
 END  ]]>
 	</row>
-	<row ProcId="301" StudyName="NDV" ProcName="NDV.GetPumpAll" ProcDesc="Type 1 m/pumpe: Alle etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="521" ChkSum="1293251172" LastUpdate="2015-11-08T10:38:38.057Z">
+	<row ProcId="301" StudyName="NDV" ProcName="NDV.GetPumpAll" ProcDesc="Type 1 m/pumpe: Alle etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="521" ChkSum="-98983438" LastUpdate="2018-10-03T15:35:19.137Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpAll( @StudyId INT ) AS 
 BEGIN
-  EXECUTE NDV.GetPumpWithHighHbA1c @StudyId,0,99,1
+  EXECUTE NDV.GetPumpWithHighHbA1c @StudyId,0,99,1;
 END]]>
 	</row>
 	<row ProcId="302" StudyName="NDV" ProcName="NDV.GetAnnualControls2015" ProcDesc="Årskontroller: Årskontroller i 2015" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" InfoCaption="Dato for årskontroll" ChkSum="1046267588" LastUpdate="2015-11-05T07:58:00.417Z">
@@ -2229,7 +2229,7 @@ BEGIN
   EXEC NDV.GetAnnualControls '2017-01-01','2017-12-31'; 
 END]]>
 	</row>
-	<row ProcId="315" StudyName="NDV" ProcName="NDV.GetCaseListHbA1cProject2017" ProcDesc="Prosjekter: HbA1c prosjekt 2017" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6401" ChkSum="-1797266325" LastUpdate="2017-11-09T14:58:43.867Z">
+	<row ProcId="315" StudyName="NDV" ProcName="NDV.GetCaseListHbA1cProject2017" ProcDesc="Prosjekter: HbA1c prosjekt 2017" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6401" ChkSum="1621044176" LastUpdate="2018-10-03T16:02:32.593Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetCaseListHbA1cProject2017 (@StudyId INT) AS
 BEGIN
   SET LANGUAGE Norwegian;
@@ -2245,25 +2245,25 @@ BEGIN
       ELSE 'HbA1c ikke målt'
     END AS InfoText
   FROM NDV.GetRecentPatientsTable(1, '2017-01-01', 15) rp
-  LEFT JOIN dbo.GetLastLabDataTable(45, '2100-01-01') ld ON ld.PersonId = rp.PersonId
+  LEFT JOIN dbo.GetLastLabDataTable( 1058, '3000-01-01') ld ON ld.PersonId = rp.PersonId
   JOIN dbo.Person p ON p.PersonId = rp.PersonId
   JOIN dbo.Study s ON s.StudyName = 'NDV'
   LEFT JOIN dbo.StudCase sc ON sc.StudyId = s.StudyId AND sc.PersonId = p.PersonId
   LEFT JOIN dbo.StudyStatus ss ON ss.StudyId = sc.StudyId AND ss.StatusId = sc.FinState
-  ORDER BY ld.NumResult DESC, p.ReverseName
+  ORDER BY ld.NumResult DESC, p.ReverseName;
 END]]>
 	</row>
 	<row ProcId="316" StudyName="ENDO" ProcName="NDV.GetCaseListHbA1cProject2017" ProcDesc="Prosjekter: HbA1c prosjekt 2017" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6401" ChkSum="-1461251566" LastUpdate="2017-05-26T09:40:35.167Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="317" StudyName="NDV" ProcName="NDV.GetShortConsWithHbA1c" ProcDesc="Prosjekter: HbA1c og kortkonsultasjoner" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6401" ChkSum="1818149650" LastUpdate="2017-09-23T01:08:00.453Z">
+	<row ProcId="317" StudyName="NDV" ProcName="NDV.GetShortConsWithHbA1c" ProcDesc="Prosjekter: HbA1c og kortkonsultasjoner" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6401" ChkSum="-961780768" LastUpdate="2018-10-03T15:37:12.657Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetShortConsWithHbA1c( @StudyId INT ) AS
 BEGIN
   SELECT v.*,a.ShortConsCount,hba1c.NumResult, 
     'HbA1c=' + CONVERT(VARCHAR,hbA1c.NumResult ) + ', Kortkonsultasjoner n = ' + CONVERT(VARCHAR,ShortConsCount) + '.' AS InfoText
   FROM 
   dbo.ViewActiveCaseListStub v
-  JOIN dbo.GetLastLabDataTable( 45, '3000-01-01' ) hba1c ON hba1c.PersonId = v.PersonId
+  JOIN dbo.GetLastLabDataTable( 1058, '3000-01-01' ) hba1c ON hba1c.PersonId = v.PersonId
   JOIN (
     SELECT ce.PersonId,count(*) AS ShortConsCount 
     FROM dbo.ClinForm cf 
@@ -2352,16 +2352,16 @@ END]]>
 	<row ProcId="404" StudyName="BAR" ProcName="dbo.GetCaseListGroupId" ProcDesc="Gruppe: Perimesencefal" ProcParams=":StudyId, 6" ListId="CASE" GrantTo="public" MinVersion="18214" ChkSum="477173402" LastUpdate="2018-09-04T07:50:53.877Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="500" StudyName="NDV" ProcName="NDV.GetType1Age18to65WithHbA1c" ProcDesc="Type 1: Alder 18-65 etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6320" ChkSum="-592742721" LastUpdate="2017-03-09T21:29:43.060Z">
+	<row ProcId="500" StudyName="NDV" ProcName="NDV.GetType1Age18to65WithHbA1c" ProcDesc="Type 1: Alder 18-65 etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6320" ChkSum="851896506" LastUpdate="2018-10-03T15:38:27.460Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType1Age18to65WithHbA1c( @StudyId INT ) AS
 BEGIN
   SELECT p.PersonId,p.DOB,p.FullName,p.GroupName,
     COALESCE(ld.LabName + ' = ' + CONVERT(VARCHAR,ld.NumResult ) +' (' +
     CONVERT(VARCHAR,DATEPART(YYYY,ld.LabDate)) + ')','(ikke målt)') AS InfoText
   FROM NDV.Type1 p
-  LEFT JOIN dbo.GetLastLabDataTable( 45,GETDATE()) ld ON ld.PersonId = p.PersonId
+  LEFT JOIN dbo.GetLastLabDataTable( 1058, '3000-01-01' ) ld ON ld.PersonId = p.PersonId
   WHERE ( p.Age < 65 ) AND ( p.Age >= 18 )  
-  ORDER BY ISNULL(ld.NumResult,99) DESC
+  ORDER BY ISNULL( ld.NumResult, 999 ) DESC
 END]]>
 	</row>
 	<row ProcId="600" StudyName="ROAS" ProcName="ENDO.GetAddisonPatients" ProcDesc="Addison: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Addison type" ChkSum="1363668548" LastUpdate="2016-12-05T15:40:38.600Z">
@@ -2592,24 +2592,22 @@ BEGIN
  EXEC dbo.GetActiveSingleVar @StudyId,'ICD10_E10',1 
 END]]>
 	</row>
-	<row ProcId="729" StudyName="ENDO" ProcName="ENDO.GetFamilialTumors" ProcDesc="Tumorer: Familære typer" ProcParams=":StudyId" ListId="CASE" GrantTo="public" InfoCaption="Antall treff" ChkSum="1512055167" LastUpdate="2013-08-22T08:42:11.113Z">
+	<row ProcId="729" StudyName="ENDO" ProcName="ENDO.GetFamilialTumors" ProcDesc="Tumorer: Familære typer" ProcParams=":StudyId" ListId="CASE" GrantTo="public" InfoCaption="Antall treff" ChkSum="439658304" LastUpdate="2018-10-03T16:12:43.663Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetFamilialTumors( @StudyId INT ) AS
 BEGIN  
 
   SELECT ce.PersonId
   INTO #temp1
-  FROM ClinObservation co
-    JOIN ClinEvent ce ON ce.EventId=co.EventId
-    JOIN MetaItem mi ON mi.VarName=co.VarName
-  WHERE ( ce.StudyId=@StudyId ) AND ( mi.ItemId=5745 ) AND ( co.EnumVal = 1 )
+  FROM dbo.ClinDataPoint cdp
+  JOIN dbo.ClinEvent ce ON ce.EventId = cdp.EventId
+  WHERE ( cdp.ItemId = 5745 ) AND ( cdp.EnumVal = 1 )
 
   UNION
   
   SELECT ce.PersonId
-  FROM ClinObservation co
-    JOIN ClinEvent ce ON ce.EventId=co.EventId
-    JOIN MetaItem mi ON mi.VarName=co.VarName
-  WHERE ( ce.StudyId=@StudyId ) AND ( mi.ItemId=6981 ) AND ( co.EnumVal IN ( 1,2,3,4 ) );
+  FROM dbo.ClinDataPoint cdp
+  JOIN dbo.ClinEvent ce ON ce.EventId = cdp.EventId
+  WHERE ( cdp.ItemId = 6981 ) AND ( cdp.EnumVal IN ( 1,2,3,4 ) );
   
   -- Få unik personliste
   
@@ -2619,11 +2617,11 @@ BEGIN
   
   -- Hent pasientene
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName, 'Kriterier = ' + CONVERT(VARCHAR,t.HitCount) AS InfoText
-    FROM ViewCaseListStub v
+    FROM dbo.ViewCaseListStub v
     JOIN #temp2 t ON t.PersonId=v.PersonId
   WHERE v.StudyId=@StudyId
   ORDER BY v.FullName;
-  END]]>
+END]]>
 	</row>
 	<row ProcId="730" StudyName="ENDO" ProcName="ENDO.GetDiabetesType1AndAddison" ProcDesc="Diagnose: Diabetes type 1 + Addison" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6302" ChkSum="252510257" LastUpdate="2015-12-17T14:10:25.190Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetDiabetesType1AndAddison( @StudyId INT ) AS 
@@ -3220,7 +3218,7 @@ BEGIN
   SELECT * FROM #temp ORDER BY PersonId
 END]]>
 	</row>
-	<row ProcId="1009" StudyName="NDV" ProcName="NDV.ReportLabDataFound" ProcDesc="Labdata registrert" ProcParams=":DiabetesType,:StartDate,:StopDate" ListId="FR" GrantTo="public" MinVersion="6000" ChkSum="758086720" LastUpdate="2015-11-05T07:37:55.800Z">
+	<row ProcId="1009" StudyName="NDV" ProcName="NDV.ReportLabDataFound" ProcDesc="Labdata registrert" ProcParams=":DiabetesType,:StartDate,:StopDate" ListId="FR" GrantTo="public" MinVersion="6000" ChkSum="1487346624" LastUpdate="2018-10-03T15:39:43.127Z">
 		<![CDATA[CREATE PROCEDURE NDV.ReportLabDataFound( @DiabetesType INT, @FirstDate DateTime = NULL, @LastDate DateTime = NULL ) AS
 BEGIN
 
@@ -3236,7 +3234,7 @@ BEGIN
   INSERT INTO #Dates VALUES ( 35, 30, @FirstDate, 'S-LDL-kolesterol' );
   INSERT INTO #Dates VALUES ( 36, 30, @FirstDate, 'S-Triglyserider' );
   INSERT INTO #Dates VALUES ( 37, 30, @FirstDate, 'S-HDL-kolesterol' );
-  INSERT INTO #Dates VALUES ( 45, 15, @FirstDate, 'B-HbA1c' );
+  INSERT INTO #Dates VALUES ( 1058, 15, @FirstDate, 'B-HbA1c' );
   INSERT INTO #Dates VALUES ( 49, 15, @FirstDate, 'S-Kreatinin' );
   INSERT INTO #Dates VALUES ( 50, 15, @FirstDate, 'Pt-GFR' );        
   IF @DiabetesType=1
@@ -3274,11 +3272,11 @@ BEGIN
   FROM #PersonLabCount
   GROUP BY LabClassId;
   -- Get Result
-  SELECT d.LabClassId,d.LabName AS FriendlyName,d.StartDate,d.Months,@LastDate as StopDate,ISNULL(r.Teller,0) AS Teller,@Antall AS Nevner,
-    CONVERT(DECIMAL(5,1),100*CONVERT(FLOAT,Teller)/CONVERT(FLOAT,@Antall),2) as Andel 
+  SELECT d.LabClassId,d.LabName AS FriendlyName,d.StartDate,d.Months,@LastDate AS StopDate,ISNULL(r.Teller,0) AS Teller,@Antall AS Nevner,
+    CONVERT(DECIMAL(5,1),100*CONVERT(FLOAT,Teller)/CONVERT(FLOAT,@Antall),2) AS Andel 
   FROM #Dates d
   LEFT OUTER JOIN #FinalDataset r ON r.LabClassId=d.LabClassId
-  ORDER BY d.LabClassId
+  ORDER BY d.LabClassId;
 END]]>
 	</row>
 	<row ProcId="1010" StudyName="NDV" ProcName="NDV.ReportClinDataFound" ProcDesc="Kliniske data registrert" ProcParams=":DiabetesType,:StartDate,:StopDate" ListId="FR" GrantTo="public" MinVersion="6000" ChkSum="679211360" LastUpdate="2015-11-05T07:37:56.487Z">
@@ -3350,7 +3348,7 @@ BEGIN
   ORDER BY d.OrderNo;
 END]]>
 	</row>
-	<row ProcId="1011" StudyName="NDV" ProcName="NDV.ReportLabAverages" ProcDesc="Snittverdier labdata" ProcParams=":CenterId,:DiabetesType,:StartDate,:StopDate" ListId="FR" GrantTo="public" MinVersion="6000" ChkSum="-580927894" LastUpdate="2015-11-05T07:37:57.610Z">
+	<row ProcId="1011" StudyName="NDV" ProcName="NDV.ReportLabAverages" ProcDesc="Snittverdier labdata" ProcParams=":CenterId,:DiabetesType,:StartDate,:StopDate" ListId="FR" GrantTo="public" MinVersion="6000" ChkSum="-343477654" LastUpdate="2018-10-03T16:10:18.030Z">
 		<![CDATA[CREATE PROCEDURE NDV.ReportLabAverages( @CenterId INT, @DiabetesType INT, @FirstDate DateTime = NULL, @LastDate DateTime = NULL ) AS
 BEGIN
   -- Prepare inclusion period
@@ -3365,7 +3363,7 @@ BEGIN
     FROM dbo.LabData ld
     JOIN dbo.LabCode lc ON lc.LabCodeId=ld.LabCodeId
 	JOIN NDV.CaseList( @CenterId, @DiabetesType, @FirstDate, @LastDate ) cas ON cas.PersonId=ld.PersonId
-    WHERE lc.LabClassId IN (6,34,35,36,37,45,49,124) AND ld.NumResult >= 0
+    WHERE lc.LabClassId IN (6,34,35,36,37,49,124,1058) AND ld.NumResult >= 0
       AND ld.LabDate < @LastDate ) LabList
   WHERE LabList.TestNo=1;
   SELECT lab.LabClassId,p.GenderId,lc.FriendlyName,
@@ -3827,7 +3825,7 @@ BEGIN
   ORDER BY StartYear
 END]]>
 	</row>
-	<row ProcId="1022" StudyName="NDV" ProcName="NDV.ReportFootLastHbA1c" ProcDesc="HbA1c på fotklinikk" ListId="FR" GrantTo="public" ChkSum="600248361" LastUpdate="2014-12-15T18:05:30.840Z">
+	<row ProcId="1022" StudyName="NDV" ProcName="NDV.ReportFootLastHbA1c" ProcDesc="HbA1c på fotklinikk" ListId="FR" GrantTo="public" ChkSum="929308189" LastUpdate="2018-10-03T15:41:39.313Z">
 		<![CDATA[CREATE PROCEDURE NDV.ReportFootLastHbA1c
 AS
 BEGIN
@@ -3837,19 +3835,19 @@ BEGIN
   JOIN dbo.ClinForm cf ON cf.EventId=ce.EventId
   JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId
   WHERE mf.FormName='DIAPOL_FOOT';
-  ALTER TABLE #tempPop ADD HbA1c DECIMAL(12,4);
+  ALTER TABLE #tempPop ADD HbA1c DECIMAL(12,1);
   UPDATE #tempPop SET HbA1c = ( 
     SELECT TOP 1 NumResult 
 	FROM dbo.LabData ld 
     JOIN dbo.LabCode lc ON lc.LabCodeId=ld.LabCodeId
-    WHERE ld.PersonId=#tempPop.PersonId AND lc.VarName='HBA1C'
+    WHERE ld.PersonId=#tempPop.PersonId AND lc.LabClassId = 1058
     AND DATEPART(yy,ld.LabDate) = #tempPop.ReportYear
     AND NOT (NULLIF(NumResult,-1) IS NULL )
     ORDER BY ld.LabDate  )
-  SELECT ReportYear,COUNT(PersonId) as CountPerson,COUNT(HbA1c) AS CountHbA1c,AVG(HbA1c) AS AvgHbA1c FROM 
+  SELECT ReportYear,COUNT(PersonId) AS CountPerson,COUNT(HbA1c) AS CountHbA1c,AVG(HbA1c) AS AvgHbA1c FROM 
   #tempPop
   GROUP BY ReportYear
-  ORDER BY ReportYear
+  ORDER BY ReportYear;
 END]]>
 	</row>
 	<row ProcId="1023" StudyName="*" ProcName="dbo.ReportFormStatusLog" ProcDesc="Statusendringer på skjema" ProcParams=":ClinFormId" ListId="FR" GrantTo="public" MinVersion="6019" ChkSum="2121242673" LastUpdate="2014-12-20T08:32:45.920Z">
@@ -4141,7 +4139,7 @@ BEGIN
   
 END]]>
 	</row>
-	<row ProcId="1037" StudyName="NDV" ProcName="NDV.ReportHbA1cTimeSeries" ProcDesc="Tidsserie for dårlig regulerte Type 1, prosjekt i regi NDV." ProcParams=":Year, :HbA1cCutoff, :LookBehindMonths, :LookForwardMonths" ListId="FR" GrantTo="public" MinVersion="6401" ChkSum="2011926186" LastUpdate="2017-08-14T09:43:16.563Z">
+	<row ProcId="1037" StudyName="NDV" ProcName="NDV.ReportHbA1cTimeSeries" ProcDesc="Tidsserie for dårlig regulerte Type 1, prosjekt i regi NDV." ProcParams=":Year, :HbA1cCutoff, :LookBehindMonths, :LookForwardMonths" ListId="FR" GrantTo="public" MinVersion="6401" ChkSum="-1186114363" LastUpdate="2018-10-03T16:03:42.563Z">
 		<![CDATA[CREATE PROCEDURE NDV.ReportHbA1cTimeSeries( @Year INT, @HbA1cCutoff FLOAT, @LookBehindMonths INT, @LookforwardMonths INT ) AS
 BEGIN
 
@@ -4196,7 +4194,7 @@ BEGIN
 	  MAX(NumResult) AS MaxHbA1c, 
 	  AVG(NumResult) AS AvgHbA1cAboveCutoff
 	FROM #Selection cas
-    JOIN dbo.GetLastLabDataTable( 45, months.StartTime ) lab ON lab.PersonId = cas.PersonId
+    JOIN dbo.GetLastLabDataTable( 1058, months.StartTime ) lab ON lab.PersonId = cas.PersonId
     WHERE NumResult >= @HbA1cCutoff
   ) labs
   WHERE @NumPatientsType1 > 0;
@@ -4632,7 +4630,7 @@ BEGIN
   ORDER BY TimeAxis DESC, CenterId;
 END]]>
 	</row>
-	<row ProcId="3002" StudyName="NDV" ProcName="Dash.NdvType1HbA1cAbove9" ProcDesc="Prosentandel Type-1 med HbA1c på 9 eller mer" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="-1610609341" LastUpdate="2018-03-12T08:28:06.137Z">
+	<row ProcId="3002" StudyName="NDV" ProcName="Dash.NdvType1HbA1cAbove9" ProcDesc="Prosentandel Type-1 med HbA1c på 75 (9%) eller mer" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="1266218665" LastUpdate="2018-10-03T16:04:18.390Z">
 		<![CDATA[CREATE PROCEDURE Dash.NdvType1HbA1cAbove9 AS
 BEGIN
 
@@ -4658,7 +4656,7 @@ BEGIN
   
     (
       SELECT StartTime FROM Report.TimePeriods ml 
-      WHERE PeriodType = 'MONTH' AND StartTime > DATEADD( YY, -10, GETDATE() ) AND StartTime < GETDATE()
+      WHERE PeriodType = 'MONTH' AND StartTime > DATEADD( YY, -5, GETDATE() ) AND StartTime < GETDATE()
     ) MonthList
   
   CROSS APPLY
@@ -4672,8 +4670,8 @@ BEGIN
       (
         SELECT cas.PersonId,lab.NumResult
         FROM NDV.GetRecentPatientsTable( 1, MonthList.StartTime, 15 ) cas
-        JOIN dbo.GetLastLabDataTable( 45, MonthList.StartTime) lab ON lab.PersonId = cas.PersonId
-  	  WHERE NumResult >= 9.0
+        JOIN dbo.GetLastLabDataTable( 1058, MonthList.StartTime) lab ON lab.PersonId = cas.PersonId
+  	  WHERE NumResult >= 75
       ) Type1AboveCutoff
     ) AboveCutoffAgg
   
@@ -4723,7 +4721,7 @@ BEGIN
 
 END;]]>
 	</row>
-	<row ProcId="3004" StudyName="NDV" ProcName="Dash.NdvType1HbA1cBelow7" ProcDesc="Prosentandel Type-1 med HbA1c under 7" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="1834441688" LastUpdate="2018-03-12T08:28:20.983Z">
+	<row ProcId="3004" StudyName="NDV" ProcName="Dash.NdvType1HbA1cBelow7" ProcDesc="Prosentandel Type-1 med HbA1c under 53 (7%)" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="-789486076" LastUpdate="2018-10-03T15:58:42.380Z">
 		<![CDATA[CREATE PROCEDURE Dash.NdvType1HbA1cBelow7 AS
 BEGIN
   SELECT
@@ -4748,7 +4746,7 @@ BEGIN
   
     (
       SELECT StartTime FROM Report.TimePeriods ml 
-      WHERE PeriodType = 'MONTH' AND StartTime > DATEADD( YEAR, -10, GETDATE() ) AND StartTime < GETDATE()
+      WHERE PeriodType = 'MONTH' AND StartTime > DATEADD( YEAR, -5, GETDATE() ) AND StartTime < GETDATE()
     ) MonthList
   
   CROSS APPLY
@@ -4762,8 +4760,8 @@ BEGIN
       (
         SELECT cas.PersonId,lab.NumResult
         FROM NDV.GetRecentPatientsTable( 1, MonthList.StartTime, 15 ) cas
-        JOIN dbo.GetLastLabDataTable( 45, MonthList.StartTime) lab ON lab.PersonId = cas.PersonId
-        WHERE NumResult < 7.0
+        JOIN dbo.GetLastLabDataTable( 1058, MonthList.StartTime) lab ON lab.PersonId = cas.PersonId
+        WHERE NumResult < 53
       ) Type1AboveCutoff
     ) AboveCutoffAgg
   
@@ -4814,7 +4812,7 @@ BEGIN
   
 END;]]>
 	</row>
-	<row ProcId="3006" StudyName="NDV" ProcName="Dash.NdvType1HbA1cAverage" ProcDesc="Min/max og snittverdi for HbA1c" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="-607228268" LastUpdate="2018-03-12T22:56:24.497Z">
+	<row ProcId="3006" StudyName="NDV" ProcName="Dash.NdvType1HbA1cAverage" ProcDesc="Min/max og snittverdi for HbA1c" ListId="DASH" GrantTo="public" MinVersion="6400" ChkSum="854907391" LastUpdate="2018-10-03T15:58:22.300Z">
 		<![CDATA[CREATE PROCEDURE Dash.NdvType1HbA1cAverage AS
 BEGIN
   SELECT
@@ -4837,7 +4835,7 @@ BEGIN
   
     (
       SELECT StartTime FROM Report.TimePeriods ml 
-      WHERE PeriodType = 'MONTH' AND StartTime > DATEADD( YEAR, -10, GETDATE() ) AND StartTime < GETDATE()
+      WHERE PeriodType = 'MONTH' AND StartTime > DATEADD( YEAR, -5, GETDATE() ) AND StartTime < GETDATE()
     ) MonthList
   
   CROSS APPLY
@@ -4851,7 +4849,7 @@ BEGIN
       (
         SELECT cas.PersonId,lab.NumResult
         FROM NDV.GetRecentPatientsTable( 1, MonthList.StartTime, 15 ) cas
-        JOIN dbo.GetLastLabDataTable( 45, MonthList.StartTime) lab ON lab.PersonId = cas.PersonId
+        JOIN dbo.GetLastLabDataTable( 1058, MonthList.StartTime) lab ON lab.PersonId = cas.PersonId
       ) Type1
     ) Agg
   
