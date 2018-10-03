@@ -1414,29 +1414,29 @@ END
 
 ]]>
 	</row>
-	<row ProcId="206" StudyName="NDV.BASE" ProcName="NDV.GetIncretinUsersWithHighHbA1c" ProcDesc="Utvalg av inkretinbrukere etter HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1016142882" LastUpdate="2015-06-12T08:19:56.947Z">
+	<row ProcId="206" StudyName="NDV.BASE" ProcName="NDV.GetIncretinUsersWithHighHbA1c" ProcDesc="Utvalg av inkretinbrukere etter HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-529283509" LastUpdate="2018-10-03T14:53:41.010Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetIncretinUsersWithHighHbA1c( @StudyId INT, @AgeMin FLOAT, @AgeMax FLOAT, @HbA1cCutoff FLOAT ) AS
 BEGIN
   -- Create temporary table
-  SELECT PersonId,DOB,FullName,GroupName,dbo.GetLastValue(PersonId,'HBA1C') AS HbA1c 
+  SELECT PersonId,DOB,FullName,GroupName,dbo.GetLastLab(PersonId,'HBA1C_MMOL') AS HbA1c 
   INTO #temp
   FROM NDV.IncretinUsers WHERE ( Age >= @AgeMin ) AND ( Age < @AgeMax );
   -- Read data
-  SELECT PersonId,DOB,FullName,GroupName,'HbA1c = ' + SUBSTRING(CONVERT(VARCHAR,HbA1c),1,4) as InfoText 
+  SELECT PersonId,DOB,FullName,GroupName,'HbA1c = ' + SUBSTRING(CONVERT(VARCHAR,HbA1c),1,4) AS InfoText 
   FROM #temp WHERE HbA1c >= @HbA1cCutoff
-  ORDER BY HbA1c DESC
+  ORDER BY HbA1c DESC;
 END]]>
 	</row>
-	<row ProcId="207" StudyName="NDV.BASE" ProcName="NDV.GetNonPumpWithHighHbA1c" ProcDesc="Utvalg av Type-1 u/pumpe basert på alder og HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1832279106" LastUpdate="2015-06-12T07:59:39.900Z">
+	<row ProcId="207" StudyName="NDV.BASE" ProcName="NDV.GetNonPumpWithHighHbA1c" ProcDesc="Utvalg av Type-1 u/pumpe basert på alder og HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-226769231" LastUpdate="2018-10-03T14:54:03.763Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetNonPumpWithHighHbA1c( @StudyId INT, @AgeMin FLOAT, @AgeMax FLOAT, @HbA1cCutoff FLOAT ) AS
 BEGIN
   -- Create temporary table
-  SELECT p.PersonId,p.DOB,p.FullName,p.GroupName,dbo.GetLastValue(PersonId,'HBA1C') AS HbA1c INTO #temp
+  SELECT p.PersonId,p.DOB,p.FullName,p.GroupName,dbo.GetLastLab(PersonId,'HBA1C_MMOL') AS HbA1c INTO #temp
   FROM NDV.Type1NotInsulinPump p WHERE p.Age >= @AgeMin AND p.Age < @AgeMax;
   -- Read data
-  SELECT PersonId,DOB,FullName,GroupName,'HbA1c = ' + SUBSTRING(CONVERT(VARCHAR,HbA1c),1,4) as InfoText 
+  SELECT PersonId,DOB,FullName,GroupName,'HbA1c = ' + SUBSTRING(CONVERT(VARCHAR,HbA1c),1,4) AS InfoText 
   FROM #temp WHERE HbA1c >= @HbA1cCutoff
-  ORDER BY HbA1c DESC
+  ORDER BY HbA1c DESC;
 END]]>
 	</row>
 	<row ProcId="209" StudyName="*" ProcName="dbo.GetCaseListA10BX" ProcDesc="Medikamentbruk: Andre midler mot diabetes (A10BX)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1264226915" LastUpdate="2018-03-21T10:53:22.750Z">
