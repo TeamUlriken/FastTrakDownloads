@@ -1817,40 +1817,6 @@ BEGIN
   ORDER BY FullName                                                                            
 END]]>
 	</row>
-	<row ProcId="283" StudyName="NDV" ProcName="NDV.MetforminMonotherapyFallingHbA1c" ProcDesc="Studier: BI 1275.9,  Metformin monoterapi etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="521" MaxVersion="18000" ChkSum="941891182" LastUpdate="2018-10-03T15:34:11.347Z">
-		<![CDATA[CREATE PROCEDURE NDV.MetforminMonotherapyFallingHbA1c( @StudyId INT ) AS
-BEGIN
-
-  -- Find candidates, active cases with Metformin
-
-  SELECT v.PersonId 
-  INTO #temp
-  FROM dbo.ViewActiveCaseListStub v
-  JOIN dbo.OngoingTreatment dt ON dt.PersonId = v.PersonId
-  AND dt.ATC='A10BA02'
-  WHERE v.StudyId=@StudyId;
-
-  -- Remove A10A insulin and analogues
-  DELETE FROM #temp WHERE EXISTS( SELECT TreatId FROM dbo.OngoingTreatment WHERE PersonId=#temp.PersonId  AND ATC LIKE 'A10A%' );
-
-  -- Remove A10B Everything else in group except metformin
-  DELETE FROM #temp WHERE EXISTS( SELECT TreatId FROM dbo.OngoingTreatment WHERE PersonId=#temp.PersonId  AND ( ATC LIKE 'A10B%' AND ATC <>'A10BA02' ) );
-
-  -- Remove everybody with form Insulindosering: 
-  DELETE FROM #temp WHERE EXISTS( 
-    SELECT ce.EventId FROM ClinEvent ce 
-    JOIN dbo.ClinForm cf ON cf.EventId = ce.EventId 
-    JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId
-    WHERE ce.PersonId=#temp.PersonId AND mf.FormName='DIAPOL_INSULIN' );
-  -- Get patient list with HbA1c as InfoText
-  SELECT v.PersonId,v.DOB,v.FullName,v.GroupName, dbo.GetLastValue( v.PersonId, 'HBA1C' ) as HBA1C,
-  'HbA1c: ' + ISNULL( CONVERT(VARCHAR, dbo.GetLastValue( v.PersonId, 'HBA1C' )), '(ukjent)' ) as InfoText
-  FROM dbo.ViewActiveCaseListStub v
-  JOIN #temp t ON t.PersonId=v.PersonId
-  WHERE v.StudyId=@StudyId
-  ORDER BY HBA1C DESC
-END]]>
-	</row>
 	<row ProcId="284" StudyName="NDV" ProcName="NDV.GetGravide" ProcDesc="Gravide: Minst en svangerskapskontroll" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6302" ChkSum="-299330005" LastUpdate="2016-02-14T11:01:55.537Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetGravide( @StudyId INT ) AS
 BEGIN
