@@ -3,7 +3,7 @@
   <Form FormId="975" FormName="DIAPOL_FOOT_SCREEN" FormTitle="Fotstatus - Screening">
     <Page PageTitle="Oppfølging">
       <Item ItemId="6382" ItemType="2" VarName="VAR6382" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Følges opp av" ItemText="Hvem følger opp fotstatus hos pasienten?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Følges opp av" ItemText="Hvem følger opp fotstatus hos pasienten?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="33797" OrderNumber="1" OptionText="Ingen" VerboseText="Ingen fast fot-oppfølging."/>
           <Answer AnswerId="33798" OrderNumber="2" OptionText="Fotterapeut her" VerboseText="Fotstatus følges opp av fotterapeut her."/>
           <Answer AnswerId="33799" OrderNumber="3" OptionText="Fotterapeut i PHT" VerboseText="Følges opp av fotterapeut i PHT."/>
@@ -13,17 +13,17 @@
     </Page>
     <Page PageTitle="Blodprøver" PageIntroduction="Siste blodprøveverdier hentes inn automatisk fra labarket, kan ikke redigeres her. ">
       <Item ItemId="3020" ItemType="1" VarName="VMR_LAB_HBA1C_MMOL" LoincScale="QN" UnitStr="mmol/mol" DisplayFormat="">
-        <FormItem ItemText="Siste HbA1c (mmol/mol)" ItemHelp="Hentes inn automatisk fra labarket, kan ikke redigeres her." Expression="VMR.LAB.HBA1C_MMOL" MinExpression="26" MaxExpression="250" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
+        <FormItem ItemText="Siste B-HbA1c" ItemHelp="Hentes inn automatisk fra labarket, kan ikke redigeres her." Expression="VMR.LAB.HBA1C_MMOL" MinExpression="26" MaxExpression="250" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="273" ItemType="1" VarName="CRP" LoincScale="QN" UnitStr="mg/L" DisplayFormat="">
-        <FormItem ItemText="S-CRP" ItemHelp="Høye verdier ved aktive inflammatoriske prosesser. Bakterielle prosesser gir gjerne høyere verdier enn virusinfeksjoner. CRP er det mest følsomme av akutt fase proteinene. Det kan stige til 2000 ganger utgangsverdien i løpet av 24 timer ved en akutt aktiv prosess. Ved tilbakegang av prosessen synker CRP fortere enn de øvrige akutt fase proteinene." Expression="VMR.LAB.CRP" MinExpression="0" MaxExpression="500" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
+        <FormItem ItemText="Siste S-CRP" ItemHelp="Hentes inn automatisk fra labarket, kan ikke redigeres her." Expression="VMR.LAB.CRP" MinExpression="0" MaxExpression="500" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="5954" ItemType="1" VarName="VMR_LAB_GFR_ESTIMATED" LoincScale="QN" UnitStr="ml/min/1.73m2" DisplayFormat="">
-        <FormItem ItemText="Siste eGFR (ml/min/1.73m2)" ItemHelp="" Expression="VMR.LAB.GFR_ESTIMATED" MinExpression="1" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
+        <FormItem ItemText="Siste Pt-eGFR" ItemHelp="Hentes inn automatisk fra labarket, kan ikke redigeres her." Expression="VMR.LAB.GFR_ESTIMATED" MinExpression="1" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -70,7 +70,7 @@
     </Page>
     <Page PageTitle="Etablerte fotproblemer 2*">
       <Item ItemId="3218" ItemType="2" VarName="NDV_FOOT_ULCER" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Diabetisk fotsår" ItemText="Har noen gang hatt diabetessår nedenfor ankelen?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Diabetisk fotsår" ItemText="Har noen gang hatt diabetessår nedenfor ankelen?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="0">
           <Answer AnswerId="16057" OrderNumber="1" OptionText="Nei, aldri" VerboseText="Aldri fotsår." ShortCode="N"/>
           <Answer AnswerId="16058" OrderNumber="2" OptionText="Ja, en gang" VerboseText="Har hatt fotsår før." ShortCode="En"/>
           <Answer AnswerId="21248" OrderNumber="3" OptionText="Ja, flere ganger" VerboseText="Har hatt flere fotsår." ShortCode="Fler"/>
@@ -93,18 +93,18 @@
     <Page PageTitle="Etablerte fotproblemer 3*">
       <Item ItemId="3249" ItemType="2" VarName="DIAPOL_CALLUS" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Callus på føttene" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="16218" OrderNumber="1" OptionText="Ingen callus på noen av føttene."/>
-          <Answer AnswerId="16219" OrderNumber="2" OptionText="Callus V."/>
-          <Answer AnswerId="16220" OrderNumber="3" OptionText="Callus H."/>
-          <Answer AnswerId="16221" OrderNumber="4" OptionText="Callus bilateralt."/>
+          <Answer AnswerId="16218" OrderNumber="1" OptionText="Ingen callus på noen av føttene." ShortCode="N"/>
+          <Answer AnswerId="16219" OrderNumber="2" OptionText="Callus V." ShortCode="V"/>
+          <Answer AnswerId="16220" OrderNumber="3" OptionText="Callus H." ShortCode="H"/>
+          <Answer AnswerId="16221" OrderNumber="4" OptionText="Callus bilateralt." ShortCode="B"/>
         </FormItem>
       </Item>
       <Item ItemId="3248" ItemType="2" VarName="DIAPOL_FOOT_DEFORMITY" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem ItemText="Fotdeformiteter" ItemHelp="Hallux valgus, hammertå, charcot" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="16210" OrderNumber="1" OptionText="Ingen fotdeformitet."/>
-          <Answer AnswerId="16211" OrderNumber="2" OptionText="Fotdeformitet venstre side."/>
-          <Answer AnswerId="16216" OrderNumber="3" OptionText="Fotdeformitet høyre side."/>
-          <Answer AnswerId="16217" OrderNumber="4" OptionText="Bilaterale fotdeformiteter."/>
+        <FormItem ItemText="Fotdeformiteter" ItemHelp="Hallux valgus, hammertå, charcot" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="16210" OrderNumber="1" OptionText="Ingen fotdeformitet." ShortCode="N"/>
+          <Answer AnswerId="16211" OrderNumber="2" OptionText="Fotdeformitet venstre side." ShortCode="V"/>
+          <Answer AnswerId="16216" OrderNumber="3" OptionText="Fotdeformitet høyre side." ShortCode="H"/>
+          <Answer AnswerId="16217" OrderNumber="4" OptionText="Bilaterale fotdeformiteter." ShortCode="B"/>
         </FormItem>
       </Item>
     </Page>
@@ -127,71 +127,150 @@
         </FormItem>
       </Item>
       <Item ItemId="3245" ItemType="2" VarName="DIAPOL_VIBR_RIGHT" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem ItemText="Vibrasjonssans H" ItemHelp="Stemmegaffel 128 Hz ved stortåens grunnledd." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Vibrasjonssans H" ItemHelp="Stemmegaffel 128 Hz ved stortåens grunnledd." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="16198" OrderNumber="1" OptionText="normal."/>
           <Answer AnswerId="16199" OrderNumber="2" OptionText="svekket."/>
         </FormItem>
       </Item>
       <Item ItemId="3246" ItemType="2" VarName="DIAPOL_VIBR_LEFT" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem ItemText="Vibrasjonssans V" ItemHelp="Stemmegaffel 128Hz ved stortåens grunnledd." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Vibrasjonssans V" ItemHelp="Stemmegaffel 128Hz ved stortåens grunnledd." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="16200" OrderNumber="1" OptionText="normal."/>
           <Answer AnswerId="16201" OrderNumber="2" OptionText="svekket."/>
         </FormItem>
       </Item>
       <Item ItemId="2295" ItemType="2" VarName="VAR2295" LoincScale="ORD">
-        <FormItem ItemText="Smertefull nevropati tilstede" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="11282" OrderNumber="1" OptionText="Ja" VerboseText="Smertefull nevropati."/>
-          <Answer AnswerId="11283" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="11284" OrderNumber="3" OptionText="Usikker"/>
+        <FormItem ItemText="Smertefull nevropati tilstede" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11282" OrderNumber="1" OptionText="Ja" VerboseText="Smertefull nevropati." ShortCode="J"/>
+          <Answer AnswerId="11283" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="11284" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Vaskulær vurdering">
-      <Item ItemId="2298" ItemType="2" VarName="VAR2298" LoincScale="ORD">
-        <FormItem ItemText="Palpabel ADP og palpabel ATP på begge sider?" ItemHelp="For å svare JA må begge pulsene være undersøkt og palpable på begge sider!" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="11287" OrderNumber="1" OptionText="Ja" VerboseText="Normal fotpuls bilateralt (ADP og ATP)."/>
-          <Answer AnswerId="11288" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="11613" OrderNumber="3" OptionText="Ikke undersøkt" VerboseText="Fotpuls ikke undersøkt i dag."/>
+      <Item ItemId="2298" ItemType="2" VarName="FOOT_PULSES" LoincScale="ORD">
+        <FormItem ItemText="Palpabel ADP og palpabel ATP på begge sider?" ItemHelp="For å svare JA må begge pulsene være undersøkt og palpable på begge sider!" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11287" OrderNumber="1" OptionText="Ja" VerboseText="Normal fotpuls bilateralt (ADP og ATP)." ShortCode="J"/>
+          <Answer AnswerId="11288" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="11613" OrderNumber="3" OptionText="Ikke undersøkt" VerboseText="Fotpuls ikke undersøkt i dag." ShortCode="X"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Vaskulær vurdering detaljer*">
-      <Item ItemId="2299" ItemType="2" VarName="VAR2299" LoincScale="ORD">
+      <Item ItemId="2299" ItemType="2" VarName="ADP_RIGHT" LoincScale="ORD">
         <FormItem ItemText="Palpabel ADP høyre side?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60532" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="60533" OrderNumber="2" OptionText="Nei" VerboseText="Ikke palpabel ADP h.side."/>
+          <Answer AnswerId="60532" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="60533" OrderNumber="2" OptionText="Nei" VerboseText="Ikke palpabel ADP h.side." ShortCode="N"/>
         </FormItem>
       </Item>
-      <Item ItemId="2648" ItemType="2" VarName="VAR2648" LoincScale="ORD">
+      <Item ItemId="2648" ItemType="2" VarName="ATP_RIGHT" LoincScale="ORD">
         <FormItem ItemText="Palpabel ATP høyre side?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60658" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="60659" OrderNumber="2" OptionText="Nei" VerboseText="Ikke palpabel ATP h.side."/>
+          <Answer AnswerId="60658" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="60659" OrderNumber="2" OptionText="Nei" VerboseText="Ikke palpabel ATP h.side." ShortCode="N"/>
         </FormItem>
       </Item>
-      <Item ItemId="2649" ItemType="2" VarName="VAR2649" LoincScale="ORD">
+      <Item ItemId="2649" ItemType="2" VarName="ADP_LEFT" LoincScale="ORD">
         <FormItem ItemText="Palpabel ADP venstre side?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60661" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="60662" OrderNumber="2" OptionText="Nei" VerboseText="Ikke palpabel ADP v.side."/>
+          <Answer AnswerId="60661" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="60662" OrderNumber="2" OptionText="Nei" VerboseText="Ikke palpabel ADP v.side." ShortCode="N"/>
         </FormItem>
       </Item>
-      <Item ItemId="2650" ItemType="2" VarName="VAR2650" LoincScale="ORD">
+      <Item ItemId="2650" ItemType="2" VarName="ATP_LEFT" LoincScale="ORD">
         <FormItem ItemText="Palpabel ATP venstre side?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60664" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="60665" OrderNumber="2" OptionText="Nei" VerboseText="Ikke palpabel ATP v.side."/>
+          <Answer AnswerId="60664" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="60665" OrderNumber="2" OptionText="Nei" VerboseText="Ikke palpabel ATP v.side." ShortCode="N"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Mulighet til selvhjelp">
-      <Item ItemId="2296" ItemType="2" VarName="VAR2296" LoincScale="ORD">
+      <Item ItemId="2296" ItemType="2" VarName="FOOT_SEE" LoincScale="ORD">
         <FormItem ItemText="Kan pasienten SE undersiden av sin egen fot?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="11285" OrderNumber="1" OptionText="Ja" VerboseText="Kan se undersiden av føttene."/>
-          <Answer AnswerId="11286" OrderNumber="2" OptionText="Nei" VerboseText="Kan ikke se undersiden av føttene."/>
+          <Answer AnswerId="11285" OrderNumber="1" OptionText="Ja" VerboseText="Kan se undersiden av føttene." ShortCode="J"/>
+          <Answer AnswerId="11286" OrderNumber="2" OptionText="Nei" VerboseText="Kan ikke se undersiden av føttene." ShortCode="N"/>
         </FormItem>
       </Item>
-      <Item ItemId="2297" ItemType="2" VarName="VAR2297" LoincScale="ORD">
+      <Item ItemId="2297" ItemType="2" VarName="FOOT_TOUCH" LoincScale="ORD">
         <FormItem ItemText="Kan pasienten TA PÅ undersiden av sin egen fot?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60529" OrderNumber="1" OptionText="Ja" VerboseText="Kan ta på undersiden av føttene."/>
-          <Answer AnswerId="60530" OrderNumber="2" OptionText="Nei" VerboseText="Kan ikke ta på undersiden av føttene."/>
+          <Answer AnswerId="60529" OrderNumber="1" OptionText="Ja" VerboseText="Kan ta på undersiden av føttene." ShortCode="J"/>
+          <Answer AnswerId="60530" OrderNumber="2" OptionText="Nei" VerboseText="Kan ikke ta på undersiden av føttene." ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3107" ItemType="2" VarName="SDFAG_SHOW_CALC" LoincScale="ORD">
+        <FormItem ItemText="Vis detaljer fra risikoberegningene" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12141" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="12142" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Moderat risiko" PageIntroduction="Det er tilstrekkelig med ett av kriteriene for å komme i moderat risiko. Gruppen har 6 ganger økt risiko i forhold til lavrisikogruppen.">
+      <Item ItemId="3102" ItemType="2" VarName="tmpMediumUlcerRisk1" LoincScale="ORD">
+        <FormItem ItemText="Ute av stand til å føle begge fotpulser i en fot" ItemHelp="‘Absent pulses’ was defined as absence of both dorsalis pedis and posterior tibial pulse in either foot." Expression="ISPOS( ISNULL(ATP_LEFT-2)*ISNULL(ADP_LEFT-2) + ISNULL(ATP_RIGHT-2)*ISNULL(ADP_RIGHT-2))" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
+          <Answer AnswerId="12130" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="12131" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3097" ItemType="2" VarName="tmpMediumUlcerRisk2" LoincScale="ORD">
+        <FormItem ItemText="Ute av stand til å kjenne 10g monofilament på 2 av 8 steder eller mer" ItemHelp="Neuropathy was defined as inability of patients to detect 10 g monofilaments on more than one site of 10 on the plantar aspect of both feet. The 10-g monofilament was tested on five plantar sites on each foot. These were the 1st, 2nd, 3rd and 5th metatarsal head and the great toe. The monofilament was applied to the site applying a pressure where the filament was just able to bend." Expression="ISNEG( DIAPOL_MONOFIL_RIGHT + DIAPOL_MONOFIL_LEFT - 7 )" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
+          <Answer AnswerId="12120" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="12121" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3103" ItemType="2" VarName="tmpMediumUlcerRisk3" LoincScale="ORD">
+        <FormItem ItemText="Fotdeformitet" ItemHelp="Foot deformity was defined as a change in foot shape that resulted in a difficulty in fitting standard shoes, subjectively assessed by the practitioner. Standard shoes were defined as shoes which could be purchased in high street shops." Expression="ISPOS(DIAPOL_FOOT_DEFORMITY-1)" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
+          <Answer AnswerId="12132" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="12133" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3104" ItemType="2" VarName="tmpMediumUlcerRisk4" LoincScale="ORD">
+        <FormItem ItemText="Ute av stand til å se og/eller ta på føttene" ItemHelp="Physical disability was defined as the patient not being able to reach their feet, whilst visual disability was defined as patients not being able to see their feet safely enough to cut their nails in the judgement of the clinician." Expression="ISPOS( ISNULL( FOOT_SEE - 2 ) + ISNULL( FOOT_TOUCH - 2 ) )" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
+          <Answer AnswerId="12134" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="12135" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3105" ItemType="2" VarName="tmpMediumUlcerRisk" LoincScale="ORD">
+        <FormItem ItemText="Moderat risiko - kriterier oppfylt" ItemHelp="" Expression="ISPOS(ISPOS(tmpMediumUlcerRisk1)+ISPOS(tmpMediumUlcerRisk2)+ISPOS(tmpMediumUlcerRisk3)+ISPOS(tmpMediumUlcerRisk4))" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="1">
+          <Answer AnswerId="12136" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="12137" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Høy risiko" PageIntroduction="Det er tilstrekkelig med ett av kriteriene for å høy risiko. Gruppen har 83 ganger økt risiko for fotsår i forhold til lavrisikogruppen.">
+      <Item ItemId="3095" ItemType="2" VarName="tmpHighUlcerRisk1" LoincScale="ORD">
+        <FormItem ItemText="Tidligere sår eller amputasjon" ItemHelp="" Expression="ISPOS(ISNULL(NDV_AMPUTATION-2)+ISNULL(NDV_AMPUTATION-3)+ISNULL(NDV_FOOT_ULCER-2)+ISNULL(NDV_FOOT_ULCER-3))" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
+          <Answer AnswerId="12116" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="12117" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3100" ItemType="2" VarName="tmpHighUlcerRisk2" LoincScale="ORD">
+        <FormItem ItemText="Mangler begge pulser i minst én fot, samt nedsatt sensibilitet" ItemHelp="" Expression="ISPOS( tmpMediumUlcerRisk1 ) * ISPOS( tmpMediumUlcerRisk2  )" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
+          <Answer AnswerId="12126" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="12127" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3098" ItemType="2" VarName="tmpCallusOrDeformity" LoincScale="ORD">
+        <FormItem ItemText="Callus eller fotdeformitet" ItemHelp="" Expression="ISPOS(ISPOS(DIAPOL_CALLUS-1) + ISPOS(DIAPOL_FOOT_DEFORMITY-1))" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="1">
+          <Answer AnswerId="12122" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="12123" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3099" ItemType="2" VarName="tmpHighUlcerRisk3" LoincScale="ORD">
+        <FormItem ItemText="Deformitet/callus pluss manglende fotpulser og/eller nedsatt sensibilitet" ItemHelp="" Expression="tmpCallusOrDeformity * ISPOS( tmpMediumUlcerRisk1 + tmpMediumUlcerRisk2 )" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
+          <Answer AnswerId="12124" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="12125" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3101" ItemType="2" VarName="tmpHighUlcerRisk" LoincScale="ORD">
+        <FormItem ItemText="Høy risiko - kriterier oppfylt" ItemHelp="" Expression="ISPOS( ISPOS(tmpHighUlcerRisk1) + ISPOS(tmpHighUlcerRisk2) + ISPOS(tmpHighUlcerRisk3) )" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="1">
+          <Answer AnswerId="12128" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="12129" OrderNumber="1" OptionText="Ja"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Samlet risikovurdering">
+      <Item ItemId="3106" ItemType="2" VarName="SDFAG_RISK" LoincScale="ORD">
+        <FormItem ItemText="Risikostratifisering" ItemHelp="" Expression="1 + ISNULL(tmpHighUlcerRisk)*tmpMediumUlcerRisk + tmpHighUlcerRisk*2" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12138" OrderNumber="1" OptionText="Lav risiko" ShortCode="L"/>
+          <Answer AnswerId="12139" OrderNumber="2" OptionText="Moderat risiko" ShortCode="M"/>
+          <Answer AnswerId="12140" OrderNumber="3" OptionText="Høy risiko" ShortCode="H"/>
         </FormItem>
       </Item>
     </Page>
@@ -208,7 +287,7 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="New*">
+    <Page PageTitle="Kontaktinfo hjemmesykepleie*">
       <Item ItemId="4391" ItemType="4" VarName="SONE_HJEMMESPL" LoincScale="NAR" DisplayFormat="" Multiline="0">
         <FormItem ItemText="Sone" ItemHelp="Sone for hjemmesykepleien" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
@@ -235,8 +314,12 @@
     <PageAction MasterId="2298">
       <Activate EnumVal="2" PageConditionId="7128" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
+    <PageAction MasterId="3107">
+      <Activate EnumVal="1" PageConditionId="7680" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="7681" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
     <PageAction MasterId="4267">
-      <Activate EnumVal="1" PageConditionId="6966" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6966" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
