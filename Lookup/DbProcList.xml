@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <DbProcList>
-	<row ProcId="-2" StudyName="*" ProcName="NDV.MergeHbA1cToLabdata" ProcDesc="Flytter labdata fra skjema til labtabell" ListId="UTIL" GrantTo="public" MinVersion="6401" ChkSum="-450886666" LastUpdate="2018-10-03T16:29:04.150Z">
+	<row ProcId="-2" StudyName="*" ProcName="NDV.MergeHbA1cToLabdata" ProcDesc="Flytter labdata fra skjema til labtabell" ListId="UTIL" GrantTo="public" MinVersion="6401" ChkSum="675611620" LastUpdate="2018-10-08T19:17:37.580Z">
 		<![CDATA[CREATE PROCEDURE NDV.MergeHbA1cToLabdata AS
 BEGIN
   DECLARE @MergedName VARCHAR(32);
@@ -8,10 +8,10 @@ BEGIN
 
   -- Make sure that we have a LabCode for the form data.
   SET @MergedName = 'B-HbA1c (skjema)';
-  SELECT @LabCodeId = LabCodeId FROM dbo.LabCode WHERE LabName = @MergedName;
+  SELECT @LabCodeId = LabCodeId FROM dbo.LabCode WHERE LabName = @MergedName AND UnitStr = 'mmol/mol';
   IF @LabCodeId IS NULL
   BEGIN
-    INSERT INTO dbo.LabCode ( LabName, VarName, LabClassId ) VALUES( @MergedName, 'HBA1C_MMOL', 1058);
+    INSERT INTO dbo.LabCode ( LabName, UnitStr, VarName, LabClassId ) VALUES( @MergedName, 'mmol/mol', 'HBA1C_MMOL', 1058);
 	SET @LabCodeId = SCOPE_IDENTITY();
   END
   ELSE  
@@ -4283,6 +4283,64 @@ BEGIN
   WHERE PersonId= @PersonId
   ORDER BY dx.ProbActive DESC, mp.ProbDesc;
 END]]>
+	</row>
+	<row ProcId="1041" StudyName="NDV" ProcName="NDV.ReportHbA1cTimeSeriesMoving" ProcDesc="Tidsserie for dårlig regulerte Type 1, bevegelig rapport" ProcParams=":StartYear, :HbA1cCutoff, :LookbackMonths, :LookForwardMonths" ListId="FR" GrantTo="public" MinVersion="6401" ChkSum="1896289518" LastUpdate="2018-10-08T19:34:46.713Z">
+		<![CDATA[CREATE PROCEDURE NDV.ReportHbA1cTimeSeriesMoving( @StartYear INT, @HbA1cCutoff FLOAT, @LookbackMonths INT, @LookForwardMonths INT )  AS
+BEGIN
+  DECLARE @StartDate DateTime;
+  DECLARE @StopDate DateTime;
+                    
+  -- Merge labdata from ClinDatapoint to LabData
+                                      
+  IF ( SELECT cmptlevel FROM master.dbo.sysdatabases WHERE name = db_name() ) >= 100
+    EXEC NDV.MergeHba1cToLabdata;
+                        
+  -- Find start and end of the year passed in as a parameter.
+    
+  SELECT @StartDate = CONVERT(DateTime,CONVERT(VARCHAR, @StartYear) + '-01-01');
+  SET @StopDate = DATEADD( MONTH, @LookforwardMonths, @StartDate );
+
+  SELECT 
+    MonthList.StartTime AS MonthStart, 
+    AllType1.NumPatients, 
+    AboveCutoffAgg.NumHbA1c AS NumAboveCutoff, 
+    AboveCutoffAgg.MinHbA1c, 
+    AboveCutoffAgg.AvgHbA1cAboveCutoff, 
+    AboveCutoffAgg.MaxHbA1c, 
+    100.0 * AboveCutoffAgg.NumHbA1c / AllType1.NumPatients AS PctAboveCutoffTotal
+  FROM
+
+  ( 
+    SELECT StartTime FROM Report.TimePeriods ml 
+    WHERE PeriodType = 'MONTH' AND StartTime >= @StartDate AND StartTime <= @StopDate AND StartTime < GETDATE()
+  ) MonthList
+
+CROSS APPLY 
+
+  (
+    SELECT COUNT(Type1AboveCutoff.NumResult) AS NumHbA1c, 
+      MIN(Type1AboveCutoff.NumResult) AS MinHbA1c,
+      MAX(Type1AboveCutoff.NumResult) AS MaxHbA1c,
+      AVG(Type1AboveCutoff.NumResult) AS AvgHbA1cAboveCutoff
+    FROM   
+    (
+      SELECT cas.PersonId,lab.NumResult  
+      FROM NDV.GetRecentPatientsTable( 1, MonthList.StartTime, @LookbackMonths ) cas
+      JOIN dbo.GetLastLabDataTable( 1058, MonthList.StartTime) lab ON lab.PersonId = cas.PersonId
+      WHERE NumResult >= @HbA1cCutoff
+    ) Type1AboveCutoff
+  ) AboveCutoffAgg
+
+CROSS APPLY 
+
+  ( 
+    SELECT COUNT(*) AS NumPatients FROM NDV.GetRecentPatientsTable( 1, MonthList.StartTime, @LookbackMonths )
+  ) AllType1 
+  WHERE AllType1.NumPatients > 0
+  ORDER BY MonthStart;
+
+END;
+]]>
 	</row>
 	<row ProcId="1101" StudyName="LANGTID" ProcName="GetCaseListFocused" ProcDesc="101. Overvåket status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="272981563" LastUpdate="2018-06-21T11:57:24.283Z">
 		<![CDATA[]]>
