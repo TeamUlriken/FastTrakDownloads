@@ -319,32 +319,32 @@
     </Page>
     <Page PageTitle="Laboratoriedata" PageIntroduction="Siste verdi hentes inn fra labarket og disse dataene kan derfor ikke redigeres her. Merk at ikke-numeriske verdier ikke vises her (typisk for U-ACR). Se labarket for ytterligere informasjon.  ">
       <Item ItemId="3020" ItemType="1" VarName="VMR_LAB_HBA1C_MMOL" LoincScale="QN" UnitStr="mmol/mol" DisplayFormat="">
-        <FormItem ItemText="Siste B-HbA1c" ItemHelp="Hentes inn automatisk fra labarket, kan ikke redigeres her." Expression="VMR.LAB.HBA1C_MMOL" MinExpression="26" MaxExpression="250" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
+        <FormItem ItemText="Siste B-HbA1c" ItemHelp="Hentes inn automatisk fra labarket, kan ikke redigeres her." Expression="LabData.HbA1c_mmol" MinExpression="26" MaxExpression="250" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="5950" ItemType="1" VarName="VMR_LAB_CREAT" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
-        <FormItem ItemText="Siste S-Kreatinin" ItemHelp="" Expression="VMR.LAB.CREAT" MinExpression="5" MaxExpression="5000" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
+        <FormItem ItemText="Siste S-Kreatinin" ItemHelp="" Expression="LabData.Creat" MinExpression="5" MaxExpression="5000" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="5951" ItemType="1" VarName="VMR_LAB_LDL" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
-        <FormItem ItemText="Siste S-LDL-kolesterol" ItemHelp="" Expression="VMR.LAB.LDL" MinExpression="0.5" MaxExpression="15" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
+        <FormItem ItemText="Siste S-LDL-kolesterol" ItemHelp="" Expression="LabData.LDL" MinExpression="0.5" MaxExpression="15" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="5952" ItemType="1" VarName="VMR_LAB_TRIG" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
-        <FormItem ItemText="Siste S-Triglyserider" ItemHelp="" Expression="VMR.LAB.TRIG" MinExpression="0.5" MaxExpression="50" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="2">
+        <FormItem ItemText="Siste S-Triglyserider" ItemHelp="" Expression="LabData.TRIG" MinExpression="0.5" MaxExpression="50" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="2">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="5953" ItemType="1" VarName="VMR_LAB_UACR" LoincScale="QN" UnitStr="ratio" DisplayFormat="">
-        <FormItem ItemText="Siste U-ACR (ratio)" ItemHelp="" Expression="VMR.LAB.UACR" MinExpression="0.1" MaxExpression="1000" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
+        <FormItem ItemText="Siste U-ACR (ratio)" ItemHelp="" Expression="LabData.UACR" MinExpression="0.1" MaxExpression="1000" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="5954" ItemType="1" VarName="VMR_LAB_GFR_ESTIMATED" LoincScale="QN" UnitStr="ml/min/1.73m2" DisplayFormat="">
-        <FormItem ItemText="Siste Pt-eGFR" ItemHelp="Hentes inn automatisk fra labarket, kan ikke redigeres her." Expression="VMR.LAB.GFR_ESTIMATED" MinExpression="1" MaxExpression="150" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
+        <FormItem ItemText="Siste Pt-eGFR" ItemHelp="Hentes inn automatisk fra labarket, kan ikke redigeres her." Expression="LabData.GFR_Estimated" MinExpression="1" MaxExpression="150" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -396,7 +396,7 @@
         </FormItem>
       </Item>
       <Item ItemId="3033" ItemType="1" VarName="STDGOAL_HBA1C_MMOL" LoincScale="QN" UnitStr="mmol/mol" DisplayFormat="">
-        <FormItem ItemText="Mål HbA1c (mmol/mol)" ItemHelp="Fast verdi, ikke påvirket av alder eller kjønn." Expression="53" MinExpression="42" MaxExpression="108" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Mål HbA1c" ItemHelp="Fast verdi, ikke påvirket av alder eller kjønn." Expression="53" MinExpression="42" MaxExpression="108" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -413,7 +413,7 @@
         </FormItem>
       </Item>
       <Item ItemId="3035" ItemType="1" VarName="ActualHbA1cMmol" LoincScale="QN" UnitStr="mmol/mol" DisplayFormat="">
-        <FormItem ItemText="Beregnet aktuell verdi for HbA1c" ItemHelp="Bruker HbA1c-verdi fra dette skjemaet, alternativt hentes det fra autoklassifiserte journaldata,&#xA;kun til vurdering av måloppnåelse.  Skal ikke lagres i database.  Hidden og ReadOnly." Expression="ISPOS(HBA1C_MMOL)*HBA1C_MMOL + ISNEG(HBA1C_MMOL)*VMR.LAB.HBA1C_MMOL" MinExpression="26" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="1">
+        <FormItem ItemText="Beregnet aktuell verdi for HbA1c" ItemHelp="Bruker HbA1c-verdi fra dette skjemaet, alternativt hentes det fra autoklassifiserte journaldata,&#xA;kun til vurdering av måloppnåelse.  Skal ikke lagres i database.  Hidden og ReadOnly." Expression="ISPOS(HBA1C_MMOL)*HBA1C_MMOL + ISNEG(HBA1C_MMOL)*Labdata.HbA1c_mmol" MinExpression="26" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
