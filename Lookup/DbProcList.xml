@@ -3302,84 +3302,6 @@ BEGIN
   ORDER BY d.OrderNo;
 END]]>
 	</row>
-	<row ProcId="1011" StudyName="NDV" ProcName="NDV.ReportLabAverages" ProcDesc="Snittverdier labdata" ProcParams=":CenterId,:DiabetesType,:StartDate,:StopDate" ListId="FR" GrantTo="public" MinVersion="6000" ChkSum="-343477654" LastUpdate="2018-10-03T16:10:18.030Z">
-		<![CDATA[CREATE PROCEDURE NDV.ReportLabAverages( @CenterId INT, @DiabetesType INT, @FirstDate DateTime = NULL, @LastDate DateTime = NULL ) AS
-BEGIN
-  -- Prepare inclusion period
-  IF @LastDate IS NULL SET @LastDate = DATEDIFF(DAY,0,GETDATE());
-  IF @FirstDate IS NULL SET @FirstDate = DATEADD( month, -15, @LastDate );
-  -- Get data
-  SELECT PersonId,LabClassId,LabDate,NumResult
-  INTO #LabList
-  FROM (
-    SELECT ld.PersonId,lc.LabClassId,ld.NumResult,ld.LabDate,
-	  RANK() OVER ( PARTITION BY ld.PersonId,lc.LabClassId ORDER BY ld.LabDate DESC ) AS TestNo
-    FROM dbo.LabData ld
-    JOIN dbo.LabCode lc ON lc.LabCodeId=ld.LabCodeId
-	JOIN NDV.CaseList( @CenterId, @DiabetesType, @FirstDate, @LastDate ) cas ON cas.PersonId=ld.PersonId
-    WHERE lc.LabClassId IN (6,34,35,36,37,49,124,1058) AND ld.NumResult >= 0
-      AND ld.LabDate < @LastDate ) LabList
-  WHERE LabList.TestNo=1;
-  SELECT lab.LabClassId,p.GenderId,lc.FriendlyName,
-    MIN(lab.NumResult) AS MinVal,CONVERT(DECIMAL(9,2),AVG(lab.NumResult)) AS AvgVal,MAX(lab.NumResult) AS MaxVal FROM #LabList lab
-  JOIN Person p ON p.PersonId=lab.PersonId
-  JOIN LabClass lc ON lc.LabClassId=lab.LabClassId
-  GROUP BY lab.LabClassId,p.GenderId,lc.FriendlyName
-  ORDER BY lab.LabClassId,p.GenderId;
-END]]>
-	</row>
-	<row ProcId="1012" StudyName="NDV" ProcName="NDV.ReportBpAverages" ProcDesc="Snittverdier blodtrykk" ProcParams=":CenterId,:DiabetesType,:StartDate,:StopDate" ListId="FR" GrantTo="public" MinVersion="6000" ChkSum="-807659733" LastUpdate="2015-11-05T07:37:58.377Z">
-		<![CDATA[CREATE PROCEDURE NDV.ReportBpAverages( @CenterId INT, @DiabetesType INT, @FirstDate DateTime = NULL, @LastDate DateTime = NULL ) AS
-BEGIN
-  -- Prepare inclusion period
-  IF @LastDate IS NULL SET @LastDate = DATEDIFF(DAY,0,GETDATE());
-  IF @FirstDate IS NULL SET @FirstDate = DATEADD( month, -15, @LastDate );
-  -- Get data
-  SELECT PersonId,ItemId,EventTime,Quantity 
-  INTO #BpList
-  FROM (
-    SELECT ce.PersonId,dp.ItemId,dp.Quantity,ce.EventTime,RANK() OVER ( PARTITION BY ce.PersonId,dp.ItemId ORDER BY ce.EventTime DESC ) AS BpNo
-    FROM dbo.ClinDatapoint dp
-    JOIN dbo.ClinEvent ce ON ce.EventId=dp.EventId
-	JOIN NDV.CaseList( @CenterId, @DiabetesType, @FirstDate, @LastDate ) cas ON cas.PersonId=ce.PersonId
-    WHERE dp.ItemId IN ( 3230,3231 ) AND dp.Quantity > 0
-      AND ce.EventTime < @LastDate ) BpList
-  WHERE BpList.BpNo=1;
-  SELECT bp.ItemId,p.GenderId,COUNT(p.PersonId) AS PatCount,MIN(Quantity) AS MinVal,CONVERT(DECIMAL(9,1),AVG(Quantity)) AS AvgVal, MAX(Quantity) as MaxVal 
-  FROM #BpList bp JOIN Person p ON p.PersonId=bp.PersonId
-  GROUP BY p.GenderId,bp.ItemId
-  ORDER BY p.GenderId,bp.ItemId
-END]]>
-	</row>
-	<row ProcId="1013" StudyName="NDV" ProcName="NDV.ReportLabAveragesByAge" ProcDesc="Snittverdier labdata etter alder" ProcParams=":CenterId,:DiabetesType" ListId="FR" GrantTo="public" MinVersion="6000" ChkSum="1435260270" LastUpdate="2015-11-05T07:37:59.033Z">
-		<![CDATA[CREATE PROCEDURE NDV.ReportLabAveragesByAge( @CenterId INT, @DiabetesType INT, @LabClassId INT, @FirstDate DateTime = NULL, @LastDate DateTime = NULL ) AS
-BEGIN
-  -- Prepare inclusion period
-  IF @LastDate IS NULL SET @LastDate = DATEDIFF(DAY,0,GETDATE());
-  IF @FirstDate IS NULL SET @FirstDate = DATEADD( month, -15, @LastDate );
-  -- Get data
-  SELECT PersonId,LabClassId,LabDate,NumResult
-  INTO #LabList
-  FROM (
-    SELECT ld.PersonId,lc.LabClassId,ld.NumResult,ld.LabDate, RANK() OVER ( PARTITION BY ld.PersonId,lc.LabClassId ORDER BY ld.LabDate DESC ) AS TestNo
-    FROM dbo.LabData ld
-    JOIN dbo.LabCode lc ON lc.LabCodeId=ld.LabCodeId
-    JOIN NDV.CaseList( @CenterId, @DiabetesType, @FirstDate, @LastDate ) cas ON cas.PersonId=ld.PersonId
-    WHERE lc.LabClassId = @LabClassId AND ld.NumResult >= 0
-      AND ld.LabDate < @LastDate ) LabList
-  WHERE LabList.TestNo=1;
-  -- Aggregate it
-  SELECT p.AgeDecades,COUNT(p.PersonId) AS PatCount,
-    MIN(lab.NumResult) AS MinVal,CONVERT(DECIMAL(9,2),AVG(lab.NumResult)) AS AvgVal,MAX(lab.NumResult) AS MaxVal 
-  INTO #FinalDataset
-  FROM #LabList lab
-  JOIN NDV.AgeList( @LastDate ) p ON p.PersonId=lab.PersonId
-  JOIN LabClass lc ON lc.LabClassId=lab.LabClassId
-  GROUP BY p.AgeDecades;
-  SELECT AgeDecades AS FromAge,AgeDecades + 9 AS ToAge,PatCount,MinVal,AvgVal,MaxVal FROM #FinalDataset
-  ORDER BY AgeDecades;
-END]]>
-	</row>
 	<row ProcId="1014" StudyName="GBD" ProcName="GBD.RapportKontaktinfo" ProcDesc="Kontaktinfo pårørende" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="6000" ChkSum="-784408140" LastUpdate="2015-11-05T07:38:00.423Z">
 		<![CDATA[CREATE PROCEDURE GBD.RapportKontaktinfo ( @StudyId INT ) AS
 BEGIN
@@ -5094,51 +5016,6 @@ BEGIN
     WHEN NOT MATCHED
         THEN INSERT (StudyId, PersonId, AlertLevel, AlertClass, AlertFacet, AlertHeader, AlertMessage, AlertButtons)
                         VALUES (@StudyId, b.PersonId, b.AlertLevel, 'MUST', b.AlertFacet, b.MsgHeader, b.MsgText, 'TYM');
-END]]>
-	</row>
-	<row ProcId="5003" StudyName="*" ProcName="dbo.UtilNegateUser" ProcDesc="Oppdatere UserId" ListId="UTIL" GrantTo="public" MinVersion="512" MaxVersion="6326" ChkSum="254448720" LastUpdate="2017-01-09T19:34:14.677Z">
-		<![CDATA[CREATE PROCEDURE dbo.UtilNegateUser( @UserId INT )
-AS
-BEGIN
-  DECLARE @TableSchema NVARCHAR(128);
-  DECLARE @TableName NVARCHAR(128);
-  DECLARE @ColumnName NVARCHAR(128);
-  DECLARE @UserName NVARCHAR(128);
-  DECLARE @NegUser int;
-  DECLARE @SqlCmd varchar(512);
-  SELECT @UserName=UserName FROM dbo.UserList WHERE UserId=@UserId;
-  IF @UserName=USER_NAME(@UserId)
-  BEGIN
-    RAISERROR( 'You can not negate a valid user!', 16, 1 )
-    RETURN -1;
-  END;
-  SELECT @NegUser = MIN( UserId ) FROM UserList;
-  IF @NegUser > 0 SET @NegUser = 0;
-  SET @NegUser = @NegUser - 1;    
-  -- Create the negated user
-  INSERT INTO dbo.UserList (UserId,PersonId,CreatedAt,CreatedBy,CenterId,ProfId,UserName,OldUserId)
-    SELECT @NegUser,PersonId,CreatedAt,CreatedBy,CenterId,ProfId,UserName,UserId FROM UserList
-    WHERE UserId=@UserId;
-  -- Find columns to update
-  DECLARE cur_columns CURSOR FOR
-    SELECT t.TABLE_SCHEMA,c.TABLE_NAME,c.COLUMN_NAME
-    FROM INFORMATION_SCHEMA.columns c
-    JOIN INFORMATION_SCHEMA.tables t ON t.TABLE_NAME = c.TABLE_NAME AND t.TABLE_SCHEMA=c.TABLE_SCHEMA
-    WHERE c.COLUMN_NAME IN(
-      'CreatedBy','SignedBy','PausedBy','PulledBy','StopBy','FormOwner','UpgradedBy','UpdatedBy','StartedBy','RestartBy','ChangedBy','LockedBy', 'UserId', 'ClosedBy', 'HandledBy', 'DeletedBy', 'DisabledBy', 'PrintedBy', 'RequestedBy', 'TakenBy' )
-    AND t.TABLE_NAME <>'UserList' AND t.TABLE_TYPE='BASE TABLE';
-  OPEN cur_columns;
-  -- Update all columns from list
-  FETCH NEXT FROM cur_columns INTO @TableSchema,@TableName,@ColumnName;
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-      SET @SqlCmd = 'UPDATE ' + @TableSchema + '.' + @TableName + ' SET ' + @ColumnName + '=' + CONVERT(VARCHAR,@NegUser) + ' WHERE ' + @ColumnName + '=' + CONVERT(Varchar,@UserId);
-      EXECUTE( @SqlCmd );
-    FETCH NEXT FROM cur_columns INTO @TableSchema,@TableName,@ColumnName;
-  END
-  CLOSE cur_columns;
-  DEALLOCATE cur_columns;
-  DELETE FROM dbo.UserList WHERE UserId=@UserId;
 END]]>
 	</row>
 	<row ProcId="10001" StudyName="*" ProcName="GBD.RuleBerger" ProcDesc="Registere Bergers skala med 180 dagers intervall" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MaxVersion="18207" ChkSum="976234660" LastUpdate="2018-08-10T08:18:56.657Z">
