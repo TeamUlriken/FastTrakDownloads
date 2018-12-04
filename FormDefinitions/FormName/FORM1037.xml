@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
   <Form FormId="1037" FormName="FORM1037" FormTitle="Spørreskjema til pårørende (Demensutredning)" Instructions="Når du besvarer spørsmålene, tenk på hvordan din slektning eller venn var for ti år siden og sammenlign med situasjonen i dag. Det er angitt noen situasjoner hvor vedkommende må bruke sitt intellekt. Vurder om dette er blitt bedre, er uforandret eller har forverret seg i løpet av de siste ti årene. Hvis din slektning eller venn ikke husket hvor han eller hun la fra seg ting for ti år siden og det samme er tilfelle i dag, skal dette besvares med ikke særlig forandret.">
-    <Page PageTitle="Spørreskjema til pårørende">
+    <Page PageTitle="Spørreskjema til pårørende" PageIntroduction="Tenk på hvordan din slektning eller venn var for ti år siden og sammenlign med i dag. Se vedlagt PDF for fullstendig instruksjon. ">
       <Item ItemId="3039" ItemType="2" VarName="NOK_FAMILY" LoincScale="ORD">
         <FormItem ItemText="Huske ting i forhold til familie og venner, f.eks. yrke, fødselsdager og adresser" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="12065" OrderNumber="1" OptionText="Mye bedre"/>
@@ -146,11 +146,15 @@
           <Answer AnswerId="61138" OrderNumber="5" OptionText="Mye verre"/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageTitle="Sum">
       <Item ItemId="3066" ItemType="1" VarName="VAR3066" LoincScale="QN">
         <FormItem ItemText="Sum skåre" ItemHelp="Total sum/antall spørsmål" Expression="(NOK_FAMILY + NOK_RECENT + NOK_CONVERSATION + NOK_ADDRESS + NOK_DAY + NOK_USUALPLACE + NOK_NEWPLACE + NOK_APPLIANCES + NOK_NEWTOOLS + NOK_LEARNING + NOK_READING + NOK_DECISION + NOK_MONEY + NOK_ECONOMY + NOK_NUMERACY + NOK_UNDERSTANDING)/16" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageTitle="New*">
       <Item ItemId="3067" ItemType="5" VarName="VAR3067" LoincScale="DATE">
         <FormItem ItemText="Når startet symptomene?&#xA;" ItemHelp="Angi omtrentlig dato" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
