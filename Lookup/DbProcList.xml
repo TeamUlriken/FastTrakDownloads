@@ -1218,7 +1218,7 @@ BEGIN
   ORDER BY forms.LastFormDate;
 END;]]>
 	</row>
-	<row ProcId="171" StudyName="GBD" ProcName="GBD.GetCaseListFormAvvikThisTertile" ProcDesc="Avvik: Alle avvik dette tertial" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="686532850" LastUpdate="2018-02-09T13:45:40.837Z">
+	<row ProcId="171" StudyName="GBD" ProcName="GBD.GetCaseListFormAvvikThisTertile" ProcDesc="Avvik: Alle avvik dette tertial" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="1966060398" LastUpdate="2018-12-12T09:17:44.970Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormAvvikThisTertile (@StudyId INT) AS
 BEGIN
     DECLARE @DTValue DATETIME = GETDATE();
@@ -1226,46 +1226,43 @@ BEGIN
     DECLARE @EndsAt DATETIME;
     EXEC dbo.CalculateTertial @DTValue, @StartsAt OUTPUT, @EndsAt OUTPUT;
 
-    SELECT lf.PersonId,
-        p.FullName,
-        p.DOB,
-        sg.GroupName,
-        CONCAT('Opprettet: ', CONVERT(VARCHAR, lf.EventTime, 104), ', Status: ', mia.OptionText) AS InfoText
-    FROM dbo.GetLastFormTableByName('GbdAvvik', GETDATE() + 1) lf
-    JOIN dbo.Person p ON p.PersonId = lf.PersonId
-    JOIN dbo.StudCase sc ON sc.PersonId = lf.PersonId
-    JOIN dbo.StudyStatus ss ON ss.StatusId = sc.FinState AND ss.StudyId = sc.StudyId
-    JOIN dbo.StudyGroup sg ON sg.GroupId = sc.GroupId AND sg.StudyId = sc.StudyId AND sg.GroupActive = 1
-    LEFT JOIN dbo.ClinDataPoint cdp ON cdp.EventId = lf.EventId AND cdp.ItemId = 8512
+    SELECT ce.PersonId, p.FullName, p.DOB, sg.GroupName,
+        CONCAT('Opprettet: ', CONVERT(VARCHAR, ce.EventTime, 104), ', Status: ', mia.OptionText) AS InfoText
+    FROM dbo.ClinForm cf 
+    JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId AND mf.FormName = 'GbdAvvik'
+    JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId
+    JOIN dbo.Person p ON p.PersonId = ce.PersonId
+    JOIN dbo.UserList ul ON ul.UserId = USER_ID()
+    JOIN dbo.StudyGroup sg ON ( sg.StudyId = ce.StudyId ) AND ( sg.GroupId = ce.GroupId ) AND ( sg.GroupActive = 1 ) AND ( sg.CenterId=ul.CenterId )
+    LEFT JOIN dbo.ClinDataPoint cdp ON cdp.EventId = ce.EventId AND cdp.ItemId = 8512
     LEFT JOIN dbo.MetaItemAnswer mia ON mia.OrderNumber = cdp.EnumVal AND mia.ItemId = cdp.ItemId
-    LEFT JOIN dbo.StudyUser su ON su.UserId = USER_ID() AND su.StudyId = sc.StudyId
-    WHERE (lf.EventTime BETWEEN @StartsAt AND @EndsAt)
-    AND (sc.StudyId = @StudyId) AND ((su.GroupId = sc.GroupId) OR (su.UserId IS NULL) OR (su.GroupId IS NULL) OR (su.ShowMyGroup = 0))
-END;]]>
+    LEFT OUTER JOIN dbo.StudyUser su ON su.UserId = USER_ID() AND su.StudyId=ce.StudyId
+    WHERE (ce.EventTime BETWEEN @StartsAt AND @EndsAt)
+    AND ( ce.StudyId = @StudyId ) AND (( su.GroupId = ce.GroupId ) OR (su.UserId IS NULL) OR (su.GroupId IS NULL) OR (su.ShowMyGroup = 0));
+END;
+]]>
 	</row>
-	<row ProcId="172" StudyName="GBD" ProcName="GBD.GetCaseListFormAvvikLastTertile" ProcDesc="Avvik: Alle avvik forrige tertial" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="-399232509" LastUpdate="2018-02-09T13:46:39.753Z">
+	<row ProcId="172" StudyName="GBD" ProcName="GBD.GetCaseListFormAvvikLastTertile" ProcDesc="Avvik: Alle avvik forrige tertial" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="-597533046" LastUpdate="2018-12-12T09:18:14.707Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormAvvikLastTertile (@StudyId INT) AS
 BEGIN
     DECLARE @KeyDate DATETIME = DATEADD(MONTH, -4, GETDATE());
     DECLARE @StartsAt DATETIME;
     DECLARE @EndsAt DATETIME;
     EXEC dbo.CalculateTertial @KeyDate, @StartsAt OUTPUT, @EndsAt OUTPUT;
-    SELECT lf.PersonId,
-        p.FullName,
-        p.DOB,
-        sg.GroupName,
-        CONCAT('Opprettet: ', CONVERT(VARCHAR, lf.EventTime, 104), ', Status: ', mia.OptionText) AS InfoText
-    FROM dbo.GetLastFormTableByName('GbdAvvik', GETDATE() + 1) lf
-    JOIN dbo.Person p ON p.PersonId = lf.PersonId
-    JOIN dbo.StudCase sc ON sc.PersonId = lf.PersonId
-    JOIN dbo.StudyStatus ss ON ss.StatusId = sc.FinState AND ss.StudyId = sc.StudyId
-    JOIN dbo.StudyGroup sg ON sg.GroupId = sc.GroupId AND sg.StudyId = sc.StudyId AND sg.GroupActive = 1
-    LEFT JOIN dbo.ClinDataPoint cdp ON cdp.EventId = lf.EventId AND cdp.ItemId = 8512
+
+    SELECT ce.PersonId, p.FullName, p.DOB, sg.GroupName,
+        CONCAT('Opprettet: ', CONVERT(VARCHAR, ce.EventTime, 104), ', Status: ', mia.OptionText) AS InfoText
+    FROM dbo.ClinForm cf 
+    JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId AND mf.FormName = 'GbdAvvik'
+    JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId
+    JOIN dbo.Person p ON p.PersonId = ce.PersonId
+    JOIN dbo.UserList ul ON ul.UserId = USER_ID()
+    JOIN dbo.StudyGroup sg ON ( sg.StudyId = ce.StudyId ) AND ( sg.GroupId = ce.GroupId ) AND ( sg.GroupActive = 1 ) AND ( sg.CenterId=ul.CenterId )
+    LEFT JOIN dbo.ClinDataPoint cdp ON cdp.EventId = ce.EventId AND cdp.ItemId = 8512
     LEFT JOIN dbo.MetaItemAnswer mia ON mia.OrderNumber = cdp.EnumVal AND mia.ItemId = cdp.ItemId
-    LEFT JOIN dbo.StudyUser su ON su.UserId = USER_ID() AND su.StudyId = sc.StudyId
-    WHERE (lf.EventTime BETWEEN @StartsAt AND @EndsAt)
-    AND (sc.StudyId = @StudyId)
-    AND ((su.GroupId = sc.GroupId) OR (su.UserId IS NULL) OR (su.GroupId IS NULL) OR (su.ShowMyGroup = 0))
+    LEFT OUTER JOIN dbo.StudyUser su ON su.UserId = USER_ID() AND su.StudyId=ce.StudyId
+    WHERE (ce.EventTime BETWEEN @StartsAt AND @EndsAt)
+    AND ( ce.StudyId = @StudyId ) AND (( su.GroupId = ce.GroupId ) OR (su.UserId IS NULL) OR (su.GroupId IS NULL) OR (su.ShowMyGroup = 0));
 END;]]>
 	</row>
 	<row ProcId="173" StudyName="GBD" ProcName="GBD.GetCaseListFormBeslutninger" ProcDesc="Beslutninger: Siste beslutninger" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="1306267585" LastUpdate="2018-02-13T10:23:22.977Z">
