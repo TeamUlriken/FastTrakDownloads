@@ -1265,19 +1265,17 @@ BEGIN
     AND ( ce.StudyId = @StudyId ) AND (( su.GroupId = ce.GroupId ) OR (su.UserId IS NULL) OR (su.GroupId IS NULL) OR (su.ShowMyGroup = 0));
 END;]]>
 	</row>
-	<row ProcId="173" StudyName="GBD" ProcName="GBD.GetCaseListFormBeslutninger" ProcDesc="Beslutninger: Siste beslutninger" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="1306267585" LastUpdate="2018-02-13T10:23:22.977Z">
+	<row ProcId="173" StudyName="GBD" ProcName="GBD.GetCaseListFormBeslutninger" ProcDesc="Beslutninger: Siste beslutninger" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="-1342464528" LastUpdate="2018-12-13T14:25:15.250Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormBeslutninger (@StudyId INT) AS
 BEGIN
-    SELECT lf.PersonId,
-        p.FullName,
-        p.DOB,
-        sg.GroupName,
-        CONCAT(ss.StatusText, '. Utfylt: ', CONVERT(VARCHAR, lf.EventTime, 104)) AS InfoText
+    SELECT lf.PersonId, p.FullName, p.DOB, sg.GroupName, p.GenderId, p.NationalId,
+        CONCAT(ss.StatusText, '. Dato: ', dbo.ShortDate( lf.EventTime) ) AS InfoText
     FROM dbo.GetLastFormTableByName('GBD_BESLUTNINGER', GETDATE() + 1) lf
     JOIN dbo.Person p ON p.PersonId = lf.PersonId
     JOIN dbo.StudCase sc ON sc.PersonId = lf.PersonId
     JOIN dbo.StudyStatus ss ON ss.StatusId = sc.FinState AND ss.StudyId = sc.StudyId
     JOIN dbo.StudyGroup sg ON sg.GroupId = sc.GroupId AND sg.StudyId = sc.StudyId AND sg.GroupActive = 1
+	JOIN dbo.UserList ul ON ul.UserId = USER_ID() AND ul.CenterId = sg.CenterId
     LEFT JOIN dbo.StudyUser su ON su.UserId = USER_ID() AND su.StudyId = sc.StudyId
     WHERE (sc.StudyId = @StudyId)
     AND    ((su.GroupId = sc.GroupId) OR (su.UserId IS NULL) OR (su.GroupId IS NULL) OR (su.ShowMyGroup = 0))
