@@ -1265,11 +1265,11 @@ BEGIN
     AND ( ce.StudyId = @StudyId ) AND (( su.GroupId = ce.GroupId ) OR (su.UserId IS NULL) OR (su.GroupId IS NULL) OR (su.ShowMyGroup = 0));
 END;]]>
 	</row>
-	<row ProcId="173" StudyName="GBD" ProcName="GBD.GetCaseListFormBeslutninger" ProcDesc="Beslutninger: Siste beslutninger" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="-1342464528" LastUpdate="2018-12-13T14:25:15.250Z">
+	<row ProcId="173" StudyName="GBD" ProcName="GBD.GetCaseListFormBeslutninger" ProcDesc="Beslutninger: Siste beslutninger" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="267951609" LastUpdate="2018-12-13T14:57:49.253Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormBeslutninger (@StudyId INT) AS
 BEGIN
     SELECT lf.PersonId, p.FullName, p.DOB, sg.GroupName, p.GenderId, p.NationalId,
-        CONCAT(ss.StatusText, '. Dato: ', dbo.ShortDate( lf.EventTime) ) AS InfoText
+        CONCAT(ss.StatusText, '. Dato: ', dbo.ShortTime( lf.EventTime) ) AS InfoText
     FROM dbo.GetLastFormTableByName('GBD_BESLUTNINGER', GETDATE() + 1) lf
     JOIN dbo.Person p ON p.PersonId = lf.PersonId
     JOIN dbo.StudCase sc ON sc.PersonId = lf.PersonId
