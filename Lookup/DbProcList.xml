@@ -199,29 +199,6 @@ BEGIN
   EXEC GetCaseListNewForms @StudyId,7
 END]]>
 	</row>
-	<row ProcId="16" StudyName="*" ProcName="dbo.MetadataUpdate" ProcDesc="Superbruker: Oppdater metadata" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-445211586" LastUpdate="2018-03-23T11:34:49.477Z">
-		<![CDATA[CREATE PROCEDURE dbo.MetadataUpdate( @StudyId INT ) AS
-BEGIN
-  SET NOCOUNT ON;
-  IF NOT EXISTS( SELECT * FROM MetaProfession WHERE ProfType= 'KE' )
-  BEGIN
-   INSERT INTO MetaProfession (ProfName,OID9060) VALUES( 'Klinisk Ernæringsfysiolog', 'KE')
-  END
-  IF NOT EXISTS( SELECT * FROM MetaRelation WHERE ProfType = 'KE' )
-  BEGIN
-   INSERT INTO MetaRelation (ProfType,RelName,RelDuration) VALUES( 'KE', 'Fast kontakt', 365 )
-   INSERT INTO MetaRelation (ProfType,RelName,RelDuration) VALUES( 'KE', 'Annen rolle', 1 )
-  END;
-  SELECT 0 as PersonId, getdate() as DOB, 'Oppdatering gjennomført' as FullName, 'OK' AS GroupName;
-END]]>
-	</row>
-	<row ProcId="17" StudyName="*" ProcName="dbo.AddSchemas" ProcDesc="Superbruker: Legg til schemas" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-662234584" LastUpdate="2014-09-02T19:44:02.467Z">
-		<![CDATA[CREATE PROCEDURE dbo.AddSchemas( @StudyId INT ) AS 
-BEGIN 
-  EXEC AddSchema 'ENDO';
-  SELECT 0 as PersonId, getdate() as DOB, 'Lagt til schema ENDO' AS FullName, 'OK' AS GroupName, 'Oppdatering vellykket' as InfoText;
-END]]>
-	</row>
 	<row ProcId="18" StudyName="*" ProcName="dbo.GetCaseListNewsMonth" ProcDesc="Aktivitet: Alle skjema siste 30 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="807865217" LastUpdate="2018-09-04T07:26:16.840Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListNewsMonth( @StudyId INT ) AS
 BEGIN
