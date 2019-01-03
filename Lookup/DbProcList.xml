@@ -242,7 +242,7 @@ BEGIN
   ORDER BY t2.LastEvent
 END]]>
 	</row>
-	<row ProcId="22" StudyName="BASE" ProcName="dbo.GetActiveSingleVar" ProcDesc="Utvalg på variabel og verdi" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1238508697" LastUpdate="2019-01-03T09:16:09.280Z">
+	<row ProcId="22" StudyName="BASE" ProcName="dbo.GetActiveSingleVar" ProcDesc="Utvalg på variabel og verdi" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1238508697" LastUpdate="2019-01-03T09:37:13.377Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetActiveSingleVar( @StudyId INT, @ItemId INT, @EnumVal INT ) AS
 BEGIN
   SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, v.StatusText AS InfoText, v.GenderId
@@ -268,27 +268,17 @@ BEGIN
   FROM #temp t JOIN Person p on p.PersonId=t.PersonId
 END]]>
 	</row>
-	<row ProcId="24" StudyName="BASE" ProcName="dbo.GetActiveDoubleVar" ProcDesc="Utvalg på to variabler med verdi" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="930736405" LastUpdate="2013-03-19T14:13:09.787Z">
-		<![CDATA[CREATE PROCEDURE dbo.GetActiveDoubleVar( @StudyId INT, @VarName1 VARCHAR(32), @EnumVal1 INT, @VarName2 VARCHAR(32), @EnumVal2 INT )
-AS
+	<row ProcId="24" StudyName="BASE" ProcName="dbo.GetActiveDoubleVar" ProcDesc="Utvalg på to variabler med verdi" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-2095125603" LastUpdate="2019-01-03T09:36:44.987Z">
+		<![CDATA[CREATE PROCEDURE dbo.GetActiveDoubleVar( @StudyId INT, @ItemId1 INT, @EnumVal1 INT, @ItemId2 INT, @EnumVal2 INT ) AS
 BEGIN
-  select p.PersonId,
-  dbo.GetLastEnumVal( p.PersonId, @VarName1) as EnumVal1,
-  dbo.GetLastEnumVal( p.PersonId, @VarName2) as EnumVal2
-  INTO #temp1
-  FROM Person p;
-  SELECT DISTINCT PersonId 
-  INTO #temp2
-  FROM #temp1 
-  WHERE ( EnumVal1 = @EnumVal1 ) AND ( EnumVal2 = @EnumVal2 );
-  SELECT p.PersonId,p.DOB,p.ReverseName as FullName,sg.GroupName,ss.StatusText as InfoText,p.GenderId
-  FROM #temp2 t2 
-  JOIN Person p ON p.PersonId=t2.PersonId
-  JOIN StudCase sc ON sc.PersonId=t2.PersonId
-  JOIN StudyStatus ss ON ss.StudyId=sc.StudyId AND ss.StatusId=sc.FinState AND ss.StatusActive=1 
-  JOIN StudyGroup sg ON sg.StudyId=sc.StudyId AND sg.GroupId=sc.GroupId AND sg.GroupActive=1
-  WHERE sc.StudyId=@StudyId
-END]]>
+  SELECT v.*, v.StatusText AS InfoText  
+  FROM dbo.ViewActiveCaseListStub v 
+  JOIN dbo.GetLastEnumValuesTable( @ItemId1, NULL ) ev1 ON ev1.PersonId = v.PersonId
+  JOIN dbo.GetLastEnumValuesTable( @ItemId2, NULL ) ev2 ON ev2.PersonId = v.PersonId
+  WHERE ( v.StudyId = @StudyId ) AND ( ev1.EnumVal = @EnumVal1 ) AND ( ev2.EnumVal = @EnumVal2 )
+  ORDER BY v.FullName;
+END;
+]]>
 	</row>
 	<row ProcId="25" StudyName="*" ProcName="dbo.GetCaseListByNumber" ProcDesc="Personer: Alle etter løpenummer" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1467148197" LastUpdate="2014-02-12T07:01:17.420Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListByNumber( @StudyId INT ) AS
@@ -2427,7 +2417,7 @@ END]]>
 	<row ProcId="711" StudyName="ROAS" ProcName="ENDO.GetApsType3" ProcDesc="Polyendokrine syndromer: APS-III" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-605805085" LastUpdate="2013-02-14T10:13:03.750Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="712" StudyName="ENDO" ProcName="ENDO.GetHypoParaAutoimmune" ProcDesc="Hypoparatyreoidisme: Idiopatisk/autoimmun" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="555820629" LastUpdate="2019-01-03T09:17:15.827Z">
+	<row ProcId="712" StudyName="ENDO" ProcName="ENDO.GetHypoParaAutoimmune" ProcDesc="Hypoparatyreoidisme: Idiopatisk/autoimmun" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="555820629" LastUpdate="2019-01-03T09:37:14.280Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHypoParaAutoImmune( @StudyId INT ) AS 
 BEGIN 
   EXEC dbo.GetActiveSingleVar @StudyId, 6663, 0; 
@@ -2436,7 +2426,7 @@ END]]>
 	<row ProcId="713" StudyName="ROAS" ProcName="ENDO.GetHypoParaAutoimmune" ProcDesc="Hypoparatyreoidisme: Idiopatisk/autoimmun" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1611397770" LastUpdate="2018-12-05T08:31:51.740Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="714" StudyName="ENDO" ProcName="ENDO.GetHypoParaPseudo" ProcDesc="Hypoparatyreoidisme: Pseudohypoparatyreoidisme" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1940862038" LastUpdate="2019-01-03T09:16:50.140Z">
+	<row ProcId="714" StudyName="ENDO" ProcName="ENDO.GetHypoParaPseudo" ProcDesc="Hypoparatyreoidisme: Pseudohypoparatyreoidisme" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1940862038" LastUpdate="2019-01-03T09:37:15.173Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHypoParaPseudo( @StudyId INT ) AS 
 BEGIN 
   EXEC dbo.GetActiveSingleVar @StudyId, 6663, 1; 
@@ -2445,7 +2435,7 @@ END]]>
 	<row ProcId="715" StudyName="ROAS" ProcName="ENDO.GetHypoParaPseudo" ProcDesc="Hypoparatyreoidisme: Pseudohypoparatyreoidisme" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1219674589" LastUpdate="2018-12-05T08:32:02.673Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="716" StudyName="ENDO" ProcName="ENDO.GetHypoParaAll" ProcDesc="Hypoparatyreoidisme: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1758637353" LastUpdate="2019-01-03T09:18:01.890Z">
+	<row ProcId="716" StudyName="ENDO" ProcName="ENDO.GetHypoParaAll" ProcDesc="Hypoparatyreoidisme: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1758637353" LastUpdate="2019-01-03T09:37:15.980Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHypoParaAll( @StudyId INT ) AS 
 BEGIN 
   EXEC dbo.GetActiveSingleVar @StudyId, 6321, 1; 
@@ -2454,7 +2444,7 @@ END]]>
 	<row ProcId="717" StudyName="ROAS" ProcName="ENDO.GetHypoParaAll" ProcDesc="Hypoparatyreoidisme: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="647981375" LastUpdate="2013-02-14T10:51:04.640Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="718" StudyName="ENDO" ProcName="ENDO.GetHypoParaPostop" ProcDesc="Hypoparatyreoidisme: Postoperativt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-763005182" LastUpdate="2019-01-03T09:18:32.420Z">
+	<row ProcId="718" StudyName="ENDO" ProcName="ENDO.GetHypoParaPostop" ProcDesc="Hypoparatyreoidisme: Postoperativt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-763005182" LastUpdate="2019-01-03T09:37:16.877Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHypoParaPostop( @StudyId INT ) AS 
 BEGIN 
   EXEC dbo.GetActiveSingleVar @StudyId, 6883, 1; 
@@ -2463,7 +2453,7 @@ END]]>
 	<row ProcId="719" StudyName="ROAS" ProcName="ENDO.GetHypoParaPostop" ProcDesc="Hypoparatyreoidisme: Postoperativt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1315024179" LastUpdate="2013-02-14T10:57:12.140Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="720" StudyName="ENDO" ProcName="ENDO.GetHypoParaDiGeorge" ProcDesc="Hypoparatyreoidisme: Di George syndrom" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="519594082" LastUpdate="2019-01-03T09:19:11.220Z">
+	<row ProcId="720" StudyName="ENDO" ProcName="ENDO.GetHypoParaDiGeorge" ProcDesc="Hypoparatyreoidisme: Di George syndrom" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="519594082" LastUpdate="2019-01-03T09:37:17.640Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHypoParaDiGeorge( @StudyId INT ) AS 
 BEGIN 
   EXEC dbo.GetActiveSingleVar @StudyId, 6664, 1; 
@@ -2472,7 +2462,7 @@ END]]>
 	<row ProcId="721" StudyName="ROAS" ProcName="ENDO.GetHypoParaDiGeorge" ProcDesc="Hypoparatyreoidisme: Di George syndrom" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-497670906" LastUpdate="2013-02-14T11:09:19.500Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="722" StudyName="ENDO" ProcName="ENDO.GetHypoParaAutosomal" ProcDesc="Hypoparatyreoidisme: Autosomal dominant hypokalsemi" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="550385368" LastUpdate="2019-01-03T09:19:25.267Z">
+	<row ProcId="722" StudyName="ENDO" ProcName="ENDO.GetHypoParaAutosomal" ProcDesc="Hypoparatyreoidisme: Autosomal dominant hypokalsemi" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="550385368" LastUpdate="2019-01-03T09:37:18.360Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHypoParaAutosomal( @StudyId INT ) AS 
 BEGIN 
   EXEC dbo.GetActiveSingleVar @StudyId, 6884, 1; 
@@ -2481,7 +2471,7 @@ END]]>
 	<row ProcId="723" StudyName="ROAS" ProcName="ENDO.GetHypoParaAutosomal" ProcDesc="Hypoparatyreoidisme: Autosomal dominant hypokalsemi" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-272670584" LastUpdate="2013-02-14T11:08:11.793Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="724" StudyName="ROAS" ProcName="ENDO.GetHypoThyroAutoimmune" ProcDesc="Hypotyreose: Autoimmun" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-2012615133" LastUpdate="2019-01-03T09:19:50.343Z">
+	<row ProcId="724" StudyName="ROAS" ProcName="ENDO.GetHypoThyroAutoimmune" ProcDesc="Hypotyreose: Autoimmun" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-2012615133" LastUpdate="2019-01-03T09:37:18.980Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHypoThyroAutoimmune( @StudyId INT ) AS 
 BEGIN 
   EXEC dbo.GetActiveSingleVar @StudyId, 6312, 1; 
@@ -2497,7 +2487,7 @@ BEGIN
   ORDER BY v.PersonId
 END]]>
 	</row>
-	<row ProcId="726" StudyName="ROAS" ProcName="ENDO.GetHyperThyroAutoimmune" ProcDesc="Hypertyreose: Autoimmun" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-94589625" LastUpdate="2019-01-03T09:20:23.300Z">
+	<row ProcId="726" StudyName="ROAS" ProcName="ENDO.GetHyperThyroAutoimmune" ProcDesc="Hypertyreose: Autoimmun" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-94589625" LastUpdate="2019-01-03T09:37:19.627Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHyperThyroAutoimmune( @StudyId INT ) AS 
 BEGIN 
   EXEC dbo.GetActiveSingleVar @StudyId, 6313, 1; 
@@ -2513,7 +2503,7 @@ BEGIN
   ORDER BY v.PersonId
 END]]>
 	</row>
-	<row ProcId="728" StudyName="ROAS" ProcName="ENDO.GetDiabetesType1" ProcDesc="Diagnose: Diabetes type 1" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1669273852" LastUpdate="2019-01-03T09:21:05.373Z">
+	<row ProcId="728" StudyName="ROAS" ProcName="ENDO.GetDiabetesType1" ProcDesc="Diagnose: Diabetes type 1" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1669273852" LastUpdate="2019-01-03T09:37:20.627Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetDiabetesType1( @StudyId INT ) AS 
 BEGIN 
   EXEC dbo.GetActiveSingleVar @StudyId, 6314, 1; 
@@ -2550,10 +2540,10 @@ BEGIN
   ORDER BY v.FullName;
 END]]>
 	</row>
-	<row ProcId="730" StudyName="ENDO" ProcName="ENDO.GetDiabetesType1AndAddison" ProcDesc="Diagnose: Diabetes type 1 + Addison" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6302" ChkSum="252510257" LastUpdate="2015-12-17T14:10:25.190Z">
+	<row ProcId="730" StudyName="ENDO" ProcName="ENDO.GetDiabetesType1AndAddison" ProcDesc="Diagnose: Diabetes type 1 + Addison" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6302" ChkSum="1179755888" LastUpdate="2019-01-03T09:36:46.517Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetDiabetesType1AndAddison( @StudyId INT ) AS 
 BEGIN 
- EXEC dbo.GetActiveDoubleVar @StudyId,'ICD10_E10',1,'ICD10_E271',1 
+  EXEC dbo.GetActiveDoubleVar @StudyId, 6314, 1, 6299, 1; 
 END]]>
 	</row>
 	<row ProcId="731" StudyName="ROAS" ProcName="ENDO.GetDiabetesType1AndAddison" ProcDesc="Diagnose: Diabetes type 1 + Addison" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1387369723" LastUpdate="2013-06-06T10:09:11.877Z">
