@@ -47,7 +47,7 @@ BEGIN
   SET @EndsAt = DATEADD(second,-1,DATEADD(month,4,@StartsAt));
 END]]>
 	</row>
-	<row ProcId="1" StudyName="*" ProcName="dbo.GetCaseList" ProcDesc="001. Aktive pasienter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" HelpText="Alle aktive personer, eventuel avgrenset til din gruppe." ChkSum="-628163489" LastUpdate="2018-02-22T09:49:39.153Z">
+	<row ProcId="1" StudyName="*" ProcName="dbo.GetCaseList" ProcDesc="001. Aktive pasienter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" HelpText="Alle aktive personer, eventuel avgrenset til din gruppe." ChkSum="-628163489" LastUpdate="2019-01-03T08:58:27.930Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseList( @StudyId INT ) AS
 BEGIN
   SELECT vcl.PersonId,vcl.DOB,vcl.FullName,vcl.GroupName,ss.StatusText AS InfoText,
@@ -63,7 +63,7 @@ BEGIN
   ORDER BY vcl.FullName
 END]]>
 	</row>
-	<row ProcId="2" StudyName="*" ProcName="dbo.GetCaseListUnsignedForms" ProcDesc="002a. Mine usignerte skjema (UserId)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1052181500" LastUpdate="2017-07-07T13:58:31.990Z">
+	<row ProcId="2" StudyName="*" ProcName="dbo.GetCaseListUnsignedForms" ProcDesc="002a. Mine usignerte skjema (UserId)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1052181500" LastUpdate="2019-01-03T08:58:29.327Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListUnsignedForms( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, mf.FormTitle + ', ' + dbo.LongTime( ce.EventTime) as InfoText
@@ -75,7 +75,7 @@ BEGIN
   ORDER BY ce.EventTime
 END]]>
 	</row>
-	<row ProcId="3" StudyName="*" ProcName="dbo.GetCaseListUnsignedFormsByPerson" ProcDesc="002b. Mine usignerte skjema (PersonId)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1321872983" LastUpdate="2017-07-07T13:58:35.853Z">
+	<row ProcId="3" StudyName="*" ProcName="dbo.GetCaseListUnsignedFormsByPerson" ProcDesc="002b. Mine usignerte skjema (PersonId)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1321872983" LastUpdate="2019-01-03T08:58:31.530Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListUnsignedFormsByPerson( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, 
@@ -91,7 +91,7 @@ BEGIN
   ORDER BY ce.EventTime
 END]]>
 	</row>
-	<row ProcId="5" StudyName="*" ProcName="dbo.GetCaseListUnwrittenRx" ProcDesc="003. Utskriftskø for resepter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1017158905" LastUpdate="2017-07-07T13:58:39.477Z">
+	<row ProcId="5" StudyName="*" ProcName="dbo.GetCaseListUnwrittenRx" ProcDesc="003. Utskriftskø for resepter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1017158905" LastUpdate="2019-01-03T08:58:33.153Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListUnwrittenRx( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,convert(varchar,dp.CreatedAt,104) + ' - ' + dt.DrugName AS InfoText
@@ -132,7 +132,7 @@ BEGIN
   EXEC GetCaseListNewForms @StudyId,365,@UserId;
 END]]>
 	</row>
-	<row ProcId="10" StudyName="*" ProcName="dbo.GetCaseListNoForm" ProcDesc="Personer: Aktive uten skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-280395740" LastUpdate="2017-07-07T13:59:01.490Z">
+	<row ProcId="10" StudyName="*" ProcName="dbo.GetCaseListNoForm" ProcDesc="Personer: Aktive uten skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-280395740" LastUpdate="2019-01-03T08:58:34.233Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListNoForm( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,'Opprettet ' + dbo.ShortTime( sc.CreatedAt ) as InfoText
@@ -153,7 +153,7 @@ BEGIN
   WHERE (ss.StatusActive=0 ) or (ss.StatusActive IS NULL);
 END]]>
 	</row>
-	<row ProcId="12" StudyName="*" ProcName="dbo.GetCaseListMyRelations" ProcDesc="Personer: Mine relasjoner" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="130826854" LastUpdate="2017-07-07T13:59:08.107Z">
+	<row ProcId="12" StudyName="*" ProcName="dbo.GetCaseListMyRelations" ProcDesc="Personer: Mine relasjoner" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="130826854" LastUpdate="2019-01-03T08:58:35.247Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListMyRelations( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,r.RelName as InfoText,p.NationalId
@@ -167,7 +167,7 @@ BEGIN
   ORDER BY v.FullName
 END]]>
 	</row>
-	<row ProcId="13" StudyName="*" ProcName="dbo.GetCaseListAlert" ProcDesc="Varslinger: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="953817660" LastUpdate="2017-07-07T13:59:12.113Z">
+	<row ProcId="13" StudyName="*" ProcName="dbo.GetCaseListAlert" ProcDesc="Varslinger: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="953817660" LastUpdate="2019-01-03T08:58:36.150Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListAlert( @StudyId INT ) AS
 BEGIN
   SELECT vcl.PersonId,vcl.DOB,vcl.FullName,vcl.GroupName, l.LevelDesc + ': ' + a.AlertHeader AS InfoText
@@ -221,7 +221,7 @@ END]]>
 	<row ProcId="20" StudyName="*" ProcName="dbo.GetCaseList" ProcDesc="Personer: Aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1740598980" LastUpdate="2018-09-04T07:26:24.150Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="21" StudyName="BASE" ProcName="dbo.GetCaseListNoRecentForm" ProcDesc="Personer: Aktive uten skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1214181741" LastUpdate="2018-09-04T07:26:27.273Z">
+	<row ProcId="21" StudyName="BASE" ProcName="dbo.GetCaseListNoRecentForm" ProcDesc="Personer: Aktive uten skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1214181741" LastUpdate="2019-01-03T08:58:37.013Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListNoRecentForm( @StudyId INT, @IgnoreDays FLOAT = 365 ) AS
 BEGIN
   DECLARE @IgnoreAfter DateTime;
@@ -242,25 +242,14 @@ BEGIN
   ORDER BY t2.LastEvent
 END]]>
 	</row>
-	<row ProcId="22" StudyName="BASE" ProcName="dbo.GetActiveSingleVar" ProcDesc="Utvalg på variabel og verdi" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1597888511" LastUpdate="2013-03-19T14:01:28.490Z">
-		<![CDATA[CREATE PROCEDURE dbo.GetActiveSingleVar( @StudyId INT, @VarName VARCHAR(32), @EnumVal INT )
-AS
+	<row ProcId="22" StudyName="BASE" ProcName="dbo.GetActiveSingleVar" ProcDesc="Utvalg på variabel og verdi" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1238508697" LastUpdate="2019-01-03T09:16:09.280Z">
+		<![CDATA[CREATE PROCEDURE dbo.GetActiveSingleVar( @StudyId INT, @ItemId INT, @EnumVal INT ) AS
 BEGIN
-  select p.PersonId,
-  dbo.GetLastEnumVal( p.PersonId, @VarName) as EnumVal
-  INTO #temp1
-  FROM Person p;
-  SELECT DISTINCT PersonId 
-  INTO #temp2
-  FROM #temp1 
-  WHERE ( EnumVal = @EnumVal );
-  SELECT p.PersonId,p.DOB,p.ReverseName as FullName,sg.GroupName,ss.StatusText as InfoText,p.GenderId
-  FROM #temp2 t2 
-  JOIN Person p ON p.PersonId=t2.PersonId
-  JOIN StudCase sc ON sc.PersonId=t2.PersonId
-  JOIN StudyStatus ss ON ss.StudyId=sc.StudyId AND ss.StatusId=sc.FinState AND ss.StatusActive=1 
-  JOIN StudyGroup sg ON sg.StudyId=sc.StudyId AND sg.GroupId=sc.GroupId AND sg.GroupActive=1
-  WHERE sc.StudyId=@StudyId
+  SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, v.StatusText AS InfoText, v.GenderId
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.GetLastEnumValuesTable( @ItemId, NULL ) ev ON ev.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId AND ev.EnumVal = @EnumVal
+  ORDER BY v.FullName;
 END]]>
 	</row>
 	<row ProcId="23" StudyName="*" ProcName="dbo.GetAndRemoveStudyCasesWithoutForms" ProcDesc="Admin: Fjern alle uten skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="superuser" ChkSum="-666086912" LastUpdate="2015-04-24T14:53:35.630Z">
@@ -317,7 +306,7 @@ BEGIN
   ORDER BY vcl.PersonId
 END]]>
 	</row>
-	<row ProcId="26" StudyName="*" ProcName="dbo.GetActiveCasesWithoutId" ProcDesc="Personer: Ugyldig personnummer" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-890358707" LastUpdate="2014-06-12T12:00:18.857Z">
+	<row ProcId="26" StudyName="*" ProcName="dbo.GetActiveCasesWithoutId" ProcDesc="Personer: Ugyldig personnummer" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-890358707" LastUpdate="2019-01-03T08:58:37.940Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetActiveCasesWithoutId ( @StudyId INT ) AS
 BEGIN
   select v.*,'Personnr: '+ISNULL(p.NationalId,'(tomt)') AS InfoText 
@@ -337,7 +326,7 @@ BEGIN
   WHERE (sg.GroupActive=0 );
 END]]>
 	</row>
-	<row ProcId="28" StudyName="BASE" ProcName="dbo.GetCaseListLastForm" ProcDesc="Personer: Aktive med skjemadato" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" ChkSum="1154490005" LastUpdate="2018-01-17T14:27:05.153Z">
+	<row ProcId="28" StudyName="BASE" ProcName="dbo.GetCaseListLastForm" ProcDesc="Personer: Aktive med skjemadato" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" ChkSum="1154490005" LastUpdate="2019-01-03T08:58:38.780Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListLastForm( @StudyId INT, @FormName VARCHAR(24), @IgnoreDays FLOAT = 0 ) AS
 BEGIN
   DECLARE @IgnoreFormsAfter DateTime;
@@ -385,7 +374,7 @@ BEGIN
   WHERE s.StudyId=@StudyId;
 END]]>
 	</row>
-	<row ProcId="50" StudyName="BASE" ProcName="dbo.GetCaseListProblem" ProcDesc="Utvalg basert på diagnose" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-24279895" LastUpdate="2014-05-12T12:47:27.627Z">
+	<row ProcId="50" StudyName="BASE" ProcName="dbo.GetCaseListProblem" ProcDesc="Utvalg basert på diagnose" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-24279895" LastUpdate="2019-01-03T08:58:43.483Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListProblem( @StudyId INT, @ProbCode VARCHAR(8) ) AS
 BEGIN
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,i.ItemCode + ' ' + i.ItemName AS InfoText
@@ -412,7 +401,7 @@ BEGIN
   ORDER BY p.FullName
 END]]>
 	</row>
-	<row ProcId="61" StudyName="BASE" ProcName="PROM.GetCaseListMyPendingProms" ProcDesc="Brukerens utfylte PROM-skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6631" ChkSum="1516358664" LastUpdate="2017-11-18T09:07:01.437Z">
+	<row ProcId="61" StudyName="BASE" ProcName="PROM.GetCaseListMyPendingProms" ProcDesc="Brukerens utfylte PROM-skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6631" ChkSum="1516358664" LastUpdate="2019-01-03T08:58:44.653Z">
 		<![CDATA[CREATE PROCEDURE PROM.GetCaseListMyPendingProms( @StudyId INT ) AS
 BEGIN
   SET LANGUAGE 'Norwegian';
@@ -424,7 +413,7 @@ BEGIN
   ORDER BY fo.CreatedAt DESC;
 END]]>
 	</row>
-	<row ProcId="62" StudyName="BASE" ProcName="PROM.GetCaseListMyCompletedProms" ProcDesc="Brukerens nedlastede PROM-skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6631" ChkSum="-703374748" LastUpdate="2017-11-18T09:07:19.917Z">
+	<row ProcId="62" StudyName="BASE" ProcName="PROM.GetCaseListMyCompletedProms" ProcDesc="Brukerens nedlastede PROM-skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6631" ChkSum="-703374748" LastUpdate="2019-01-03T08:58:51.327Z">
 		<![CDATA[CREATE PROCEDURE PROM.GetCaseListMyCompletedProms( @StudyId INT ) AS
 BEGIN
   SET LANGUAGE 'Norwegian';
@@ -446,7 +435,7 @@ BEGIN
   FROM dbo.ViewCaseListStub WHERE StudyId = @StudyId AND GroupId = @GroupId;
 END]]>
 	</row>
-	<row ProcId="101" StudyName="GBD" ProcName="GetCaseListFocused" ProcDesc="101. Overvåket status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="818376950" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="101" StudyName="GBD" ProcName="GetCaseListFocused" ProcDesc="101. Overvåket status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="818376950" LastUpdate="2019-01-03T08:58:52.260Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListFocused( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,p.CAVE as InfoText
@@ -456,7 +445,7 @@ BEGIN
   WHERE v.StudyId=@StudyId AND sc.FinState = 2;
 END]]>
 	</row>
-	<row ProcId="102" StudyName="GBD" ProcName="GetCaseListNextINR" ProcDesc="102. Marevandosering" ProcParams=":StudyId" ListId="CASE" GrantTo="public" InfoCaption="Neste dosering" ChkSum="2092550847" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="102" StudyName="GBD" ProcName="GetCaseListNextINR" ProcDesc="102. Marevandosering" ProcParams=":StudyId" ListId="CASE" GrantTo="public" InfoCaption="Neste dosering" ChkSum="2092550847" LastUpdate="2019-01-03T08:58:53.247Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListNextINR( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,'Neste dosering ' + CONVERT(varchar,MAX(co.DTVal),104) AS InfoText
@@ -565,7 +554,7 @@ BEGIN
  EXECUTE dbo.GetCaseListProblem @StudyId,'E11%'
 END]]>
 	</row>
-	<row ProcId="119" StudyName="GBD" ProcName="GetCaseListWeightMissing" ProcDesc="Ernæring: Ikke veid siste måned" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1671171017" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="119" StudyName="GBD" ProcName="GetCaseListWeightMissing" ProcDesc="Ernæring: Ikke veid siste måned" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1671171017" LastUpdate="2019-01-03T08:58:54.387Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListWeightMissing( @StudyId INT ) AS
 BEGIN
   /* Get list of patients with last weight date */
@@ -583,7 +572,7 @@ BEGIN
   ORDER BY wd.LastWeightDate
 END]]>
 	</row>
-	<row ProcId="120" StudyName="GBD" ProcName="GBD.GetCaseListMust" ProcDesc="Ernæring: MUST score" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1762365610" LastUpdate="2016-02-26T15:30:57.497Z">
+	<row ProcId="120" StudyName="GBD" ProcName="GBD.GetCaseListMust" ProcDesc="Ernæring: MUST score" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1762365610" LastUpdate="2019-01-03T08:58:55.220Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListMUST (@StudyId INT ) AS
 BEGIN
   SET NOCOUNT ON;
@@ -607,7 +596,7 @@ BEGIN
   EXEC GetCaseListDruidLevel @StudyId,2
 END]]>
 	</row>
-	<row ProcId="123" StudyName="GBD" ProcName="GetCaseListAntiHTLowBP" ProcDesc="Forsiktighetsregler: Antihypertensiva og BT &lt; 120" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="961687204" LastUpdate="2016-05-31T13:57:31.330Z">
+	<row ProcId="123" StudyName="GBD" ProcName="GetCaseListAntiHTLowBP" ProcDesc="Forsiktighetsregler: Antihypertensiva og BT &lt; 120" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="961687204" LastUpdate="2019-01-03T08:58:56.030Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListAntiHTLowBP (@StudyId INT) AS
 BEGIN
 	SET NOCOUNT ON;
@@ -629,7 +618,7 @@ BEGIN
   EXEC GetCaseListDrugCombo @StudyId,'N05A%','N04BA%'
 END]]>
 	</row>
-	<row ProcId="125" StudyName="GBD" ProcName="GetCaseListAF" ProcDesc="Underbehandling: Atrieflimmer m/ behandling" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-791467715" LastUpdate="2017-02-23T18:06:20.240Z">
+	<row ProcId="125" StudyName="GBD" ProcName="GetCaseListAF" ProcDesc="Underbehandling: Atrieflimmer m/ behandling" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-791467715" LastUpdate="2019-01-03T08:58:56.873Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListAF( @StudyId INT ) AS
 BEGIN
   SELECT DISTINCT v.PersonId,v.DOB,v.FullName,v.GroupName,
@@ -648,7 +637,7 @@ BEGIN
   ORDER BY GroupName
 END]]>
 	</row>
-	<row ProcId="126" StudyName="GBD" ProcName="GetCaseListC09LowGFR" ProcDesc="Forsiktighetsregler: Bruker ACEI/A2-blokker med GFR &lt; 60" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1744353141" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="126" StudyName="GBD" ProcName="GetCaseListC09LowGFR" ProcDesc="Forsiktighetsregler: Bruker ACEI/A2-blokker med GFR &lt; 60" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1744353141" LastUpdate="2019-01-03T08:58:57.827Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListC09LowGFR( @StudyId INT ) AS
 BEGIN
   DECLARE @CalcDate DateTime;
@@ -664,7 +653,7 @@ BEGIN
   ORDER BY FullName
 END]]>
 	</row>
-	<row ProcId="127" StudyName="GBD" ProcName="GetCaseListMetforminGFR" ProcDesc="Forsiktighetsregler: Metformin og GFR verdi" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-619410403" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="127" StudyName="GBD" ProcName="GetCaseListMetforminGFR" ProcDesc="Forsiktighetsregler: Metformin og GFR verdi" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-619410403" LastUpdate="2019-01-03T08:58:58.597Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListMetforminGFR( @StudyId INT ) AS
 BEGIN
   DECLARE @CalcAt DateTime;
@@ -681,7 +670,7 @@ BEGIN
   SELECT Personid,DOB,FullName,GroupName,InfoText FROM #temp order by GFR;
 END]]>
 	</row>
-	<row ProcId="128" StudyName="GBD" ProcName="GetCaseListProBNP" ProcDesc="Underbehandling: ProBNP &gt; 180 uten ACEI/A2RB" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6009" ChkSum="999367882" LastUpdate="2018-08-09T10:22:16.200Z">
+	<row ProcId="128" StudyName="GBD" ProcName="GetCaseListProBNP" ProcDesc="Underbehandling: ProBNP &gt; 180 uten ACEI/A2RB" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6009" ChkSum="999367882" LastUpdate="2019-01-03T08:58:59.547Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListProBNP (@StudyId INT) AS
 BEGIN
   SET NOCOUNT ON;
@@ -700,7 +689,7 @@ END
 
 ]]>
 	</row>
-	<row ProcId="129" StudyName="GBD" ProcName="dbo.GetCaseListWarfarinNSAID" ProcDesc="Kontraindikasjoner: Warfarin/DOAK + NSAIDs" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1359929844" LastUpdate="2017-01-16T20:32:32.783Z">
+	<row ProcId="129" StudyName="GBD" ProcName="dbo.GetCaseListWarfarinNSAID" ProcDesc="Kontraindikasjoner: Warfarin/DOAK + NSAIDs" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1359929844" LastUpdate="2019-01-03T08:59:01.780Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListWarfarinNSAID( @StudyId INT ) AS
 BEGIN
   SELECT p.PersonId,p.DOB, p.FullName, p.GroupName, p.GenderId, dt1.DrugName + ' - ' + dt2.DrugName AS InfoText
@@ -731,7 +720,7 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="133" StudyName="GBD" ProcName="GetCaseListOldLab" ProcDesc="Prosess: Siste labdata (eksterne)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1199795368" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="133" StudyName="GBD" ProcName="GetCaseListOldLab" ProcDesc="Prosess: Siste labdata (eksterne)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1199795368" LastUpdate="2019-01-03T08:59:02.600Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListOldLab( @StudyId INT ) AS
 BEGIN
   /* Get list of last lab dates */
@@ -775,7 +764,7 @@ BEGIN
   EXEC dbo.GetCaseListDrug @StudyId,'C03%'
 END]]>
 	</row>
-	<row ProcId="140" StudyName="GBD" ProcName="GetCaseListProBNPgt223" ProcDesc="Forskning: ProBNP &gt; 223" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6009" ChkSum="-71797546" LastUpdate="2018-08-09T10:22:16.977Z">
+	<row ProcId="140" StudyName="GBD" ProcName="GetCaseListProBNPgt223" ProcDesc="Forskning: ProBNP &gt; 223" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6009" ChkSum="-71797546" LastUpdate="2019-01-03T08:59:03.357Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListProBNPgt223 (@StudyId INT) AS
 BEGIN
   SET NOCOUNT ON;
@@ -791,7 +780,7 @@ BEGIN
   ORDER BY a.NumResult DESC
 END]]>
 	</row>
-	<row ProcId="141" StudyName="GBD" ProcName="GBD.GetCaseListTvangsvedtak" ProcDesc="Tvang: Aktive vedtak" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="512" ChkSum="-1010130484" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="141" StudyName="GBD" ProcName="GBD.GetCaseListTvangsvedtak" ProcDesc="Tvang: Aktive vedtak" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="512" ChkSum="-1010130484" LastUpdate="2019-01-03T08:59:04.113Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListTvangsvedtak( @StudyId INT ) AS
 BEGIN
   SELECT p.PersonId,p.DOB,p.FullName,p.GroupName,
@@ -825,7 +814,7 @@ BEGIN
   EXEC GetCaseListLastForm @StudyId,'GBD_EKG',180
 END]]>
 	</row>
-	<row ProcId="146" StudyName="GBD" ProcName="GetCaseListBPMissing" ProcDesc="Prosess: Ikke BT siste 60 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1106815264" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="146" StudyName="GBD" ProcName="GetCaseListBPMissing" ProcDesc="Prosess: Ikke BT siste 60 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1106815264" LastUpdate="2019-01-03T08:59:04.857Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListBPMissing( @StudyId INT, @DaysBack FLOAT = 60 ) AS
 BEGIN
   -- Get BP for active cases
@@ -842,7 +831,7 @@ BEGIN
   ORDER BY BPDate;
 END]]>
 	</row>
-	<row ProcId="147" StudyName="GBD" ProcName="GetCaseListLastDocForm" ProcDesc="Prosess: Ikke legekontakt siste 90 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1371029861" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="147" StudyName="GBD" ProcName="GetCaseListLastDocForm" ProcDesc="Prosess: Ikke legekontakt siste 90 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1371029861" LastUpdate="2019-01-03T08:59:05.950Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListLastDocForm( @StudyId INT, @IgnoreDays FLOAT = 90 ) AS
 BEGIN
   DECLARE @IgnoreAfter DateTime;
@@ -878,7 +867,7 @@ BEGIN
   EXEC dbo.GetCaseListDrug @StudyId,'N05C%'
 END]]>
 	</row>
-	<row ProcId="150" StudyName="GBD" ProcName="GetCaseListNoBloodTest" ProcDesc="Prosess: Ingen labdata siste 6 mnd" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1531041535" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="150" StudyName="GBD" ProcName="GetCaseListNoBloodTest" ProcDesc="Prosess: Ingen labdata siste 6 mnd" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1531041535" LastUpdate="2019-01-03T08:59:06.980Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListNoBloodTest( @StudyId INT, @DaysBack FLOAT = 180 ) AS
 BEGIN
   -- Get BP for active cases
@@ -894,7 +883,7 @@ BEGIN
   ORDER BY LabDate;
 END]]>
 	</row>
-	<row ProcId="151" StudyName="GBD" ProcName="GBD.GetCaseListAnticholinergic" ProcDesc="Forsiktighetsregler: Antikolinergika og demens" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6408" ChkSum="-1376984811" LastUpdate="2017-02-24T17:52:37.693Z">
+	<row ProcId="151" StudyName="GBD" ProcName="GBD.GetCaseListAnticholinergic" ProcDesc="Forsiktighetsregler: Antikolinergika og demens" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6408" ChkSum="-1376984811" LastUpdate="2019-01-03T08:59:13.137Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListAnticholinergic( @StudyId INT ) AS 
 BEGIN
   SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, ot.DrugName, ac.AlertLevel,
@@ -1054,7 +1043,7 @@ BEGIN
   ORDER BY ce.EventTime;
 END]]>
 	</row>
-	<row ProcId="163" StudyName="GBD" ProcName="GBD.GetCaseListNorGEP" ProcDesc="NorGEP: Anbefalinger fra NorGEP" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="512" ChkSum="-289693797" LastUpdate="2015-11-11T10:08:23.540Z">
+	<row ProcId="163" StudyName="GBD" ProcName="GBD.GetCaseListNorGEP" ProcDesc="NorGEP: Anbefalinger fra NorGEP" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="512" ChkSum="-289693797" LastUpdate="2019-01-03T08:59:17.810Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListNorGEP( @StudyId INT ) AS
 BEGIN
  
@@ -1117,7 +1106,7 @@ BEGIN
     WHERE sc.StudyId = @StudyId;
 END]]>
 	</row>
-	<row ProcId="167" StudyName="GBD" ProcName="GetCaseListProBNPgt1522" ProcDesc="Forskning: ProBNP &gt; 1522 ng/L (noen gang)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18001" HelpText="Rapporten brukes til forskning/statistikk for å identifisere pasienter med hjertesvikt." ChkSum="-1612145926" LastUpdate="2019-01-03T08:30:37.027Z">
+	<row ProcId="167" StudyName="GBD" ProcName="GetCaseListProBNPgt1522" ProcDesc="Forskning: ProBNP &gt; 1522 ng/L (noen gang)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18001" HelpText="Rapporten brukes til forskning/statistikk for å identifisere pasienter med hjertesvikt." ChkSum="-1612145926" LastUpdate="2019-01-03T08:59:18.553Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListProBNPgt1522( @StudyId INT ) AS
 BEGIN
     SELECT v.*, a.LabDate, a.NumResult, a.ResultId,
@@ -1133,7 +1122,7 @@ BEGIN
     ORDER BY a.NumResult DESC;
 END]]>
 	</row>
-	<row ProcId="168" StudyName="GBD" ProcName="GetCaseListProBNPgt1522Untreated" ProcDesc="Underbehandling: Siste ProBNP &gt; 1522 ng/L  uten ACEI/A2RB" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18001" HelpText="Dette er en operativ rapport for å finne pasienter med hjertesvikt som ikke har adekvat behandling." ChkSum="270533234" LastUpdate="2019-01-03T08:30:44.040Z">
+	<row ProcId="168" StudyName="GBD" ProcName="GetCaseListProBNPgt1522Untreated" ProcDesc="Underbehandling: Siste ProBNP &gt; 1522 ng/L  uten ACEI/A2RB" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18001" HelpText="Dette er en operativ rapport for å finne pasienter med hjertesvikt som ikke har adekvat behandling." ChkSum="270533234" LastUpdate="2019-01-03T08:59:19.357Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListProBNPgt1522Untreated( @StudyId INT ) AS
 BEGIN
     SELECT v.*, a.LabDate, a.NumResult, a.ResultId,
@@ -1151,7 +1140,7 @@ BEGIN
     ORDER BY a.NumResult DESC;
 END]]>
 	</row>
-	<row ProcId="169" StudyName="GBD" ProcName="GBD.GetCaseListFlackerKiely" ProcDesc="Prosess: Flacker-Kiely utfylt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" ChkSum="940127739" LastUpdate="2018-01-17T15:17:55Z">
+	<row ProcId="169" StudyName="GBD" ProcName="GBD.GetCaseListFlackerKiely" ProcDesc="Prosess: Flacker-Kiely utfylt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" ChkSum="940127739" LastUpdate="2019-01-03T08:59:20.037Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFlackerKiely( @StudyId INT ) AS 
 BEGIN
   -- Using StatusText AS GroupName on purpose
@@ -1172,7 +1161,7 @@ BEGIN
   ORDER BY forms.LastFormDate;
 END;]]>
 	</row>
-	<row ProcId="170" StudyName="GBD" ProcName="GBD.GetCaseListFlackerKielyPending" ProcDesc="Prosess: Flacker-Kiely mangler siste 6 mnd" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" ChkSum="-1728774878" LastUpdate="2018-01-17T15:18:24.770Z">
+	<row ProcId="170" StudyName="GBD" ProcName="GBD.GetCaseListFlackerKielyPending" ProcDesc="Prosess: Flacker-Kiely mangler siste 6 mnd" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" ChkSum="-1728774878" LastUpdate="2019-01-03T08:59:20.653Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFlackerKielyPending( @StudyId INT ) AS 
 BEGIN
   DECLARE @IgnoreFormsAfter DateTime;
@@ -1264,7 +1253,7 @@ BEGIN
     EXEC dbo.GetCaseListLastForm @StudyId, 'GBD_BESLUTNINGER', 36500;
 END;]]>
 	</row>
-	<row ProcId="175" StudyName="GBD" ProcName="GBD.GetCaseListDrugCount" ProcDesc="Medikamentbruk: Antall faste medisiner" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" ChkSum="1459674506" LastUpdate="2018-03-21T11:08:33.510Z">
+	<row ProcId="175" StudyName="GBD" ProcName="GBD.GetCaseListDrugCount" ProcDesc="Medikamentbruk: Antall faste medisiner" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" ChkSum="1459674506" LastUpdate="2019-01-03T08:59:21.297Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListDrugCount( @StudyId INT ) AS
 BEGIN
 SELECT *, 'Fast ' + CONVERT(VARCHAR,FastAntall) + ', behov ' + CONVERT(VARCHAR,BehovAntall) + '.' AS InfoText  
@@ -1297,7 +1286,7 @@ BEGIN
   EXEC dbo.GetCaseListGlobalByStatusId @StudyId, 7;
 END;]]>
 	</row>
-	<row ProcId="177" StudyName="GBD" ProcName="dbo.GetCaseListN05AexLowDoseH04" ProcDesc="Medikamentbruk: Antipsykotika (N05A) unntatt lavdose N05AH04" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-34614722" LastUpdate="2018-04-12T13:26:06.833Z">
+	<row ProcId="177" StudyName="GBD" ProcName="dbo.GetCaseListN05AexLowDoseH04" ProcDesc="Medikamentbruk: Antipsykotika (N05A) unntatt lavdose N05AH04" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-34614722" LastUpdate="2019-01-03T08:59:21.997Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListN05AexLowDoseH04( @StudyId INT ) AS
 BEGIN
   SET LANGUAGE Norwegian;
@@ -1423,7 +1412,7 @@ BEGIN
   EXEC dbo.GetCaseListDrug @StudyId,'A10BH%'
 END]]>
 	</row>
-	<row ProcId="211" StudyName="NDV.BASE" ProcName="NDV.GetLongDuration" ProcDesc="Diabetes etter varighet" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1751232111" LastUpdate="2013-03-20T11:01:50.553Z">
+	<row ProcId="211" StudyName="NDV.BASE" ProcName="NDV.GetLongDuration" ProcDesc="Diabetes etter varighet" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1751232111" LastUpdate="2019-01-03T08:59:22.580Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetLongDuration( @StudyId INT, @YearCount INT ) AS
 BEGIN 
 
@@ -1525,7 +1514,7 @@ BEGIN
   ORDER BY a.LastVisit DESC
 END]]>
 	</row>
-	<row ProcId="251" StudyName="NDV" ProcName="dbo.GetCaseListPump" ProcDesc="Behandling: Insulinpumpe" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-624028182" LastUpdate="2015-06-12T09:06:04.133Z">
+	<row ProcId="251" StudyName="NDV" ProcName="dbo.GetCaseListPump" ProcDesc="Behandling: Insulinpumpe" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-624028182" LastUpdate="2019-01-03T08:59:23.153Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListPump( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,dbo.GetLastTextVal( v.PersonId, 'INSPUMP_NAVN') AS InfoText
@@ -1583,7 +1572,7 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="259" StudyName="NDV" ProcName="GetCaseListEventCount" ProcDesc="Prosess: Dokumentasjonsfrekvens" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1817810414" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="259" StudyName="NDV" ProcName="GetCaseListEventCount" ProcDesc="Prosess: Dokumentasjonsfrekvens" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1817810414" LastUpdate="2019-01-03T08:59:24.780Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListEventCount( @StudyId INT ) AS
 BEGIN
   SELECT p.PersonId,p.DOB,p.FullName,
@@ -1663,7 +1652,7 @@ BEGIN
   EXECUTE NDV.GetType1WithHighLDL @StudyId,3.51,40
 END]]>
 	</row>
-	<row ProcId="270" StudyName="NDV" ProcName="dbo.GetCaseListHbA1c9Plus" ProcDesc="Behandling: HbA1c &gt; 75 (9%)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1330759298" LastUpdate="2018-10-03T15:25:41.513Z">
+	<row ProcId="270" StudyName="NDV" ProcName="dbo.GetCaseListHbA1c9Plus" ProcDesc="Behandling: HbA1c &gt; 75 (9%)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1330759298" LastUpdate="2019-01-03T08:59:23.993Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListHbA1c9Plus( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,
@@ -1739,7 +1728,7 @@ BEGIN
   EXEC GetCaseListNoRecentForm @StudyId,730;
 END]]>
 	</row>
-	<row ProcId="277" StudyName="NDV" ProcName="NDV.TorClaudiLadaHunt" ProcDesc="Bodø: Mulig LADA 30-75" ProcParams=":StudyId" ListId="CASE" GrantTo="public" InfoCaption="Bodø LADA" HelpText="Lokalt uttrekk laget for å søke etter LADA pasienter." ChkSum="-329607080" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="277" StudyName="NDV" ProcName="NDV.TorClaudiLadaHunt" ProcDesc="Bodø: Mulig LADA 30-75" ProcParams=":StudyId" ListId="CASE" GrantTo="public" InfoCaption="Bodø LADA" HelpText="Lokalt uttrekk laget for å søke etter LADA pasienter." ChkSum="-329607080" LastUpdate="2019-01-03T08:59:25.687Z">
 		<![CDATA[CREATE PROCEDURE NDV.TorClaudiLadaHunt( @StudyId INT )  AS
 BEGIN
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,'Mulig LADA?' as InfoText,
@@ -1780,7 +1769,7 @@ BEGIN
   EXEC NDV.GetLongDuration @StudyId,40                
 END]]>
 	</row>
-	<row ProcId="282" StudyName="NDV" ProcName="NDV.GetCaseListNoDuration" ProcDesc="Varighet: Ikke registrert" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="262974284" LastUpdate="2013-03-20T11:37:44.757Z">
+	<row ProcId="282" StudyName="NDV" ProcName="NDV.GetCaseListNoDuration" ProcDesc="Varighet: Ikke registrert" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="262974284" LastUpdate="2019-01-03T08:59:26.577Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetCaseListNoDuration( @StudyId INT ) AS
 BEGIN
   SELECT *,'Varighet mangler' AS InfoText
@@ -1852,7 +1841,7 @@ BEGIN
   EXEC NDV.GetPregnantByYear @StudyId,2013
 END]]>
 	</row>
-	<row ProcId="288" StudyName="NDV" ProcName="NDV.GetCaseListConsentUnknown" ProcDesc="Samtykke: Ukjent eller ubesvart" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1126900913" LastUpdate="2014-04-29T15:22:53.703Z">
+	<row ProcId="288" StudyName="NDV" ProcName="NDV.GetCaseListConsentUnknown" ProcDesc="Samtykke: Ukjent eller ubesvart" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1126900913" LastUpdate="2019-01-03T08:59:27.387Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetCaseListConsentUnknown( @StudyId INT )
 AS
 BEGIN
@@ -1895,7 +1884,7 @@ END]]>
 	<row ProcId="291" StudyName="ENDO" ProcName="NDV.GetCaseListCGMTraining" ProcDesc="CGM: Opplæring siste år" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" ChkSum="-953891006" LastUpdate="2015-11-05T07:38:09.800Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="292" StudyName="NDV" ProcName="NDV.GetCaseListConsentNegative" ProcDesc="Samtykke: Nei / Trukket" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1579438657" LastUpdate="2014-11-06T07:29:31.550Z">
+	<row ProcId="292" StudyName="NDV" ProcName="NDV.GetCaseListConsentNegative" ProcDesc="Samtykke: Nei / Trukket" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1579438657" LastUpdate="2019-01-03T08:59:28.200Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetCaseListConsentNegative( @StudyId INT )
 AS
 BEGIN
@@ -2002,7 +1991,7 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="300" StudyName="NDV" ProcName="NDV.GetCaseListCGM" ProcDesc="CGM: Aktive CGM brukere" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" ChkSum="508219088" LastUpdate="2016-12-05T15:40:27.773Z">
+	<row ProcId="300" StudyName="NDV" ProcName="NDV.GetCaseListCGM" ProcDesc="CGM: Aktive CGM brukere" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" ChkSum="508219088" LastUpdate="2019-01-03T08:59:29.077Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetCaseListCGM( @StudyId INT ) AS
 BEGIN
   SELECT p.PersonId, p.DOB, p.FullName, p.GenderId,
@@ -2048,7 +2037,7 @@ BEGIN
   EXEC NDV.GetAnnualControls '2012-01-01','2012-12-31'; 
 END]]>
 	</row>
-	<row ProcId="306" StudyName="NDV" ProcName="NDV.GetAnnualControlMissing" ProcDesc="Årskontroller: Aktive uten årskontroll siste 15 mnd" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" InfoCaption="Diabetes type" ChkSum="-535103170" LastUpdate="2015-11-06T12:53:23.070Z">
+	<row ProcId="306" StudyName="NDV" ProcName="NDV.GetAnnualControlMissing" ProcDesc="Årskontroller: Aktive uten årskontroll siste 15 mnd" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" InfoCaption="Diabetes type" ChkSum="-535103170" LastUpdate="2019-01-03T08:59:31.920Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetAnnualControlMissing(@StudyId INT)
 AS
   BEGIN
@@ -2087,7 +2076,7 @@ AS
 	JOIN dbo.MetaItemAnswer mia ON mia.ItemId=3196 AND mia.OrderNumber=dt.DiabetesType
   END]]>
 	</row>
-	<row ProcId="307" StudyName="NDV" ProcName="NDV.GetType1WithoutConsent" ProcDesc="Samtykke: Aktive m/Type 1, ukjent/ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Samtykkestatus" ChkSum="-759978561" LastUpdate="2016-12-05T15:40:29.293Z">
+	<row ProcId="307" StudyName="NDV" ProcName="NDV.GetType1WithoutConsent" ProcDesc="Samtykke: Aktive m/Type 1, ukjent/ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Samtykkestatus" ChkSum="-759978561" LastUpdate="2019-01-03T08:59:32.743Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType1WithoutConsent( @StudyId INT ) AS
 BEGIN
   SET NOCOUNT ON;
@@ -2098,7 +2087,7 @@ BEGIN
   WHERE ( DiaType.EnumVal = 1 ) AND ( NOT ISNULL(Samtykke.EnumVal,-1) IN (1,2,3) )
 END]]>
 	</row>
-	<row ProcId="308" StudyName="NDV" ProcName="NDV.GetType2WithoutConsent" ProcDesc="Samtykke: Aktive m/Type 2, ukjent/ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Samtykkestatus" ChkSum="-1095408193" LastUpdate="2016-12-05T15:40:31.430Z">
+	<row ProcId="308" StudyName="NDV" ProcName="NDV.GetType2WithoutConsent" ProcDesc="Samtykke: Aktive m/Type 2, ukjent/ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Samtykkestatus" ChkSum="-1095408193" LastUpdate="2019-01-03T08:59:33.577Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType2WithoutConsent( @StudyId INT ) AS
 BEGIN
   SET NOCOUNT ON;
@@ -2109,7 +2098,7 @@ BEGIN
   WHERE ( DiaType.EnumVal = 2 ) AND ( NOT ISNULL(Samtykke.EnumVal,-1) IN (1,2,3) )
 END]]>
 	</row>
-	<row ProcId="309" StudyName="NDV" ProcName="NDV.GetType5WithoutConsent" ProcDesc="Samtykke: Aktive m/Sv.sk.sdiabetes, ukjent/ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Samtykkestatus" ChkSum="-1263320898" LastUpdate="2017-01-18T23:01:40.910Z">
+	<row ProcId="309" StudyName="NDV" ProcName="NDV.GetType5WithoutConsent" ProcDesc="Samtykke: Aktive m/Sv.sk.sdiabetes, ukjent/ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Samtykkestatus" ChkSum="-1263320898" LastUpdate="2019-01-03T08:59:34.417Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType5WithoutConsent( @StudyId INT ) AS
 BEGIN
   SET NOCOUNT ON;
@@ -2120,7 +2109,7 @@ BEGIN
   WHERE ( DiaType.EnumVal = 5 ) AND ( NOT ISNULL(Samtykke.EnumVal,-1) IN (1,2,3) )
 END]]>
 	</row>
-	<row ProcId="310" StudyName="NDV" ProcName="NDV.GetType34WithoutConsent" ProcDesc="Samtykke: Aktive m/Andre typer, ukjent ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Samtykkestatu" ChkSum="570525297" LastUpdate="2016-12-05T15:40:34.190Z">
+	<row ProcId="310" StudyName="NDV" ProcName="NDV.GetType34WithoutConsent" ProcDesc="Samtykke: Aktive m/Andre typer, ukjent ubesvart samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Samtykkestatu" ChkSum="570525297" LastUpdate="2019-01-03T08:59:35.217Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType34WithoutConsent( @StudyId INT ) AS
 BEGIN
   SET NOCOUNT ON;
@@ -2194,7 +2183,7 @@ END]]>
 	<row ProcId="316" StudyName="ENDO" ProcName="NDV.GetCaseListHbA1cProject2017" ProcDesc="Prosjekter: HbA1c prosjekt 2017" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6401" ChkSum="-1461251566" LastUpdate="2017-05-26T09:40:35.167Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="317" StudyName="NDV" ProcName="NDV.GetShortConsWithHbA1c" ProcDesc="Prosjekter: HbA1c og kortkonsultasjoner" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6401" ChkSum="-961780768" LastUpdate="2018-10-03T15:37:12.657Z">
+	<row ProcId="317" StudyName="NDV" ProcName="NDV.GetShortConsWithHbA1c" ProcDesc="Prosjekter: HbA1c og kortkonsultasjoner" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6401" ChkSum="-961780768" LastUpdate="2019-01-03T08:59:36.013Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetShortConsWithHbA1c( @StudyId INT ) AS
 BEGIN
   SELECT v.*,a.ShortConsCount,hba1c.NumResult, 
@@ -2258,7 +2247,7 @@ END;]]>
 	<row ProcId="321" StudyName="NDV" ProcName="NDV.GetCaseListUserVsConsent" ProcDesc="Samtykke: Positive per behander siste 30 dager" ProcParams=":StudyId, 30" ListId="CASE" GrantTo="Leder" MinVersion="6000" ChkSum="-1200948447" LastUpdate="2018-06-07T08:35:24.040Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1529014000" LastUpdate="2013-11-14T14:52:27.327Z">
+	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1529014000" LastUpdate="2019-01-03T08:59:37.717Z">
 		<![CDATA[CREATE PROCEDURE BAR.GetHospitalizedWithoutAdmissionForm( @StudyId INT )
 AS
 BEGIN  
@@ -2302,7 +2291,7 @@ BEGIN
   ORDER BY ISNULL( ld.NumResult, 999 ) DESC
 END]]>
 	</row>
-	<row ProcId="600" StudyName="ROAS" ProcName="ENDO.GetAddisonPatients" ProcDesc="Addison: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Addison type" ChkSum="1363668548" LastUpdate="2016-12-05T15:40:38.600Z">
+	<row ProcId="600" StudyName="ROAS" ProcName="ENDO.GetAddisonPatients" ProcDesc="Addison: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Addison type" ChkSum="1363668548" LastUpdate="2019-01-03T08:59:39.340Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetAddisonPatients (@StudyId INT) AS
 BEGIN
   SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, v.GenderId,
@@ -2315,7 +2304,7 @@ BEGIN
   WHERE v.StudyId = @StudyId AND (T6090.EnumVal = 1 OR T6299.EnumVal = 1 OR T6089.Quantity > 1900)
 END]]>
 	</row>
-	<row ProcId="601" StudyName="ROAS" ProcName="ENDO.GetAddisonNoRecentData" ProcDesc="Addison: Uten skjemadata etter 01.01.2013" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6002" ChkSum="-666845326" LastUpdate="2014-06-12T10:54:29.327Z">
+	<row ProcId="601" StudyName="ROAS" ProcName="ENDO.GetAddisonNoRecentData" ProcDesc="Addison: Uten skjemadata etter 01.01.2013" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6002" ChkSum="-666845326" LastUpdate="2019-01-03T08:59:40.273Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetAddisonNoRecentData( @StudyId INT ) AS
 BEGIN
   -- Find Addison patients
@@ -2438,67 +2427,67 @@ END]]>
 	<row ProcId="711" StudyName="ROAS" ProcName="ENDO.GetApsType3" ProcDesc="Polyendokrine syndromer: APS-III" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-605805085" LastUpdate="2013-02-14T10:13:03.750Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="712" StudyName="ENDO" ProcName="ENDO.GetHypoParaAutoimmune" ProcDesc="Hypoparatyreoidisme: Idiopatisk/autoimmun" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1877089090" LastUpdate="2018-12-05T08:31:54.440Z">
+	<row ProcId="712" StudyName="ENDO" ProcName="ENDO.GetHypoParaAutoimmune" ProcDesc="Hypoparatyreoidisme: Idiopatisk/autoimmun" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="555820629" LastUpdate="2019-01-03T09:17:15.827Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHypoParaAutoImmune( @StudyId INT ) AS 
 BEGIN 
- EXEC dbo.GetActiveSingleVar @StudyId,'VAR6663',0 
+  EXEC dbo.GetActiveSingleVar @StudyId, 6663, 0; 
 END]]>
 	</row>
 	<row ProcId="713" StudyName="ROAS" ProcName="ENDO.GetHypoParaAutoimmune" ProcDesc="Hypoparatyreoidisme: Idiopatisk/autoimmun" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1611397770" LastUpdate="2018-12-05T08:31:51.740Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="714" StudyName="ENDO" ProcName="ENDO.GetHypoParaPseudo" ProcDesc="Hypoparatyreoidisme: Pseudohypoparatyreoidisme" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="313785521" LastUpdate="2018-12-05T08:31:59.470Z">
+	<row ProcId="714" StudyName="ENDO" ProcName="ENDO.GetHypoParaPseudo" ProcDesc="Hypoparatyreoidisme: Pseudohypoparatyreoidisme" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1940862038" LastUpdate="2019-01-03T09:16:50.140Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHypoParaPseudo( @StudyId INT ) AS 
 BEGIN 
- EXEC dbo.GetActiveSingleVar @StudyId,'VAR6663',1 
+  EXEC dbo.GetActiveSingleVar @StudyId, 6663, 1; 
 END]]>
 	</row>
 	<row ProcId="715" StudyName="ROAS" ProcName="ENDO.GetHypoParaPseudo" ProcDesc="Hypoparatyreoidisme: Pseudohypoparatyreoidisme" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1219674589" LastUpdate="2018-12-05T08:32:02.673Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="716" StudyName="ENDO" ProcName="ENDO.GetHypoParaAll" ProcDesc="Hypoparatyreoidisme: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1232900934" LastUpdate="2013-02-14T10:50:36.467Z">
+	<row ProcId="716" StudyName="ENDO" ProcName="ENDO.GetHypoParaAll" ProcDesc="Hypoparatyreoidisme: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1758637353" LastUpdate="2019-01-03T09:18:01.890Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHypoParaAll( @StudyId INT ) AS 
 BEGIN 
- EXEC dbo.GetActiveSingleVar @StudyId,'ICD10_E20',1 
+  EXEC dbo.GetActiveSingleVar @StudyId, 6321, 1; 
 END]]>
 	</row>
 	<row ProcId="717" StudyName="ROAS" ProcName="ENDO.GetHypoParaAll" ProcDesc="Hypoparatyreoidisme: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="647981375" LastUpdate="2013-02-14T10:51:04.640Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="718" StudyName="ENDO" ProcName="ENDO.GetHypoParaPostop" ProcDesc="Hypoparatyreoidisme: Postoperativt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1732671721" LastUpdate="2013-02-14T10:57:04.357Z">
+	<row ProcId="718" StudyName="ENDO" ProcName="ENDO.GetHypoParaPostop" ProcDesc="Hypoparatyreoidisme: Postoperativt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-763005182" LastUpdate="2019-01-03T09:18:32.420Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHypoParaPostop( @StudyId INT ) AS 
 BEGIN 
- EXEC dbo.GetActiveSingleVar @StudyId,'ICD10.E892',1 
+  EXEC dbo.GetActiveSingleVar @StudyId, 6883, 1; 
 END]]>
 	</row>
 	<row ProcId="719" StudyName="ROAS" ProcName="ENDO.GetHypoParaPostop" ProcDesc="Hypoparatyreoidisme: Postoperativt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1315024179" LastUpdate="2013-02-14T10:57:12.140Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="720" StudyName="ENDO" ProcName="ENDO.GetHypoParaDiGeorge" ProcDesc="Hypoparatyreoidisme: Di George syndrom" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-96000956" LastUpdate="2013-02-14T11:09:16.967Z">
+	<row ProcId="720" StudyName="ENDO" ProcName="ENDO.GetHypoParaDiGeorge" ProcDesc="Hypoparatyreoidisme: Di George syndrom" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="519594082" LastUpdate="2019-01-03T09:19:11.220Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHypoParaDiGeorge( @StudyId INT ) AS 
 BEGIN 
- EXEC dbo.GetActiveSingleVar @StudyId,'ICD10.E821',1 
+  EXEC dbo.GetActiveSingleVar @StudyId, 6664, 1; 
 END]]>
 	</row>
 	<row ProcId="721" StudyName="ROAS" ProcName="ENDO.GetHypoParaDiGeorge" ProcDesc="Hypoparatyreoidisme: Di George syndrom" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-497670906" LastUpdate="2013-02-14T11:09:19.500Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="722" StudyName="ENDO" ProcName="ENDO.GetHypoParaAutosomal" ProcDesc="Hypoparatyreoidisme: Autosomal dominant hypokalsemi" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="36760775" LastUpdate="2013-02-14T11:07:44.530Z">
+	<row ProcId="722" StudyName="ENDO" ProcName="ENDO.GetHypoParaAutosomal" ProcDesc="Hypoparatyreoidisme: Autosomal dominant hypokalsemi" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="550385368" LastUpdate="2019-01-03T09:19:25.267Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHypoParaAutosomal( @StudyId INT ) AS 
 BEGIN 
- EXEC dbo.GetActiveSingleVar @StudyId,'VAR6884',1 
+  EXEC dbo.GetActiveSingleVar @StudyId, 6884, 1; 
 END]]>
 	</row>
 	<row ProcId="723" StudyName="ROAS" ProcName="ENDO.GetHypoParaAutosomal" ProcDesc="Hypoparatyreoidisme: Autosomal dominant hypokalsemi" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-272670584" LastUpdate="2013-02-14T11:08:11.793Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="724" StudyName="ROAS" ProcName="ENDO.GetHypoThyroAutoimmune" ProcDesc="Hypotyreose: Autoimmun" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1085680989" LastUpdate="2013-02-14T11:19:34.450Z">
+	<row ProcId="724" StudyName="ROAS" ProcName="ENDO.GetHypoThyroAutoimmune" ProcDesc="Hypotyreose: Autoimmun" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-2012615133" LastUpdate="2019-01-03T09:19:50.343Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHypoThyroAutoimmune( @StudyId INT ) AS 
 BEGIN 
- EXEC dbo.GetActiveSingleVar @StudyId,'ICD10_E063a',1 
+  EXEC dbo.GetActiveSingleVar @StudyId, 6312, 1; 
 END]]>
 	</row>
-	<row ProcId="725" StudyName="ROAS" ProcName="ROAS.GetRoasNumbers" ProcDesc="Prosess: Prøvenummer" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6311" InfoCaption="Prøvenummer" ChkSum="40031882" LastUpdate="2016-04-15T18:29:00.283Z">
+	<row ProcId="725" StudyName="ROAS" ProcName="ROAS.GetRoasNumbers" ProcDesc="Prosess: Prøvenummer" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6311" InfoCaption="Prøvenummer" ChkSum="40031882" LastUpdate="2019-01-03T08:59:41.280Z">
 		<![CDATA[CREATE PROCEDURE ROAS.GetRoasNumbers ( @StudyId INT ) AS
 BEGIN
   SELECT v.*, ISNULL( CONVERT(VARCHAR, CONVERT(INT, a.Quantity)), 'Mangler') AS InfoText
@@ -2508,13 +2497,13 @@ BEGIN
   ORDER BY v.PersonId
 END]]>
 	</row>
-	<row ProcId="726" StudyName="ROAS" ProcName="ENDO.GetHyperThyroAutoimmune" ProcDesc="Hypertyreose: Autoimmun" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1882948541" LastUpdate="2013-02-14T11:22:21.030Z">
+	<row ProcId="726" StudyName="ROAS" ProcName="ENDO.GetHyperThyroAutoimmune" ProcDesc="Hypertyreose: Autoimmun" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-94589625" LastUpdate="2019-01-03T09:20:23.300Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetHyperThyroAutoimmune( @StudyId INT ) AS 
 BEGIN 
- EXEC dbo.GetActiveSingleVar @StudyId,'ICD10_E063b',1 
+  EXEC dbo.GetActiveSingleVar @StudyId, 6313, 1; 
 END]]>
 	</row>
-	<row ProcId="727" StudyName="ROAS" ProcName="ROAS.GetRoasNumbersMissing" ProcDesc="Prosess: Prøvenummer mangler" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6311" InfoCaption="Informasjon" ChkSum="1498880546" LastUpdate="2016-05-23T12:26:08.167Z">
+	<row ProcId="727" StudyName="ROAS" ProcName="ROAS.GetRoasNumbersMissing" ProcDesc="Prosess: Prøvenummer mangler" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6311" InfoCaption="Informasjon" ChkSum="1498880546" LastUpdate="2019-01-03T08:59:42.047Z">
 		<![CDATA[CREATE PROCEDURE ROAS.GetRoasNumbersMissing ( @StudyId INT ) AS
 BEGIN
   SELECT v.*, ISNULL(CONVERT(VARCHAR, CONVERT(INT, a.Quantity)), 'Mangler') AS InfoText
@@ -2524,10 +2513,10 @@ BEGIN
   ORDER BY v.PersonId
 END]]>
 	</row>
-	<row ProcId="728" StudyName="ROAS" ProcName="ENDO.GetDiabetesType1" ProcDesc="Diagnose: Diabetes type 1" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-606048014" LastUpdate="2013-06-06T10:09:07.020Z">
+	<row ProcId="728" StudyName="ROAS" ProcName="ENDO.GetDiabetesType1" ProcDesc="Diagnose: Diabetes type 1" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1669273852" LastUpdate="2019-01-03T09:21:05.373Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetDiabetesType1( @StudyId INT ) AS 
 BEGIN 
- EXEC dbo.GetActiveSingleVar @StudyId,'ICD10_E10',1 
+  EXEC dbo.GetActiveSingleVar @StudyId, 6314, 1; 
 END]]>
 	</row>
 	<row ProcId="729" StudyName="ENDO" ProcName="ENDO.GetFamilialTumors" ProcDesc="Tumorer: Familære typer" ProcParams=":StudyId" ListId="CASE" GrantTo="public" InfoCaption="Antall treff" ChkSum="439658304" LastUpdate="2018-10-03T16:12:43.663Z">
@@ -2623,7 +2612,7 @@ END]]>
 	<row ProcId="743" StudyName="TEST" ProcName="dbo.GetCaseListByFormName" ProcDesc="Diagnose: Test Addison som parameter" ProcParams=":StudyId,'Addison'" ListId="CASE" GrantTo="public" InfoCaption="Siste skjema" ChkSum="872717929" LastUpdate="2013-06-12T09:36:06.120Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="744" StudyName="ROAS" ProcName="dbo.GetActiveDeceased" ProcDesc="Døde: Døde uten Død som status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="736217746" LastUpdate="2013-09-19T10:57:06.470Z">
+	<row ProcId="744" StudyName="ROAS" ProcName="dbo.GetActiveDeceased" ProcDesc="Døde: Døde uten Død som status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="736217746" LastUpdate="2019-01-03T08:59:44.560Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetActiveDeceased( @StudyId INT ) AS
 BEGIN
   select v.*,'Død ' + CONVERT(VARCHAR,p.DeceasedDate,106)+ ' ('+ss.StatusText+')' AS InfoText FROM 
@@ -2635,7 +2624,7 @@ BEGIN
   ORDER BY p.DeceasedDate DESC
 END]]>
 	</row>
-	<row ProcId="745" StudyName="ROAS" ProcName="ROAS.GetRoasNumbersMissingAddison" ProcDesc="Prosess: Prøvenummer mangler (Addison)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6311" InfoCaption="Prøvenummer" ChkSum="-1247724948" LastUpdate="2016-05-23T12:37:47.030Z">
+	<row ProcId="745" StudyName="ROAS" ProcName="ROAS.GetRoasNumbersMissingAddison" ProcDesc="Prosess: Prøvenummer mangler (Addison)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6311" InfoCaption="Prøvenummer" ChkSum="-1247724948" LastUpdate="2019-01-03T08:59:45.367Z">
 		<![CDATA[CREATE PROCEDURE ROAS.GetRoasNumbersMissingAddison ( @StudyId INT ) AS
 BEGIN
   SELECT v.*, ISNULL(CONVERT(VARCHAR, CONVERT(INT, a.Quantity)), 'Mangler') AS InfoText
@@ -2655,7 +2644,7 @@ BEGIN
   WHERE StudyId = @StudyId
 END]]>
 	</row>
-	<row ProcId="747" StudyName="ENDO" ProcName="ENDO.GetAddisonOvaryFailure" ProcDesc="Addison: Ovarialsvikt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6400" InfoCaption="Diagnoseår og type" ChkSum="-229742289" LastUpdate="2017-01-18T23:00:34.680Z">
+	<row ProcId="747" StudyName="ENDO" ProcName="ENDO.GetAddisonOvaryFailure" ProcDesc="Addison: Ovarialsvikt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6400" InfoCaption="Diagnoseår og type" ChkSum="-229742289" LastUpdate="2019-01-03T08:59:46.060Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetAddisonOvaryFailure( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, v.GenderId,
@@ -2680,7 +2669,7 @@ END
 	<row ProcId="748" StudyName="ROAS" ProcName="ENDO.GetAddisonOvaryFailure" ProcDesc="Addison: Ovarialsvikt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6400" InfoCaption="Diagnoseår og type" ChkSum="137229807" LastUpdate="2017-01-17T07:39:28.613Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="749" StudyName="ROAS" ProcName="ROAS.GetAddisonPatientsAlive" ProcDesc="Addison: Levende (folkeregister)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6400" ChkSum="1698448136" LastUpdate="2017-03-12T14:09:58.157Z">
+	<row ProcId="749" StudyName="ROAS" ProcName="ROAS.GetAddisonPatientsAlive" ProcDesc="Addison: Levende (folkeregister)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6400" ChkSum="1698448136" LastUpdate="2019-01-03T08:59:46.790Z">
 		<![CDATA[CREATE PROCEDURE ROAS.GetAddisonPatientsAlive (@StudyId INT) AS
 BEGIN
   SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, v.GenderId,
@@ -2714,7 +2703,7 @@ END]]>
 	<row ProcId="752" StudyName="ROAS" ProcName="PROM.GetCaseListMyCompletedProms" ProcDesc="PROM: Mine utfylte PROM-skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6631" ChkSum="-403560327" LastUpdate="2017-11-18T08:41:36.077Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="753" StudyName="ROAS" ProcName="ROAS.GetCaseListConsentBefore16" ProcDesc="Samtykke: Alle med barnesamtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" HelpText="Alle med barnesamtykke, uansett alder." ChkSum="-336159069" LastUpdate="2018-03-20T10:01:50.260Z">
+	<row ProcId="753" StudyName="ROAS" ProcName="ROAS.GetCaseListConsentBefore16" ProcDesc="Samtykke: Alle med barnesamtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" HelpText="Alle med barnesamtykke, uansett alder." ChkSum="-336159069" LastUpdate="2019-01-03T08:59:47.420Z">
 		<![CDATA[CREATE PROCEDURE ROAS.GetCaseListConsentBefore16( @StudyId INT )  AS
 BEGIN
   SELECT v.*,s.OptionText AS InfoText  FROM dbo.GetLastEnumValuesTable( 2143, NULL ) s
@@ -2723,7 +2712,7 @@ BEGIN
   ORDER BY DOB DESC
 END]]>
 	</row>
-	<row ProcId="754" StudyName="ROAS" ProcName="ROAS.GetCaseListConsentUpdateNeeded" ProcDesc="Samtykke: Trenger nytt samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" HelpText="Alle med gammel versjon av samtykke, uansett alder." ChkSum="-644012716" LastUpdate="2018-03-20T10:02:02.913Z">
+	<row ProcId="754" StudyName="ROAS" ProcName="ROAS.GetCaseListConsentUpdateNeeded" ProcDesc="Samtykke: Trenger nytt samtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" HelpText="Alle med gammel versjon av samtykke, uansett alder." ChkSum="-644012716" LastUpdate="2019-01-03T08:59:48.450Z">
 		<![CDATA[CREATE PROCEDURE ROAS.GetCaseListConsentUpdateNeeded( @StudyId INT ) AS
 BEGIN
   SELECT v.*, s.OptionText AS InfoText 
@@ -2732,7 +2721,7 @@ BEGIN
   WHERE s.EnumVal = 3 AND v.StudyId = @StudyId; 
 END;]]>
 	</row>
-	<row ProcId="755" StudyName="ROAS" ProcName="ROAS.GetCaseListAdultConsentNeeded" ProcDesc="Samtykke: Trenger voksensamtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" HelpText="Alle som har barnesamtykke, men har fylt 16 år nå." ChkSum="805583023" LastUpdate="2018-03-20T10:02:14.433Z">
+	<row ProcId="755" StudyName="ROAS" ProcName="ROAS.GetCaseListAdultConsentNeeded" ProcDesc="Samtykke: Trenger voksensamtykke" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" HelpText="Alle som har barnesamtykke, men har fylt 16 år nå." ChkSum="805583023" LastUpdate="2019-01-03T08:59:50.247Z">
 		<![CDATA[CREATE PROCEDURE ROAS.GetCaseListAdultConsentNeeded( @StudyId INT ) AS
 BEGIN
   SELECT v.*, s.OptionText AS InfoText
@@ -2850,7 +2839,7 @@ BEGIN
     SELECT * FROM #temp ORDER BY E8507, EventTime;
 END]]>
 	</row>
-	<row ProcId="1002" StudyName="GBD" ProcName="GBD.RapportBeslutninger" ProcDesc="Beslutninger" ProcParams=":StudyId" ListId="FR" GrantTo="public" ChkSum="-436620943" LastUpdate="2018-10-18T00:02:16.133Z">
+	<row ProcId="1002" StudyName="GBD" ProcName="GBD.RapportBeslutninger" ProcDesc="Beslutninger" ProcParams=":StudyId" ListId="FR" GrantTo="public" ChkSum="-436620943" LastUpdate="2019-01-03T08:59:51.247Z">
 		<![CDATA[CREATE PROCEDURE GBD.RapportBeslutninger( @StudyId INT ) AS
 BEGIN
   SET LANGUAGE Norwegian; 
@@ -2895,7 +2884,7 @@ BEGIN
   ORDER BY GroupName, FullName;
 END]]>
 	</row>
-	<row ProcId="1003" StudyName="GBD" ProcName="GBD.AntibioticReport" ProcDesc="Antibiotikakurer" ProcParams=":StartAt,:StopAt" ListId="FR" GrantTo="public" ChkSum="650146919" LastUpdate="2014-04-12T15:28:24.937Z">
+	<row ProcId="1003" StudyName="GBD" ProcName="GBD.AntibioticReport" ProcDesc="Antibiotikakurer" ProcParams=":StartAt,:StopAt" ListId="FR" GrantTo="public" ChkSum="650146919" LastUpdate="2019-01-03T08:59:52.730Z">
 		<![CDATA[CREATE PROCEDURE GBD.AntibioticReport( @StartAt DateTime, @StopAt DateTime )
 AS
 BEGIN
@@ -3062,7 +3051,7 @@ BEGIN
   ORDER BY count(*) DESC
 END]]>
 	</row>
-	<row ProcId="1007" StudyName="GBD" ProcName="GBD.Bestillingsliste" ProcDesc="Bestillingsliste" ListId="FR" GrantTo="public" ChkSum="1602446136" LastUpdate="2014-04-12T15:31:53.217Z">
+	<row ProcId="1007" StudyName="GBD" ProcName="GBD.Bestillingsliste" ProcDesc="Bestillingsliste" ListId="FR" GrantTo="public" ChkSum="1602446136" LastUpdate="2019-01-03T08:59:53.857Z">
 		<![CDATA[CREATE PROCEDURE GBD.Bestillingsliste AS
 BEGIN
   SELECT a.ATCCode, a.ATCName, dbo.GetFirstWord( dt.DrugName ) as DrugName, dt.DrugForm, NULLIF(dt.Strength,0) AS Strength, dt.StrengthUnit,
@@ -3077,7 +3066,7 @@ BEGIN
   ORDER BY a.ATCCode, Strength
 END]]>
 	</row>
-	<row ProcId="1008" StudyName="BAR" ProcName="BAR.ReportInclusion" ProcDesc="Inklusjonsrapport" ProcParams=":StudyId" ListId="FR" GrantTo="public" ChkSum="-1876020598" LastUpdate="2018-09-04T07:30:17.800Z">
+	<row ProcId="1008" StudyName="BAR" ProcName="BAR.ReportInclusion" ProcDesc="Inklusjonsrapport" ProcParams=":StudyId" ListId="FR" GrantTo="public" ChkSum="-1876020598" LastUpdate="2019-01-03T08:59:54.967Z">
 		<![CDATA[CREATE PROCEDURE BAR.ReportInclusion ( @StudyId INT ) AS
 BEGIN
   SELECT p.PersonId, p.DOB, p.FullName, sg.GroupName, ce.EventTime, ce.StudyId, cf.ClinFormId, 
@@ -3274,7 +3263,7 @@ BEGIN
   ORDER BY d.OrderNo;
 END]]>
 	</row>
-	<row ProcId="1014" StudyName="GBD" ProcName="GBD.RapportKontaktinfo" ProcDesc="Kontaktinfo pårørende" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="6000" ChkSum="-784408140" LastUpdate="2015-11-05T07:38:00.423Z">
+	<row ProcId="1014" StudyName="GBD" ProcName="GBD.RapportKontaktinfo" ProcDesc="Kontaktinfo pårørende" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="6000" ChkSum="-784408140" LastUpdate="2019-01-03T08:59:57.200Z">
 		<![CDATA[CREATE PROCEDURE GBD.RapportKontaktinfo ( @StudyId INT ) AS
 BEGIN
   SET LANGUAGE Norwegian; 
@@ -3320,7 +3309,7 @@ BEGIN
   SELECT * FROM #temp WHERE OrderNo=1 ORDER BY FullName;
 END]]>
 	</row>
-	<row ProcId="1015" StudyName="GBD" ProcName="GBD.RapportPaminnelser" ProcDesc="Aktive påminnelser" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="521" ChkSum="-1549993953" LastUpdate="2017-02-24T17:39:05.430Z">
+	<row ProcId="1015" StudyName="GBD" ProcName="GBD.RapportPaminnelser" ProcDesc="Aktive påminnelser" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="521" ChkSum="-1549993953" LastUpdate="2019-01-03T08:59:57.970Z">
 		<![CDATA[CREATE PROCEDURE GBD.RapportPaminnelser( @StudyId INT ) AS
 BEGIN
 
@@ -3859,7 +3848,7 @@ BEGIN
   SELECT * FROM #ResultSet WHERE UsingDrug > 1 ORDER BY PercentUse DESC;
 END]]>
 	</row>
-	<row ProcId="1032" StudyName="NDV" ProcName="NDV.GetPatientCount" ProcDesc="Fordeling av aktive pasienter på samtykkestatus" ListId="FR" GrantTo="public" MinVersion="6310" ChkSum="-2099198841" LastUpdate="2016-12-05T15:32:22.250Z">
+	<row ProcId="1032" StudyName="NDV" ProcName="NDV.GetPatientCount" ProcDesc="Fordeling av aktive pasienter på samtykkestatus" ListId="FR" GrantTo="public" MinVersion="6310" ChkSum="-2099198841" LastUpdate="2019-01-03T08:59:58.920Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPatientCount AS
 BEGIN
 
@@ -3887,7 +3876,7 @@ BEGIN
 
 END]]>
 	</row>
-	<row ProcId="1033" StudyName="NDV" ProcName="NDV.GetPatientCountByDiabetesType" ProcDesc="Fordeling av samtykker etter type" ListId="FR" GrantTo="public" MinVersion="6310" ChkSum="1010125529" LastUpdate="2016-12-05T15:32:23.933Z">
+	<row ProcId="1033" StudyName="NDV" ProcName="NDV.GetPatientCountByDiabetesType" ProcDesc="Fordeling av samtykker etter type" ListId="FR" GrantTo="public" MinVersion="6310" ChkSum="1010125529" LastUpdate="2019-01-03T08:59:59.760Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPatientCountByDiabetesType AS
 BEGIN
   SELECT 
@@ -4778,7 +4767,7 @@ END;
 
 ]]>
 	</row>
-	<row ProcId="5001" StudyName="GBD" ProcName="GBD.UpdateMustScoreForAll" ProcDesc="Oppdatering av MUST for alle, trenger GBD.RuleMust på plass" ProcParams=":StudyId" ListId="UTIL" GrantTo="public" ChkSum="-1790760205" LastUpdate="2016-06-06T12:55:01.353Z">
+	<row ProcId="5001" StudyName="GBD" ProcName="GBD.UpdateMustScoreForAll" ProcDesc="Oppdatering av MUST for alle, trenger GBD.RuleMust på plass" ProcParams=":StudyId" ListId="UTIL" GrantTo="public" ChkSum="-1790760205" LastUpdate="2019-01-03T09:00:00.933Z">
 		<![CDATA[CREATE PROCEDURE GBD.UpdateMustScoreForAll( @StudyId INT ) AS
 BEGIN
     SET NOCOUNT ON;
@@ -4990,13 +4979,13 @@ BEGIN
                         VALUES (@StudyId, b.PersonId, b.AlertLevel, 'MUST', b.AlertFacet, b.MsgHeader, b.MsgText, 'TYM');
 END]]>
 	</row>
-	<row ProcId="10001" StudyName="*" ProcName="GBD.RuleBerger" ProcDesc="Registere Bergers skala med 180 dagers intervall" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MaxVersion="18207" ChkSum="976234660" LastUpdate="2018-08-10T08:18:56.657Z">
+	<row ProcId="10001" StudyName="*" ProcName="GBD.RuleBerger" ProcDesc="Registere Bergers skala med 180 dagers intervall" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MaxVersion="18207" ChkSum="976234660" LastUpdate="2019-01-03T09:03:08.607Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleBerger( @StudyId INT, @PersonId INT ) AS
 BEGIN
   EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'BERGER',180,2
 END;]]>
 	</row>
-	<row ProcId="10002" StudyName="*" ProcName="dbo.RuleDrugToProblem" ProcDesc="Manglende diagnose basert på medikament som bare har én indikasj" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="782745445" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10002" StudyName="*" ProcName="dbo.RuleDrugToProblem" ProcDesc="Manglende diagnose basert på medikament som bare har én indikasj" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="782745445" LastUpdate="2019-01-03T09:03:10.997Z">
 		<![CDATA[CREATE PROCEDURE dbo.RuleDrugToProblem( @StudyId INT, @PersonId INT ) AS
   DECLARE @DrugName VARCHAR(64);
   DECLARE @ATC VARCHAR(7);
@@ -5056,7 +5045,7 @@ BEGIN
   DEALLOCATE alert_list;
 END;]]>
 	</row>
-	<row ProcId="10003" StudyName="*" ProcName="dbo.RuleDrugInteractions" ProcDesc="Legemiddelinteraksjoner" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-320670011" LastUpdate="2017-02-15T18:45:24.097Z">
+	<row ProcId="10003" StudyName="*" ProcName="dbo.RuleDrugInteractions" ProcDesc="Legemiddelinteraksjoner" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-320670011" LastUpdate="2019-01-03T09:03:11.893Z">
 		<![CDATA[CREATE PROCEDURE dbo.RuleDrugInteractions ( @StudyId INT, @PersonId INT ) AS
   /* Variables for interaction result */
   DECLARE @LevelId tinyint;
@@ -5142,7 +5131,7 @@ END
 
 ]]>
 	</row>
-	<row ProcId="10004" StudyName="*" ProcName="dbo.RuleGFR" ProcDesc="Lav nyrefunksjon. GRF 60,45 og 30 som grenser." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-1011919235" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10004" StudyName="*" ProcName="dbo.RuleGFR" ProcDesc="Lav nyrefunksjon. GRF 60,45 og 30 som grenser." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-1011919235" LastUpdate="2019-01-03T09:03:12.577Z">
 		<![CDATA[CREATE PROCEDURE dbo.RuleGFR( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @GFR DECIMAL(5,1);
@@ -5180,13 +5169,13 @@ BEGIN
   EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'GFR',@Facet,@HeadStr,@MsgStr
 END;]]>
 	</row>
-	<row ProcId="10005" StudyName="*" ProcName="GBD.RuleHulten" ProcDesc="Registrere Hulten med maks 90 dagers intervall" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-1109930964" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10005" StudyName="*" ProcName="GBD.RuleHulten" ProcDesc="Registrere Hulten med maks 90 dagers intervall" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-1109930964" LastUpdate="2019-01-03T09:03:13.033Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleHulten( @StudyId INT, @PersonId INT ) AS
 BEGIN
   EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'HULTEN',90,2
 END;]]>
 	</row>
-	<row ProcId="10006" StudyName="*" ProcName="GBD.RuleWarfarinAdjust" ProcDesc="På tide med Marevandosering basert på variabel WARFARIN_NEXT, so" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-253360512" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10006" StudyName="*" ProcName="GBD.RuleWarfarinAdjust" ProcDesc="På tide med Marevandosering basert på variabel WARFARIN_NEXT, so" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-253360512" LastUpdate="2019-01-03T09:03:13.440Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleWarfarinAdjust( @StudyId INT, @PersonId INT )
 AS
 BEGIN
@@ -5221,13 +5210,13 @@ BEGIN
   EXEC dbo.AddAlertForDSSRule @StudyId,@PersonId,@AlertLevel,'WARFADJ',@AlertFacet
 END;]]>
 	</row>
-	<row ProcId="10007" StudyName="*" ProcName="GBD.RuleWeight30Days" ProcDesc="Veiing med maks 30 dagers intervall" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="75897193" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10007" StudyName="*" ProcName="GBD.RuleWeight30Days" ProcDesc="Veiing med maks 30 dagers intervall" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="75897193" LastUpdate="2019-01-03T09:03:13.810Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleWeight30Days( @StudyId INT, @PersonId INT ) AS
 BEGIN
   EXEC dbo.RulePeriodicData @StudyId,@PersonId,'WEIGHT',30,2
 END]]>
 	</row>
-	<row ProcId="10008" StudyName="*" ProcName="GBD.RuleInfectionForm" ProcDesc="Infeksjonsregistering hvis systemisk antibiotika gitt siste 30 d" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-1553155358" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10008" StudyName="*" ProcName="GBD.RuleInfectionForm" ProcDesc="Infeksjonsregistering hvis systemisk antibiotika gitt siste 30 d" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-1553155358" LastUpdate="2019-01-03T09:03:14.193Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleInfectionForm( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @LastJ01Date DateTime;
@@ -5259,7 +5248,7 @@ BEGIN
   END;
 END;]]>
 	</row>
-	<row ProcId="10009" StudyName="*" ProcName="GBD.RuleLabData" ProcDesc="Eksterne labdata med maka 180 dagers intervall" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="508375617" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10009" StudyName="*" ProcName="GBD.RuleLabData" ProcDesc="Eksterne labdata med maka 180 dagers intervall" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="508375617" LastUpdate="2019-01-03T09:03:14.570Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleLabData( @StudyId INT, @PersonId INT ) AS
 BEGIN
   IF EXISTS( SELECT ResultId FROM dbo.LabData WHERE PersonId=@PersonId
@@ -5271,7 +5260,7 @@ BEGIN
       'Ingen eksterne labdata fra siste 6 mnd.  Labprøver bør tas regelmessig, bl.a. for å overvåke nyrefunksjon.';
 END]]>
 	</row>
-	<row ProcId="10010" StudyName="*" ProcName="GBD.RuleMUST" ProcDesc="Automatisk beregning av MUST score, med tilhørende varsling ved " ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="519050083" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10010" StudyName="*" ProcName="GBD.RuleMUST" ProcDesc="Automatisk beregning av MUST score, med tilhørende varsling ved " ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="519050083" LastUpdate="2019-01-03T09:03:14.920Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleMUST( @StudyId INT, @PersonId INT ) AS
 BEGIN
   SET NOCOUNT ON;
@@ -5373,7 +5362,7 @@ BEGIN
   EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'MUST',@AlertFacet,@MsgHeader, @MsgText,'TYM'
 END]]>
 	</row>
-	<row ProcId="10011" StudyName="*" ProcName="dbo.RuleMetforminGFR" ProcDesc="Advarsel om metforminbruk med samtidig lav GFR, grenseverdier 60" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-1901190138" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10011" StudyName="*" ProcName="dbo.RuleMetforminGFR" ProcDesc="Advarsel om metforminbruk med samtidig lav GFR, grenseverdier 60" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-1901190138" LastUpdate="2019-01-03T09:03:15.297Z">
 		<![CDATA[CREATE PROCEDURE dbo.RuleMetforminGFR( @StudyId INT, @PersonId INT )
 AS
 BEGIN
@@ -5438,13 +5427,13 @@ BEGIN
   EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'METFORMGFR',@AlertFacet,@HeaderText,@MsgText;
 END]]>
 	</row>
-	<row ProcId="10012" StudyName="*" ProcName="GBD.RuleBP30Days" ProcDesc="Blodtrykksmåling med maks 30 dagers intervall." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="737675974" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10012" StudyName="*" ProcName="GBD.RuleBP30Days" ProcDesc="Blodtrykksmåling med maks 30 dagers intervall." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="737675974" LastUpdate="2019-01-03T09:03:15.633Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleBP30Days( @StudyId INT, @PersonId INT ) AS
 BEGIN
   EXEC dbo.RulePeriodicData @StudyId, @PersonId, 'SBP_UNSPEC',30, 2
 END]]>
 	</row>
-	<row ProcId="10013" StudyName="*" ProcName="GBD.RuleAtrialFibrillation" ProcDesc="Behandling av atrieflimmer med B01AA eller B01AC." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-831281577" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10013" StudyName="*" ProcName="GBD.RuleAtrialFibrillation" ProcDesc="Behandling av atrieflimmer med B01AA eller B01AC." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-831281577" LastUpdate="2019-01-03T09:03:15.983Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleAtrialFibrillation( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @HasAF INT;
@@ -5476,7 +5465,7 @@ BEGIN
   EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'AFTREATED',@AlertFacet,@HeaderText,@MsgText
 END]]>
 	</row>
-	<row ProcId="10014" StudyName="*" ProcName="GBD.RuleReminder" ProcDesc="Påminnelse basert på eget påminnelsesskjema." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-449999949" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10014" StudyName="*" ProcName="GBD.RuleReminder" ProcDesc="Påminnelse basert på eget påminnelsesskjema." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-449999949" LastUpdate="2019-01-03T09:03:16.367Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleReminder( @StudyId INT, @PersonId INT )
 AS
 BEGIN
@@ -5532,7 +5521,7 @@ BEGIN
   
 END]]>
 	</row>
-	<row ProcId="10015" StudyName="*" ProcName="NDV.RuleTSH" ProcDesc="Måling av TSH med 730 dagers intervall hos type-1 diabetikere." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-237869947" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10015" StudyName="*" ProcName="NDV.RuleTSH" ProcDesc="Måling av TSH med 730 dagers intervall hos type-1 diabetikere." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-237869947" LastUpdate="2019-01-03T09:03:16.753Z">
 		<![CDATA[CREATE PROCEDURE NDV.RuleTSH( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @LabName VARCHAR(40);
@@ -5583,7 +5572,7 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="10016" StudyName="*" ProcName="NDV.RuleCarbCount" ProcDesc="Opplæring i karbohydrattelling hos type-1 diabetikere." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-702223112" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10016" StudyName="*" ProcName="NDV.RuleCarbCount" ProcDesc="Opplæring i karbohydrattelling hos type-1 diabetikere." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-702223112" LastUpdate="2019-01-03T09:03:17.107Z">
 		<![CDATA[CREATE PROCEDURE NDV.RuleCarbCount( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @TrainDate DateTime;
@@ -5621,7 +5610,7 @@ BEGIN
   EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'CARBCOUNT',@AlertFacet,@AlertHeader, @AlertMessage;    
 END]]>
 	</row>
-	<row ProcId="10017" StudyName="*" ProcName="NDV.RuleConsent" ProcDesc="Manglende samtykke-erklæring." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="773715923" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10017" StudyName="*" ProcName="NDV.RuleConsent" ProcDesc="Manglende samtykke-erklæring." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="773715923" LastUpdate="2019-01-03T09:03:17.447Z">
 		<![CDATA[CREATE PROCEDURE NDV.RuleConsent( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @AlertFacet VARCHAR(16);
@@ -5654,7 +5643,7 @@ BEGIN
   EXEC dbo.AddAlertForDSSRule @StudyId,@PersonId,@AlertLevel,'NDVCONSENT',@AlertFacet;    
 END]]>
 	</row>
-	<row ProcId="10018" StudyName="*" ProcName="GBD.RuleNutritionAction" ProcDesc="Kostsamtale gjennomført, tiltakskjema utfylt og signert hvis akt" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-1068857473" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10018" StudyName="*" ProcName="GBD.RuleNutritionAction" ProcDesc="Kostsamtale gjennomført, tiltakskjema utfylt og signert hvis akt" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-1068857473" LastUpdate="2019-01-03T09:03:17.787Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleNutritionAction( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @LastTiltakDate DateTime;
@@ -5722,7 +5711,7 @@ BEGIN
   END;
 END;]]>
 	</row>
-	<row ProcId="10019" StudyName="*" ProcName="GBD.RuleTvangsvedtak" ProcDesc="Fornyelse av tvangsvedtak" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-1976837309" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10019" StudyName="*" ProcName="GBD.RuleTvangsvedtak" ProcDesc="Fornyelse av tvangsvedtak" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-1976837309" LastUpdate="2019-01-03T09:03:18.140Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleTvangsvedtak( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @EventTime DateTime;
@@ -5780,7 +5769,7 @@ BEGIN
   DEALLOCATE cur_vedtak;
 END]]>
 	</row>
-	<row ProcId="10020" StudyName="*" ProcName="NDV.RuleEyeCheck" ProcDesc="Øyeundersøkelse med maks 730 dagers intervall hos type-1 diabeti" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="1727932610" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10020" StudyName="*" ProcName="NDV.RuleEyeCheck" ProcDesc="Øyeundersøkelse med maks 730 dagers intervall hos type-1 diabeti" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="1727932610" LastUpdate="2019-01-03T09:03:18.553Z">
 		<![CDATA[CREATE PROCEDURE NDV.RuleEyeCheck( @StudyId INT, @PersonId INT ) AS
 BEGIN
 
@@ -5832,7 +5821,7 @@ BEGIN
   EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'NDVEYE',@AlertFacet,@AlertHeader, @AlertMessage;    
 END]]>
 	</row>
-	<row ProcId="10021" StudyName="*" ProcName="NDV.RuleAutoClose" ProcDesc="Automatisk avslutning av pasienter i NOKLUS Diabetes basert på i" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="220751245" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10021" StudyName="*" ProcName="NDV.RuleAutoClose" ProcDesc="Automatisk avslutning av pasienter i NOKLUS Diabetes basert på i" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="220751245" LastUpdate="2019-01-03T09:03:19.063Z">
 		<![CDATA[CREATE PROCEDURE NDV.RuleAutoClose( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @DpAvsluttet INT;           
@@ -5852,7 +5841,7 @@ BEGIN
     EXEC dbo.AddAlertForPerson @StudyId,@PersonId,0,'NDVAVSLUTT','Exclude','Fortsetter','Ikke avsluttet på diabetespoliklinikken, basert på informasjon fra skjema.';
 END]]>
 	</row>
-	<row ProcId="10022" StudyName="*" ProcName="GBD.RuleMatkort" ProcDesc="Revisjon av matkort på dato som er angitt i forrige matkort." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-2127804112" LastUpdate="2016-02-26T16:50:19.133Z">
+	<row ProcId="10022" StudyName="*" ProcName="GBD.RuleMatkort" ProcDesc="Revisjon av matkort på dato som er angitt i forrige matkort." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-2127804112" LastUpdate="2019-01-03T09:03:20.077Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleMatkort( @StudyId INT, @PersonId INT )
 AS
 BEGIN
@@ -5876,7 +5865,7 @@ BEGIN
   EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, @AlertLevel, 'MATKORT', @AlertFacet;
 END;]]>
 	</row>
-	<row ProcId="10023" StudyName="*" ProcName="GBD.RuleLMG" ProcDesc="Utfylling av legemiddelgjennomgang med 180 dagers intervall." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-623153698" LastUpdate="2017-02-24T14:57:52.427Z">
+	<row ProcId="10023" StudyName="*" ProcName="GBD.RuleLMG" ProcDesc="Utfylling av legemiddelgjennomgang med 180 dagers intervall." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-623153698" LastUpdate="2019-01-03T09:03:21.153Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleLMG( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @LastFormDate DateTime;
@@ -5905,7 +5894,7 @@ BEGIN
   EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, @ActualLevel, 'LMG', @AlertFacet;
 END]]>
 	</row>
-	<row ProcId="10024" StudyName="*" ProcName="NDV.RuleBiobank" ProcDesc="Samtykke til biobank" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-968131333" LastUpdate="2017-05-26T13:46:54.330Z">
+	<row ProcId="10024" StudyName="*" ProcName="NDV.RuleBiobank" ProcDesc="Samtykke til biobank" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-968131333" LastUpdate="2019-01-03T09:03:23.153Z">
 		<![CDATA[CREATE PROCEDURE NDV.RuleBiobank( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @AlertFacet VARCHAR(16);
@@ -5938,7 +5927,7 @@ BEGIN
   EXEC dbo.AddAlertForDSSRule @StudyId,@PersonId,@AlertLevel,'NDVBIOBANK',@AlertFacet;    
 END]]>
 	</row>
-	<row ProcId="10025" StudyName="*" ProcName="GBD.RuleFallrisikoStratify" ProcDesc="Fallrisikovurdering" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="706954377" LastUpdate="2017-11-15T14:23:18.257Z">
+	<row ProcId="10025" StudyName="*" ProcName="GBD.RuleFallrisikoStratify" ProcDesc="Fallrisikovurdering" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="706954377" LastUpdate="2019-01-03T09:03:23.730Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleFallrisikoStratify (@StudyId INT, @PersonId INT) AS
 BEGIN
   IF dbo.GetLastCompleteForm(@StudyId, @PersonId, 'STRATIFY') IS NULL
@@ -5947,7 +5936,7 @@ BEGIN
    EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, 0, 'STRATIFY', 'DataFound';
 END]]>
 	</row>
-	<row ProcId="10026" StudyName="*" ProcName="GBD.RuleLokaliseringsteknologi" ProcDesc="RuleLokaliseringsteknologi" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="1653288713" LastUpdate="2018-01-22T08:45:16.150Z">
+	<row ProcId="10026" StudyName="*" ProcName="GBD.RuleLokaliseringsteknologi" ProcDesc="RuleLokaliseringsteknologi" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="1653288713" LastUpdate="2019-01-03T09:03:40.920Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleLokaliseringsteknologi (@StudyId INT, @PersonId INT) AS
 BEGIN
     DECLARE @FormName VARCHAR(24) = 'GbdGps';
@@ -5990,7 +5979,7 @@ BEGIN
         @AlertMsg;
 END]]>
 	</row>
-	<row ProcId="10027" StudyName="*" ProcName="GBD.RuleMunnhygieneVurdering" ProcDesc="Munnhygiene vurdering" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="833778005" LastUpdate="2018-01-22T08:45:19.467Z">
+	<row ProcId="10027" StudyName="*" ProcName="GBD.RuleMunnhygieneVurdering" ProcDesc="Munnhygiene vurdering" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="833778005" LastUpdate="2019-01-03T09:03:41.713Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleMunnhygieneVurdering (@StudyId INT, @PersonId INT) AS
 BEGIN
     DECLARE @FormName VARCHAR(24) = 'GbdMunnhygiene';
@@ -6028,7 +6017,7 @@ BEGIN
     EXEC dbo.AddAlertForPerson @StudyId, @PersonId, @AlertLevel, 'MHVURDERING', @AlertFacet, @AlertHdr, @AlertMsg;
 END]]>
 	</row>
-	<row ProcId="10028" StudyName="*" ProcName="GBD.RuleSaroppfolging" ProcDesc="Saroppfolging" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="2137507569" LastUpdate="2018-01-22T08:45:20.997Z">
+	<row ProcId="10028" StudyName="*" ProcName="GBD.RuleSaroppfolging" ProcDesc="Såroppfølging" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="1762322161" LastUpdate="2019-01-03T09:04:02.843Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleSaroppfolging (@StudyId INT, @PersonId INT) AS
 BEGIN
     DECLARE @FormName VARCHAR(24);
@@ -6105,7 +6094,7 @@ BEGIN
     , @AlertMsg;
 END]]>
 	</row>
-	<row ProcId="10029" StudyName="*" ProcName="GBD.RuleSamtykkekompetanse" ProcDesc="Samtykkekompetanse" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="-654589176" LastUpdate="2018-01-22T08:45:22.260Z">
+	<row ProcId="10029" StudyName="*" ProcName="GBD.RuleSamtykkekompetanse" ProcDesc="Samtykkekompetanse" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18003" ChkSum="-654589176" LastUpdate="2019-01-03T09:03:43.467Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleSamtykkekompetanse (@StudyId INT, @PersonId INT) AS
 BEGIN
     DECLARE @FormName VARCHAR(24) = 'GbdSamtykkeKompetanse';
@@ -6149,21 +6138,21 @@ BEGIN
         @AlertMsg;
 END]]>
 	</row>
-	<row ProcId="10030" StudyName="GBD" ProcName="GBD.RuleBarthel" ProcDesc="Barthel hver 6 måned" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-82260524" LastUpdate="2018-08-23T10:10:43.860Z">
+	<row ProcId="10030" StudyName="GBD" ProcName="GBD.RuleBarthel" ProcDesc="Barthel hver 6. måned" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-793817141" LastUpdate="2019-01-03T09:04:16.263Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleBarthel( @StudyId INT, @PersonId INT ) AS
 BEGIN
   EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'BARTHEL',180,2;
 END;
 ]]>
 	</row>
-	<row ProcId="10031" StudyName="GBD" ProcName="GBD.RuleKDV" ProcDesc="KDV hver 6 måned" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-1534882079" LastUpdate="2018-08-23T10:14:45.310Z">
+	<row ProcId="10031" StudyName="GBD" ProcName="GBD.RuleKDV" ProcDesc="KDV hver 6. måned" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-2036700213" LastUpdate="2019-01-03T09:04:20.280Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleKDV( @StudyId INT, @PersonId INT ) AS
 BEGIN
   EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'KDV',180,2;
 END;
 ]]>
 	</row>
-	<row ProcId="10032" StudyName="GBD" ProcName="GBD.RuleQualid" ProcDesc="Qualid hver 6 måned" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-1744014554" LastUpdate="2018-09-02T16:29:02.430Z">
+	<row ProcId="10032" StudyName="GBD" ProcName="GBD.RuleQualid" ProcDesc="Qualid hver 6. måned" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-62810347" LastUpdate="2019-01-03T09:04:24.420Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleQualid( @StudyId INT, @PersonId INT ) AS
 BEGIN
   EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'QUALID',180,2
