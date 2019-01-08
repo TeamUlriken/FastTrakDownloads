@@ -364,6 +364,25 @@ BEGIN
   WHERE s.StudyId=@StudyId;
 END]]>
 	</row>
+	<row ProcId="31" StudyName="BASE" ProcName="dbo.GetFormClassInPeriod" ProcDesc="Utvalg på utfylt skjemaklasse i gitt periode.  Brukes ikke direk" ProcParams=":StudyId, :FormName, :StartDate, :StopDate" ListId="CASE" GrantTo="public" ChkSum="-1460235488" LastUpdate="2019-01-03T13:30:32.340Z">
+		<![CDATA[CREATE PROCEDURE dbo.GetFormClassInPeriod( @StudyId INT, @FormName VARCHAR(24),  @StartDate DateTime, @StopDate DateTime ) AS
+BEGIN
+   SELECT 
+     v.PersonId, v.DOB, v.FullName, v.GroupName, 'n = ' + CONVERT(VARCHAR,agg.Antall) AS InfoText 
+  FROM 
+    (
+      SELECT ce.PersonId,COUNT(*) as Antall 
+      FROM dbo.ClinEvent ce
+      JOIN dbo.ClinForm cf ON cf.EventId=ce.EventId AND cf.DeletedAt IS NULL
+      JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId 
+      WHERE mf.FormName = @FormName
+      AND ce.EventTime BETWEEN @StartDate AND @StopDate
+      GROUP BY ce.PersonId
+     ) agg
+  JOIN dbo.ViewCaseListStub v ON agg.PersonId=v.PersonId
+  WHERE v.StudyId=@StudyId;
+END]]>
+	</row>
 	<row ProcId="50" StudyName="BASE" ProcName="dbo.GetCaseListProblem" ProcDesc="Utvalg basert på diagnose" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-24279895" LastUpdate="2019-01-03T08:58:43.483Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListProblem( @StudyId INT, @ProbCode VARCHAR(8) ) AS
 BEGIN
@@ -2236,6 +2255,12 @@ END;]]>
 	</row>
 	<row ProcId="321" StudyName="NDV" ProcName="NDV.GetCaseListUserVsConsent" ProcDesc="Samtykke: Positive per behander siste 30 dager" ProcParams=":StudyId, 30" ListId="CASE" GrantTo="Leder" MinVersion="6000" ChkSum="-1200948447" LastUpdate="2018-06-07T08:35:24.040Z">
 		<![CDATA[]]>
+	</row>
+	<row ProcId="322" StudyName="NDV" ProcName="NDV.GetCaseListPhoneConsultations" ProcDesc="Aktivitet: Telefonkonsultasjoner i periode" ProcParams=":StudyId, :StartDate, :StopDate" ListId="CASE" GrantTo="public" MinVersion="18200" HelpText="Telefonkonsultasjoner i valgfri periode" ChkSum="-1906210534" LastUpdate="2019-01-03T13:36:38.250Z">
+		<![CDATA[CREATE PROCEDURE NDV.GetCaseListPhoneConsultations( @StudyId INT, @StartAt DateTime, @StopAt DateTime ) AS
+BEGIN
+  EXEC dbo.GetFormClassInPeriod @StudyId, 'DIAPOL_TLF', @StartAt, @StopAt;
+END]]>
 	</row>
 	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1529014000" LastUpdate="2019-01-03T08:59:37.717Z">
 		<![CDATA[CREATE PROCEDURE BAR.GetHospitalizedWithoutAdmissionForm( @StudyId INT )
