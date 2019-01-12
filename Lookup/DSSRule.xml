@@ -281,7 +281,7 @@ BEGIN
       'Ingen eksterne labdata fra siste 6 mnd.  Labprøver bør tas regelmessig, bl.a. for å overvåke nyrefunksjon.';
 END]]>
 	</row>
-	<row RuleId="10" RuleClass="MUST" RuleType="M" RuleProc="GBD.RuleMUST" Title="MUST" Description="Automatisk beregning av MUST score, med tilhørende varsling ved høy score." ChkSum="519050083" LastUpdate="2019-01-03T09:03:14.920Z">
+	<row RuleId="10" RuleClass="MUST" RuleType="M" RuleProc="GBD.RuleMUST" Title="MUST" Description="Automatisk beregning av MUST score, med tilhørende varsling ved høy score." ChkSum="-338712236" LastUpdate="2019-01-12T06:41:33.327Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleMUST( @StudyId INT, @PersonId INT ) AS
 BEGIN
   SET NOCOUNT ON;
@@ -295,25 +295,33 @@ BEGIN
   DECLARE @MsgText VARCHAR(512);
   DECLARE @AlertFacet VARCHAR(16);
   SET @MustScore = NULL;
+  
   -- Get last height
-  SELECT TOP 1 @Height=co.Quantity FROM dbo.ClinObservation co
-  JOIN dbo.ClinEvent ce ON ce.EventId=co.EventId
-  WHERE ce.PersonId=@PersonId AND co.VarName='HEIGHT' AND co.Quantity>1 ORDER BY ce.EventTime DESC;
+  SELECT TOP 1 @Height = cdp.Quantity 
+  FROM dbo.ClinDataPoint cdp
+  JOIN dbo.ClinEvent ce ON ce.EventId = cdp.EventId
+  WHERE ce.PersonId = @PersonId AND cdp.ItemId = 3225 AND cdp.Quantity > 1 
+  ORDER BY ce.EventTime DESC;
+  
   -- Get last weight with timestamp
-  SELECT TOP 1 @WeightNow=co.Quantity,@EventTime=ce.EventTime  FROM dbo.ClinObservation co
-  JOIN dbo.ClinEvent ce ON ce.EventId=co.EventId
-  WHERE ce.PersonId=@PersonId AND co.VarName='WEIGHT' AND co.Quantity>1 ORDER BY ce.EventTime DESC;
+  SELECT TOP 1 @WeightNow = cdp.Quantity, @EventTime = ce.EventTime  
+  FROM dbo.ClinDataPoint cdp
+  JOIN dbo.ClinEvent ce ON ce.EventId = cdp.EventId
+  WHERE ce.PersonId = @PersonId AND cdp.ItemId = 3224 AND cdp.Quantity > 1 
+  ORDER BY ce.EventTime DESC;
+  
   -- Calculate weight change and days before last weight/timestamp
   IF ( @Height > 1 ) AND ( @WeightNow > 1 )
   BEGIN
-    SET @BMI = 10000*@WeightNow/@Height/@Height;
-    SELECT ce.EventTime,@WeightNow AS WeightNow,co.Quantity as WeightThen,@Height as Height,
-        100*(@WeightNow/co.Quantity-1) as PercentChange,
-        CONVERT(FLOAT,@EventTime - ce.EventTime) as DaysBetween,
-        co.Quantity/@Height/@Height*10000 as BMIThen
+    SET @BMI = 10000 * @WeightNow / @Height / @Height;
+    SELECT ce.EventTime, @WeightNow AS WeightNow, cdp.Quantity AS WeightThen, @Height AS Height,
+        100*(@WeightNow/cdp.Quantity-1) AS PercentChange,
+        CONVERT(FLOAT,@EventTime - ce.EventTime) AS DaysBetween,
+        cdp.Quantity / @Height / @Height * 10000 AS BMIThen
       INTO #temp
-      FROM dbo.ClinEvent ce JOIN dbo.ClinObservation co on co.EventId=ce.EventId
-      WHERE ce.PersonId=@PersonId AND co.VarName='WEIGHT' AND co.Quantity > 0;
+      FROM dbo.ClinEvent ce 
+      JOIN dbo.ClinDataPoint cdp ON cdp.EventId=ce.EventId
+      WHERE ce.PersonId = @PersonId AND cdp.ItemId = 3224 AND cdp.Quantity > 1;
     -- Remove all old data
     DELETE FROM #temp WHERE DaysBetween > 180;
     -- Return all data indication lost weight last 180 days
@@ -347,10 +355,17 @@ BEGIN
     BEGIN
       SET @MsgText = @MsgText + 'BMI er over 20 (' + dbo.GetShortNumber( ROUND(@BMI,1) ) + ', 0p). ';
     END
-  END;
-  UPDATE dbo.PersonAbstraction SET MustScore=@MustScore,BMI=@BMI,Weight=@WeightNow,Height=@Height WHERE PersonId=@PersonId;
+  END;                                           
+  
+  -- Store information in PersonAbstraction table
+  UPDATE dbo.PersonAbstraction 
+  SET MustScore = @MustScore, BMI = @BMI, Weight = @WeightNow, Height = @Height 
+  WHERE PersonId = @PersonId;
   IF @@ROWCOUNT = 0
-    INSERT INTO dbo.PersonAbstraction (PersonId,Height,Weight,MustScore,BMI) VALUES(@PersonId,@Height,@WeightNow,@MustScore,@BMI)
+    INSERT INTO dbo.PersonAbstraction( PersonId, Height, Weight, MustScore, BMI ) 
+    VALUES( @PersonId, @Height, @WeightNow, @MustScore, @BMI );
+    
+  -- Create alert based on MustScore   
   IF @MustScore IS NULL
   BEGIN
     SET @MsgHeader = 'Ernæringstilstand?';
@@ -486,51 +501,51 @@ BEGIN
   EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'AFTREATED',@AlertFacet,@HeaderText,@MsgText
 END]]>
 	</row>
-	<row RuleId="14" RuleClass="CF#\d" RuleType="M" RuleProc="GBD.RuleReminder" Title="Skjema" Description="Påminnelse basert på eget påminnelsesskjema." ChkSum="-449999949" LastUpdate="2019-01-03T09:03:16.367Z">
+	<row RuleId="14" RuleClass="CF#\d" RuleType="M" RuleProc="GBD.RuleReminder" Title="Skjema" Description="Påminnelse basert på eget påminnelsesskjema." ChkSum="-2052883428" LastUpdate="2019-01-12T06:46:37.603Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleReminder( @StudyId INT, @PersonId INT )
 AS
 BEGIN
   -- Reset all alerts of this class to level 0, because some forms may have been deleted
-  UPDATE dbo.Alert SET AlertLevel=0 WHERE StudyId=@StudyId AND PersonId=@PersonId AND AlertClass LIKE 'CF#%';
+  UPDATE dbo.Alert SET AlertLevel = 0 WHERE StudyId = @StudyId AND PersonId = @PersonId AND AlertClass LIKE 'CF#%';
   
   -- Find events first to get a small temp table for next join
-  SELECT ce.EventId,cf.ClinFormId,ce.EventTime 
+  SELECT ce.EventId, cf.ClinFormId, ce.EventTime 
   INTO #tempEvents 
   FROM dbo.ClinEvent ce
-  JOIN dbo.ClinForm cf ON cf.EventId=ce.EventId AND cf.DeletedAt IS NULL
-  JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId AND mf.FormName = 'ALERT'
-  WHERE ce.StudyId=@StudyId AND ce.PersonId=@PersonId; 
+  JOIN dbo.ClinForm cf ON cf.EventId = ce.EventId AND cf.DeletedAt IS NULL
+  JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId AND mf.FormName = 'ALERT'
+  WHERE ce.StudyId = @StudyId AND ce.PersonId = @PersonId; 
   
   -- Get current alerts 
   SELECT @PersonId as PersonId,@StudyId AS StudyId,
     'CF#' + CONVERT(VARCHAR,te.ClinFormId) AS AlertClass,
-    'Include' as AlertFacet,                                                          
-    c.EnumVal as AlertLevel,
-    h.TextVal as AlertHeader, 
-    q.TextVal + ' ( <a href="ShowClinFormId='+CONVERT(VARCHAR,te.ClinFormId) + '">Påminnelse</a> fra ' + CONVERT(VARCHAR,te.EventTime,104 ) + ' )' as AlertMessage,
-    ISNULL(NULLIF(b.TextVal,''),'TWMF') as AlertButtons, 
+    'Include' AS AlertFacet,                                                          
+    c.EnumVal AS AlertLevel,
+    h.TextVal AS AlertHeader, 
+    q.TextVal + ' ( <a href="ShowClinFormId='+CONVERT(VARCHAR,te.ClinFormId) + '">Påminnelse</a> fra ' + CONVERT(VARCHAR,te.EventTime,104 ) + ' )' AS AlertMessage,
+    ISNULL(NULLIF(b.TextVal,''),'TWMF') AS AlertButtons, 
     d.DTVal AS HideUntil           
   INTO #tempAlerts
   FROM #tempEvents te 
-    JOIN dbo.ClinObservation h on h.EventId = te.EventId AND h.VarName='AlertHeader' 
-    JOIN dbo.ClinObservation c on c.EventId = te.EventId AND c.VarName='AlertLevel' 
-    JOIN dbo.ClinObservation q on q.EventId = te.EventId AND q.VarName='AlertMessage'
-    JOIN dbo.ClinObservation d ON d.EventId = te.EventId AND d.VarName='HideUntil'
-    LEFT OUTER JOIN dbo.ClinObservation b ON b.EventId = te.EventId AND b.VarName='AlertButtons'
+    JOIN dbo.ClinDataPoint h on h.EventId = te.EventId AND h.ItemId = 5601 
+    JOIN dbo.ClinDataPoint c on c.EventId = te.EventId AND c.ItemId = 5603 
+    JOIN dbo.ClinDataPoint q on q.EventId = te.EventId AND q.ItemId = 5602
+    JOIN dbo.ClinDataPoint d ON d.EventId = te.EventId AND d.ItemId = 5604
+    LEFT OUTER JOIN dbo.ClinDataPoint b ON b.EventId = te.EventId AND b.ItemId = 5605
   WHERE c.EnumVal > 0;
     
   UPDATE dbo.Alert SET 
-    AlertLevel=t.AlertLevel,AlertHeader=t.AlertHeader,
-    AlertMessage=t.AlertMessage, AlertButtons=UPPER(t.AlertButtons)
+    AlertLevel = t.AlertLevel, AlertHeader = t.AlertHeader,
+    AlertMessage = t.AlertMessage, AlertButtons = UPPER(t.AlertButtons)
   FROM #tempAlerts t 
-  WHERE ( t.PersonId=Alert.PersonId AND t.StudyId=Alert.StudyId AND t.AlertClass=Alert.AlertClass )
-  AND  (Alert.AlertLevel <> t.AlertLevel OR Alert.AlertMessage<>t.AlertMessage OR Alert.AlertHeader<>t.AlertHeader OR Alert.AlertButtons <> t.AlertButtons);
+  WHERE ( t.PersonId = Alert.PersonId AND t.StudyId = Alert.StudyId AND t.AlertClass = Alert.AlertClass )
+  AND  (Alert.AlertLevel <> t.AlertLevel OR Alert.AlertMessage <> t.AlertMessage OR Alert.AlertHeader <> t.AlertHeader OR Alert.AlertButtons <> t.AlertButtons);
   
   -- Bump forward HideUntil if needed (data on form has changed)  
-  UPDATE dbo.Alert SET 
-    HideUntil=t.HideUntil
+  UPDATE dbo.Alert 
+  SET HideUntil = t.HideUntil
   FROM #tempAlerts t
-  WHERE (t.PersonId=Alert.PersonId AND t.StudyId=Alert.StudyId AND t.AlertClass=Alert.AlertClass )
+  WHERE (t.PersonId = Alert.PersonId AND t.StudyId = Alert.StudyId AND t.AlertClass = Alert.AlertClass )
   AND t.HideUntil > Alert.HideUntil;
   
   -- Remove all existing alerts from temp, based on ClinFormId
@@ -538,7 +553,8 @@ BEGIN
   
   -- Add the rest, which will be from new ClinForms
   INSERT INTO dbo.Alert ( PersonId,StudyId,AlertClass,AlertFacet,AlertLevel,AlertHeader,AlertMessage,AlertButtons,HideUntil)
-  SELECT t.PersonId,t.StudyId,t.AlertClass,t.AlertFacet,t.AlertLevel,t.AlertHeader,t.AlertMessage,t.AlertButtons,t.HideUntil FROM #tempAlerts t;
+  SELECT t.PersonId,t.StudyId,t.AlertClass,t.AlertFacet,t.AlertLevel,t.AlertHeader,t.AlertMessage,t.AlertButtons,t.HideUntil 
+  FROM #tempAlerts t;
   
 END]]>
 	</row>
@@ -593,21 +609,28 @@ BEGIN
 END
 ]]>
 	</row>
-	<row RuleId="16" RuleClass="CARBCOUNT" RuleType="M" RuleProc="NDV.RuleCarbCount" Title="Karbohydrattelling" Description="Opplæring i karbohydrattelling hos type-1 diabetikere." ChkSum="-702223112" LastUpdate="2019-01-03T09:03:17.107Z">
+	<row RuleId="16" RuleClass="CARBCOUNT" RuleType="M" RuleProc="NDV.RuleCarbCount" Title="Karbohydrattelling" Description="Opplæring i karbohydrattelling hos type-1 diabetikere." ChkSum="-1760762615" LastUpdate="2019-01-12T06:54:59.073Z">
 		<![CDATA[CREATE PROCEDURE NDV.RuleCarbCount( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @TrainDate DateTime;
   DECLARE @AlertFacet VARCHAR(16);
-  DECLARE @AlertLevel INT; 
+  DECLARE @AlertLevel INT;                      
+         
+  -- Make sure we have a Type-1 diabetes patient
+  
   IF ISNULL(dbo.GetLastEnumVal( @PersonId, 'NDV_TYPE' ),-1) <> 1
   BEGIN
+    -- Not relevant for patients without Type-1 diabetes                                                
     SET @AlertFacet = 'Exclude';
     SET @AlertLevel = 0; 
   END
-  ELSE BEGIN                                                         
-    SELECT TOP 1 @TrainDate=DTVal FROM dbo.ClinObservation co
-    JOIN dbo.ClinEvent ce ON co.EventId=ce.EventId 
-    WHERE ( ce.StudyId=@StudyId ) AND ( ce.PersonId=@PersonId ) AND ( co.VarName='DIAPOL_TRAIN_CARBCOUNT' )
+  ELSE 
+  BEGIN
+    -- Find date where Carbohydrate counting was taught                                               
+    SELECT TOP 1 @TrainDate = DTVal 
+    FROM dbo.ClinDataPoint cdp
+    JOIN dbo.ClinEvent ce ON ce.EventId = cdp.EventId 
+    WHERE ( ce.PersonId = @PersonId ) AND ( cdp.ItemId = 5713 )
     ORDER BY DTVal DESC;   
     IF @TrainDate IS NULL
     BEGIN
@@ -625,10 +648,8 @@ BEGIN
   SET @AlertHeader = dbo.GetTextItem( 'NDV.RuleCarbCount', @AlertFacet +'.Header' );
   SET @AlertMessage = dbo.GetTextItem( 'NDV.RuleCarbCount', @AlertFacet );
   IF NOT @TrainDate IS NULL                        
-  BEGIN
     SET @AlertMessage = REPLACE( @AlertMessage, '@TrainDate', dbo.LongTime( @TrainDate ) );
-  END
-  EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'CARBCOUNT',@AlertFacet,@AlertHeader, @AlertMessage;    
+  EXEC dbo.AddAlertForPerson @StudyId, @PersonId, @AlertLevel,'CARBCOUNT', @AlertFacet, @AlertHeader, @AlertMessage;    
 END]]>
 	</row>
 	<row RuleId="17" RuleClass="NDVCONSENT" RuleType="M" RuleProc="NDV.RuleConsent" Title="Samtykke" Description="Manglende samtykke-erklæring." ChkSum="773715923" LastUpdate="2019-01-03T09:03:17.447Z">
@@ -842,20 +863,21 @@ BEGIN
   EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'NDVEYE',@AlertFacet,@AlertHeader, @AlertMessage;    
 END]]>
 	</row>
-	<row RuleId="21" RuleClass="NDVAVSLUTT" RuleType="M" RuleProc="NDV.RuleAutoClose" Title="Avslutning" Description="Automatisk avslutning av pasienter i NOKLUS Diabetes basert på innhold i poliklinisk notat." ChkSum="220751245" LastUpdate="2019-01-03T09:03:19.063Z">
+	<row RuleId="21" RuleClass="NDVAVSLUTT" RuleType="M" RuleProc="NDV.RuleAutoClose" Title="Avslutning" Description="Automatisk avslutning av pasienter i NOKLUS Diabetes basert på innhold i poliklinisk notat." ChkSum="187530601" LastUpdate="2019-01-12T06:58:26.080Z">
 		<![CDATA[CREATE PROCEDURE NDV.RuleAutoClose( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @DpAvsluttet INT;           
   SELECT TOP 1 @DpAvsluttet = EnumVal 
-    FROM dbo.ClinObservation co 
-    JOIN dbo.ClinEvent ce ON ce.EventId=co.EventId 
-    WHERE ce.StudyId=@StudyId AND ce.PersonId=@PersonId AND co.VarName='DP_AVSLUTTET'
-    AND co.ObsDate > getdate()-1
+    FROM dbo.ClinDataPoint cdp 
+    JOIN dbo.ClinEvent ce ON ce.EventId = cdp.EventId 
+    WHERE ce.PersonId = @PersonId AND cdp.ItemId = 7746
+    AND cdp.ObsDate > GETDATE()-1
     ORDER BY ce.EventNum DESC;
   IF @DpAvsluttet = 1
-  BEGIN
-    UPDATE dbo.StudCase SET FinState=4, GroupId = NULL 
-    WHERE StudyId=@StudyId AND PersonId=@PersonId;
+  BEGIN                                   
+    -- Set to "Avsluttet" and remove from group.
+    UPDATE dbo.StudCase SET FinState = 4, GroupId = NULL 
+    WHERE StudyId = @StudyId AND PersonId = @PersonId;
     EXEC dbo.AddAlertForPerson @StudyId,@PersonId,1,'NDVAVSLUTT','Include','Avsluttet','Avsluttet på diabetespoliklinikken basert på informasjon fra skjema..';
   END
   ELSE      
