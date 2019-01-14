@@ -2277,24 +2277,24 @@ BEGIN
   EXEC dbo.GetFormClassInPeriod @StudyId, 'DIAPOL_TLF', @StartAt, @StopAt;
 END]]>
 	</row>
-	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1529014000" LastUpdate="2019-01-03T08:59:37.717Z">
-		<![CDATA[CREATE PROCEDURE BAR.GetHospitalizedWithoutAdmissionForm( @StudyId INT )
-AS
+	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1612684606" LastUpdate="2019-01-13T18:20:58.827Z">
+		<![CDATA[CREATE PROCEDURE BAR.GetHospitalizedWithoutAdmissionForm( @StudyId INT ) AS
 BEGIN  
   SELECT DISTINCT ce.PersonId 
   INTO #temp
-  FROM ClinEvent ce 
-  JOIN ClinObservation co ON co.EventId=ce.EventId
-  JOIN MetaItem mi ON mi.VarName=co.VarName
-  WHERE mi.ItemId=8091 AND co.EnumVal=1 AND ce.StudyId=@StudyId
+  FROM dbo.ClinEvent ce 
+  JOIN dbo.ClinDataPoint cdp ON cdp.EventId = ce.EventId
+  WHERE cdp.ItemId = 8091 AND cdp.EnumVal = 1 AND ce.StudyId = @StudyId
   EXCEPT 
-  SELECT DISTINCT ce2.PersonId FROM ClinEvent ce2 
-  JOIN ClinForm cf2 ON cf2.EventId=ce2.EventId
-  WHERE cf2.FormId=655 AND ce2.StudyId=@StudyId;
-  SELECT v.PersonId,v.DOB,v.FullName,v.GroupName, 'No FirstAdmission!' as InfoText
-  FROM ViewActiveCaseListStub v JOIN #temp t ON t.PersonId=v.PersonId
-  WHERE v.StudyId=@StudyId
-  ORDER BY FullName
+  SELECT DISTINCT ce2.PersonId 
+  FROM dbo.ClinEvent ce2 
+  JOIN dbo.ClinForm cf2 ON cf2.EventId = ce2.EventId
+  WHERE cf2.FormId=655 AND ce2.StudyId = @StudyId;
+  SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, 'No FirstAdmission!' AS InfoText
+  FROM dbo.ViewActiveCaseListStub v 
+  JOIN #temp t ON t.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId
+  ORDER BY FullName;
 END]]>
 	</row>
 	<row ProcId="401" StudyName="BAR" ProcName="dbo.GetCaseListGroupId" ProcDesc="Gruppe: Rumpert" ProcParams=":StudyId, 1" ListId="CASE" GrantTo="public" MinVersion="18214" HelpText="Gjelder bare arbeidssted Haukeland Sykehus" ChkSum="886319624" LastUpdate="2018-09-04T07:50:55.580Z">
@@ -2334,29 +2334,30 @@ BEGIN
   WHERE v.StudyId = @StudyId AND (T6090.EnumVal = 1 OR T6299.EnumVal = 1 OR T6089.Quantity > 1900)
 END]]>
 	</row>
-	<row ProcId="601" StudyName="ROAS" ProcName="ENDO.GetAddisonNoRecentData" ProcDesc="Addison: Uten skjemadata etter 01.01.2013" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6002" ChkSum="-666845326" LastUpdate="2019-01-03T08:59:40.273Z">
+	<row ProcId="601" StudyName="ROAS" ProcName="ENDO.GetAddisonNoRecentData" ProcDesc="Addison: Uten skjemadata etter 01.01.2013" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6002" ChkSum="-1479391439" LastUpdate="2019-01-12T10:07:55.437Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetAddisonNoRecentData( @StudyId INT ) AS
 BEGIN
   -- Find Addison patients
   SELECT DISTINCT ce.PersonId
   INTO #temp 
   FROM dbo.ClinEvent ce 
-  JOIN dbo.ClinObservation co ON co.EventId=ce.EventId
-  WHERE co.VarName='ICD10_E271' AND co.EnumVal = 1
+  JOIN dbo.ClinDataPoint cdp ON cdp.EventId = ce.EventId
+  WHERE cdp.ItemId = 6299 AND cdp.EnumVal = 1
   UNION
   SELECT DISTINCT ce.PersonId FROM dbo.ClinEvent ce 
-  JOIN dbo.ClinObservation co ON co.EventId=ce.EventId
-  WHERE co.VarName='RoasAddisonType' AND co.EnumVal = 1
+  JOIN dbo.ClinDataPoint cdp ON cdp.EventId = ce.EventId
+  WHERE cdp.ItemId = 6090 AND cdp.EnumVal = 1
   EXCEPT 
   SELECT DISTINCT ce.PersonId FROM dbo.ClinForm cf
-  JOIN dbo.ClinEvent ce ON ce.EventId=cf.EventId  
+  JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId  
   JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId
   WHERE FormName IN ( 'Autoimmunitet','Addison' )
   AND ce.EventTime > '2013-01-01';
   -- Join with active patients
-  SELECT DISTINCT v.*,ISNULL(p.PostalCode,'') + ' ' + ISNULL(p.City,'')  AS InfoText FROM dbo.ViewActiveCaseListStub v
+  SELECT DISTINCT v.*,ISNULL(p.PostalCode,'') + ' ' + ISNULL(p.City,'') AS InfoText 
+  FROM dbo.ViewActiveCaseListStub v
   JOIN #temp t ON t.PersonId=v.PersonId  
-  JOIN dbo.Person p ON p.PersonId=v.PersonId AND ISNULL(DeceasedInd,0)=0
+  JOIN dbo.Person p ON p.PersonId = v.PersonId AND ISNULL(DeceasedInd,0) = 0
   WHERE v.StudyId=@StudyId
   ORDER BY v.FullName;                        
 END]]>
@@ -2595,22 +2596,20 @@ END]]>
 	<row ProcId="733" StudyName="ENDO" ProcName="ENDO.GetDiabetesType1AndAddison" ProcDesc="Addison: Aktive med Diabetes type 1" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1400487208" LastUpdate="2013-03-19T14:17:44.083Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="734" StudyName="ENDO" ProcName="ENDO.GetEndocrineTumors" ProcDesc="Tumorer: Hypofyse, parathyroidea, binyre og familiære." ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1575704809" LastUpdate="2013-06-06T10:06:20.410Z">
+	<row ProcId="734" StudyName="ENDO" ProcName="ENDO.GetEndocrineTumors" ProcDesc="Tumorer: Hypofyse, parathyroidea, binyre og familiære." ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1318321151" LastUpdate="2019-01-12T10:09:41.923Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetEndocrineTumors( @StudyId INT ) AS
 BEGIN
   -- Get number of diagnoses
-  SELECT ce.PersonId,count(DISTINCT co.VarName) AS HitCount
-    INTO #temp
-  FROM ClinObservation co
-    JOIN ClinEvent ce ON ce.EventId=co.EventId
-  WHERE ce.StudyId=@StudyId AND co.VarName IN
-     ( SELECT VarName FROM MetaItem WHERE ItemId IN ( 5732,5733,5742,5745 ) )
-     AND co.EnumVal = 1
-     GROUP BY ce.PersonId;
+  SELECT ce.PersonId, count(DISTINCT cdp.ItemId ) AS HitCount
+  INTO #temp
+  FROM dbo.ClinDataPoint cdp
+  JOIN dbo.ClinEvent ce ON ce.EventId = cdp.EventId
+  WHERE ce.StudyId=@StudyId AND cdp.ItemId IN ( 5732,5733,5742,5745 ) AND cdp.EnumVal = 1
+  GROUP BY ce.PersonId;
   -- Get patients
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName, 'Treff = ' + CONVERT(VARCHAR,t.HitCount) AS InfoText
-    FROM ViewCaseListStub v
-    JOIN #temp t ON t.PersonId=v.PersonId
+  FROM dbo.ViewCaseListStub v
+  JOIN #temp t ON t.PersonId = v.PersonId
   WHERE v.StudyId=@StudyId
   ORDER BY v.FullName;
 END]]>
@@ -2935,7 +2934,7 @@ BEGIN
   ORDER BY MonthNo,MonthName,dt.StartAt
 END]]>
 	</row>
-	<row ProcId="1004" StudyName="GBD" ProcName="GBD.InfectionReport" ProcDesc="Infeksjonsregistreringer" ProcParams=":StudyId,:StartAt,:StopAt" ListId="FR" GrantTo="public" ChkSum="154422364" LastUpdate="2014-05-12T20:06:39.813Z">
+	<row ProcId="1004" StudyName="GBD" ProcName="GBD.InfectionReport" ProcDesc="Infeksjonsregistreringer" ProcParams=":StudyId,:StartAt,:StopAt" ListId="FR" GrantTo="public" ChkSum="-1114807570" LastUpdate="2019-01-13T16:32:13.907Z">
 		<![CDATA[CREATE PROCEDURE GBD.InfectionReport ( @StudyId INT, @StartAt DateTime = NULL, @StopAt DateTime = NULL ) AS
 BEGIN
   SET LANGUAGE Norwegian; 
@@ -2950,114 +2949,54 @@ BEGIN
     DATENAME( mm, ce.EventTime ) AS MonthName,
     DATEPART( hh, ce.EventTime ) AS EventHour,
     DATEPART( ww, ce.EventTime ) AS EventWeek,
-    v768.DTVal as T768,
-    v769.EnumVal as E769,
-    a769.OptionText as T769,
-    CONVERT(VARCHAR(16),v771.TextVal) as T771,
-    v777.EnumVal as E777,
-    a777.OptionText as T777,
-    v778.EnumVal as E778,
-    a778.OptionText as T778,
-    CONVERT(VARCHAR(16),v3495.TextVal) as T3495,
-    v3498.EnumVal as E3498,
-    a3498.OptionText as T3498,
-    v3499.EnumVal as E3499,
-    a3499.OptionText as T3499,
-    v3500.DTVal as T3500,
+    v768.DTVal AS T768,
+    v769.EnumVal AS E769,
+    a769.OptionText AS T769,
+    CONVERT(VARCHAR(16),v771.TextVal) AS T771,
+    v777.EnumVal AS E777,
+    a777.OptionText AS T777,
+    v778.EnumVal AS E778,
+    a778.OptionText AS T778,
+    CONVERT(VARCHAR(16),v3495.TextVal) AS T3495,
+    v3498.EnumVal AS E3498,
+    a3498.OptionText AS T3498,
+    v3499.EnumVal AS E3499,
+    a3499.OptionText AS T3499,
+    v3500.DTVal AS T3500,
     cf.CreatedAt, cf.CreatedBy, 
-    pcr.Signature as CreatedBySign, pcr.FullName AS CreatedByName, 
+    pcr.Signature AS CreatedBySign, pcr.FullName AS CreatedByName, 
     ROW_NUMBER() OVER ( PARTITION BY ce.PersonId ORDER BY EventTime DESC ) AS OrderNo 
   FROM dbo.ClinForm cf
   JOIN dbo.ClinEvent ce ON ( ce.EventId = cf.EventId ) 
   JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId 
   JOIN dbo.StudCase sc ON ( sc.StudyId = ce.StudyId ) AND ( sc.PersonId = ce.PersonId ) 
   JOIN dbo.StudyGroup sg ON ( sg.StudyId = ce.StudyId ) AND ( sg.GroupId = ce.GroupId ) 
-  JOIN dbo.StudyUser su ON ( su.StudyId=sg.StudyId ) AND ( su.UserId=USER_ID() ) 
+  JOIN dbo.StudyUser su ON ( su.StudyId = sg.StudyId ) AND ( su.UserId = USER_ID() ) 
   JOIN dbo.UserList my ON ( my.UserId = USER_ID() ) 
   JOIN dbo.StudyCenter c ON ( c.CenterId = sg.CenterId ) 
-  JOIN dbo.UserList ucr ON ucr.UserId=cf.CreatedBy
-  LEFT OUTER JOIN dbo.Person pcr ON pcr.PersonId=ucr.PersonId 
-    LEFT OUTER JOIN dbo.ClinObservation v768 ON v768.EventId=ce.EventId and v768.VarName='INFECT_DATE_END'
-    LEFT OUTER JOIN dbo.ClinObservation v769 ON v769.EventId=ce.EventId and v769.VarName='INFECT_TYPE'
-      LEFT OUTER JOIN dbo.MetaItemAnswer a769 ON a769.ItemId=769 and v769.EnumVal=a769.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v771 ON v771.EventId=ce.EventId and v771.VarName='INFECT_AGENT_NAMES'
-    LEFT OUTER JOIN dbo.ClinObservation v777 ON v777.EventId=ce.EventId and v777.VarName='INFEKSJON_INNLEGGELSE'
-      LEFT OUTER JOIN dbo.MetaItemAnswer a777 ON a777.ItemId=777 and v777.EnumVal=a777.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v778 ON v778.EventId=ce.EventId and v778.VarName='INFEKSJON_DØD'
-      LEFT OUTER JOIN dbo.MetaItemAnswer a778 ON a778.ItemId=778 and v778.EnumVal=a778.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v3495 ON v3495.EventId=ce.EventId and v3495.VarName='INFECT_DRUG_NAMES'
-    LEFT OUTER JOIN dbo.ClinObservation v3498 ON v3498.EventId=ce.EventId and v3498.VarName='INFECT_AGENT_KNOWN'
-      LEFT OUTER JOIN dbo.MetaItemAnswer a3498 ON a3498.ItemId=3498 and v3498.EnumVal=a3498.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v3499 ON v3499.EventId=ce.EventId and v3499.VarName='INFECT_DRUG_GIVEN'
-      LEFT OUTER JOIN dbo.MetaItemAnswer a3499 ON a3499.ItemId=3499 and v3499.EnumVal=a3499.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v3500 ON v3500.EventId=ce.EventId and v3500.VarName='INFECT_DATE_START'
+  JOIN dbo.UserList ucr ON ucr.UserId = cf.CreatedBy
+  LEFT OUTER JOIN dbo.Person pcr ON pcr.PersonId = ucr.PersonId 
+    LEFT OUTER JOIN dbo.ClinDataPoint v768 ON v768.EventId=ce.EventId AND v768.ItemId = 768
+    LEFT OUTER JOIN dbo.ClinDataPoint v769 ON v769.EventId=ce.EventId AND v769.ItemId = 769
+      LEFT OUTER JOIN dbo.MetaItemAnswer a769 ON a769.ItemId=769 AND v769.EnumVal = a769.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v771 ON v771.EventId=ce.EventId AND v771.ItemId = 771
+    LEFT OUTER JOIN dbo.ClinDataPoint v777 ON v777.EventId=ce.EventId AND v777.ItemId = 777
+      LEFT OUTER JOIN dbo.MetaItemAnswer a777 ON a777.ItemId=777 AND v777.EnumVal = a777.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v778 ON v778.EventId=ce.EventId AND v778.ItemId = 778
+      LEFT OUTER JOIN dbo.MetaItemAnswer a778 ON a778.ItemId=778 AND v778.EnumVal = a778.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v3495 ON v3495.EventId=ce.EventId AND v3495.ItemId = 3495
+    LEFT OUTER JOIN dbo.ClinDataPoint v3498 ON v3498.EventId=ce.EventId AND v3498.ItemId = 3498
+      LEFT OUTER JOIN dbo.MetaItemAnswer a3498 ON a3498.ItemId=3498 AND v3498.EnumVal = a3498.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v3499 ON v3499.EventId=ce.EventId AND v3499.ItemId = 3499
+      LEFT OUTER JOIN dbo.MetaItemAnswer a3499 ON a3499.ItemId=3499 AND v3499.EnumVal = a3499.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v3500 ON v3500.EventId=ce.EventId AND v3500.ItemId=3500
   WHERE ( cf.DeletedAt IS NULL )
     AND ( mf.FormName='GBD_INFECTION' )
-    AND ( ( su.GroupId=sg.GroupId ) OR ( su.ShowMyGroup = 0 ) ) 
-    AND ( sg.CenterId=my.CenterId ) 
-    AND ( sc.StudyId=@StudyId ) 
+    AND ( ( su.GroupId = sg.GroupId ) OR ( su.ShowMyGroup = 0 ) ) 
+    AND ( sg.CenterId = my.CenterId ) 
+    AND ( sc.StudyId = @StudyId ) 
     AND ( ce.EventTime >= @StartAt ) AND ( ce.EventTime < @StopAt )
-  ORDER BY ce.EventTime DESC
-END]]>
-	</row>
-	<row ProcId="1005" StudyName="GBD" ProcName="GBD.InjuryReport" ProcDesc="Skaderegistreringer" ProcParams=":StartAt,:StopAt" ListId="FR" GrantTo="public" ChkSum="72538614" LastUpdate="2014-04-12T15:30:49.937Z">
-		<![CDATA[CREATE PROCEDURE GBD.InjuryReport( @StartAt DateTime = NULL, @StopAt DateTime = NULL, @OrderBy INTEGER = 0 ) 
-AS
-BEGIN
-  IF @StartAt IS NULL SET @StartAt = getdate()-90;
-  IF @StopAt IS NULL SET @StopAt = getdate();              
-  SET LANGUAGE Norwegian;
-  SELECT 
-    ce.StudyId,ce.PersonId,dbo.MonthYear(ce.EventTime) as MonthName,
-    sg.CenterId,c.CenterName,sc.GroupId,sg.GroupName,
-    ce.EventTime,ISNULL(mia1.OptionText,'Uspesifisert') as SkadeType,
-    co2.Quantity as Klokketime,
-    mia3.OptionText as Aktivitet, 
-    mia4.OptionText as Observert, 
-    mia5.OptionText as Involvert,        
-    mia6.OptionText as Illebefinnende,        
-    mia7.OptionText as Brudd,        
-    mia8.OptionText as Behandlingssted, 
-    mia9.OrderNumber as Alvorlighet,       
-    mia9.OptionText as AlvorlighetTekst,        
-    cf.Comment as FormComment,                       
-    ul.UserId,up.PersonId as UserPersonId,up.FullName
-  INTO #temp
-  FROM dbo.ClinEvent ce 
-  JOIN dbo.ClinForm cf ON cf.EventId=ce.EventId AND cf.DeletedAt IS NULL 
-  JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId AND mf.FormId=267
-  LEFT OUTER JOIN dbo.ClinObservation co1 ON co1.EventId=ce.EventId AND co1.VarName='SKADE_FALL'
-  LEFT OUTER JOIN dbo.MetaItemAnswer mia1 ON mia1.ItemId=3580 and mia1.OrderNumber=co1.EnumVal
-  LEFT OUTER JOIN dbo.ClinObservation co2 ON co2.EventId=ce.EventId AND co2.VarName='SKADE_TIDSPUNKT'
-  LEFT OUTER JOIN dbo.ClinObservation co3 ON co3.EventId=ce.EventId AND co3.VarName='SKADE_AKTIVITET'
-  LEFT OUTER JOIN dbo.MetaItemAnswer mia3 ON mia3.ItemId=3579 and mia3.OrderNumber=co3.EnumVal
-  LEFT OUTER JOIN dbo.ClinObservation co4 ON co4.EventId=ce.EventId AND co4.VarName='SKADE_OBSERVERT'
-  LEFT OUTER JOIN dbo.MetaItemAnswer mia4 ON mia4.ItemId=3575 and mia4.OrderNumber=co4.EnumVal
-  LEFT OUTER JOIN dbo.ClinObservation co5 ON co5.EventId=ce.EventId AND co5.VarName='SKADE_INVOLVERT'
-  LEFT OUTER JOIN dbo.MetaItemAnswer mia5 ON mia5.ItemId=3576 and mia5.OrderNumber=co5.EnumVal
-  LEFT OUTER JOIN dbo.ClinObservation co6 ON co6.EventId=ce.EventId AND co6.VarName='SKADE_ILLEBEFINNENDE'
-  LEFT OUTER JOIN dbo.MetaItemAnswer mia6 ON mia6.ItemId=3582 and mia6.OrderNumber=co6.EnumVal
-  LEFT OUTER JOIN dbo.ClinObservation co7 ON co7.EventId=ce.EventId AND co7.VarName='SKADE_BRUDD'
-  LEFT OUTER JOIN dbo.MetaItemAnswer mia7 ON mia7.ItemId=3581 and mia7.OrderNumber=co7.EnumVal
-  LEFT OUTER JOIN dbo.ClinObservation co8 ON co8.EventId=ce.EventId AND co8.VarName='SKADE_BEHANDSTED'
-  LEFT OUTER JOIN dbo.MetaItemAnswer mia8 ON mia8.ItemId=3578 and mia8.OrderNumber=co8.EnumVal
-  LEFT OUTER JOIN dbo.ClinObservation co9 ON co9.EventId=ce.EventId AND co9.VarName='EVENT_SEVERITY'
-  LEFT OUTER JOIN dbo.MetaItemAnswer mia9 ON mia9.ItemId=6402 and mia9.OrderNumber=co9.EnumVal
-  JOIN dbo.UserList ul ON ul.UserId=cf.CreatedBy
-  JOIN dbo.UserList mu ON mu.UserId=USER_ID()
-  JOIN dbo.Person up ON up.PersonId=ul.PersonId
-  JOIN dbo.StudCase sc ON sc.StudyId=ce.StudyId AND sc.PersonId=ce.PersonId
-  JOIN dbo.StudyGroup sg ON sg.StudyId=sc.StudyId AND sg.GroupId=sc.GroupId AND sg.GroupActive=1
-  JOIN dbo.StudyCenter c ON c.CenterId=sg.CenterId AND c.CenterId=mu.CenterId
-  LEFT OUTER JOIN dbo.StudyUser su ON su.UserId=USER_ID() AND su.StudyId=sc.StudyId
-  WHERE ( ce.EventTime > @StartAt AND ce.EventTime < @StopAt )
-  AND (( su.GroupId=sc.GroupId ) OR ( su.UserId IS NULL ) OR ( su.GroupId IS NULL ) OR ( su.ShowMyGroup = 0 ));
-  IF @OrderBy = 2
-    SELECT * FROM #temp ORDER BY SkadeType,EventTime
-  ELSE IF @OrderBy = 1
-    SELECT * FROM #temp ORDER BY GroupId,PersonId,EventTime
-  ELSE  
-    SELECT * FROM #temp ORDER BY EventTime;  
+  ORDER BY ce.EventTime DESC;
 END]]>
 	</row>
 	<row ProcId="1006" StudyName="GBD" ProcName="GBD.AnticholinergicDrugUse" ProcDesc="Antikolinergiske midler" ListId="FR" GrantTo="public" ChkSum="1652532668" LastUpdate="2014-04-12T15:31:23.543Z">
@@ -3096,7 +3035,7 @@ BEGIN
   ORDER BY a.ATCCode, Strength
 END]]>
 	</row>
-	<row ProcId="1008" StudyName="BAR" ProcName="BAR.ReportInclusion" ProcDesc="Inklusjonsrapport" ProcParams=":StudyId" ListId="FR" GrantTo="public" ChkSum="-1876020598" LastUpdate="2019-01-03T08:59:54.967Z">
+	<row ProcId="1008" StudyName="BAR" ProcName="BAR.ReportInclusion" ProcDesc="Inklusjonsrapport" ProcParams=":StudyId" ListId="FR" GrantTo="public" ChkSum="-550548514" LastUpdate="2019-01-13T17:21:43.070Z">
 		<![CDATA[CREATE PROCEDURE BAR.ReportInclusion ( @StudyId INT ) AS
 BEGIN
   SELECT p.PersonId, p.DOB, p.FullName, sg.GroupName, ce.EventTime, ce.StudyId, cf.ClinFormId, 
@@ -3136,31 +3075,31 @@ BEGIN
   LEFT OUTER JOIN dbo.StudyGroup sg ON ( sg.StudyId = ce.StudyId ) AND ( sg.GroupId = ce.GroupId ) 
   LEFT OUTER JOIN dbo.UserList ul ON ul.UserId=cf.CreatedBy
   LEFT OUTER JOIN dbo.Person up ON up.PersonId=ul.PersonId 
-    LEFT OUTER JOIN dbo.ClinObservation v6166 ON v6166.EventId=ce.EventId and v6166.VarName='VAR6166'
-    LEFT OUTER JOIN dbo.ClinObservation v6168 ON v6168.EventId=ce.EventId and v6168.VarName='BarReferredFrom'
+    LEFT OUTER JOIN dbo.ClinDataPoint v6166 ON v6166.EventId=ce.EventId and v6166.ItemId=6166
+    LEFT OUTER JOIN dbo.ClinDataPoint v6168 ON v6168.EventId=ce.EventId and v6168.ItemId=6168
       LEFT OUTER JOIN dbo.MetaItemAnswer a6168 ON a6168.ItemId=6168 and v6168.EnumVal=a6168.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v6169 ON v6169.EventId=ce.EventId and v6169.VarName='BarInclusion'
-    LEFT OUTER JOIN dbo.ClinObservation v6170 ON v6170.EventId=ce.EventId and v6170.VarName='BarInclusionAge'
-    LEFT OUTER JOIN dbo.ClinObservation v6242 ON v6242.EventId=ce.EventId and v6242.VarName='VAR6242'
+    LEFT OUTER JOIN dbo.ClinDataPoint v6169 ON v6169.EventId=ce.EventId and v6169.ItemId=6169
+    LEFT OUTER JOIN dbo.ClinDataPoint v6170 ON v6170.EventId=ce.EventId and v6170.ItemId=6170
+    LEFT OUTER JOIN dbo.ClinDataPoint v6242 ON v6242.EventId=ce.EventId and v6242.ItemId=6242
       LEFT OUTER JOIN dbo.MetaItemAnswer a6242 ON a6242.ItemId=6242 and v6242.EnumVal=a6242.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v6243 ON v6243.EventId=ce.EventId and v6243.VarName='VAR6243'
+    LEFT OUTER JOIN dbo.ClinDataPoint v6243 ON v6243.EventId=ce.EventId and v6243.ItemId=6243
       LEFT OUTER JOIN dbo.MetaItemAnswer a6243 ON a6243.ItemId=6243 and v6243.EnumVal=a6243.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v6245 ON v6245.EventId=ce.EventId and v6245.VarName='VAR6245'
+    LEFT OUTER JOIN dbo.ClinDataPoint v6245 ON v6245.EventId=ce.EventId and v6245.ItemId=6245
       LEFT OUTER JOIN dbo.MetaItemAnswer a6245 ON a6245.ItemId=6245 and v6245.EnumVal=a6245.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v6246 ON v6246.EventId=ce.EventId and v6246.VarName='VAR6246'
+    LEFT OUTER JOIN dbo.ClinDataPoint v6246 ON v6246.EventId=ce.EventId and v6246.ItemId=6246
       LEFT OUTER JOIN dbo.MetaItemAnswer a6246 ON a6246.ItemId=6246 and v6246.EnumVal=a6246.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v6247 ON v6247.EventId=ce.EventId and v6247.VarName='VAR6247'
+    LEFT OUTER JOIN dbo.ClinDataPoint v6247 ON v6247.EventId=ce.EventId and v6247.ItemId=6247
       LEFT OUTER JOIN dbo.MetaItemAnswer a6247 ON a6247.ItemId=6247 and v6247.EnumVal=a6247.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v6248 ON v6248.EventId=ce.EventId and v6248.VarName='VAR6248'
+    LEFT OUTER JOIN dbo.ClinDataPoint v6248 ON v6248.EventId=ce.EventId and v6248.ItemId=6248
       LEFT OUTER JOIN dbo.MetaItemAnswer a6248 ON a6248.ItemId=6248 and v6248.EnumVal=a6248.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v8091 ON v8091.EventId=ce.EventId and v8091.VarName='VAR8091'
+    LEFT OUTER JOIN dbo.ClinDataPoint v8091 ON v8091.EventId=ce.EventId and v8091.ItemId=8091
       LEFT OUTER JOIN dbo.MetaItemAnswer a8091 ON a8091.ItemId=8091 and v8091.EnumVal=a8091.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v9319 ON v9319.EventId=ce.EventId and v9319.VarName='VAR9319'
+    LEFT OUTER JOIN dbo.ClinDataPoint v9319 ON v9319.EventId=ce.EventId and v9319.ItemId=9319
       LEFT OUTER JOIN dbo.MetaItemAnswer a9319 ON a9319.ItemId=9319 and v9319.EnumVal=a9319.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v9321 ON v9321.EventId=ce.EventId and v9321.VarName='VAR9321'
+    LEFT OUTER JOIN dbo.ClinDataPoint v9321 ON v9321.EventId=ce.EventId and v9321.ItemId=9321
       LEFT OUTER JOIN dbo.MetaItemAnswer a9321 ON a9321.ItemId=9321 and v9321.EnumVal=a9321.OrderNumber
   WHERE cf.FormId=763;
-  SELECT * FROM #temp ORDER BY PersonId
+  SELECT * FROM #temp ORDER BY PersonId;
 END]]>
 	</row>
 	<row ProcId="1009" StudyName="NDV" ProcName="NDV.ReportLabDataFound" ProcDesc="Labdata registrert" ProcParams=":DiabetesType,:StartDate,:StopDate" ListId="FR" GrantTo="public" MinVersion="6000" ChkSum="1487346624" LastUpdate="2018-10-03T15:39:43.127Z">
@@ -3293,11 +3232,12 @@ BEGIN
   ORDER BY d.OrderNo;
 END]]>
 	</row>
-	<row ProcId="1014" StudyName="GBD" ProcName="GBD.RapportKontaktinfo" ProcDesc="Kontaktinfo pårørende" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="6000" ChkSum="-784408140" LastUpdate="2019-01-03T08:59:57.200Z">
+	<row ProcId="1014" StudyName="GBD" ProcName="GBD.RapportKontaktinfo" ProcDesc="Kontaktinfo pårørende" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="6000" ChkSum="1186832094" LastUpdate="2019-01-13T11:09:57.773Z">
 		<![CDATA[CREATE PROCEDURE GBD.RapportKontaktinfo ( @StudyId INT ) AS
 BEGIN
   SET LANGUAGE Norwegian; 
-  /* Conform to Population field names */
+  SELECT a.* FROM
+  (
   SELECT 
     v.PersonId, v.DOB, v.FullName, v.GenderId, v.GroupName, 
     ce.EventId, ce.EventTime, 
@@ -3306,37 +3246,37 @@ BEGIN
     DATENAME( mm, ce.EventTime ) AS MonthName,
     DATEPART( hh, ce.EventTime ) AS EventHour,
     DATEPART( ww, ce.EventTime ) AS EventWeek,
-    v122.EnumVal as E122,
-    a122.OptionText as T122,
-    CONVERT(VARCHAR(64),v3424.TextVal) as T3424,
-    CONVERT(VARCHAR(64),v3425.TextVal) as T3425,
-    CONVERT(VARCHAR(64),v3426.TextVal) as T3426,
-    CONVERT(VARCHAR(64),v3427.TextVal) as T3427,
-    CONVERT(VARCHAR(16),v3433.TextVal) as T3433,
-    CONVERT(VARCHAR(64),v9318.TextVal) as T9318,
+    v122.EnumVal AS E122,
+    a122.OptionText AS T122,
+    CONVERT(VARCHAR(64),v3424.TextVal) AS T3424,
+    CONVERT(VARCHAR(64),v3425.TextVal) AS T3425,
+    CONVERT(VARCHAR(64),v3426.TextVal) AS T3426,
+    CONVERT(VARCHAR(64),v3427.TextVal) AS T3427,
+    CONVERT(VARCHAR(16),v3433.TextVal) AS T3433,
+    CONVERT(VARCHAR(64),v9318.TextVal) AS T9318,
     cf.CreatedAt, cf.CreatedBy, 
-    pcr.Signature as CreatedBySign, pcr.FullName AS CreatedByName, 
+    pcr.Signature AS CreatedBySign, pcr.FullName AS CreatedByName, 
     ROW_NUMBER() OVER ( PARTITION BY ce.PersonId ORDER BY EventTime DESC ) AS OrderNo 
-  INTO #temp
   FROM dbo.ClinForm cf
   JOIN dbo.ClinEvent ce ON ( ce.EventId = cf.EventId ) 
   JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId 
   JOIN dbo.ViewActiveCaseListStub v ON v.PersonId=ce.PersonId 
   JOIN dbo.UserList ucr ON ucr.UserId=cf.CreatedBy
     LEFT OUTER JOIN dbo.Person pcr ON pcr.PersonId=ucr.PersonId 
-    LEFT OUTER JOIN dbo.ClinObservation v122 ON v122.EventId=ce.EventId and v122.VarName='NEXTOFKIN_TYPE'
-    LEFT OUTER JOIN dbo.MetaItemAnswer a122 ON a122.ItemId=122 and v122.EnumVal=a122.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v3424 ON v3424.EventId=ce.EventId and v3424.VarName='NEXTOFKIN_ADDRESS'
-    LEFT OUTER JOIN dbo.ClinObservation v3425 ON v3425.EventId=ce.EventId and v3425.VarName='NEXTOFKIN_PHONE'
-    LEFT OUTER JOIN dbo.ClinObservation v3426 ON v3426.EventId=ce.EventId and v3426.VarName='NEXTOFKIN_NAME'
-    LEFT OUTER JOIN dbo.ClinObservation v3427 ON v3427.EventId=ce.EventId and v3427.VarName='NEXTOFKIN_CITY'
-    LEFT OUTER JOIN dbo.ClinObservation v3433 ON v3433.EventId=ce.EventId and v3433.VarName='NEXTOFKIN_ZIP'
-    LEFT OUTER JOIN dbo.ClinObservation v9318 ON v9318.EventId=ce.EventId and v9318.VarName='NEXTOFKIN_EMAIL'
+    LEFT OUTER JOIN dbo.ClinDataPoint v122 ON v122.EventId=ce.EventId AND v122.ItemId = 122
+      LEFT OUTER JOIN dbo.MetaItemAnswer a122 ON a122.ItemId=122 and v122.EnumVal=a122.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v3424 ON v3424.EventId=ce.EventId AND v3424.ItemId = 3424
+    LEFT OUTER JOIN dbo.ClinDataPoint v3425 ON v3425.EventId=ce.EventId AND v3425.ItemId = 3425
+    LEFT OUTER JOIN dbo.ClinDataPoint v3426 ON v3426.EventId=ce.EventId AND v3426.ItemId = 3426
+    LEFT OUTER JOIN dbo.ClinDataPoint v3427 ON v3427.EventId=ce.EventId AND v3427.ItemId = 3427
+    LEFT OUTER JOIN dbo.ClinDataPoint v3433 ON v3433.EventId=ce.EventId AND v3433.ItemId = 3433
+    LEFT OUTER JOIN dbo.ClinDataPoint v9318 ON v9318.EventId=ce.EventId AND v9318.ItemId = 9318
   WHERE ( cf.DeletedAt IS NULL )
     AND ( mf.FormName='GBD_PASADMIN' )
     AND ( v.StudyId=@StudyId ) 
-  ORDER BY EventTime DESC;
-  SELECT * FROM #temp WHERE OrderNo=1 ORDER BY FullName;
+  ) a
+  WHERE a.OrderNo = 1
+  ORDER BY a.FullName;
 END]]>
 	</row>
 	<row ProcId="1015" StudyName="GBD" ProcName="GBD.RapportPaminnelser" ProcDesc="Aktive påminnelser" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="521" ChkSum="-1549993953" LastUpdate="2019-01-03T08:59:57.970Z">
@@ -3378,30 +3318,30 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="1016" StudyName="GBD" ProcName="GBD.RapportFallOgSkader" ProcDesc="Fall og skader" ProcParams=":StudyId, :StartAt, :StopAt, :OrderBy" ListId="FR" GrantTo="public" MinVersion="521" ChkSum="972838447" LastUpdate="2015-09-16T10:49:57.280Z">
+	<row ProcId="1016" StudyName="GBD" ProcName="GBD.RapportFallOgSkader" ProcDesc="Fall og skader" ProcParams=":StudyId, :StartAt, :StopAt, :OrderBy" ListId="FR" GrantTo="public" MinVersion="521" ChkSum="291251831" LastUpdate="2019-01-13T14:56:27.533Z">
 		<![CDATA[CREATE PROCEDURE GBD.RapportFallOgSkader( @StudyId INT, @StartAt DateTime = NULL, @StopAt DateTime = NULL, @OrderBy INT = 0 ) AS
 BEGIN
   SET LANGUAGE Norwegian; 
   IF @StartAt IS NULL SET @StartAt = GETDATE()-365;
   IF @StopAt IS NULL SET @StopAt = GETDATE();
                      
-  /* Get relevant forms (GbdAvvik) except when GBD_SKADE on same event */
+  /* Get relevant forms (GbdAvvik) except when the form GBD_SKADE is on same event */
   SELECT cf.ClinFormId
     INTO #formEventList 
     FROM dbo.ClinForm cf 
-    JOIN dbo.ClinEvent ce ON ce.EventId=cf.EventId
-    JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId
-    JOIN dbo.ClinObservation co ON co.EventId=cf.EventId AND co.VarName='SKADE_FALL'
-  WHERE ce.StudyId=@StudyId AND mf.FormName = 'GbdAvvik' AND co.EnumVal in (1,2,3) 
+    JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId
+    JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId
+    JOIN dbo.ClinDataPoint cdp ON cdp.EventId = cf.EventId AND cdp.ItemId = 3580
+  WHERE ce.StudyId=@StudyId AND mf.FormName = 'GbdAvvik' AND cdp.EnumVal in (1,2,3) 
     AND NOT cf.EventId IN (SELECT EventId FROM dbo.ClinForm JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId WHERE mf.FormName='GBD_SKADE' AND DeletedAt IS NULL)
     AND ( ce.EventTime >= @StartAt ) AND ( ce.EventTime < @StopAt )
   UNION
   /* Add relevant forms (GBD_SKADE) */
   SELECT cf.ClinFormId 
     FROM dbo.ClinForm cf
-    JOIN dbo.ClinEvent ce ON ce.EventId=cf.EventId
-    JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId
-  WHERE ce.StudyId=@StudyId AND mf.FormName='GBD_SKADE'
+    JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId
+    JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId
+  WHERE ce.StudyId=@StudyId AND mf.FormName = 'GBD_SKADE'
     AND ( ce.EventTime >= @StartAt ) AND ( ce.EventTime < @StopAt );
 
   /* Retrieve dataset, field order conforms to population specification */
@@ -3412,66 +3352,66 @@ BEGIN
     DATENAME( mm, ce.EventTime ) AS MonthName,
     DATEPART( hh, ce.EventTime ) AS EventHour,
     DATEPART( ww, ce.EventTime ) AS EventWeek,
-    v3574.Quantity as T3574,
-    v3575.EnumVal as E3575,
-    a3575.OptionText as T3575,
-    v3576.EnumVal as E3576,
-    a3576.OptionText as T3576,
-    v3578.EnumVal as E3578,
-    a3578.OptionText as T3578,
-    v3579.EnumVal as E3579,
-    a3579.OptionText as T3579,
-    v3580.EnumVal as E3580,
-    a3580.OptionText as T3580,
-    v3581.EnumVal as E3581,
-    a3581.OptionText as T3581,
-    v3582.EnumVal as E3582,
-    a3582.OptionText as T3582,
-    v6402.EnumVal as E6402,
-    a6402.OptionText as T6402,
+    v3574.Quantity AS T3574,
+    v3575.EnumVal AS E3575,
+    a3575.OptionText AS T3575,
+    v3576.EnumVal AS E3576,
+    a3576.OptionText AS T3576,
+    v3578.EnumVal AS E3578,
+    a3578.OptionText AS T3578,
+    v3579.EnumVal AS E3579,
+    a3579.OptionText AS T3579,
+    v3580.EnumVal AS E3580,
+    a3580.OptionText AS T3580,
+    v3581.EnumVal AS E3581,
+    a3581.OptionText AS T3581,
+    v3582.EnumVal AS E3582,
+    a3582.OptionText AS T3582,
+    v6402.EnumVal AS E6402,
+    a6402.OptionText AS T6402,
     cf.CreatedAt, cf.CreatedBy, 
-    pcr.Signature as CreatedBySign, pcr.FullName AS CreatedByName, 
+    pcr.Signature AS CreatedBySign, pcr.FullName AS CreatedByName, 
     ROW_NUMBER() OVER ( PARTITION BY ce.PersonId ORDER BY EventTime DESC ) AS OrderNo 
   INTO #temp
   FROM #formEventList fel
-  JOIN dbo.ClinForm cf ON cf.ClinFormId=fel.ClinFormId 
-  JOIN dbo.ClinEvent ce ON ce.EventId=cf.EventId  
-  JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId 
+  JOIN dbo.ClinForm cf ON cf.ClinFormId = fel.ClinFormId 
+  JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId  
+  JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId 
   JOIN dbo.StudCase sc ON ( sc.StudyId = ce.StudyId ) AND ( sc.PersonId = ce.PersonId ) 
-  JOIN dbo.Person p ON ( p.PersonId=sc.PersonId ) 
+  JOIN dbo.Person p ON ( p.PersonId = sc.PersonId ) 
   JOIN dbo.StudyGroup sg ON ( sg.StudyId = ce.StudyId ) AND ( sg.GroupId = ce.GroupId ) 
-  JOIN dbo.StudyUser su ON ( su.StudyId=sg.StudyId ) AND ( su.UserId=USER_ID() ) 
+  JOIN dbo.StudyUser su ON ( su.StudyId = sg.StudyId ) AND ( su.UserId = USER_ID() ) 
   JOIN dbo.UserList my ON ( my.UserId = USER_ID() ) 
   JOIN dbo.StudyCenter c ON ( c.CenterId = sg.CenterId ) 
-  JOIN dbo.UserList ucr ON ucr.UserId=cf.CreatedBy
-  LEFT OUTER JOIN dbo.Person pcr ON pcr.PersonId=ucr.PersonId 
-    LEFT OUTER JOIN dbo.ClinObservation v3574 ON v3574.EventId=ce.EventId and v3574.VarName='SKADE_TIDSPUNKT'
-    LEFT OUTER JOIN dbo.ClinObservation v3575 ON v3575.EventId=ce.EventId and v3575.VarName='SKADE_OBSERVERT'
-      LEFT OUTER JOIN dbo.MetaItemAnswer a3575 ON a3575.ItemId=3575 and v3575.EnumVal=a3575.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v3576 ON v3576.EventId=ce.EventId and v3576.VarName='SKADE_INVOLVERT'
-      LEFT OUTER JOIN dbo.MetaItemAnswer a3576 ON a3576.ItemId=3576 and v3576.EnumVal=a3576.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v3578 ON v3578.EventId=ce.EventId and v3578.VarName='SKADE_BEHANDSTED'
-      LEFT OUTER JOIN dbo.MetaItemAnswer a3578 ON a3578.ItemId=3578 and v3578.EnumVal=a3578.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v3579 ON v3579.EventId=ce.EventId and v3579.VarName='SKADE_AKTIVITET'
-      LEFT OUTER JOIN dbo.MetaItemAnswer a3579 ON a3579.ItemId=3579 and v3579.EnumVal=a3579.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v3580 ON v3580.EventId=ce.EventId and v3580.VarName='SKADE_FALL'
-      LEFT OUTER JOIN dbo.MetaItemAnswer a3580 ON a3580.ItemId=3580 and v3580.EnumVal=a3580.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v3581 ON v3581.EventId=ce.EventId and v3581.VarName='SKADE_BRUDD'
-      LEFT OUTER JOIN dbo.MetaItemAnswer a3581 ON a3581.ItemId=3581 and v3581.EnumVal=a3581.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v3582 ON v3582.EventId=ce.EventId and v3582.VarName='SKADE_ILLEBEFINNENDE'
-      LEFT OUTER JOIN dbo.MetaItemAnswer a3582 ON a3582.ItemId=3582 and v3582.EnumVal=a3582.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v6402 ON v6402.EventId=ce.EventId and v6402.VarName='EVENT_SEVERITY'
-      LEFT OUTER JOIN dbo.MetaItemAnswer a6402 ON a6402.ItemId=6402 and v6402.EnumVal=a6402.OrderNumber
+  JOIN dbo.UserList ucr ON ucr.UserId = cf.CreatedBy
+  LEFT OUTER JOIN dbo.Person pcr ON pcr.PersonId = ucr.PersonId 
+    LEFT OUTER JOIN dbo.ClinDataPoint v3574 ON v3574.EventId = ce.EventId AND v3574.ItemId = 3574
+    LEFT OUTER JOIN dbo.ClinDataPoint v3575 ON v3575.EventId = ce.EventId AND v3575.ItemId = 3575
+      LEFT OUTER JOIN dbo.MetaItemAnswer a3575 ON a3575.ItemId = 3575 AND v3575.EnumVal = a3575.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v3576 ON v3576.EventId = ce.EventId AND v3576.ItemId = 3576
+      LEFT OUTER JOIN dbo.MetaItemAnswer a3576 ON a3576.ItemId = 3576 AND v3576.EnumVal = a3576.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v3578 ON v3578.EventId = ce.EventId AND v3578.ItemId = 3578
+      LEFT OUTER JOIN dbo.MetaItemAnswer a3578 ON a3578.ItemId = 3578 AND v3578.EnumVal = a3578.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v3579 ON v3579.EventId = ce.EventId AND v3579.ItemId = 3579
+      LEFT OUTER JOIN dbo.MetaItemAnswer a3579 ON a3579.ItemId = 3579 AND v3579.EnumVal = a3579.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v3580 ON v3580.EventId = ce.EventId AND v3580.ItemId = 3580
+      LEFT OUTER JOIN dbo.MetaItemAnswer a3580 ON a3580.ItemId = 3580 AND v3580.EnumVal = a3580.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v3581 ON v3581.EventId = ce.EventId AND v3581.ItemId = 3581
+      LEFT OUTER JOIN dbo.MetaItemAnswer a3581 ON a3581.ItemId = 3581 AND v3581.EnumVal = a3581.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v3582 ON v3582.EventId = ce.EventId AND v3582.ItemId = 3582
+      LEFT OUTER JOIN dbo.MetaItemAnswer a3582 ON a3582.ItemId = 3582 AND v3582.EnumVal = a3582.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v6402 ON v6402.EventId = ce.EventId AND v6402.ItemId = 6402
+      LEFT OUTER JOIN dbo.MetaItemAnswer a6402 ON a6402.ItemId = 6402 AND v6402.EnumVal = a6402.OrderNumber
   WHERE ( cf.DeletedAt IS NULL )
-    AND ( ( su.GroupId=sg.GroupId ) OR ( su.ShowMyGroup = 0 ) ) 
-    AND ( sg.CenterId=my.CenterId ) 
-    AND ( sc.StudyId=@StudyId )
+    AND ( ( su.GroupId = sg.GroupId ) OR ( su.ShowMyGroup = 0 ) ) 
+    AND ( sg.CenterId = my.CenterId ) 
+    AND ( sc.StudyId = @StudyId )
     AND ( ce.EventTime >= @StartAt ) AND ( ce.EventTime < @StopAt )
   
   /* Select final dataset from temp table 
      - OrderBy=0 => Order by Month (EventTime)
      - OrderBy=1 => Order by Group, PersonId, EventTime
-     - OrderBy=2 => Order by T3580, EventTime
+     - OrderBy=2 => Order by T3580 (Skadetype), EventTime
   */     
   IF @OrderBy=0 
     SELECT * FROM #temp ORDER BY EventTime;
@@ -3604,63 +3544,6 @@ BEGIN
     AND ( sc.StudyId=@StudyId ) 
     AND ( ce.EventTime >= @StartAt ) AND ( ce.EventTime < @StopAt )
   ORDER BY ce.EventTime DESC
-END]]>
-	</row>
-	<row ProcId="1019" StudyName="NDV" ProcName="NDV.ReportProblemAreas" ProcDesc="PAID - rapport (gammel)" ProcParams=":StudyId" ListId="FR" GrantTo="public" MaxVersion="18207" ChkSum="-2021817122" LastUpdate="2018-08-09T08:59:44.523Z">
-		<![CDATA[CREATE PROCEDURE NDV.ReportProblemAreas AS
-BEGIN
-SELECT
-ce.PersonId,p.ReverseName,
-ce.EventTime,co.Quantity as PAID_SUM,
-co1.EnumVal-1 as PAID_01,
-co2.EnumVal-1 as PAID_02,
-co3.EnumVal-1 as PAID_03,
-co4.EnumVal-1 as PAID_04,
-co5.EnumVal-1 as PAID_05,
-co6.EnumVal-1 as PAID_06,
-co7.EnumVal-1 as PAID_07,
-co8.EnumVal-1 as PAID_08,
-co9.EnumVal-1 as PAID_09,
-co10.EnumVal-1 as PAID_10,
-co11.EnumVal-1 as PAID_11,
-co12.EnumVal-1 as PAID_12,
-co13.EnumVal-1 as PAID_13,
-co14.EnumVal-1 as PAID_14,
-co15.EnumVal-1 as PAID_15,
-co16.EnumVal-1 as PAID_16,
-co17.EnumVal-1 as PAID_17,
-co18.EnumVal-1 as PAID_18,
-co19.EnumVal-1 as PAID_19,
-co20.EnumVal-1 as PAID_20
-
-FROM dbo.ClinObservation co
-JOIN dbo.ClinEvent ce ON ce.EventId=co.EventId
-JOIN dbo.Person p ON p.PersonId = ce.PersonId
-
-JOIN dbo.ClinObservation co1 ON co1.EventId=co.EventId AND co1.VarName='PAID_01'
-JOIN dbo.ClinObservation co2 ON co2.EventId=co.EventId AND co2.VarName='PAID_02'
-JOIN dbo.ClinObservation co3 ON co3.EventId=co.EventId AND co3.VarName='PAID_03'
-JOIN dbo.ClinObservation co4 ON co4.EventId=co.EventId AND co4.VarName='PAID_04'
-JOIN dbo.ClinObservation co5 ON co5.EventId=co.EventId AND co5.VarName='PAID_05'
-JOIN dbo.ClinObservation co6 ON co6.EventId=co.EventId AND co6.VarName='PAID_06'
-JOIN dbo.ClinObservation co7 ON co7.EventId=co.EventId AND co7.VarName='PAID_07'
-JOIN dbo.ClinObservation co8 ON co8.EventId=co.EventId AND co8.VarName='PAID_08'
-JOIN dbo.ClinObservation co9 ON co9.EventId=co.EventId AND co9.VarName='PAID_09'
-JOIN dbo.ClinObservation co10 ON co10.EventId=co.EventId AND co10.VarName='PAID_10'
-JOIN dbo.ClinObservation co11 ON co11.EventId=co.EventId AND co11.VarName='PAID_11'
-JOIN dbo.ClinObservation co12 ON co12.EventId=co.EventId AND co12.VarName='PAID_12'
-JOIN dbo.ClinObservation co13 ON co13.EventId=co.EventId AND co13.VarName='PAID_13'
-JOIN dbo.ClinObservation co14 ON co14.EventId=co.EventId AND co14.VarName='PAID_14'
-JOIN dbo.ClinObservation co15 ON co15.EventId=co.EventId AND co15.VarName='PAID_15'
-JOIN dbo.ClinObservation co16 ON co16.EventId=co.EventId AND co16.VarName='PAID_16'
-JOIN dbo.ClinObservation co17 ON co17.EventId=co.EventId AND co17.VarName='PAID_17'
-JOIN dbo.ClinObservation co18 ON co18.EventId=co.EventId AND co18.VarName='PAID_18'
-JOIN dbo.ClinObservation co19 ON co19.EventId=co.EventId AND co19.VarName='PAID_19'
-JOIN dbo.ClinObservation co20 ON co20.EventId=co.EventId AND co20.VarName='PAID_20'
-
-where co.VarName = 'PAID_SUM'
-
-ORDER BY ce.PersonId,ce.EventTime
 END]]>
 	</row>
 	<row ProcId="1020" StudyName="NDV" ProcName="NDV.ReportFootFormCount" ProcDesc="Antall fotskjema per år" ListId="FR" GrantTo="public" ChkSum="1365232211" LastUpdate="2014-12-15T18:03:32.857Z">
