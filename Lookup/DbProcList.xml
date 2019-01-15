@@ -1199,7 +1199,7 @@ BEGIN
   ORDER BY forms.LastFormDate;
 END;]]>
 	</row>
-	<row ProcId="171" StudyName="GBD" ProcName="GBD.GetCaseListFormAvvikThisTertile" ProcDesc="Avvik: Alle avvik dette tertial" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="1966060398" LastUpdate="2018-12-12T09:17:44.970Z">
+	<row ProcId="171" StudyName="GBD" ProcName="GBD.GetCaseListFormAvvikThisTertile" ProcDesc="Avvik: Alle avvik dette tertial" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="675979744" LastUpdate="2019-01-15T07:46:28.317Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormAvvikThisTertile (@StudyId INT) AS
 BEGIN
     DECLARE @DTValue DATETIME = GETDATE();
@@ -1208,7 +1208,7 @@ BEGIN
     EXEC dbo.CalculateTertial @DTValue, @StartsAt OUTPUT, @EndsAt OUTPUT;
 
     SELECT ce.PersonId, p.FullName, p.DOB, sg.GroupName,
-        CONCAT('Opprettet: ', CONVERT(VARCHAR, ce.EventTime, 104), ', Status: ', mia.OptionText) AS InfoText
+        'Opprettet: ' + CONVERT( VARCHAR, ce.EventTime, 104 ) + ', Status: ' + mia.OptionText AS InfoText
     FROM dbo.ClinForm cf 
     JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId AND mf.FormName = 'GbdAvvik'
     JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId
@@ -1223,7 +1223,7 @@ BEGIN
 END;
 ]]>
 	</row>
-	<row ProcId="172" StudyName="GBD" ProcName="GBD.GetCaseListFormAvvikLastTertile" ProcDesc="Avvik: Alle avvik forrige tertial" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="-597533046" LastUpdate="2018-12-12T09:18:14.707Z">
+	<row ProcId="172" StudyName="GBD" ProcName="GBD.GetCaseListFormAvvikLastTertile" ProcDesc="Avvik: Alle avvik forrige tertial" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="-1457127119" LastUpdate="2019-01-15T07:46:56.020Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormAvvikLastTertile (@StudyId INT) AS
 BEGIN
     DECLARE @KeyDate DATETIME = DATEADD(MONTH, -4, GETDATE());
@@ -1232,7 +1232,7 @@ BEGIN
     EXEC dbo.CalculateTertial @KeyDate, @StartsAt OUTPUT, @EndsAt OUTPUT;
 
     SELECT ce.PersonId, p.FullName, p.DOB, sg.GroupName,
-        CONCAT('Opprettet: ', CONVERT(VARCHAR, ce.EventTime, 104), ', Status: ', mia.OptionText) AS InfoText
+        'Opprettet: ' + CONVERT(VARCHAR, ce.EventTime, 104) + ', Status: ' + mia.OptionText AS InfoText
     FROM dbo.ClinForm cf 
     JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId AND mf.FormName = 'GbdAvvik'
     JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId
@@ -1246,11 +1246,11 @@ BEGIN
     AND ( ce.StudyId = @StudyId ) AND (( su.GroupId = ce.GroupId ) OR (su.UserId IS NULL) OR (su.GroupId IS NULL) OR (su.ShowMyGroup = 0));
 END;]]>
 	</row>
-	<row ProcId="173" StudyName="GBD" ProcName="GBD.GetCaseListFormBeslutninger" ProcDesc="Beslutninger: Siste beslutninger" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="267951609" LastUpdate="2018-12-13T14:57:49.253Z">
+	<row ProcId="173" StudyName="GBD" ProcName="GBD.GetCaseListFormBeslutninger" ProcDesc="Beslutninger: Siste beslutninger" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="-1986216224" LastUpdate="2019-01-15T07:47:21.550Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormBeslutninger (@StudyId INT) AS
 BEGIN
     SELECT lf.PersonId, p.FullName, p.DOB, sg.GroupName, p.GenderId, p.NationalId,
-        CONCAT(ss.StatusText, '. Dato: ', dbo.ShortTime( lf.EventTime) ) AS InfoText
+        ss.StatusText + '. Dato: ' + dbo.ShortTime( lf.EventTime) AS InfoText
     FROM dbo.GetLastFormTableByName('GBD_BESLUTNINGER', GETDATE() + 1) lf
     JOIN dbo.Person p ON p.PersonId = lf.PersonId
     JOIN dbo.StudCase sc ON sc.PersonId = lf.PersonId
