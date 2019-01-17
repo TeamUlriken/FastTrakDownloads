@@ -4889,6 +4889,13 @@ BEGIN
                         VALUES (@StudyId, b.PersonId, b.AlertLevel, 'MUST', b.AlertFacet, b.MsgHeader, b.MsgText, 'TYM');
 END]]>
 	</row>
+	<row ProcId="5002" StudyName="*" ProcName="ENDO.GetRoasForms" ProcDesc="Definisjon av skjema som skal kopieres fra EndoJournal til ROAS" ListId="UTIL" GrantTo="public" ChkSum="-346993545" LastUpdate="2019-01-17T13:03:03.950Z">
+		<![CDATA[CREATE PROCEDURE ENDO.GetRoasForms AS
+BEGIN
+  SELECT FormId FROM dbo.MetaForm 
+  WHERE FormName IN ('Addison','Autoimmunitet','APS1','Hypopara','AddisonHRQoL') OR ( FormId IN ( 964 ) );
+END]]>
+	</row>
 	<row ProcId="10001" StudyName="*" ProcName="GBD.RuleBerger" ProcDesc="Registere Bergers skala med 180 dagers intervall" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MaxVersion="18207" ChkSum="976234660" LastUpdate="2019-01-03T09:03:08.607Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleBerger( @StudyId INT, @PersonId INT ) AS
 BEGIN
