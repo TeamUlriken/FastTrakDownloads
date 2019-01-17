@@ -1097,7 +1097,7 @@ BEGIN
   EXEC dbo.GetCaseListDrug @StudyId,'B01AF%'
 END]]>
 	</row>
-	<row ProcId="166" StudyName="GBD" ProcName="GBD.GetCaseListFormVaccine" ProcDesc="Prosess: Vaksinering" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6630" ChkSum="1033044284" LastUpdate="2017-11-13T10:11:27.177Z">
+	<row ProcId="166" StudyName="GBD" ProcName="GBD.GetCaseListFormVaccine" ProcDesc="Prosess: Vaksinering" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6630" CompatibilityLevel="100" ChkSum="1033044284" LastUpdate="2019-01-17T11:55:30.927Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormVaccine (@StudyId INT) AS
 BEGIN
     SELECT lf.PersonId,
@@ -2767,7 +2767,7 @@ END
 
 ]]>
 	</row>
-	<row ProcId="801" StudyName="VREX" ProcName="VREX.GetCaseListRandomization" ProcDesc="Randomisering" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6634" ChkSum="-225594785" LastUpdate="2019-01-15T08:02:01.707Z">
+	<row ProcId="801" StudyName="VREX" ProcName="VREX.GetCaseListRandomization" ProcDesc="Randomisering" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6634" CompatibilityLevel="100" ChkSum="-225594785" LastUpdate="2019-01-17T11:55:28.630Z">
 		<![CDATA[CREATE PROCEDURE VREX.GetCaseListRandomization( @StudyId INT ) AS
 BEGIN
   SELECT v.*, 'RAN#' + FORMAT(q.Quantity,'00#') AS InfoText
@@ -4054,14 +4054,11 @@ BEGIN
 
 END]]>
 	</row>
-	<row ProcId="1040" StudyName="*" ProcName="Report.ProblemList" ProcDesc="Diagnoseliste" ProcParams=":PersonId" ListId="FR" GrantTo="public" MinVersion="18201" ChkSum="1724232603" LastUpdate="2019-01-15T08:04:18.723Z">
+	<row ProcId="1040" StudyName="*" ProcName="Report.ProblemList" ProcDesc="Diagnoseliste" ProcParams=":PersonId" ListId="FR" GrantTo="public" MinVersion="18201" CompatibilityLevel="110" ChkSum="-2131558125" LastUpdate="2019-01-17T11:55:19.707Z">
 		<![CDATA[CREATE PROCEDURE Report.ProblemList ( @PersonId INT ) AS 
 BEGIN
   SELECT dx.ItemCode, dx.ItemName, dx.ProbDebut, mp.ProbDesc, dx.ProbSummary,
-    CASE dx.ProbActive 
-      WHEN 0 THEN 'Andre' 
-      WHEN 1 THEN 'Aktive' 
-    END AS Title 
+    CHOOSE( dx.ProbActive + 1, 'Andre', 'Aktive' ) AS Title 
   FROM Diagnose.ICD10 dx
   JOIN dbo.MetaProblemType mp ON mp.ProbType = dx.ProbType
   WHERE PersonId = @PersonId
