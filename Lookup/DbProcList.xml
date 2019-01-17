@@ -1199,13 +1199,13 @@ BEGIN
   ORDER BY forms.LastFormDate;
 END;]]>
 	</row>
-	<row ProcId="171" StudyName="GBD" ProcName="GBD.GetCaseListFormAvvikThisTertile" ProcDesc="Avvik: Alle avvik dette tertial" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="675979744" LastUpdate="2019-01-15T07:46:28.317Z">
+	<row ProcId="171" StudyName="GBD" ProcName="GBD.GetCaseListFormAvvikThisTertile" ProcDesc="Avvik: Alle avvik dette tertial" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="-1490049323" LastUpdate="2019-01-15T08:00:13.067Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormAvvikThisTertile (@StudyId INT) AS
 BEGIN
-    DECLARE @DTValue DATETIME = GETDATE();
+    DECLARE @KeyDate DATETIME = GETDATE();
     DECLARE @StartsAt DATETIME;
     DECLARE @EndsAt DATETIME;
-    EXEC dbo.CalculateTertial @DTValue, @StartsAt OUTPUT, @EndsAt OUTPUT;
+    EXEC dbo.CalculateTertial @KeyDate, @StartsAt OUTPUT, @EndsAt OUTPUT;
 
     SELECT ce.PersonId, p.FullName, p.DOB, sg.GroupName,
         'Opprettet: ' + CONVERT( VARCHAR, ce.EventTime, 104 ) + ', Status: ' + mia.OptionText AS InfoText
@@ -1223,7 +1223,7 @@ BEGIN
 END;
 ]]>
 	</row>
-	<row ProcId="172" StudyName="GBD" ProcName="GBD.GetCaseListFormAvvikLastTertile" ProcDesc="Avvik: Alle avvik forrige tertial" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="-1457127119" LastUpdate="2019-01-15T07:46:56.020Z">
+	<row ProcId="172" StudyName="GBD" ProcName="GBD.GetCaseListFormAvvikLastTertile" ProcDesc="Avvik: Alle avvik forrige tertial" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="82889191" LastUpdate="2019-01-15T08:00:28.080Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormAvvikLastTertile (@StudyId INT) AS
 BEGIN
     DECLARE @KeyDate DATETIME = DATEADD(MONTH, -4, GETDATE());
@@ -1232,7 +1232,7 @@ BEGIN
     EXEC dbo.CalculateTertial @KeyDate, @StartsAt OUTPUT, @EndsAt OUTPUT;
 
     SELECT ce.PersonId, p.FullName, p.DOB, sg.GroupName,
-        'Opprettet: ' + CONVERT(VARCHAR, ce.EventTime, 104) + ', Status: ' + mia.OptionText AS InfoText
+        'Opprettet: ' + CONVERT( VARCHAR, ce.EventTime, 104 ) + ', Status: ' + mia.OptionText AS InfoText
     FROM dbo.ClinForm cf 
     JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId AND mf.FormName = 'GbdAvvik'
     JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId
@@ -1246,20 +1246,20 @@ BEGIN
     AND ( ce.StudyId = @StudyId ) AND (( su.GroupId = ce.GroupId ) OR (su.UserId IS NULL) OR (su.GroupId IS NULL) OR (su.ShowMyGroup = 0));
 END;]]>
 	</row>
-	<row ProcId="173" StudyName="GBD" ProcName="GBD.GetCaseListFormBeslutninger" ProcDesc="Beslutninger: Siste beslutninger" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="-1986216224" LastUpdate="2019-01-15T07:47:21.550Z">
+	<row ProcId="173" StudyName="GBD" ProcName="GBD.GetCaseListFormBeslutninger" ProcDesc="Beslutninger: Siste beslutninger" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="1553913934" LastUpdate="2019-01-15T08:01:31.790Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormBeslutninger (@StudyId INT) AS
 BEGIN
     SELECT lf.PersonId, p.FullName, p.DOB, sg.GroupName, p.GenderId, p.NationalId,
         ss.StatusText + '. Dato: ' + dbo.ShortTime( lf.EventTime) AS InfoText
-    FROM dbo.GetLastFormTableByName('GBD_BESLUTNINGER', GETDATE() + 1) lf
+    FROM dbo.GetLastFormTableByName( 'GBD_BESLUTNINGER', GETDATE() + 1 ) lf
     JOIN dbo.Person p ON p.PersonId = lf.PersonId
     JOIN dbo.StudCase sc ON sc.PersonId = lf.PersonId
     JOIN dbo.StudyStatus ss ON ss.StatusId = sc.FinState AND ss.StudyId = sc.StudyId
     JOIN dbo.StudyGroup sg ON sg.GroupId = sc.GroupId AND sg.StudyId = sc.StudyId AND sg.GroupActive = 1
 	JOIN dbo.UserList ul ON ul.UserId = USER_ID() AND ul.CenterId = sg.CenterId
     LEFT JOIN dbo.StudyUser su ON su.UserId = USER_ID() AND su.StudyId = sc.StudyId
-    WHERE (sc.StudyId = @StudyId)
-    AND    ((su.GroupId = sc.GroupId) OR (su.UserId IS NULL) OR (su.GroupId IS NULL) OR (su.ShowMyGroup = 0))
+    WHERE ( sc.StudyId = @StudyId )
+    AND    ( ( su.GroupId = sc.GroupId ) OR ( su.UserId IS NULL ) OR ( su.GroupId IS NULL ) OR ( su.ShowMyGroup = 0 ) );
 END;]]>
 	</row>
 	<row ProcId="174" StudyName="GBD" ProcName="GBD.GetCaseListNoFormBeslutninger" ProcDesc="Beslutninger: Uten beslutninger" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18020" ChkSum="821544166" LastUpdate="2018-02-13T10:23:27.363Z">
@@ -2767,10 +2767,10 @@ END
 
 ]]>
 	</row>
-	<row ProcId="801" StudyName="VREX" ProcName="VREX.GetCaseListRandomization" ProcDesc="Randomisering" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6634" ChkSum="1507493827" LastUpdate="2018-09-05T07:27:09.413Z">
+	<row ProcId="801" StudyName="VREX" ProcName="VREX.GetCaseListRandomization" ProcDesc="Randomisering" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6634" ChkSum="-225594785" LastUpdate="2019-01-15T08:02:01.707Z">
 		<![CDATA[CREATE PROCEDURE VREX.GetCaseListRandomization( @StudyId INT ) AS
 BEGIN
-  SELECT v.*,'RAN#' + FORMAT(q.Quantity,'00#') AS InfoText
+  SELECT v.*, 'RAN#' + FORMAT(q.Quantity,'00#') AS InfoText
   FROM dbo.ViewActiveCaseListStub v
   LEFT JOIN dbo.GetLastQuantityTable( 10185, NULL ) q ON q.PersonId = v.PersonId
   WHERE @StudyId = @StudyId;
@@ -4054,17 +4054,17 @@ BEGIN
 
 END]]>
 	</row>
-	<row ProcId="1040" StudyName="*" ProcName="Report.ProblemList" ProcDesc="Diagnoseliste" ProcParams=":PersonId" ListId="FR" GrantTo="public" MinVersion="18201" ChkSum="1409563283" LastUpdate="2018-09-14T09:24:02.900Z">
-		<![CDATA[CREATE PROCEDURE Report.ProblemList ( @PersonId int) AS 
+	<row ProcId="1040" StudyName="*" ProcName="Report.ProblemList" ProcDesc="Diagnoseliste" ProcParams=":PersonId" ListId="FR" GrantTo="public" MinVersion="18201" ChkSum="1724232603" LastUpdate="2019-01-15T08:04:18.723Z">
+		<![CDATA[CREATE PROCEDURE Report.ProblemList ( @PersonId INT ) AS 
 BEGIN
   SELECT dx.ItemCode, dx.ItemName, dx.ProbDebut, mp.ProbDesc, dx.ProbSummary,
-    CASE dx.probactive 
+    CASE dx.ProbActive 
       WHEN 0 THEN 'Andre' 
-      WHEN 1   THEN 'Aktive' 
+      WHEN 1 THEN 'Aktive' 
     END AS Title 
-  FROM Diagnose.ICD10  dx
+  FROM Diagnose.ICD10 dx
   JOIN dbo.MetaProblemType mp ON mp.ProbType = dx.ProbType
-  WHERE PersonId= @PersonId
+  WHERE PersonId = @PersonId
   ORDER BY dx.ProbActive DESC, mp.ProbDesc;
 END]]>
 	</row>
