@@ -94,7 +94,7 @@
         </FormItem>
       </Item>
       <Item ItemId="8480" ItemType="2" VarName="HrAbMed1" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Preparatnavn 1" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Preparatnavn 1" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="46954" OrderNumber="1" OptionText="Cefalotin (Keflin)" VerboseText="Cefalotin"/>
           <Answer AnswerId="46955" OrderNumber="2" OptionText="Kloksacillin (Ekvacillin)" VerboseText="Kloksacillin"/>
           <Answer AnswerId="46960" OrderNumber="3" OptionText="Cefuroksim (Zinacef, Cefuroxim, Lifurox)" VerboseText="Cefuroksim"/>
@@ -103,6 +103,7 @@
           <Answer AnswerId="46989" OrderNumber="6" OptionText="Gentamicin (Garamycin, Gensumycin)" VerboseText="Gentamicin"/>
           <Answer AnswerId="46990" OrderNumber="7" OptionText="Cefotaksim (Claforan)" VerboseText="Cefotaksim"/>
           <Answer AnswerId="47007" OrderNumber="8" OptionText="Ampicillin (Pentrexyl, Pondocollin, Doktacillin)" VerboseText="Ampicillin"/>
+          <Answer AnswerId="11914" OrderNumber="9" OptionText="Cefazolin" VerboseText="Cefazolin"/>
           <Answer AnswerId="46998" OrderNumber="99" OptionText="Annet*"/>
         </FormItem>
       </Item>
@@ -605,6 +606,11 @@
   <Actions>
     <PageAction MasterId="8290">
       <Activate EnumVal="1" PageConditionId="6474" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="8480">
+      <Activate EnumVal="99" PageConditionId="6473" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="8290">
       <Activate EnumVal="1" PageConditionId="6475" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8258">
