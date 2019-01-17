@@ -29,7 +29,7 @@
         </FormItem>
       </Item>
       <Item ItemId="1534" ItemType="5" VarName="SamplingDate" LoincScale="DATE">
-        <FormItem ItemText="Sampling date" ItemHelp="" MinExpression="FORM.DATE-365" MaxExpression="FORM.DATE+365" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Sampling date" ItemHelp="" MinExpression="FORM.DATE-365" MaxExpression="FORM.DATE+365" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -61,7 +61,7 @@
     </Page>
     <Page PageTitle="Sample approval status">
       <Item ItemId="1391" ItemType="2" VarName="VAR1391" LoincScale="ORD">
-        <FormItem ItemText="Sample approval status" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Sample approval status" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="59700" OrderNumber="1" OptionText="Include"/>
           <Answer AnswerId="59701" OrderNumber="2" OptionText="Sampling issue (discarded)"/>
           <Answer AnswerId="10641" OrderNumber="3" OptionText="Transport issue (discarded)"/>
@@ -72,7 +72,241 @@
     </Page>
     <Page PageTitle="Comment to approval status*">
       <Item ItemId="1392" ItemType="4" VarName="VAR1392" LoincScale="NAR" Multiline="1">
-        <FormItem ItemText="Comment" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Comment" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="From Sampling form (paper CRF)">
+      <Item ItemId="3188" ItemType="2" VarName="VAR3188" LoincScale="ORD">
+        <FormItem ItemText="Estrogen use" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11937" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="12040" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3226" ItemType="1" VarName="WAIST" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        <FormItem ItemText="Waist circumference in centimeters" ItemHelp="Midway between costal arc and iliac spine, measured after expiration" Expression="" MinExpression="40" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2154" ItemType="1" VarName="HIP" LoincScale="QN" UnitStr="cm">
+        <FormItem ItemText="Hip circumference in centimeters" ItemHelp="" MinExpression="40" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2155" ItemType="1" VarName="WAIST_HIP_RATIO" LoincScale="QN" UnitStr="ratio">
+        <FormItem ItemText="Waist Hip Ratio" ItemHelp="" Expression="WAIST/HIP" MinExpression="0.1" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3230" ItemType="1" VarName="SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+        <FormItem ItemText="Systolic BP" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3231" ItemType="1" VarName="DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+        <FormItem ItemText="Diastolic BP" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        <FormItem ItemText="Height in centimeters" ItemHelp=" " MinExpression="120" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
+        <FormItem ItemText="Weight in kilograms" ItemHelp=" " MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
+        <FormItem ItemText="BMI" ItemHelp="Calculated from Weight and Height" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Sampling start time" PageIntroduction="Use sampler start or reset time, whichever is later">
+      <Item ItemId="3192" ItemType="1" VarName="VAR3192" LoincScale="QN">
+        <FormItem ItemText="Sampling start hour" ItemHelp="" MinExpression="0" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3194" ItemType="1" VarName="VAR3194" LoincScale="QN">
+        <FormItem ItemText="Sampling start minute" ItemHelp="" MinExpression="0" MaxExpression="59" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3198" ItemType="2" VarName="VAR3198" LoincScale="ORD">
+        <FormItem ItemText="Catheter size" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12041" OrderNumber="1" OptionText="20 kD"/>
+          <Answer AnswerId="12042" OrderNumber="2" OptionText="100 kD"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3199" ItemType="1" VarName="VAR3199" LoincScale="QN">
+        <FormItem ItemText="Sampler ID" ItemHelp="" MinExpression="1" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Sampling stop">
+      <Item ItemId="3211" ItemType="5" VarName="VAR3211" LoincScale="DATE">
+        <FormItem ItemText="Sampler stop date" ItemHelp="" MinExpression="SamplingDate" MaxExpression="SamplingDate+2" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3212" ItemType="1" VarName="VAR3212" LoincScale="QN">
+        <FormItem ItemText="Sampling stop hour" ItemHelp="" MinExpression="0" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3213" ItemType="1" VarName="VAR3213" LoincScale="QN">
+        <FormItem ItemText="Sampling stop minute" ItemHelp="" MinExpression="0" MaxExpression="59" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Evaluation">
+      <Item ItemId="3214" ItemType="2" VarName="VAR3214" LoincScale="ORD">
+        <FormItem ItemText="RXN" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12043" OrderNumber="1" OptionText="Skin"/>
+          <Answer AnswerId="12044" OrderNumber="2" OptionText="Sampler"/>
+          <Answer AnswerId="12045" OrderNumber="3" OptionText="Combination"/>
+          <Answer AnswerId="12046" OrderNumber="4" OptionText="Other"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3215" ItemType="2" VarName="VAR3215" LoincScale="ORD">
+        <FormItem ItemText="Sampling quality" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12060" OrderNumber="1" OptionText="Good"/>
+          <Answer AnswerId="12061" OrderNumber="2" OptionText="Usable"/>
+          <Answer AnswerId="12062" OrderNumber="3" OptionText="Poor"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Saliva samples">
+      <Item ItemId="3216" ItemType="1" VarName="VAR3216" LoincScale="QN">
+        <FormItem ItemText="Saliva 1, hour" ItemHelp="Evening time" MinExpression="0" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3217" ItemType="1" VarName="VAR3217" LoincScale="QN">
+        <FormItem ItemText="Saliva 1, minute" ItemHelp="Evening time" MinExpression="0" MaxExpression="59" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3219" ItemType="1" VarName="VAR3219" LoincScale="QN">
+        <FormItem ItemText="Saliva 2, hour" ItemHelp="Awakening time" MinExpression="0" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3222" ItemType="1" VarName="VAR3222" LoincScale="QN">
+        <FormItem ItemText="Saliva 2, minute" ItemHelp="Awakening time" MinExpression="0" MaxExpression="59" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3223" ItemType="1" VarName="VAR3223" LoincScale="QN">
+        <FormItem ItemText="Saliva 3, hour" ItemHelp="Thirty minutes after awakening" MinExpression="0" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3232" ItemType="1" VarName="VAR3232" LoincScale="QN">
+        <FormItem ItemText="Saliva 3, minute" ItemHelp="Thirty minutes after awakening" MinExpression="0" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Cushing-specific variables">
+      <Item ItemId="3265" ItemType="2" VarName="VAR3265" LoincScale="ORD">
+        <FormItem ItemText="Sampling timeline" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12154" OrderNumber="1" OptionText="Preoperative"/>
+          <Answer AnswerId="12155" OrderNumber="2" OptionText="3 months postoperative"/>
+          <Answer AnswerId="12156" OrderNumber="3" OptionText="6 months postoperative"/>
+          <Answer AnswerId="12157" OrderNumber="4" OptionText="18 months postoperative"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Cushing post operative specific">
+      <Item ItemId="3266" ItemType="2" VarName="VAR3266" LoincScale="ORD">
+        <FormItem ItemText="Histological diagnosis" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="61360" OrderNumber="1" OptionText="Adenoma"/>
+          <Answer AnswerId="61361" OrderNumber="2" OptionText="Carcinoma"/>
+          <Answer AnswerId="61362" OrderNumber="3" OptionText="Hyperplasia"/>
+          <Answer AnswerId="61363" OrderNumber="4" OptionText="Other"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3267" ItemType="5" VarName="VAR3267" LoincScale="DATE">
+        <FormItem ItemText="Date of surgery" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3272" ItemType="2" VarName="VAR3272" LoincScale="ORD">
+        <FormItem ItemText="Postoperative cortisol replacement" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12158" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="12159" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3278" ItemType="2" VarName="VAR3278" LoincScale="ORD">
+        <FormItem ItemText="Steroidogenesis inhibitor" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="61365" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="61366" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3279" ItemType="1" VarName="VAR3279" LoincScale="QN" UnitStr="nmol/L">
+        <FormItem ItemText="Basal S-Cortisol" ItemHelp="Morning value, cortisol replacement withheld" MinExpression="1" MaxExpression="2000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3280" ItemType="1" VarName="VAR3280" LoincScale="QN" UnitStr="pmol/L">
+        <FormItem ItemText="Basal S-ACTH" ItemHelp="Morning value, cortisol replacement withheld" MinExpression="1" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3281" ItemType="1" VarName="VAR3281" LoincScale="QN" UnitStr="nmol/24h">
+        <FormItem ItemText="24h U-FC" ItemHelp="Morning value, cortisol replacement withheld" MinExpression="1" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Comorbidities" PageIntroduction="Cushing specific comorbidities">
+      <Item ItemId="3239" ItemType="2" VarName="VAR3239" LoincScale="ORD">
+        <FormItem ItemText="Aetiology" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12063" OrderNumber="1" OptionText="Pituitary"/>
+          <Answer AnswerId="12064" OrderNumber="2" OptionText="Adrenal"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3240" ItemType="2" VarName="VAR3240" LoincScale="ORD">
+        <FormItem ItemText="Type 2 Diabetes" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12152" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="12153" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3247" ItemType="2" VarName="VAR3247" LoincScale="ORD">
+        <FormItem ItemText="Hypertension" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="61348" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="61349" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3251" ItemType="2" VarName="VAR3251" LoincScale="ORD">
+        <FormItem ItemText="Cardiovascular disease" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="61351" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="61352" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3252" ItemType="2" VarName="VAR3252" LoincScale="ORD">
+        <FormItem ItemText="Cerebrovascular disease" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="61354" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="61355" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3260" ItemType="2" VarName="VAR3260" LoincScale="ORD">
+        <FormItem ItemText="Other comorbidities" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="61357" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="61358" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Other comorbidities*">
+      <Item ItemId="3264" ItemType="4" VarName="VAR3264" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Please describe other comorbidities" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -94,6 +328,20 @@
       <Activate EnumVal="3" PageConditionId="6056" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
       <Activate EnumVal="4" PageConditionId="6057" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
       <Activate EnumVal="5" PageConditionId="6058" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="1160">
+      <Activate EnumVal="10" PageConditionId="7732" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="7733" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="7736" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3265">
+      <Activate EnumVal="1" PageConditionId="7737" PageNumber="14" ComparisonType="3" ComparisonDescription="Greater than"/>
+    </PageAction>
+    <PageAction MasterId="1160">
+      <Activate EnumVal="4" PageConditionId="7738" PageNumber="15" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3278">
+      <Activate EnumVal="1" PageConditionId="7739" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
