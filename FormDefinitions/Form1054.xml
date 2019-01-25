@@ -2,16 +2,16 @@
 <StudyForm>
   <Form FormId="1054" FormName="GBD_TRANSPORT" FormTitle="Legeerklæring TT-kort">
     <Page>
-      <Item ItemId="3542" ItemType="2" VarName="VAR3542" LoincScale="ORD">
-        <FormItem ItemText="Søknaden gjelder" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12242" OrderNumber="1" OptionText="Ny søknad"/>
-          <Answer AnswerId="12243" OrderNumber="2" OptionText="Fornyet søknad"/>
-          <Answer AnswerId="12244" OrderNumber="3" OptionText="Endring av behov"/>
+      <Item ItemId="3542" ItemType="2" VarName="TRANSPORT_SOKNADSTYPE" LoincScale="ORD">
+        <FormItem ItemText="Søknaden gjelder" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12242" OrderNumber="1" OptionText="Ny søknad" VerboseText="Ny søknad om TT-kort."/>
+          <Answer AnswerId="12243" OrderNumber="2" OptionText="Fornyet søknad" VerboseText="Fornyet søknad om TT-kort."/>
+          <Answer AnswerId="12244" OrderNumber="3" OptionText="Endret/utvidet behov" VerboseText="Søknad om endret/utvidet TT-kort."/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Type funksjonsnedsettelse">
-      <Item ItemId="3543" ItemType="2" VarName="VAR3543" LoincScale="ORD">
+      <Item ItemId="3543" ItemType="2" VarName="TRANSPORT_SYNSHEMMET" LoincScale="ORD">
         <FormItem ItemText="Blind eller sterk synshemming" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12245" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="12246" OrderNumber="2" OptionText="Nei"/>
@@ -19,29 +19,29 @@
       </Item>
     </Page>
     <Page>
-      <Item ItemId="3544" ItemType="4" VarName="VAR3544" LoincScale="NAR" Multiline="0">
-        <FormItem ItemText="Visus høyre side" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+      <Item ItemId="3274" ItemType="1" VarName="VISUS_RIGHT" LoincScale="QN" UnitStr="visus" DisplayFormat="">
+        <FormItem ItemText="Visus høyre (visus)" ItemHelp="Evt. med egen brille" MinExpression="0" MaxExpression="1.5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0" Decimals="1" DefaultValue="1.0">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="3545" ItemType="4" VarName="VAR3545" LoincScale="NAR" Multiline="0">
-        <FormItem ItemText="Visus venstre side" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+      <Item ItemId="3275" ItemType="1" VarName="VISUS_LEFT" LoincScale="QN" UnitStr="visus" DisplayFormat="">
+        <FormItem ItemText="Visus venstre (visus)" ItemHelp="Evt. med egen brille" MinExpression="0" MaxExpression="1.5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0" Decimals="1" DefaultValue="1.0">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="3546" ItemType="2" VarName="VAR3546" LoincScale="ORD">
+      <Item ItemId="3546" ItemType="2" VarName="TRANSPORT_BEVEGELSESHEMM" LoincScale="ORD">
         <FormItem ItemText="Bevegelseshemming" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12247" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="12248" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
-      <Item ItemId="3547" ItemType="2" VarName="VAR3547" LoincScale="ORD">
+      <Item ItemId="3547" ItemType="2" VarName="TRANSPORT_PSYKIATRI" LoincScale="ORD">
         <FormItem ItemText="Psykisk sykdom til hinder for bruk av offentlig tranport" ItemHelp="Søkeren kan på grunn av sykdommen ikke kan benytte offentlig transportmiddel, eller sykdommen blir vesentlig forverra ved å benytte offentlig transportmiddel." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12249" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="12250" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
-      <Item ItemId="3577" ItemType="2" VarName="VAR3577" LoincScale="ORD">
+      <Item ItemId="3577" ItemType="2" VarName="TRANSPORT_DESORIENTERT" LoincScale="ORD">
         <FormItem ItemText="Nedsatt orienteringsevne" ItemHelp="Klarer ikke benytte offentlig transport på grunn av nedsatt orienteringsevne." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12251" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="12252" OrderNumber="2" OptionText="Nei"/>
@@ -49,19 +49,19 @@
       </Item>
     </Page>
     <Page PageTitle="Hvilket ledd i reisen er til hinder for bruk av offentlig transport?">
-      <Item ItemId="3587" ItemType="2" VarName="VAR3587" LoincScale="ORD">
+      <Item ItemId="3587" ItemType="2" VarName="TRANSPORT_TILOGFRA" LoincScale="ORD">
         <FormItem ItemText="Veien til og fra holdeplass" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12253" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="12254" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
-      <Item ItemId="3588" ItemType="2" VarName="VAR3588" LoincScale="ORD">
+      <Item ItemId="3588" ItemType="2" VarName="TRANSPORT_AVOGPAA" LoincScale="ORD">
         <FormItem ItemText="Av- og påstigning" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12255" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="12256" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
-      <Item ItemId="3589" ItemType="2" VarName="VAR3589" LoincScale="ORD">
+      <Item ItemId="3589" ItemType="2" VarName="TRANSPORT_REISEN" LoincScale="ORD">
         <FormItem ItemText="Selve reisen eller transportmiddelets utforming" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12257" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="12258" OrderNumber="2" OptionText="Nei"/>
@@ -69,37 +69,37 @@
       </Item>
     </Page>
     <Page PageTitle="Hjelpemidler">
-      <Item ItemId="3590" ItemType="2" VarName="VAR3590" LoincScale="ORD">
+      <Item ItemId="3590" ItemType="2" VarName="TRANSPORT_KRYKKER" LoincScale="ORD">
         <FormItem ItemText="Krykker/stokk/staver" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12259" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="12260" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
-      <Item ItemId="3591" ItemType="2" VarName="VAR3591" LoincScale="ORD">
+      <Item ItemId="3591" ItemType="2" VarName="TRANSPORT_ROLLATOR" LoincScale="ORD">
         <FormItem ItemText="Rollator/gåbord/prekestol" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12261" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="12262" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
-      <Item ItemId="3592" ItemType="2" VarName="VAR3592" LoincScale="ORD">
+      <Item ItemId="3592" ItemType="2" VarName="TRANSPORT_RULLESTOL" LoincScale="ORD">
         <FormItem ItemText="Manuell rullestol" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12263" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="12264" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
-      <Item ItemId="3593" ItemType="2" VarName="VAR3593" LoincScale="ORD">
+      <Item ItemId="3593" ItemType="2" VarName="TRANSPORT_ELRULLESTOL" LoincScale="ORD">
         <FormItem ItemText="Elektrisk rullestol" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12265" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="12266" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
-      <Item ItemId="3594" ItemType="2" VarName="VAR3594" LoincScale="ORD">
+      <Item ItemId="3594" ItemType="2" VarName="TRANSPORT_LEDSAGER" LoincScale="ORD">
         <FormItem ItemText="Levende støtte/ledsager" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12267" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="12268" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
-      <Item ItemId="3595" ItemType="2" VarName="VAR3595" LoincScale="ORD">
+      <Item ItemId="3595" ItemType="2" VarName="TRANSPORT_ANNETHJELPEMID" LoincScale="ORD">
         <FormItem ItemText="Annet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12269" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="12270" OrderNumber="2" OptionText="Nei"/>
@@ -107,20 +107,58 @@
       </Item>
     </Page>
     <Page>
-      <Item ItemId="3596" ItemType="4" VarName="VAR3596" LoincScale="NAR" Multiline="0">
+      <Item ItemId="3596" ItemType="4" VarName="TRANSPORT_TYPEHJELPEMIDD" LoincScale="NAR" Multiline="0">
         <FormItem ItemText="Annet hjelpemiddel" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Beskrivelse av funksjonshemming og diagnose">
-      <Item ItemId="3597" ItemType="4" VarName="VAR3597" LoincScale="NAR" Multiline="1">
+      <Item ItemId="3597" ItemType="4" VarName="TRANSPORT_DIAGNOSE" LoincScale="NAR" Multiline="1">
         <FormItem ItemText="Diagnose" ItemHelp="Angi diagnosekode og navn" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="3598" ItemType="4" VarName="VAR3598" LoincScale="NAR" Multiline="1">
+      <Item ItemId="3598" ItemType="4" VarName="TRANSPORT_FUNKSJON" LoincScale="NAR" Multiline="1">
         <FormItem ItemText="Funksjonsbeskrivelse" ItemHelp="Utfyllende beskrivelse av funksjonshemming med årsak til hvorfor offentlig transport ikke kan benyttes" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3599" ItemType="1" VarName="GANGEUTE_MEDHJELPEMIDLER" LoincScale="QN" UnitStr="m">
+        <FormItem ItemText="Maksimal gangdistanse utendørs med hjelpemidler (m)" ItemHelp="" MinExpression="0" MaxExpression="10000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3600" ItemType="1" VarName="GANGEUTE_UTENHJELPEMIDLE" LoincScale="QN" UnitStr="m">
+        <FormItem ItemText="Maksimal gangdistanse utendørs uten hjelpemidler (m)" ItemHelp="" MinExpression="0" MaxExpression="10000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Behov for transport">
+      <Item ItemId="3601" ItemType="2" VarName="TRANSPORT_LEGEVURDERING" LoincScale="ORD">
+        <FormItem ItemText="Legens vurdering" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12271" OrderNumber="1" OptionText="Søkeren kan benytte offentlig transport med noe besvær"/>
+          <Answer AnswerId="12272" OrderNumber="2" OptionText="Søkeren kan benytte offentlig transport med stort besvær"/>
+          <Answer AnswerId="12273" OrderNumber="3" OptionText="Søkeren kan ikke benytte offentlig transport"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3602" ItemType="2" VarName="TRANSPORT_DROSJE" LoincScale="ORD">
+        <FormItem ItemText="Hvilken type transport har søkeren behov for?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12274" OrderNumber="1" OptionText="Vanlig drosje"/>
+          <Answer AnswerId="12275" OrderNumber="2" OptionText="Spesialbil for rullestol"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3603" ItemType="2" VarName="TRANSPORT_PERMANENT" LoincScale="ORD">
+        <FormItem ItemText="Er tilstanden varig?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12276" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="12277" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page>
+      <Item ItemId="3604" ItemType="4" VarName="TRANSPORT_VARIGHET" LoincScale="NAR" Multiline="0">
+        <FormItem ItemText="Angi antatt varighet" ItemHelp="Angi varighet i måneder eller år. Transporttjenesten er ment for personer med langvarig funksjonshemming." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -132,6 +170,9 @@
     </PageAction>
     <PageAction MasterId="3595">
       <Activate EnumVal="1" PageConditionId="7810" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3603">
+      <Activate EnumVal="2" PageConditionId="7811" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
