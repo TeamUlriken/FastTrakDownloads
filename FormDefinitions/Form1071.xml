@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="1071" FormName="BDIA_BASIC" FormTitle="Grunndata">
+    <Page PageTitle="Diagnose">
+      <Item ItemId="3196" ItemType="2" VarName="NDV_TYPE" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Diabetes type" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+          <Answer AnswerId="15986" OrderNumber="1" OptionText="Type 1 (inkl. LADA)" VerboseText="Type 1 diabetes." ShortCode="1" ICD10="E10"/>
+          <Answer AnswerId="15987" OrderNumber="2" OptionText="Type 2" VerboseText="Type 2 diabetes." ShortCode="2" ICD10="E11"/>
+          <Answer AnswerId="15988" OrderNumber="3" OptionText="Annen diabetestype (inkl. pankreatitt, MODY)." ShortCode="A"/>
+          <Answer AnswerId="16137" OrderNumber="4" OptionText="er ikke avklart." ShortCode="U" ICD10="E14"/>
+          <Answer AnswerId="40942" OrderNumber="5" OptionText="Svangerskapsdiabetes." ShortCode="S" ICD10="O24"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3486" ItemType="1" VarName="NDV_DIAGNOSE_YYYY" LoincScale="QN" DisplayFormat="">
+        <FormItem ItemHeader="Debut" ItemText="Diabetes diagnostisert år" ItemHelp="Angi årstall.  Svangerskapsdiabetes unntas." MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3981" ItemType="2" VarName="NDV_ANTIBODY" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemHeader="Positive diabetes-antistoffer" ItemText="Positive auto-antistoffer mot beta-cellene i pankreas" ItemHelp="F.eks. GAD, IA2, insulin-antistoff eller anti-ZnT8.  Det er nok at én er positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="20696" OrderNumber="1" OptionText="Ja" VerboseText="Positive antistoffer mot beta-celler." ShortCode="Pos"/>
+          <Answer AnswerId="20697" OrderNumber="2" OptionText="Nei" VerboseText="Negative antistoffer mot beta-celler." ShortCode="Neg"/>
+          <Answer AnswerId="20698" OrderNumber="3" OptionText="Ukjent" ShortCode="Ukj"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Kommentar antistoffer*">
+      <Item ItemId="9002" ItemType="4" VarName="VAR9002" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        <FormItem ItemText="Kommentar antistoffer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Fortsettelse*">
+      <Item ItemId="3843" ItemType="2" VarName="VAR3843" LoincScale="ORD">
+        <FormItem ItemText="Samtykke til BDR" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12354" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="12355" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="12356" OrderNumber="3" OptionText="Trukket tilbake"/>
+          <Answer AnswerId="12357" OrderNumber="4" OptionText="Ukjent"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Arv/genetikk">
+      <Item ItemId="3982" ItemType="2" VarName="NDV_ETHNICITY" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Etnisk opprinnelse" ItemHelp="Angi f.eks. asiatisk dersom begge foreldre er asiatiske; ved f.eks. europeisk mor og asiatisk far anføres ”annen”" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+          <Answer AnswerId="20702" OrderNumber="1" OptionText="Europeisk." ShortCode="E"/>
+          <Answer AnswerId="20703" OrderNumber="2" OptionText="Afrikansk." ShortCode="Afr"/>
+          <Answer AnswerId="20704" OrderNumber="3" OptionText="Asiatisk." ShortCode="As"/>
+          <Answer AnswerId="20705" OrderNumber="4" OptionText="Annen" ShortCode="An"/>
+          <Answer AnswerId="21984" OrderNumber="5" OptionText="Vet ikke" ShortCode="Ukj"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3229" ItemType="2" VarName="DP_FORELDRE_BARN_DM" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Diabetes hos foreldre eller barn" ItemHelp="Biologiske foreldre/barn" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+          <Answer AnswerId="16168" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="16169" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16170" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3195" ItemType="2" VarName="DP_SOSKEN_DM" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Diabetes hos søsken" ItemHelp="Biologiske søsken" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+          <Answer AnswerId="15971" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="15972" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="15973" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4204" ItemType="2" VarName="NDV_FAM_DM" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Diabetes hos foreldre/barn/søsken" ItemHelp="" Expression="ISPOS(ISNULL(DP_FORELDRE_BARN_DM-1)+ISNULL(DP_SOSKEN_DM-1))&#xA;+ 2*(ISNULL(DP_FORELDRE_BARN_DM-2)*ISNULL(DP_SOSKEN_DM-2))&#xA;+ 3*ISPOS(DP_FORELDRE_BARN_DM+DP_SOSKEN_DM-4)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1">
+          <Answer AnswerId="22251" OrderNumber="1" OptionText="Ja" VerboseText="Diabetes i nær familie." ShortCode="J"/>
+          <Answer AnswerId="22252" OrderNumber="2" OptionText="Nei" VerboseText="Ikke diabetes i nærmeste familie." ShortCode="N"/>
+          <Answer AnswerId="22253" OrderNumber="3" OptionText="Vet ikke*" ShortCode="V"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Diabetes i familien*">
+      <Item ItemId="9512" ItemType="4" VarName="VAR9512" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        <FormItem ItemHeader="Kommentar" ItemText="Hvem, type diabetes, alder ved debut?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Familie/sosialt" PageIntroduction="Dette tas ikke med i notatet">
+      <Item ItemId="10260" ItemType="4" VarName="VAR10260" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        <FormItem ItemText="Familiære og sosiale forhold" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Komorbiditet">
+      <Item ItemId="3393" ItemType="2" VarName="ICD10_F50" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem ItemText="Spiseforstyrrelser" ItemHelp="i voksen alder" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="1" Optional="1">
+          <Answer AnswerId="16881" OrderNumber="1" OptionText="Ja" VerboseText="Obs spiseforstyrrelse." ShortCode="J" ICD10="F50"/>
+          <Answer AnswerId="16882" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16883" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Kommentar spiseforstyrrelser*">
+      <Item ItemId="3394" ItemType="4" VarName="DP_SPISE_TEKST" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        <FormItem ItemText="Kommentar" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Komorbiditet">
+      <Item ItemId="3410" ItemType="2" VarName="ICD10_K900" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Cøliaki" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="1" Optional="1">
+          <Answer AnswerId="16962" OrderNumber="1" OptionText="Ja" VerboseText="Cøliaki." ShortCode="J" ICD10="K900"/>
+          <Answer AnswerId="16963" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16964" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="New*">
+      <Item ItemId="3846" ItemType="5" VarName="VAR3846" LoincScale="DATE">
+        <FormItem ItemHeader="Diagnosedato" ItemText="Diagnosedato cøliaki" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Komorbiditet forts*">
+      <Item ItemId="6312" ItemType="2" VarName="ICD10_E063a" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Autoimmun hypotyreose" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="33386" OrderNumber="1" OptionText="Ja" VerboseText="Autoimmun hypotyreose." ShortCode="J" ICD10="E063"/>
+          <Answer AnswerId="33387" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="37246" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig autoimmun hypotyreose." ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6313" ItemType="2" VarName="ICD10_E063b" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Autoimmun hypertyreose" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="33390" OrderNumber="1" OptionText="Ja" VerboseText="Autoimmun hypertyreose." ShortCode="J" ICD10="E063"/>
+          <Answer AnswerId="33391" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="37252" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig autoimmun hypotyreose." ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3364" ItemType="2" VarName="ADHD_DIAGNOSE" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem ItemHeader="Har fått ADHD diagnose" ItemText="Har pasienten blitt diagnostisert med ADHD?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="16766" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="16767" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16768" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3355" ItemType="2" VarName="VAR3355" LoincScale="ORD">
+        <FormItem ItemText="Down syndrom" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="61384" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="61385" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="61386" OrderNumber="3" OptionText="Vet ikke"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3356" ItemType="2" VarName="VAR3356" LoincScale="ORD">
+        <FormItem ItemText="Epilepsi" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="61388" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="61389" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="61390" OrderNumber="3" OptionText="Vet ikke"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3357" ItemType="2" VarName="VAR3357" LoincScale="ORD">
+        <FormItem ItemText="Cystisk fibrose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="61392" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="61393" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="61394" OrderNumber="3" OptionText="Vet ikke"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Komorbiditet*">
+      <Item ItemId="3392" ItemType="4" VarName="DP_DIAGNOSER_TEKST" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        <FormItem ItemHeader="Kronisk sykdom*" ItemText="Andre kroniske sykdommer" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="4204">
+      <Activate EnumVal="1" PageConditionId="7922" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3393">
+      <Activate EnumVal="1" PageConditionId="7927" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3196">
+      <Activate EnumVal="1" PageConditionId="7928" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3410">
+      <Activate EnumVal="1" PageConditionId="7929" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>
