@@ -354,7 +354,7 @@ BEGIN
   WHERE sc.StudyId=@StudyId AND ss.StatusId = @StatusId;
 END;]]>
 	</row>
-	<row ProcId="30" StudyName="*" ProcName="Report.GetAllActiveCases" ProcDesc="QuickStat: Alle aktive uansett lokalisasjon" ProcParams=":StudyId" ListId="CASE" GrantTo="Researcher" HelpText="Populasjonen er går på tvers av alle arbeidssteder og skal være sterkt tilgangsbegrenset." ChkSum="-933606171" LastUpdate="2019-01-22T16:15:33.420Z">
+	<row ProcId="30" StudyName="*" ProcName="Report.GetAllActiveCases" ProcDesc="QuickStat: Alle aktive uansett lokalisasjon" ProcParams=":StudyId" ListId="CASE" GrantTo="QuickStat" HelpText="Populasjonen er går på tvers av alle arbeidssteder og skal være sterkt tilgangsbegrenset." ChkSum="-1991929121" LastUpdate="2019-01-31T14:53:06.493Z">
 		<![CDATA[CREATE PROCEDURE Report.GetAllActiveCases( @StudyId INT ) AS
 BEGIN
   SELECT 
@@ -386,6 +386,44 @@ BEGIN
   JOIN dbo.ViewCaseListStub v ON agg.PersonId=v.PersonId
   WHERE v.StudyId=@StudyId;
 END]]>
+	</row>
+	<row ProcId="40" StudyName="BASE" ProcName="dbo.GetCaseListDrug" ProcDesc="Medikamentbruk: Enkeltpreparat" ProcParams=":StudyId, :ATC" ListId="CASE" GrantTo="Administrator" HelpText="Brukes som grunnlag for en rekke andre populasjoner" ChkSum="858753468" LastUpdate="2019-01-31T11:55:39.160Z">
+		<![CDATA[CREATE PROCEDURE dbo.GetCaseListDrug( @StudyId INT, @ATC VARCHAR(7) ) AS
+BEGIN
+  SELECT vcl.PersonId, vcl.DOB, vcl.FullName, vcl.GroupName, COUNT( dt.TreatId ) AS TreatCount,
+  CAST(' ' AS VARCHAR(256) ) AS InfoText
+  INTO #tempList
+  FROM dbo.OngoingTreatment dt
+    JOIN dbo.ViewActiveCaseListStub vcl 
+      ON vcl.PersonId = dt.PersonId AND vcl.StudyId = @StudyId
+  WHERE dt.ATC LIKE @ATC COLLATE Latin1_General_CI_AI
+  GROUP BY vcl.PersonId, vcl.DOB, vcl.FullName, vcl.GroupName;
+
+  UPDATE #tempList SET InfoText = ( SELECT TOP 1 ISNULL(RTRIM(mt.TreatDesc),'?') + ': ' + ISNULL(DrugName,'?') + ' - ' + ISNULL(StartReason,'?')
+    FROM dbo.OnGoingTreatment ot 
+    JOIN MetaTreatType mt ON mt.TreatType=ot.TreatType
+    WHERE PersonId=#tempList.PersonId AND ATC LIKE @ATC COLLATE Latin1_General_CI_AI ORDER BY mt.TreatType DESC );
+  UPDATE #tempList SET InfoText = InfoText + ' (pluss ett annet prep)'
+    WHERE TreatCount = 2;
+  UPDATE #tempList SET InfoText = InfoText + ' (pluss ' + CONVERT(VARCHAR,TreatCount-1) + ' andre prep)'
+    WHERE TreatCount > 2;
+  SELECT PersonId, DOB, FullName, GroupName, GenderId, InfoText
+    FROM #TempList ORDER By FullName;
+END;]]>
+	</row>
+	<row ProcId="41" StudyName="BASE" ProcName="dbo.GetCaseListDrugCombo" ProcDesc="Medikamentbruk: Kombinasjoner" ProcParams=":StudyId, :ATC1, :ATC2" ListId="CASE" GrantTo="Administrator" MinVersion="18000" ChkSum="-1676308513" LastUpdate="2019-01-31T11:51:49.283Z">
+		<![CDATA[CREATE PROCEDURE dbo.GetCaseListDrugCombo( @StudyId INT, @ATC1 VARCHAR(7), @ATC2 VARCHAR(7) ) AS
+BEGIN
+  SELECT vcl.*, 
+    d1.DrugName + ' - ' + d2.DrugName AS InfoText
+  FROM dbo.ViewActiveCaseListStub vcl
+    JOIN dbo.OngoingTreatment d1 ON d1.PersonId = vcl.PersonId AND d1.ATC LIKE @ATC1
+    JOIN dbo.OngoingTreatment d2 ON d2.PersonId = vcl.PersonId AND d2.ATC LIKE @ATC2
+  WHERE vcl.StudyId = @StudyId  
+  ORDER BY FullName;
+END;
+
+]]>
 	</row>
 	<row ProcId="50" StudyName="BASE" ProcName="dbo.GetCaseListProblem" ProcDesc="Utvalg basert på diagnose" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-24279895" LastUpdate="2019-01-03T08:58:43.483Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListProblem( @StudyId INT, @ProbCode VARCHAR(8) ) AS
@@ -5711,7 +5749,7 @@ BEGIN
   DEALLOCATE cur_vedtak;
 END]]>
 	</row>
-	<row ProcId="10020" StudyName="*" ProcName="NDV.RuleEyeCheck" ProcDesc="Øyeundersøkelse med maks 730 dagers intervall hos type-1 diabeti" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="1727932610" LastUpdate="2019-01-03T09:03:18.553Z">
+	<row ProcId="10020" StudyName="*" ProcName="NDV.RuleEyeCheck" ProcDesc="Øyeundersøkelse med maks 730 dagers intervall hos type-1 diabeti" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="1156033144" LastUpdate="2019-01-25T12:25:24.883Z">
 		<![CDATA[CREATE PROCEDURE NDV.RuleEyeCheck( @StudyId INT, @PersonId INT ) AS
 BEGIN
 
@@ -5723,7 +5761,7 @@ BEGIN
   DECLARE @ThisYear FLOAT;
   DECLARE @RuleIsRelevant BIT;
   
-  SET @ThisYear = DATEPART(yy,getdate());
+  SET @ThisYear = DATEPART( yy, GETDATE() );
   
   SELECT @DiabetesType = dbo.GetLastEnumVal( @PersonId, 'NDV_TYPE' );
   SELECT @DiabetesDebut = dbo.GetLastQuantity( @PersonId, 'NDV_DIAGNOSE_YYYY' );
@@ -5739,12 +5777,14 @@ BEGIN
   END
   ELSE
   BEGIN       
-    SELECT @EyeCheckDate=dbo.GetLastDTVal( @PersonId, 'NDV_EYECHECK_DATE' );
-    IF @EyeCheckDate IS NULL BEGIN
+    SELECT @EyeCheckDate = dbo.GetLastDTVal( @PersonId, 'NDV_EYECHECK_DATE' );
+    IF @EyeCheckDate IS NULL 
+    BEGIN
       SET @AlertFacet = 'DataMissing';
       SET @AlertLevel = 3;
     END
-    ELSE IF @EyeCheckDate < getdate()-730 BEGIN
+    ELSE IF @EyeCheckDate < getdate()-730 
+    BEGIN
       SET @AlertFacet = 'DataOld';
       SET @AlertLevel = 2;
     END
@@ -5757,9 +5797,8 @@ BEGIN
   DECLARE @AlertMessage VARCHAR(512);     
   SET @AlertHeader = dbo.GetTextItem( 'NDV.RuleEyeCheck', @AlertFacet +'.Header' );
   SET @AlertMessage = dbo.GetTextItem( 'NDV.RuleEyeCheck', @AlertFacet );
-  IF NOT @EyeCheckDate IS NULL BEGIN
-    SET @AlertMessage = REPLACE( @AlertMessage, '@EyeCheckDate', dbo.LongTime( @EyeCheckDate ) );
-  END
+  IF NOT @EyeCheckDate IS NULL
+    SET @AlertMessage = REPLACE( @AlertMessage, '@EyeCheckDate', dbo.MonthYear( @EyeCheckDate ) );
   EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'NDVEYE',@AlertFacet,@AlertHeader, @AlertMessage;    
 END]]>
 	</row>
