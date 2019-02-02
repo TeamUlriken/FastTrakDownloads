@@ -811,7 +811,7 @@ BEGIN
   DEALLOCATE cur_vedtak;
 END]]>
 	</row>
-	<row RuleId="20" RuleClass="NDVEYE" RuleType="M" RuleProc="NDV.RuleEyeCheck" Title="Øyeundersøkelse" Description="Øyeundersøkelse med maks 730 dagers intervall hos type-1 diabetikere ved minst 5 års sykdomsvarighet." ChkSum="1727932610" LastUpdate="2019-01-03T09:03:18.553Z">
+	<row RuleId="20" RuleClass="NDVEYE" RuleType="M" RuleProc="NDV.RuleEyeCheck" Title="Øyeundersøkelse" Description="Øyeundersøkelse med maks 730 dagers intervall hos type-1 diabetikere ved minst 5 års sykdomsvarighet." ChkSum="1156033144" LastUpdate="2019-01-25T12:25:24.883Z">
 		<![CDATA[CREATE PROCEDURE NDV.RuleEyeCheck( @StudyId INT, @PersonId INT ) AS
 BEGIN
 
@@ -823,7 +823,7 @@ BEGIN
   DECLARE @ThisYear FLOAT;
   DECLARE @RuleIsRelevant BIT;
   
-  SET @ThisYear = DATEPART(yy,getdate());
+  SET @ThisYear = DATEPART( yy, GETDATE() );
   
   SELECT @DiabetesType = dbo.GetLastEnumVal( @PersonId, 'NDV_TYPE' );
   SELECT @DiabetesDebut = dbo.GetLastQuantity( @PersonId, 'NDV_DIAGNOSE_YYYY' );
@@ -839,12 +839,14 @@ BEGIN
   END
   ELSE
   BEGIN       
-    SELECT @EyeCheckDate=dbo.GetLastDTVal( @PersonId, 'NDV_EYECHECK_DATE' );
-    IF @EyeCheckDate IS NULL BEGIN
+    SELECT @EyeCheckDate = dbo.GetLastDTVal( @PersonId, 'NDV_EYECHECK_DATE' );
+    IF @EyeCheckDate IS NULL 
+    BEGIN
       SET @AlertFacet = 'DataMissing';
       SET @AlertLevel = 3;
     END
-    ELSE IF @EyeCheckDate < getdate()-730 BEGIN
+    ELSE IF @EyeCheckDate < getdate()-730 
+    BEGIN
       SET @AlertFacet = 'DataOld';
       SET @AlertLevel = 2;
     END
@@ -857,9 +859,8 @@ BEGIN
   DECLARE @AlertMessage VARCHAR(512);     
   SET @AlertHeader = dbo.GetTextItem( 'NDV.RuleEyeCheck', @AlertFacet +'.Header' );
   SET @AlertMessage = dbo.GetTextItem( 'NDV.RuleEyeCheck', @AlertFacet );
-  IF NOT @EyeCheckDate IS NULL BEGIN
-    SET @AlertMessage = REPLACE( @AlertMessage, '@EyeCheckDate', dbo.LongTime( @EyeCheckDate ) );
-  END
+  IF NOT @EyeCheckDate IS NULL
+    SET @AlertMessage = REPLACE( @AlertMessage, '@EyeCheckDate', dbo.MonthYear( @EyeCheckDate ) );
   EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'NDVEYE',@AlertFacet,@AlertHeader, @AlertMessage;    
 END]]>
 	</row>
