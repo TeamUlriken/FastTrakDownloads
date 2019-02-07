@@ -66,7 +66,7 @@
         </FormItem>
       </Item>
       <Item ItemId="4204" ItemType="2" VarName="NDV_FAM_DM" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Diabetes hos foreldre/barn/søsken" ItemHelp="" Expression="ISPOS(ISNULL(DP_FORELDRE_BARN_DM-1)+ISNULL(DP_SOSKEN_DM-1))&#xA;+ 2*(ISNULL(DP_FORELDRE_BARN_DM-2)*ISNULL(DP_SOSKEN_DM-2))&#xA;+ 3*ISPOS(DP_FORELDRE_BARN_DM+DP_SOSKEN_DM-4)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1">
+        <FormItem ItemText="Diabetes hos foreldre/barn/søsken" ItemHelp="" Expression="ISPOS(ISNULL(DP_FORELDRE_BARN_DM-1)+ISNULL(DP_SOSKEN_DM-1))&#xA;+ 2*(ISNULL(DP_FORELDRE_BARN_DM-2)*ISNULL(DP_SOSKEN_DM-2))&#xA;+ 3*ISPOS(DP_FORELDRE_BARN_DM+DP_SOSKEN_DM-4)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1">
           <Answer AnswerId="22251" OrderNumber="1" OptionText="Ja" VerboseText="Diabetes i nær familie." ShortCode="J"/>
           <Answer AnswerId="22252" OrderNumber="2" OptionText="Nei" VerboseText="Ikke diabetes i nærmeste familie." ShortCode="N"/>
           <Answer AnswerId="22253" OrderNumber="3" OptionText="Vet ikke*" ShortCode="V"/>
@@ -82,7 +82,7 @@
     </Page>
     <Page PageTitle="Familie/sosialt" PageIntroduction="Dette tas ikke med i notatet">
       <Item ItemId="10260" ItemType="4" VarName="VAR10260" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemText="Familiære og sosiale forhold" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Familiære og sosiale forhold" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -114,14 +114,14 @@
     </Page>
     <Page PageTitle="New*">
       <Item ItemId="3846" ItemType="5" VarName="VAR3846" LoincScale="DATE">
-        <FormItem ItemHeader="Diagnosedato" ItemText="Diagnosedato cøliaki" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemHeader="Diagnosedato" ItemText="Diagnosedato cøliaki" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Komorbiditet forts*">
       <Item ItemId="6312" ItemType="2" VarName="ICD10_E063a" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Autoimmun hypotyreose" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Autoimmun hypotyreose" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="33386" OrderNumber="1" OptionText="Ja" VerboseText="Autoimmun hypotyreose." ShortCode="J" ICD10="E063"/>
           <Answer AnswerId="33387" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
           <Answer AnswerId="37246" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig autoimmun hypotyreose." ShortCode="U"/>
@@ -134,30 +134,30 @@
           <Answer AnswerId="37252" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig autoimmun hypotyreose." ShortCode="U"/>
         </FormItem>
       </Item>
-      <Item ItemId="3364" ItemType="2" VarName="ADHD_DIAGNOSE" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem ItemHeader="Har fått ADHD diagnose" ItemText="Har pasienten blitt diagnostisert med ADHD?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="16766" OrderNumber="1" OptionText="Ja"/>
+      <Item ItemId="3364" ItemType="2" VarName="ICD10_F90" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem ItemHeader="ADHD" ItemText="Har pasienten blitt diagnostisert med ADHD?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="16766" OrderNumber="1" OptionText="Ja" ICD10="F90"/>
           <Answer AnswerId="16767" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="16768" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
         </FormItem>
       </Item>
-      <Item ItemId="3355" ItemType="2" VarName="VAR3355" LoincScale="ORD">
+      <Item ItemId="3355" ItemType="2" VarName="ICD10_Q90" LoincScale="ORD">
         <FormItem ItemText="Down syndrom" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="61384" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="61384" OrderNumber="1" OptionText="Ja" ICD10="Q90"/>
           <Answer AnswerId="61385" OrderNumber="2" OptionText="Nei"/>
           <Answer AnswerId="61386" OrderNumber="3" OptionText="Vet ikke"/>
         </FormItem>
       </Item>
-      <Item ItemId="3356" ItemType="2" VarName="VAR3356" LoincScale="ORD">
+      <Item ItemId="3356" ItemType="2" VarName="ICD10_G40" LoincScale="ORD">
         <FormItem ItemText="Epilepsi" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="61388" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="61388" OrderNumber="1" OptionText="Ja" ICD10="G40"/>
           <Answer AnswerId="61389" OrderNumber="2" OptionText="Nei"/>
           <Answer AnswerId="61390" OrderNumber="3" OptionText="Vet ikke"/>
         </FormItem>
       </Item>
-      <Item ItemId="3357" ItemType="2" VarName="VAR3357" LoincScale="ORD">
+      <Item ItemId="3357" ItemType="2" VarName="ICD10_E84" LoincScale="ORD">
         <FormItem ItemText="Cystisk fibrose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="61392" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="61392" OrderNumber="1" OptionText="Ja" ICD10="E84"/>
           <Answer AnswerId="61393" OrderNumber="2" OptionText="Nei"/>
           <Answer AnswerId="61394" OrderNumber="3" OptionText="Vet ikke"/>
         </FormItem>

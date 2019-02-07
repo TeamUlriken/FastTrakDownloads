@@ -14,13 +14,18 @@
       </Item>
     </Page>
     <Page PageTitle="Diagnostisert">
-      <Item ItemId="3323" ItemType="5" VarName="VAR3323" LoincScale="DATE">
-        <FormItem ItemText="Diagnosedato" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="3323" ItemType="5" VarName="BDR_DIAGNOSE" LoincScale="DATE">
+        <FormItem ItemText="Diagnosedato" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3486" ItemType="1" VarName="NDV_DIAGNOSE_YYYY" LoincScale="QN" DisplayFormat="">
+        <FormItem ItemHeader="Debut" ItemText="Diabetes diagnostisert år" ItemHelp="Angi årstall.  Svangerskapsdiabetes unntas." Expression="YearOf( BDR_DIAGNOSE )" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3391" ItemType="2" VarName="VAR3391" LoincScale="ORD">
-        <FormItem ItemText="Annet land" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemHeader="Annet land" ItemText="Er diagnosen stilt i et annet land enn Norge?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="12175" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="12176" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
@@ -152,23 +157,23 @@
           <Answer AnswerId="61382" OrderNumber="3" OptionText="Vet ikke"/>
         </FormItem>
       </Item>
-      <Item ItemId="3355" ItemType="2" VarName="VAR3355" LoincScale="ORD">
+      <Item ItemId="3355" ItemType="2" VarName="ICD10_Q90" LoincScale="ORD">
         <FormItem ItemText="Down syndrom" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61384" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="61384" OrderNumber="1" OptionText="Ja" ICD10="Q90"/>
           <Answer AnswerId="61385" OrderNumber="2" OptionText="Nei"/>
           <Answer AnswerId="61386" OrderNumber="3" OptionText="Vet ikke"/>
         </FormItem>
       </Item>
-      <Item ItemId="3356" ItemType="2" VarName="VAR3356" LoincScale="ORD">
+      <Item ItemId="3356" ItemType="2" VarName="ICD10_G40" LoincScale="ORD">
         <FormItem ItemText="Epilepsi" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61388" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="61388" OrderNumber="1" OptionText="Ja" ICD10="G40"/>
           <Answer AnswerId="61389" OrderNumber="2" OptionText="Nei"/>
           <Answer AnswerId="61390" OrderNumber="3" OptionText="Vet ikke"/>
         </FormItem>
       </Item>
-      <Item ItemId="3357" ItemType="2" VarName="VAR3357" LoincScale="ORD">
+      <Item ItemId="3357" ItemType="2" VarName="ICD10_E84" LoincScale="ORD">
         <FormItem ItemText="Cystisk fibrose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61392" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="61392" OrderNumber="1" OptionText="Ja" ICD10="E84"/>
           <Answer AnswerId="61393" OrderNumber="2" OptionText="Nei"/>
           <Answer AnswerId="61394" OrderNumber="3" OptionText="Vet ikke"/>
         </FormItem>
