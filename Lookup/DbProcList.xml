@@ -2319,6 +2319,25 @@ BEGIN
   EXEC dbo.GetFormClassInPeriod @StudyId, 'DIAPOL_TLF', @StartAt, @StopAt;
 END]]>
 	</row>
+	<row ProcId="323" StudyName="NDV" ProcName="NDV.GetCaseListConsentVisits" ProcDesc="Særtakst: Konsultasjoner m/samtykke" ProcParams=":StudyId, :StartDate, :StopDate" ListId="CASE" GrantTo="public" MinVersion="18000" HelpText="Pasienter der det kan registreres særtakst for innrapportering til Norsk Diabetesregister for Voksne." ChkSum="-693359195" LastUpdate="2019-02-07T07:20:02.320Z">
+		<![CDATA[CREATE PROCEDURE NDV.GetCaseListConsentVisits( @StudyId INT, @StartDate DateTime, @StopDate DateTime ) AS
+BEGIN
+  SELECT a.PersonId, p.DOB, p.ReverseName AS FullName, a.GroupName, 
+  'Fant ' + CONVERT(VARCHAR,n) + ' kontakt(er) i perioden.' AS InfoText
+  FROM 
+  (
+    SELECT sam.PersonId, sg.GroupName, count(*) AS n
+    FROM dbo.GetLastEnumValuesTable( 3389, NULL ) Sam
+    JOIN dbo.ClinEvent ce ON ce.PersonId = Sam.PersonId 
+    JOIN dbo.StudyGroup sg ON sg.StudyId = ce.StudyId AND sg.GroupId = ce.GroupId
+    JOIN dbo.UserList ul ON ul.UserId = USER_ID() AND ul.CenterId = sg.CenterId
+    WHERE Sam.EnumVal = 1 AND ce.EventTime BETWEEN @StartDate AND @StopDate
+    GROUP BY sam.PersonId, sg.GroupName
+   ) a
+  JOIN dbo.Person p ON p.PersonId = a.PersonId
+  ORDER BY p.ReverseName;
+END;]]>
+	</row>
 	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1612684606" LastUpdate="2019-01-13T18:20:58.827Z">
 		<![CDATA[CREATE PROCEDURE BAR.GetHospitalizedWithoutAdmissionForm( @StudyId INT ) AS
 BEGIN  
