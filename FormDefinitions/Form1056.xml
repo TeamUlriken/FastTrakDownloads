@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
   <Form FormId="1056" FormName="FASTTRAK_UPDATE_META" FormTitle="Metadata-oppdatering">
-    <Page PageTitle="Gjennomføring">
-      <Item ItemId="3239" ItemType="5" VarName="META_UPDATE_DATE" LoincScale="DATE">
-        <FormItem ItemText="Oppdateringsdato" ItemHelp="" Expression="TRUNC(FORM.Date)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer/>
+    <Page PageTitle="Bakgrunn">
+      <Item ItemId="4453" ItemType="2" VarName="VAR4453" LoincScale="ORD">
+        <FormItem ItemText="Bakgrunn for oppdateringen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12441" OrderNumber="1" OptionText="Rutine"/>
+          <Answer AnswerId="12442" OrderNumber="2" OptionText="Etterspurt funksjonalitet"/>
+          <Answer AnswerId="12443" OrderNumber="3" OptionText="Andre"/>
         </FormItem>
       </Item>
-      <Item ItemId="3747" ItemType="2" VarName="VAR3747" LoincScale="ORD">
-        <FormItem ItemText="Copilot" ItemHelp="Redigering av denne variabelen fra websiden blir feil, må bruke EnumValOverride." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="12064" OrderNumber="1" OptionText="Magne Rekdal"/>
-          <Answer AnswerId="12294" OrderNumber="2" OptionText="Terje Tysse"/>
-          <Answer AnswerId="12295" OrderNumber="3" OptionText="Bojan Nikolic"/>
-          <Answer AnswerId="12296" OrderNumber="4" OptionText="Marit Oestreich"/>
-          <Answer AnswerId="12297" OrderNumber="5" OptionText="Einar Engtrø"/>
-          <Answer AnswerId="12063" OrderNumber="99" OptionText="Ingen"/>
+    </Page>
+    <Page PageTitle="Detaljer*">
+      <Item ItemId="4454" ItemType="4" VarName="VAR4454" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Utfyllende opplysninger" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
         </FormItem>
       </Item>
     </Page>
@@ -37,7 +36,33 @@
         </FormItem>
       </Item>
     </Page>
+    <Page PageTitle="Gjennomføring" PageIntroduction="Husk å kjøre Støttefiler i tillegg til alle Metadata.">
+      <Item ItemId="3239" ItemType="5" VarName="META_UPDATE_DATE" LoincScale="DATE">
+        <FormItem ItemText="Oppdateringsdato" ItemHelp="" Expression="TRUNC(FORM.Date)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3747" ItemType="2" VarName="VAR3747" LoincScale="ORD">
+        <FormItem ItemText="Copilot" ItemHelp="Redigering av denne variabelen fra websiden blir feil, må bruke EnumValOverride." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12064" OrderNumber="1" OptionText="Magne Rekdal"/>
+          <Answer AnswerId="12294" OrderNumber="2" OptionText="Terje Tysse"/>
+          <Answer AnswerId="12295" OrderNumber="3" OptionText="Bojan Nikolic"/>
+          <Answer AnswerId="12296" OrderNumber="4" OptionText="Marit Oestreich"/>
+          <Answer AnswerId="12297" OrderNumber="5" OptionText="Einar Engtrø"/>
+          <Answer AnswerId="12063" OrderNumber="99" OptionText="Ingen"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4455" ItemType="2" VarName="VAR4455" LoincScale="ORD">
+        <FormItem ItemHeader="Som planlagt" ItemText="Gikk oppdateringen som planlagt?" ItemHelp="Hvis Nei, skriv detaljer i kommentarfeltet." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12444" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="12445" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+    </Page>
   </Form>
   <Actions>
-	</Actions>
+    <PageAction MasterId="4453">
+      <Activate EnumVal="2" PageConditionId="7967" PageNumber="2" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
+    </PageAction>
+  </Actions>
 </StudyForm>
