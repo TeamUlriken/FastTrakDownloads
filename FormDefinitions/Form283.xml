@@ -3,7 +3,7 @@
   <Form FormId="283" FormName="GBD_MAREVAN" FormTitle="Marevan-dosering" Instructions="Her registreres dagens INR-verdi, ukedosering for neste behandlingsperiode og dato for neste INR-prøve. ">
     <Page PageTitle="Marevan-dosering">
       <Item ItemId="3729" ItemType="5" VarName="MAREVAN_START_DATO" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Startet med Marevan" ItemHelp="Denne perioden hvis pasienten også har brukt Marevan tidligere." MinExpression="DOB" MaxExpression="FORMDATE+1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem ItemText="Startet med Marevan" ItemHelp="Denne perioden hvis pasienten også har brukt Marevan tidligere." MinExpression="DOB" MaxExpression="Form.Date + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -42,7 +42,7 @@
         </FormItem>
       </Item>
       <Item ItemId="3740" ItemType="5" VarName="MAREVAN_INR_DATO" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Sist målt" ItemHelp="Siste tilgjengelige INR-verdi" MinExpression="FORMDATE-365" MaxExpression="FORMDATE" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Sist målt" ItemHelp="Siste tilgjengelige INR-verdi" MinExpression="Form.Date - 365" MaxExpression="Form.Date" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
