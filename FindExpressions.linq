@@ -19,10 +19,10 @@ void Main()
 		.SelectMany(e => new List<string> { e.Attribute("Expression")?.Value, e.Attribute("MinExpression")?.Value, e.Attribute("MaxExpression")?.Value })
 		.Where(e => !string.IsNullOrEmpty(e))
 		.SelectMany(e => e.Split(new char[] { ' ', '+', '*', '/', '-', ')', '(' }))
-		.Where(e => Regex.IsMatch(e.ToUpper(), @"[A-Z][\w\.]+") && !exclude.Contains(e.ToUpper()) && !Regex.IsMatch(e, @"^VAR\d{4}$"))
+		.Where(e => Regex.IsMatch(e.ToUpper(), @"[A-Z][\w\._]+") && !Regex.IsMatch(e.ToUpper(), @"^VAR\d{4}$|_SCORE$") )
 		.Select(e => e.ToUpper())
 		.Distinct()
-		.Where(e=> !exclude.Any(i=>e.Contains(i)))
+		.Where(e=> !exclude.Any(i=>e.Equals(i)) )
 		.OrderBy(e=>e)
 		.Dump();
 }
