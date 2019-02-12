@@ -2338,6 +2338,18 @@ BEGIN
   ORDER BY p.ReverseName;
 END;]]>
 	</row>
+	<row ProcId="324" StudyName="NDV" ProcName="PROM.GetPromOrders" ProcDesc="PROM: Skjemabestillinger i periode" ProcParams=":StudyId, :StartDate, :StopDate" ListId="CASE" GrantTo="Leder" MinVersion="18215" HelpText="Viser alle bestillinger som er forsøkt gjort i en periode, uavhengig om de er fylt ut eller ikke. " ChkSum="614181476" LastUpdate="2019-02-12T12:40:10.463Z">
+		<![CDATA[CREATE PROCEDURE PROM.GetPromOrders( @StudyId INT, @StartDate DateTime, @StopDate DateTime ) AS
+BEGIN
+  SELECT DISTINCT v.*, fo.CreatedAt, 'Bestilt ' + dbo.ShortTime( fo.CreatedAt ) + ': ' + fo.OrderStatus AS InfoText 
+  FROM PROM.FormOrder fo
+  JOIN dbo.ViewCenterCaseListStub v ON v.PersonId = fo.PersonId
+  WHERE v.StudyId = @StudyId AND fo.CreatedAt BETWEEN @StartDate AND @StopDate 
+  ORDER BY fo.CreatedAt DESC;
+END;
+
+]]>
+	</row>
 	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1612684606" LastUpdate="2019-01-13T18:20:58.827Z">
 		<![CDATA[CREATE PROCEDURE BAR.GetHospitalizedWithoutAdmissionForm( @StudyId INT ) AS
 BEGIN  
