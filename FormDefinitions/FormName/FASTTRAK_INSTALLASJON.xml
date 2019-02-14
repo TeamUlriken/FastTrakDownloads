@@ -3,7 +3,7 @@
   <Form FormId="419" FormName="FASTTRAK_INSTALLASJON" FormTitle="Installasjonsopplysninger">
     <Page PageTitle="Start dato">
       <Item ItemId="4506" ItemType="5" VarName="VAR4506" LoincScale="DATE">
-        <FormItem ItemText="Oppstartsdato for FastTrak" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Oppstartsdato for FastTrak" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -85,7 +85,7 @@
     </Page>
     <Page PageTitle="Fjerntilgang">
       <Item ItemId="5121" ItemType="2" VarName="RemoteAccess" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem ItemText="Fjerntilgang mulig" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Fjerntilgang mulig" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="28243" OrderNumber="1" OptionText="Alltid"/>
           <Answer AnswerId="28244" OrderNumber="2" OptionText="På forespørsel"/>
           <Answer AnswerId="28245" OrderNumber="3" OptionText="Aldri"/>
@@ -125,15 +125,20 @@
     </Page>
     <Page PageTitle="Collation og EventScale">
       <Item ItemId="4426" ItemType="2" VarName="VAR4426" LoincScale="ORD">
-        <FormItem ItemText="Collation" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Collation" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12449" OrderNumber="1" OptionText="DN_CI_AS"/>
           <Answer AnswerId="12450" OrderNumber="2" OptionText="SQL_Latin1_General_CP1_CI_AS"/>
           <Answer AnswerId="12451" OrderNumber="3" OptionText="Latin1_General_CI_AI"/>
         </FormItem>
       </Item>
-      <Item ItemId="4458" ItemType="4" VarName="VAR4458" LoincScale="NAR" Multiline="0">
-        <FormItem ItemText="EventScale" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer/>
+      <Item ItemId="4458" ItemType="2" VarName="VAR4458" LoincScale="ORD">
+        <FormItem ItemText="EventScale" ItemHelp="Event scale skal være 1 for poliklinisk bruk, og 86400 for inneliggende pasienter" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12452" OrderNumber="1" OptionText="1 - Dag" ShortCode="D"/>
+          <Answer AnswerId="12453" OrderNumber="24" OptionText="24 - Time" ShortCode="H"/>
+          <Answer AnswerId="12454" OrderNumber="48" OptionText="48 - Halvtime" ShortCode="Hx2"/>
+          <Answer AnswerId="12455" OrderNumber="96" OptionText="96 - Kvarter" ShortCode="Hx4"/>
+          <Answer AnswerId="12456" OrderNumber="1440" OptionText="1440 - Minutt" ShortCode="M"/>
+          <Answer AnswerId="12457" OrderNumber="86400" OptionText="86400 - Sekund" ShortCode="S"/>
         </FormItem>
       </Item>
     </Page>
