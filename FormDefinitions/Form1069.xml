@@ -73,7 +73,7 @@
         </FormItem>
       </Item>
       <Item ItemId="1310" ItemType="2" VarName="NDV_GLUCMON" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Egenmåling av glukose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Egenmåling av glukose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="59269" OrderNumber="1" OptionText="CGM" VerboseText="Bruker CGM." Score="1.00" PromText="Kontinuerlig måling"/>
           <Answer AnswerId="59270" OrderNumber="2" OptionText="irCGM (FGM)" VerboseText="Bruker infrarød CGM (Flash)." Score="1.00" PromText="Flash Libre"/>
           <Answer AnswerId="59271" OrderNumber="3" OptionText="daglig (glukometer)" VerboseText="Måler glukose daglig." Score="1.00" PromText="Glukometer daglig"/>
@@ -278,7 +278,7 @@
         </FormItem>
       </Item>
       <Item ItemId="3906" ItemType="1" VarName="INS_BASAL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="Sum basalinsulin (E)" ItemHelp="" Expression="IS0(INS_BASAL_YN-1) * ( INS_BASAL_MORNING*ISPOS(INS_BASAL_MORNING+1) + INS_BASAL_NOON*ISPOS(INS_BASAL_NOON+1)+ INS_BASAL_EVENING *ISPOS(INS_BASAL_EVENING+1))" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Sum basalinsulin" ItemHelp="" Expression="IS0(INS_BASAL_YN-1) * ( INS_BASAL_MORNING*ISPOS(INS_BASAL_MORNING+1) + INS_BASAL_NOON*ISPOS(INS_BASAL_NOON+1)+ INS_BASAL_EVENING *ISPOS(INS_BASAL_EVENING+1))" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -336,7 +336,7 @@
     </Page>
     <Page PageTitle="New*">
       <Item ItemId="3905" ItemType="1" VarName="INS_MEAL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="Sum måltidsinsulin (E)" ItemHelp="" Expression="IS0(INS_MEAL_YN-1) * ( INS_MEAL_BREAKFAST*ISPOS(INS_MEAL_BREAKFAST+1) + INS_MEAL_BRUNCH*ISPOS(INS_MEAL_BRUNCH+1) + INS_MEAL_LUNCH*ISPOS(INS_MEAL_LUNCH+1) + INS_MEAL_DINNER*ISPOS(INS_MEAL_DINNER+1) + INS_MEAL_SUPPER*ISPOS(INS_MEAL_SUPPER+1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+        <FormItem ItemText="Sum måltidsinsulin" ItemHelp="" Expression="IS0(INS_MEAL_YN-1) * ( INS_MEAL_BREAKFAST*ISPOS(INS_MEAL_BREAKFAST+1) + INS_MEAL_BRUNCH*ISPOS(INS_MEAL_BRUNCH+1) + INS_MEAL_LUNCH*ISPOS(INS_MEAL_LUNCH+1) + INS_MEAL_DINNER*ISPOS(INS_MEAL_DINNER+1) + INS_MEAL_SUPPER*ISPOS(INS_MEAL_SUPPER+1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -348,7 +348,7 @@
     </Page>
     <Page PageTitle="Premix insulin">
       <Item ItemId="3201" ItemType="2" VarName="INS_PREMIX_YN" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Bruker premix-insulin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Bruker premix-insulin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="16006" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="16007" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
@@ -377,7 +377,7 @@
         </FormItem>
       </Item>
       <Item ItemId="3907" ItemType="1" VarName="INS_PREMIX_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="Sum premix-insulin (E)" ItemHelp="" Expression="IS0(INS_PREMIX_YN-1) * ( INS_PREMIX_MORNING*ISPOS(INS_PREMIX_MORNING+1) + INS_PREMIX_NOON*ISPOS(INS_PREMIX_NOON+1) + INS_PREMIX_EVENING*ISPOS(INS_PREMIX_EVENING+1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Sum premix-insulin" ItemHelp="" Expression="IS0(INS_PREMIX_YN-1) * ( INS_PREMIX_MORNING*ISPOS(INS_PREMIX_MORNING+1) + INS_PREMIX_NOON*ISPOS(INS_PREMIX_NOON+1) + INS_PREMIX_EVENING*ISPOS(INS_PREMIX_EVENING+1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
