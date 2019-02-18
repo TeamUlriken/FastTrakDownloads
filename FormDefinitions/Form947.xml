@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
   <Form FormId="947" FormName="HofteTotalprotese" FormTitle="Totalprotese">
-    <Page PageTitle="Hemiprotese">
+    <Page PageTitle="Totalprotese">
       <Item ItemId="8483" ItemType="8" VarName="VAR8483" LoincScale="MSG" DisplayFormat="">
-        <FormItem ItemHeader="Arbeidsflyt" ItemText="Innkomstnotat skal være utfylt før dette skjemaet.  Skjemaet skal bare brukes på primæroperasjoner." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemHeader="Arbeidsflyt" ItemText="Innkomstnotat skal være utfylt før dette skjemaet.  Skjemaet skal bare brukes på primæroperasjoner.  Skjemadato skal være lik operasjonsdato." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -75,8 +75,8 @@
     </Page>
     <Page PageTitle="Forebyggende medikamenter">
       <Item ItemId="8290" ItemType="2" VarName="HrAbProfylakse" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Antibiotika som profylakse" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="44387" OrderNumber="0" OptionText="Nei" VerboseText="Antiotikaprofylakse ikke gitt." ShortCode="N"/>
+        <FormItem ItemText="Antibiotika som profylakse" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="44387" OrderNumber="0" OptionText="Nei" VerboseText="Antibiotikaprofylakse ikke gitt." ShortCode="N"/>
           <Answer AnswerId="44388" OrderNumber="1" OptionText="Ja" VerboseText="Antibiotikaprofylakse gitt." ShortCode="J"/>
         </FormItem>
       </Item>
@@ -192,7 +192,7 @@
         </FormItem>
       </Item>
       <Item ItemId="8230" ItemType="2" VarName="HrHemiFiksasjon" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Fiksasjon av protese" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Fiksasjon av protese i femur" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="44062" OrderNumber="1" OptionText="Usementert"/>
           <Answer AnswerId="44063" OrderNumber="2" OptionText="Sement med antibiotika"/>
           <Answer AnswerId="44064" OrderNumber="3" OptionText="Sement uten antibiotika"/>
@@ -214,7 +214,7 @@
         </FormItem>
       </Item>
       <Item ItemId="8501" ItemType="1" VarName="VAR8501" LoincScale="QN" UnitStr="mm" DisplayFormat="">
-        <FormItem ItemText="Caputstørrelse (mm)" ItemHelp="Målt etter ekstraksjon" MinExpression="30" MaxExpression="60" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Caputstørrelse (mm)" ItemHelp="Målt etter ekstraksjon" MinExpression="30" MaxExpression="60" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -257,7 +257,7 @@
     </Page>
     <Page PageTitle="Reamer usementert*">
       <Item ItemId="8503" ItemType="2" VarName="VAR8503" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Reamer nummer" ItemHelp="Usementert protese" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Reamer nummer" ItemHelp="Usementert protese femur" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="47274" OrderNumber="9" OptionText="ni."/>
           <Answer AnswerId="47275" OrderNumber="10" OptionText="ti."/>
           <Answer AnswerId="47276" OrderNumber="11" OptionText="elleve."/>
@@ -273,9 +273,9 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Reamer sementert*">
+    <Page PageTitle="Reamer sementert femur*">
       <Item ItemId="8520" ItemType="2" VarName="VAR8520" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Reamer nummer" ItemHelp="Sementert protese" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Reamer nummer" ItemHelp="Sementert protese femur" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="47475" OrderNumber="0" OptionText="null."/>
           <Answer AnswerId="47476" OrderNumber="1" OptionText="en."/>
           <Answer AnswerId="47477" OrderNumber="2" OptionText="to."/>
@@ -392,7 +392,7 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Acetabularkomponent*">
+    <Page PageTitle="Acetabularkomponent">
       <Item ItemId="2081" ItemType="2" VarName="VAR2081" LoincScale="ORD">
         <FormItem ItemText="Acetabularkomponent" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="11052" OrderNumber="1" OptionText="Rimfit sementert"/>
@@ -402,6 +402,29 @@
           <Answer AnswerId="11056" OrderNumber="5" OptionText="Pinnacle usementert"/>
           <Answer AnswerId="11057" OrderNumber="6" OptionText="Trilogy usementert"/>
           <Answer AnswerId="11058" OrderNumber="7" OptionText="TMT usementert"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4649" ItemType="2" VarName="VAR4649" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Reamer nummer" ItemHelp="Reamer brukt i acetabulum" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61550" OrderNumber="42" OptionText="førtito."/>
+          <Answer AnswerId="61551" OrderNumber="43" OptionText="førtitre."/>
+          <Answer AnswerId="61552" OrderNumber="44" OptionText="førtifire."/>
+          <Answer AnswerId="61553" OrderNumber="45" OptionText="førtifem."/>
+          <Answer AnswerId="61554" OrderNumber="46" OptionText="førtiseks."/>
+          <Answer AnswerId="61555" OrderNumber="47" OptionText="førtisju."/>
+          <Answer AnswerId="61556" OrderNumber="48" OptionText="førtiåtte."/>
+          <Answer AnswerId="61557" OrderNumber="49" OptionText="førtini."/>
+          <Answer AnswerId="61558" OrderNumber="50" OptionText="femti."/>
+          <Answer AnswerId="61559" OrderNumber="51" OptionText="femtien."/>
+          <Answer AnswerId="61560" OrderNumber="52" OptionText="femtito."/>
+          <Answer AnswerId="61561" OrderNumber="53" OptionText="femtitre."/>
+          <Answer AnswerId="61562" OrderNumber="54" OptionText="femtifire."/>
+          <Answer AnswerId="61563" OrderNumber="55" OptionText="femtifem."/>
+          <Answer AnswerId="61564" OrderNumber="56" OptionText="femtiseks."/>
+          <Answer AnswerId="61565" OrderNumber="57" OptionText="femtisju."/>
+          <Answer AnswerId="61566" OrderNumber="58" OptionText="femtiåtte."/>
+          <Answer AnswerId="61567" OrderNumber="59" OptionText="femtini."/>
+          <Answer AnswerId="61568" OrderNumber="60" OptionText="seksti."/>
         </FormItem>
       </Item>
       <Item ItemId="2082" ItemType="1" VarName="VAR2082" LoincScale="QN" UnitStr="mm">
