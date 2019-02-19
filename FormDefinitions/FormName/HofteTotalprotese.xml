@@ -15,7 +15,7 @@
         </FormItem>
       </Item>
       <Item ItemId="8196" ItemType="1" VarName="HrBruddTidspunkt" LoincScale="QN" UnitStr="klokketime" DisplayFormat="">
-        <FormItem ItemText="Tidspunkt (klokketime)" ItemHelp="" MinExpression="0" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Tidspunkt" ItemHelp="" MinExpression="0" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -89,7 +89,7 @@
     </Page>
     <Page PageTitle="Profylakse*">
       <Item ItemId="8436" ItemType="1" VarName="VAR8436" LoincScale="QN" UnitStr="min" DisplayFormat="">
-        <FormItem ItemText="Tid fra antibiotikaprofylakse til operasjon (min)" ItemHelp="" MinExpression="1" MaxExpression="720" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" DefaultValue="30">
+        <FormItem ItemText="Tid fra antibiotikaprofylakse til operasjon" ItemHelp="" MinExpression="1" MaxExpression="720" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" DefaultValue="30">
           <Answer/>
         </FormItem>
       </Item>
@@ -167,7 +167,7 @@
         </FormItem>
       </Item>
       <Item ItemId="8197" ItemType="1" VarName="HrOprTidspunkt" LoincScale="QN" UnitStr="klokketime" DisplayFormat="">
-        <FormItem ItemText="Tidspunkt (klokketime)" ItemHelp="" MinExpression="0" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Tidspunkt" ItemHelp="" MinExpression="0" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -191,13 +191,6 @@
           <Answer AnswerId="48042" OrderNumber="2" OptionText="Ryggleie" VerboseText="Pasienten er i ryggleie" ShortCode="Rygg"/>
         </FormItem>
       </Item>
-      <Item ItemId="8230" ItemType="2" VarName="HrHemiFiksasjon" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Fiksasjon av protese i femur" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="44062" OrderNumber="1" OptionText="Usementert"/>
-          <Answer AnswerId="44063" OrderNumber="2" OptionText="Sement med antibiotika"/>
-          <Answer AnswerId="44064" OrderNumber="3" OptionText="Sement uten antibiotika"/>
-        </FormItem>
-      </Item>
       <Item ItemId="8234" ItemType="2" VarName="HrHemiTilgang" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Tilgang til hofteleddet ved protese" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="44067" OrderNumber="1" OptionText="Fremre (mellom sartorius og tensor)" VerboseText="Fremre tilgang."/>
@@ -213,9 +206,59 @@
           <Answer AnswerId="48046" OrderNumber="2" OptionText="Lateralt" VerboseText="Snittet legges lateralt,"/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageTitle="Acetabulum">
       <Item ItemId="8501" ItemType="1" VarName="VAR8501" LoincScale="QN" UnitStr="mm" DisplayFormat="">
-        <FormItem ItemText="Caputstørrelse (mm)" ItemHelp="Målt etter ekstraksjon" MinExpression="30" MaxExpression="60" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Caputstørrelse" ItemHelp="Målt etter ekstraksjon" Expression="" MinExpression="300" MaxExpression="450" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2081" ItemType="2" VarName="VAR2081" LoincScale="ORD">
+        <FormItem ItemText="Acetabularkomponent" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11052" OrderNumber="1" OptionText="Rimfit sementert"/>
+          <Answer AnswerId="11053" OrderNumber="2" OptionText="Polar sementert/antilukasjonskopp"/>
+          <Answer AnswerId="11054" OrderNumber="3" OptionText="Müller sementert"/>
+          <Answer AnswerId="11055" OrderNumber="4" OptionText="Marathon sementert"/>
+          <Answer AnswerId="11056" OrderNumber="5" OptionText="Pinnacle usementert"/>
+          <Answer AnswerId="11057" OrderNumber="6" OptionText="Trilogy usementert"/>
+          <Answer AnswerId="11058" OrderNumber="7" OptionText="TMT usementert"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4649" ItemType="2" VarName="VAR4649" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Reamer nummer" ItemHelp="Reamer brukt i acetabulum" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61550" OrderNumber="42" OptionText="førtito."/>
+          <Answer AnswerId="61551" OrderNumber="43" OptionText="førtitre."/>
+          <Answer AnswerId="61552" OrderNumber="44" OptionText="førtifire."/>
+          <Answer AnswerId="61553" OrderNumber="45" OptionText="førtifem."/>
+          <Answer AnswerId="61554" OrderNumber="46" OptionText="førtiseks."/>
+          <Answer AnswerId="61555" OrderNumber="47" OptionText="førtisju."/>
+          <Answer AnswerId="61556" OrderNumber="48" OptionText="førtiåtte."/>
+          <Answer AnswerId="61557" OrderNumber="49" OptionText="førtini."/>
+          <Answer AnswerId="61558" OrderNumber="50" OptionText="femti."/>
+          <Answer AnswerId="61559" OrderNumber="51" OptionText="femtien."/>
+          <Answer AnswerId="61560" OrderNumber="52" OptionText="femtito."/>
+          <Answer AnswerId="61561" OrderNumber="53" OptionText="femtitre."/>
+          <Answer AnswerId="61562" OrderNumber="54" OptionText="femtifire."/>
+          <Answer AnswerId="61563" OrderNumber="55" OptionText="femtifem."/>
+          <Answer AnswerId="61564" OrderNumber="56" OptionText="femtiseks."/>
+          <Answer AnswerId="61565" OrderNumber="57" OptionText="femtisju."/>
+          <Answer AnswerId="61566" OrderNumber="58" OptionText="femtiåtte."/>
+          <Answer AnswerId="61567" OrderNumber="59" OptionText="femtini."/>
+          <Answer AnswerId="61568" OrderNumber="60" OptionText="seksti."/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2082" ItemType="1" VarName="VAR2082" LoincScale="QN" UnitStr="mm">
+        <FormItem ItemText="Diameter kopp" ItemHelp="" MinExpression="43" MaxExpression="66" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Femur">
+      <Item ItemId="8230" ItemType="2" VarName="HrHemiFiksasjon" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Fiksasjon av protese i femur" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="44062" OrderNumber="1" OptionText="Usementert"/>
+          <Answer AnswerId="44063" OrderNumber="2" OptionText="Sement med antibiotika"/>
+          <Answer AnswerId="44064" OrderNumber="3" OptionText="Sement uten antibiotika"/>
         </FormItem>
       </Item>
       <Item ItemId="8583" ItemType="2" VarName="tmpSementert" LoincScale="ORD" DisplayFormat="">
@@ -387,48 +430,7 @@
     </Page>
     <Page PageTitle="Offset*">
       <Item ItemId="8523" ItemType="1" VarName="VAR8523" LoincScale="QN" UnitStr="mm" DisplayFormat="">
-        <FormItem ItemText="Offset (mm)" ItemHelp="" MinExpression="37" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageTitle="Acetabularkomponent">
-      <Item ItemId="2081" ItemType="2" VarName="VAR2081" LoincScale="ORD">
-        <FormItem ItemText="Acetabularkomponent" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="11052" OrderNumber="1" OptionText="Rimfit sementert"/>
-          <Answer AnswerId="11053" OrderNumber="2" OptionText="Polar sementert/antilukasjonskopp"/>
-          <Answer AnswerId="11054" OrderNumber="3" OptionText="Müller sementert"/>
-          <Answer AnswerId="11055" OrderNumber="4" OptionText="Marathon sementert"/>
-          <Answer AnswerId="11056" OrderNumber="5" OptionText="Pinnacle usementert"/>
-          <Answer AnswerId="11057" OrderNumber="6" OptionText="Trilogy usementert"/>
-          <Answer AnswerId="11058" OrderNumber="7" OptionText="TMT usementert"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="4649" ItemType="2" VarName="VAR4649" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Reamer nummer" ItemHelp="Reamer brukt i acetabulum" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61550" OrderNumber="42" OptionText="førtito."/>
-          <Answer AnswerId="61551" OrderNumber="43" OptionText="førtitre."/>
-          <Answer AnswerId="61552" OrderNumber="44" OptionText="førtifire."/>
-          <Answer AnswerId="61553" OrderNumber="45" OptionText="førtifem."/>
-          <Answer AnswerId="61554" OrderNumber="46" OptionText="førtiseks."/>
-          <Answer AnswerId="61555" OrderNumber="47" OptionText="førtisju."/>
-          <Answer AnswerId="61556" OrderNumber="48" OptionText="førtiåtte."/>
-          <Answer AnswerId="61557" OrderNumber="49" OptionText="førtini."/>
-          <Answer AnswerId="61558" OrderNumber="50" OptionText="femti."/>
-          <Answer AnswerId="61559" OrderNumber="51" OptionText="femtien."/>
-          <Answer AnswerId="61560" OrderNumber="52" OptionText="femtito."/>
-          <Answer AnswerId="61561" OrderNumber="53" OptionText="femtitre."/>
-          <Answer AnswerId="61562" OrderNumber="54" OptionText="femtifire."/>
-          <Answer AnswerId="61563" OrderNumber="55" OptionText="femtifem."/>
-          <Answer AnswerId="61564" OrderNumber="56" OptionText="femtiseks."/>
-          <Answer AnswerId="61565" OrderNumber="57" OptionText="femtisju."/>
-          <Answer AnswerId="61566" OrderNumber="58" OptionText="femtiåtte."/>
-          <Answer AnswerId="61567" OrderNumber="59" OptionText="femtini."/>
-          <Answer AnswerId="61568" OrderNumber="60" OptionText="seksti."/>
-        </FormItem>
-      </Item>
-      <Item ItemId="2082" ItemType="1" VarName="VAR2082" LoincScale="QN" UnitStr="mm">
-        <FormItem ItemText="Diameter kopp (mm)" ItemHelp="" MinExpression="43" MaxExpression="66" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Offset" ItemHelp="" MinExpression="37" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -468,12 +470,12 @@
         </FormItem>
       </Item>
       <Item ItemId="8747" ItemType="1" VarName="HofteBleeding" LoincScale="QN" UnitStr="mL" DisplayFormat="">
-        <FormItem ItemText="Blødning (mL)" ItemHelp="" MinExpression="10" MaxExpression="3000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Blødning" ItemHelp="" MinExpression="10" MaxExpression="3000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="8239" ItemType="1" VarName="VAR8239" LoincScale="QN" UnitStr="minutter" DisplayFormat="">
-        <FormItem ItemText="Operasjonstid (minutter)" ItemHelp="(hud til hud)" MinExpression="5" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Operasjonstid" ItemHelp="(hud til hud)" MinExpression="5" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -551,7 +553,7 @@
         </FormItem>
       </Item>
       <Item ItemId="8635" ItemType="1" VarName="VAR8635" LoincScale="QN" UnitStr="døgn" DisplayFormat="">
-        <FormItem ItemText="Varighet (døgn)" ItemHelp="" MinExpression="1" MaxExpression="60" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Varighet" ItemHelp="" MinExpression="1" MaxExpression="60" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -575,7 +577,7 @@
         </FormItem>
       </Item>
       <Item ItemId="8636" ItemType="1" VarName="VAR8636" LoincScale="QN" UnitStr="døgn" DisplayFormat="">
-        <FormItem ItemText="Varighet (døgn)" ItemHelp="" MinExpression="1" MaxExpression="60" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Varighet" ItemHelp="" MinExpression="1" MaxExpression="60" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -640,37 +642,37 @@
       <Activate EnumVal="1" PageConditionId="6476" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8583">
-      <Activate EnumVal="2" PageConditionId="6489" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="6490" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="6489" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6490" PageNumber="19" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8230">
-      <Activate EnumVal="1" PageConditionId="6482" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6482" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8583">
-      <Activate EnumVal="1" PageConditionId="6483" PageNumber="19" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="6484" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6483" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6484" PageNumber="22" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8230">
-      <Activate EnumVal="1" PageConditionId="6481" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="6486" PageNumber="22" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6481" PageNumber="23" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6486" PageNumber="24" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8583">
-      <Activate EnumVal="1" PageConditionId="6487" PageNumber="23" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="6485" PageNumber="25" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6487" PageNumber="25" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6485" PageNumber="27" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8237">
-      <Activate EnumVal="1" PageConditionId="6471" PageNumber="31" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6471" PageNumber="32" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8250">
-      <Activate EnumVal="1" PageConditionId="6488" PageNumber="37" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6488" PageNumber="38" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8499">
-      <Activate EnumVal="1" PageConditionId="6478" PageNumber="38" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="2" PageConditionId="6479" PageNumber="38" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="2" PageConditionId="6477" PageNumber="39" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6478" PageNumber="39" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="6479" PageNumber="39" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="6477" PageNumber="40" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8232">
-      <Activate EnumVal="1" PageConditionId="6472" PageNumber="41" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="6472" PageNumber="42" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
