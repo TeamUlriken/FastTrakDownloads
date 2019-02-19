@@ -20,17 +20,17 @@
     </Page>
     <Page PageTitle="Fra poliklinisk besøk" PageIntroduction="Dette er historiske data fra første besøk etter henvisningsdato i forrige avsnitt.">
       <Item ItemId="7651" ItemType="1" VarName="FirstVisitHeight" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        <FormItem ItemText="Høyde poliklinikk (cm)" ItemHelp="Målt ved første polikliniske konsultasjon" MinExpression="140" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Høyde poliklinikk" ItemHelp="Målt ved første polikliniske konsultasjon" MinExpression="140" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6830" ItemType="1" VarName="FirstVisitWeight" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        <FormItem ItemText="Vekt poliklinikk (kg)" ItemHelp="Målt ved første polikliniske konsultasjon" MinExpression="50" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+        <FormItem ItemText="Vekt poliklinikk" ItemHelp="Målt ved første polikliniske konsultasjon" MinExpression="50" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6831" ItemType="1" VarName="FirstVisitBMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-        <FormItem ItemText="KMI poliklinikk (kg/m2)" ItemHelp="Beregnet for første polikliniske konsultasjon" Expression="FirstVisitWeight/FirstVisitHeight/FirstVisitHeight*10000*ISPOS(FirstVisitWeight)*ISPOS(FirstVisitHeight)" MinExpression="5" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+        <FormItem ItemText="KMI poliklinikk" ItemHelp="Beregnet for første polikliniske konsultasjon" Expression="FirstVisitWeight/FirstVisitHeight/FirstVisitHeight*10000*ISPOS(FirstVisitWeight)*ISPOS(FirstVisitHeight)" MinExpression="5" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -47,7 +47,7 @@
         </FormItem>
       </Item>
       <Item ItemId="7066" ItemType="1" VarName="BASEREG_HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        <FormItem ItemText="Høyde (cm)" ItemHelp="Pasientens høyde i centimeter" Expression="HEIGHT" MinExpression="125" MaxExpression="240" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Høyde" ItemHelp="Pasientens høyde i centimeter" Expression="HEIGHT" MinExpression="125" MaxExpression="240" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -62,12 +62,12 @@
         </FormItem>
       </Item>
       <Item ItemId="7067" ItemType="1" VarName="BASEREG_WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        <FormItem ItemText="Vekt (kg)" ItemHelp="Kroppsvekt i hele kg." Expression="OP_PREOPWEIGHT * ISPOS(OP_PREOPWEIGHT - FirstVisitWeight) + &#xA;FirstVisitWeight * ISPOS(FirstVisitWeight - OP_PREOPWEIGHT) +&#xA;OP_PREOPWEIGHT * ISNULL(FirstVisitWeight - OP_PREOPWEIGHT)" MinExpression="30" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Vekt" ItemHelp="Kroppsvekt i hele kg." Expression="OP_PREOPWEIGHT * ISPOS(OP_PREOPWEIGHT - FirstVisitWeight) + &#xA;FirstVisitWeight * ISPOS(FirstVisitWeight - OP_PREOPWEIGHT) +&#xA;OP_PREOPWEIGHT * ISNULL(FirstVisitWeight - OP_PREOPWEIGHT)" MinExpression="30" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="7068" ItemType="1" VarName="BASEREG_BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-        <FormItem ItemText="KMI (kg/m2)" ItemHelp="Utregningen gjøres av systemet" Expression="BASEREG_WEIGHT / BASEREG_HEIGHT / BASEREG_HEIGHT * 10000* ISPOS( BASEREG_HEIGHT ) * ISPOS( BASEREG_WEIGHT )" MinExpression="5" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1" Decimals="1">
+        <FormItem ItemText="KMI" ItemHelp="Utregningen gjøres av systemet" Expression="BASEREG_WEIGHT / BASEREG_HEIGHT / BASEREG_HEIGHT * 10000* ISPOS( BASEREG_HEIGHT ) * ISPOS( BASEREG_WEIGHT )" MinExpression="5" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -283,7 +283,7 @@
     </Page>
     <Page PageTitle="Blodtrykksmidler*">
       <Item ItemId="4079" ItemType="1" VarName="NDV_BPDRUGS" LoincScale="QN" UnitStr="stk" DisplayFormat="">
-        <FormItem ItemHeader="Blodtrykksmidler" ItemText="Antall blodtrykkssenkende midler (stk)" ItemHelp="Sammensatte midler (eks. Comp) teller som 2." MinExpression="0" MaxExpression="6" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemHeader="Blodtrykksmidler" ItemText="Antall blodtrykkssenkende midler" ItemHelp="Sammensatte midler (eks. Comp) teller som 2." MinExpression="0" MaxExpression="6" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -334,12 +334,12 @@
     </Page>
     <Page PageTitle="Komorbiditet - Mage-/tarmsystemet">
       <Item ItemId="6702" ItemType="1" VarName="VAR6702" LoincScale="QN" UnitStr="per uke" DisplayFormat="">
-        <FormItem ItemText="Oppkast (per uke)" ItemHelp="Antall ganger oppkast per uke." MinExpression="0" MaxExpression="99" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Oppkast" ItemHelp="Antall ganger oppkast per uke." MinExpression="0" MaxExpression="99" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="7650" ItemType="1" VarName="VAR7650" LoincScale="QN" UnitStr="per uke" DisplayFormat="">
-        <FormItem ItemText="Avføringer (per uke)" ItemHelp="Antall ganger avføring per uke" MinExpression="1" MaxExpression="99" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Avføringer" ItemHelp="Antall ganger avføring per uke" MinExpression="1" MaxExpression="99" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -469,7 +469,7 @@
         </FormItem>
       </Item>
       <Item ItemId="6813" ItemType="1" VarName="VAR6813" LoincScale="QN" UnitStr="år" DisplayFormat="">
-        <FormItem ItemText="Antall år med behandling (år)" ItemHelp="" MinExpression="" MaxExpression="TRUNC(Patient.Age)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Antall år med behandling" ItemHelp="" MinExpression="" MaxExpression="TRUNC(Patient.Age)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -533,7 +533,7 @@
         </FormItem>
       </Item>
       <Item ItemId="6822" ItemType="1" VarName="VAR6822" LoincScale="QN" UnitStr="år" DisplayFormat="">
-        <FormItem ItemHeader="Behandlingstid" ItemText="Antall år med medikamentell behandling mot angst (år)" ItemHelp="" MinExpression="0" MaxExpression="TRUNC(Patient.Age) - 10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemHeader="Behandlingstid" ItemText="Antall år med medikamentell behandling mot angst" ItemHelp="" MinExpression="0" MaxExpression="TRUNC(Patient.Age) - 10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -561,7 +561,7 @@
         </FormItem>
       </Item>
       <Item ItemId="6821" ItemType="1" VarName="VAR6821" LoincScale="QN" UnitStr="år" DisplayFormat="">
-        <FormItem ItemHeader="Behandlingstid" ItemText="Antall år med medikamentell behandling mot depresjon (år)" ItemHelp="" MinExpression="0" MaxExpression="TRUNC(Patient.Age) - 10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemHeader="Behandlingstid" ItemText="Antall år med medikamentell behandling mot depresjon" ItemHelp="" MinExpression="0" MaxExpression="TRUNC(Patient.Age) - 10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -574,7 +574,7 @@
         </FormItem>
       </Item>
       <Item ItemId="7122" ItemType="1" VarName="BASEREG_OSMRS" LoincScale="QN" UnitStr="poeng" DisplayFormat="">
-        <FormItem ItemText="OS-MRS, Obesity Surgery Mortality Risk Score (poeng)" ItemHelp="Utregningen gjøres av systemet.&#xA;OS-MRS er en risikoscore for kirurgi på fedmepasienter.&#xA;Minst risiko = 0 poeng. Høyest risiko = 5 poeng.&#xA;Beregnes som følger: Kjønn. Kvinne = 0 Mann = 1&#xA;Alder. &lt;45år = 0 &gt;45 år = 1&#xA;Hypertoni. Nei = 0 Ja = 1&#xA;BMI. &lt;50 = 0 &gt;50 = 1&#xA;Tidligere DVT/PE. Nei = 0 Ja = 1" Expression="ISNULL( Patient.Sex - 1 ) + ISPOS( Patient.Age - 45 ) + ISPOS( BASEREG_HYPERTENSION ) + ISPOS( BASEREG_BMI - 49.999 ) + ISPOS( BASEREG_PREVIOUSDVT )" MinExpression="0" MaxExpression="5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="OS-MRS, Obesity Surgery Mortality Risk Score" ItemHelp="Utregningen gjøres av systemet.&#xA;OS-MRS er en risikoscore for kirurgi på fedmepasienter.&#xA;Minst risiko = 0 poeng. Høyest risiko = 5 poeng.&#xA;Beregnes som følger: Kjønn. Kvinne = 0 Mann = 1&#xA;Alder. &lt;45år = 0 &gt;45 år = 1&#xA;Hypertoni. Nei = 0 Ja = 1&#xA;BMI. &lt;50 = 0 &gt;50 = 1&#xA;Tidligere DVT/PE. Nei = 0 Ja = 1" Expression="ISNULL( Patient.Sex - 1 ) + ISPOS( Patient.Age - 45 ) + ISPOS( BASEREG_HYPERTENSION ) + ISPOS( BASEREG_BMI - 49.999 ) + ISPOS( BASEREG_PREVIOUSDVT )" MinExpression="0" MaxExpression="5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -590,37 +590,37 @@
     </Page>
     <Page PageTitle="Prosentvis inntekt" PageIntroduction="Summen av alle inntektskilder skal være 100%.  Fyll ut alle felter, også der svaret er 0.">
       <Item ItemId="6684" ItemType="1" VarName="VAR6684" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        <FormItem ItemText="Lønnet arbeid (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Lønnet arbeid" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6685" ItemType="1" VarName="VAR6685" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        <FormItem ItemText="Arbeidsavklaringspenger (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Arbeidsavklaringspenger" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6686" ItemType="1" VarName="VAR6686" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        <FormItem ItemText="Uføretrygd (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Uføretrygd" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6687" ItemType="1" VarName="VAR6687" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        <FormItem ItemText="Sosialstønad (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Sosialstønad" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6688" ItemType="1" VarName="VAR6688" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        <FormItem ItemText="Studielån/stipend (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Studielån/stipend" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6689" ItemType="1" VarName="VAR6689" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        <FormItem ItemText="Annet (%)" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Annet" ItemHelp="" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6690" ItemType="1" VarName="KONTROLL_SUM_100" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        <FormItem ItemText="Sum (%)" ItemHelp="" Expression="VAR6684 + VAR6685 + VAR6686 + VAR6687 + VAR6688 + VAR6689" MinExpression="-6" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Sum" ItemHelp="" Expression="VAR6684 + VAR6685 + VAR6686 + VAR6687 + VAR6688 + VAR6689" MinExpression="-6" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -646,7 +646,7 @@
     </Page>
     <Page PageTitle="Sykmeldingsdager">
       <Item ItemId="6811" ItemType="1" VarName="VAR6811" LoincScale="QN" UnitStr="dager" DisplayFormat="">
-        <FormItem ItemText="Dager sykmeldt siste 12 mnd (dager)" ItemHelp="" MinExpression="0" MaxExpression="260" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Dager sykmeldt siste 12 mnd" ItemHelp="" MinExpression="0" MaxExpression="260" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
