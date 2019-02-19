@@ -41,7 +41,7 @@
     </Page>
     <Page PageTitle="Svangerskapsuke oppdaget*" PageIntroduction="Kun aktuelt for diabetes oppstått i svangerskap">
       <Item ItemId="1311" ItemType="1" VarName="GRAV_UKE_DX" LoincScale="QN" UnitStr="svangerskapsuke" DisplayFormat="">
-        <FormItem ItemText="Svangerskapsuke der diabetes/forhøyet HbA1c ble oppdaget (svangerskapsuke)" ItemHelp="" MinExpression="1" MaxExpression="42" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
+        <FormItem ItemText="Svangerskapsuke der diabetes/forhøyet HbA1c ble oppdaget" ItemHelp="" MinExpression="1" MaxExpression="42" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -161,12 +161,12 @@
         </FormItem>
       </Item>
       <Item ItemId="7645" ItemType="1" VarName="GRAV_NORMALVEKT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        <FormItem ItemText="Pregravid vekt (kg)" ItemHelp="" MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0" Decimals="1">
+        <FormItem ItemText="Pregravid vekt" ItemHelp="" MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="9352" ItemType="1" VarName="PREGRAVID_BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-        <FormItem ItemText="Pregravid BMI (kg/m2)" ItemHelp="" Expression="GRAV_NORMALVEKT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(GRAV_NORMALVEKT)*ISPOS(HEIGHT)" MinExpression="10" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="1" Decimals="1">
+        <FormItem ItemText="Pregravid BMI" ItemHelp="" Expression="GRAV_NORMALVEKT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(GRAV_NORMALVEKT)*ISPOS(HEIGHT)" MinExpression="10" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -185,7 +185,7 @@
         </FormItem>
       </Item>
       <Item ItemId="1408" ItemType="1" VarName="HBA1C_EARLY" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        <FormItem ItemText="Tidlig HbA1c-verdi (%)" ItemHelp="" MinExpression="5.9" MaxExpression="6.49" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="1" Decimals="1">
+        <FormItem ItemText="Tidlig HbA1c-verdi" ItemHelp="" MinExpression="5.9" MaxExpression="6.49" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -235,12 +235,12 @@
         </FormItem>
       </Item>
       <Item ItemId="4223" ItemType="1" VarName="DP_SVANGERSKAPUKE" LoincScale="QN" UnitStr="uker" DisplayFormat="">
-        <FormItem ItemText="Svangerskapsuke (uker)" ItemHelp="Termin ultralyd har prioritet i beregningen" Expression="(40+(TRUNC(FORM.DATE)-DP_TERMIN_UL)/7)*ISPOS(DP_TERMIN_UL) +&#xA;(TRUNC(FORM.DATE)-DP_SISTE_MENS)/7*(1-ISPOS(DP_TERMIN_UL))*ISPOS(DP_SISTE_MENS)" MinExpression="0" MaxExpression="45" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1">
+        <FormItem ItemText="Svangerskapsuke" ItemHelp="Termin ultralyd har prioritet i beregningen" Expression="(40+(TRUNC(FORM.DATE)-DP_TERMIN_UL)/7)*ISPOS(DP_TERMIN_UL) +&#xA;(TRUNC(FORM.DATE)-DP_SISTE_MENS)/7*(1-ISPOS(DP_TERMIN_UL))*ISPOS(DP_SISTE_MENS)" MinExpression="0" MaxExpression="45" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="7649" ItemType="1" VarName="DP_SVANGERSKAPDAG" LoincScale="QN" UnitStr="dager" DisplayFormat="">
-        <FormItem ItemText="Svangerskapslengde (dager)" ItemHelp="Termin ultralyd har prioritet i beregningen" Expression="(280-(DP_TERMIN_UL-FORM.DATE))*ISPOS(DP_TERMIN_UL) + (FORM.DATE-DP_SISTE_MENS)*(1-ISPOS(DP_TERMIN_UL))*ISPOS(DP_SISTE_MENS)" MinExpression="0" MaxExpression="315" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1">
+        <FormItem ItemText="Svangerskapslengde" ItemHelp="Termin ultralyd har prioritet i beregningen" Expression="(280-(DP_TERMIN_UL-FORM.DATE))*ISPOS(DP_TERMIN_UL) + (FORM.DATE-DP_SISTE_MENS)*(1-ISPOS(DP_TERMIN_UL))*ISPOS(DP_SISTE_MENS)" MinExpression="0" MaxExpression="315" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -338,14 +338,14 @@
     </Page>
     <Page PageTitle="Glukosekontroll" PageIntroduction="Diskutere om det skal inn mer om lettere hypoglykemi.">
       <Item ItemId="7639" ItemType="1" VarName="GRAV_HYPOGLYKEMI" LoincScale="QN" UnitStr="ggr siden sist" DisplayFormat="">
-        <FormItem ItemHeader="Hypoglykemi" ItemText="Antall alvorlige hypoglykemier SIDEN SISTE KONSULTASJON (ggr siden sist)" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="1">
+        <FormItem ItemHeader="Hypoglykemi" ItemText="Antall alvorlige hypoglykemier SIDEN SISTE KONSULTASJON" ItemHelp="" MinExpression="0" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Auto*" PageIntroduction="This page was autogenerated">
       <Item ItemId="6384" ItemType="1" VarName="VMR_LAB_HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        <FormItem ItemText="Siste HbA1c (%)" ItemHelp="Hentes inn automatisk fra labarket, kan ikke redigeres her." Expression="LabData.HbA1c" MinExpression="3" MaxExpression="15" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
+        <FormItem ItemText="Siste HbA1c" ItemHelp="Hentes inn automatisk fra labarket, kan ikke redigeres her." Expression="LabData.HbA1c" MinExpression="3" MaxExpression="15" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -417,7 +417,7 @@
     </Page>
     <Page PageTitle="Glukometermåling, antall*">
       <Item ItemId="4059" ItemType="1" VarName="NDV_SELFMON_COUNT" LoincScale="QN" UnitStr="ganger/uke" DisplayFormat="">
-        <FormItem ItemText="Antall egenmålinger per uke (ganger/uke)" ItemHelp="" MinExpression="0" MaxExpression="140" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="0">
+        <FormItem ItemText="Antall egenmålinger per uke" ItemHelp="" MinExpression="0" MaxExpression="140" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
