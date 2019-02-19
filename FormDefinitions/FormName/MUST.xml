@@ -21,7 +21,7 @@
         </FormItem>
       </Item>
       <Item ItemId="4819" ItemType="1" VarName="MAXWEIGHT_180D" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        <FormItem ItemText="Høyeste vekt siste 6 mnd (kg)" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+        <FormItem ItemText="Høyeste vekt siste 6 mnd" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -34,17 +34,17 @@
     </Page>
     <Page PageTitle="Vekt fra tidligere journal">
       <Item ItemId="4821" ItemType="1" VarName="LASTWEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        <FormItem ItemText="Siste vekt fra journal (kg)" ItemHelp="" Expression="DATA.WEIGHT" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+        <FormItem ItemText="Siste vekt fra journal" ItemHelp="" Expression="DATA.WEIGHT" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4822" ItemType="1" VarName="WEIGHTAGE_DAYS" LoincScale="QN" UnitStr="dager" DisplayFormat="">
-        <FormItem ItemText="Dager siden siste veiing (dager)" ItemHelp="" Expression="NOW-DATA.WEIGHT.TIMESTAMP" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Dager siden siste veiing" ItemHelp="" Expression="NOW-DATA.WEIGHT.TIMESTAMP" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4823" ItemType="1" VarName="CWEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        <FormItem ItemText="Vekt til bruk i beregninger (kg)" ItemHelp="" Expression="ISPOS(WEIGHT)*WEIGHT + ISNEG(WEIGHT)*DATA.WEIGHT*ISNEG(WEIGHTAGE_DAYS-30)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1" Decimals="1">
+        <FormItem ItemText="Vekt til bruk i beregninger" ItemHelp="" Expression="ISPOS(WEIGHT)*WEIGHT + ISNEG(WEIGHT)*DATA.WEIGHT*ISNEG(WEIGHTAGE_DAYS-30)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -64,22 +64,22 @@
     </Page>
     <Page PageTitle="Estimering av høyde">
       <Item ItemId="4811" ItemType="1" VarName="KNEHOYDE" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        <FormItem ItemText="Knehøyde (cm)" ItemHelp="Mål fra fotsålen til over kneet med 90 vinkel i både ankel og kne." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Knehøyde" ItemHelp="Mål fra fotsålen til over kneet med 90 vinkel i både ankel og kne." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4812" ItemType="1" VarName="DEMISPAN" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        <FormItem ItemHeader="Mål fra halsgrop til tuppen av langfinger på ene side." ItemText="Halvfavn (cm)" ItemHelp="" MinExpression="60" MaxExpression="110" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemHeader="Mål fra halsgrop til tuppen av langfinger på ene side." ItemText="Halvfavn" ItemHelp="" MinExpression="60" MaxExpression="110" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4814" ItemType="1" VarName="EHEIGHT_KNEE" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        <FormItem ItemText="Estimert høyde basert på knehøyde (cm)" ItemHelp="" Expression="((64.19-(0.04*AGENOW)+(2.02*KNEHOYDE))*ISNULL(SEX-1) +&#xA;(84.88-(0.24*AGENOW)+(1.83*KNEHOYDE))*ISNULL(SEX-2))*ISPOS(KNEHOYDE)" MinExpression="30" MaxExpression="80" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+        <FormItem ItemText="Estimert høyde basert på knehøyde" ItemHelp="" Expression="((64.19-(0.04*AGENOW)+(2.02*KNEHOYDE))*ISNULL(SEX-1) +&#xA;(84.88-(0.24*AGENOW)+(1.83*KNEHOYDE))*ISNULL(SEX-2))*ISPOS(KNEHOYDE)" MinExpression="30" MaxExpression="80" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4813" ItemType="1" VarName="EHEIGHT_DEMISPAN" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        <FormItem ItemText="Estimert høyde beregnet fra halvfavn (cm)" ItemHelp="" Expression="((1.35 * DEMISPAN + 60.1)*ISNULL(SEX-2) +&#xA;(1.40 * DEMISPAN + 57.8)*ISNULL(SEX-1)) * ISPOS(DEMISPAN)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+        <FormItem ItemText="Estimert høyde beregnet fra halvfavn" ItemHelp="" Expression="((1.35 * DEMISPAN + 60.1)*ISNULL(SEX-2) +&#xA;(1.40 * DEMISPAN + 57.8)*ISNULL(SEX-1)) * ISPOS(DEMISPAN)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -98,7 +98,7 @@
     </Page>
     <Page PageTitle="Vektendring*">
       <Item ItemId="4820" ItemType="1" VarName="WEIGHTPERCENTCHANGE" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        <FormItem ItemText="Vektendring (%)" ItemHelp="" Expression="100*(WEIGHT-MAXWEIGHT_180D)/MAXWEIGHT_180D*ISPOS(MAXWEIGHT_180D)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Vektendring" ItemHelp="" Expression="100*(WEIGHT-MAXWEIGHT_180D)/MAXWEIGHT_180D*ISPOS(MAXWEIGHT_180D)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -125,17 +125,17 @@
         </FormItem>
       </Item>
       <Item ItemId="4827" ItemType="1" VarName="MUST_BMI_SCORE" LoincScale="QN" UnitStr="poeng" DisplayFormat="">
-        <FormItem ItemText="MUST BMI poeng (poeng)" ItemHelp="" Expression="ISNEG(BMI-18.5) + ISNEG(BMI-20)" MinExpression="0" MaxExpression="2" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="MUST BMI poeng" ItemHelp="" Expression="ISNEG(BMI-18.5) + ISNEG(BMI-20)" MinExpression="0" MaxExpression="2" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4828" ItemType="1" VarName="MUST_WEIGHT_SCORE" LoincScale="QN" UnitStr="poeng" DisplayFormat="">
-        <FormItem ItemText="MUST Vekttap (poeng)" ItemHelp="Vekttap &gt; 10% gir 2 poeng, &gt; 5% gir 1 poeng." Expression="(ISNEG(10+WEIGHTPERCENTCHANGE) + ISNEG(5+WEIGHTPERCENTCHANGE)) * ISNULL(MUST_INVOLUNTARY-1)" MinExpression="0" MaxExpression="2" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="MUST Vekttap" ItemHelp="Vekttap &gt; 10% gir 2 poeng, &gt; 5% gir 1 poeng." Expression="(ISNEG(10+WEIGHTPERCENTCHANGE) + ISNEG(5+WEIGHTPERCENTCHANGE)) * ISNULL(MUST_INVOLUNTARY-1)" MinExpression="0" MaxExpression="2" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4832" ItemType="1" VarName="MUST_TOTAL_SCORE" LoincScale="QN" UnitStr="poeng" DisplayFormat="">
-        <FormItem ItemText="MUST total score (poeng)" ItemHelp="0 = Lav risiko, 1 = Middels risiko (observasjon ), 2+ = Høy risiko (start behandling)" Expression="MUST_BMI_SCORE + MUST_WEIGHT_SCORE + MUST_CRISIS_SCORE" MinExpression="0" MaxExpression="6" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="MUST total score" ItemHelp="0 = Lav risiko, 1 = Middels risiko (observasjon ), 2+ = Høy risiko (start behandling)" Expression="MUST_BMI_SCORE + MUST_WEIGHT_SCORE + MUST_CRISIS_SCORE" MinExpression="0" MaxExpression="6" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
