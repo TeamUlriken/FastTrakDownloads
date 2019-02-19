@@ -1548,8 +1548,8 @@ WHERE a.OrderNo = 1 AND ( ( a.DiaType=@DiaType ) OR ( @DiaType IS NULL ) )
 ORDER BY ReverseName
 END]]>
 	</row>
-	<row ProcId="214" StudyName="NDV.BASE" ProcName="NDV.GetAnnualControls" ProcDesc="Årskontroller: Utvalg på periode" ProcParams=":StartAt,:StopAt" ListId="CASE" GrantTo="public" MinVersion="6000" InfoCaption="Dato for årskontroll" ChkSum="220804038" LastUpdate="2015-11-05T07:57:56.603Z">
-		<![CDATA[CREATE PROCEDURE NDV.GetAnnualControls( @StartDate DateTime, @StopDate DateTime ) AS
+	<row ProcId="214" StudyName="NDV" ProcName="NDV.GetAnnualControls" ProcDesc="Årskontroller: Årskontroller i valgfri periode" ProcParams=":StudyId, :StartDate,:StopDate" ListId="CASE" GrantTo="public" MinVersion="6000" InfoCaption="Dato for årskontroll" HelpText="Populasjonen viser alle pasienter der det er opprettet et årskontroll-skjema i en gitt periode. Det tas ikke hensyn til graden av utfylling." ChkSum="-52507873" LastUpdate="2019-02-19T10:55:32.533Z">
+		<![CDATA[CREATE PROCEDURE NDV.GetAnnualControls( @StudyId INT, @StartDate DateTime, @StopDate DateTime ) AS
 BEGIN
   SELECT p.PersonId, p.DOB, p.ReverseName AS FullName, 'Type ' + mia.ShortCode AS GroupName, 'Uansett status' AS StatusText, 
     p.GenderId, p.NationalId, a.DiabetesType, 'Kontroll ' + dbo.LongTime( a.LastVisit ) AS InfoText
@@ -1725,7 +1725,7 @@ BEGIN
   FROM #TempTable WHERE HBA1C >= 75 ORDER BY HbA1c DESC;
 END]]>
 	</row>
-	<row ProcId="271" StudyName="NDV" ProcName="NDV.GetCaseListType2WithCHD" ProcDesc="Studier: Leader, koronarsyke &gt; 50 år" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="490" ChkSum="-871912709" LastUpdate="2014-04-25T12:49:50.717Z">
+	<row ProcId="271" StudyName="NDV" ProcName="NDV.GetCaseListType2WithCHD" ProcDesc="Studier: Leader, koronarsyke &gt; 50 år" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="490" HelpText="Marso SP, et al. &quot;Liraglutide and cardiovascular outcomes in type 2 diabetes&quot;. The New England Journal of Medicine. 2016. 375(4):311-322" ChkSum="-1795621767" LastUpdate="2019-02-19T11:02:38.433Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetCaseListType2WithCHD( @StudyId INT ) AS
 BEGIN  
   SELECT PersonId,DOB,FullName,GroupName,'Koronarsyk siden ' + 
@@ -1734,7 +1734,7 @@ BEGIN
   ORDER BY FullName
 END]]>
 	</row>
-	<row ProcId="272" StudyName="NDV" ProcName="NDV.GetType2WithHypertension" ProcDesc="Studier: Leader, hypertensjon &gt; 60 år" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="490" ChkSum="-1736728600" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="272" StudyName="NDV" ProcName="NDV.GetType2WithHypertension" ProcDesc="Studier: Leader, hypertensjon &gt; 60 år" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="490" HelpText="Marso SP, et al. &quot;Liraglutide and cardiovascular outcomes in type 2 diabetes&quot;. The New England Journal of Medicine. 2016. 375(4):311-322" ChkSum="-1065039510" LastUpdate="2019-02-19T11:02:43.957Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType2WithHypertension( @StudyId INT, @MinAge FLOAT = 60.0 ) AS
 BEGIN
   SELECT *,
@@ -2075,34 +2075,6 @@ BEGIN
   EXECUTE NDV.GetPumpWithHighHbA1c @StudyId,0,99,1;
 END]]>
 	</row>
-	<row ProcId="302" StudyName="NDV" ProcName="NDV.GetAnnualControls2015" ProcDesc="Årskontroller: Årskontroller i 2015" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" InfoCaption="Dato for årskontroll" ChkSum="1046267588" LastUpdate="2015-11-05T07:58:00.417Z">
-		<![CDATA[CREATE PROCEDURE NDV.GetAnnualControls2015( @StudyId INT ) AS 
-BEGIN
-  SET NOCOUNT ON; 
-  EXEC NDV.GetAnnualControls '2015-01-01','2015-12-31'; 
-END]]>
-	</row>
-	<row ProcId="303" StudyName="NDV" ProcName="NDV.GetAnnualControls2014" ProcDesc="Årskontroller: Årskontroller i 2014" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" InfoCaption="Dato for årskontroll" ChkSum="1057068228" LastUpdate="2015-11-05T07:58:03.853Z">
-		<![CDATA[CREATE PROCEDURE NDV.GetAnnualControls2014( @StudyId INT ) AS 
-BEGIN
-  SET NOCOUNT ON; 
-  EXEC NDV.GetAnnualControls '2014-01-01','2014-12-31'; 
-END]]>
-	</row>
-	<row ProcId="304" StudyName="NDV" ProcName="NDV.GetAnnualControls2013" ProcDesc="Årskontroller: Årskontroller i 2013" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" InfoCaption="Dato for årskontroll" ChkSum="1066117828" LastUpdate="2015-11-05T12:10:05.060Z">
-		<![CDATA[CREATE PROCEDURE NDV.GetAnnualControls2013( @StudyId INT ) AS 
-BEGIN
-  SET NOCOUNT ON; 
-  EXEC NDV.GetAnnualControls '2013-01-01','2013-12-31'; 
-END]]>
-	</row>
-	<row ProcId="305" StudyName="NDV" ProcName="NDV.GetAnnualControls2012" ProcDesc="Årskontroller: Årskontroller i 2012" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" InfoCaption="Dato for årskontroll" ChkSum="1040068548" LastUpdate="2016-09-20T11:59:33.117Z">
-		<![CDATA[CREATE PROCEDURE NDV.GetAnnualControls2012( @StudyId INT ) AS 
-BEGIN
-  SET NOCOUNT ON; 
-  EXEC NDV.GetAnnualControls '2012-01-01','2012-12-31'; 
-END]]>
-	</row>
 	<row ProcId="306" StudyName="NDV" ProcName="NDV.GetAnnualControlMissing" ProcDesc="Årskontroller: Aktive uten årskontroll siste 15 mnd" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" InfoCaption="Diabetes type" ChkSum="-535103170" LastUpdate="2019-01-03T08:59:31.920Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetAnnualControlMissing(@StudyId INT)
 AS
@@ -2207,20 +2179,6 @@ END]]>
 	</row>
 	<row ProcId="312" StudyName="ENDO" ProcName="NDV.GetYoungDiabetics" ProcDesc="Studier: Unge diabetikere" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6302" InfoCaption="Første konsultajson" ChkSum="1153567350" LastUpdate="2019-01-23T07:38:54.220Z">
 		<![CDATA[]]>
-	</row>
-	<row ProcId="313" StudyName="NDV" ProcName="NDV.GetAnnualControls2016" ProcDesc="Årskontroller: Årskontroller i 2016" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" InfoCaption="Dato for årskontroll" ChkSum="1052459460" LastUpdate="2016-09-20T11:59:38.573Z">
-		<![CDATA[CREATE PROCEDURE NDV.GetAnnualControls2016( @StudyId INT ) AS 
-BEGIN
-  SET NOCOUNT ON; 
-  EXEC NDV.GetAnnualControls '2016-01-01','2016-12-31'; 
-END]]>
-	</row>
-	<row ProcId="314" StudyName="NDV" ProcName="NDV.GetAnnualControls2017" ProcDesc="Årskontroller: Årskontroller i 2017" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" InfoCaption="Dato for årskontroll" ChkSum="980737220" LastUpdate="2017-05-04T07:17:00.883Z">
-		<![CDATA[CREATE PROCEDURE NDV.GetAnnualControls2017( @StudyId INT ) AS 
-BEGIN
-  SET NOCOUNT ON; 
-  EXEC NDV.GetAnnualControls '2017-01-01','2017-12-31'; 
-END]]>
 	</row>
 	<row ProcId="315" StudyName="NDV" ProcName="NDV.GetCaseListHbA1cProject2017" ProcDesc="Prosjekter: HbA1c prosjekt 2017" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6401" ChkSum="1621044176" LastUpdate="2018-10-03T16:02:32.593Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetCaseListHbA1cProject2017 (@StudyId INT) AS
