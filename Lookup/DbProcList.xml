@@ -2393,6 +2393,20 @@ BEGIN
   ORDER BY v.FullName;                        
 END]]>
 	</row>
+	<row ProcId="602" StudyName="ROAS" ProcName="ENDO.GetAddisonWomen" ProcDesc="Addison: Kvinner med Addison" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" HelpText="Basert på flere variable, enten Ja på Addison (6299) eller subtype, evt. at diagnoseår er registrert" ChkSum="1754704743" LastUpdate="2019-03-02T08:13:49.340Z">
+		<![CDATA[CREATE PROCEDURE ENDO.GetAddisonWomen( @StudyId INT ) AS
+BEGIN
+  SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, v.GenderId,
+    'Diagnoseår ' + ISNULL(CONVERT(VARCHAR, CONVERT(INT, T6089.Quantity)), 'mangler') + ', ' +
+    ISNULL(T6090.OptionText, '(subtype mangler)') + '.' AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  LEFT JOIN dbo.GetLastEnumValuesTable( 6090, NULL ) AS T6090 ON T6090.PersonId = v.PersonId
+  LEFT JOIN dbo.GetLastEnumValuesTable( 6299, NULL ) AS T6299 ON T6299.PersonId = v.PersonId
+  LEFT JOIN dbo.GetLastQuantities( 6089 ) AS T6089 ON T6089.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId AND (T6090.EnumVal = 1 OR T6299.EnumVal = 1 OR T6089.Quantity > 1900)
+    AND v.GenderId = 1;
+END]]>
+	</row>
 	<row ProcId="700" StudyName="ENDO" ProcName="ENDO.GetCaseListHypertyreose" ProcDesc="Diagnose: Hypertyreose" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1020329328" LastUpdate="2013-09-27T10:41:14.780Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetCaseListHypertyreose ( @StudyId INT )
 AS
