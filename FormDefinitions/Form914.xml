@@ -167,11 +167,12 @@
     </Page>
     <Page PageTitle="Evaluation">
       <Item ItemId="3214" ItemType="2" VarName="VAR3214" LoincScale="ORD">
-        <FormItem ItemText="RXN" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="RXN" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12043" OrderNumber="1" OptionText="Skin"/>
           <Answer AnswerId="12044" OrderNumber="2" OptionText="Sampler"/>
           <Answer AnswerId="12045" OrderNumber="3" OptionText="Combination"/>
           <Answer AnswerId="12046" OrderNumber="4" OptionText="Other"/>
+          <Answer AnswerId="12471" OrderNumber="5" OptionText="None"/>
         </FormItem>
       </Item>
       <Item ItemId="3215" ItemType="2" VarName="VAR3215" LoincScale="ORD">
@@ -209,7 +210,7 @@
         </FormItem>
       </Item>
       <Item ItemId="3232" ItemType="1" VarName="VAR3232" LoincScale="QN">
-        <FormItem ItemText="Saliva 3, minute" ItemHelp="Thirty minutes after awakening" MinExpression="0" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Saliva 3, minute" ItemHelp="Thirty minutes after awakening" MinExpression="0" MaxExpression="60" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -294,7 +295,7 @@
         <FormItem ItemText="Clinically in remission" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="12216" OrderNumber="1" OptionText="Yes"/>
           <Answer AnswerId="12217" OrderNumber="2" OptionText="No"/>
-          <Answer AnswerId="12218" OrderNumber="3" OptionText="Partial"/>
+          <Answer AnswerId="12218" OrderNumber="3" OptionText="Unsure"/>
           <Answer AnswerId="12219" OrderNumber="4" OptionText="Unsure"/>
         </FormItem>
       </Item>
@@ -409,6 +410,162 @@
         </FormItem>
       </Item>
     </Page>
+    <Page PageTitle="Addison-specific variable">
+      <Item ItemId="4660" ItemType="1" VarName="VAR4660" LoincScale="QN">
+        <FormItem ItemText="Year of diagnosis (Addison)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4655" ItemType="2" VarName="VAR4655" LoincScale="ORD">
+        <FormItem ItemText="HypOthyreosis" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61570" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="61571" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4656" ItemType="2" VarName="VAR4656" LoincScale="ORD">
+        <FormItem ItemText="HypERthyreosis" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61573" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="61574" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4657" ItemType="2" VarName="VAR4657" LoincScale="ORD">
+        <FormItem ItemText="Diabetes Type 1" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61576" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="61577" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4658" ItemType="2" VarName="VAR4658" LoincScale="ORD">
+        <FormItem ItemText="Primary Ovarian Insufficiency" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61579" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="61580" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4659" ItemType="2" VarName="VAR4659" LoincScale="ORD">
+        <FormItem ItemText="Coeliac disease" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61582" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="61583" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4654" ItemType="2" VarName="VAR4654" LoincScale="ORD">
+        <FormItem ItemText="Autoimmune atrophic gastritis" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12464" OrderNumber="1" OptionText="Yes"/>
+          <Answer AnswerId="12465" OrderNumber="2" OptionText="No"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4661" ItemType="2" VarName="VAR4661" LoincScale="ORD">
+        <FormItem ItemText="Glucocorticoid replacement" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12466" OrderNumber="1" OptionText="Hydrocortisone" Score="1.00"/>
+          <Answer AnswerId="12467" OrderNumber="2" OptionText="Cortisone acetate" Score="0.80"/>
+          <Answer AnswerId="12468" OrderNumber="3" OptionText="Plenadren" Score="0.81"/>
+          <Answer AnswerId="12469" OrderNumber="4" OptionText="Prednisolone" Score="4.00"/>
+          <Answer AnswerId="12470" OrderNumber="5" OptionText="Pump" Score="1.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Glucocorticoid replacement during sampling" PageIntroduction="Start with morning dose on sampling start date, and include all glucocorticoid doses taken during sampling.">
+      <Item ItemId="4669" ItemType="1" VarName="VAR4669" LoincScale="QN">
+        <FormItem ItemText="Dose #1 time" ItemHelp="Use 700 for 7 am, 1300 for 1 pm etc." MinExpression="0" MaxExpression="2359" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4663" ItemType="1" VarName="VAR4663" LoincScale="QN">
+        <FormItem ItemText="Dose #1 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4664" ItemType="1" VarName="VAR4664" LoincScale="QN">
+        <FormItem ItemText="Dose #2 time" ItemHelp="Use 700 for 7 am, 1300 for 1 pm etc." MinExpression="0" MaxExpression="2359" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4670" ItemType="1" VarName="VAR4670" LoincScale="QN">
+        <FormItem ItemText="Dose #2 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4665" ItemType="1" VarName="VAR4665" LoincScale="QN">
+        <FormItem ItemText="Dose #3 time" ItemHelp="Use 700 for 7 am, 1300 for 1 pm etc." MinExpression="0" MaxExpression="2359" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4671" ItemType="1" VarName="VAR4671" LoincScale="QN">
+        <FormItem ItemText="Dose #3 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4666" ItemType="1" VarName="VAR4666" LoincScale="QN">
+        <FormItem ItemText="Dose #4 time" ItemHelp="Use 700 for 7 am, 1300 for 1 pm etc." MinExpression="0" MaxExpression="2359" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4672" ItemType="1" VarName="VAR4672" LoincScale="QN">
+        <FormItem ItemText="Dose #4 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4667" ItemType="1" VarName="VAR4667" LoincScale="QN">
+        <FormItem ItemText="Dose #5 time" ItemHelp="Use 700 for 7 am, 1300 for 1 pm etc." MinExpression="0" MaxExpression="2359" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4673" ItemType="1" VarName="VAR4673" LoincScale="QN">
+        <FormItem ItemText="Dose #5 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4668" ItemType="1" VarName="VAR4668" LoincScale="QN">
+        <FormItem ItemText="Dose #6 time" ItemHelp="Use 700 for 7 am, 1300 for 1 pm etc." MinExpression="0" MaxExpression="2359" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4674" ItemType="1" VarName="VAR4674" LoincScale="QN">
+        <FormItem ItemText="Dose #6 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4662" ItemType="1" VarName="VAR4662" LoincScale="QN">
+        <FormItem ItemText="Dose #7 time" ItemHelp="Use 700 for 7 am, 1300 for 1 pm etc." MinExpression="0" MaxExpression="2359" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4679" ItemType="1" VarName="VAR4679" LoincScale="QN">
+        <FormItem ItemText="Dose #7 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Mineralocorticoid replacement" PageIntroduction="Start with morning dose on sampling start date, and include all mineralocorticoid doses taken during sampling.">
+      <Item ItemId="4677" ItemType="1" VarName="VAR4677" LoincScale="QN">
+        <FormItem ItemText="Dose #1 time" ItemHelp="" MinExpression="0" MaxExpression="2359" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4680" ItemType="1" VarName="VAR4680" LoincScale="QN">
+        <FormItem ItemText="Dose #1 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4678" ItemType="1" VarName="VAR4678" LoincScale="QN">
+        <FormItem ItemText="Dose #2 time" ItemHelp="" MinExpression="0" MaxExpression="2359" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4675" ItemType="1" VarName="VAR4675" LoincScale="QN">
+        <FormItem ItemText="Dose #2 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4676" ItemType="1" VarName="VAR4676" LoincScale="QN">
+        <FormItem ItemText="Dose #3 time" ItemHelp="" MinExpression="0" MaxExpression="2359" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4681" ItemType="1" VarName="VAR4681" LoincScale="QN">
+        <FormItem ItemText="Dose #3 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
   </Form>
   <Actions>
     <PageAction MasterId="1160">
@@ -444,6 +601,9 @@
     </PageAction>
     <PageAction MasterId="1160">
       <Activate EnumVal="7" PageConditionId="7807" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="5" PageConditionId="7991" PageNumber="19" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="5" PageConditionId="7992" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="5" PageConditionId="7993" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
