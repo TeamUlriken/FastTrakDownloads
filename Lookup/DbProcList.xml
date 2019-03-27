@@ -2393,7 +2393,7 @@ BEGIN
   ORDER BY v.FullName;                        
 END]]>
 	</row>
-	<row ProcId="602" StudyName="ROAS" ProcName="ENDO.GetAddisonWomen" ProcDesc="Addison: Kvinner med Addison" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" HelpText="Basert på flere variable, enten Ja på Addison (6299) eller subtype, evt. at diagnoseår er registrert" ChkSum="1754704743" LastUpdate="2019-03-02T08:13:49.340Z">
+	<row ProcId="602" StudyName="ROAS" ProcName="ENDO.GetAddisonWomen" ProcDesc="Addison: Kvinner med Addison" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" HelpText="Basert på flere variable, enten Ja på Addison (6299) eller subtype, evt. at diagnoseår er registrert" ChkSum="680962917" LastUpdate="2019-03-04T08:23:47.080Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetAddisonWomen( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, v.GenderId,
@@ -2404,7 +2404,7 @@ BEGIN
   LEFT JOIN dbo.GetLastEnumValuesTable( 6299, NULL ) AS T6299 ON T6299.PersonId = v.PersonId
   LEFT JOIN dbo.GetLastQuantities( 6089 ) AS T6089 ON T6089.PersonId = v.PersonId
   WHERE v.StudyId = @StudyId AND (T6090.EnumVal = 1 OR T6299.EnumVal = 1 OR T6089.Quantity > 1900)
-    AND v.GenderId = 1;
+    AND v.GenderId = 2;
 END]]>
 	</row>
 	<row ProcId="700" StudyName="ENDO" ProcName="ENDO.GetCaseListHypertyreose" ProcDesc="Diagnose: Hypertyreose" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1020329328" LastUpdate="2013-09-27T10:41:14.780Z">
@@ -4167,6 +4167,77 @@ CROSS APPLY
 
 END;
 ]]>
+	</row>
+	<row ProcId="1042" StudyName="GBD" ProcName="GBD.RapportAtferd" ProcDesc="Atferdsregistrering 24t" ProcParams=":StudyId, :StartAt, :StopAt" ListId="FR" GrantTo="public" MinVersion="18212" ChkSum="-1849757524" LastUpdate="2019-03-22T09:58:05.580Z">
+		<![CDATA[CREATE PROCEDURE GBD.RapportAtferd( @PersonId INT, @StartAt DATETIME, @StopAt DATETIME ) AS
+BEGIN
+    SET LANGUAGE NORWEGIAN;
+    SET NOCOUNT ON;
+    SELECT 
+        p.wk AS WeekNo, 
+        MIN(EventTime) AS FirstForm, MAX(EventTime) AS LastForm,
+        p.ItemId, mfi.ItemText, 
+        MAX(Monday) AS Monday, MAX(Tuesday) AS Tuesday, MAX(Wednesday) AS Wednesday, MAX(Thursday) AS Thursday,  MAX(Friday) AS Friday,
+        MAX(Saturday) AS Saturday, MAX(Sunday) AS Sunday
+    FROM 
+      (
+        SELECT wk, EventTime, ItemId, [1] AS Monday, [2] AS Tuesday, [3] AS Wednesday, [4] AS Thursday, [5] AS Friday, [6] AS Saturday, [7] AS Sunday
+        FROM
+        (
+          SELECT mfi.ItemId, ce.EventTime, cdp.EnumVal,
+            DATEPART(ISO_WEEK,ce.EventTime) AS wk, 
+            DATEPART(WEEKDAY,ce.EventTime) AS wd
+          FROM dbo.ClinForm cf 
+          JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId
+          JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId AND mf.FormName = 'GBD_ATFERD'
+          JOIN dbo.MetaFormItem mfi ON mfi.FormId = cf.FormId AND mfi.ItemId BETWEEN 1630 AND 1653
+          LEFT JOIN dbo.ClinDataPoint cdp ON cdp.EventId = ce.EventId AND cdp.ItemId = mfi.ItemId
+          WHERE ce.PersonId = @PersonId
+          AND cf.FormStatus = 'L'
+          AND ( ce.EventTime >= @StartAt AND ce.EventTime < @StopAt )
+        ) AS SourceTable
+        PIVOT
+        (
+          MAX(EnumVal) FOR wd IN ( [1],[2],[3],[4],[5],[6],[7] ) 
+        ) AS PivotTable 
+      ) p
+    JOIN dbo.MetaFormItem mfi ON mfi.FormId IN (923, 1047) AND mfi.ItemId = p.ItemId
+    GROUP BY wk, p.ItemId, mfi.ItemText
+    ORDER BY FirstForm DESC, ItemId;
+END;]]>
+	</row>
+	<row ProcId="1043" StudyName="GBD" ProcName="GBD.RapportAtferdTotals" ProcDesc="Atferdsregistrering 24t totals" ProcParams=":StudyId, :StartAt, :StopAt" ListId="FR" GrantTo="public" MinVersion="18212" ChkSum="177243659" LastUpdate="2019-03-27T18:38:57.027Z">
+		<![CDATA[CREATE PROCEDURE GBD.RapportAtferdTotals ( @PersonId INT, @StartAt DATETIME, @StopAt DATETIME )
+AS
+BEGIN
+    SELECT d,
+        [1] AS Sleeping,
+        [2] AS FeelingDown,
+        [3] AS Restless,
+        [4] AS Irritable,
+        [5] AS Movement,
+        [6] AS Hallucination,
+        [7] AS Yelling,
+        [8] AS ActionOut,
+        [9] AS Calm,
+        [-1] AS NoValue
+    FROM (
+        SELECT
+            CONVERT( VARCHAR, ce.EventTime, 106 ) AS d,
+            ISNULL(cdp.EnumVal, -1) AS EnumVal
+        FROM dbo.ClinForm cf
+        JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId
+        JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId AND mf.FormName = 'GBD_ATFERD'
+        JOIN dbo.MetaItem mi ON mi.ItemId BETWEEN 1630 AND 1653
+        LEFT OUTER JOIN dbo.ClinDataPoint cdp ON cdp.ItemId = mi.ItemId AND cdp.EventId = cf.EventId
+        WHERE ce.PersonId = @PersonId
+        AND cf.FormStatus = 'L'
+        AND ( ce.EventTime >= @StartAt AND ce.EventTime < @StopAt )
+    ) t
+    PIVOT (
+        COUNT( t.EnumVal ) FOR t.EnumVal IN ( [1], [2], [3], [4], [5], [6], [7], [8], [9], [-1] ) 
+    ) PivotTable
+END;]]>
 	</row>
 	<row ProcId="1101" StudyName="LANGTID" ProcName="dbo.GetCaseListFocused" ProcDesc="101. Overvåket status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1416404730" LastUpdate="2019-01-12T07:04:44.503Z">
 		<![CDATA[]]>
