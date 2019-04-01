@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
+<style type="text/css">
 
 /* DEFAULT STYLE */
 body  { font-size: <#ColorScheme.FontSize>pt; font-family: "<#ColorScheme.FontName>",Tahoma,Arial,Helvetica; margin: 3pt; }
@@ -39,11 +39,13 @@ a:hover { color: red; text-decoration: underline; }
 .TVmrRowEntry { vertical-align: top; }
 .TVmrRowEntryChanged { vertical-align: top; background-color: yellow; }
 .TVmrSource { color: steelblue; }
+.TVmrTime { font-size: smaller; font-weight: normal; }
 
 .footer { text-align: right; }
 .formbody { font-weight: normal; background-color: <#ColorScheme.VeryLight>; padding: 4px; color: <#ColorScheme.Dark>; border: 1px dotted gray; }
 .formcomment,.highlighted { background-color: lightyellow; }
 .formcomment{ padding: 4px; border: 1px dotted gray; border-top: none; }
+.formfooter{ padding: 2px; font-size: smaller; }
 .formtitle { font-weight: bold; padding: 2px 2px 4px;  }
 .formtop{ background-color: #E0E9F3; }
 .formsign, .formpatient { text-align: right; }
@@ -53,6 +55,7 @@ a:hover { color: red; text-decoration: underline; }
 .StoppedDrug {text-decoration: line-through;}
 .LabAbnormal { background-color: #FBE3C3; padding-left: 4px; padding-right: 4px; }
 .LabRange{ color: #808080; }
+.LabUnsigned { background-color: #F5AB76; color: white; font-size: smaller; padding: 0 2px; margin-left: 4px; }
 
 .sign, .note { color: steelblue;  }
 .val { color: black; font-weight: bold; }
@@ -61,10 +64,26 @@ a:hover { color: red; text-decoration: underline; }
 .MsgDescr{ color: blue; }
 .MsgId{ color: green; }
 
+/* Print header/footer related */
+.pageheader{ border-bottom: 2px solid black; }
+.pagefooter{ border-top: 1px solid black; }
+.patientname{ font-size: 13pt; font-weight: bold; }
+.centername{ font-size: 11pt; font-weight: bold; float: right; }
+.printinfo{ font-size: 8pt; }
+@media screen {
+	.noscreen{ display: none;}
+}
+
 </style>
 </head>
 <body>
+<table width="100%">
+<thead class="noscreen" ><tr><td colspan="3" class="pageheader"><span class="patientname"><#Patient.VisualId></span><span class="centername"><#User.CenterName></span></td></tr></thead>
+<tfoot class="noscreen"><tr><td colspan="3" class="pagefooter"><span class="printinfo">Tatt ut av: <#User.FullName> <#Time.DateTimeString></span></td></tr></tfoot>
+<tbody>
 <#VmrViewer.FilteredVmr>
+</tbody>
+</table>
 </body>
 </html>
 

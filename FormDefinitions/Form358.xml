@@ -29,17 +29,17 @@
     </Page>
     <Page PageTitle="5. Vilkår som vurderes oppfylt">
       <Item ItemId="4461" ItemType="4" VarName="TVANG_HELSESKADE" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemText="Unnlatelse av å gi helsehjelp kan føre til vesentlig helseskade" ItemHelp="Jf. § 4 A-3 annet ledd, bokstav b" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Unnlatelse av å gi helsehjelp kan føre til vesentlig helseskade" ItemHelp="Begrunnelse. Jf. § 4 A-3 annet ledd, bokstav b" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4462" ItemType="4" VarName="TVANG_NODVENDIG" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemText="Helsehjelpen anses nødvendig" ItemHelp="Jf. § 4 A-3 annet ledd, bokstav c" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Helsehjelpen anses nødvendig" ItemHelp="Begrunnelse. Jf. § 4 A-3 annet ledd, bokstav c" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4463" ItemType="4" VarName="TVANG_FORHOLDSMESSIG" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemText="Gjennomføringstiltaket står i forhold til helsehjelpen" ItemHelp="Jf. § 4 A-3 tredje ledd" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Gjennomføringstiltaket står i forhold til helsehjelpen" ItemHelp="Begrunnelse. Jf. § 4 A-3 tredje ledd" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -52,8 +52,8 @@
     <Page PageTitle="6-7. Tillitskapende tiltak">
       <Item ItemId="4467" ItemType="2" VarName="TVANG_TILLIT" LoincScale="ORD" DisplayFormat="Vertical">
         <FormItem ItemText="Har tillitskapende tiltak vært prøvd?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="23844" OrderNumber="1" OptionText="Nei"/>
-          <Answer AnswerId="23845" OrderNumber="2" OptionText="Ja"/>
+          <Answer AnswerId="23844" OrderNumber="1" OptionText="Nei" VerboseText="Tillitsskapende tiltak har ikke vært prøvd"/>
+          <Answer AnswerId="23845" OrderNumber="2" OptionText="Ja" VerboseText="Tillitsskapende tiltak har vært prøvd"/>
         </FormItem>
       </Item>
     </Page>
@@ -134,12 +134,12 @@
     </Page>
     <Page PageTitle="10. Tidsramme for tiltaket">
       <Item ItemId="4496" ItemType="5" VarName="TVANG_START" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Startdato for tiltaket" ItemHelp="" MinExpression="FORMDATE-365" MaxExpression="FORMDATE+30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Startdato for vedtak" ItemHelp="" MinExpression="Form.Date - 365" MaxExpression="Form.Date + 30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4497" ItemType="5" VarName="TVANG_SLUTT" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Sluttdato for tiltaket" ItemHelp="" MinExpression="FORMDATE-30" MaxExpression="FORMDATE+365" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Sluttdato for vedtak" ItemHelp="" MinExpression="Form.Date - 30" MaxExpression="Form.Date + 365" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -166,7 +166,7 @@
         </FormItem>
       </Item>
       <Item ItemId="4500" ItemType="4" VarName="TVANG_ANSVAR_STILLING" LoincScale="NAR" DisplayFormat="" Multiline="0">
-        <FormItem ItemText="Stilling" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Stilling/yrke" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -183,7 +183,7 @@
         </FormItem>
       </Item>
       <Item ItemId="4502" ItemType="4" VarName="TVANG_KOPI_ANSVARLIG" LoincScale="NAR" DisplayFormat="" Multiline="0">
-        <FormItem ItemText="Overordnet faglig ansvarlig" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Overordnet faglig ansvarlig" ItemHelp="Navn, stilling og adresse" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>

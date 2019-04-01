@@ -8,14 +8,14 @@
         </FormItem>
       </Item>
       <Item ItemId="7137" ItemType="5" VarName="OP_OPERATIONDATE" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Operasjonsdato" ItemHelp="Angi operasjonsdato.&lt;br&gt;Merk. Om operasjonsvedtaksdato på basisregistreringen ikke er fyllt ut kan kun dagens dato angis som operasjonsdato" MinExpression="DOB" MaxExpression="FORM_DATE+1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Operasjonsdato" ItemHelp="Angi operasjonsdato.&lt;br&gt;Merk. Om operasjonsvedtaksdato på basisregistreringen ikke er fyllt ut kan kun dagens dato angis som operasjonsdato" MinExpression="DOB" MaxExpression="Form.Date + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Beregning av liggetid" PageIntroduction="Beregninger skjer automatisk, skal ikke utfylles.">
       <Item ItemId="6709" ItemType="1" VarName="PreopLiggetid" LoincScale="QN" UnitStr="døgn" DisplayFormat="">
-        <FormItem ItemText="Preoperative liggedøgn (døgn)" ItemHelp="" Expression="OP_OPERATIONDATE - OpInnDato" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Preoperative liggedøgn" ItemHelp="" Expression="OP_OPERATIONDATE - OpInnDato" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -791,7 +791,7 @@
     </Page>
     <Page PageTitle="Operasjonstid og blødning">
       <Item ItemId="7270" ItemType="1" VarName="OP_OPTIME" LoincScale="QN" UnitStr="minutter" DisplayFormat="">
-        <FormItem ItemText="Operasjonstid (minutter)" ItemHelp="Angi knivtiden i minutter" MinExpression="0" MaxExpression="999" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Operasjonstid" ItemHelp="Angi knivtiden i minutter" MinExpression="0" MaxExpression="999" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="1081" FormName="FORM1081" FormTitle="4AT - delirvurdering" Instructions="Instrumentet 4AT er utformet for en rask førstegangsvurdering av delirium og kognitiv svikt.">
+    <Page>
+      <Item ItemId="4684" ItemType="2" VarName="4AT_ALERT" LoincScale="ORD">
+        <FormItem ItemText="Årvåkenhet (forholder seg normalt til omgivelsene)" ItemHelp="Pasienten virker tydelig døsig (dvs. vanskelig å vekke og/ eller er åpenbart søvnig ved undersøkelsen) eller motorisk urolig/hyperaktiv. Observer pasienten. Hvis pasienten sover, forsøk å vekke pasienten med vanlig stemme eller ved varsom berøring på skulderen. Be pasienten oppgi navn og adresse til hjelp med vurderingen." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12475" OrderNumber="1" OptionText="Normal (helt årvåken, ikke urolig ved undersøkelse)" Score="0.00"/>
+          <Answer AnswerId="12476" OrderNumber="2" OptionText="Lett søvnig &lt; 10 sekunder etter oppvåkning, deretter normal" Score="0.00"/>
+          <Answer AnswerId="12477" OrderNumber="3" OptionText="Tydelig unormal(t)" Score="4.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4685" ItemType="2" VarName="4AT_AMT4" LoincScale="ORD">
+        <FormItem ItemText="AMT4 (Forkortet mental vurdering)" ItemHelp="Alder, fødselsdato, sted (navnet på sykehuset eller bygning), årstall" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12478" OrderNumber="1" OptionText="Ingen feil" Score="0.00"/>
+          <Answer AnswerId="12479" OrderNumber="2" OptionText="1 feil" Score="1.00"/>
+          <Answer AnswerId="12480" OrderNumber="3" OptionText="2 feil eller flere/ikke testbar" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4686" ItemType="2" VarName="4AT_AWARE" LoincScale="ORD">
+        <FormItem ItemHeader="Oppmerksomhet" ItemText="Rekkefølgen av årets måneder baklengs" ItemHelp="Spør pasienten: “Kan du i baklengs rekkefølge nevne for meg årets måneder, begynn med desember». Å hjelpe pasienten med et innledende spørsmål «hva er måneden før desember?» er tillatt" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12481" OrderNumber="1" OptionText="Oppgir 7 måneder eller flere korrekt" Score="0.00"/>
+          <Answer AnswerId="12482" OrderNumber="2" OptionText="Begynner, men klarer &lt;7 måneder/ avslår å begynne" Score="1.00"/>
+          <Answer AnswerId="12483" OrderNumber="3" OptionText="Ikke testbar (er uvel, døsig, uoppmerksom)" Score="2.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4687" ItemType="2" VarName="4AT_CHANGE" LoincScale="ORD">
+        <FormItem ItemHeader="Akutt endring eller fluktuasjon av tilstand" ItemText="Holdepunkter for betydelige endringer eller fluktuasjoner knyttet til: årvåkenhet, kognisjon, annen mental funksjon" ItemHelp="F.eks. paranoide symptomer, hallusinasjoner) oppstått i løpet av de siste to uker og fremdeles tilstede de siste 24 timer" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="12484" OrderNumber="1" OptionText="Nei" Score="0.00"/>
+          <Answer AnswerId="12485" OrderNumber="2" OptionText="Ja" Score="4.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4688" ItemType="1" VarName="4AT_SUM" LoincScale="QN" UnitStr="poeng">
+        <FormItem ItemText="4AT Skår" ItemHelp="" Expression="4AT_ALERT_SCORE" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4690" ItemType="2" VarName="VAR4690" LoincScale="ORD">
+        <FormItem ItemText="4AT skår" ItemHelp="" Expression="(ISPOS(4AT_SUM) + (ISPOS(4AT_SUM))*(ISNEG(4AT_SUM-4) + ISNULL(4AT_SUM)" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12486" OrderNumber="1" OptionText="4AT skår &amp;#8805;4: mulig delirium og eller kognitiv svikt"/>
+          <Answer AnswerId="12487" OrderNumber="2" OptionText="4AT skår 1-3: mulig kognitiv svikt"/>
+          <Answer AnswerId="12488" OrderNumber="3" OptionText="4AT skår 0: delirium eller alvorlig kognitiv svikt usannsynlig (men fremdeles mulig delirium hvis informasjon under punkt [4] er ufullstendig)"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4689" ItemType="8" VarName="VAR4689" LoincScale="MSG">
+        <FormItem ItemHeader="Mulig delirium eller kognitiv svikt" ItemText="4AT skår er over eller lik 4" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4691" ItemType="8" VarName="VAR4691" LoincScale="MSG">
+        <FormItem ItemHeader="Mulig kognitiv svikt" ItemText="4AT skår 1-3" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4692" ItemType="8" VarName="VAR4692" LoincScale="MSG">
+        <FormItem ItemHeader="Delirium eller alvorlig kognitiv svikt usannsynlig" ItemText="4AT skår 0. (fremdeles mulig delirium hvis informasjon under punkt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="4690">
+      <Activate EnumVal="1" PageConditionId="7994" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="7995" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="7996" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

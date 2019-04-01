@@ -3,7 +3,7 @@
   <Form FormId="283" FormName="GBD_MAREVAN" FormTitle="Marevan-dosering" Instructions="Her registreres dagens INR-verdi, ukedosering for neste behandlingsperiode og dato for neste INR-prøve. ">
     <Page PageTitle="Marevan-dosering">
       <Item ItemId="3729" ItemType="5" VarName="MAREVAN_START_DATO" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Startet med Marevan" ItemHelp="Denne perioden hvis pasienten også har brukt Marevan tidligere." MinExpression="DOB" MaxExpression="FORMDATE+1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem ItemText="Startet med Marevan" ItemHelp="Denne perioden hvis pasienten også har brukt Marevan tidligere." MinExpression="DOB" MaxExpression="Form.Date + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -37,24 +37,24 @@
     </Page>
     <Page PageTitle="INR-verdier">
       <Item ItemId="3737" ItemType="1" VarName="MAREVAN_INR" LoincScale="QN" UnitStr="enheter" DisplayFormat="">
-        <FormItem ItemText="Siste INR-verdi (enheter)" ItemHelp="" MinExpression="0.5" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+        <FormItem ItemText="Siste INR-verdi" ItemHelp="" MinExpression="0.5" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3740" ItemType="5" VarName="MAREVAN_INR_DATO" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Sist målt" ItemHelp="Siste tilgjengelige INR-verdi" MinExpression="FORMDATE-365" MaxExpression="FORMDATE" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Sist målt" ItemHelp="Siste tilgjengelige INR-verdi" MinExpression="Form.Date - 365" MaxExpression="Form.Date" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Terapeutisk område">
       <Item ItemId="3738" ItemType="1" VarName="MAREVAN_INR_NEDRE" LoincScale="QN" UnitStr="enheter" DisplayFormat="">
-        <FormItem ItemText="Nedre terskelverdi INR (enheter)" ItemHelp="Normalt 2.0, men 2.5 ved mekanisk ventil." MinExpression="1.8" MaxExpression="2.5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1" DefaultValue="2.0">
+        <FormItem ItemText="Nedre terskelverdi INR" ItemHelp="Normalt 2.0, men 2.5 ved mekanisk ventil." MinExpression="1.8" MaxExpression="2.5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1" DefaultValue="2.0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3739" ItemType="1" VarName="MAREVAN_INR_OVRE" LoincScale="QN" UnitStr="enheter" DisplayFormat="">
-        <FormItem ItemText="Øvre terskelverdi INR (enheter)" ItemHelp="Normalt 3.0, men 3.5 ved mekanisk ventil." MinExpression="2.5" MaxExpression="4.0" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1" DefaultValue="3.0">
+        <FormItem ItemText="Øvre terskelverdi INR" ItemHelp="Normalt 3.0, men 3.5 ved mekanisk ventil." MinExpression="2.5" MaxExpression="4.0" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1" DefaultValue="3.0">
           <Answer/>
         </FormItem>
       </Item>
@@ -93,42 +93,42 @@
     </Page>
     <Page PageTitle="Dosering">
       <Item ItemId="3730" ItemType="1" VarName="MAREVAN_MANDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
-        <FormItem ItemText="Mandag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+        <FormItem ItemText="Mandag" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3731" ItemType="1" VarName="MAREVAN_TIRSDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
-        <FormItem ItemText="Tirsdag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+        <FormItem ItemText="Tirsdag" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3732" ItemType="1" VarName="MAREVAN_ONSDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
-        <FormItem ItemText="Onsdag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+        <FormItem ItemText="Onsdag" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3733" ItemType="1" VarName="MAREVAN_TORSDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
-        <FormItem ItemText="Torsdag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+        <FormItem ItemText="Torsdag" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3734" ItemType="1" VarName="MAREVAN_FREDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
-        <FormItem ItemText="Fredag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+        <FormItem ItemText="Fredag" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3735" ItemType="1" VarName="MAREVAN_LORDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
-        <FormItem ItemText="Lørdag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+        <FormItem ItemText="Lørdag" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3736" ItemType="1" VarName="MAREVAN_SONDAG" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
-        <FormItem ItemText="Søndag (tbl)" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+        <FormItem ItemText="Søndag" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="3741" ItemType="1" VarName="MAREVAN_SUM" LoincScale="QN" UnitStr="tbl" DisplayFormat="">
-        <FormItem ItemText="Antall tabletter/uke (tbl)" ItemHelp="" Expression="MAREVAN_MANDAG + MAREVAN_TIRSDAG + MAREVAN_ONSDAG + MAREVAN_TORSDAG + MAREVAN_FREDAG + MAREVAN_LORDAG + MAREVAN_SONDAG" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+      <Item ItemId="3741" ItemType="1" VarName="MAREVAN_SUM" LoincScale="QN" UnitStr="tbl/uke" DisplayFormat="">
+        <FormItem ItemText="Antall tabletter/uke" ItemHelp="" Expression="MAREVAN_MANDAG + MAREVAN_TIRSDAG + MAREVAN_ONSDAG + MAREVAN_TORSDAG + MAREVAN_FREDAG + MAREVAN_LORDAG + MAREVAN_SONDAG" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>

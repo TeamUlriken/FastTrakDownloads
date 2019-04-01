@@ -12,8 +12,8 @@
           <Answer AnswerId="10883" OrderNumber="6" OptionText="Solu-Cortef"/>
         </FormItem>
       </Item>
-      <Item ItemId="1808" ItemType="1" VarName="AP_GC_DOSE" LoincScale="QN">
-        <FormItem ItemText="Døgndose du tar av glukokortikoid (mg/døgn)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+      <Item ItemId="1808" ItemType="1" VarName="AP_GC_DOSE" LoincScale="QN" UnitStr="mg/døgn">
+        <FormItem ItemText="Døgndose du tar av glukokortikoid" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -25,8 +25,8 @@
           <Answer AnswerId="10887" OrderNumber="4" OptionText="4 eller flere doser/døgn"/>
         </FormItem>
       </Item>
-      <Item ItemId="1810" ItemType="1" VarName="AP_MC_DOSE" LoincScale="QN">
-        <FormItem ItemText="Florinef døgndose (mg/døgn)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+      <Item ItemId="1810" ItemType="1" VarName="AP_MC_DOSE" LoincScale="QN" UnitStr="mg/døgn">
+        <FormItem ItemText="Florinef døgndose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -126,20 +126,20 @@
     <Page PageTitle="RAND 36 - Egenopplevd helse" PageIntroduction="Spørsmålene nedenfor handler om hvordan du oppfatter helsen din.  Disse opplysningene vil hjelpe oss til å forstå hvordan du føler deg og hvor godt du er i stand til å utføre dine vanlige aktiviteter.">
       <Item ItemId="3935" ItemType="2" VarName="SF36_01" LoincScale="ORD" DisplayFormat="Vertical">
         <FormItem ItemHeader="Egenopplevd helse er" ItemText="Stort sett, vil du si at din helse er?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="20194" OrderNumber="1" OptionText="utmerket"/>
-          <Answer AnswerId="20195" OrderNumber="2" OptionText="veldig god"/>
-          <Answer AnswerId="20196" OrderNumber="3" OptionText="god"/>
-          <Answer AnswerId="20197" OrderNumber="4" OptionText="nokså god"/>
-          <Answer AnswerId="20198" OrderNumber="5" OptionText="dårlig"/>
+          <Answer AnswerId="20194" OrderNumber="1" OptionText="utmerket" Score="100.00"/>
+          <Answer AnswerId="20195" OrderNumber="2" OptionText="veldig god" Score="75.00"/>
+          <Answer AnswerId="20196" OrderNumber="3" OptionText="god" Score="50.00"/>
+          <Answer AnswerId="20197" OrderNumber="4" OptionText="nokså god" Score="25.00"/>
+          <Answer AnswerId="20198" OrderNumber="5" OptionText="dårlig" Score="0.00"/>
         </FormItem>
       </Item>
       <Item ItemId="3936" ItemType="2" VarName="SF36_02" LoincScale="ORD" DisplayFormat="Vertical">
         <FormItem ItemHeader="Helsen er" ItemText="Sammenlignet med for ett år siden, hvordan vil du si at din helse stort sett er nå?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="20199" OrderNumber="1" OptionText="mye bedre enn for ett år siden."/>
-          <Answer AnswerId="20200" OrderNumber="2" OptionText="litt bedre nå enn for ett år siden."/>
-          <Answer AnswerId="20201" OrderNumber="3" OptionText="omtrent den samme som for ett år siden."/>
-          <Answer AnswerId="20202" OrderNumber="4" OptionText="litt dårligere nå enn for ett år siden."/>
-          <Answer AnswerId="20203" OrderNumber="5" OptionText="mye dårligere nå enn for ett år siden."/>
+          <Answer AnswerId="20199" OrderNumber="1" OptionText="mye bedre enn for ett år siden." Score="100.00"/>
+          <Answer AnswerId="20200" OrderNumber="2" OptionText="litt bedre nå enn for ett år siden." Score="75.00"/>
+          <Answer AnswerId="20201" OrderNumber="3" OptionText="omtrent den samme som for ett år siden." Score="50.00"/>
+          <Answer AnswerId="20202" OrderNumber="4" OptionText="litt dårligere nå enn for ett år siden." Score="25.00"/>
+          <Answer AnswerId="20203" OrderNumber="5" OptionText="mye dårligere nå enn for ett år siden." Score="0.00"/>
         </FormItem>
       </Item>
     </Page>
@@ -160,9 +160,9 @@
       </Item>
       <Item ItemId="1851" ItemType="2" VarName="RAND36_05" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Handle" ItemText="Løfte eller bære poser med dagligvarer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60120" OrderNumber="1" OptionText="Ja, begrenser meg mye"/>
-          <Answer AnswerId="60121" OrderNumber="2" OptionText="Ja, begrenser meg litt"/>
-          <Answer AnswerId="60122" OrderNumber="3" OptionText="Nei, begrenser meg ikke i det hele tatt"/>
+          <Answer AnswerId="60120" OrderNumber="1" OptionText="Ja, begrenser meg mye" Score="0.00"/>
+          <Answer AnswerId="60121" OrderNumber="2" OptionText="Ja, begrenser meg litt" Score="50.00"/>
+          <Answer AnswerId="60122" OrderNumber="3" OptionText="Nei, begrenser meg ikke i det hele tatt" Score="100.00"/>
         </FormItem>
       </Item>
       <Item ItemId="6452" ItemType="2" VarName="SF36_06" LoincScale="ORD" DisplayFormat="">
@@ -181,9 +181,9 @@
       </Item>
       <Item ItemId="1834" ItemType="2" VarName="RAND36_08" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Bøye" ItemText="Bøye deg eller gå ned på kne" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60098" OrderNumber="1" OptionText="Ja, begrenser meg mye"/>
-          <Answer AnswerId="60099" OrderNumber="2" OptionText="Ja, begrenser meg litt"/>
-          <Answer AnswerId="60100" OrderNumber="3" OptionText="Nei, begrenser meg ikke i det hele tatt"/>
+          <Answer AnswerId="60098" OrderNumber="1" OptionText="Ja, begrenser meg mye" Score="0.00"/>
+          <Answer AnswerId="60099" OrderNumber="2" OptionText="Ja, begrenser meg litt" Score="50.00"/>
+          <Answer AnswerId="60100" OrderNumber="3" OptionText="Nei, begrenser meg ikke i det hele tatt" Score="100.00"/>
         </FormItem>
       </Item>
       <Item ItemId="6455" ItemType="2" VarName="SF36_09" LoincScale="ORD" DisplayFormat="">
@@ -195,9 +195,9 @@
       </Item>
       <Item ItemId="1835" ItemType="2" VarName="RAND36_10" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Gå flere hundre meter" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60102" OrderNumber="1" OptionText="Ja, begrenser meg mye"/>
-          <Answer AnswerId="60103" OrderNumber="2" OptionText="Ja, begrenser meg litt"/>
-          <Answer AnswerId="60104" OrderNumber="3" OptionText="Nei, begrenser meg ikke i det hele tatt"/>
+          <Answer AnswerId="60102" OrderNumber="1" OptionText="Ja, begrenser meg mye" Score="0.00"/>
+          <Answer AnswerId="60103" OrderNumber="2" OptionText="Ja, begrenser meg litt" Score="50.00"/>
+          <Answer AnswerId="60104" OrderNumber="3" OptionText="Nei, begrenser meg ikke i det hele tatt" Score="100.00"/>
         </FormItem>
       </Item>
       <Item ItemId="6457" ItemType="2" VarName="SF36_11" LoincScale="ORD" DisplayFormat="">
@@ -209,17 +209,17 @@
       </Item>
       <Item ItemId="1836" ItemType="2" VarName="RAND36_12" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Personlig stell" ItemText="Dusje eller kle på deg" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60106" OrderNumber="1" OptionText="Ja, begrenser meg mye"/>
-          <Answer AnswerId="60107" OrderNumber="2" OptionText="Ja, begrenser meg litt"/>
-          <Answer AnswerId="60108" OrderNumber="3" OptionText="Nei, begrenser meg ikke i det hele tatt"/>
+          <Answer AnswerId="60106" OrderNumber="1" OptionText="Ja, begrenser meg mye" Score="0.00"/>
+          <Answer AnswerId="60107" OrderNumber="2" OptionText="Ja, begrenser meg litt" Score="50.00"/>
+          <Answer AnswerId="60108" OrderNumber="3" OptionText="Nei, begrenser meg ikke i det hele tatt" Score="100.00"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="RAND 30 - Problemer på arbeid" PageIntroduction="I løpet av de siste fire ukene, har du hatt noen av de følgende problemene i arbeidet ditt eller i andre daglige aktiviteter på grunn av din fysiske helse? ">
       <Item ItemId="1852" ItemType="2" VarName="RAND36_13" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Tidsbruk" ItemText="Kuttet ned på hvor mye tid du brukte på arbeid eller andre aktiviteter" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60124" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="60125" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="60124" OrderNumber="1" OptionText="Ja" ShortCode="1" Score="0.00"/>
+          <Answer AnswerId="60125" OrderNumber="2" OptionText="Nei" ShortCode="2" Score="100.00"/>
         </FormItem>
       </Item>
       <Item ItemId="6460" ItemType="2" VarName="SF36_14" LoincScale="ORD" DisplayFormat="">
@@ -244,8 +244,8 @@
     <Page PageTitle="RAND 36 - Følelsesmessige problemer" PageIntroduction="I løpet av de siste fire ukene har du hatt noen av de følgende problemene i arbeidet ditt eller i andre daglige aktiviteter på grunn av følelsesmessige problemer (som å føle seg engstelig eller deprimert)?">
       <Item ItemId="1853" ItemType="2" VarName="RAND36_17" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Tidsbruk" ItemText="Kuttet ned på hvor mye tid du har brukt på arbeid eller andre aktivteter" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60127" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="60128" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="60127" OrderNumber="1" OptionText="Ja" ShortCode="1" Score="0.00"/>
+          <Answer AnswerId="60128" OrderNumber="2" OptionText="Nei" ShortCode="2" Score="100.00"/>
         </FormItem>
       </Item>
       <Item ItemId="6464" ItemType="2" VarName="SF36_18" LoincScale="ORD" DisplayFormat="">
@@ -262,169 +262,169 @@
       </Item>
       <Item ItemId="1854" ItemType="2" VarName="RAND36_20" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="I løpet av de siste 4 ukene, i hvilken grad har din fysiske helse eller følelsesmessige problemer hatt innvirkning på din vanlige sosiale omgang med familie, venner, naboer eller andre grupper mennesker?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60130" OrderNumber="1" OptionText="Ikke i det hele tatt"/>
-          <Answer AnswerId="60131" OrderNumber="2" OptionText="Litt"/>
-          <Answer AnswerId="60132" OrderNumber="3" OptionText="En del"/>
-          <Answer AnswerId="60133" OrderNumber="4" OptionText="Mye"/>
-          <Answer AnswerId="60134" OrderNumber="5" OptionText="Ekstremt mye"/>
+          <Answer AnswerId="60130" OrderNumber="1" OptionText="Ikke i det hele tatt" Score="100.00"/>
+          <Answer AnswerId="60131" OrderNumber="2" OptionText="Litt" Score="75.00"/>
+          <Answer AnswerId="60132" OrderNumber="3" OptionText="En del" Score="50.00"/>
+          <Answer AnswerId="60133" OrderNumber="4" OptionText="Mye" Score="25.00"/>
+          <Answer AnswerId="60134" OrderNumber="5" OptionText="Ekstremt mye" Score="0.00"/>
         </FormItem>
       </Item>
       <Item ItemId="1855" ItemType="2" VarName="RAND36_21" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Smertegrad" ItemText="Hvor mye kroppslige smerter har du hatt i løpet av de siste 4 ukene" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60136" OrderNumber="1" OptionText="Ingen"/>
-          <Answer AnswerId="60137" OrderNumber="2" OptionText="Veldig svake"/>
-          <Answer AnswerId="60138" OrderNumber="3" OptionText="Svake"/>
-          <Answer AnswerId="60139" OrderNumber="4" OptionText="Moderate"/>
-          <Answer AnswerId="60140" OrderNumber="5" OptionText="Sterke"/>
-          <Answer AnswerId="60141" OrderNumber="6" OptionText="Veldig sterke"/>
+          <Answer AnswerId="60136" OrderNumber="1" OptionText="Ingen" Score="100.00"/>
+          <Answer AnswerId="60137" OrderNumber="2" OptionText="Veldig svake" Score="80.00"/>
+          <Answer AnswerId="60138" OrderNumber="3" OptionText="Svake" Score="60.00"/>
+          <Answer AnswerId="60139" OrderNumber="4" OptionText="Moderate" Score="40.00"/>
+          <Answer AnswerId="60140" OrderNumber="5" OptionText="Sterke" Score="20.00"/>
+          <Answer AnswerId="60141" OrderNumber="6" OptionText="Veldig sterke" Score="0.00"/>
         </FormItem>
       </Item>
       <Item ItemId="1856" ItemType="2" VarName="RAND36_22" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Smertepåvirkning" ItemText="I løpet av de siste 4 ukene, hvor mye har smerter påvirket ditt vanlige arbeid" ItemHelp="Gjelder både arbeid utenfor hjemmet og husarbeid." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60143" OrderNumber="1" OptionText="Ikke i det hele tatt"/>
-          <Answer AnswerId="60144" OrderNumber="2" OptionText="Litt"/>
-          <Answer AnswerId="60145" OrderNumber="3" OptionText="Moderat"/>
-          <Answer AnswerId="60146" OrderNumber="4" OptionText="Mye"/>
-          <Answer AnswerId="60147" OrderNumber="5" OptionText="Ekstremt mye"/>
+          <Answer AnswerId="60143" OrderNumber="1" OptionText="Ikke i det hele tatt" Score="100.00"/>
+          <Answer AnswerId="60144" OrderNumber="2" OptionText="Litt" Score="75.00"/>
+          <Answer AnswerId="60145" OrderNumber="3" OptionText="Moderat" Score="50.00"/>
+          <Answer AnswerId="60146" OrderNumber="4" OptionText="Mye" Score="25.00"/>
+          <Answer AnswerId="60147" OrderNumber="5" OptionText="Ekstremt mye" Score="0.00"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="RAND 36 - Følelser siste fire uker" PageIntroduction="De neste spørmålene handler om hvordan du føler deg og hvordan du har hatt det i løpet av de siste fire ukene. For hvert spørsmål ber vi deg velge det svaret som best beskriver hvordan du har følt deg.">
       <Item ItemId="1857" ItemType="2" VarName="RAND36_23" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Livlig" ItemText="Har du følt deg full av liv?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60149" OrderNumber="1" OptionText="Hele tiden"/>
-          <Answer AnswerId="60150" OrderNumber="2" OptionText="Mesteparten av tiden"/>
-          <Answer AnswerId="60151" OrderNumber="3" OptionText="En god del av tiden"/>
-          <Answer AnswerId="60152" OrderNumber="4" OptionText="Noe av tiden"/>
-          <Answer AnswerId="60153" OrderNumber="5" OptionText="Litt av tiden"/>
-          <Answer AnswerId="60154" OrderNumber="6" OptionText="Aldri"/>
+          <Answer AnswerId="60149" OrderNumber="1" OptionText="Hele tiden" Score="100.00"/>
+          <Answer AnswerId="60150" OrderNumber="2" OptionText="Mesteparten av tiden" Score="80.00"/>
+          <Answer AnswerId="60151" OrderNumber="3" OptionText="En god del av tiden" Score="60.00"/>
+          <Answer AnswerId="60152" OrderNumber="4" OptionText="Noe av tiden" Score="40.00"/>
+          <Answer AnswerId="60153" OrderNumber="5" OptionText="Litt av tiden" Score="20.00"/>
+          <Answer AnswerId="60154" OrderNumber="6" OptionText="Aldri" Score="0.00"/>
         </FormItem>
       </Item>
       <Item ItemId="1859" ItemType="2" VarName="RAND36_24" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Nervøsitet" ItemText="Har du følt deg veldig nervøs?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60156" OrderNumber="1" OptionText="Hele tiden"/>
-          <Answer AnswerId="60157" OrderNumber="2" OptionText="Mesteparten av tiden"/>
-          <Answer AnswerId="60158" OrderNumber="3" OptionText="En god del av tiden"/>
-          <Answer AnswerId="60159" OrderNumber="4" OptionText="Noe av tiden"/>
-          <Answer AnswerId="60160" OrderNumber="5" OptionText="Litt av tiden"/>
-          <Answer AnswerId="60161" OrderNumber="6" OptionText="Aldri"/>
+          <Answer AnswerId="60156" OrderNumber="1" OptionText="Hele tiden" Score="0.00"/>
+          <Answer AnswerId="60157" OrderNumber="2" OptionText="Mesteparten av tiden" Score="20.00"/>
+          <Answer AnswerId="60158" OrderNumber="3" OptionText="En god del av tiden" Score="40.00"/>
+          <Answer AnswerId="60159" OrderNumber="4" OptionText="Noe av tiden" Score="60.00"/>
+          <Answer AnswerId="60160" OrderNumber="5" OptionText="Litt av tiden" Score="80.00"/>
+          <Answer AnswerId="60161" OrderNumber="6" OptionText="Aldri" Score="100.00"/>
         </FormItem>
       </Item>
       <Item ItemId="1860" ItemType="2" VarName="RAND36_25" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Deprimert" ItemText="Har du følt deg så langt nede at ingenting kan gjøre deg glad?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60163" OrderNumber="1" OptionText="Hele tiden"/>
-          <Answer AnswerId="60164" OrderNumber="2" OptionText="Mesteparten av tiden"/>
-          <Answer AnswerId="60165" OrderNumber="3" OptionText="En god del av tiden"/>
-          <Answer AnswerId="60166" OrderNumber="4" OptionText="Noe av tiden"/>
-          <Answer AnswerId="60167" OrderNumber="5" OptionText="Litt av tiden"/>
-          <Answer AnswerId="60168" OrderNumber="6" OptionText="Aldri"/>
+          <Answer AnswerId="60163" OrderNumber="1" OptionText="Hele tiden" Score="0.00"/>
+          <Answer AnswerId="60164" OrderNumber="2" OptionText="Mesteparten av tiden" Score="20.00"/>
+          <Answer AnswerId="60165" OrderNumber="3" OptionText="En god del av tiden" Score="40.00"/>
+          <Answer AnswerId="60166" OrderNumber="4" OptionText="Noe av tiden" Score="60.00"/>
+          <Answer AnswerId="60167" OrderNumber="5" OptionText="Litt av tiden" Score="80.00"/>
+          <Answer AnswerId="60168" OrderNumber="6" OptionText="Aldri" Score="100.00"/>
         </FormItem>
       </Item>
       <Item ItemId="1869" ItemType="2" VarName="RAND36_26" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Harmoni" ItemText="Har du følt deg rolig og avslappet?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60221" OrderNumber="1" OptionText="Hele tiden"/>
-          <Answer AnswerId="60222" OrderNumber="2" OptionText="Mesteparten av tiden"/>
-          <Answer AnswerId="60223" OrderNumber="3" OptionText="En god del av tiden"/>
-          <Answer AnswerId="60224" OrderNumber="4" OptionText="Noe av tiden"/>
-          <Answer AnswerId="60225" OrderNumber="5" OptionText="Litt av tiden"/>
-          <Answer AnswerId="60226" OrderNumber="6" OptionText="Aldri"/>
+          <Answer AnswerId="60221" OrderNumber="1" OptionText="Hele tiden" Score="100.00"/>
+          <Answer AnswerId="60222" OrderNumber="2" OptionText="Mesteparten av tiden" Score="80.00"/>
+          <Answer AnswerId="60223" OrderNumber="3" OptionText="En god del av tiden" Score="60.00"/>
+          <Answer AnswerId="60224" OrderNumber="4" OptionText="Noe av tiden" Score="40.00"/>
+          <Answer AnswerId="60225" OrderNumber="5" OptionText="Litt av tiden" Score="20.00"/>
+          <Answer AnswerId="60226" OrderNumber="6" OptionText="Aldri" Score="0.00"/>
         </FormItem>
       </Item>
       <Item ItemId="1870" ItemType="2" VarName="RAND36_27" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Overskudd" ItemText="Har du hatt mye overskudd?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60228" OrderNumber="1" OptionText="Hele tiden"/>
-          <Answer AnswerId="60229" OrderNumber="2" OptionText="Mesteparten av tiden"/>
-          <Answer AnswerId="60230" OrderNumber="3" OptionText="En god del av tiden"/>
-          <Answer AnswerId="60231" OrderNumber="4" OptionText="Noe av tiden"/>
-          <Answer AnswerId="60232" OrderNumber="5" OptionText="Litt av tiden"/>
-          <Answer AnswerId="60233" OrderNumber="6" OptionText="Aldri"/>
+          <Answer AnswerId="60228" OrderNumber="1" OptionText="Hele tiden" Score="100.00"/>
+          <Answer AnswerId="60229" OrderNumber="2" OptionText="Mesteparten av tiden" Score="80.00"/>
+          <Answer AnswerId="60230" OrderNumber="3" OptionText="En god del av tiden" Score="60.00"/>
+          <Answer AnswerId="60231" OrderNumber="4" OptionText="Noe av tiden" Score="40.00"/>
+          <Answer AnswerId="60232" OrderNumber="5" OptionText="Litt av tiden" Score="20.00"/>
+          <Answer AnswerId="60233" OrderNumber="6" OptionText="Aldri" Score="0.00"/>
         </FormItem>
       </Item>
       <Item ItemId="1871" ItemType="2" VarName="RAND36_28" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Nedfor og deprimert" ItemText="Har du følt deg nedfor og deprimert?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60235" OrderNumber="1" OptionText="Hele tiden"/>
-          <Answer AnswerId="60236" OrderNumber="2" OptionText="Mesteparten av tiden"/>
-          <Answer AnswerId="60237" OrderNumber="3" OptionText="En god del av tiden"/>
-          <Answer AnswerId="60238" OrderNumber="4" OptionText="Noe av tiden"/>
-          <Answer AnswerId="60239" OrderNumber="5" OptionText="Litt av tiden"/>
-          <Answer AnswerId="60240" OrderNumber="6" OptionText="Aldri"/>
+          <Answer AnswerId="60235" OrderNumber="1" OptionText="Hele tiden" Score="0.00"/>
+          <Answer AnswerId="60236" OrderNumber="2" OptionText="Mesteparten av tiden" Score="20.00"/>
+          <Answer AnswerId="60237" OrderNumber="3" OptionText="En god del av tiden" Score="40.00"/>
+          <Answer AnswerId="60238" OrderNumber="4" OptionText="Noe av tiden" Score="60.00"/>
+          <Answer AnswerId="60239" OrderNumber="5" OptionText="Litt av tiden" Score="80.00"/>
+          <Answer AnswerId="60240" OrderNumber="6" OptionText="Aldri" Score="100.00"/>
         </FormItem>
       </Item>
       <Item ItemId="1837" ItemType="2" VarName="RAND36_29" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Utslitt" ItemText="Har du følt deg utslitt?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60110" OrderNumber="1" OptionText="Hele tiden"/>
-          <Answer AnswerId="60111" OrderNumber="2" OptionText="Mesteparten av tiden"/>
-          <Answer AnswerId="60112" OrderNumber="3" OptionText="En god del av tiden"/>
-          <Answer AnswerId="60113" OrderNumber="4" OptionText="Noe av tiden"/>
-          <Answer AnswerId="60114" OrderNumber="5" OptionText="Litt av tiden"/>
-          <Answer AnswerId="60115" OrderNumber="6" OptionText="Aldri"/>
+          <Answer AnswerId="60110" OrderNumber="1" OptionText="Hele tiden" Score="0.00"/>
+          <Answer AnswerId="60111" OrderNumber="2" OptionText="Mesteparten av tiden" Score="20.00"/>
+          <Answer AnswerId="60112" OrderNumber="3" OptionText="En god del av tiden" Score="40.00"/>
+          <Answer AnswerId="60113" OrderNumber="4" OptionText="Noe av tiden" Score="60.00"/>
+          <Answer AnswerId="60114" OrderNumber="5" OptionText="Litt av tiden" Score="80.00"/>
+          <Answer AnswerId="60115" OrderNumber="6" OptionText="Aldri" Score="100.00"/>
         </FormItem>
       </Item>
       <Item ItemId="1862" ItemType="2" VarName="RAND36_30" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Glad" ItemText="Har du følt deg glad?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60177" OrderNumber="1" OptionText="Hele tiden"/>
-          <Answer AnswerId="60178" OrderNumber="2" OptionText="Mesteparten av tiden"/>
-          <Answer AnswerId="60179" OrderNumber="3" OptionText="En god del av tiden"/>
-          <Answer AnswerId="60180" OrderNumber="4" OptionText="Noe av tiden"/>
-          <Answer AnswerId="60181" OrderNumber="5" OptionText="Litt av tiden"/>
-          <Answer AnswerId="60182" OrderNumber="6" OptionText="Aldri"/>
+          <Answer AnswerId="60177" OrderNumber="1" OptionText="Hele tiden" Score="100.00"/>
+          <Answer AnswerId="60178" OrderNumber="2" OptionText="Mesteparten av tiden" Score="80.00"/>
+          <Answer AnswerId="60179" OrderNumber="3" OptionText="En god del av tiden" Score="60.00"/>
+          <Answer AnswerId="60180" OrderNumber="4" OptionText="Noe av tiden" Score="40.00"/>
+          <Answer AnswerId="60181" OrderNumber="5" OptionText="Litt av tiden" Score="20.00"/>
+          <Answer AnswerId="60182" OrderNumber="6" OptionText="Aldri" Score="0.00"/>
         </FormItem>
       </Item>
       <Item ItemId="1861" ItemType="2" VarName="RAND36_31" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Sliten" ItemText="Har du følt deg sliten?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60170" OrderNumber="1" OptionText="Hele tiden"/>
-          <Answer AnswerId="60171" OrderNumber="2" OptionText="Mesteparten av tiden"/>
-          <Answer AnswerId="60172" OrderNumber="3" OptionText="En god del av tiden"/>
-          <Answer AnswerId="60173" OrderNumber="4" OptionText="Noe av tiden"/>
-          <Answer AnswerId="60174" OrderNumber="5" OptionText="Litt av tiden"/>
-          <Answer AnswerId="60175" OrderNumber="6" OptionText="Aldri"/>
+          <Answer AnswerId="60170" OrderNumber="1" OptionText="Hele tiden" Score="0.00"/>
+          <Answer AnswerId="60171" OrderNumber="2" OptionText="Mesteparten av tiden" Score="20.00"/>
+          <Answer AnswerId="60172" OrderNumber="3" OptionText="En god del av tiden" Score="40.00"/>
+          <Answer AnswerId="60173" OrderNumber="4" OptionText="Noe av tiden" Score="60.00"/>
+          <Answer AnswerId="60174" OrderNumber="5" OptionText="Litt av tiden" Score="80.00"/>
+          <Answer AnswerId="60175" OrderNumber="6" OptionText="Aldri" Score="100.00"/>
         </FormItem>
       </Item>
       <Item ItemId="1863" ItemType="2" VarName="RAND36_32" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="I løpet av de siste fire ukene, hvor mye av tiden har din fysiske helse eller følelsesmessige problemer påvirket dine sosiale aktiviteter?" ItemHelp="Som å besøke venner, slektninger osv." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60184" OrderNumber="1" OptionText="Hele tiden"/>
-          <Answer AnswerId="60185" OrderNumber="2" OptionText="Mesteparten av tiden"/>
-          <Answer AnswerId="60186" OrderNumber="3" OptionText="En del av tiden"/>
-          <Answer AnswerId="60187" OrderNumber="4" OptionText="Litt av tiden"/>
-          <Answer AnswerId="60188" OrderNumber="5" OptionText="Aldri"/>
+          <Answer AnswerId="60184" OrderNumber="1" OptionText="Hele tiden" Score="0.00"/>
+          <Answer AnswerId="60185" OrderNumber="2" OptionText="Mesteparten av tiden" Score="25.00"/>
+          <Answer AnswerId="60186" OrderNumber="3" OptionText="En del av tiden" Score="50.00"/>
+          <Answer AnswerId="60187" OrderNumber="4" OptionText="Litt av tiden" Score="75.00"/>
+          <Answer AnswerId="60188" OrderNumber="5" OptionText="Aldri" Score="100.00"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="RAND 36 - Påstander om helsen" PageIntroduction="Hvor RIKTIG er eller GAL er hver av de følgende påstandene for deg?">
       <Item ItemId="1867" ItemType="2" VarName="RAND36_33" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Det virker som om jeg blir syk litt lettere enn andre" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60208" OrderNumber="1" OptionText="Helt riktig"/>
-          <Answer AnswerId="60209" OrderNumber="2" OptionText="Stort sett riktig"/>
-          <Answer AnswerId="60210" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
-          <Answer AnswerId="60211" OrderNumber="4" OptionText="Stort sett galt"/>
-          <Answer AnswerId="60212" OrderNumber="5" OptionText="Helt galt"/>
+          <Answer AnswerId="60208" OrderNumber="1" OptionText="Helt riktig" Score="0.00"/>
+          <Answer AnswerId="60209" OrderNumber="2" OptionText="Stort sett riktig" Score="25.00"/>
+          <Answer AnswerId="60210" OrderNumber="3" OptionText="Vet ikke" ShortCode="3" Score="50.00"/>
+          <Answer AnswerId="60211" OrderNumber="4" OptionText="Stort sett galt" Score="75.00"/>
+          <Answer AnswerId="60212" OrderNumber="5" OptionText="Helt galt" Score="100.00"/>
         </FormItem>
       </Item>
       <Item ItemId="1866" ItemType="2" VarName="RAND36_34" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Jeg er like frisk som de fleste jeg kjenner" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60202" OrderNumber="1" OptionText="Helt riktig"/>
-          <Answer AnswerId="60203" OrderNumber="2" OptionText="Stort sett riktig"/>
-          <Answer AnswerId="60204" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
-          <Answer AnswerId="60205" OrderNumber="4" OptionText="Stort sett galt"/>
-          <Answer AnswerId="60206" OrderNumber="5" OptionText="Helt galt"/>
+          <Answer AnswerId="60202" OrderNumber="1" OptionText="Helt riktig" Score="100.00"/>
+          <Answer AnswerId="60203" OrderNumber="2" OptionText="Stort sett riktig" Score="75.00"/>
+          <Answer AnswerId="60204" OrderNumber="3" OptionText="Vet ikke" ShortCode="3" Score="50.00"/>
+          <Answer AnswerId="60205" OrderNumber="4" OptionText="Stort sett galt" Score="25.00"/>
+          <Answer AnswerId="60206" OrderNumber="5" OptionText="Helt galt" Score="0.00"/>
         </FormItem>
       </Item>
       <Item ItemId="1865" ItemType="2" VarName="RAND36_35" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Jeg regner med at helsen min blir dårligere" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60196" OrderNumber="1" OptionText="Helt riktig"/>
-          <Answer AnswerId="60197" OrderNumber="2" OptionText="Stort sett riktig"/>
-          <Answer AnswerId="60198" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
-          <Answer AnswerId="60199" OrderNumber="4" OptionText="Stort sett galt"/>
-          <Answer AnswerId="60200" OrderNumber="5" OptionText="Helt galt"/>
+          <Answer AnswerId="60196" OrderNumber="1" OptionText="Helt riktig" Score="0.00"/>
+          <Answer AnswerId="60197" OrderNumber="2" OptionText="Stort sett riktig" Score="25.00"/>
+          <Answer AnswerId="60198" OrderNumber="3" OptionText="Vet ikke" ShortCode="3" Score="50.00"/>
+          <Answer AnswerId="60199" OrderNumber="4" OptionText="Stort sett galt" Score="75.00"/>
+          <Answer AnswerId="60200" OrderNumber="5" OptionText="Helt galt" Score="100.00"/>
         </FormItem>
       </Item>
       <Item ItemId="1864" ItemType="2" VarName="RAND36_36" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Helsen min er utmerket" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="60190" OrderNumber="1" OptionText="Helt riktig"/>
-          <Answer AnswerId="60191" OrderNumber="2" OptionText="Stort sett riktig"/>
-          <Answer AnswerId="60192" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
-          <Answer AnswerId="60193" OrderNumber="4" OptionText="Stort sett galt"/>
-          <Answer AnswerId="60194" OrderNumber="5" OptionText="Helt galt"/>
+          <Answer AnswerId="60190" OrderNumber="1" OptionText="Helt riktig" Score="100.00"/>
+          <Answer AnswerId="60191" OrderNumber="2" OptionText="Stort sett riktig" Score="75.00"/>
+          <Answer AnswerId="60192" OrderNumber="3" OptionText="Vet ikke" ShortCode="3" Score="50.00"/>
+          <Answer AnswerId="60193" OrderNumber="4" OptionText="Stort sett galt" Score="25.00"/>
+          <Answer AnswerId="60194" OrderNumber="5" OptionText="Helt galt" Score="0.00"/>
         </FormItem>
       </Item>
     </Page>
@@ -729,8 +729,8 @@
           <Answer AnswerId="59480" OrderNumber="6" OptionText="Alltid" Score="4.00"/>
         </FormItem>
       </Item>
-      <Item ItemId="1479" ItemType="1" VarName="AddiQoL30_SUM" LoincScale="QN">
-        <FormItem ItemText="Summen av skåringene på alle spørsmålene. AddiQoL-30" ItemHelp="" Expression="AddiQoL_01_SCORE + AddiQoL_02_SCORE + AddiQoL_03_SCORE + AddiQoL_04_SCORE + AddiQoL_05_SCORE + AddiQoL_06_SCORE + AddiQoL_07_SCORE + AddiQoL_08_SCORE + AddiQoL_09_SCORE + AddiQoL_10_SCORE + AddiQoL_11_SCORE + AddiQoL_12_SCORE + AddiQoL_13_SCORE + AddiQoL_14_SCORE + AddiQoL_15_SCORE + AddiQoL_16_SCORE + AddiQoL_17_SCORE + AddiQoL_18_SCORE + AddiQoL_19_SCORE + AddiQoL_20_SCORE + AddiQoL_21_SCORE + AddiQoL_22_SCORE + AddiQoL_23_SCORE + AddiQoL_24_SCORE + AddiQoL_25_SCORE + AddiQoL_26_SCORE + AddiQoL_27_SCORE + AddiQoL_28_SCORE + AddiQoL_29_SCORE + AddiQoL_30_SCORE" MinExpression="30" MaxExpression="120" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="1479" ItemType="1" VarName="AddiQoL30_SUM" LoincScale="QN" UnitStr="poeng">
+        <FormItem ItemHeader="Sum AddiQoL-30" ItemText="Summen av skåringene på alle spørsmålene." ItemHelp="" Expression="AddiQoL_01_SCORE + AddiQoL_02_SCORE + AddiQoL_03_SCORE + AddiQoL_04_SCORE + AddiQoL_05_SCORE + AddiQoL_06_SCORE + AddiQoL_07_SCORE + AddiQoL_08_SCORE + AddiQoL_09_SCORE + AddiQoL_10_SCORE + AddiQoL_11_SCORE + AddiQoL_12_SCORE + AddiQoL_13_SCORE + AddiQoL_14_SCORE + AddiQoL_15_SCORE + AddiQoL_16_SCORE + AddiQoL_17_SCORE + AddiQoL_18_SCORE + AddiQoL_19_SCORE + AddiQoL_20_SCORE + AddiQoL_21_SCORE + AddiQoL_22_SCORE + AddiQoL_23_SCORE + AddiQoL_24_SCORE + AddiQoL_25_SCORE + AddiQoL_26_SCORE + AddiQoL_27_SCORE + AddiQoL_28_SCORE + AddiQoL_29_SCORE + AddiQoL_30_SCORE" MinExpression="30" MaxExpression="120" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>

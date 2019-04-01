@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="1067" FormName="BDIA_ANNUAL_VISIT" FormTitle="Årskontroll barn">
+    <Page PageTitle="Bakgrunn">
+      <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        <FormItem ItemText="Høyde" ItemHelp="Uten sko." Expression="" MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3842" ItemType="1" VarName="VAR3842" LoincScale="QN">
+        <FormItem ItemText="Høydepersentil" ItemHelp="Denne skal hentes fra en tabell og oppdateres automatisk.&#xA;Kan bruke en beslutningsstøtteregel til dette." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
+        <FormItem ItemText="Vekt" ItemHelp="Uten sko og yttertøy." Expression="" MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3230" ItemType="1" VarName="SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+        <FormItem ItemText="Systolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3231" ItemType="1" VarName="DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+        <FormItem ItemText="Diastolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3841" ItemType="2" VarName="VAR3841" LoincScale="ORD">
+        <FormItem ItemText="Blodtrykkspersentil" ItemHelp="Denne skal beregnes basert på persentil for høyde.  Persentil for høyde er input til persentilskjema" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12351" OrderNumber="1" OptionText="Under 90" VerboseText="Under 90 persentilen."/>
+          <Answer AnswerId="12352" OrderNumber="2" OptionText="90-94" VerboseText="Mellom 90 og 95 persentilen."/>
+          <Answer AnswerId="12353" OrderNumber="3" OptionText="95 eller over" VerboseText="Over 95 persentilen."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Annen behandling">
+      <Item ItemId="3339" ItemType="2" VarName="ATC_C09" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem ItemText="Bruker ACE-hemmer eller AII-blokker" ItemHelp="Aprovel&amp;reg;, Atacand&amp;reg;, Capoten&amp;reg;, Captopril, CoAprovel&amp;reg;, Cozaar&amp;reg;, Diovan&amp;reg;, Enalapril, Gopten&amp;reg;, Lisinopril, Losartan, Micardis&amp;reg;, MicardisPlus&amp;reg;, Olmetec&amp;reg;, Ramipril, Renitec&amp;reg;, Teveten&amp;reg;, Triatec&amp;reg;, Vivatec&amp;reg;, Zestoretic&amp;reg;, Zestril&amp;reg; (pluss alle comp/mite varianter)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="16566" OrderNumber="1" OptionText="Ja" VerboseText="Bruker ACE/A2-blokker." ShortCode="J"/>
+          <Answer AnswerId="16567" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16568" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Indikasjon ACE-hemmer*">
+      <Item ItemId="3848" ItemType="4" VarName="VAR3848" LoincScale="NAR" Multiline="0">
+        <FormItem ItemHeader="Hvorfor" ItemText="Indikasjon for behandlingen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Lipidsenkende behandling*">
+      <Item ItemId="3337" ItemType="2" VarName="ATC_C10A" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem ItemText="Lipidsenkende behandling" ItemHelp="Cholestagel&amp;reg;, Crestor&amp;reg;, Ezetrol&amp;reg;, Inegy&amp;reg;, Lescol&amp;reg;, Lestid&amp;reg;, Lipitor&amp;reg;, Lovastatin, Mevacor&amp;reg;, Niaspan&amp;reg;, Omacor&amp;reg;, Pravachol&amp;reg;, Pravastatin, Questran&amp;reg;, Simvastatin, Sortis&amp;reg;, Tredaptive&amp;reg;, Zocor&amp;reg;," MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="16548" OrderNumber="1" OptionText="Ja" VerboseText="Bruker lipidsenkende." ShortCode="J"/>
+          <Answer AnswerId="16549" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16550" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Type lipidsenkende*">
+      <Item ItemId="3847" ItemType="4" VarName="VAR3847" LoincScale="NAR" Multiline="0">
+        <FormItem ItemText="Hvilken type" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="3339">
+      <Activate EnumVal="1" PageConditionId="7899" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3337">
+      <Activate EnumVal="1" PageConditionId="7921" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>
