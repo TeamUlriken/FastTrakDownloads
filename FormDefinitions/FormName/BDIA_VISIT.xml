@@ -11,7 +11,7 @@
         </FormItem>
       </Item>
       <Item ItemId="3844" ItemType="4" VarName="VAR3844" LoincScale="NAR" Multiline="0">
-        <FormItem ItemText="Diabetesansvarlig lege" ItemHelp="Bruk bare kortkode / brukernavn, ikke fullt navn." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Diabetesansvarlig lege" ItemHelp="Bruk bare kortkode / brukernavn, ikke fullt navn." ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -60,7 +60,7 @@
       </Item>
       <Item ItemId="2644" ItemType="2" VarName="NDV_ALBUMINURIA" LoincScale="ORD">
         <FormItem ItemText="Albuminuri" ItemHelp="Verdi på U-ACR 3-30 er moderat, over 30 regnes som betydelig forhøyet." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="11608" OrderNumber="1" OptionText="Ingen" VerboseText="Ingen albuminuri."/>
+          <Answer AnswerId="11608" OrderNumber="1" OptionText="Ingen"/>
           <Answer AnswerId="11609" OrderNumber="2" OptionText="Tidligere" VerboseText="Tidligere forhøyet albuminuri."/>
           <Answer AnswerId="11610" OrderNumber="3" OptionText="Moderat" VerboseText="Moderat forhøyet albuminuri."/>
           <Answer AnswerId="11611" OrderNumber="4" OptionText="Betydelig" VerboseText="Betydelig forhøyet albuminuri."/>
@@ -110,10 +110,12 @@
     </Page>
     <Page PageTitle="Aktuelt">
       <Item ItemId="4237" ItemType="4" VarName="DP_PROBLEMSTILLING" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemHeader="Aktuelt" ItemText="Dagens problemstilling" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemHeader="Aktuelt" ItemText="Dagens problemstilling" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageTitle="Glykemisk kontroll">
       <Item ItemId="3018" ItemType="1" VarName="HBA1C_MMOL" LoincScale="QN" UnitStr="mmol/mol" DisplayFormat="">
         <FormItem ItemText="B-HbA1c" ItemHelp="HbA1c-verdien gjenspeiler det gjennomsnittlige blodsukkeret de siste 6 - 8 uker før prøvetakingen. Høye verdier ses derfor ved økt gjennomsnittlig blodglukose. Lave verdier kan ses ved økt hemoglobinomsetning som ved hemolytiske anemier." MinExpression="26" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
@@ -221,6 +223,8 @@
           <Answer/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageTitle="Neste avtale">
       <Item ItemId="2127" ItemType="4" VarName="DP_AVTALE_LEGE" LoincScale="NAR" Multiline="0">
         <FormItem ItemHeader="Lege" ItemText="Avtale og evt tidspunkt for neste konsultasjon hos lege" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
@@ -241,11 +245,11 @@
       <Activate EnumVal="1" PageConditionId="7900" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="1310">
-      <Activate EnumVal="1" PageConditionId="7905" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="2" PageConditionId="7906" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="7905" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="7906" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="4526">
-      <Activate EnumVal="1" PageConditionId="7901" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="7901" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
