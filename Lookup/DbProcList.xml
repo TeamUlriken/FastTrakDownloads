@@ -2057,16 +2057,18 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="300" StudyName="NDV" ProcName="NDV.GetCaseListCGM" ProcDesc="CGM: Aktive CGM brukere" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" ChkSum="508219088" LastUpdate="2019-01-03T08:59:29.077Z">
-		<![CDATA[CREATE PROCEDURE NDV.GetCaseListCGM( @StudyId INT ) AS
-BEGIN
-  SELECT p.PersonId, p.DOB, p.FullName, p.GenderId,
-    diatype.OptionText AS GroupName, cgm.OptionText AS InfoText
-  FROM dbo.ViewActiveCaseListStub p
-  JOIN dbo.GetLastEnumValuesTable( 10288, NULL ) cgm ON cgm.PersonId = p.PersonId
-  JOIN dbo.GetLastEnumValuesTable( 3196, NULL ) diatype ON diatype.PersonId = p.PersonId
-    WHERE cgm.EnumVal IN (1, 2) AND p.StudyId = @StudyId
-  ORDER BY FullName
+	<row ProcId="300" StudyName="NDV" ProcName="NDV.GetCaseListCGM" ProcDesc="CGM: Aktive CGM brukere" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" HelpText="Pasienter som bruker CGM (basert p� variabel 10288), inkludert hvilket apparat som er utdelt (variable 10296)." ChkSum="2094753027" LastUpdate="2019-05-03T12:47:54.443Z">
+		<![CDATA[CREATE PROCEDURE NDV.GetCaseListCGM( @StudyId INT ) AS 
+BEGIN   
+  SELECT p.PersonId, p.DOB, p.FullName, p.GenderId,     
+    diatype.OptionText AS GroupName, 
+    cgm.OptionText + ': ' + ISNULL(cgmtype.OptionText, '(ukjent apparat)' )  AS InfoText   
+  FROM dbo.ViewActiveCaseListStub p   
+  JOIN dbo.GetLastEnumValuesTable( 3196, NULL ) diatype ON diatype.PersonId = p.PersonId     
+  JOIN dbo.GetLastEnumValuesTable( 10288, NULL ) cgm ON cgm.PersonId = p.PersonId   
+  LEFT JOIN dbo.GetLastEnumValuesTable( 10296, NULL ) cgmtype ON cgmtype.PersonId = p.PersonId     
+  WHERE cgm.EnumVal IN (1, 2) AND p.StudyId = @StudyId   
+  ORDER BY FullName;
 END  ]]>
 	</row>
 	<row ProcId="301" StudyName="NDV" ProcName="NDV.GetPumpAll" ProcDesc="Type 1 m/pumpe: Alle etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="521" ChkSum="-98983438" LastUpdate="2018-10-03T15:35:19.137Z">
