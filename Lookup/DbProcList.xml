@@ -2352,6 +2352,30 @@ BEGIN
   ORDER BY ISNULL( ld.NumResult, 999 ) DESC
 END]]>
 	</row>
+	<row ProcId="501" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListHbA1cFalling" ProcDesc="HbA1c: Aktive pasienter etter fallende HbA1c, med behandlende le" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" HelpText="Merk laboratoriedata er pasientn�re, alts� tatt fra skjema." CompatibilityLevel="100" ChkSum="1599420791" LastUpdate="2019-05-14T10:11:20.220Z">
+		<![CDATA[CREATE PROCEDURE BDR.GetCaseListHbA1cFalling( @StudyId INT ) AS
+BEGIN
+  SELECT v.PersonId, v.DOB, v.FullName, 
+    FORMAT( ld.Quantity, 'HbA1c = # mmol/mol' ) AS InfoText, 
+    dbo.GetLastTextVal( v.PersonId, 'VAR3844' ) AS GroupName
+  FROM dbo.ViewActiveCaseListStub v
+  LEFT JOIN dbo.GetLastQuantityTable( 3018, NULL ) ld ON ld.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId
+  ORDER by ld.Quantity DESC;
+END]]>
+	</row>
+	<row ProcId="502" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListHbA1cAbove75" ProcDesc="HbA1c: Siste HbA1c-verdi 75 mmol/mol eller h�yere" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" HelpText="Merk labororatoriedata er pasientn�re, alts� tatt fra skjema." ChkSum="1923108851" LastUpdate="2019-05-14T10:09:58.953Z">
+		<![CDATA[CREATE PROCEDURE BDR.GetCaseListHbA1cAbove75( @StudyId INT ) AS
+BEGIN
+  SELECT 
+     v.*, FORMAT( glqt.Quantity, 'HbA1c = # mmol/mol' ) AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.GetLastQuantityTable( 3018, NULL ) glqt ON glqt.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId AND glqt.Quantity >= 75
+  ORDER BY glqt.Quantity DESC;
+END
+]]>
+	</row>
 	<row ProcId="600" StudyName="ROAS" ProcName="ENDO.GetAddisonPatients" ProcDesc="Addison: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Addison type" ChkSum="1363668548" LastUpdate="2019-01-03T08:59:39.340Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetAddisonPatients (@StudyId INT) AS
 BEGIN
