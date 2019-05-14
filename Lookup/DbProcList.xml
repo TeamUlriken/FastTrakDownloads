@@ -2378,6 +2378,29 @@ BEGIN
 END
 ]]>
 	</row>
+	<row ProcId="503" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListHbA1cBelow53" ProcDesc="HbA1c: Siste HbA1c-verdi under 53 mmol/mol" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" CompatibilityLevel="100" ChkSum="2139373562" LastUpdate="2019-05-14T10:28:39.177Z">
+		<![CDATA[CREATE PROCEDURE BDR.GetCaseListHbA1cBelow53( @StudyId INT ) AS
+BEGIN
+  SELECT 
+     v.*, FORMAT( glqt.Quantity, 'HbA1c = # mmol/mol' ) AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.GetLastQuantityTable( 3018, NULL ) glqt ON glqt.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId AND glqt.Quantity < 53
+  ORDER BY glqt.Quantity;
+END
+]]>
+	</row>
+	<row ProcId="504" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListUACRAbove3" ProcDesc="U-ACR: Aktive pasienter med U-ACR over 3 mg/mmol." ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" HelpText="Laboratoriedata fra labarket." ChkSum="700855947" LastUpdate="2019-05-14T11:56:41.453Z">
+		<![CDATA[CREATE PROCEDURE BDR.GetCaseListUACRAbove3( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, FORMAT( glldt.NumResult, 'U-ACR = #.# mg/mol' ) AS InfoText
+  FROM dbo.ViewActiveCaseListStub v 
+  JOIN dbo.GetLastLabDataTable(6, GETDATE()) glldt ON v.PersonId = glldt.PersonId
+  WHERE v.StudyId = @StudyId AND glldt.NumResult > 3 
+  ORDER BY glldt.NumResult DESC;
+END
+]]>
+	</row>
 	<row ProcId="600" StudyName="ROAS" ProcName="ENDO.GetAddisonPatients" ProcDesc="Addison: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Addison type" ChkSum="1363668548" LastUpdate="2019-01-03T08:59:39.340Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetAddisonPatients (@StudyId INT) AS
 BEGIN
