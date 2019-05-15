@@ -2310,6 +2310,16 @@ END;
 
 ]]>
 	</row>
+	<row ProcId="326" StudyName="NDV" ProcName="NDV.GetCaseListBiobankUnanswered" ProcDesc="Samtykke: Ubesvart samtykke til biobank" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18228" ChkSum="-102913205" LastUpdate="2019-05-15T08:47:05.690Z">
+		<![CDATA[CREATE PROCEDURE NDV.GetCaseListBiobankUnanswered( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, 'Ubesvart samtykke til diabetes biobank' AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  LEFT OUTER JOIN dbo.GetLastEnumValuesTable( 1502, NULL ) c ON c.PersonId = v.PersonId 
+  WHERE ( v.StudyId = @StudyId ) AND ( ISNULL( c.EnumVal, -1 ) IN ( -1, 4 ) )
+  ORDER BY FullName;
+END;]]>
+	</row>
 	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1612684606" LastUpdate="2019-01-13T18:20:58.827Z">
 		<![CDATA[CREATE PROCEDURE BAR.GetHospitalizedWithoutAdmissionForm( @StudyId INT ) AS
 BEGIN  
