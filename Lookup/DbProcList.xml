@@ -2412,6 +2412,18 @@ BEGIN
 END
 ]]>
 	</row>
+	<row ProcId="506" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListSortedByAge" ProcDesc="Aktive: Alle pasienter etter fallende alder, med lege." ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18228" CompatibilityLevel="100" ChkSum="799721419" LastUpdate="2019-05-15T07:21:16.290Z">
+		<![CDATA[CREATE PROCEDURE BDR.GetCaseListSortedByAge( @StudyId INT ) AS
+BEGIN
+  SET LANGUAGE NORWEGIAN;
+  SELECT v.PersonId, v.DOB, v.FullName, v.GenderId, doc.TextVal AS GroupName,
+    FORMAT( DATEDIFF(DD, v.DOB, GETDATE() ) / 365.25, 'Alder #.# �r' ) AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  LEFT JOIN dbo.GetLastTextValuesTable( 3844, NULL ) doc ON doc.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId
+  ORDER BY DOB;
+END]]>
+	</row>
 	<row ProcId="600" StudyName="ROAS" ProcName="ENDO.GetAddisonPatients" ProcDesc="Addison: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Addison type" ChkSum="1363668548" LastUpdate="2019-01-03T08:59:39.340Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetAddisonPatients (@StudyId INT) AS
 BEGIN
