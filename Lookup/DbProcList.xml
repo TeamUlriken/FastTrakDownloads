@@ -2354,19 +2354,20 @@ BEGIN
   ORDER BY ISNULL( ld.NumResult, 999 ) DESC
 END]]>
 	</row>
-	<row ProcId="501" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListHbA1cFalling" ProcDesc="HbA1c: Aktive pasienter etter fallende HbA1c, med behandlende le" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" HelpText="Merk laboratoriedata er pasientn�re, alts� tatt fra skjema." CompatibilityLevel="100" ChkSum="1603533175" LastUpdate="2019-05-14T11:58:50.907Z">
+	<row ProcId="501" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListHbA1cFalling" ProcDesc="HbA1c: Aktive pasienter etter fallende HbA1c, med lege." ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18228" HelpText="Merk laboratoriedata er pasientn�re, alts� tatt fra skjema." CompatibilityLevel="100" ChkSum="-223025004" LastUpdate="2019-05-14T14:05:22.123Z">
 		<![CDATA[CREATE PROCEDURE BDR.GetCaseListHbA1cFalling( @StudyId INT ) AS
 BEGIN
-  SELECT v.PersonId, v.DOB, v.FullName, 
-    FORMAT( ld.Quantity, 'HbA1c = # mmol/mol' ) AS InfoText, 
-    dbo.GetLastTextVal( v.PersonId, 'VAR3844' ) AS GroupName
+  SELECT v.PersonId, v.DOB, v.FullName, v.GenderId,  
+    ISNULL(FORMAT( ld.Quantity, 'HbA1c = # mmol/mol' ),'(HbA1c mangler)' ) AS InfoText, 
+    doc.TextVal AS GroupName
   FROM dbo.ViewActiveCaseListStub v
   LEFT JOIN dbo.GetLastQuantityTable( 3018, NULL ) ld ON ld.PersonId = v.PersonId
+  LEFT JOIN dbo.GetLastTextValuesTable( 3844, NULL ) doc ON doc.PersonId = v.PersonId
   WHERE v.StudyId = @StudyId
-  ORDER by ld.Quantity DESC;
+  ORDER BY ISNULL(ld.Quantity,999) DESC;
 END]]>
 	</row>
-	<row ProcId="502" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListHbA1cAbove75" ProcDesc="HbA1c: Siste HbA1c-verdi 75 mmol/mol eller h�yere" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" HelpText="Merk labororatoriedata er pasientn�re, alts� tatt fra skjema." ChkSum="1923108851" LastUpdate="2019-05-14T10:09:58.953Z">
+	<row ProcId="502" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListHbA1cAbove75" ProcDesc="HbA1c: Siste HbA1c-verdi 75 mmol/mol eller h�yere" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18228" HelpText="Merk labororatoriedata er pasientn�re, alts� tatt fra skjema." CompatibilityLevel="100" ChkSum="1919995891" LastUpdate="2019-05-14T14:05:25.373Z">
 		<![CDATA[CREATE PROCEDURE BDR.GetCaseListHbA1cAbove75( @StudyId INT ) AS
 BEGIN
   SELECT 
@@ -2378,7 +2379,7 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="503" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListHbA1cBelow53" ProcDesc="HbA1c: Siste HbA1c-verdi under 53 mmol/mol" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" CompatibilityLevel="100" ChkSum="2139373562" LastUpdate="2019-05-14T10:28:39.177Z">
+	<row ProcId="503" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListHbA1cBelow53" ProcDesc="HbA1c: Siste HbA1c-verdi under 53 mmol/mol" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18228" CompatibilityLevel="100" ChkSum="2136260602" LastUpdate="2019-05-14T14:05:27.780Z">
 		<![CDATA[CREATE PROCEDURE BDR.GetCaseListHbA1cBelow53( @StudyId INT ) AS
 BEGIN
   SELECT 
@@ -2390,7 +2391,7 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="504" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListUACRAbove3" ProcDesc="U-ACR: Aktive pasienter med U-ACR over 3 mg/mmol." ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" HelpText="Laboratoriedata fra labarket." CompatibilityLevel="100" ChkSum="1246010365" LastUpdate="2019-05-14T11:59:00.750Z">
+	<row ProcId="504" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListUACRAbove3" ProcDesc="U-ACR: Aktive pasienter med U-ACR over 3 mg/mmol." ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18228" HelpText="Laboratoriedata fra labarket." CompatibilityLevel="100" ChkSum="1246944253" LastUpdate="2019-05-14T14:05:30.267Z">
 		<![CDATA[CREATE PROCEDURE BDR.GetCaseListUACRAbove3( @StudyId INT ) AS
 BEGIN
   SELECT v.*, FORMAT( glldt.NumResult, 'U-ACR = #.# mg/mmol' ) AS InfoText
@@ -2401,7 +2402,7 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="505" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListLDLAbove25" ProcDesc="LDL: Aktive pasienter med LDL over 2,5 mmol/L" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" HelpText="Laboratoriedata fra labarket." CompatibilityLevel="100" ChkSum="36731579" LastUpdate="2019-05-14T12:12:44.550Z">
+	<row ProcId="505" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListLDLAbove25" ProcDesc="LDL: Aktive pasienter med LDL over 2,5 mmol/L" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18228" HelpText="Laboratoriedata fra labarket." CompatibilityLevel="100" ChkSum="36059835" LastUpdate="2019-05-14T14:05:32.670Z">
 		<![CDATA[CREATE PROCEDURE BDR.GetCaseListLDLAbove25( @StudyId INT ) AS
 BEGIN
   SELECT v.*, FORMAT( glldt.NumResult, 'LDL = #.# mmol/L' ) AS InfoText
