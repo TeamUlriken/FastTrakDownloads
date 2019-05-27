@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
-  <Form FormId="1071" FormName="BDIA_BASIC" FormTitle="Grunndata">
+  <Form FormId="1071" FormName="BDIA_BASIC" FormTitle="Startskjema">
     <Page PageTitle="Diagnose">
+      <Item ItemId="5067" ItemType="8" VarName="VAR5067" LoincScale="MSG">
+        <FormItem ItemHeader="Engangsskjema" ItemText="Dette skjemaet kan bare opprettes én gang per pasient.  Diagnosedato kan bare endres her." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
       <Item ItemId="3196" ItemType="2" VarName="NDV_TYPE" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Diabetes type" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
           <Answer AnswerId="15986" OrderNumber="1" OptionText="Type 1 (inkl. LADA)" VerboseText="Type 1 diabetes." ShortCode="1" ICD10="E10"/>
@@ -11,8 +16,13 @@
           <Answer AnswerId="40942" OrderNumber="5" OptionText="Svangerskapsdiabetes." ShortCode="S" ICD10="O24"/>
         </FormItem>
       </Item>
+      <Item ItemId="3323" ItemType="5" VarName="BDR_DIAGNOSE" LoincScale="DATE">
+        <FormItem ItemText="Diagnosedato" ItemHelp="" MinExpression="DOB+1" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
       <Item ItemId="3486" ItemType="1" VarName="NDV_DIAGNOSE_YYYY" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Debut" ItemText="Diabetes diagnostisert år" ItemHelp="Angi årstall.  Svangerskapsdiabetes unntas." MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem ItemHeader="Debut" ItemText="Diabetes diagnostisert år" ItemHelp="Angi årstall.  Svangerskapsdiabetes unntas." Expression="YearOf( BDR_DIAGNOSE )" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -142,8 +152,8 @@
         </FormItem>
       </Item>
       <Item ItemId="3355" ItemType="2" VarName="ICD10_Q90" LoincScale="ORD">
-        <FormItem ItemText="Down syndrom" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="61384" OrderNumber="1" OptionText="Ja" VerboseText="Down syndrom." ShortCode="J" ICD10="Q90"/>
+        <FormItem ItemText="Downs syndrom" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="61384" OrderNumber="1" OptionText="Ja" VerboseText="Downs syndrom." ShortCode="J" ICD10="Q90"/>
           <Answer AnswerId="61385" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="61386" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
         </FormItem>
