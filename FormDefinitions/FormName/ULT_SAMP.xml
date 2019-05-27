@@ -210,7 +210,7 @@
         </FormItem>
       </Item>
       <Item ItemId="3232" ItemType="1" VarName="VAR3232" LoincScale="QN">
-        <FormItem ItemText="Saliva 3, minute" ItemHelp="Thirty minutes after awakening" MinExpression="0" MaxExpression="60" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Saliva 3, minute" ItemHelp="Thirty minutes after awakening" MinExpression="0" MaxExpression="59" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -257,12 +257,12 @@
     </Page>
     <Page PageTitle="Cushing post operative specific*" PageIntroduction="These are not really post-op specific, but pre-operative data will already be on the Inclusion form.">
       <Item ItemId="3279" ItemType="1" VarName="VAR3279" LoincScale="QN" UnitStr="nmol/L">
-        <FormItem ItemText="Basal S-Cortisol" ItemHelp="Morning value, cortisol replacement withheld" MinExpression="1" MaxExpression="2000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Basal S-Cortisol" ItemHelp="Morning value, cortisol replacement withheld. Use 0 if there is no data available." MinExpression="0" MaxExpression="2000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3280" ItemType="1" VarName="VAR3280" LoincScale="QN" UnitStr="pmol/L">
-        <FormItem ItemText="Basal S-ACTH" ItemHelp="Morning value, cortisol replacement withheld" MinExpression="1" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Basal S-ACTH" ItemHelp="Morning value, cortisol replacement withheld.  Use 0 for values below limit of detection." MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -272,7 +272,7 @@
         </FormItem>
       </Item>
       <Item ItemId="4201" ItemType="1" VarName="VAR4201" LoincScale="QN" UnitStr="nmol/24h">
-        <FormItem ItemText="24-hour Urine Cortisol" ItemHelp="" MaxExpression="5000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="24-hour Urine Cortisol" ItemHelp="Use 2889 for values greater than 2888 nmol/24h." MaxExpression="2889" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -452,7 +452,7 @@
           <Answer AnswerId="12465" OrderNumber="2" OptionText="No"/>
         </FormItem>
       </Item>
-      <Item ItemId="4661" ItemType="2" VarName="VAR4661" LoincScale="ORD">
+      <Item ItemId="4661" ItemType="2" VarName="GC_REPLACEMENT_TYPE" LoincScale="ORD">
         <FormItem ItemText="Glucocorticoid replacement" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="12466" OrderNumber="1" OptionText="Hydrocortisone" Score="1.00"/>
           <Answer AnswerId="12467" OrderNumber="2" OptionText="Cortisone acetate" Score="0.80"/>
@@ -462,14 +462,26 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Glucocorticoid replacement during sampling" PageIntroduction="Start with morning dose on sampling start date, and include all glucocorticoid doses taken during sampling.">
+    <Page PageTitle="GC Pump dosing*">
+      <Item ItemId="4986" ItemType="1" VarName="GC_PUMP_DOSE" LoincScale="QN" UnitStr="mg/24h">
+        <FormItem ItemText="Pump dose mg/day" ItemHelp="" MinExpression="10" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Glucocorticoid replacement during sampling" PageIntroduction="Start with morning dose on sampling start date, and include all glucocorticoid doses taken during sampling. Enter ACTUAL dose, do not convert to hydrocortisone equivalent dose.">
       <Item ItemId="4669" ItemType="1" VarName="VAR4669" LoincScale="QN">
         <FormItem ItemText="Dose #1 time" ItemHelp="Use 700 for 7 am, 1300 for 1 pm etc." MinExpression="0" MaxExpression="2359" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="4663" ItemType="1" VarName="VAR4663" LoincScale="QN">
-        <FormItem ItemText="Dose #1 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="4663" ItemType="1" VarName="GC_ACTUAL_DOSE_1" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Dose #1 mg" ItemHelp="" MinExpression="1" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4979" ItemType="1" VarName="HC_EQUIVALENT_DOSE_1" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Dose #1 mg hc equivalent" ItemHelp="" Expression="GC_REPLACEMENT_TYPE_SCORE * GC_ACTUAL_DOSE_1" MinExpression="0.8" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
           <Answer/>
         </FormItem>
       </Item>
@@ -478,8 +490,13 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="4670" ItemType="1" VarName="VAR4670" LoincScale="QN">
-        <FormItem ItemText="Dose #2 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="4670" ItemType="1" VarName="GC_ACTUAL_DOSE_2" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Dose #2 mg" ItemHelp="" MinExpression="1" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4980" ItemType="1" VarName="HC_EQUIVALENT_DOSE_2" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Dose #2 mg hc equivalent" ItemHelp="" Expression="GC_REPLACEMENT_TYPE_SCORE * GC_ACTUAL_DOSE_2" MinExpression="0.8" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
           <Answer/>
         </FormItem>
       </Item>
@@ -488,8 +505,13 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="4671" ItemType="1" VarName="VAR4671" LoincScale="QN">
-        <FormItem ItemText="Dose #3 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="4671" ItemType="1" VarName="GC_ACTUAL_DOSE_3" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Dose #3 mg" ItemHelp="" MinExpression="1" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4981" ItemType="1" VarName="HC_EQUIVALENT_DOSE_3" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Dose #3 mg hc equivalent" ItemHelp="" Expression="GC_REPLACEMENT_TYPE_SCORE * GC_ACTUAL_DOSE_3" MinExpression="0.8" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
           <Answer/>
         </FormItem>
       </Item>
@@ -498,8 +520,13 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="4672" ItemType="1" VarName="VAR4672" LoincScale="QN">
-        <FormItem ItemText="Dose #4 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="4672" ItemType="1" VarName="GC_ACTUAL_DOSE_4" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Dose #4 mg" ItemHelp="" MinExpression="1" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4982" ItemType="1" VarName="HC_EQUIVALENT_DOSE_4" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Dose #4 mg hc equivalent" ItemHelp="" Expression="GC_REPLACEMENT_TYPE_SCORE * GC_ACTUAL_DOSE_4" MinExpression="0.8" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
           <Answer/>
         </FormItem>
       </Item>
@@ -508,8 +535,13 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="4673" ItemType="1" VarName="VAR4673" LoincScale="QN">
-        <FormItem ItemText="Dose #5 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="4673" ItemType="1" VarName="GC_ACTUAL_DOSE_5" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Dose #5 mg" ItemHelp="" MinExpression="1" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4983" ItemType="1" VarName="HC_EQUIVALENT_DOSE_5" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Dose #5 mg hc equivalent" ItemHelp="" Expression="GC_REPLACEMENT_TYPE_SCORE * GC_ACTUAL_DOSE_5" MinExpression="0.8" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
           <Answer/>
         </FormItem>
       </Item>
@@ -518,8 +550,13 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="4674" ItemType="1" VarName="VAR4674" LoincScale="QN">
-        <FormItem ItemText="Dose #6 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="4674" ItemType="1" VarName="GC_ACTUAL_DOSE_6" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Dose #6 mg" ItemHelp="" MinExpression="1" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4984" ItemType="1" VarName="HC_EQUIVALENT_DOSE_6" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Dose #6 mg hc equivalent" ItemHelp="" Expression="GC_REPLACEMENT_TYPE_SCORE * GC_ACTUAL_DOSE_6" MinExpression="0.8" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
           <Answer/>
         </FormItem>
       </Item>
@@ -528,8 +565,13 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="4679" ItemType="1" VarName="VAR4679" LoincScale="QN">
-        <FormItem ItemText="Dose #7 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="4679" ItemType="1" VarName="GC_ACTUAL_DOSE_7" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Dose #7 mg" ItemHelp="" MinExpression="1" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4985" ItemType="1" VarName="HC_EQUIVALENT_DOSE_7" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Dose #7 mg hc equivalent" ItemHelp="" Expression="GC_REPLACEMENT_TYPE_SCORE * GC_ACTUAL_DOSE_7" MinExpression="0.8" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
           <Answer/>
         </FormItem>
       </Item>
@@ -540,8 +582,8 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="4680" ItemType="1" VarName="VAR4680" LoincScale="QN">
-        <FormItem ItemText="Dose #1 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="4680" ItemType="1" VarName="VAR4680" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Dose #1 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -550,8 +592,8 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="4675" ItemType="1" VarName="VAR4675" LoincScale="QN">
-        <FormItem ItemText="Dose #2 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="4675" ItemType="1" VarName="VAR4675" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Dose #2 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -560,8 +602,8 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="4681" ItemType="1" VarName="VAR4681" LoincScale="QN">
-        <FormItem ItemText="Dose #3 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="4681" ItemType="1" VarName="VAR4681" LoincScale="QN" UnitStr="mg">
+        <FormItem ItemText="Dose #3 mg" ItemHelp="" MinExpression="0" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -602,8 +644,16 @@
     <PageAction MasterId="1160">
       <Activate EnumVal="7" PageConditionId="7807" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
       <Activate EnumVal="5" PageConditionId="7991" PageNumber="19" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="5" PageConditionId="7992" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="5" PageConditionId="7993" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="4661">
+      <Activate EnumVal="5" PageConditionId="8011" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8007" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="8008" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="8009" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="8010" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="1160">
+      <Activate EnumVal="5" PageConditionId="7993" PageNumber="22" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>

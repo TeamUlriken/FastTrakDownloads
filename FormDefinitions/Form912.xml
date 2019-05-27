@@ -48,10 +48,13 @@
           <Answer AnswerId="12215" OrderNumber="3" OptionText="Unknown"/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageTitle="New*">
       <Item ItemId="4270" ItemType="2" VarName="VAR4270" LoincScale="ORD">
-        <FormItem ItemText="Positive bilateral petrosal sinus sampling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Positive bilateral petrosal sinus sampling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12430" OrderNumber="1" OptionText="Yes"/>
           <Answer AnswerId="12431" OrderNumber="2" OptionText="No"/>
+          <Answer AnswerId="12513" OrderNumber="3" OptionText="Not done"/>
         </FormItem>
       </Item>
       <Item ItemId="4273" ItemType="2" VarName="VAR4273" LoincScale="ORD">
@@ -71,20 +74,21 @@
           <Answer AnswerId="61546" OrderNumber="1" OptionText="Bilateral overproduction"/>
           <Answer AnswerId="61547" OrderNumber="2" OptionText="Unilateral overproduction"/>
           <Answer AnswerId="61548" OrderNumber="3" OptionText="Non-diagnostic or not representative"/>
+          <Answer AnswerId="12512" OrderNumber="4" OptionText="Not done"/>
         </FormItem>
       </Item>
       <Item ItemId="3279" ItemType="1" VarName="VAR3279" LoincScale="QN" UnitStr="nmol/L">
-        <FormItem ItemText="Basal S-Cortisol (at diagnosis)" ItemHelp="Morning value, cortisol replacement withheld" MinExpression="1" MaxExpression="2000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Basal S-Cortisol (at diagnosis)" ItemHelp="Morning value, cortisol replacement withheld. Use 0 if there is no data available." MinExpression="0" MaxExpression="2000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3280" ItemType="1" VarName="VAR3280" LoincScale="QN" UnitStr="pmol/L">
-        <FormItem ItemText="Basal S-ACTH (at diagnosis)" ItemHelp="Morning value, cortisol replacement withheld" MinExpression="1" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Basal S-ACTH (at diagnosis)" ItemHelp="Morning value, cortisol replacement withheld.  Use 0 for values below limit of detection." MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4201" ItemType="1" VarName="VAR4201" LoincScale="QN" UnitStr="nmol/24h">
-        <FormItem ItemText="24-hour Urine Cortisol (at diagnosis)" ItemHelp="" MaxExpression="5000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="24-hour Urine Cortisol (at diagnosis)" ItemHelp="Use 2889 for values greater than 2888 nmol/24h." MaxExpression="2889" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -258,12 +262,19 @@
   <Actions>
     <PageAction MasterId="1160">
       <Activate EnumVal="4" PageConditionId="7800" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="7" PageConditionId="7801" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="4" PageConditionId="7803" PageNumber="15" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="7" PageConditionId="7804" PageNumber="15" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3517">
+      <Activate EnumVal="2" PageConditionId="8013" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="8014" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="1160">
+      <Activate EnumVal="4" PageConditionId="8012" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="7" PageConditionId="7801" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="7803" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="7" PageConditionId="7804" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="3260">
-      <Activate EnumVal="1" PageConditionId="7802" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="7802" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
