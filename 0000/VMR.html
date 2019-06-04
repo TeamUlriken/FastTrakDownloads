@@ -87,11 +87,26 @@ a:hover { color: red; text-decoration: underline; }
 </head>
 <body>
 <table width="100%">
-<thead class="noscreen" ><tr><td colspan="3" class="pageheader"><span class="patientname"><#Patient.VisualId></span><span class="centername"><#User.CenterName></span></td></tr></thead>
-<tfoot class="noscreen"><tr><td colspan="3" class="pagefooter"><span class="printinfo">Tatt ut av: <#User.FullName> <#Time.DateTimeString></span></td></tr></tfoot>
-<tbody>
-<#VmrViewer.FilteredVmr>
-</tbody>
+  <thead class="noscreen" >
+    <tr>
+      <td colspan="3" class="pageheader"><span class="patientname"><#Patient.VisualId></span><span class="centername"><#User.CenterName></span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+  </thead>
+  
+  <tfoot class="noscreen">
+    <tr>
+	  <td>&nbsp;</td>
+	</tr>
+    <tr>
+	  <td colspan="3" class="pagefooter"><span class="printinfo">Tatt ut av: <#User.FullName> <#Time.DateTimeString></span></td>
+	</tr>
+  </tfoot>
+  <tbody>
+    <#VmrViewer.FilteredVmr>
+  </tbody>
 </table>
 </body>
 </html>
