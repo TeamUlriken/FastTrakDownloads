@@ -281,7 +281,7 @@ BEGIN
       'Ingen eksterne labdata fra siste 6 mnd.  Labprøver bør tas regelmessig, bl.a. for å overvåke nyrefunksjon.';
 END]]>
 	</row>
-	<row RuleId="10" RuleClass="MUST" RuleType="M" RuleProc="GBD.RuleMUST" Title="MUST" Description="Automatisk beregning av MUST score, med tilhørende varsling ved høy score." ChkSum="-338712236" LastUpdate="2019-01-12T06:41:33.327Z">
+	<row RuleId="10" RuleClass="MUST" RuleType="M" RuleProc="GBD.RuleMUST" Title="MUST" Description="Automatisk beregning av MUST score, med tilhørende varsling ved høy score." ChkSum="-338712236" LastUpdate="2019-05-24T13:08:11.060Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleMUST( @StudyId INT, @PersonId INT ) AS
 BEGIN
   SET NOCOUNT ON;
@@ -971,7 +971,7 @@ BEGIN
   EXEC dbo.AddAlertForDSSRule @StudyId,@PersonId,@AlertLevel,'NDVBIOBANK',@AlertFacet;    
 END]]>
 	</row>
-	<row RuleId="25" RuleClass="STRATIFY" RuleType="M" RuleProc="GBD.RuleFallrisikoStratify" Description="Fallrisikovurdering" ChkSum="706954377" LastUpdate="2019-01-03T09:03:23.730Z">
+	<row RuleId="25" RuleClass="STRATIFY" RuleType="M" RuleProc="GBD.RuleFallrisikoStratify" Title="Fallrisikovurdering" Description="Fallrisikovurdering" ChkSum="-155464081" LastUpdate="2019-05-03T10:22:42.473Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleFallrisikoStratify (@StudyId INT, @PersonId INT) AS
 BEGIN
   IF dbo.GetLastCompleteForm(@StudyId, @PersonId, 'STRATIFY') IS NULL
@@ -1061,7 +1061,7 @@ BEGIN
     EXEC dbo.AddAlertForPerson @StudyId, @PersonId, @AlertLevel, 'MHVURDERING', @AlertFacet, @AlertHdr, @AlertMsg;
 END]]>
 	</row>
-	<row RuleId="28" RuleClass="SAROPPFOLGIN" RuleType="M" RuleProc="GBD.RuleSaroppfolging" MinVersion="18003" Title="Saroppfolging" Description="Såroppfølging" ChkSum="1762322161" LastUpdate="2019-01-03T09:04:02.843Z">
+	<row RuleId="28" RuleClass="SAROPPFOLGIN" RuleType="M" RuleProc="GBD.RuleSaroppfolging" MinVersion="18003" Title="Såroppfølging" Description="Såroppfølging" ChkSum="1763478481" LastUpdate="2019-05-03T10:22:27.113Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleSaroppfolging (@StudyId INT, @PersonId INT) AS
 BEGIN
     DECLARE @FormName VARCHAR(24);
@@ -1182,24 +1182,57 @@ BEGIN
         @AlertMsg;
 END]]>
 	</row>
-	<row RuleId="30" RuleClass="BARTHEL" RuleType="M" RuleProc="GBD.RuleBarthel" Description="Barthel hver 6. måned" ChkSum="-793817141" LastUpdate="2019-01-03T09:04:16.263Z">
+	<row RuleId="30" RuleClass="BARTHEL" RuleType="M" RuleProc="GBD.RuleBarthel" Title="Barthel 6m" Description="Barthel hver 6. måned" ChkSum="1349219282" LastUpdate="2019-05-03T10:23:05.787Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleBarthel( @StudyId INT, @PersonId INT ) AS
 BEGIN
   EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'BARTHEL',180,2;
 END;
 ]]>
 	</row>
-	<row RuleId="31" RuleClass="KDV" RuleType="M" RuleProc="GBD.RuleKDV" Description="KDV hver 6. måned" ChkSum="-2036700213" LastUpdate="2019-01-03T09:04:20.280Z">
+	<row RuleId="31" RuleClass="KDV" RuleType="M" RuleProc="GBD.RuleKDV" Title="KDV 6 mnd" Description="KDV hver 6. måned" ChkSum="-1792269599" LastUpdate="2019-05-03T10:23:13.800Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleKDV( @StudyId INT, @PersonId INT ) AS
 BEGIN
   EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'KDV',180,2;
 END;
 ]]>
 	</row>
-	<row RuleId="32" RuleClass="QUALID" RuleType="M" RuleProc="GBD.RuleQualid" Description="Qualid hver 6. måned" ChkSum="-62810347" LastUpdate="2019-01-03T09:04:24.420Z">
+	<row RuleId="32" RuleClass="QUALID" RuleType="M" RuleProc="GBD.RuleQualid" Title="Qualid 6 mnd" Description="Qualid hver 6. måned" ChkSum="-368886222" LastUpdate="2019-05-03T10:23:22.007Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleQualid( @StudyId INT, @PersonId INT ) AS
 BEGIN
   EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'QUALID',180,2
 END;]]>
+	</row>
+	<row RuleId="33" RuleClass="NDVBIOLAB" RuleType="M" RuleProc="NDV.RuleBiobankLabtest" MinVersion="18000" Title="Prøve til biobank" Description="Påminnelse om å ta prøve til biobanken for de som har samtykket" ChkSum="-544617397" LastUpdate="2019-05-03T10:22:16.240Z">
+		<![CDATA[CREATE PROCEDURE NDV.RuleBiobankLabtest( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  DECLARE @AlertLevel INT = 0;
+  DECLARE @AlertFacet VARCHAR(16) = 'Undefined';
+  IF DEFAULT_DOMAIN() IN ('DIPS-AD', 'HS' ) 
+  BEGIN
+    IF dbo.GetLastEnumVal( @PersonId, 'NDV_CONSENT_BIOBANK' ) = 1
+    BEGIN 
+      IF EXISTS 
+        ( 
+          SELECT 1 FROM dbo.LabData ld 
+          JOIN dbo.LabCode lc ON lc.LabCodeId = Ld.LabCodeId
+          WHERE ld.PersonId = @PersonId AND lc.LabClassId = 1084
+        )
+      BEGIN
+        SET @AlertLevel = 1;
+        SET @AlertFacet = 'DataFound';
+      END
+      ELSE
+      BEGIN
+        SET @AlertLevel = 3;
+        SET @AlertFacet = 'DataMissing';
+      END
+    END
+    ELSE
+    BEGIN
+      SET @AlertFacet = 'Exclude';
+    END;
+  END
+  EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, @AlertLevel, 'NDVBIOLAB', @AlertFacet;
+END]]>
 	</row>
 </DSSRule>
