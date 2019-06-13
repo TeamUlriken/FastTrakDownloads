@@ -92,6 +92,25 @@ BEGIN
   ORDER BY ce.EventTime
 END]]>
 	</row>
+	<row ProcId="4" StudyName="NOSTUDY" ProcName="dbo.GetCaseListNewForms" ProcDesc="Brukes av diverse andre populasoner" ProcParams=":StudyId, :DaysBack, :UserId" ListId="CASE" GrantTo="public" ChkSum="95679825" LastUpdate="2019-05-22T14:14:39.023Z">
+		<![CDATA[CREATE PROCEDURE dbo.GetCaseListNewForms( @StudyId INT, @DaysBack FLOAT, @UserId INT = NULL ) AS
+BEGIN
+  SELECT v.PersonId,v.DOB,v.FullName,sg.GroupName,cf.CreatedAt,mf.FormTitle + ' / ' + dbo.ShortTime(ce.EventTime) + ' ' + ISNULL(p.Signature, '?' ) As InfoText
+  FROM dbo.ViewActiveCaseListStub v
+    JOIN dbo.ClinEvent ce on ce.PersonId=v.PersonId
+    JOIN dbo.StudCase sc on sc.PersonId=v.PersonId AND sc.StudyId=v.StudyId
+    JOIN dbo.StudyGroup sg on sg.GroupId=sc.GroupId AND sg.StudyId=v.StudyId
+    JOIN dbo.ClinForm cf on cf.EventId=ce.EventId AND cf.DeletedBy IS NULL AND ( cf.CreatedBy=@UserId OR @UserId IS NULL ) 
+    JOIN dbo.MetaForm mf on mf.FormId=cf.FormId
+    JOIN dbo.UserList ul ON ul.UserId=cf.CreatedBy
+    LEFT OUTER JOIN dbo.Person p ON p.PersonId=ul.PersonId
+    WHERE ce.EventTime > getdate()-@DaysBack AND v.StudyId=@StudyId
+    ORDER BY ce.EventTime DESC;
+END
+
+
+]]>
+	</row>
 	<row ProcId="5" StudyName="NOSTUDY" ProcName="dbo.GetCaseListUnwrittenRx" ProcDesc="Arbeidsliste: Utskriftskø for resepter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1941273801" LastUpdate="2019-01-22T10:21:22.017Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListUnwrittenRx( @StudyId INT ) AS
 BEGIN
@@ -109,28 +128,28 @@ BEGIN
   EXEC dbo.GetCaseListNewForms @StudyId,1;
 END]]>
 	</row>
-	<row ProcId="7" StudyName="*" ProcName="dbo.GetCaseListMyWeek" ProcDesc="Aktivitet: Mine skjema siste 7 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" HelpText="Skjema du selv har opprettet i perioden." ChkSum="-1189304006" LastUpdate="2019-01-22T17:07:05.363Z">
+	<row ProcId="7" StudyName="*" ProcName="dbo.GetCaseListMyWeek" ProcDesc="Aktivitet: Mine skjema siste 7 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" HelpText="Skjema du selv har opprettet i perioden." ChkSum="-94577140" LastUpdate="2019-05-22T14:19:23.723Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListMyWeek( @StudyId INT ) AS
 BEGIN
   DECLARE @UserId INT;
   SET @UserId = USER_ID();
-  EXEC GetCaseListNewForms @StudyId,7,@UserId;
+  EXEC dbo.GetCaseListNewForms @StudyId,7,@UserId;
 END]]>
 	</row>
-	<row ProcId="8" StudyName="*" ProcName="dbo.GetCaseListMyMonth" ProcDesc="Aktivitet: Mine skjema siste 30 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" HelpText="Skjema du selv har opprettet i perioden." ChkSum="747270247" LastUpdate="2019-01-22T17:07:10.067Z">
+	<row ProcId="8" StudyName="*" ProcName="dbo.GetCaseListMyMonth" ProcDesc="Aktivitet: Mine skjema siste 30 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" HelpText="Skjema du selv har opprettet i perioden." ChkSum="-1011638926" LastUpdate="2019-05-22T14:19:28.277Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListMyMonth( @StudyId INT ) AS
 BEGIN
   DECLARE @UserId INT;
   SET @UserId = USER_ID();
-  EXEC GetCaseListNewForms @StudyId,30,@UserId;
+  EXEC dbo.GetCaseListNewForms @StudyId,30,@UserId;
 END]]>
 	</row>
-	<row ProcId="9" StudyName="*" ProcName="dbo.GetCaseListMyYear" ProcDesc="Aktivitet: Mine skjema siste 365 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" HelpText="Skjema du selv har opprettet i perioden." ChkSum="-301758339" LastUpdate="2019-01-22T17:07:12.020Z">
+	<row ProcId="9" StudyName="*" ProcName="dbo.GetCaseListMyYear" ProcDesc="Aktivitet: Mine skjema siste 365 dager" ProcParams=":StudyId" ListId="CASE" GrantTo="public" HelpText="Skjema du selv har opprettet i perioden." ChkSum="-84205965" LastUpdate="2019-05-22T14:19:35.760Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListMyYear( @StudyId INT ) AS
 BEGIN
   DECLARE @UserId INT;
   SET @UserId = USER_ID();
-  EXEC GetCaseListNewForms @StudyId,365,@UserId;
+  EXEC dbo.GetCaseListNewForms @StudyId,365,@UserId;
 END]]>
 	</row>
 	<row ProcId="10" StudyName="*" ProcName="dbo.GetCaseListNoForm" ProcDesc="Admin: Aktive uten skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" HelpText="Alle som er registrert i protokollen, men der det ennå ikke er opprettet noe skjema.  Se også #23." ChkSum="-1598469714" LastUpdate="2019-01-22T16:58:47.020Z">
