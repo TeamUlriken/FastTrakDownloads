@@ -1385,6 +1385,102 @@ BEGIN
   ORDER BY v.FullName;
 END;]]>
 	</row>
+	<row ProcId="178" StudyName="GBD" ProcName="GBD.GetCaseListMultidose" ProcDesc="Medikamentbruk: Multidose" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19008" HelpText="Pasienter som har medisiner registrert  med doseringstype multidose." ChkSum="-147589406" LastUpdate="2019-05-27T13:15:41.210Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListMultidose (@StudyId INT) AS
+BEGIN
+	SELECT v.PersonId, v.DOB, v.FullName, v.GenderId, v.GroupName, CONCAT('Antall multidosemedikamenter: ', t.Total) AS InfoText
+	FROM (SELECT ot.PersonId, COUNT(ot.PackType) AS Total
+		FROM dbo.OngoingTreatment ot
+		WHERE ot.PackType = 'M'
+		GROUP BY ot.PersonId) t
+	JOIN dbo.ViewActiveCaseListStub v ON v.PersonId = t.PersonId AND v.StudyId = @StudyId
+	ORDER BY v.PersonId;
+END;]]>
+	</row>
+	<row ProcId="179" StudyName="GBD" ProcName="dbo.GetCaseListUnsignedLabdata" ProcDesc="Personer: Usignerte labdata" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19008" ChkSum="-520799930" LastUpdate="2019-05-24T07:32:41.880Z">
+		<![CDATA[CREATE PROCEDURE dbo.GetCaseListUnsignedLabdata( @StudyId INT ) AS
+BEGIN
+    SELECT v.*, FORMAT( unsigned.Antall, 'Har # usignerte prï¿½vesvar') AS InfoText
+    FROM dbo.ViewActiveCaseListStub v
+    JOIN (
+        SELECT PersonId, COUNT(*) AS Antall
+        FROM dbo.LabData
+        WHERE SignedBy IS NULL
+        GROUP BY PersonId
+    ) unsigned ON unsigned.PersonId = v.PersonId
+	WHERE v.StudyId = @StudyId
+    ORDER BY unsigned.Antall DESC, v.FullName;
+END;]]>
+	</row>
+	<row ProcId="180" StudyName="GBD" ProcName="GBD.GetCaseListDrugStoppedLastMonth" ProcDesc="Medikamentbruk: Seponert siste mï¿½ned" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" ChkSum="-1734896866" LastUpdate="2019-05-28T14:33:49.370Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListDrugStoppedLastMonth ( @StudyId INT ) AS
+BEGIN
+    SELECT v.*, dt.StopAuthorizedByName, CONCAT( dt.DrugName, ' avsluttet av ', p.FullName, ' ', CONVERT( VARCHAR, dt.[StopAt], 104 ) ) AS InfoText
+    FROM dbo.ViewActiveCaseListStub v
+    JOIN dbo.DrugTreatment dt ON dt.PersonId = v.PersonId AND dt.[StopAt] IS NOT NULL
+    JOIN dbo.UserList ul ON ul.UserId = dt.StopBy
+    JOIN dbo.Person p ON p.PersonId = ul.PersonId
+    WHERE ( DATEDIFF( DAY, dt.[StopAt], GETDATE() ) <= 30 )
+	AND ( v.StudyId = @StudyId )
+	ORDER BY dt.[StopAt] DESC;
+END;]]>
+	</row>
+	<row ProcId="181" StudyName="GBD" ProcName="GBD.GetCaseListLegevisitt" ProcDesc="Legevurdering: Til legevisitt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19008" HelpText="Rapporten viser alle pasienter som har et skjema av type ï¿½Til legevurderingï¿½ hvor lege ikke har gitt tilbakemelding, uavhengig av hastegrad. " ChkSum="-1518935685" LastUpdate="2019-06-12T13:48:51.827Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListLegevisitt ( @StudyId INT ) AS
+BEGIN
+    SELECT v.*, cdp1.EnumVal, mia1.OrderNumber, CONCAT( 'Hastegrad: ', ISNULL( mia2.OptionText, '(ubesvart)'), ', Skjemadato: ', FORMAT(cf.CreatedAt, 'dd.MM.yyyy')) AS InfoText
+    FROM dbo.ViewActiveCaseListStub v
+    JOIN dbo.ClinForm cf ON cf.PersonId = v.PersonId
+    JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId AND mf.FormName = 'GBD_Legevurdering'
+    JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId
+    LEFT JOIN dbo.ClinDataPoint cdp1 ON cdp1.EventId = ce.EventId AND cdp1.ItemId = 2533 
+    LEFT JOIN dbo.MetaItemAnswer mia1 ON mia1.ItemId = cdp1.ItemId AND mia1.OrderNumber = cdp1.EnumVal
+    LEFT JOIN dbo.ClinDataPoint cdp2 ON cdp2.EventId = ce.EventId AND cdp2.ItemId = 2537 
+    LEFT JOIN dbo.MetaItemAnswer mia2 ON mia2.ItemId = cdp2.ItemId AND mia2.OrderNumber = cdp2.EnumVal
+    WHERE v.StudyId = @StudyId
+    AND ISNULL( cdp1.EnumVal, -1 ) IN ( -1, 3 )
+    ORDER BY v.PersonId;
+END;]]>
+	</row>
+	<row ProcId="182" StudyName="GBD" ProcName="GBD.GetCaseListSnarligLegevurdering" ProcDesc="Legevurdering: Til snarlig legevurdering" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19008" HelpText="Rapporten viser alle pasienter som har et skjema av type ï¿½Til legevurderingï¿½ med hastegrad ï¿½Neste gang lege er tilgjengelig ved sykehjemmetï¿½ eller hï¿½yere hvor lege ikke har gitt tilbakemelding. " ChkSum="-1354950846" LastUpdate="2019-06-12T13:49:13.840Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListSnarligLegevurdering (@StudyId INT) AS
+BEGIN
+    SELECT v.*, cdp2.EnumVal, cdp1.EnumVal AS HasteGradEnumVal, mia2.OptionText, CONCAT('Hastegrad: ', ISNULL(mia1.OptionText, '(ubesvart)'), ', Skjemadato: ', FORMAT(cf.CreatedAt, 'dd.MM.yyyy')) AS InfoText
+    FROM dbo.ViewActiveCaseListStub v
+    JOIN dbo.ClinForm cf ON cf.PersonId = v.PersonId
+    JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId AND mf.FormName = 'GBD_Legevurdering'
+    JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId
+    JOIN dbo.ClinDataPoint cdp1 ON cdp1.EventId = ce.EventId AND cdp1.ItemId = 2537
+    JOIN dbo.MetaItemAnswer mia1 ON mia1.ItemId = cdp1.ItemId AND mia1.OrderNumber = cdp1.EnumVal
+    LEFT JOIN dbo.ClinDataPoint cdp2 ON cdp2.EventId = ce.EventId AND cdp2.ItemId = 2533
+    LEFT JOIN dbo.MetaItemAnswer mia2 ON mia2.ItemId = cdp2.ItemId AND mia2.OrderNumber = cdp2.EnumVal
+    WHERE v.StudyId = @StudyId
+    AND ISNULL(cdp2.EnumVal, -1) IN (-1, 3)
+    AND cdp1.EnumVal IN (2, 3)
+    ORDER BY v.PersonId;
+END;]]>
+	</row>
+	<row ProcId="183" StudyName="GBD" ProcName="GBD.GetCaseListSykehjemslegevakt" ProcDesc="Legevurdering: Legevurdering haster (sykehjemslegevakt)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19008" HelpText="Rapporten viser alle pasienter uansett institusjon som har et skjema av type ï¿½Til legevurderingï¿½ med hastegrad ï¿½I lï¿½pet av dagen (evt. ved sykehjemslegevakt)ï¿½ hvor lege ikke har gitt tilbakemelding. " ChkSum="2137206033" LastUpdate="2019-06-12T13:49:40.903Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListSykehjemslegevakt (@StudyId INT) AS
+BEGIN
+    SELECT p.PersonId, p.DOB, p.ReverseName AS FullName, p.GenderId, sg.GroupName, ss.StatusText, cdpt2.EnumVal, cdp1.EnumVal, CONCAT('Institusjon: ', sct.CenterName, ', Skjemadato: ', FORMAT(cf.CreatedAt, 'dd.MM.yyyy')) AS InfoText
+    FROM dbo.Person p
+    JOIN dbo.StudCase sc ON sc.PersonId = p.PersonId AND sc.StudyId = @StudyId
+    JOIN dbo.StudyStatus ss ON ss.StudyId = sc.StudyId AND ss.StatusId = sc.FinState AND ss.StatusActive = 1
+    JOIN dbo.StudyGroup sg ON sg.StudyId = sc.StudyId AND sg.GroupId = sc.GroupId AND sg.GroupActive = 1
+    JOIN dbo.StudyCenter sct ON sct.CenterId = sg.CenterId
+    JOIN dbo.ClinForm cf ON cf.PersonId = p.PersonId
+    JOIN dbo.MetaForm mf ON mf.FormName = 'GBD_Legevurdering'
+    JOIN dbo.ClinEvent ce ON ce.EventId = cf.EventId AND ce.StudyId = @StudyId
+    JOIN dbo.ClinDataPoint cdp1 ON cdp1.EventId = ce.EventId AND cdp1.ItemId = 2537
+    JOIN dbo.MetaItemAnswer mia1 ON mia1.ItemId = cdp1.ItemId AND mia1.OrderNumber = cdp1.EnumVal
+    LEFT JOIN dbo.ClinDataPoint cdpt2 ON cdpt2.EventId = ce.EventId AND cdpt2.ItemId = 2533
+    LEFT JOIN dbo.MetaItemAnswer mia2 ON mia2.ItemId = cdpt2.ItemId AND mia2.OrderNumber = cdpt2.EnumVal
+    WHERE ISNULL(cdpt2.EnumVal, -1) IN (-1, 3)
+    AND cdp1.EnumVal = 3
+    ORDER BY p.PersonId;
+END;]]>
+	</row>
 	<row ProcId="201" StudyName="NDV.BASE" ProcName="NDV.GetPumpWithHighHbA1c" ProcDesc="Utvalg av Type-1 m/pumpe basert på alder og HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1281890130" LastUpdate="2018-10-03T14:50:45.213Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpWithHighHbA1c( @StudyId INT, @AgeMin FLOAT, @AgeMax FLOAT, @HbA1cCutoff FLOAT ) AS
 BEGIN
