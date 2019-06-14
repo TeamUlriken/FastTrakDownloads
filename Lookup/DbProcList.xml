@@ -2425,7 +2425,24 @@ END;
 
 ]]>
 	</row>
-	<row ProcId="326" StudyName="NDV" ProcName="NDV.GetCaseListBiobankUnanswered" ProcDesc="Samtykke: Ubesvart samtykke til biobank" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18228" ChkSum="-102913205" LastUpdate="2019-05-15T08:47:05.690Z">
+	<row ProcId="325" StudyName="NDV" ProcName="NDV.GetCaseListBiobankConsentedSampleNeeded" ProcDesc="Samtykke: Samtykke til biobank men ikke tatt pr�ver" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" ChkSum="-1135809695" LastUpdate="2019-05-15T12:31:46.110Z">
+		<![CDATA[CREATE PROCEDURE NDV.GetCaseListBiobankConsentedSampleNeeded( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, 'Diabetes biobank pr�ve ikke tatt' AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.GetLastEnumValuesTable( 1502, NULL ) ev ON ev.PersonId = v.PersonId AND v.StudyId = @StudyId
+  LEFT JOIN
+    ( SELECT ld.PersonId, COUNT(*) AS LabCount
+      FROM dbo.LabData ld
+      JOIN dbo.LabCode lc ON lc.LabCodeId = ld.LabCodeId
+      WHERE lc.LabClassId = 1084
+      GROUP BY ld.PersonId
+    ) agg ON agg.PersonId = v.PersonId
+  WHERE ( ev.EnumVal = 1 ) AND ( agg.LabCount IS NULL );
+END;
+]]>
+	</row>
+	<row ProcId="326" StudyName="NDV" ProcName="NDV.GetCaseListBiobankUnanswered" ProcDesc="Samtykke: Ubesvart samtykke til biobank" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" ChkSum="-104076469" LastUpdate="2019-05-15T12:32:03.390Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetCaseListBiobankUnanswered( @StudyId INT ) AS
 BEGIN
   SELECT v.*, 'Ubesvart samtykke til diabetes biobank' AS InfoText
