@@ -7,12 +7,12 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="1533" ItemType="5" VarName="InclusionDate" LoincScale="DATE">
-        <FormItem ItemText="Inclusion date" ItemHelp="" Expression="TRUNC(FORM.Date)" MinExpression="DOB" MaxExpression="NOW + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="1533" ItemType="5" VarName="INCLUSION_DATE" LoincScale="DATE">
+        <FormItem ItemText="Inclusion date" ItemHelp="" Expression="TRUNC(FORM.DATE)" MinExpression="DOB" MaxExpression="NOW + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="1160" ItemType="2" VarName="VAR1160" LoincScale="ORD">
+      <Item ItemId="1160" ItemType="2" VarName="CLINICAL_STUDY" LoincScale="ORD">
         <FormItem ItemText="Clinical Study" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="10466" OrderNumber="1" OptionText="X - Deprecated" ShortCode="NORM"/>
           <Answer AnswerId="10467" OrderNumber="2" OptionText="Y - Deprecated" ShortCode="D2DV"/>
@@ -28,7 +28,7 @@
       </Item>
     </Page>
     <Page PageTitle="Screening form">
-      <Item ItemId="3172" ItemType="2" VarName="VAR3172" LoincScale="ORD">
+      <Item ItemId="3172" ItemType="2" VarName="ULT_SMOKER" LoincScale="ORD">
         <FormItem ItemText="Current smoker" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="11935" OrderNumber="1" OptionText="Yes"/>
           <Answer AnswerId="11936" OrderNumber="2" OptionText="No"/>
@@ -41,7 +41,7 @@
       </Item>
     </Page>
     <Page PageTitle="Cushing-specific variables at diagnosis">
-      <Item ItemId="3517" ItemType="2" VarName="VAR3517" LoincScale="ORD">
+      <Item ItemId="3517" ItemType="2" VarName="CUSH_CAUSE" LoincScale="ORD">
         <FormItem ItemText="Etiology" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="12156" OrderNumber="1" OptionText="Adrenal"/>
           <Answer AnswerId="12157" OrderNumber="2" OptionText="Pituitary"/>
@@ -50,26 +50,26 @@
       </Item>
     </Page>
     <Page PageTitle="New*">
-      <Item ItemId="4270" ItemType="2" VarName="VAR4270" LoincScale="ORD">
+      <Item ItemId="4270" ItemType="2" VarName="PETROSAL_SAMPLING_POSITI" LoincScale="ORD">
         <FormItem ItemText="Positive bilateral petrosal sinus sampling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12430" OrderNumber="1" OptionText="Yes"/>
           <Answer AnswerId="12431" OrderNumber="2" OptionText="No"/>
           <Answer AnswerId="12513" OrderNumber="3" OptionText="Not done"/>
         </FormItem>
       </Item>
-      <Item ItemId="4273" ItemType="2" VarName="VAR4273" LoincScale="ORD">
+      <Item ItemId="4273" ItemType="2" VarName="CRH_POSITIVE" LoincScale="ORD">
         <FormItem ItemText="Positive CRH test" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="61540" OrderNumber="1" OptionText="Yes"/>
           <Answer AnswerId="61541" OrderNumber="2" OptionText="No"/>
         </FormItem>
       </Item>
-      <Item ItemId="4274" ItemType="2" VarName="VAR4274" LoincScale="ORD">
+      <Item ItemId="4274" ItemType="2" VarName="HIGH_DOSE_DEX_POSITIVE" LoincScale="ORD">
         <FormItem ItemText="Positive high dose dexamethasone test" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="61543" OrderNumber="1" OptionText="Yes"/>
           <Answer AnswerId="61544" OrderNumber="2" OptionText="No"/>
         </FormItem>
       </Item>
-      <Item ItemId="4275" ItemType="2" VarName="VAR4275" LoincScale="ORD">
+      <Item ItemId="4275" ItemType="2" VarName="AVS_OUTCOME" LoincScale="ORD">
         <FormItem ItemText="Adrenal vein sampling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="61546" OrderNumber="1" OptionText="Bilateral overproduction"/>
           <Answer AnswerId="61547" OrderNumber="2" OptionText="Unilateral overproduction"/>
@@ -77,32 +77,32 @@
           <Answer AnswerId="12512" OrderNumber="4" OptionText="Not done"/>
         </FormItem>
       </Item>
-      <Item ItemId="3279" ItemType="1" VarName="VAR3279" LoincScale="QN" UnitStr="nmol/L">
+      <Item ItemId="3279" ItemType="1" VarName="CORT_BLOOD_MORNING" LoincScale="QN" UnitStr="nmol/L">
         <FormItem ItemText="Basal S-Cortisol (at diagnosis)" ItemHelp="Morning value, cortisol replacement withheld. Use 0 if there is no data available." MinExpression="0" MaxExpression="2000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="3280" ItemType="1" VarName="VAR3280" LoincScale="QN" UnitStr="pmol/L">
+      <Item ItemId="3280" ItemType="1" VarName="ACTH_MORNING" LoincScale="QN" UnitStr="pmol/L">
         <FormItem ItemText="Basal S-ACTH (at diagnosis)" ItemHelp="Morning value, cortisol replacement withheld.  Use 0 for values below limit of detection." MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="4201" ItemType="1" VarName="VAR4201" LoincScale="QN" UnitStr="nmol/24h">
+      <Item ItemId="4201" ItemType="1" VarName="CORT_24H_URINE" LoincScale="QN" UnitStr="nmol/24h">
         <FormItem ItemText="24-hour Urine Cortisol (at diagnosis)" ItemHelp="Use 2889 for values greater than 2888 nmol/24h." MaxExpression="2889" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="4206" ItemType="1" VarName="VAR4206" LoincScale="QN" UnitStr="nmol/L">
+      <Item ItemId="4206" ItemType="1" VarName="CORT_BLOOD_NIGHT" LoincScale="QN" UnitStr="nmol/L">
         <FormItem ItemText="Midnight S-Cortisol (at diagnosis)" ItemHelp="" MaxExpression="5000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="4208" ItemType="1" VarName="VAR4208" LoincScale="QN" UnitStr="nmol/L">
+      <Item ItemId="4208" ItemType="1" VarName="CORT_SALIVA" LoincScale="QN" UnitStr="nmol/L">
         <FormItem ItemText="Late night Salivary Cortisol (at diagnosis)" ItemHelp="" MaxExpression="5000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="4202" ItemType="1" VarName="VAR4202" LoincScale="QN" UnitStr="nmol/L">
+      <Item ItemId="4202" ItemType="1" VarName="SHORT_DEX_CORT_VALUE" LoincScale="QN" UnitStr="nmol/L">
         <FormItem ItemText="Short dexa-test S-Cortisol (at diagnosis)" ItemHelp="" MaxExpression="1000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
@@ -119,7 +119,7 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="3523" ItemType="2" VarName="VAR3523" LoincScale="ORD">
+      <Item ItemId="3523" ItemType="2" VarName="ALDO_RRR" LoincScale="ORD">
         <FormItem ItemText="S-Aldosteron relative to reference range" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="12220" OrderNumber="1" OptionText="Below"/>
           <Answer AnswerId="12221" OrderNumber="2" OptionText="Within"/>
@@ -141,7 +141,7 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="3524" ItemType="2" VarName="VAR3524" LoincScale="ORD">
+      <Item ItemId="3524" ItemType="2" VarName="RENIN_RRR" LoincScale="ORD">
         <FormItem ItemText="P-Renin (activity or concentration) relative to reference range" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="61399" OrderNumber="1" OptionText="Below"/>
           <Answer AnswerId="61400" OrderNumber="2" OptionText="Within"/>
@@ -153,24 +153,24 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="3525" ItemType="2" VarName="VAR3525" LoincScale="ORD">
+      <Item ItemId="3525" ItemType="2" VarName="ARR_RRR" LoincScale="ORD">
         <FormItem ItemText="ARR relative to reference range" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="61403" OrderNumber="1" OptionText="Below"/>
           <Answer AnswerId="61404" OrderNumber="2" OptionText="Within"/>
           <Answer AnswerId="61405" OrderNumber="3" OptionText="Above"/>
         </FormItem>
       </Item>
-      <Item ItemId="3526" ItemType="1" VarName="VAR3526" LoincScale="QN" UnitStr="mmol/L">
+      <Item ItemId="3526" ItemType="1" VarName="K_LOWEST" LoincScale="QN" UnitStr="mmol/L">
         <FormItem ItemText="Lowest S-Potassium measured" ItemHelp="" MinExpression="1" MaxExpression="6" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="3527" ItemType="1" VarName="VAR3527" LoincScale="QN" UnitStr="mmol/L">
+      <Item ItemId="3527" ItemType="1" VarName="K_LLN" LoincScale="QN" UnitStr="mmol/L">
         <FormItem ItemText="Lower limit of local S-Potassium reference range" ItemHelp="At the time of the lowest measured value" MinExpression="1" MaxExpression="3" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="3528" ItemType="2" VarName="VAR3528" LoincScale="ORD">
+      <Item ItemId="3528" ItemType="2" VarName="ALDO_DX_CONF" LoincScale="ORD">
         <FormItem ItemText="Confirmatory test" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12223" OrderNumber="1" OptionText="Recumbent saline suppression test"/>
           <Answer AnswerId="12224" OrderNumber="2" OptionText="Seated saline suppression test"/>
@@ -179,12 +179,12 @@
           <Answer AnswerId="12349" OrderNumber="5" OptionText="Captopril challenge test"/>
         </FormItem>
       </Item>
-      <Item ItemId="3529" ItemType="1" VarName="VAR3529" LoincScale="QN">
+      <Item ItemId="3529" ItemType="1" VarName="ALDO_LOWEST_CONF" LoincScale="QN">
         <FormItem ItemText="Lowest S-Aldosterone reached with confirmation test" ItemHelp="" MinExpression="50" MaxExpression="2000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="3530" ItemType="2" VarName="VAR3530" LoincScale="ORD">
+      <Item ItemId="3530" ItemType="2" VarName="ALDO_IMAGING" LoincScale="ORD">
         <FormItem ItemText="Adrenal imaging results" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="12227" OrderNumber="1" OptionText="Unilateral tumour"/>
           <Answer AnswerId="12228" OrderNumber="2" OptionText="Bilateral tumour"/>
@@ -194,57 +194,57 @@
           <Answer AnswerId="12232" OrderNumber="6" OptionText="Other"/>
         </FormItem>
       </Item>
-      <Item ItemId="3531" ItemType="2" VarName="VAR3531" LoincScale="ORD">
+      <Item ItemId="3531" ItemType="2" VarName="ALDO_AVS" LoincScale="ORD">
         <FormItem ItemText="Adrenal vein sampling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="12233" OrderNumber="1" OptionText="Bilateral overproduction"/>
           <Answer AnswerId="12234" OrderNumber="2" OptionText="Unilateral overproduction"/>
           <Answer AnswerId="12235" OrderNumber="3" OptionText="Non-diagnostic or not representative"/>
         </FormItem>
       </Item>
-      <Item ItemId="3532" ItemType="1" VarName="VAR3532" LoincScale="QN">
+      <Item ItemId="3532" ItemType="1" VarName="ALDO_BMP_MED_MAX" LoincScale="QN">
         <FormItem ItemText="Maximum number of antihypertensives prior to diagnosis" ItemHelp="Simultaneous use. For combination drugs, count each substance as one" MinExpression="0" MaxExpression="6" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Comorbidities">
-      <Item ItemId="3240" ItemType="2" VarName="VAR3240" LoincScale="ORD">
+      <Item ItemId="3240" ItemType="2" VarName="COMORBID_T2DM" LoincScale="ORD">
         <FormItem ItemText="Type 2 Diabetes" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="12152" OrderNumber="1" OptionText="Yes"/>
           <Answer AnswerId="12153" OrderNumber="2" OptionText="No"/>
         </FormItem>
       </Item>
-      <Item ItemId="3247" ItemType="2" VarName="VAR3247" LoincScale="ORD">
+      <Item ItemId="3247" ItemType="2" VarName="COMORBID_HT" LoincScale="ORD">
         <FormItem ItemText="Hypertension" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="61348" OrderNumber="1" OptionText="Yes"/>
           <Answer AnswerId="61349" OrderNumber="2" OptionText="No"/>
         </FormItem>
       </Item>
-      <Item ItemId="3251" ItemType="2" VarName="VAR3251" LoincScale="ORD">
+      <Item ItemId="3251" ItemType="2" VarName="COMORBID_CARDIO" LoincScale="ORD">
         <FormItem ItemText="Cardiovascular disease" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="61351" OrderNumber="1" OptionText="Yes"/>
           <Answer AnswerId="61352" OrderNumber="2" OptionText="No"/>
         </FormItem>
       </Item>
-      <Item ItemId="3252" ItemType="2" VarName="VAR3252" LoincScale="ORD">
+      <Item ItemId="3252" ItemType="2" VarName="COMORBID_CEREBRO" LoincScale="ORD">
         <FormItem ItemText="Cerebrovascular disease" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="61354" OrderNumber="1" OptionText="Yes"/>
           <Answer AnswerId="61355" OrderNumber="2" OptionText="No"/>
         </FormItem>
       </Item>
-      <Item ItemId="4097" ItemType="2" VarName="VAR4097" LoincScale="ORD">
+      <Item ItemId="4097" ItemType="2" VarName="COMORBID_OSTEO" LoincScale="ORD">
         <FormItem ItemText="Osteoporosis" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="61534" OrderNumber="1" OptionText="Yes"/>
           <Answer AnswerId="61535" OrderNumber="2" OptionText="No"/>
         </FormItem>
       </Item>
-      <Item ItemId="4129" ItemType="2" VarName="VAR4129" LoincScale="ORD">
+      <Item ItemId="4129" ItemType="2" VarName="COMORBID_THROMBO" LoincScale="ORD">
         <FormItem ItemText="Thromboembolic disease" ItemHelp="DVT, Pulmonary Embolism" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="61537" OrderNumber="1" OptionText="Yes"/>
           <Answer AnswerId="61538" OrderNumber="2" OptionText="No"/>
         </FormItem>
       </Item>
-      <Item ItemId="3260" ItemType="2" VarName="VAR3260" LoincScale="ORD">
+      <Item ItemId="3260" ItemType="2" VarName="COMORBID_OTHER" LoincScale="ORD">
         <FormItem ItemText="Other comorbidities" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="61357" OrderNumber="1" OptionText="Yes"/>
           <Answer AnswerId="61358" OrderNumber="2" OptionText="No"/>
@@ -252,7 +252,7 @@
       </Item>
     </Page>
     <Page PageTitle="Other comorbidities*">
-      <Item ItemId="3264" ItemType="4" VarName="VAR3264" LoincScale="NAR" Multiline="1">
+      <Item ItemId="3264" ItemType="4" VarName="COMORBID_OTHER_DESC" LoincScale="NAR" Multiline="1">
         <FormItem ItemText="Please describe other comorbidities" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
