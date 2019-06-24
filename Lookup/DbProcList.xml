@@ -1481,6 +1481,18 @@ BEGIN
     ORDER BY p.PersonId;
 END;]]>
 	</row>
+	<row ProcId="184" StudyName="GBD" ProcName="dbo.GetCaseListGlobalDeceased" ProcDesc="Forskning: Alle døde beboere" ProcParams=":StudyId" ListId="CASE" GrantTo="QuickStat" MinVersion="18000" ChkSum="-1176031636" LastUpdate="2019-06-25T00:05:01.767Z">
+		<![CDATA[CREATE PROCEDURE dbo.GetCaseListGlobalDeceased( @StudyId INT ) AS
+BEGIN
+  SELECT p.PersonId, p.DOB, 
+    CASE p.GenderId WHEN 1 THEN 'Mann, Avidentifisert' WHEN 2 THEN 'Kvinne, Avidentifisert' END AS FullName,  
+    p.GenderId, ss.StatusText AS GroupName
+  FROM dbo.Person p 
+  JOIN dbo.StudCase sc ON sc.PersonId = p.PersonId AND sc.StudyId = @StudyId
+  JOIN dbo.StudyStatus ss ON ss.StudyId=sc.StudyId and ss.StatusId = sc.StatusId
+  WHERE NOT p.DeceasedDate IS NULL;
+END;]]>
+	</row>
 	<row ProcId="201" StudyName="NDV.BASE" ProcName="NDV.GetPumpWithHighHbA1c" ProcDesc="Utvalg av Type-1 m/pumpe basert på alder og HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1281890130" LastUpdate="2018-10-03T14:50:45.213Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpWithHighHbA1c( @StudyId INT, @AgeMin FLOAT, @AgeMax FLOAT, @HbA1cCutoff FLOAT ) AS
 BEGIN
