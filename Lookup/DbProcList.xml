@@ -3115,6 +3115,20 @@ BEGIN
   WHERE @StudyId = @StudyId;
 END]]>
 	</row>
+	<row ProcId="802" StudyName="FETTVEST" ProcName="dbo.GetCaseListEkkoSubstudie" ProcDesc="Utvalg: Ekko-substudie" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6036" MaxVersion="6036" ChkSum="1284382824" LastUpdate="2019-06-28T12:08:34.330Z">
+		<![CDATA[CREATE PROCEDURE dbo.GetCaseListEkkoSubstudie( @StudyId INT ) AS
+BEGIN
+  SELECT p.PersonId, p.DOB, p.FullName, p.GenderId, ISNULL(c.CenterName,ss.StatusText) AS InfoText 
+  FROM dbo.Person p
+  JOIN dbo.StudCase sc ON sc.PersonId = p.PersonId
+  JOIN dbo.Study s on s.StudyId = sc.StudyId AND s.StudyName = 'EKKO'
+  JOIN dbo.StudCase sf ON sf.PersonId = sc.PersonId
+  JOIN dbo.StudyStatus ss ON ss.StudyId = sf.StudyId AND ss.StatusId = sf.StatusId
+  LEFT JOIN dbo.StudyGroup sg ON sg.StudyId = sf.StudyId AND sg.GroupId = sf.GroupId
+  LEFT JOIN dbo.StudyCenter c on c.CenterId = sg.CenterId
+  WHERE sf.StudyId = @StudyId;
+END;]]>
+	</row>
 	<row ProcId="1001" StudyName="GBD" ProcName="GBD.RapportAvvik" ProcDesc="Avviksrapport" ProcParams=":StudyId, :StartAt, :StopAt, :OrderBy" ListId="FR" GrantTo="public" ChkSum="-1830751349" LastUpdate="2018-08-09T12:19:08.317Z">
 		<![CDATA[CREATE PROCEDURE GBD.RapportAvvik ( @StudyId INT, @StartAt DateTime = NULL, @StopAt DateTime = NULL, @OrderBy INT = 0 ) AS
 BEGIN
