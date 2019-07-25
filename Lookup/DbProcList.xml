@@ -4579,6 +4579,20 @@ BEGIN
 END
 ]]>
 	</row>
+	<row ProcId="1045" StudyName="*" ProcName="Report.PromForms" ProcDesc="Nedlastede PROM-skjema" ProcParams=":StartAt, :StopAt" ListId="FR" GrantTo="public" MinVersion="18201" CompatibilityLevel="100" ChkSum="-274195815" LastUpdate="2019-07-25T10:36:56.217Z">
+		<![CDATA[CREATE PROCEDURE Report.PromForms( @StartAt DATE, @StopAt DATE ) AS
+BEGIN
+  SELECT p.PersonId, mf.FormTitle, fo.FormOrderId, fo.CreatedAt, fo.ClinFormId, ul.UserName, fo.NotificationChannel,
+  CONCAT( DATEPART(YEAR, fo.CreatedAt), ' - ', DATENAME( MONTH, fo.CreatedAt ) ) AS GroupHeader
+  FROM PROM.FormOrder fo
+  JOIN dbo.MetaForm mf ON mf.FormId = fo.FormId
+  JOIN dbo.Person p ON p.PersonId = fo.PersonId AND ISNULL(p.TestCase,0) = 0
+  JOIN dbo.UserList ul ON ul.UserId = fo.CreatedBy
+  WHERE fo.OrderStatus = 'Completed' AND fo.CreatedAt BETWEEN @StartAt AND @StopAt
+  ORDER BY fo.CreatedAt;
+END
+]]>
+	</row>
 	<row ProcId="1101" StudyName="LANGTID" ProcName="dbo.GetCaseListFocused" ProcDesc="101. Overvåket status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1416404730" LastUpdate="2019-01-12T07:04:44.503Z">
 		<![CDATA[]]>
 	</row>
