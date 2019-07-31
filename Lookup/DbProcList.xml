@@ -2635,6 +2635,18 @@ WHERE v.StudyId = @StudyId AND (mia.ItemId = 1310 OR mia.ItemId IS NULL)
 ORDER BY OrderBy, device.OptionText, v.FullName;
 END]]>
 	</row>
+	<row ProcId="512" StudyName="BARNEDIABETES" ProcName="DIA.GetCaseListAntibodies" ProcDesc="Antistoff: Status for antistoff med kommentar" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" ChkSum="-757091367" LastUpdate="2019-07-31T09:28:07.570Z">
+		<![CDATA[CREATE PROCEDURE DIA.GetCaseListAntibodies( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, CONCAT( ISNULL(ant.OptionText,'Ubesvart'), ': ', ISNULL(txt.TextVal, '(ingen kommentar)') ) AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  LEFT JOIN dbo.GetLastEnumValuesTable( 3981, NULL ) ant ON ant.PersonId = v.PersonId
+  LEFT JOIN dbo.GetLastTextValuesTable( 9002, NULL ) txt ON txt.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId
+  ORDER BY ant.OptionText, v.DOB;
+END
+]]>
+	</row>
 	<row ProcId="600" StudyName="ROAS" ProcName="ENDO.GetAddisonPatients" ProcDesc="Addison: Alle aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6310" InfoCaption="Addison type" ChkSum="1363668548" LastUpdate="2019-01-03T08:59:39.340Z">
 		<![CDATA[CREATE PROCEDURE ENDO.GetAddisonPatients (@StudyId INT) AS
 BEGIN
