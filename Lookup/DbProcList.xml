@@ -1493,6 +1493,12 @@ BEGIN
   WHERE NOT p.DeceasedDate IS NULL;
 END;]]>
 	</row>
+	<row ProcId="185" StudyName="GBD" ProcName="GBD.GetCaseListA10BK" ProcDesc="Medikamentbruk: SGLT2-hemmere (A10BK)" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Farmasï¿½yt, Sykepleier, Vernepleier" MinVersion="19000" ChkSum="328415396" LastUpdate="2019-07-29T12:08:26.157Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListA10BK ( @StudyId INT) AS
+BEGIN
+ EXEC dbo.GetCaseListDrug @StudyId,'A10BK%'
+END]]>
+	</row>
 	<row ProcId="201" StudyName="NDV.BASE" ProcName="NDV.GetPumpWithHighHbA1c" ProcDesc="Utvalg av Type-1 m/pumpe basert på alder og HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1281890130" LastUpdate="2018-10-03T14:50:45.213Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpWithHighHbA1c( @StudyId INT, @AgeMin FLOAT, @AgeMax FLOAT, @HbA1cCutoff FLOAT ) AS
 BEGIN
