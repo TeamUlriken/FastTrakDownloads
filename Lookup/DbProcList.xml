@@ -1513,7 +1513,7 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="187" StudyName="GBD" ProcName="GBD.GetCaseListLongTermNoStratify6Months" ProcDesc="Prosess: Stratify mangler siste 6 mnd (langtid)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19009" ChkSum="1264755060" LastUpdate="2019-08-06T08:48:00.533Z">
+	<row ProcId="187" StudyName="GBD" ProcName="GBD.GetCaseListLongTermNoStratify6Months" ProcDesc="Prosess: Ikke Stratify siste 6 mnd (langtid)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19009" HelpText="Alle langtidspasienter som ikke har utfylt Stratify-skjema siste 6 m�neder." ChkSum="-1800700117" LastUpdate="2019-08-06T09:46:16.963Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListLongTermNoStratify6Months ( @StudyId INT ) AS
 BEGIN
   SELECT v.*, Stratify.EventTime AS StratifyDato,
@@ -1527,7 +1527,7 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="188" StudyName="GBD" ProcName="GBD.GetCaseListShortTermNoStratify" ProcDesc="Prosess: Stratify mangler (korttid)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19009" ChkSum="-1613948724" LastUpdate="2019-08-06T08:47:57.143Z">
+	<row ProcId="188" StudyName="GBD" ProcName="GBD.GetCaseListShortTermNoStratify" ProcDesc="Prosess: Ikke Stratify (korttid)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19009" HelpText="Alle korttidspasienter som ikke har utfylt Stratify for gjeldende opphold" ChkSum="391266817" LastUpdate="2019-08-06T09:46:26.273Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListShortTermNoStratify( @StudyId INT ) AS
 BEGIN
   SELECT v.*, Arrival.DTVal AS GBD_INN, Stratify.EventTime AS StratifyDato, v.StatusText AS InfoText
