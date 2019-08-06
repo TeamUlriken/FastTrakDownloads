@@ -1513,6 +1513,35 @@ BEGIN
 END
 ]]>
 	</row>
+	<row ProcId="187" StudyName="GBD" ProcName="GBD.GetCaseListLongTermNoStratify6Months" ProcDesc="Prosess: Stratify mangler siste 6 mnd (langtid)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19009" ChkSum="1264755060" LastUpdate="2019-08-06T08:48:00.533Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListLongTermNoStratify6Months ( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, Stratify.EventTime AS StratifyDato,
+      'Utfylt: ' + ISNULL(CONVERT(VARCHAR, Stratify.EventTime, 104), 'Aldri') AS InfoText
+    FROM dbo.ViewActiveCaseListStub v
+    JOIN dbo.StudyStatus ss ON v.StudyId = ss.StudyId AND v.StatusId = ss.StatusId 
+    LEFT JOIN dbo.GetLastEnumValuesTable(121, NULL) StayType ON v.PersonId = StayType.PersonId
+    LEFT JOIN dbo.GetLastFormTableByName ('STRATIFY', NULL) Stratify on Stratify.PersonId = v.PersonId
+    WHERE v.StudyId = @StudyId AND (Stratify.SignedAt IS NULL OR DATEDIFF(DD, Stratify.SignedAt, GETDATE()) > 183 ) -- usignert blir rekna som uutfylt
+      AND (ss.LongTerm = 1 OR (ss.LongTerm IS NULL AND StayType.EnumVal = 5 )); -- sjekk for langtid
+END
+]]>
+	</row>
+	<row ProcId="188" StudyName="GBD" ProcName="GBD.GetCaseListShortTermNoStratify" ProcDesc="Prosess: Stratify mangler (korttid)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19009" ChkSum="-1613948724" LastUpdate="2019-08-06T08:47:57.143Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListShortTermNoStratify( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, Arrival.DTVal AS GBD_INN, Stratify.EventTime AS StratifyDato, v.StatusText AS InfoText
+    FROM dbo.ViewActiveCaseListStub v
+    JOIN dbo.StudyStatus ss ON v.StatusId = ss.StatusId AND ss.StudyId = v.StudyId
+    LEFT JOIN dbo.GetLastEnumValuesTable(121, NULL) StayType ON StayType.PersonId = v.PersonId 
+    LEFT JOIN dbo.GetLastDateTable(4085, NULL) Arrival ON Arrival.PersonId = v.PersonId
+    LEFT JOIN dbo.GetLastFormTableByName ('STRATIFY', NULL) Stratify ON Stratify.PersonId = v.PersonId
+    WHERE v.StudyId = @StudyId AND
+      (Stratify.SignedAt IS NULL OR Arrival.DTVal > Stratify.EventTime) -- sjekk signatur for dette opphaldet, og om GBD_inn > StratifyDato
+      AND (ss.LongTerm = 0 OR (ss.LongTerm IS NULL AND StayType.EnumVal <> 5)); -- sjekk for korttid
+END
+]]>
+	</row>
 	<row ProcId="201" StudyName="NDV.BASE" ProcName="NDV.GetPumpWithHighHbA1c" ProcDesc="Utvalg av Type-1 m/pumpe basert på alder og HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1281890130" LastUpdate="2018-10-03T14:50:45.213Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpWithHighHbA1c( @StudyId INT, @AgeMin FLOAT, @AgeMax FLOAT, @HbA1cCutoff FLOAT ) AS
 BEGIN
