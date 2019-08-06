@@ -1499,6 +1499,20 @@ BEGIN
  EXEC dbo.GetCaseListDrug @StudyId,'A10BK%'
 END]]>
 	</row>
+	<row ProcId="186" StudyName="GBD" ProcName="GBD.GetCaseListStratify" ProcDesc="Prosess: Stratify utfylt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19009" HelpText="Alle aktive pasienter med utfylt Stratify-skjema." CompatibilityLevel="130" ChkSum="1898728313" LastUpdate="2019-08-06T08:35:05.843Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListStratify( @StudyId INT) AS
+BEGIN
+  SELECT v.*,
+    FORMATMESSAGE('Status: %s. Utfylt: %s. Stratify-score %d, %s.',
+      v.StatusText, CONVERT(VARCHAR, Stratify.EventTime, 104), StratifyScore.EnumVal, LOWER(StratifyScore.OptionText))
+      AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.GetLastEnumValuesTable(9257, NULL) StratifyScore ON v.PersonId = StratifyScore.PersonId
+  LEFT JOIN dbo.GetLastFormTableByName ('STRATIFY', NULL) Stratify ON Stratify.PersonId = v.PersonId
+  WHERE v.StudyId =  @StudyId AND NOT Stratify.SignedAt IS NULL;
+END
+]]>
+	</row>
 	<row ProcId="201" StudyName="NDV.BASE" ProcName="NDV.GetPumpWithHighHbA1c" ProcDesc="Utvalg av Type-1 m/pumpe basert på alder og HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1281890130" LastUpdate="2018-10-03T14:50:45.213Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpWithHighHbA1c( @StudyId INT, @AgeMin FLOAT, @AgeMax FLOAT, @HbA1cCutoff FLOAT ) AS
 BEGIN
