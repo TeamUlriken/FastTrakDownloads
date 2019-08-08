@@ -4654,6 +4654,26 @@ BEGIN
 END
 ]]>
 	</row>
+	<row ProcId="1046" StudyName="VREX" ProcName="VREX.ReportLostToFollowUp" ProcDesc="Rapport som viser pasienter som ikke har blitt fulgt opp" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="18000" ChkSum="-263078902" LastUpdate="2019-08-08T10:02:16.590Z">
+		<![CDATA[CREATE PROCEDURE VREX.ReportLostToFollowUp( @StudyId INT ) AS
+BEGIN
+  SELECT DATEDIFF(DD, LastRegistered, GETDATE()) AS DaysSinceLastReg, Registrations.* FROM 
+    (
+    SELECT v.*, inclusion.EventTime AS 'Inclusion', oneYear.EventTime AS 'OneYear', twoYears.EventTime AS 'TwoYears',
+      threeYears.EventTime AS 'ThreeYears', fourYears.EventTime AS 'FourYears', COALESCE(fourYears.EventTime, threeYears.EventTime, twoYears.EventTime, oneYear.EventTime, inclusion.EventTime) AS LastRegistered
+    FROM dbo.ViewActiveCaseListStub v 
+    LEFT JOIN dbo.GetLastDateTable(9784, NULL) inclusion ON v.PersonId = inclusion.PersonId
+    LEFT JOIN dbo.GetLastDateTable(9788, NULL) oneYear ON v.PersonId = oneYear.PersonId
+    LEFT JOIN dbo.GetLastDateTable(9789, NULL) twoYears ON v.PersonId = twoYears.PersonId
+    LEFT JOIN dbo.GetLastDateTable(9790, NULL) threeYears ON v.PersonId = threeYears.PersonId
+    LEFT JOIN dbo.GetLastDateTable(9791, NULL) fourYears ON v.PersonId = fourYears.PersonId
+    WHERE v.StudyId = @StudyId AND fourYears.EventTime IS NULL 
+    ) Registrations
+  WHERE LastRegistered IS NOT NULL AND DATEDIFF(DD, LastRegistered, GETDATE()) > 365
+  ORDER BY DaysSinceLastReg DESC;
+END
+]]>
+	</row>
 	<row ProcId="1101" StudyName="LANGTID" ProcName="dbo.GetCaseListFocused" ProcDesc="101. Overvåket status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1416404730" LastUpdate="2019-01-12T07:04:44.503Z">
 		<![CDATA[]]>
 	</row>
