@@ -2545,6 +2545,91 @@ END]]>
 	<row ProcId="404" StudyName="BAR" ProcName="dbo.GetCaseListGroupId" ProcDesc="Gruppe: Perimesencefal" ProcParams=":StudyId, 6" ListId="CASE" GrantTo="public" MinVersion="18214" HelpText="Gjelder bare arbeidssted Haukeland Sykehus" ChkSum="477173402" LastUpdate="2018-09-04T07:50:53.877Z">
 		<![CDATA[]]>
 	</row>
+	<row ProcId="405" StudyName="ULTRADIAN" ProcName="Ultradian.GetAllStudySubjects" ProcDesc="Ultradian: * - All study subjects" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6618" ChkSum="1050711603" LastUpdate="2019-08-12T08:01:44.397Z">
+		<![CDATA[CREATE PROCEDURE Ultradian.GetAllStudySubjects( @StudyId INT ) AS
+BEGIN
+  SELECT p.PersonId,p.DOB, p.FullName, p.GenderId, p.NationalId, 
+    c.CenterName AS GroupName, 
+    substudy.OptionText + ' (OK= ' + ISNULL(sampling.OptionText,'?') + ')'  AS InfoText
+  FROM dbo.GetLastEnumValuesTable( 1160, NULL ) substudy
+  JOIN dbo.StudCase sc ON sc.PersonId = substudy.PersonId 
+  JOIN dbo.Study s ON s.StudyId = sc.StudyId AND s.StudyId = @StudyId
+  JOIN dbo.StudyGroup sg ON sg.StudyId  = sc.StudyId AND sg.GroupId = sc.GroupId AND sg.GroupActive = 1
+  JOIN dbo.StudyCenter c ON c.CenterId=sg.CenterId
+  JOIN dbo.Person p ON p.PersonId = sc.PersonId AND p.TestCase = 0
+  LEFT JOIN dbo.GetLastEnumValuesTable( 1209, NULL ) sampling ON sampling.PersonId = substudy.PersonId;
+END;]]>
+	</row>
+	<row ProcId="407" StudyName="ULTRADIAN" ProcName="Ultradian.GetCaseListSubstudy1" ProcDesc="Controls: A - Normal 24h Profile" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6618" ChkSum="-412363720" LastUpdate="2019-08-12T08:01:44.397Z">
+		<![CDATA[]]>
+	</row>
+	<row ProcId="408" StudyName="ULTRADIAN" ProcName="Ultradian.GetCaseListSubstudy2" ProcDesc="Controls: A - Day to day variability" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6618" ChkSum="1858244231" LastUpdate="2019-08-12T08:01:44.397Z">
+		<![CDATA[]]>
+	</row>
+	<row ProcId="409" StudyName="ULTRADIAN" ProcName="Ultradian.GetCaseListSubstudy3" ProcDesc="Controls: A - Comparison of tissue and blood hormones" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6618" ChkSum="936514231" LastUpdate="2019-08-12T08:01:44.397Z">
+		<![CDATA[]]>
+	</row>
+	<row ProcId="410" StudyName="ULTRADIAN" ProcName="Ultradian.GetCaseListSubstudy4" ProcDesc="Patients: B - Diagnosis of Cushing's syndrome" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6618" ChkSum="-543949658" LastUpdate="2019-08-12T08:01:44.397Z">
+		<![CDATA[CREATE PROCEDURE Ultradian.GetCaseListSubstudy4( @StudyId INT ) AS
+BEGIN
+  EXEC Ultradian.GetCaseListSubstudy @StudyId, 4;
+END;]]>
+	</row>
+	<row ProcId="411" StudyName="ULTRADIAN" ProcName="Ultradian.GetCaseListSubstudy5" ProcDesc="Patients: B - Monitoring of adrenal insufficiency" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6618" ChkSum="-596497695" LastUpdate="2019-08-12T08:01:44.397Z">
+		<![CDATA[CREATE PROCEDURE Ultradian.GetCaseListSubstudy5( @StudyId INT ) AS
+BEGIN
+  EXEC Ultradian.GetCaseListSubstudy @StudyId, 5;
+END;]]>
+	</row>
+	<row ProcId="412" StudyName="ULTRADIAN" ProcName="Ultradian.GetCaseListSubstudy6" ProcDesc="Patients: B - Monitoring of CAH" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6618" ChkSum="2025879730" LastUpdate="2019-08-12T08:01:44.397Z">
+		<![CDATA[CREATE PROCEDURE Ultradian.GetCaseListSubstudy6( @StudyId INT ) AS
+BEGIN
+  EXEC Ultradian.GetCaseListSubstudy @StudyId, 6;
+END;]]>
+	</row>
+	<row ProcId="413" StudyName="ULTRADIAN" ProcName="Ultradian.GetCaseListSubstudy7" ProcDesc="Patients: B - Hyperaldosteronism" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6618" ChkSum="-955929864" LastUpdate="2019-08-12T08:01:44.397Z">
+		<![CDATA[CREATE PROCEDURE Ultradian.GetCaseListSubstudy7( @StudyId INT ) AS
+BEGIN
+  EXEC Ultradian.GetCaseListSubstudy @StudyId, 7;
+END;]]>
+	</row>
+	<row ProcId="414" StudyName="ULTRADIAN" ProcName="Ultradian.GetCaseListSubstudy8" ProcDesc="Patients: B - Acromegaly" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6618" ChkSum="667530525" LastUpdate="2019-08-12T08:01:44.397Z">
+		<![CDATA[CREATE PROCEDURE Ultradian.GetCaseListSubstudy8( @StudyId INT ) AS
+BEGIN
+  EXEC Ultradian.GetCaseListSubstudy @StudyId, 8;
+END;]]>
+	</row>
+	<row ProcId="415" StudyName="ULTRADIAN" ProcName="Ultradian.GetCaseListSubstudy9" ProcDesc="Patients: B - Growth hormone deficiency" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6618" ChkSum="1768600104" LastUpdate="2019-08-12T08:01:44.397Z">
+		<![CDATA[CREATE PROCEDURE Ultradian.GetCaseListSubstudy9( @StudyId INT ) AS
+BEGIN
+  EXEC Ultradian.GetCaseListSubstudy @StudyId, 9;
+END;]]>
+	</row>
+	<row ProcId="416" StudyName="ULTRADIAN" ProcName="Ultradian.GetCaseListSamplingFailure" ProcDesc="Ultradian: * - All sampling failures" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6618" ChkSum="-1731866806" LastUpdate="2019-08-12T08:01:44.397Z">
+		<![CDATA[CREATE PROCEDURE Ultradian.GetCaseListSamplingFailure( @StudyId INT ) AS
+BEGIN 
+  SELECT 
+    s.PersonId, p.DOB, p.FullName, p.GenderId, c.CenterName AS GroupName,
+    s.OptionText AS InfoText
+  FROM dbo.GetLastEnumValuesTable( 1160, NULL ) s
+    JOIN dbo.Person p ON p.PersonId = s.PersonId
+    JOIN dbo.StudCase sc ON sc.PersonId = s.PersonId AND sc.StudyId = @StudyId
+    JOIN dbo.StudyGroup sg ON sg.StudyId = sc.StudyId AND sg.GroupId = sc.GroupId AND sg.GroupActive = 1
+    JOIN dbo.StudyStatus ss ON ss.StudyId = sc.StudyId AND ss.StatusId = sc.StatusId AND ss.StatusActive = 1
+    JOIN dbo.StudyCenter c ON c.CenterId = sg.CenterId
+    JOIN dbo.GetLastEnumValuesTable( 1209, NULL ) ev ON ev.PersonId = s.PersonId
+  WHERE ev.EnumVal = 2;
+END;]]>
+	</row>
+	<row ProcId="417" StudyName="ULTRADIAN" ProcName="Ultradian.GetCaseListControls" ProcDesc="Ultradian: A - All Healthy controls" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6618" ChkSum="-442656151" LastUpdate="2019-08-12T08:01:44.397Z">
+		<![CDATA[CREATE PROCEDURE Ultradian.GetCaseListControls( @StudyId INT ) AS
+BEGIN
+  EXEC Ultradian.GetCaseListSubstudy @StudyId, 10;
+END;]]>
+	</row>
+	<row ProcId="418" StudyName="ULTRADIAN" ProcName="Ultradian.GetSampleStatusMissing" ProcDesc="Process: * - Sample status missing" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1420138266" LastUpdate="2019-08-12T08:01:44.397Z">
+		<![CDATA[]]>
+	</row>
 	<row ProcId="500" StudyName="NDV" ProcName="NDV.GetType1Age18to65WithHbA1c" ProcDesc="Type 1: Alder 18-65 etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6320" ChkSum="851896506" LastUpdate="2018-10-03T15:38:27.460Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType1Age18to65WithHbA1c( @StudyId INT ) AS
 BEGIN
