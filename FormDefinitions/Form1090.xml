@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="1090" FormName="PFO_UTR_PSYKOLOG" FormTitle="Utredning psykolog">
+    <Page PageTitle="Antropometriske målinger">
+      <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        <FormItem ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
+        <FormItem ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
+        <FormItem ItemText="BMI" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3755" ItemType="1" VarName="WEIGHT_MAX" LoincScale="QN" UnitStr="kg">
+        <FormItem ItemHeader="Maksimal vekt" ItemText="Hva er det meste du har veid?" ItemHelp="" MinExpression="50" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Psykisk helse" PageIntroduction="Informasjon er forhåndsutfylt fra tidligere skjema (sykepleier/lege), men kan endres eller utdypes her.">
+      <Item ItemId="5528" ItemType="2" VarName="PFO_PSYKISK_HELSEVERN" LoincScale="ORD">
+        <FormItem ItemHeader="Psykisk helsevern" ItemText="Har du noen gang fått behandling fra psykisk helsevern?" ItemHelp="Uansett årsak.  Detaljer kan evt. føres under avsnittet Vurdering." ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12615" OrderNumber="1" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="12616" OrderNumber="2" OptionText="Ja, nå" VerboseText="Har oppfølgning fra psykisk helsevern." ShortCode="J"/>
+          <Answer AnswerId="12617" OrderNumber="3" OptionText="Tidligere" VerboseText="Tidligere fulgt opp av psykisk helsevern." ShortCode="T"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10056" ItemType="2" VarName="PFO_DEPRESJON" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemHeader="Antidepressiv behandling" ItemText="Har du blitt behandlet for depresjon med medisiner noen gang?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="56179" OrderNumber="1" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="56180" OrderNumber="2" OptionText="Ja, nå" VerboseText="Behandles med antidepressiva nå." ShortCode="J"/>
+          <Answer AnswerId="56181" OrderNumber="3" OptionText="Tidligere" VerboseText="Behandlet med antidepressiva tidligere." ShortCode="T"/>
+          <Answer AnswerId="56182" OrderNumber="4" OptionText="Ukjent*" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5546" ItemType="2" VarName="PFO_BULIMI" LoincScale="ORD">
+        <FormItem ItemHeader="Behandlet for bulimi" ItemText="Har du noengang fått behandling for bulimi fra helsevesenet?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61693" OrderNumber="1" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="61694" OrderNumber="2" OptionText="Ja, nå" VerboseText="Behandles for bulimi." ShortCode="J"/>
+          <Answer AnswerId="61695" OrderNumber="3" OptionText="Tidligere" VerboseText="Tidligere behandlet for bulimi." ShortCode="T"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5529" ItemType="2" VarName="PFO_ANOREKSI" LoincScale="ORD">
+        <FormItem ItemHeader="Anorexia Nervosa" ItemText="Har du noengang hatt anoreksi?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12618" OrderNumber="1" OptionText="Ja" VerboseText="Har hatt anoreksi tidligere." ShortCode="J"/>
+          <Answer AnswerId="12619" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5560" ItemType="4" VarName="PFO_PSYKISK_ANNET" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Andre psykiske sykdommer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5746" ItemType="4" VarName="PFO_AKTUELT_PSYKOLOG" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Aktuelt psykolog" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Mål og motivasjon" PageIntroduction="Hentet til orientering fra tidligere registreringer, kan ikke redigeres her.">
+      <Item ItemId="5552" ItemType="1" VarName="PFO_VEKT_MAAL_PASIENT" LoincScale="QN" UnitStr="kg">
+        <FormItem ItemHeader="Langsiktig vektmål" ItemText="Hva er ditt langsiktige vektmål?" ItemHelp="" MinExpression="40" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5570" ItemType="1" VarName="PFO_VEKT_MAAL_MEDISINSK" LoincScale="QN" UnitStr="kg">
+        <FormItem ItemText="Medisinsk vektmål" ItemHelp="Viser til metodeboken, avhenger av komorbiditeter etc." MinExpression="40" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Stimulantia" PageIntroduction="Hentes inn til orientering fra tidligere registreringer, kan ikke redigeres her.">
+      <Item ItemId="3227" ItemType="2" VarName="NDV_SMOKING" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Røykestatus" ItemHelp="Velg Dagligrøyker hvis sluttet for mindre enn 3 mnd siden." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
+          <Answer AnswerId="16138" OrderNumber="1" OptionText="Aldri røykt daglig."/>
+          <Answer AnswerId="16139" OrderNumber="2" OptionText="Dagligrøyker."/>
+          <Answer AnswerId="16140" OrderNumber="3" OptionText="Eks-dagligrøyker."/>
+          <Answer AnswerId="16141" OrderNumber="4" OptionText="Røykestatus ukjent.*"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3986" ItemType="1" VarName="ALKOHOL_PER_UKE" LoincScale="QN" UnitStr="enh/uke" DisplayFormat="">
+        <FormItem ItemText="Alkoholforbruk" ItemHelp="Oppgis i enheter per uke. En halvflaske pils (0.35 liter), et glass bordvin eller en drink brennevin (4cl) er 1 enhet. En halvliter pils er 1.5 enheter." MinExpression="0" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5551" ItemType="2" VarName="PFO_RUSMIDLER" LoincScale="ORD">
+        <FormItem ItemHeader="Andre rusmidler" ItemText="Har du brukt andre rusmidler regelmessig?" ItemHelp="Andre enn alkohol, altså vanligvis illegale rusmidler." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
+          <Answer AnswerId="12620" OrderNumber="1" OptionText="Nei"/>
+          <Answer AnswerId="12621" OrderNumber="2" OptionText="Ja, nå" VerboseText="Bruker regelmessig andre rusmidler enn alkohol."/>
+          <Answer AnswerId="12622" OrderNumber="3" OptionText="Tidligere" VerboseText="Tidligere også bruk andre rusmidler regelmessig."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Vurdering">
+      <Item ItemId="5749" ItemType="4" VarName="PFO_PSYK_VURDERING" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Vurdering" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5762" ItemType="2" VarName="VAR5762" LoincScale="ORD">
+        <FormItem ItemHeader="Depresjon" ItemText="Har pasienten depresjon som er til hinder for behandling ved PFO?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12661" OrderNumber="1" OptionText="Ja" VerboseText="Depresjon kan være til hinder for behandlingen." ShortCode="J"/>
+          <Answer AnswerId="12662" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="12663" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5763" ItemType="2" VarName="VAR5763" LoincScale="ORD">
+        <FormItem ItemHeader="Angst" ItemText="Har pasienten angst som er til hinder for behandling ved PFO?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61726" OrderNumber="1" OptionText="Ja" VerboseText="Angst kan være til hinder for behandlingen." ShortCode="J"/>
+          <Answer AnswerId="61727" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="61728" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5766" ItemType="2" VarName="VAR5766" LoincScale="ORD">
+        <FormItem ItemHeader="Spiseforstyrrelse" ItemText="Har pasienten en spiseforstyrrelse?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61730" OrderNumber="1" OptionText="Ja" VerboseText="Har spiseforstyrrelser." ShortCode="J"/>
+          <Answer AnswerId="61731" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="61732" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Spiseforstyrrelse detaljer*">
+      <Item ItemId="5767" ItemType="2" VarName="VAR5767" LoincScale="ORD">
+        <FormItem ItemHeader="Behandles først" ItemText="Bør spiseforstyrrelsen behandles før annen vektreduserende behandling?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61734" OrderNumber="1" OptionText="Ja" VerboseText="Spiseforstyrrelsen bør behandles først." ShortCode="J"/>
+          <Answer AnswerId="61735" OrderNumber="2" OptionText="Nei" VerboseText="Annen vektreduserende behandling kan startes." ShortCode="N"/>
+          <Answer AnswerId="61736" OrderNumber="3" OptionText="Usikker" VerboseText="Usikker på om spiseforstyrrelsen må behandles først." ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5782" ItemType="2" VarName="VAR5782" LoincScale="ORD">
+        <FormItem ItemHeader="Kontraindikasjon for kirurgi" ItemText="Er spiseforstyrrelsen i dag en kontraindikasjon for bariatrisk kirurgi?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61738" OrderNumber="1" OptionText="Ja" VerboseText="Spiseforstyrrelsen gjør at bariatrisk kirurgi er kontraindisert." ShortCode="J"/>
+          <Answer AnswerId="61739" OrderNumber="2" OptionText="Nei" VerboseText="Spiseforstyrrelsen er ikke til hinder for bariatrisk kirurgi." ShortCode="N"/>
+          <Answer AnswerId="61740" OrderNumber="3" OptionText="Usikker" VerboseText="Spiseforstyrrelsen kan være til hinder for bariatrisk kirurgi." ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Tiltak - utredning">
+      <Item ItemId="5783" ItemType="2" VarName="VAR5783" LoincScale="ORD">
+        <FormItem ItemText="Aktuelt med videre utredning ved PFO" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12664" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="12665" OrderNumber="2" OptionText="Nei" VerboseText="Ikke aktuelt med videre utredning her."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Anbefalt utredning*">
+      <Item ItemId="5809" ItemType="2" VarName="PFO_UTR_MADRS" LoincScale="ORD">
+        <FormItem ItemHeader="MADRS" ItemText="Montgomery - Asberg Depression Rating Scale" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61742" OrderNumber="1" OptionText="Ja" VerboseText="MADRS." ShortCode="J"/>
+          <Answer AnswerId="61743" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5814" ItemType="2" VarName="PFO_UTR_HADS" LoincScale="ORD">
+        <FormItem ItemHeader="HADS" ItemText="Hospital Anxiety and Depression Scale" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61745" OrderNumber="1" OptionText="Ja" VerboseText="HADS" ShortCode="J"/>
+          <Answer AnswerId="61746" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5824" ItemType="2" VarName="PFO_UTR_BAI" LoincScale="ORD">
+        <FormItem ItemHeader="BAI" ItemText="Beck Anxiety Inventory" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61748" OrderNumber="1" OptionText="Ja" VerboseText="BAI." ShortCode="J"/>
+          <Answer AnswerId="61749" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5846" ItemType="2" VarName="PFO_UTR_BDI2" LoincScale="ORD">
+        <FormItem ItemHeader="BDI-2" ItemText="Beck Depression Inventory 2" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61751" OrderNumber="1" OptionText="Ja" VerboseText="BDI-2." ShortCode="J"/>
+          <Answer AnswerId="61752" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5848" ItemType="2" VarName="PFO_UTR_EDEQ" LoincScale="ORD">
+        <FormItem ItemHeader="EDE-Q" ItemText="Eating Disorder Examination Questionnaire 6.0" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61754" OrderNumber="1" OptionText="Ja" VerboseText="EDE-Q." ShortCode="J"/>
+          <Answer AnswerId="61755" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5851" ItemType="2" VarName="PFO_UTR_CIA" LoincScale="ORD">
+        <FormItem ItemHeader="CIA" ItemText="The Clinical Impairment Assessment Questionnaire 3.0" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61757" OrderNumber="1" OptionText="Ja" VerboseText="CIA." ShortCode="J"/>
+          <Answer AnswerId="61758" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Tiltak - Utredning og behandling">
+      <Item ItemId="5852" ItemType="2" VarName="PFO_HENV_DPS" LoincScale="ORD">
+        <FormItem ItemHeader="Henvist DPS" ItemText="Henvist videre utredning/behandling ved DPS?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12666" OrderNumber="1" OptionText="Ja" VerboseText="Henvist DPS."/>
+          <Answer AnswerId="12667" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5853" ItemType="2" VarName="PFO_HENV_SPISE" LoincScale="ORD">
+        <FormItem ItemHeader="Henvist spesialavdeling spiseforstyrrelser" ItemText="Henvist videre utredning/behandling ved regional avdeling for spiseforstyrrelser?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61760" OrderNumber="1" OptionText="Ja" VerboseText="Henvist regionalt senter for spiseforstyrrelser."/>
+          <Answer AnswerId="61761" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5854" ItemType="2" VarName="PFO_HENV_ROS" LoincScale="ORD">
+        <FormItem ItemText="Henvist ROS" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61763" OrderNumber="1" OptionText="Ja" VerboseText="Henvist ROS."/>
+          <Answer AnswerId="61764" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5855" ItemType="4" VarName="VAR5855" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Annen behandling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Videre plan">
+      <Item ItemId="5160" ItemType="2" VarName="PFO_SPL_TILBUD" LoincScale="ORD">
+        <FormItem ItemText="Videre tiltak" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12535" OrderNumber="1" OptionText="Tverrfaglig" VerboseText="Fortsetter til tverrfaglig utredning."/>
+          <Answer AnswerId="12536" OrderNumber="2" OptionText="Lege" VerboseText="Følges opp av lege."/>
+          <Answer AnswerId="12537" OrderNumber="3" OptionText="KEF" VerboseText="Følges opp av KEF."/>
+          <Answer AnswerId="12538" OrderNumber="9" OptionText="Avsluttes" VerboseText="Avsluttes herfra."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Årsak til avslutning*">
+      <Item ItemId="5161" ItemType="2" VarName="PFO_SPL_AVSLUTT" LoincScale="ORD">
+        <FormItem ItemText="Årsak til avslutning" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12539" OrderNumber="1" OptionText="Tilbudet passer ikke pga. somatisk sykdom."/>
+          <Answer AnswerId="12540" OrderNumber="2" OptionText="Tilbudet passer ikke pga. psykisk sykdom."/>
+          <Answer AnswerId="12541" OrderNumber="3" OptionText="Lang reisevei"/>
+          <Answer AnswerId="12542" OrderNumber="4" OptionText="Manglende motiviasjon"/>
+          <Answer AnswerId="12543" OrderNumber="9" OptionText="Annet"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Psykometriske tester">
+      <Item ItemId="1436" ItemType="1" VarName="MADRS_SUM" LoincScale="QN" UnitStr="poeng" DisplayFormat="">
+        <FormItem ItemText="MADRS Sum" ItemHelp="" MinExpression="0" MaxExpression="60" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6798" ItemType="1" VarName="HAD_SUM" LoincScale="QN" UnitStr="poeng" DisplayFormat="">
+        <FormItem ItemText="HAD Totalsum" ItemHelp="En skår på 19 eller mer er positiv, 15-18 er mulig positiv." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5860" ItemType="1" VarName="BAI_SUM" LoincScale="QN" UnitStr="poeng" DisplayFormat="">
+        <FormItem ItemText="BAI totalsum" ItemHelp="0-7 minimal angst, 8-15 mild angst, 16-25 moderat angst, 26-63 alvorlig angst." MinExpression="0" MaxExpression="63" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5861" ItemType="1" VarName="VAR5861" LoincScale="QN" UnitStr="poeng" DisplayFormat="">
+        <FormItem ItemHeader="BDI2_SUM" ItemText="BDI-II totalsum" ItemHelp="0–13 minimal depresjon, 14–19 mild depresjon, 20–28 moderate depresjon, 29–63 alvorlig depresjon." MinExpression="0" MaxExpression="63" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="5766">
+      <Activate EnumVal="1" PageConditionId="8062" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="5783">
+      <Activate EnumVal="1" PageConditionId="8063" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>
