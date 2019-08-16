@@ -1481,11 +1481,12 @@ BEGIN
     ORDER BY p.PersonId;
 END;]]>
 	</row>
-	<row ProcId="184" StudyName="GBD" ProcName="dbo.GetCaseListGlobalDeceased" ProcDesc="Forskning: Alle døde beboere" ProcParams=":StudyId" ListId="CASE" GrantTo="QuickStat" MinVersion="18000" ChkSum="-1176031636" LastUpdate="2019-06-25T00:07:20.627Z">
+	<row ProcId="184" StudyName="GBD" ProcName="dbo.GetCaseListGlobalDeceased" ProcDesc="Forskning: Alle døde beboere" ProcParams=":StudyId" ListId="CASE" GrantTo="QuickStat" MinVersion="18000" ChkSum="-2123958471" LastUpdate="2019-07-23T11:58:58.450Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListGlobalDeceased( @StudyId INT ) AS
 BEGIN
-  SELECT p.PersonId, p.DOB, 
-    CASE p.GenderId WHEN 1 THEN 'Mann, Avidentifisert' WHEN 2 THEN 'Kvinne, Avidentifisert' END AS FullName,  
+  SELECT p.PersonId, p.DOB,
+    p.ReverseName AS FullName,
+    -- CASE p.GenderId WHEN 1 THEN 'Mann, Avidentifisert' WHEN 2 THEN 'Kvinne, Avidentifisert' END AS FullName,  
     p.GenderId, ss.StatusText AS GroupName
   FROM dbo.Person p 
   JOIN dbo.StudCase sc ON sc.PersonId = p.PersonId AND sc.StudyId = @StudyId
@@ -1493,27 +1494,27 @@ BEGIN
   WHERE NOT p.DeceasedDate IS NULL;
 END;]]>
 	</row>
-	<row ProcId="185" StudyName="GBD" ProcName="GBD.GetCaseListA10BK" ProcDesc="Medikamentbruk: SGLT2-hemmere (A10BK)" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Farmasï¿½yt, Sykepleier, Vernepleier" MinVersion="19000" ChkSum="328415396" LastUpdate="2019-07-29T12:08:26.157Z">
+	<row ProcId="185" StudyName="GBD" ProcName="GBD.GetCaseListA10BK" ProcDesc="Medikamentbruk: SGLT2-hemmere (A10BK)" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Farmasøyt, Sykepleier, Vernepleier" MinVersion="19000" ChkSum="328415396" LastUpdate="2019-07-29T12:08:26.157Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListA10BK ( @StudyId INT) AS
 BEGIN
  EXEC dbo.GetCaseListDrug @StudyId,'A10BK%'
 END]]>
 	</row>
-	<row ProcId="186" StudyName="GBD" ProcName="GBD.GetCaseListStratify" ProcDesc="Prosess: Stratify utfylt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19009" HelpText="Alle aktive pasienter med utfylt Stratify-skjema." CompatibilityLevel="130" ChkSum="1898728313" LastUpdate="2019-08-06T08:35:05.843Z">
-		<![CDATA[CREATE PROCEDURE GBD.GetCaseListStratify( @StudyId INT) AS
+	<row ProcId="186" StudyName="GBD" ProcName="GBD.GetCaseListStratify" ProcDesc="Prosess: Stratify utfylt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19011" HelpText="Alle aktive pasienter med utfylt Stratify-skjema." CompatibilityLevel="130" ChkSum="1269967553" LastUpdate="2019-08-07T10:15:17.803Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListStratify( @StudyId INT ) AS
 BEGIN
   SELECT v.*,
-    FORMATMESSAGE('Status: %s. Utfylt: %s. Stratify-score %d, %s.',
-      v.StatusText, CONVERT(VARCHAR, Stratify.EventTime, 104), StratifyScore.EnumVal, LOWER(StratifyScore.OptionText))
+    CONCAT('Status: ', v.StatusText, '. Utfylt: ', CONVERT(VARCHAR, Stratify.EventTime, 104), '. Stratify-skåre: ', 
+      StratifyScore.EnumVal, ', ', LOWER(StratifyScore.OptionText), '.')
       AS InfoText
   FROM dbo.ViewActiveCaseListStub v
   JOIN dbo.GetLastEnumValuesTable(9257, NULL) StratifyScore ON v.PersonId = StratifyScore.PersonId
   LEFT JOIN dbo.GetLastFormTableByName ('STRATIFY', NULL) Stratify ON Stratify.PersonId = v.PersonId
-  WHERE v.StudyId =  @StudyId AND NOT Stratify.SignedAt IS NULL;
+  WHERE v.StudyId = @StudyId AND NOT Stratify.SignedAt IS NULL;
 END
 ]]>
 	</row>
-	<row ProcId="187" StudyName="GBD" ProcName="GBD.GetCaseListLongTermNoStratify6Months" ProcDesc="Prosess: Ikke Stratify siste 6 mnd (langtid)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19009" HelpText="Alle langtidspasienter som ikke har utfylt Stratify-skjema siste 6 mï¿½neder." ChkSum="-1800700117" LastUpdate="2019-08-06T09:46:16.963Z">
+	<row ProcId="187" StudyName="GBD" ProcName="GBD.GetCaseListLongTermNoStratify6Months" ProcDesc="Prosess: Ikke Stratify siste 6 mnd (langtid)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19011" HelpText="Alle langtidspasienter som ikke har utfylt Stratify-skjema siste 6 måneder." ChkSum="-1800708309" LastUpdate="2019-08-06T10:05:49.950Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListLongTermNoStratify6Months ( @StudyId INT ) AS
 BEGIN
   SELECT v.*, Stratify.EventTime AS StratifyDato,
@@ -1527,7 +1528,7 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="188" StudyName="GBD" ProcName="GBD.GetCaseListShortTermNoStratify" ProcDesc="Prosess: Ikke Stratify (korttid)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19009" HelpText="Alle korttidspasienter som ikke har utfylt Stratify for gjeldende opphold" ChkSum="391266817" LastUpdate="2019-08-06T09:46:26.273Z">
+	<row ProcId="188" StudyName="GBD" ProcName="GBD.GetCaseListShortTermNoStratify" ProcDesc="Prosess: Ikke Stratify (korttid)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19011" HelpText="Alle korttidspasienter som ikke har utfylt Stratify-skjema under dette oppholdet." ChkSum="690721588" LastUpdate="2019-08-12T10:23:18.460Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListShortTermNoStratify( @StudyId INT ) AS
 BEGIN
   SELECT v.*, Arrival.DTVal AS GBD_INN, Stratify.EventTime AS StratifyDato, v.StatusText AS InfoText
