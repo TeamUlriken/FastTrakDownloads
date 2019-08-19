@@ -3517,7 +3517,7 @@ BEGIN
   SELECT * FROM #temp ORDER BY PersonId;
 END]]>
 	</row>
-	<row ProcId="1009" StudyName="NDV" ProcName="NDV.ReportLabDataFound" ProcDesc="Labdata registrert" ProcParams=":DiabetesType,:StartDate,:StopDate" ListId="FR" GrantTo="public" MinVersion="6000" ChkSum="1487346624" LastUpdate="2018-10-03T15:39:43.127Z">
+	<row ProcId="1009" StudyName="NDV" ProcName="NDV.ReportLabDataFound" ProcDesc="Labdata registrert" ProcParams=":DiabetesType,:StartDate,:StopDate" ListId="FR" GrantTo="public" MinVersion="6000" ChkSum="9095960" LastUpdate="2019-08-19T11:32:39.167Z">
 		<![CDATA[CREATE PROCEDURE NDV.ReportLabDataFound( @DiabetesType INT, @FirstDate DateTime = NULL, @LastDate DateTime = NULL ) AS
 BEGIN
 
@@ -3535,7 +3535,7 @@ BEGIN
   INSERT INTO #Dates VALUES ( 37, 30, @FirstDate, 'S-HDL-kolesterol' );
   INSERT INTO #Dates VALUES ( 1058, 15, @FirstDate, 'B-HbA1c' );
   INSERT INTO #Dates VALUES ( 49, 15, @FirstDate, 'S-Kreatinin' );
-  INSERT INTO #Dates VALUES ( 50, 15, @FirstDate, 'Pt-GFR' );        
+  INSERT INTO #Dates VALUES ( 1075, 15, @FirstDate, 'Pt-eGFR (CKD-EPI)' );        
   IF @DiabetesType=1
   BEGIN
     INSERT INTO #Dates VALUES ( 62, 60, @FirstDate, 'S-Kobalaminer' );
