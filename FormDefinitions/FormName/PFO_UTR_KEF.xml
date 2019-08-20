@@ -12,8 +12,113 @@
           <Answer/>
         </FormItem>
       </Item>
+      <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
+        <FormItem ItemText="BMI" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3755" ItemType="1" VarName="WEIGHT_MAX" LoincScale="QN" UnitStr="kg">
+        <FormItem ItemHeader="Maksimal vekt" ItemText="Hva er det meste du har veid?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page>
+      <Item ItemId="3986" ItemType="1" VarName="ALKOHOL_PER_UKE" LoincScale="QN" UnitStr="enh/uke" DisplayFormat="">
+        <FormItem ItemText="Alkoholforbruk" ItemHelp="Oppgis i enheter per uke. En halvflaske pils (0.35 liter), et glass bordvin eller en drink brennevin (4cl) er 1 enhet. En halvliter pils er 1.5 enheter." MinExpression="0" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="2">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Aktivitetsnivå">
+      <Item ItemId="5526" ItemType="2" VarName="PAL_BASE" LoincScale="ORD">
+        <FormItem ItemText="Aktivitetsnivå" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="10177" OrderNumber="1" OptionText="Sengeliggende eller rullestolbruker" Score="1.20"/>
+          <Answer AnswerId="10178" OrderNumber="2" OptionText="Stillesittende arbeid uten mulighet for bevegelse" Score="1.50"/>
+          <Answer AnswerId="10179" OrderNumber="3" OptionText="Stillesittende arbeid med mulighet til bevegelse" Score="1.70"/>
+          <Answer AnswerId="10264" OrderNumber="4" OptionText="Stående arbeid" Score="1.90"/>
+          <Answer AnswerId="10265" OrderNumber="5" OptionText="Hardt fysisk arbeid og/eller veldig hard fysisk aktivitet på fritiden" Score="2.20"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Frititdsaktivitet*">
+      <Item ItemId="5862" ItemType="2" VarName="PAL_EXTRA" LoincScale="ORD">
+        <FormItem ItemHeader="Fysisk aktiv fritid" ItemText="Betydelig grad av fysisk aktivtet på fritiden" ItemHelp="30-60 minutter 4-5 dager i uken." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="10266" OrderNumber="1" OptionText="Ja" VerboseText="Fysisk aktiv på fritiden." ShortCode="J" Score="0.30"/>
+          <Answer AnswerId="10307" OrderNumber="2" OptionText="Nei" ShortCode="N" Score="0.00"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Aktivitetsfaktor*">
+      <Item ItemId="5863" ItemType="1" VarName="PAL_TOTAL" LoincScale="QN">
+        <FormItem ItemText="Aktivitetsfaktor" ItemHelp="" Expression="ISPOS( PAL_BASE_SCORE ) * PAL_BASE_SCORE + ISPOS( PAL_EXTRA ) * PAL_EXTRA_SCORE" MinExpression="1.2" MaxExpression="2.2" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Estimert næringsbehov">
+      <Item ItemId="4727" ItemType="1" VarName="RMR" LoincScale="QN" UnitStr="kcal/24h">
+        <FormItem ItemText="Energibehov basalmetabolisme" ItemHelp="" Expression="10 * WEIGHT + 6.25 * HEIGHT - 5 * Patient.AGE - ISNULL(SEX-2) * 161&#xA;" MinExpression="1000" MaxExpression="8000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4745" ItemType="1" VarName="KCAL_STABIL_VEKT" LoincScale="QN" UnitStr="kcal/24h">
+        <FormItem ItemText="Energibehov for stabil vekt" ItemHelp="" Expression="RMR * PAL_TOTAL" MinExpression="1000" MaxExpression="8000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Konklusjon">
+      <Item ItemId="4697" ItemType="2" VarName="VAR4697" LoincScale="ORD">
+        <FormItem ItemText="Hovedfokus" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="10323" OrderNumber="1" OptionText="Måltidsstruktur"/>
+          <Answer AnswerId="10324" OrderNumber="2" OptionText="Spesifikke kostråd"/>
+          <Answer AnswerId="10331" OrderNumber="3" OptionText="Både struktur og spesifikke råd"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Strukturråd*">
+      <Item ItemId="4724" ItemType="4" VarName="VAR4724" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Strukturråd" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Spesifikke kostråd*">
+      <Item ItemId="4725" ItemType="4" VarName="VAR4725" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Spesifikke kostråd" ItemHelp="3-5 spesifikke råd" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Videre plan*">
+      <Item ItemId="5160" ItemType="2" VarName="PFO_SPL_TILBUD" LoincScale="ORD">
+        <FormItem ItemText="Videre tiltak" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12535" OrderNumber="1" OptionText="Tverrfaglig" VerboseText="Fortsetter til tverrfaglig utredning."/>
+          <Answer AnswerId="12536" OrderNumber="2" OptionText="Lege" VerboseText="Følges opp av lege."/>
+          <Answer AnswerId="12537" OrderNumber="3" OptionText="KEF" VerboseText="Følges opp av KEF."/>
+          <Answer AnswerId="12538" OrderNumber="9" OptionText="Avsluttes" VerboseText="Avsluttes herfra."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Årsak til avslutning*">
+      <Item ItemId="5161" ItemType="2" VarName="PFO_SPL_AVSLUTT" LoincScale="ORD">
+        <FormItem ItemText="Årsak til avslutning" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12539" OrderNumber="1" OptionText="Tilbudet passer ikke pga. somatisk sykdom."/>
+          <Answer AnswerId="12540" OrderNumber="2" OptionText="Tilbudet passer ikke pga. psykisk sykdom."/>
+          <Answer AnswerId="12541" OrderNumber="3" OptionText="Lang reisevei"/>
+          <Answer AnswerId="12542" OrderNumber="4" OptionText="Manglende motivasjon"/>
+          <Answer AnswerId="12543" OrderNumber="9" OptionText="Annet"/>
+        </FormItem>
+      </Item>
     </Page>
   </Form>
   <Actions>
-	</Actions>
+    <PageAction MasterId="4697">
+      <Activate EnumVal="1" PageConditionId="8068" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="8069" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="8070" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="8071" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
 </StudyForm>
