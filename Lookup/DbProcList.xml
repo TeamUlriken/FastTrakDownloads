@@ -1500,46 +1500,49 @@ BEGIN
  EXEC dbo.GetCaseListDrug @StudyId,'A10BK%'
 END]]>
 	</row>
-	<row ProcId="186" StudyName="GBD" ProcName="GBD.GetCaseListStratify" ProcDesc="Prosess: Stratify utfylt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19011" HelpText="Alle aktive pasienter med utfylt Stratify-skjema." CompatibilityLevel="130" ChkSum="1269967553" LastUpdate="2019-08-07T10:15:17.803Z">
+	<row ProcId="186" StudyName="GBD" ProcName="GBD.GetCaseListStratify" ProcDesc="Prosess: Stratify utfylt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" HelpText="Alle aktive pasienter med utfylt Stratify-skjema." CompatibilityLevel="130" ChkSum="-550110912" LastUpdate="2019-08-21T07:58:08.507Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListStratify( @StudyId INT ) AS
 BEGIN
   SELECT v.*,
-    CONCAT('Status: ', v.StatusText, '. Utfylt: ', CONVERT(VARCHAR, Stratify.EventTime, 104), '. Stratify-skåre: ', 
+    CONCAT('Status: ', v.StatusText, '. Utfylt: ', CONVERT(VARCHAR, LastSignedStratify.EventTime, 104), '. Stratify-skår ', 
       StratifyScore.EnumVal, ', ', LOWER(StratifyScore.OptionText), '.')
-      AS InfoText
+    AS InfoText
   FROM dbo.ViewActiveCaseListStub v
   JOIN dbo.GetLastEnumValuesTable(9257, NULL) StratifyScore ON v.PersonId = StratifyScore.PersonId
-  LEFT JOIN dbo.GetLastFormTableByName ('STRATIFY', NULL) Stratify ON Stratify.PersonId = v.PersonId
-  WHERE v.StudyId = @StudyId AND NOT Stratify.SignedAt IS NULL;
+  JOIN dbo.GetLastSignedFormList(@StudyId, 'STRATIFY') LastSignedStratify ON LastSignedStratify.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId
+  ORDER BY v.FullName;
 END
 ]]>
 	</row>
-	<row ProcId="187" StudyName="GBD" ProcName="GBD.GetCaseListLongTermNoStratify6Months" ProcDesc="Prosess: Ikke Stratify siste 6 mnd (langtid)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19011" HelpText="Alle langtidspasienter som ikke har utfylt Stratify-skjema siste 6 måneder." ChkSum="-1800708309" LastUpdate="2019-08-06T10:05:49.950Z">
-		<![CDATA[CREATE PROCEDURE GBD.GetCaseListLongTermNoStratify6Months ( @StudyId INT ) AS
+	<row ProcId="187" StudyName="GBD" ProcName="GBD.GetCaseListLongTermNoStratify6Months" ProcDesc="Prosess: Ikke Stratify siste 6 mnd (langtid)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19011" HelpText="Alle langtidspasienter som ikke har utfylt Stratify-skjema siste 6 måneder." ChkSum="1617993240" LastUpdate="2019-08-21T07:59:03.520Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListLongTermNoStratify6Months( @StudyId INT ) AS
 BEGIN
-  SELECT v.*, Stratify.EventTime AS StratifyDato,
-      'Utfylt: ' + ISNULL(CONVERT(VARCHAR, Stratify.EventTime, 104), 'Aldri') AS InfoText
-    FROM dbo.ViewActiveCaseListStub v
-    JOIN dbo.StudyStatus ss ON v.StudyId = ss.StudyId AND v.StatusId = ss.StatusId 
-    LEFT JOIN dbo.GetLastEnumValuesTable(121, NULL) StayType ON v.PersonId = StayType.PersonId
-    LEFT JOIN dbo.GetLastFormTableByName ('STRATIFY', NULL) Stratify on Stratify.PersonId = v.PersonId
-    WHERE v.StudyId = @StudyId AND (Stratify.SignedAt IS NULL OR DATEDIFF(DD, Stratify.SignedAt, GETDATE()) > 183 ) -- usignert blir rekna som uutfylt
-      AND (ss.LongTerm = 1 OR (ss.LongTerm IS NULL AND StayType.EnumVal = 5 )); -- sjekk for langtid
+  SELECT v.*, LastSignedStratify.EventTime AS StratifyDate,
+    'Utfylt: ' + ISNULL(CONVERT(VARCHAR, LastSignedStratify.EventTime, 104), 'Aldri') AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.StudyStatus ss ON v.StudyId = ss.StudyId AND v.StatusId = ss.StatusId 
+  LEFT JOIN dbo.GetLastEnumValuesTable(121, NULL) StayType ON v.PersonId = StayType.PersonId
+  LEFT JOIN dbo.GetLastSignedFormList (@StudyId, 'STRATIFY') LastSignedStratify ON LastSignedStratify.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId AND (LastSignedStratify.EventTime IS NULL OR DATEDIFF(DD, LastSignedStratify.EventTime, GETDATE()) > 183 )
+    AND (ss.LongTerm = 1 OR (ss.LongTerm IS NULL AND StayType.EnumVal = 5 )) -- sjekk for langtid
+  ORDER BY v.FullName;
 END
 ]]>
 	</row>
-	<row ProcId="188" StudyName="GBD" ProcName="GBD.GetCaseListShortTermNoStratify" ProcDesc="Prosess: Ikke Stratify (korttid)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19011" HelpText="Alle korttidspasienter som ikke har utfylt Stratify-skjema under dette oppholdet." ChkSum="690721588" LastUpdate="2019-08-12T10:23:18.460Z">
+	<row ProcId="188" StudyName="GBD" ProcName="GBD.GetCaseListShortTermNoStratify" ProcDesc="Prosess: Ikke Stratify (korttid)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19011" HelpText="Alle korttidspasienter som ikke har utfylt Stratify-skjema under dette oppholdet." ChkSum="-688146149" LastUpdate="2019-08-21T08:00:06.020Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListShortTermNoStratify( @StudyId INT ) AS
 BEGIN
-  SELECT v.*, Arrival.DTVal AS GBD_INN, Stratify.EventTime AS StratifyDato, v.StatusText AS InfoText
-    FROM dbo.ViewActiveCaseListStub v
-    JOIN dbo.StudyStatus ss ON v.StatusId = ss.StatusId AND ss.StudyId = v.StudyId
-    LEFT JOIN dbo.GetLastEnumValuesTable(121, NULL) StayType ON StayType.PersonId = v.PersonId 
-    LEFT JOIN dbo.GetLastDateTable(4085, NULL) Arrival ON Arrival.PersonId = v.PersonId
-    LEFT JOIN dbo.GetLastFormTableByName ('STRATIFY', NULL) Stratify ON Stratify.PersonId = v.PersonId
-    WHERE v.StudyId = @StudyId AND
-      (Stratify.SignedAt IS NULL OR Arrival.DTVal > Stratify.EventTime) -- sjekk signatur for dette opphaldet, og om GBD_inn > StratifyDato
-      AND (ss.LongTerm = 0 OR (ss.LongTerm IS NULL AND StayType.EnumVal <> 5)); -- sjekk for korttid
+  SELECT v.*, Arrival.DTVal AS GBD_INN, LastSignedStratify.EventTime AS StratifyDate, 'Utfylt: ' + ISNULL(CONVERT(VARCHAR, LastSignedStratify.EventTime, 104), 'Aldri') AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.StudyStatus ss ON v.StatusId = ss.StatusId AND v.StudyId = ss.StudyId
+  LEFT JOIN dbo.GetLastEnumValuesTable(121, NULL) StayType ON v.PersonId = StayType.PersonId
+  LEFT JOIN dbo.GetLastDateTable(4085, NULL) Arrival ON Arrival.PersonId = v.PersonId
+  LEFT JOIN dbo.GetLastSignedFormList(@StudyId, 'STRATIFY') LastSignedStratify ON LastSignedStratify.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId AND
+    (LastSignedStratify.EventTime IS NULL OR Arrival.DTVal > LastSignedStratify.EventTime) -- sjekk om GBD_inn > StratifyDate
+    AND (ss.LongTerm = 0 OR (ss.LongTerm IS NULL AND StayType.EnumVal <> 5)) -- sjekk for korttid
+  ORDER BY v.FullName;
 END
 ]]>
 	</row>
