@@ -137,12 +137,12 @@
           <Answer AnswerId="12617" OrderNumber="3" OptionText="Tidligere" VerboseText="Tidligere fulgt opp av psykisk helsevern." ShortCode="T"/>
         </FormItem>
       </Item>
-      <Item ItemId="10056" ItemType="2" VarName="PFO_DEPRESJON" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Antidepressiv behandling" ItemText="Har du blitt behandlet for depresjon med medisiner noen gang?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="56179" OrderNumber="1" OptionText="Nei*" ShortCode="N"/>
-          <Answer AnswerId="56180" OrderNumber="2" OptionText="Ja, nå" VerboseText="Behandles med antidepressiva nå." ShortCode="J"/>
-          <Answer AnswerId="56181" OrderNumber="3" OptionText="Tidligere" VerboseText="Behandlet med antidepressiva tidligere." ShortCode="T"/>
-          <Answer AnswerId="56182" OrderNumber="4" OptionText="Ukjent*" ShortCode="U"/>
+      <Item ItemId="4987" ItemType="2" VarName="PFO_ANGST_DEPRESJON" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemHeader="Behandlet for angst/depresion" ItemText="Har du blitt behandlet for depresjon eller angst med medisiner noen gang?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61777" OrderNumber="1" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="61778" OrderNumber="2" OptionText="Ja, nå" VerboseText="Behandles med medisiner for angst/depresjon nå." ShortCode="J"/>
+          <Answer AnswerId="61779" OrderNumber="3" OptionText="Tidligere" VerboseText="Behandlet med medisiner for angst/depresjon tidligere." ShortCode="T"/>
+          <Answer AnswerId="61780" OrderNumber="4" OptionText="Ukjent*" ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="5546" ItemType="2" VarName="PFO_BULIMI" LoincScale="ORD">
@@ -192,6 +192,11 @@
       </Item>
       <Item ItemId="5518" ItemType="1" VarName="PFO_VEKT_2Y" LoincScale="QN" UnitStr="kg">
         <FormItem ItemHeader="Vekt for 2 år siden" ItemText="Pasientrapportert vekt for 2 år siden" ItemHelp="" MinExpression="40" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3755" ItemType="1" VarName="WEIGHT_MAX" LoincScale="QN" UnitStr="kg">
+        <FormItem ItemHeader="Maksimal vekt" ItemText="Hva er det meste du har veid?" ItemHelp="" MinExpression="50" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -297,17 +302,18 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="5160" ItemType="2" VarName="PFO_SPL_TILBUD" LoincScale="ORD">
+      <Item ItemId="5160" ItemType="2" VarName="PFO_PLAN" LoincScale="ORD">
         <FormItem ItemText="Videre tiltak" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="12535" OrderNumber="1" OptionText="Tverrfaglig" VerboseText="Fortsetter til tverrfaglig utredning."/>
           <Answer AnswerId="12536" OrderNumber="2" OptionText="Lege" VerboseText="Følges opp av lege."/>
           <Answer AnswerId="12537" OrderNumber="3" OptionText="KEF" VerboseText="Følges opp av KEF."/>
+          <Answer AnswerId="10332" OrderNumber="4" OptionText="Psykolog" VerboseText="Følges opp av psykolog."/>
           <Answer AnswerId="12538" OrderNumber="9" OptionText="Avsluttes" VerboseText="Avsluttes herfra."/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Årsak til avslutning*">
-      <Item ItemId="5161" ItemType="2" VarName="PFO_SPL_AVSLUTT" LoincScale="ORD">
+      <Item ItemId="5161" ItemType="2" VarName="PFO_AVSLUTT_GRUNN" LoincScale="ORD">
         <FormItem ItemText="Årsak til avslutning" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="12539" OrderNumber="1" OptionText="Tilbudet passer ikke pga. somatisk sykdom."/>
           <Answer AnswerId="12540" OrderNumber="2" OptionText="Tilbudet passer ikke pga. psykisk sykdom."/>
