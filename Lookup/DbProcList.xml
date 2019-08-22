@@ -1546,6 +1546,58 @@ BEGIN
 END
 ]]>
 	</row>
+	<row ProcId="189" StudyName="GBD" ProcName="GBD.GetCaseListInnkomstsamtaleLangtid" ProcDesc="Prosess: Innkomstsamtale utfylt (langtid)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19011" HelpText="Alle langtidspasienter med utfylt skjema for innkomstsamtale." ChkSum="-1165060102" LastUpdate="2019-08-22T13:03:55.337Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListInnkomstsamtaleLangtid ( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, CONCAT('Skjemadato: ', CONVERT(VARCHAR, InnkomstsamtaleLangtid.EventTime, 104)) AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.StudyStatus ss ON v.StudyId = ss.StudyId AND v.StatusId = ss.StatusId 
+  JOIN dbo.GetLastSignedFormList(@StudyId, 'GBD_INN_LANGTID') InnkomstsamtaleLangtid on InnkomstsamtaleLangtid.PersonId = v.PersonId
+  LEFT JOIN dbo.GetLastEnumValuesTable(121, NULL) StayType ON v.PersonId = StayType.PersonId
+  WHERE v.StudyId = @StudyId
+    AND (ss.LongTerm = 1 OR (ss.LongTerm IS NULL AND StayType.EnumVal = 5 )) -- sjekk for langtid
+  ORDER BY v.FullName;
+END]]>
+	</row>
+	<row ProcId="190" StudyName="GBD" ProcName="GBD.GetCaseListInnkomstsamtaleKorttid" ProcDesc="Prosess: Innkomstsamtale utfylt (korttid)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19011" HelpText="Alle korttidspasienter med utfylt skjema for innkomstsamtale." ChkSum="718294341" LastUpdate="2019-08-22T13:05:03.430Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListInnkomstsamtaleKorttid ( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, CONCAT('Skjemadato: ', CONVERT(VARCHAR, InnkomstsamtaleKorttid.EventTime, 104)) AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.StudyStatus ss ON v.StudyId = ss.StudyId AND v.StatusId = ss.StatusId 
+  JOIN dbo.GetLastSignedFormList(@StudyId, 'GBD_INN_KORTTID') InnkomstsamtaleKorttid on InnkomstsamtaleKorttid.PersonId = v.PersonId
+  LEFT JOIN dbo.GetLastEnumValuesTable(121, NULL) StayType ON v.PersonId = StayType.PersonId
+  WHERE v.StudyId = @StudyId
+    AND (ss.LongTerm = 0 OR (ss.LongTerm IS NULL AND StayType.EnumVal <> 5)) -- sjekk for korttid
+  ORDER BY v.FullName;
+END
+]]>
+	</row>
+	<row ProcId="191" StudyName="GBD" ProcName="GBD.GetCaseListNoInnkomstsamtaleLangtid" ProcDesc="Prosess: IKke innkomstsamtale (langtid)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19011" HelpText="Alle langtidspasienter som ikke har utfylt skjema for innkomstsamtale." ChkSum="422938121" LastUpdate="2019-08-22T13:07:28.663Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListNoInnkomstsamtaleLangtid ( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, CONCAT('Status: ', v.StatusText) AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.StudyStatus ss ON v.StudyId = ss.StudyId AND v.StatusId = ss.StatusId 
+  LEFT JOIN dbo.GetLastEnumValuesTable(121, NULL) StayType ON v.PersonId = StayType.PersonId
+  LEFT JOIN dbo.GetLastSignedFormList(@StudyId, 'GBD_INN_LANGTID') InnkomstsamtaleLangtid on InnkomstsamtaleLangtid.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId AND InnkomstsamtaleLangtid.EventTime IS NULL
+    AND (ss.LongTerm = 1 OR (ss.LongTerm IS NULL AND StayType.EnumVal = 5 )) -- sjekk for langtid
+  ORDER BY v.FullName;
+END
+]]>
+	</row>
+	<row ProcId="192" StudyName="GBD" ProcName="GBD.GetCaseListKostsamtale" ProcDesc="Prosess: Kostsamtale ved innkomst" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" HelpText="Alle aktive pasienter med utfylt skjema for kostsamtale ved innkomst." ChkSum="1977263986" LastUpdate="2019-08-22T13:09:07.947Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListKostsamtale ( @StudyId INT ) AS
+BEGIN
+  SELECT v.*, CONCAT('Status: ', v.StatusText, '. Skjemadato: ', CONVERT(VARCHAR, Kostsamtale.EventTime, 104)) AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.GetLastSignedFormList(@StudyId, 'SAMTALE_KOST') Kostsamtale on Kostsamtale.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId
+  ORDER BY v.FullName;
+END
+]]>
+	</row>
 	<row ProcId="201" StudyName="NDV.BASE" ProcName="NDV.GetPumpWithHighHbA1c" ProcDesc="Utvalg av Type-1 m/pumpe basert på alder og HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1281890130" LastUpdate="2018-10-03T14:50:45.213Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpWithHighHbA1c( @StudyId INT, @AgeMin FLOAT, @AgeMax FLOAT, @HbA1cCutoff FLOAT ) AS
 BEGIN
