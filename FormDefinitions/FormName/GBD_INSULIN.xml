@@ -3,7 +3,7 @@
   <Form FormId="977" FormName="GBD_INSULIN" FormTitle="Insulinbehandling (Sykehjem)">
     <Page PageTitle="Behandlingsopplegg" PageIntroduction="Medikamentene forordnes i legemiddelmodulen, med følgende anvendelsestekst: &quot;Se eget skjema for dosering&quot; ">
       <Item ItemId="3322" ItemType="2" VarName="NDV_TREATMENT_TYPE" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Behandlingsstrategi" ItemText="Diabetes behandles ved hjelp av" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem ItemHeader="Behandlingsstrategi" ItemText="Diabetes behandles ved hjelp av" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="16425" OrderNumber="1" OptionText="Kun kost/aktivitet."/>
           <Answer AnswerId="16426" OrderNumber="2" OptionText="Andre blodsukkersenkende midler enn insulin."/>
           <Answer AnswerId="16427" OrderNumber="3" OptionText="Kun insulinbehandlet."/>
@@ -14,7 +14,7 @@
     </Page>
     <Page PageTitle="Insulindosering*">
       <Item ItemId="4056" ItemType="2" VarName="NDV_INSULIN_DEVICE" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Insulinadministrasjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem ItemText="Insulinadministrasjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="21306" OrderNumber="1" OptionText="Insulinpenn/sprøyte."/>
           <Answer AnswerId="21307" OrderNumber="2" OptionText="Insulinpumpe."/>
         </FormItem>
@@ -22,21 +22,21 @@
     </Page>
     <Page PageTitle="Avledede variable">
       <Item ItemId="4207" ItemType="2" VarName="NDV_NONPHARMA_ONLY" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Kun kost/aktivitet" ItemHelp="" Expression="ISNULL(NDV_TREATMENT_TYPE-1)+2*ISPOS(NDV_TREATMENT_TYPE-1)+ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Highlight="1" Optional="1">
+        <FormItem ItemText="Kun kost/aktivitet" ItemHelp="" Expression="ISNULL(NDV_TREATMENT_TYPE-1)+2*ISPOS(NDV_TREATMENT_TYPE-1)+ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer AnswerId="22300" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="22301" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="22302" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
         </FormItem>
       </Item>
       <Item ItemId="3332" ItemType="2" VarName="ATC_A10A" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Injeksjonsbehandling med insulin" ItemHelp="" Expression="ISPOS(ISNULL(NDV_TREATMENT_TYPE-3)+ISNULL(NDV_TREATMENT_TYPE-4)) + 2*ISNEG(NDV_TREATMENT_TYPE-3) + 3*ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="0" Highlight="1" Optional="1">
+        <FormItem ItemText="Injeksjonsbehandling med insulin" ItemHelp="" Expression="ISPOS(ISNULL(NDV_TREATMENT_TYPE-3)+ISNULL(NDV_TREATMENT_TYPE-4)) + 2*ISNEG(NDV_TREATMENT_TYPE-3) + 3*ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer AnswerId="16524" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="16525" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="16526" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="4726" ItemType="2" VarName="NDV_INSULINADM" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Insulinbruker" ItemHelp="" Expression="1*ISNULL(ATC_A10A-2) + 2*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-1) + 3*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-2) + 4*ISNULL(ATC_A10A-3)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Highlight="1" Optional="1">
+        <FormItem ItemText="Insulinbruker" ItemHelp="" Expression="1*ISNULL(ATC_A10A-2) + 2*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-1) + 3*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-2) + 4*ISNULL(ATC_A10A-3)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer AnswerId="25473" OrderNumber="1" OptionText="Nei"/>
           <Answer AnswerId="25474" OrderNumber="2" OptionText="Sprøyte/penn"/>
           <Answer AnswerId="25475" OrderNumber="3" OptionText="Pumpe"/>
@@ -333,7 +333,7 @@
     </Page>
     <Page PageTitle="Totalsum fast dosering">
       <Item ItemId="3908" ItemType="1" VarName="INS_ALL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="Døgndose" ItemHelp="" Expression="INS_MEAL_SUM + INS_BASAL_SUM + INS_PREMIX_SUM + INS_PUMP_SUM *ISNULL (NDV_INSULIN_DEVICE-2)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="1" Decimals="1">
+        <FormItem ItemText="Døgndose" ItemHelp="" Expression="INS_MEAL_SUM + INS_BASAL_SUM + INS_PREMIX_SUM + INS_PUMP_SUM *ISNULL (NDV_INSULIN_DEVICE-2)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
