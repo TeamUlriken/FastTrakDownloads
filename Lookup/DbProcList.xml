@@ -1442,13 +1442,13 @@ BEGIN
     ORDER BY v.PersonId;
 END;]]>
 	</row>
-	<row ProcId="182" StudyName="GBD" ProcName="GBD.GetCaseListSnarligLegevurdering" ProcDesc="Legevurdering: Til snarlig legevurdering" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Sykepleier, Vernepleier, Gruppeleder" MinVersion="19008" HelpText="Rapporten viser alle pasienter som har et skjema av type «Til legevurdering» med hastegrad «Neste gang lege er tilgjengelig ved sykehjemmet» eller høyere hvor lege ikke har gitt tilbakemelding. " ChkSum="-1324503092" LastUpdate="2019-09-04T12:57:00.810Z">
+	<row ProcId="182" StudyName="GBD" ProcName="GBD.GetCaseListSnarligLegevurdering" ProcDesc="Legevurdering: Til snarlig legevurdering" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Sykepleier, Vernepleier, Gruppeleder" MinVersion="19008" HelpText="Rapporten viser alle pasienter som har et skjema av type «Til legevurdering» med hastegrad «Neste gang lege er tilgjengelig ved sykehjemmet» eller høyere hvor lege ikke har gitt tilbakemelding. " ChkSum="-1324503076" LastUpdate="2019-09-05T08:52:57.713Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListSnarligLegevurdering (@StudyId INT) AS
 BEGIN
     SELECT v.*, cdp2.EnumVal, cdp1.EnumVal AS HasteGradEnumVal, mia2.OptionText, CONCAT('Hastegrad: ', ISNULL(mia1.OptionText, '(ubesvart)'), ', Skjemadato: ', FORMAT(cf.CreatedAt, 'dd.MM.yyyy')) AS InfoText
     FROM dbo.ViewActiveCaseListStub v
     JOIN dbo.ClinEvent ce ON ce.PersonId = v.PersonId
-    JOIN dbo.ClinForm cf ON ce.EventId = ce.EventId AND cf.DeletedAt IS NULL
+    JOIN dbo.ClinForm cf ON cf.EventId = ce.EventId AND cf.DeletedAt IS NULL
     JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId AND mf.FormName = 'GBD_Legevurdering'
     JOIN dbo.ClinDataPoint cdp1 ON cdp1.EventId = ce.EventId AND cdp1.ItemId = 2537
     JOIN dbo.MetaItemAnswer mia1 ON mia1.ItemId = cdp1.ItemId AND mia1.OrderNumber = cdp1.EnumVal
