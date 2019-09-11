@@ -1202,7 +1202,7 @@ BEGIN
   EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'QUALID',180,2
 END;]]>
 	</row>
-	<row RuleId="33" RuleClass="NDVBIOLAB" RuleType="M" RuleProc="NDV.RuleBiobankLabtest" MinVersion="18000" Title="Prøve til biobank" Description="Påminnelse om å ta prøve til biobanken for de som har samtykket" ChkSum="-544617397" LastUpdate="2019-05-03T10:22:16.240Z">
+	<row RuleId="33" RuleClass="NDVBIOLAB" RuleType="M" RuleProc="NDV.RuleBiobankLabtest" MinVersion="18000" Title="Prøve til biobank" Description="Påminnelse om å ta prøve til biobanken for de som har samtykket" ChkSum="-1684697763" LastUpdate="2019-09-11T11:24:00.267Z">
 		<![CDATA[CREATE PROCEDURE NDV.RuleBiobankLabtest( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @AlertLevel INT = 0;
@@ -1231,7 +1231,8 @@ BEGIN
     BEGIN
       SET @AlertFacet = 'Exclude';
     END;
-  END
+  END;
+  IF DB_NAME() = 'EQUALEDC' SET @AlertLevel = 0;
   EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, @AlertLevel, 'NDVBIOLAB', @AlertFacet;
 END]]>
 	</row>
