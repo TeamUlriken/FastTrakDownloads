@@ -1397,7 +1397,7 @@ BEGIN
 	ORDER BY v.PersonId;
 END;]]>
 	</row>
-	<row ProcId="179" StudyName="GBD" ProcName="dbo.GetCaseListUnsignedLabdata" ProcDesc="Personer: Usignerte labdata" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19008" ChkSum="-520799930" LastUpdate="2019-05-24T07:32:41.880Z">
+	<row ProcId="179" StudyName="GBD" ProcName="dbo.GetCaseListUnsignedLabdata" ProcDesc="Personer: Usignerte labdata" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19008" ChkSum="-520799930" LastUpdate="2019-09-12T09:10:06.060Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListUnsignedLabdata( @StudyId INT ) AS
 BEGIN
     SELECT v.*, FORMAT( unsigned.Antall, 'Har # usignerte prøvesvar') AS InfoText
@@ -1597,6 +1597,24 @@ BEGIN
   ORDER BY v.FullName;
 END
 ]]>
+	</row>
+	<row ProcId="193" StudyName="GBD" ProcName="GBD.GetCaseListFalltiltak" ProcDesc="Prosess: Høy fallrisiko og tiltaksplan for fallforebygging" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19000" HelpText="Siste tiltaksplan for fallforebygging for pasienter med høy risiko for fall ifølge utfylt skjema «Fallrisiko - Stratify» (skår 2 eller høyere)." ChkSum="-37666183" LastUpdate="2019-09-12T09:10:42.560Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFalltiltak ( @StudyId INT ) AS
+BEGIN
+SELECT v.*, Tiltaksplan.CreatedAt AS TiltaksplanOppretta,
+    CONCAT('Stratify-skår ', StratifyScore.EnumVal, '. Tiltaksplan ', ISNULL('utfylt ' + CONVERT(VARCHAR, Tiltaksplan.EventTime, 104) + '. ' +
+    ISNULL('Evalueres ' + CONVERT(VARCHAR, Evalueringsdato.DTVal, 104) + '.', 'Evalueringsdato ikke utfylt.'), 'aldri utfylt.')) AS InfoText
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.GetLastEnumValuesTable(9257, NULL) StratifyScore ON v.PersonId = StratifyScore.PersonId
+  LEFT JOIN dbo.GetLastFormTableByName ('GBD_FALL_TILTAK', NULL) Tiltaksplan ON Tiltaksplan.PersonId = v.PersonId
+  LEFT JOIN dbo.ClinDataPoint Evalueringsdato ON Evalueringsdato.EventId = Tiltaksplan.EventId AND Evalueringsdato.ItemId = 10168
+  WHERE v.StudyId = @StudyId AND StratifyScore.EnumVal >= 2 
+  ORDER BY CASE WHEN Tiltaksplan.CreatedAt IS NULL THEN 1 ELSE 0 END, ISNULL(Evalueringsdato.DTVal, Tiltaksplan.CreatedAt); 
+END
+]]>
+	</row>
+	<row ProcId="194" StudyName="LANGTID" ProcName="GBD.GetCaseListFalltiltak" ProcDesc="Prosess: Høy fallrisiko og tiltaksplan for fallforebygging" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19000" HelpText="Siste tiltaksplan for fallforebygging for pasienter med høy risiko for fall ifølge utfylt skjema «Fallrisiko - Stratify» (skår 2 eller høyere)." ChkSum="897240470" LastUpdate="2019-09-12T09:12:52.360Z">
+		<![CDATA[]]>
 	</row>
 	<row ProcId="201" StudyName="NDV.BASE" ProcName="NDV.GetPumpWithHighHbA1c" ProcDesc="Utvalg av Type-1 m/pumpe basert på alder og HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1281890130" LastUpdate="2018-10-03T14:50:45.213Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpWithHighHbA1c( @StudyId INT, @AgeMin FLOAT, @AgeMax FLOAT, @HbA1cCutoff FLOAT ) AS
