@@ -47,20 +47,20 @@ BEGIN
   SET @EndsAt = DATEADD(second,-1,DATEADD(month,4,@StartsAt));
 END]]>
 	</row>
-	<row ProcId="1" StudyName="*" ProcName="dbo.GetCaseList" ProcDesc="Aktive pasienter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" HelpText="Alle aktive personer, eventuelt avgrenset til din gruppe hvis avkrysset." ChkSum="1777215355" LastUpdate="2019-01-22T10:28:22.360Z">
+	<row ProcId="1" StudyName="*" ProcName="dbo.GetCaseList" ProcDesc="Aktive pasienter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" HelpText="Alle aktive personer, eventuelt avgrenset til din gruppe hvis avkrysset." ChkSum="1179438108" LastUpdate="2019-09-13T07:34:40.990Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseList( @StudyId INT ) AS
 BEGIN
-  SELECT vcl.PersonId,vcl.DOB,vcl.FullName,vcl.GroupName,ss.StatusText AS InfoText,
-    sc.HandledBy, up.Signature as PrimaryContactSign,up.FullName as PrimaryContactName,
+  SELECT vcl.PersonId, vcl.DOB, vcl.FullName, vcl.GroupName, ss.StatusText AS InfoText,
+    sc.HandledBy, up.Signature AS PrimaryContactSign, up.FullName AS PrimaryContactName,
     p.GenderId, p.NationalId
-  FROM StudCase sc
-    JOIN ViewActiveCaseListStub vcl ON sc.PersonId=vcl.PersonId AND vcl.StudyId=sc.StudyId
-    JOIN Person p ON p.PersonId=vcl.PersonId
-    LEFT OUTER JOIN dbo.StudyStatus ss ON ss.StatusId=sc.FinState AND ss.StudyId=sc.StudyId
-    LEFT OUTER JOIN dbo.UserList ul ON ul.UserId=sc.HandledBy
-    LEFT OUTER JOIN dbo.Person up ON up.PersonId=ul.PersonId 
-  WHERE sc.StudyId=@StudyId
-  ORDER BY vcl.FullName
+  FROM dbo.StudCase sc
+    JOIN dbo.ViewActiveCaseListStub vcl ON sc.PersonId = vcl.PersonId AND vcl.StudyId = sc.StudyId
+    JOIN dbo.Person p ON p.PersonId = vcl.PersonId
+    LEFT OUTER JOIN dbo.StudyStatus ss ON ss.StatusId = sc.FinState AND ss.StudyId = sc.StudyId
+    LEFT OUTER JOIN dbo.UserList ul ON ul.UserId = sc.HandledBy
+    LEFT OUTER JOIN dbo.Person up ON up.PersonId = ul.PersonId 
+  WHERE sc.StudyId = @StudyId
+  ORDER BY vcl.FullName;
 END]]>
 	</row>
 	<row ProcId="2" StudyName="*" ProcName="dbo.GetCaseListUnsignedForms" ProcDesc="Arbeidsliste: Mine usignerte skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" HelpText="Usignerte skjema som du selv har opprettet, eventuelt avgrenset til egen gruppe. Nyeste skjema er øverst." ChkSum="-477830701" LastUpdate="2019-01-22T16:56:52.203Z">
