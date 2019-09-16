@@ -4777,7 +4777,7 @@ BEGIN
     END, val1.TextVal
 END;]]>
 	</row>
-	<row ProcId="1048" StudyName="GBD" ProcName="GBD.ReportGruppekalender" ProcDesc="Rapport som viser aktivitetsplan sortert på gruppe og romnummer." ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="19016" ChkSum="-1365591330" LastUpdate="2019-09-13T07:25:27.393Z">
+	<row ProcId="1048" StudyName="GBD" ProcName="GBD.ReportGruppekalender" ProcDesc="Rapport som viser aktivitetsplan sortert på gruppe og romnummer." ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="19016" ChkSum="-1569197630" LastUpdate="2019-09-13T07:45:00.177Z">
 		<![CDATA[CREATE PROCEDURE GBD.ReportGruppekalender ( @StudyId INT ) AS
 BEGIN
   SELECT v.*, RoomNumber.TextVal AS RoomNumber,
@@ -4806,7 +4806,7 @@ BEGIN
   LEFT JOIN dbo.ClinDataPoint SundayMorning ON SundayMorning.EventId = Aktivitetskalender.EventId AND SundayMorning.ItemId = 3302
   LEFT JOIN dbo.ClinDataPoint SundayAfternoon ON SundayAfternoon.EventId = Aktivitetskalender.EventId AND SundayAfternoon.ItemId = 3303
   WHERE v.StudyId = @StudyId
-  ORDER BY v.GroupName, RoomNumber.TextVal;
+  ORDER BY v.GroupName, RoomNumber.TextVal, v.FullName;
 END
 ]]>
 	</row>
