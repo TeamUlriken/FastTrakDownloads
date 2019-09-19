@@ -330,12 +330,12 @@
     </Page>
     <Page PageTitle="Standard behandlingsmål*">
       <Item ItemId="4522" ItemType="1" VarName="STDGOAL_SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem ItemText="Mål systolisk blodtrykk" ItemHelp="" Expression="135" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" FormatStr="Blodtrykksmål %s">
+        <FormItem ItemText="Mål systolisk blodtrykk" ItemHelp="" Expression="135" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" FormatStr="Blodtrykksmål %s">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4523" ItemType="1" VarName="STDGOAL_DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem ItemText="Mål diastolisk blodtrykk" ItemHelp="" Expression="80" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" FormatStr="¬/%s mmHg.">
+        <FormItem ItemText="Mål diastolisk blodtrykk" ItemHelp="" Expression="80" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" FormatStr="¬/%s mmHg.">
           <Answer/>
         </FormItem>
       </Item>
@@ -345,7 +345,7 @@
         </FormItem>
       </Item>
       <Item ItemId="4525" ItemType="1" VarName="STDGOAL_HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        <FormItem ItemText="Mål HbA1c" ItemHelp="Fast verdi, ikke påvirket av alder eller kjønn." Expression="7" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+        <FormItem ItemText="Mål HbA1c" ItemHelp="Fast verdi, ikke påvirket av alder eller kjønn." Expression="7" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -362,7 +362,7 @@
         </FormItem>
       </Item>
       <Item ItemId="7513" ItemType="1" VarName="ActualHbA1c" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        <FormItem ItemText="Beregnet aktuell verdi for HbA1c" ItemHelp="Bruker HbA1c-verdi fra dette skjemaet, alternativt hentes det fra autoklassifiserte journaldata,&#xA;kun til vurdering av måloppnåelse.  Skal ikke lagres i database.  Hidden og ReadOnly." Expression="ISPOS(HBA1C)*HBA1C + ISNEG(HBA1C)*VMR.LAB.HBA1C" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
+        <FormItem ItemText="Beregnet aktuell verdi for HbA1c" ItemHelp="Bruker HbA1c-verdi fra dette skjemaet, alternativt hentes det fra autoklassifiserte journaldata,&#xA;kun til vurdering av måloppnåelse.  Skal ikke lagres i database.  Hidden og ReadOnly." Expression="ISPOS(HBA1C)*HBA1C + ISNEG(HBA1C)*LabData.HBA1C" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -386,14 +386,14 @@
         </FormItem>
       </Item>
       <Item ItemId="4225" ItemType="2" VarName="LDL_GOAL_REACHED" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="LDL-mål nådd" ItemHelp="" Expression="ISPOS( VMR.LAB.LDL ) * ( 1 + ISNEG( ActualLDLGoal - VMR.LAB.LDL ) ) + 3 * ( 1 - ISPOS( VMR.LAB.LDL ) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="LDL-mål nådd" ItemHelp="" Expression="ISPOS( LabData.LDL ) * ( 1 + ISNEG( ActualLDLGoal - LabData.LDL ) ) + 3 * ( 1 - ISPOS( LabData.LDL ) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer AnswerId="22651" OrderNumber="1" OptionText="Mål nådd."/>
           <Answer AnswerId="22652" OrderNumber="2" OptionText="Ikke nådd mål."/>
           <Answer AnswerId="40491" OrderNumber="3" OptionText="Ukjent LDL."/>
         </FormItem>
       </Item>
       <Item ItemId="2144" ItemType="2" VarName="tmpHbA1cAbove9" LoincScale="ORD">
-        <FormItem ItemText="HbA1c over 9%" ItemHelp="" Expression="2 - ISPOS( VMR.LAB.HBA1C - 8.99 )" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="HbA1c over 9%" ItemHelp="" Expression="2 - ISPOS( LabData.HBA1C - 8.99 )" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="11153" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="11154" OrderNumber="2" OptionText="Nei"/>
         </FormItem>

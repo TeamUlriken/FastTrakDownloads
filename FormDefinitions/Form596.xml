@@ -3,17 +3,17 @@
   <Form FormId="596" FormName="FORM596" FormTitle="Basisregistrering" Copyright="SOREG" FormDateItemId="7064">
     <Page PageTitle="Basisregistrering">
       <Item ItemId="7063" ItemType="5" VarName="BASEREG_REFERALDATE" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Henvisningsdato" ItemHelp="Angi dato henvisning fra primærhelsetjeneste er registrert mottatt i spesialisthelsetenesten (kirurgisk eller medisinsk). Tenk ut i fra pasientens perspektiv: Når startet forløpet for å bli operert ?" MinExpression="DOB" MaxExpression="FORM.DATE-1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Henvisningsdato" ItemHelp="Angi dato henvisning fra primærhelsetjeneste er registrert mottatt i spesialisthelsetenesten (kirurgisk eller medisinsk). Tenk ut i fra pasientens perspektiv: Når startet forløpet for å bli operert ?" MinExpression="Patient.DOB" MaxExpression="FORM.DATE-1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="7064" ItemType="5" VarName="BASEREG_DATE" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Besøksdato" ItemHelp="Angi dato for pasientbesøket der basisregistreringen gjøres. Har pasienten vært på flere besøk før operasjon angi det siste besøket før operasjon men før eventuell preoperativ vektreduksjon starter." Expression="TRUNC(FORM.Date)" MinExpression="DOB" MaxExpression="NOW + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Besøksdato" ItemHelp="Angi dato for pasientbesøket der basisregistreringen gjøres. Har pasienten vært på flere besøk før operasjon angi det siste besøket før operasjon men før eventuell preoperativ vektreduksjon starter." Expression="TRUNC(FORM.Date)" MinExpression="Patient.DOB" MaxExpression="NOW + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="7065" ItemType="5" VarName="BASEREG_OPDECISIONDATE" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Datoen der operasjon blir bestemt" ItemHelp="Datoen der operasjon blir bestemt. All preoperativ utredning og eventuell behandling, utenom preoperativ vektreduksjon er utført." MinExpression="DOB" MaxExpression="FORM.DATE" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Datoen der operasjon blir bestemt" ItemHelp="Datoen der operasjon blir bestemt. All preoperativ utredning og eventuell behandling, utenom preoperativ vektreduksjon er utført." MinExpression="Patient.DOB" MaxExpression="FORM.DATE" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>

@@ -65,13 +65,13 @@
         </FormItem>
       </Item>
       <Item ItemId="6037" ItemType="2" VarName="HASBLED_RENALFAILURE" LoincScale="ORD">
-        <FormItem ItemText="Nyresvikt (Siste kreatinin &gt; 200)" ItemHelp="" Expression="ISPOS (VMR.LAB.CREAT - 200) + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Nyresvikt (Siste kreatinin &gt; 200)" ItemHelp="" Expression="ISPOS ( LabData.CREAT - 200) + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="10424" OrderNumber="1" OptionText="Nei" VerboseText="Har ikke kreatinin &gt; 200. 0;" ShortCode="0 p" Score="0.00"/>
           <Answer AnswerId="10425" OrderNumber="2" OptionText="Ja" VerboseText="Har nyresvikt med kreatinin &lt; 200. 1;" ShortCode="1 p" Score="1.00"/>
         </FormItem>
       </Item>
       <Item ItemId="6038" ItemType="2" VarName="HASBLED_LIVER" LoincScale="ORD">
-        <FormItem ItemText="Leversykdom (ALAT &gt; 3 × grenseverdi)" ItemHelp="Basert på øvre grenseverdi = 45 for kvinner og 70 for menn" Expression="ISPOS(VMR.LAB.ALAT)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Leversykdom (ALAT &gt; 3 × grenseverdi)" ItemHelp="Basert på øvre grenseverdi = 45 for kvinner og 70 for menn" Expression="ISNULL ( SEX-1) * ISNEG( LabData.ALAT - ((70*3)-1) ) + ISNULL ( SEX-2) * ISPOS( LabData.ALAT - ((45*3)-1) )  + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="10426" OrderNumber="1" OptionText="Nei" VerboseText="Har ikke ALAT &gt; 3 × grenseverdi. 0;" ShortCode="0 p" Score="0.00"/>
           <Answer AnswerId="10479" OrderNumber="2" OptionText="Ja" VerboseText="Har leversykdom med ALAT &gt; 3 × grenseverdi. 1;" ShortCode="1 p" Score="1.00"/>
         </FormItem>
@@ -79,7 +79,7 @@
       <Item ItemId="6039" ItemType="2" VarName="HASBLED_BLEEDING" LoincScale="ORD">
         <FormItem ItemText="Tidligere alvorlig blødning" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="10740" OrderNumber="1" OptionText="Nei" VerboseText="Ikke tidligere alvorlig blødning." ShortCode="0 p" Score="0.00"/>
-          <Answer AnswerId="10741" OrderNumber="2" OptionText="Ja" VerboseText="Tidligere alvorlig blødning." Score="1.00"/>
+          <Answer AnswerId="10741" OrderNumber="2" OptionText="Ja" VerboseText="Tidligere alvorlig blødning." ShortCode="1 p" Score="1.00"/>
         </FormItem>
       </Item>
       <Item ItemId="6041" ItemType="2" VarName="HASBLED_INR" LoincScale="ORD">
@@ -107,7 +107,7 @@
         </FormItem>
       </Item>
       <Item ItemId="6053" ItemType="1" VarName="HASBLED_SCORE" LoincScale="QN" UnitStr="poeng">
-        <FormItem ItemText="HAS-BLED skår" ItemHelp="" Expression="HASBLED_AGE + HASBLED_STROKE + HASBLED_RENALFAILURE + HASBLED_LIVER + HASBLED_BLEEDING + HASBLED_INR&#xA;+ HASBLED_ALCOHOL + HASBLED_NSAIDS + HASBLED_BP160" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="HAS-BLED skår" ItemHelp="" Expression="HASBLED_AGE_SCORE + HASBLED_STROKE_SCORE + HASBLED_RENALFAILURE_SCORE + HASBLED_LIVER_SCORE + HASBLED_BLEEDING_SCORE + HASBLED_INR_SCORE + HASBLED_ALCOHOL_SCORE + HASBLED_NSAIDS_SCORE + HASBLED_BP160_SCORE" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
