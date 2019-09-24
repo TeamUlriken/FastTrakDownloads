@@ -104,8 +104,45 @@
           <Answer AnswerId="6786" OrderNumber="6" OptionText="Ukjent" Score="9.00"/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageTitle="Hvis jobb*">
+      <Item ItemId="6040" ItemType="4" VarName="VAR6040" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Beskriv:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Matallergier/intoleranse*">
       <Item ItemId="7029" ItemType="4" VarName="VAR7029" LoincScale="NAR" Multiline="1">
         <FormItem ItemText="Matallergier/intoleranse" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Antropometriske målinger">
+      <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        <FormItem ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7002" ItemType="2" VarName="VAR7002" LoincScale="ORD">
+        <FormItem ItemText="Vekt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12685" OrderNumber="1" OptionText="Aktuell vekt"/>
+          <Answer AnswerId="12686" OrderNumber="2" OptionText="Egenrapportert vekt"/>
+          <Answer AnswerId="12687" OrderNumber="3" OptionText="Ønsker ikke å registrere vekt"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Vekt*">
+      <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
+        <FormItem ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="New*">
+      <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
+        <FormItem ItemText="BMI" ItemHelp="Beregnes automatisk" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -195,6 +232,18 @@
       </Item>
     </Page>
     <Page PageTitle="Hvis karbohydratvurdering*">
+      <Item ItemId="7986" ItemType="4" VarName="VAR7986" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Beskriv:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8347" ItemType="2" VarName="VAR8347" LoincScale="ORD">
+        <FormItem ItemText="Karbohydratinntak" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12739" OrderNumber="1" OptionText="Lavt karbohydratinntak"/>
+          <Answer AnswerId="12740" OrderNumber="2" OptionText="Moderat karbohydratinntak"/>
+          <Answer AnswerId="12741" OrderNumber="3" OptionText="Høyt karbohydratinntak"/>
+        </FormItem>
+      </Item>
       <Item ItemId="6665" ItemType="1" VarName="INSULIN_KARB_FAKTOR" LoincScale="QN" UnitStr="g/E" DisplayFormat="">
         <FormItem ItemText="Insulin-karbohydrat faktor" ItemHelp="Estimat (500/døgndose insulin) på antall gram karbohydrat som nøytraliseres av 1 enhet insulin." Expression="ISPOS( INS_ALL_SUM ) * 500 / INS_ALL_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
@@ -202,6 +251,13 @@
       </Item>
       <Item ItemId="10433" ItemType="1" VarName="InsulinCarbFactor" LoincScale="QN" UnitStr="g/E" DisplayFormat="">
         <FormItem ItemText="Aktuell karbohydrat faktor" ItemHelp="Antall gram karbohydrat som nøytraliseres av 1 enhet insulin." MinExpression="1" MaxExpression="40" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Symptomgivende glykemier*">
+      <Item ItemId="8348" ItemType="1" VarName="VAR8348" LoincScale="QN">
+        <FormItem ItemText="Symptomgivende hypoglykemier" ItemHelp="Antall per mnd (0 - 90)" MinExpression="0" MaxExpression="90" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -242,20 +298,8 @@
           <Answer/>
         </FormItem>
       </Item>
-    </Page>
-    <Page PageTitle="Antropometriske målinger">
-      <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        <FormItem ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        <FormItem ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="0" Decimals="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-        <FormItem ItemText="BMI" ItemHelp="Beregnes automatisk" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1" Decimals="1">
+      <Item ItemId="9798" ItemType="1" VarName="BASEREG_DVIT" LoincScale="QN" UnitStr="nmol/L" DisplayFormat="">
+        <FormItem ItemText="Analyse av S-25-OH vitamin D" ItemHelp="Angis i nmol/l." Expression="" MinExpression="0" MaxExpression="999" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -282,12 +326,12 @@
         </FormItem>
       </Item>
       <Item ItemId="6416" ItemType="4" VarName="VAR6416" LoincScale="NAR" Multiline="1">
-        <FormItem ItemText="Mellommåltid(er)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Mellommåltid(er)" ItemHelp="Klokkeslett og inntak" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6423" ItemType="4" VarName="VAR6423" LoincScale="NAR" Multiline="1">
-        <FormItem ItemText="Helg" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Helg" ItemHelp="Inntak" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -364,17 +408,8 @@
       </Item>
     </Page>
     <Page PageTitle="Har du blitt gitt informasjon/opplæring i:">
-      <Item ItemId="6400" ItemType="2" VarName="VAR6400" LoincScale="ORD">
-        <FormItem ItemText="Sunt kosthold/kosthold i tråd med behandlingsretningslinjen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12347" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="12348" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="12674" OrderNumber="3" OptionText="Vet ikke"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageTitle="Hvis ja opplæring sunt kosthold/kosthold i tråd med behandlingsretningslinjer*">
-      <Item ItemId="6424" ItemType="5" VarName="VAR6424" LoincScale="DATE">
-        <FormItem ItemText="Dato for opplæring gitt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="6400" ItemType="5" VarName="VAR6400" LoincScale="DATE">
+        <FormItem ItemText="Sunt kosthold/kosthold i tråd med behandlingsretningslinjen" ItemHelp="Dato opplæringen er gitt. TD = i dag." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -389,207 +424,117 @@
       </Item>
     </Page>
     <Page PageTitle="Hvis ja opplæring kostmønster*">
-      <Item ItemId="6426" ItemType="2" VarName="VAR6426" LoincScale="ORD">
-        <FormItem ItemText="Tradisjonell middelhavskost" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12678" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="12679" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="12680" OrderNumber="3" OptionText="Vet ikke"/>
+      <Item ItemId="6426" ItemType="5" VarName="VAR6426" LoincScale="DATE">
+        <FormItem ItemText="Tradisjonell middelhavskost" ItemHelp="Dato opplæringen er gitt. TD = i dag." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
         </FormItem>
       </Item>
-    </Page>
-    <Page PageTitle="Hvis ja opplæring tradisjonell middelhavskost* ">
-      <Item ItemId="6486" ItemType="5" VarName="VAR6486" LoincScale="DATE">
-        <FormItem ItemText="Dato for opplæring gitt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="6427" ItemType="5" VarName="VAR6427" LoincScale="DATE">
+        <FormItem ItemText="Moderat karbohydratredusert kost" ItemHelp="Dato opplæringen er gitt. TD = i dag." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6428" ItemType="5" VarName="VAR6428" LoincScale="DATE">
+        <FormItem ItemText="Kost med lav glykemisk indeks" ItemHelp="Dato opplæringen er gitt. TD = i dag." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6429" ItemType="5" VarName="VAR6429" LoincScale="DATE">
+        <FormItem ItemText="Andre kostmønster" ItemHelp="Dato opplæringen er gitt. TD = i dag." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Hvis ja opplæring kostmønster* ">
-      <Item ItemId="6427" ItemType="2" VarName="VAR6427" LoincScale="ORD">
-        <FormItem ItemText="Moderat karbohydratredusert kost" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12681" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="12691" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="12692" OrderNumber="3" OptionText="Vet ikke"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageTitle="Hvis ja opplæring moderat karbohydratredusert kost*">
-      <Item ItemId="6489" ItemType="5" VarName="VAR6489" LoincScale="DATE">
-        <FormItem ItemText="Dato for opplæring gitt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+    <Page PageTitle="Opplæring*">
+      <Item ItemId="6520" ItemType="5" VarName="VAR6520" LoincScale="DATE">
+        <FormItem ItemText="Hjertevennlig kosthold" ItemHelp="Dato opplæringen er gitt. TD = i dag." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-    </Page>
-    <Page PageTitle="Hvis ja opplæring kostmønster*">
-      <Item ItemId="6428" ItemType="2" VarName="VAR6428" LoincScale="ORD">
-        <FormItem ItemText="Kost med lav glykemisk indeks" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12693" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="12694" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="12695" OrderNumber="3" OptionText="Vet ikke"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageTitle="Hvis ja opplæring kost med lav glykemisk indeks*">
-      <Item ItemId="6518" ItemType="5" VarName="VAR6518" LoincScale="DATE">
-        <FormItem ItemText="Dato for opplæring gitt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="8353" ItemType="4" VarName="VAR8353" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Kommentar" ItemHelp="Hjertevennlig kosthold" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-    </Page>
-    <Page PageTitle="Hvis ja opplæring kostmønster*">
-      <Item ItemId="6429" ItemType="2" VarName="VAR6429" LoincScale="ORD">
-        <FormItem ItemText="Andre kostmønster" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12696" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="12697" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="12698" OrderNumber="3" OptionText="Vet ikke"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageTitle="Hvis ja opplæring andre kostmønster*">
-      <Item ItemId="6519" ItemType="5" VarName="VAR6519" LoincScale="DATE">
-        <FormItem ItemText="Dato for opplæring gitt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="6522" ItemType="5" VarName="VAR6522" LoincScale="DATE">
+        <FormItem ItemText="Kost ved cøliaki" ItemHelp="Dato opplæringen er gitt. TD = i dag." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-    </Page>
-    <Page PageTitle="Hjertevennlig kost*">
-      <Item ItemId="6520" ItemType="2" VarName="VAR6520" LoincScale="ORD">
-        <FormItem ItemText="Hjertevennlig kosthold" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12699" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="12700" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="12701" OrderNumber="3" OptionText="Vet ikke"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageTitle="Hvis ja opplæring hjertevennlig kosthold*">
-      <Item ItemId="6521" ItemType="5" VarName="VAR6521" LoincScale="DATE">
-        <FormItem ItemText="Dato for opplæring gitt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="8354" ItemType="4" VarName="VAR8354" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Kommentar" ItemHelp="Kost ved cøliaki" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-    </Page>
-    <Page PageTitle="Kost ved cøliaki*">
-      <Item ItemId="6522" ItemType="2" VarName="VAR6522" LoincScale="ORD">
-        <FormItem ItemText="Kost ved cøliaki" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12702" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="12703" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="12704" OrderNumber="3" OptionText="Vet ikke"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageTitle="Hvis ja opplæring kost ved cøliaki*">
-      <Item ItemId="6556" ItemType="5" VarName="VAR6556" LoincScale="DATE">
-        <FormItem ItemText="Dato for opplæring gitt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="6584" ItemType="5" VarName="VAR6584" LoincScale="DATE">
+        <FormItem ItemText="Regelmessig måltidsrytme" ItemHelp="Dato opplæringen er gitt. TD = i dag." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-    </Page>
-    <Page PageTitle="Regelmessig måltidsrytme*">
-      <Item ItemId="6584" ItemType="2" VarName="VAR6584" LoincScale="ORD">
-        <FormItem ItemText="Regelmessig måltidsrytme" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12705" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="12706" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="12707" OrderNumber="3" OptionText="Vet ikke"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageTitle="Hvis ja opplæring regelmessig måltidsrytme*">
-      <Item ItemId="6597" ItemType="5" VarName="VAR6597" LoincScale="DATE">
-        <FormItem ItemText="Dato for opplæring gitt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="8355" ItemType="4" VarName="VAR8355" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Kommentar" ItemHelp="Regelmessig måltidsrytme" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-    </Page>
-    <Page PageTitle="Karbohydratvurdering*">
-      <Item ItemId="6598" ItemType="2" VarName="VAR6598" LoincScale="ORD">
-        <FormItem ItemText="Karbohydratvurdering" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12708" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="12709" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="12710" OrderNumber="3" OptionText="Ukjent"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageTitle="Hvis ja opplæring karbohydratvurdering*">
-      <Item ItemId="6599" ItemType="5" VarName="VAR6599" LoincScale="DATE">
-        <FormItem ItemText="Dato for opplæring gitt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="6598" ItemType="5" VarName="VAR6598" LoincScale="DATE">
+        <FormItem ItemText="Karbohydratvurdering" ItemHelp="Dato opplæringen er gitt. TD = i dag." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-    </Page>
-    <Page PageTitle="Alkohol*">
-      <Item ItemId="6600" ItemType="2" VarName="VAR6600" LoincScale="ORD">
-        <FormItem ItemText="Alkohol" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12711" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="12712" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="12713" OrderNumber="3" OptionText="Vet ikke"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageTitle="Hvis ja opplæring alkohol*">
-      <Item ItemId="6601" ItemType="5" VarName="VAR6601" LoincScale="DATE">
-        <FormItem ItemText="Dato for opplæring gitt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="8427" ItemType="4" VarName="VAR8427" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Kommentar" ItemHelp="Karbohydratvurdering" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-    </Page>
-    <Page PageTitle="Mat/drikke ved føling*">
-      <Item ItemId="6602" ItemType="2" VarName="VAR6602" LoincScale="ORD">
-        <FormItem ItemText="Mat/drikke ved føling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12714" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="12715" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="12716" OrderNumber="3" OptionText="Vet ikke"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageTitle="Hvis ja opplæring mat/drikke ved føling*">
-      <Item ItemId="6603" ItemType="5" VarName="VAR6603" LoincScale="DATE">
-        <FormItem ItemText="Dato for opplæring gitt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="6600" ItemType="5" VarName="VAR6600" LoincScale="DATE">
+        <FormItem ItemText="Alkohol" ItemHelp="Dato opplæringen er gitt. TD = i dag." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-    </Page>
-    <Page PageTitle="Kost og aktivitet ved behov for vektendring*">
-      <Item ItemId="6604" ItemType="2" VarName="VAR6604" LoincScale="ORD">
-        <FormItem ItemText="Kost og aktivitet ved behov for vektendring" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12717" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="12718" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="12719" OrderNumber="3" OptionText="Vet ikke"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageTitle="Hvis ja opplæring kost og aktivitet ved behov for vektendring*">
-      <Item ItemId="6608" ItemType="5" VarName="VAR6608" LoincScale="DATE">
-        <FormItem ItemText="Dato for opplæring gitt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="8428" ItemType="4" VarName="VAR8428" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Kommentar" ItemHelp="Alkohol" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-    </Page>
-    <Page PageTitle="Effekt av fysisk aktivitet/trening og insulin*">
-      <Item ItemId="6628" ItemType="2" VarName="VAR6628" LoincScale="ORD">
-        <FormItem ItemText="Effekt av fysisk aktivitet/trening og insulin" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12720" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="12721" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="12722" OrderNumber="3" OptionText="Vet ikke"/>
-        </FormItem>
-      </Item>
-    </Page>
-    <Page PageTitle="Hvis ja opplæring effekt av fysisk aktivitet/trening og insulin*">
-      <Item ItemId="6629" ItemType="5" VarName="VAR6629" LoincScale="DATE">
-        <FormItem ItemText="Dato for opplæring gitt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="6602" ItemType="5" VarName="VAR6602" LoincScale="DATE">
+        <FormItem ItemText="Mat/drikke ved føling" ItemHelp="Dato opplæringen er gitt. TD = i dag." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-    </Page>
-    <Page PageTitle="Ernæring, annet*">
+      <Item ItemId="8429" ItemType="4" VarName="VAR8429" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Kommentar" ItemHelp="Mat/drikke ved føling" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6604" ItemType="5" VarName="VAR6604" LoincScale="DATE">
+        <FormItem ItemText="Kost og aktivitet ved behov for vektendring" ItemHelp="Dato opplæringen er gitt. TD = i dag." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8435" ItemType="4" VarName="VAR8435" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Kommentar" ItemHelp="Kost og aktivitet ved behov for vektendring" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6628" ItemType="5" VarName="VAR6628" LoincScale="DATE">
+        <FormItem ItemText="Effekt av fysisk aktivitet/trening og insulin" ItemHelp="Dato opplæringen er gitt. TD = i dag." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8350" ItemType="4" VarName="VAR8350" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Kommentar" ItemHelp="Effekt av fysisk aktivitet/trening og insulin" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
       <Item ItemId="6630" ItemType="4" VarName="VAR6630" LoincScale="NAR" Multiline="1">
-        <FormItem ItemText="Annet:" ItemHelp="Beskriv" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Annet:" ItemHelp="Beskriv" Expression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Utdelt materiale">
       <Item ItemId="6648" ItemType="2" VarName="VAR6648" LoincScale="ORD">
-        <FormItem ItemText="Har du fått utdelt materiale?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Har du fått utdelt undervisningsmateriale?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="12723" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="12724" OrderNumber="2" OptionText="Nei"/>
           <Answer AnswerId="12725" OrderNumber="3" OptionText="Vet ikke"/>
@@ -618,6 +563,13 @@
           <Answer AnswerId="12734" OrderNumber="3" OptionText="Vet ikke"/>
         </FormItem>
       </Item>
+      <Item ItemId="8438" ItemType="2" VarName="VAR8438" LoincScale="ORD">
+        <FormItem ItemText="Diabetes og kolesterol" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12347" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="12348" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="12674" OrderNumber="3" OptionText="Vet ikke"/>
+        </FormItem>
+      </Item>
       <Item ItemId="6683" ItemType="4" VarName="VAR6683" LoincScale="NAR" Multiline="1">
         <FormItem ItemText="Annet:" ItemHelp="Beskriv" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
@@ -635,9 +587,10 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="6996" ItemType="4" VarName="VAR6996" LoincScale="NAR" Multiline="1">
+      <Item ItemId="6996" ItemType="2" VarName="VAR6996" LoincScale="ORD">
         <FormItem ItemText="Oppfølging hos klinisk ernæringsfysiolog" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer/>
+          <Answer AnswerId="12678" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="12679" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
       <Item ItemId="7001" ItemType="4" VarName="VAR7001" LoincScale="NAR" Multiline="1">
@@ -648,81 +601,44 @@
     </Page>
   </Form>
   <Actions>
+    <PageAction MasterId="2303">
+      <Activate EnumVal="2" PageConditionId="8214" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="8215" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="5" PageConditionId="8216" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7002">
+      <Activate EnumVal="1" PageConditionId="8199" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="8200" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
     <PageAction MasterId="3322">
-      <Activate EnumVal="2" PageConditionId="8143" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="4" PageConditionId="8144" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="3" PageConditionId="8145" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="4" PageConditionId="8146" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="3" PageConditionId="8169" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="4" PageConditionId="8170" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="3" PageConditionId="8185" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="4" PageConditionId="8186" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="8143" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="8144" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="8145" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="8146" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="8169" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="8170" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="8185" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="8186" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="3196">
-      <Activate EnumVal="2" PageConditionId="8190" PageNumber="8" ComparisonType="6" ComparisonDescription="Not Equal"/>
+      <Activate EnumVal="1" PageConditionId="8196" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="8201" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="8202" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="4738">
-      <Activate EnumVal="1" PageConditionId="8189" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8189" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10379">
-      <Activate EnumVal="1" PageConditionId="8148" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8148" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="3340">
-      <Activate EnumVal="1" PageConditionId="8147" PageNumber="15" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="6400">
-      <Activate EnumVal="1" PageConditionId="8177" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8147" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6425">
-      <Activate EnumVal="1" PageConditionId="8168" PageNumber="19" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="6426">
-      <Activate EnumVal="1" PageConditionId="8152" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="6425">
-      <Activate EnumVal="1" PageConditionId="8153" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="6427">
-      <Activate EnumVal="1" PageConditionId="8154" PageNumber="22" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="6425">
-      <Activate EnumVal="1" PageConditionId="8155" PageNumber="23" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="6428">
-      <Activate EnumVal="1" PageConditionId="8156" PageNumber="24" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="6425">
-      <Activate EnumVal="1" PageConditionId="8157" PageNumber="25" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="6429">
-      <Activate EnumVal="1" PageConditionId="8158" PageNumber="26" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="6520">
-      <Activate EnumVal="1" PageConditionId="8159" PageNumber="28" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="6522">
-      <Activate EnumVal="1" PageConditionId="8160" PageNumber="30" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="6584">
-      <Activate EnumVal="1" PageConditionId="8161" PageNumber="32" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="6598">
-      <Activate EnumVal="1" PageConditionId="8162" PageNumber="34" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="6600">
-      <Activate EnumVal="1" PageConditionId="8163" PageNumber="36" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="6602">
-      <Activate EnumVal="1" PageConditionId="8164" PageNumber="38" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="6604">
-      <Activate EnumVal="1" PageConditionId="8165" PageNumber="40" ComparisonType="1" ComparisonDescription="Equal to"/>
-    </PageAction>
-    <PageAction MasterId="6628">
-      <Activate EnumVal="1" PageConditionId="8166" PageNumber="42" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8168" PageNumber="23" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6648">
-      <Activate EnumVal="1" PageConditionId="8167" PageNumber="45" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8167" PageNumber="26" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>

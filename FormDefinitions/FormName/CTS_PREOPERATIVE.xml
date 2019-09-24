@@ -9,7 +9,7 @@
         </FormItem>
       </Item>
       <Item ItemId="6377" ItemType="2" VarName="ChildBearingAge" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Kvinne i fertil alder" ItemHelp="" Expression="2-ISNULL(Patient.GenderId-2)*ISPOS(Patient.Age-15)*ISNEG(Patient.Age-55)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Kvinne i fertil alder" ItemHelp="" Expression="2 - ISNULL(Patient.GenderId-2) * ISPOS(AGE-15) * ISNEG(AGE-55)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer AnswerId="33731" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="33732" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
@@ -53,28 +53,28 @@
       </Item>
     </Page>
     <Page PageTitle="Komorbiditet">
-      <Item ItemId="7763" ItemType="2" VarName="ICD10.M069" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="7763" ItemType="2" VarName="ICD10_M069" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Revmatoid artritt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="0">
           <Answer AnswerId="41610" OrderNumber="1" OptionText="Ja" VerboseText="Revmatoid artritt." ShortCode="J" ICD10="M069"/>
           <Answer AnswerId="41611" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="41612" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
         </FormItem>
       </Item>
-      <Item ItemId="7765" ItemType="2" VarName="ICD10.M109" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="7765" ItemType="2" VarName="ICD10_M109" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Urinsyregikt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="0">
           <Answer AnswerId="41626" OrderNumber="1" OptionText="Ja" VerboseText="Urinsyregikt." ShortCode="J" ICD10="M109"/>
           <Answer AnswerId="41627" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="41628" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
         </FormItem>
       </Item>
-      <Item ItemId="6812" ItemType="2" VarName="ICD10.I10" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="6812" ItemType="2" VarName="ICD10_I10" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Hypertensjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="0">
           <Answer AnswerId="37361" OrderNumber="1" OptionText="Ja" VerboseText="Hypertensjon." ShortCode="J" ICD10="I1[01235]"/>
           <Answer AnswerId="37362" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="37363" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
         </FormItem>
       </Item>
-      <Item ItemId="6814" ItemType="2" VarName="ICD10.E14" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="6814" ItemType="2" VarName="ICD10_E14" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Diabetes mellitus" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="0">
           <Answer AnswerId="37367" OrderNumber="1" OptionText="Ja" ShortCode="J" ICD10="E14"/>
           <Answer AnswerId="37368" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
@@ -94,7 +94,7 @@
       </Item>
     </Page>
     <Page PageTitle="Komorbidtet etter diabetes*">
-      <Item ItemId="7766" ItemType="2" VarName="ICD10.N19" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="7766" ItemType="2" VarName="ICD10_N19" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Nyresvikt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="0">
           <Answer AnswerId="41634" OrderNumber="1" OptionText="Ja" VerboseText="Nyresvikt." ShortCode="J" ICD10="N19"/>
           <Answer AnswerId="41635" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
@@ -108,7 +108,7 @@
           <Answer AnswerId="30679" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
         </FormItem>
       </Item>
-      <Item ItemId="7767" ItemType="2" VarName="ICD10.E039" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="7767" ItemType="2" VarName="ICD10_E039" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Hypothyreose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="0">
           <Answer AnswerId="41642" OrderNumber="1" OptionText="Ja" VerboseText="Hypothyreose." ShortCode="J" ICD10="E039"/>
           <Answer AnswerId="41643" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
@@ -117,7 +117,7 @@
       </Item>
     </Page>
     <Page PageTitle="Graviditet*">
-      <Item ItemId="7768" ItemType="2" VarName="ICD10.Z33" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="7768" ItemType="2" VarName="ICD10_Z33" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Graviditet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="0">
           <Answer AnswerId="41650" OrderNumber="1" OptionText="Ja" VerboseText="Er gravid." ShortCode="J" ICD10="Z33"/>
           <Answer AnswerId="41651" OrderNumber="2" OptionText="Nei" ShortCode="N"/>

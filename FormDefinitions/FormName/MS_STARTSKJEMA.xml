@@ -55,12 +55,12 @@
         </FormItem>
       </Item>
       <Item ItemId="4106" ItemType="1" VarName="MS_ATTAKK_ANTALL" LoincScale="QN" UnitStr="stk" DisplayFormat="">
-        <FormItem ItemText="Antall attakk" ItemHelp="" MinExpression="0" MaxExpression="9" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Antall attakk ved diagnose" ItemHelp="" MinExpression="0" MaxExpression="9" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4107" ItemType="1" VarName="MS_UTFALL_ANTALL" LoincScale="QN" UnitStr="stk" DisplayFormat="">
-        <FormItem ItemText="Antall nevrologiske utfall" ItemHelp="" MinExpression="0" MaxExpression="9" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Antall nevrologiske utfall ved diagnose" ItemHelp="" MinExpression="0" MaxExpression="9" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -70,8 +70,8 @@
         <FormItem ItemText="Patologisk VER" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="22015" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="22016" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="22017" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
-          <Answer AnswerId="22018" OrderNumber="4" OptionText="Ikke utført"/>
+          <Answer AnswerId="22017" OrderNumber="3" OptionText="Vet ikke*" ShortCode="V"/>
+          <Answer AnswerId="22018" OrderNumber="4" OptionText="Ikke utført*"/>
         </FormItem>
       </Item>
       <Item ItemId="4110" ItemType="2" VarName="MS_AER_PATOLOGI" LoincScale="ORD" DisplayFormat="Vertical">
@@ -93,7 +93,7 @@
     </Page>
     <Page PageTitle="MRI">
       <Item ItemId="4115" ItemType="2" VarName="MS_MRI_GJORT" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem ItemText="Er MRI utført?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Er MR utført?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="22052" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="22053" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="22056" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
@@ -102,17 +102,17 @@
     </Page>
     <Page PageTitle="MRI detaljer*">
       <Item ItemId="4112" ItemType="2" VarName="MS_MRI_ROM" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem ItemText="MRI-utbredelse i rom jfr. McDonald" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="22034" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="22035" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="22036" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        <FormItem ItemText="Oppfyller krav til DIR (disseminasjon i rom)" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="22034" OrderNumber="1" OptionText="Ja" VerboseText="Oppfyller krav til DIR (disseminasjon i rom)."/>
+          <Answer AnswerId="22035" OrderNumber="2" OptionText="Nei" VerboseText="Oppfyller ikke krav til DIR (disseminasjon i rom)." ShortCode="N"/>
+          <Answer AnswerId="22036" OrderNumber="3" OptionText="Vet ikke*" ShortCode="V"/>
         </FormItem>
       </Item>
       <Item ItemId="4113" ItemType="2" VarName="MS_MRI_TID" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem ItemText="MRI-utbredelse i tid jfr. McDonald" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="22037" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="22038" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="22039" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        <FormItem ItemText="Oppfyller krav til DIT (disseminasjon i tid)" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="22037" OrderNumber="1" OptionText="Ja" VerboseText="Oppfyller krav til DIT (disseminasjon i tid)."/>
+          <Answer AnswerId="22038" OrderNumber="2" OptionText="Nei" VerboseText="Oppfyller ikke krav til DIT (disseminasjon i tid)." ShortCode="N"/>
+          <Answer AnswerId="22039" OrderNumber="3" OptionText="Vet ikke*" ShortCode="V"/>
         </FormItem>
       </Item>
       <Item ItemId="4114" ItemType="2" VarName="MS_MRI_PPMS" LoincScale="ORD" DisplayFormat="Vertical">
@@ -141,10 +141,10 @@
     </Page>
     <Page PageTitle="Spinalvæske detaljer*">
       <Item ItemId="4117" ItemType="2" VarName="MS_CSF_OLIGO" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem ItemText="Oligoklonale bånd" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="22060" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="22061" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="22062" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        <FormItem ItemText="Funn av oligoklonale bånd" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="22060" OrderNumber="1" OptionText="Ja" VerboseText="Funn av oligoklonale bånd."/>
+          <Answer AnswerId="22061" OrderNumber="2" OptionText="Nei" VerboseText="Ikke funnet oligoklonale bånd." ShortCode="N"/>
+          <Answer AnswerId="22062" OrderNumber="3" OptionText="Vet ikke*" ShortCode="V"/>
         </FormItem>
       </Item>
       <Item ItemId="4118" ItemType="2" VarName="MS_CSF_IGG_INDEKS" LoincScale="ORD" DisplayFormat="Vertical">

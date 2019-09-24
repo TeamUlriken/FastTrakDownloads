@@ -70,7 +70,7 @@
       </Item>
     </Page>
     <Page PageTitle="Diabetes">
-      <Item ItemId="6814" ItemType="2" VarName="ICD10.E14" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="6814" ItemType="2" VarName="ICD10_E14" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Diabetes mellitus" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="37367" OrderNumber="1" OptionText="Ja" ShortCode="J" ICD10="E14"/>
           <Answer AnswerId="37368" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
@@ -109,7 +109,7 @@
     </Page>
     <Page PageTitle="Diabetes SOREG*">
       <Item ItemId="7114" ItemType="2" VarName="BASEREG_DIABETIC" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Diabetes" ItemHelp="Farmakologisk behandling av diabetes. Kostholdbehandlet diabetes oppgis ikke." Expression="ISNULL(ICD10.E14-1)*ISPOS( ISPOS(NDV_TREATMENT_TYPE-1) + ISNULL(NDV_TYPE-1) + ISNEG(NDV_TREATMENT_TYPE) )" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Diabetes" ItemHelp="Farmakologisk behandling av diabetes. Kostholdbehandlet diabetes oppgis ikke." Expression="ISNULL(ICD10_E14-1)*ISPOS( ISPOS(NDV_TREATMENT_TYPE-1) + ISNULL(NDV_TYPE-1) + ISNEG(NDV_TREATMENT_TYPE) )" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer AnswerId="39007" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="39008" OrderNumber="1" OptionText="Ja" VerboseText="Diabetes." ShortCode="J" ICD10="E14"/>
         </FormItem>
@@ -176,7 +176,7 @@
       </Item>
     </Page>
     <Page PageTitle="Hjerte-/kar">
-      <Item ItemId="6812" ItemType="2" VarName="ICD10.I10" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="6812" ItemType="2" VarName="ICD10_I10" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Hypertensjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="37361" OrderNumber="1" OptionText="Ja" VerboseText="Hypertensjon." ShortCode="J" ICD10="I1[01235]"/>
           <Answer AnswerId="37362" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
@@ -225,14 +225,14 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="6691" ItemType="2" VarName="ICD10.I20" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="6691" ItemType="2" VarName="ICD10_I20" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Angina pectoris" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="36229" OrderNumber="1" OptionText="Ja" VerboseText="Angina pectoris." ShortCode="J" ICD10="I20"/>
           <Answer AnswerId="36230" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
           <Answer AnswerId="36231" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig angina pectoris." ShortCode="U"/>
         </FormItem>
       </Item>
-      <Item ItemId="7533" ItemType="2" VarName="ICD10.I252" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="7533" ItemType="2" VarName="ICD10_I252" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Gjennomgått hjerteinfarkt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="40583" OrderNumber="1" OptionText="Ja" VerboseText="Har hatt hjerteinfarkt." ShortCode="J" ICD10="I252"/>
           <Answer AnswerId="40584" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
@@ -255,14 +255,14 @@
       </Item>
     </Page>
     <Page PageTitle="Lungeemboli/venetrombose*">
-      <Item ItemId="7492" ItemType="2" VarName="HX.ICD10.I26" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="7492" ItemType="2" VarName="HX_ICD10_I26" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Lungeemboli" ItemHelp="Har hatt noen gang" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="40171" OrderNumber="1" OptionText="Ja" VerboseText="Har hatt lungeemboli."/>
           <Answer AnswerId="40172" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
           <Answer AnswerId="40173" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig lungeemboli tidligere." ShortCode="U"/>
         </FormItem>
       </Item>
-      <Item ItemId="6828" ItemType="2" VarName="HX.ICD10.I82" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="6828" ItemType="2" VarName="HX_ICD10_I82" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Dyp venetrombose" ItemHelp="Har hatt noen gang" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="37432" OrderNumber="1" OptionText="Ja" VerboseText="Har hatt DVT." ShortCode="J"/>
           <Answer AnswerId="37433" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
@@ -345,7 +345,7 @@
       </Item>
     </Page>
     <Page PageTitle="Spiseforstyrrelser*">
-      <Item ItemId="7797" ItemType="2" VarName="HX.ICD10.F509" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="7797" ItemType="2" VarName="HX_ICD10_F509" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Spiseforstyrrelser" ItemHelp="Tidligere bulimi, anoreksi eller andre spiseforstyrrelser." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="41794" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="41795" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
@@ -361,14 +361,14 @@
       </Item>
     </Page>
     <Page PageTitle="Annen komorbiditet">
-      <Item ItemId="6695" ItemType="2" VarName="HX.ICD10.K80" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="6695" ItemType="2" VarName="HX_ICD10_K80" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Gallestein" ItemHelp="Har hatt symptomgivende gallestein noen gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="36259" OrderNumber="1" OptionText="Ja" VerboseText="Har hatt gallestein." ShortCode="J"/>
           <Answer AnswerId="36260" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
           <Answer AnswerId="36261" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig gallestein." ShortCode="U"/>
         </FormItem>
       </Item>
-      <Item ItemId="6815" ItemType="2" VarName="ICD10.R32" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="6815" ItemType="2" VarName="ICD10_R32" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Urinlekkasje" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="37370" OrderNumber="1" OptionText="Ja" VerboseText="Urinlekkasje." ICD10="R32"/>
           <Answer AnswerId="37371" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>

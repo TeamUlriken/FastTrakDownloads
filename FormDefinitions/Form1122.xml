@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
   <Form FormId="1122" FormName="FORM1122" FormTitle="Oppstartsregistering MS">
-    <Page PageTitle="Tidspunkt og type MS ved debut">
-      <Item ItemId="7003" ItemType="1" VarName="MS_DEBUTAAR" LoincScale="QN">
-        <FormItem ItemText="Debutår" ItemHelp="" MinExpression="1900" MaxExpression="2100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="7004" ItemType="1" VarName="MS_DEBUTMAANED" LoincScale="QN">
-        <FormItem ItemText="Debutmåned" ItemHelp="Angi måned med tall fra 1-12. Hvis ukjent debutmåned angi 0." MinExpression="0" MaxExpression="12" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
+    <Page PageTitle="Tidspunkt og forløpstype">
       <Item ItemId="4121" ItemType="2" VarName="MS_FORL_TYPE" LoincScale="ORD" DisplayFormat="Horizontal">
         <FormItem ItemText="Sykdom ved debut" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="22081" OrderNumber="1" OptionText="Relapsing-remitting"/>
@@ -19,8 +9,44 @@
           <Answer AnswerId="22083" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
         </FormItem>
       </Item>
+      <Item ItemId="4120" ItemType="2" VarName="MS_FORL_OVERGANG" LoincScale="ORD" DisplayFormat="Horizontal">
+        <FormItem ItemText="Overgang til sekundær progressiv MS" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="22075" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="22076" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="22077" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
     </Page>
-    <Page PageTitle="Sykdomsmanifestasjoner ved debut av MS">
+    <Page PageTitle="New*">
+      <Item ItemId="8349" ItemType="5" VarName="MS_OVERGANGSDATO" LoincScale="DATE">
+        <FormItem ItemText="Dato for overgang til SPMS" ItemHelp="Angi dato for overgang til sekundær progressiv MS. La stå åpent ved ukjent dato." MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Debut">
+      <Item ItemId="7003" ItemType="1" VarName="MS_DEBUTAAR" LoincScale="QN">
+        <FormItem ItemText="Debutår for første symptom" ItemHelp="" MinExpression="1900" MaxExpression="2100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="7004" ItemType="1" VarName="MS_DEBUTMAANED" LoincScale="QN">
+        <FormItem ItemText="Debutmåned for første symptom" ItemHelp="Angi måned med tall fra 1-12. Hvis ukjent debutmåned angi 0." MinExpression="0" MaxExpression="12" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Samtykke">
+      <Item ItemId="4127" ItemType="2" VarName="MS_SAMTYKKE" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem ItemText="Samtykke for MS-registeret" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="22101" OrderNumber="1" OptionText="Ja" VerboseText="Samtykke gitt til MS-registeret."/>
+          <Answer AnswerId="22102" OrderNumber="2" OptionText="Nei" VerboseText="Ikke samtykke til MS-registeret." ShortCode="N"/>
+          <Answer AnswerId="12680" OrderNumber="3" OptionText="Trukket tilbake" VerboseText="Samtykke til MS-registeret trukket tilbake."/>
+          <Answer AnswerId="12681" OrderNumber="4" OptionText="Ukjent*"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Nevrologiske utfall ved debut">
       <Item ItemId="7039" ItemType="2" VarName="MS_PYRAMIDALDEBUT" LoincScale="ORD">
         <FormItem ItemText="Pyramidal" ItemHelp="Pyramidale manifestasjoner ved sykdomsdebut" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12745" OrderNumber="1" OptionText="Ja" VerboseText="Pyramidale manifestasjoner ved sykdomsdebut."/>
@@ -77,10 +103,97 @@
         </FormItem>
       </Item>
     </Page>
+    <Page PageTitle="Diagnose">
+      <Item ItemId="8439" ItemType="1" VarName="MS_DIAGNOSEDATO" LoincScale="QN">
+        <FormItem ItemText="Dato for diagnose" ItemHelp="Dag i måneden. Angi 0 hvis ukjent dato." MinExpression="0" MaxExpression="31" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8440" ItemType="1" VarName="MS_DIAGNOSEMAANED" LoincScale="QN">
+        <FormItem ItemText="Måned for diagnose" ItemHelp="Måned fra 1-12. Oppgi 0 ved ukjent måned." MinExpression="0" MaxExpression="12" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8441" ItemType="1" VarName="MS_DIAGNOSEAAR" LoincScale="QN">
+        <FormItem ItemText="Årstall for diagnose" ItemHelp="Oppgi årstall med 4 siffer" MinExpression="1900" MaxExpression="2100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4105" ItemType="4" VarName="MS_DIAGNOSE_INSTITUSJON" LoincScale="NAR" DisplayFormat="" Multiline="0">
+        <FormItem ItemText="Hvor ble diagnosen stilt" ItemHelp="institusjon" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="New*">
+      <Item ItemId="4106" ItemType="1" VarName="MS_ATTAKK_ANTALL" LoincScale="QN" UnitStr="stk" DisplayFormat="">
+        <FormItem ItemText="Antall attakk ved diagnose" ItemHelp="" MinExpression="0" MaxExpression="9" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4107" ItemType="1" VarName="MS_UTFALL_ANTALL" LoincScale="QN" UnitStr="stk" DisplayFormat="">
+        <FormItem ItemText="Antall nevrologiske utfall ved diagnose" ItemHelp="" MinExpression="0" MaxExpression="9" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Autogenerated*">
+      <Item ItemId="4115" ItemType="2" VarName="MS_MRI_GJORT" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem ItemText="Er MR utført?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="22052" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="22053" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="22056" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="MR">
+      <Item ItemId="8442" ItemType="5" VarName="MS_DEBUTMRDATE" LoincScale="DATE">
+        <FormItem ItemText="Dato for MR" ItemHelp="" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4112" ItemType="2" VarName="MS_MRI_ROM" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem ItemText="Oppfyller krav til DIR (disseminasjon i rom)" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="22034" OrderNumber="1" OptionText="Ja" VerboseText="Oppfyller krav til DIR (disseminasjon i rom)."/>
+          <Answer AnswerId="22035" OrderNumber="2" OptionText="Nei" VerboseText="Oppfyller ikke krav til DIR (disseminasjon i rom)." ShortCode="N"/>
+          <Answer AnswerId="22036" OrderNumber="3" OptionText="Vet ikke*" ShortCode="V"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4113" ItemType="2" VarName="MS_MRI_TID" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem ItemText="Oppfyller krav til DIT (disseminasjon i tid)" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="22037" OrderNumber="1" OptionText="Ja" VerboseText="Oppfyller krav til DIT (disseminasjon i tid)."/>
+          <Answer AnswerId="22038" OrderNumber="2" OptionText="Nei" VerboseText="Oppfyller ikke krav til DIT (disseminasjon i tid)." ShortCode="N"/>
+          <Answer AnswerId="22039" OrderNumber="3" OptionText="Vet ikke*" ShortCode="V"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4109" ItemType="2" VarName="MS_VER_PATOLOGI" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem ItemText="Patologisk VER" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="22015" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="22016" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="22017" OrderNumber="3" OptionText="Vet ikke*" ShortCode="V"/>
+          <Answer AnswerId="22018" OrderNumber="4" OptionText="Ikke utført*"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Spinalvæske">
+      <Item ItemId="4117" ItemType="2" VarName="MS_CSF_OLIGO" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem ItemText="Funn av oligoklonale bånd" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="22060" OrderNumber="1" OptionText="Ja" VerboseText="Funn av oligoklonale bånd."/>
+          <Answer AnswerId="22061" OrderNumber="2" OptionText="Nei" VerboseText="Ikke funnet oligoklonale bånd." ShortCode="N"/>
+          <Answer AnswerId="22062" OrderNumber="3" OptionText="Vet ikke*" ShortCode="V"/>
+        </FormItem>
+      </Item>
+    </Page>
   </Form>
   <Actions>
+    <PageAction MasterId="4120">
+      <Activate EnumVal="1" PageConditionId="8219" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
     <PageAction MasterId="7041">
-      <Activate EnumVal="1" PageConditionId="8178" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8178" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="4115">
+      <Activate EnumVal="1" PageConditionId="8220" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
