@@ -2702,7 +2702,7 @@ BEGIN
   ORDER BY DOB;
 END]]>
 	</row>
-	<row ProcId="507" StudyName="BARNEDIABETES" ProcName="DIA.GetCaseListPump" ProcDesc="Behandling: Insulinpumpe" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" ChkSum="-1076308225" LastUpdate="2019-06-11T14:21:20.923Z">
+	<row ProcId="507" StudyName="BARNEDIABETES" ProcName="DIA.GetCaseListPump" ProcDesc="Behandling: Insulinpumpe" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" ChkSum="-398958066" LastUpdate="2019-09-24T10:03:26.660Z">
 		<![CDATA[CREATE PROCEDURE DIA.GetCaseListPump ( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId, v.DOB, v.FullName, v.GenderId, v.GroupName, 
@@ -2711,7 +2711,7 @@ BEGIN
   JOIN dbo.GetLastEnumValuesTable(4056, NULL) glevt ON v.PersonId = glevt.PersonId -- administrasjonsmåte
   LEFT JOIN dbo.GetLastTextValuesTable(3997, NULL) gltvt ON v.PersonId = gltvt.PersonId -- pumpetype
   WHERE v.StudyId=@StudyId AND glevt.EnumVal = 2
-  ORDER BY v.DOB;
+  ORDER BY v.FullName;
 END
 ]]>
 	</row>
