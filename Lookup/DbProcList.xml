@@ -111,7 +111,7 @@ END
 
 ]]>
 	</row>
-	<row ProcId="5" StudyName="NOSTUDY" ProcName="dbo.GetCaseListUnwrittenRx" ProcDesc="Arbeidsliste: Utskriftskø for resepter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1941273801" LastUpdate="2019-01-22T10:21:22.017Z">
+	<row ProcId="5" StudyName="GBD.OLD" ProcName="dbo.GetCaseListUnwrittenRx" ProcDesc="Arbeidsliste: Utskriftskø for resepter" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-439633308" LastUpdate="2019-09-26T16:22:25.843Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListUnwrittenRx( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,convert(varchar,dp.CreatedAt,104) + ' - ' + dt.DrugName AS InfoText
@@ -236,7 +236,7 @@ BEGIN
   ORDER BY p1.DOB;
 END]]>
 	</row>
-	<row ProcId="20" StudyName="NOSTUDY" ProcName="dbo.GetCaseList" ProcDesc="Personer: Aktive" ProcParams=":StudyId" ListId="CASE" GrantTo="public" HelpText="Duplikat, samme som ProcId = 1.  Kan fjernes, men raden på da slettes i script.&#xA;Skal ikke brukes." ChkSum="-1296439580" LastUpdate="2019-01-22T16:17:13.107Z">
+	<row ProcId="20" StudyName="DEPRECATED" ProcName="dbo.GetCaseList" ProcDesc="Duplikat" ProcParams=":StudyId" ListId="CASE" GrantTo="public" HelpText="Denne er her bare som en placeholder, siden rader i denne tabellen  ikke slettes av FastTrakUpdate." ChkSum="992022801" LastUpdate="2019-09-26T16:30:30.547Z">
 		<![CDATA[]]>
 	</row>
 	<row ProcId="21" StudyName="BASE" ProcName="dbo.GetCaseListNoRecentForm" ProcDesc="Personer: Aktive uten skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1214181741" LastUpdate="2019-01-03T08:58:37.013Z">
