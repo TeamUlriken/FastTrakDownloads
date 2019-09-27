@@ -3,27 +3,27 @@
   <Form FormId="1117" FormName="DIAPOL_KEF" FormTitle="KEF Konsultasjon">
     <Page PageTitle="Ernæringsdiagnose">
       <Item ItemId="6825" ItemType="4" VarName="VAR6825" LoincScale="NAR" Multiline="1">
-        <FormItem ItemText="Problem:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Problem" ItemHelp="Ernæringsdiagnosen fra eNCPT" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6827" ItemType="4" VarName="VAR6827" LoincScale="NAR" Multiline="1">
-        <FormItem ItemText="Etiologi:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Etiologi" ItemHelp="Som beskrevet i referanseark i eNCPT" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6863" ItemType="4" VarName="VAR6863" LoincScale="NAR" Multiline="1">
-        <FormItem ItemText="Tegn/symptom:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Tegn/symptom" ItemHelp="Som beskrevet i referanseark i eNCPT" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6865" ItemType="4" VarName="VAR6865" LoincScale="NAR" Multiline="1">
-        <FormItem ItemText="Aktuelt:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Aktuelt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6870" ItemType="4" VarName="VAR6870" LoincScale="NAR" Multiline="1">
-        <FormItem ItemText="Henvist fra og årsak:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Henvist fra og årsak" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -61,6 +61,12 @@
           <Answer AnswerId="16884" OrderNumber="1" OptionText="Ja" VerboseText="Koronarsyk." ShortCode="J"/>
           <Answer AnswerId="16885" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="16886" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6601" ItemType="2" VarName="VAR6601" LoincScale="ORD">
+        <FormItem ItemText="Gastroparese" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12709" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="12710" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
       <Item ItemId="3227" ItemType="2" VarName="NDV_SMOKING" LoincScale="ORD" DisplayFormat="">
@@ -140,9 +146,14 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="New*">
+    <Page PageTitle="Antropometriske målinger*">
       <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
         <FormItem ItemText="BMI" ItemHelp="Beregnes automatisk" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2326" ItemType="1" VarName="BMR" LoincScale="QN" UnitStr="kcal/24h">
+        <FormItem ItemText="Basal metabolic rate" ItemHelp="" Expression="" MinExpression="100" MaxExpression="6000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -202,6 +213,91 @@
           <Answer AnswerId="21307" OrderNumber="2" OptionText="Insulinpumpe."/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageTitle="Basalinsulin*">
+      <Item ItemId="3209" ItemType="2" VarName="INS_BASAL_YN" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Bruker basalinsulin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="16014" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="16015" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Hvis basalinsulin*">
+      <Item ItemId="3207" ItemType="1" VarName="INS_BASAL_MORNING" LoincScale="QN" UnitStr="E" DisplayFormat="">
+        <FormItem ItemText="Morgen" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3208" ItemType="1" VarName="INS_BASAL_NOON" LoincScale="QN" UnitStr="E" DisplayFormat="">
+        <FormItem ItemText="Middag" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3210" ItemType="1" VarName="INS_BASAL_EVENING" LoincScale="QN" UnitStr="E" DisplayFormat="">
+        <FormItem ItemText="Kveld" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3906" ItemType="1" VarName="INS_BASAL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
+        <FormItem ItemText="Sum basalinsulin" ItemHelp="" Expression="IS0(INS_BASAL_YN-1) * ( INS_BASAL_MORNING*ISPOS(INS_BASAL_MORNING+1) + INS_BASAL_NOON*ISPOS(INS_BASAL_NOON+1)+ INS_BASAL_EVENING *ISPOS(INS_BASAL_EVENING+1))" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Bolusinsulin*">
+      <Item ItemId="3206" ItemType="2" VarName="INS_MEAL_YN" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Bruker måltidsinsulin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+          <Answer AnswerId="16010" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="16011" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Hvis bolusinsulin*">
+      <Item ItemId="3228" ItemType="1" VarName="INS_MEAL_BREAKFAST" LoincScale="QN" UnitStr="E" DisplayFormat="">
+        <FormItem ItemText="Frokost" ItemHelp="" MinExpression="0" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3202" ItemType="1" VarName="INS_MEAL_BRUNCH" LoincScale="QN" UnitStr="E" DisplayFormat="">
+        <FormItem ItemText="Brunch" ItemHelp="Mellom frokost og lunsj" MinExpression="0" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3203" ItemType="1" VarName="INS_MEAL_LUNCH" LoincScale="QN" UnitStr="E" DisplayFormat="">
+        <FormItem ItemText="Lunsj" ItemHelp="" MinExpression="0" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3204" ItemType="1" VarName="INS_MEAL_DINNER" LoincScale="QN" UnitStr="E" DisplayFormat="">
+        <FormItem ItemText="Middag" ItemHelp="" MinExpression="0" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3200" ItemType="1" VarName="INS_MEAL_SUPPER" LoincScale="QN" UnitStr="E" DisplayFormat="">
+        <FormItem ItemText="Kvelds" ItemHelp="" MinExpression="0" MaxExpression="200" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3905" ItemType="1" VarName="INS_MEAL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
+        <FormItem ItemText="Sum måltidsinsulin" ItemHelp="" Expression="IS0(INS_MEAL_YN-1) * ( INS_MEAL_BREAKFAST*ISPOS(INS_MEAL_BREAKFAST+1) + INS_MEAL_BRUNCH*ISPOS(INS_MEAL_BRUNCH+1) + INS_MEAL_LUNCH*ISPOS(INS_MEAL_LUNCH+1) + INS_MEAL_DINNER*ISPOS(INS_MEAL_DINNER+1) + INS_MEAL_SUPPER*ISPOS(INS_MEAL_SUPPER+1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Hvis basal- og bolusinsulin*">
+      <Item ItemId="6608" ItemType="2" VarName="VAR6608" LoincScale="ORD">
+        <FormItem ItemText="Forhold mellom basal-/bolusdoser" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12711" OrderNumber="1" OptionText="Lik fordeling"/>
+          <Answer AnswerId="12712" OrderNumber="2" OptionText="Ulik fordeling"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6629" ItemType="4" VarName="VAR6629" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Beskriv:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="New*">
       <Item ItemId="6319" ItemType="2" VarName="VAR6319" LoincScale="ORD">
         <FormItem ItemText="Bruker CGM/kontinuerlig glukosemåling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="12682" OrderNumber="1" OptionText="Ja"/>
@@ -209,20 +305,8 @@
           <Answer AnswerId="12684" OrderNumber="3" OptionText="Vet ikke"/>
         </FormItem>
       </Item>
-      <Item ItemId="6379" ItemType="2" VarName="VAR6379" LoincScale="ORD">
-        <FormItem ItemText="Bruker boluskalkulator" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12688" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="12689" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="12690" OrderNumber="3" OptionText="Vet ikke"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="6218" ItemType="2" VarName="INS_MEAL_RELATION" LoincScale="ORD">
-        <FormItem ItemText="Når settes insulin vanligvis i forhold til måltidet?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12596" OrderNumber="1" OptionText="Før måltidet" VerboseText="Setter vanligvis insulin før måltidet."/>
-          <Answer AnswerId="12597" OrderNumber="2" OptionText="Under måltidet" VerboseText="Setter vanligvis insulin under måltidet."/>
-          <Answer AnswerId="12598" OrderNumber="3" OptionText="Etter måltidet" VerboseText="Setter vanligvis insulin etter måltidet."/>
-        </FormItem>
-      </Item>
+    </Page>
+    <Page PageTitle="Hvis insulin*">
       <Item ItemId="4738" ItemType="2" VarName="VAR4738" LoincScale="ORD">
         <FormItem ItemText="Bruker karbohydratvurdering" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="12491" OrderNumber="1" OptionText="Ja"/>
@@ -252,6 +336,22 @@
       <Item ItemId="10433" ItemType="1" VarName="InsulinCarbFactor" LoincScale="QN" UnitStr="g/E" DisplayFormat="">
         <FormItem ItemText="Aktuell karbohydrat faktor" ItemHelp="Antall gram karbohydrat som nøytraliseres av 1 enhet insulin." MinExpression="1" MaxExpression="40" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Hvis insulin*">
+      <Item ItemId="6379" ItemType="2" VarName="VAR6379" LoincScale="ORD">
+        <FormItem ItemText="Bruker boluskalkulator" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12688" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="12689" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="12690" OrderNumber="3" OptionText="Vet ikke"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6218" ItemType="2" VarName="INS_MEAL_RELATION" LoincScale="ORD">
+        <FormItem ItemText="Når settes insulin vanligvis i forhold til måltidet?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12596" OrderNumber="1" OptionText="Før måltidet" VerboseText="Setter vanligvis insulin før måltidet."/>
+          <Answer AnswerId="12597" OrderNumber="2" OptionText="Under måltidet" VerboseText="Setter vanligvis insulin under måltidet."/>
+          <Answer AnswerId="12598" OrderNumber="3" OptionText="Etter måltidet" VerboseText="Setter vanligvis insulin etter måltidet."/>
         </FormItem>
       </Item>
     </Page>
@@ -517,12 +617,12 @@
         </FormItem>
       </Item>
       <Item ItemId="6628" ItemType="5" VarName="VAR6628" LoincScale="DATE">
-        <FormItem ItemText="Effekt av fysisk aktivitet/trening og insulin" ItemHelp="Dato opplæringen er gitt. TD = i dag." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Effekt av fysisk aktivitet/trening og insulin" ItemHelp="Dato opplæringen er gitt. TD = i dag." Expression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="8350" ItemType="4" VarName="VAR8350" LoincScale="NAR" Multiline="1">
-        <FormItem ItemText="Kommentar" ItemHelp="Effekt av fysisk aktivitet/trening og insulin" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Kommentar" ItemHelp="Effekt av fysisk aktivitet/trening og insulin" Expression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -583,18 +683,29 @@
         </FormItem>
       </Item>
       <Item ItemId="6995" ItemType="4" VarName="VAR6995" LoincScale="NAR" Multiline="1">
-        <FormItem ItemText="Tiltak" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Tiltak" ItemHelp="Kostplan; mat, måltider, m.m." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageTitle="New*">
       <Item ItemId="6996" ItemType="2" VarName="VAR6996" LoincScale="ORD">
         <FormItem ItemText="Oppfølging hos klinisk ernæringsfysiolog" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="12678" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="12679" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageTitle="Hvis ja oppfølging:">
+      <Item ItemId="6603" ItemType="5" VarName="VAR6603" LoincScale="DATE">
+        <FormItem ItemText="Dato" ItemHelp="Eventuell dato for neste konsultasjon." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Oppsummering">
       <Item ItemId="7001" ItemType="4" VarName="VAR7001" LoincScale="NAR" Multiline="1">
-        <FormItem ItemText="Oppsummering" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Oppsummering/notater" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -615,30 +726,53 @@
       <Activate EnumVal="4" PageConditionId="8144" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
       <Activate EnumVal="3" PageConditionId="8145" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
       <Activate EnumVal="4" PageConditionId="8146" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="3" PageConditionId="8169" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="4" PageConditionId="8170" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="3" PageConditionId="8185" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="4" PageConditionId="8186" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="8225" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="8226" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3209">
+      <Activate EnumVal="1" PageConditionId="8224" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3322">
+      <Activate EnumVal="3" PageConditionId="8227" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="8228" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3206">
+      <Activate EnumVal="1" PageConditionId="8229" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8222" PageNumber="15" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3209">
+      <Activate EnumVal="1" PageConditionId="8223" PageNumber="15" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3322">
+      <Activate EnumVal="3" PageConditionId="8185" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="8186" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="3196">
-      <Activate EnumVal="1" PageConditionId="8196" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="3" PageConditionId="8201" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="4" PageConditionId="8202" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8196" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="8201" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="8202" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="4738">
-      <Activate EnumVal="1" PageConditionId="8189" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8189" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3322">
+      <Activate EnumVal="3" PageConditionId="8169" PageNumber="19" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="8170" PageNumber="19" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10379">
-      <Activate EnumVal="1" PageConditionId="8148" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8148" PageNumber="23" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="3340">
-      <Activate EnumVal="1" PageConditionId="8147" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8147" PageNumber="26" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6425">
-      <Activate EnumVal="1" PageConditionId="8168" PageNumber="23" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8168" PageNumber="29" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6648">
-      <Activate EnumVal="1" PageConditionId="8167" PageNumber="26" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8167" PageNumber="32" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="6996">
+      <Activate EnumVal="1" PageConditionId="8221" PageNumber="35" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>

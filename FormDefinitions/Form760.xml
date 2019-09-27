@@ -26,13 +26,13 @@
           <Answer AnswerId="51088" OrderNumber="1" OptionText="Ja" ShortCode="1p"/>
         </FormItem>
       </Item>
-      <Item ItemId="9254" ItemType="1" VarName="STRATIFY_DELSUM1" LoincScale="QN" UnitStr="score" DisplayFormat="">
+      <Item ItemId="9254" ItemType="1" VarName="STRATIFY_DELSUM1" LoincScale="QN" UnitStr="skår" DisplayFormat="">
         <FormItem ItemText="Skår for spm 1-4" ItemHelp="" Expression="VAR9248 + VAR9249 + VAR9250 + VAR9251" MinExpression="0" MaxExpression="4" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Forflytning og rørlighet/gangfunksjon" PageIntroduction="Det scores 1 hvis summen av disse to er 3 eller 4, ellers scores det som 0.">
+    <Page PageTitle="Forflytning og rørlighet/gangfunksjon" PageIntroduction="Det skåres 1 hvis summen av disse to er 3 eller 4, ellers skåres det som 0.">
       <Item ItemId="9252" ItemType="2" VarName="VAR9252" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Seng til stol" ItemText="Beskriv pasientens prestasjonsnivå ved forflytning fra seng til stol:" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="51092" OrderNumber="0" OptionText="Kan ikke flytte seg" ShortCode="0p"/>
@@ -55,7 +55,7 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="9256" ItemType="1" VarName="STRATIFY_DELSUM2" LoincScale="QN" UnitStr="score" DisplayFormat="">
+      <Item ItemId="9256" ItemType="1" VarName="STRATIFY_DELSUM2" LoincScale="QN" UnitStr="skår" DisplayFormat="">
         <FormItem ItemText="Skår for spm 5-6, rørlighet gangfunksjon" ItemHelp="" Expression="ISNULL( STRATIFY_HELPER5 - 3 ) + ISNULL( STRATIFY_HELPER5 - 4 )" MinExpression="0" MaxExpression="1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
@@ -63,7 +63,7 @@
     </Page>
     <Page PageTitle="Oppsummering">
       <Item ItemId="9257" ItemType="2" VarName="STRATIFY_SUM" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Stratify skåre og risikoklasse" ItemHelp="" Expression="STRATIFY_DELSUM1 + STRATIFY_DELSUM2" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Stratifyskår og risikoklasse" ItemHelp="" Expression="STRATIFY_DELSUM1 + STRATIFY_DELSUM2" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="51107" OrderNumber="0" OptionText="Lav risiko"/>
           <Answer AnswerId="51108" OrderNumber="1" OptionText="Moderat risiko"/>
           <Answer AnswerId="51109" OrderNumber="2" OptionText="Høy risiko"/>
