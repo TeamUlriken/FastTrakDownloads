@@ -1598,11 +1598,11 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="193" StudyName="GBD" ProcName="GBD.GetCaseListFalltiltak" ProcDesc="Prosess: Høy fallrisiko og tiltaksplan for fallforebygging" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19000" HelpText="Siste tiltaksplan for fallforebygging for pasienter med høy risiko for fall ifølge utfylt skjema «Fallrisiko - Stratify» (skår 2 eller høyere)." ChkSum="-37666183" LastUpdate="2019-09-12T09:10:42.560Z">
+	<row ProcId="193" StudyName="GBD" ProcName="GBD.GetCaseListFalltiltak" ProcDesc="Prosess: Høy fallrisiko og tiltaksplan for fallforebygging" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19000" HelpText="Siste tiltaksplan for fallforebygging for pasienter med høy risiko for fall ifølge utfylt skjema «Fallrisiko - Stratify» (skår 2 eller høyere)." ChkSum="-1069299812" LastUpdate="2019-10-03T13:42:34.620Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFalltiltak ( @StudyId INT ) AS
 BEGIN
 SELECT v.*, Tiltaksplan.CreatedAt AS TiltaksplanOppretta,
-    CONCAT('Stratify-skår ', StratifyScore.EnumVal, '. Tiltaksplan ', ISNULL('utfylt ' + CONVERT(VARCHAR, Tiltaksplan.EventTime, 104) + '. ' +
+    CONCAT('Stratify-skår ', StratifyScore.EnumVal, '. Tiltaksplan ', ISNULL( CONVERT(VARCHAR, Tiltaksplan.EventTime, 104) + '. ' +
     ISNULL('Evalueres ' + CONVERT(VARCHAR, Evalueringsdato.DTVal, 104) + '.', 'Evalueringsdato ikke utfylt.'), 'aldri utfylt.')) AS InfoText
   FROM dbo.ViewActiveCaseListStub v
   JOIN dbo.GetLastEnumValuesTable(9257, NULL) StratifyScore ON v.PersonId = StratifyScore.PersonId
@@ -2529,7 +2529,7 @@ BEGIN
   EXEC dbo.GetFormClassInPeriod @StudyId, 'DIAPOL_TLF', @StartAt, @StopAt;
 END]]>
 	</row>
-	<row ProcId="323" StudyName="NDV" ProcName="NDV.GetCaseListConsentVisits" ProcDesc="Særtakst: Konsultasjoner m/samtykke" ProcParams=":StudyId, :StartDate, :StopDate" ListId="CASE" GrantTo="public" MinVersion="18000" HelpText="Pasienter der det kan registreres særtakst for innrapportering til Norsk Diabetesregister for Voksne." ChkSum="-693359195" LastUpdate="2019-02-07T07:20:02.320Z">
+	<row ProcId="323" StudyName="NDV" ProcName="NDV.GetCaseListConsentVisits" ProcDesc="Særtakst: Konsultasjoner m/samtykke" ProcParams=":StudyId, :StartDate, :StopDate" ListId="CASE" GrantTo="public" MinVersion="18000" MaxVersion="20000" HelpText="Pasienter der det kan registreres særtakst for innrapportering til Norsk Diabetesregister for Voksne." ChkSum="689828570" LastUpdate="2019-10-09T11:34:36.803Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetCaseListConsentVisits( @StudyId INT, @StartDate DateTime, @StopDate DateTime ) AS
 BEGIN
   SELECT a.PersonId, p.DOB, p.ReverseName AS FullName, a.GroupName, 
@@ -2586,6 +2586,21 @@ BEGIN
   WHERE ( v.StudyId = @StudyId ) AND ( ISNULL( c.EnumVal, -1 ) IN ( -1, 4 ) )
   ORDER BY FullName;
 END;]]>
+	</row>
+	<row ProcId="327" StudyName="NDV" ProcName="NDV.GetCaseListConsentVisits" ProcDesc="Særtakst: Konsultasjoner m/samtykke 2019" ProcParams=":StudyId, '2019-01-01', '2020-01-01'" ListId="CASE" GrantTo="public" MinVersion="18000" MaxVersion="20000" ChkSum="-1833604574" LastUpdate="2019-10-09T11:34:25.350Z">
+		<![CDATA[]]>
+	</row>
+	<row ProcId="328" StudyName="NDV" ProcName="NDV.GetCaseListConsentVisits" ProcDesc="Særtakst: Konsultasjoner m/samtykke 2019 Q1" ProcParams=":StudyId, '2019-01-01', '2019-04-01'" ListId="CASE" GrantTo="public" MinVersion="18000" MaxVersion="20000" ChkSum="-479606829" LastUpdate="2019-10-09T11:34:27.570Z">
+		<![CDATA[]]>
+	</row>
+	<row ProcId="329" StudyName="NDV" ProcName="NDV.GetCastListConsentVisits" ProcDesc="Særtakst: Konsultasjoner m/samtykke 2019 Q2" ProcParams=":StudyId, '2019-04-01', '2019-07-01'" ListId="CASE" GrantTo="public" MinVersion="18000" MaxVersion="20000" ChkSum="-478407241" LastUpdate="2019-10-09T11:34:29.850Z">
+		<![CDATA[]]>
+	</row>
+	<row ProcId="330" StudyName="NDV" ProcName="NDV.GetCaseListConsentVisits" ProcDesc="Særtakst: Konsultasjoner m/samtykke 2019 Q3" ProcParams=":StudyId, '2019-07-01', '2019-10-01'" ListId="CASE" GrantTo="public" MinVersion="18000" MaxVersion="20000" ChkSum="1666507006" LastUpdate="2019-10-09T11:34:33.693Z">
+		<![CDATA[]]>
+	</row>
+	<row ProcId="331" StudyName="NDV" ProcName="NDV.GetCaseListConsentVisits" ProcDesc="Særtakst: Konsultasjoner m/samtykke 2019 Q4" ProcParams=":StudyId, '2019-10-01', '2020-01-01'" ListId="CASE" GrantTo="public" MinVersion="18000" MaxVersion="20000" ChkSum="-483836869" LastUpdate="2019-10-09T11:34:40.023Z">
+		<![CDATA[]]>
 	</row>
 	<row ProcId="400" StudyName="BAR" ProcName="BAR.GetHospitalizedWithoutAdmissionForm" ProcDesc="Todo: Hospitalized without form" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1612684606" LastUpdate="2019-01-13T18:20:58.827Z">
 		<![CDATA[CREATE PROCEDURE BAR.GetHospitalizedWithoutAdmissionForm( @StudyId INT ) AS
@@ -3264,7 +3279,7 @@ BEGIN
   WHERE sf.StudyId = @StudyId;
 END;]]>
 	</row>
-	<row ProcId="1001" StudyName="GBD" ProcName="GBD.RapportAvvik" ProcDesc="Avviksrapport" ProcParams=":StudyId, :StartAt, :StopAt, :OrderBy" ListId="FR" GrantTo="public" ChkSum="-1830751349" LastUpdate="2018-08-09T12:19:08.317Z">
+	<row ProcId="1001" StudyName="GBD" ProcName="GBD.RapportAvvik" ProcDesc="Avviksrapport" ProcParams=":StudyId, :StartAt, :StopAt, :OrderBy" ListId="FR" GrantTo="public" MinVersion="18000" ChkSum="1087995809" LastUpdate="2019-10-09T10:08:39.027Z">
 		<![CDATA[CREATE PROCEDURE GBD.RapportAvvik ( @StudyId INT, @StartAt DateTime = NULL, @StopAt DateTime = NULL, @OrderBy INT = 0 ) AS
 BEGIN
   SET LANGUAGE Norwegian; 
@@ -3315,27 +3330,27 @@ BEGIN
   JOIN dbo.StudyCenter c ON ( c.CenterId = sg.CenterId ) 
   JOIN dbo.UserList ucr ON ucr.UserId=cf.CreatedBy
   LEFT OUTER JOIN dbo.Person pcr ON pcr.PersonId=ucr.PersonId 
-    LEFT OUTER JOIN dbo.ClinObservation v6402 ON v6402.EventId=ce.EventId and v6402.VarName='EVENT_SEVERITY'
+    LEFT OUTER JOIN dbo.ClinDataPoint v6402 ON v6402.EventId=ce.EventId and v6402.ItemId = 6402
       LEFT OUTER JOIN dbo.MetaItemAnswer a6402 ON a6402.ItemId=6402 and v6402.EnumVal=a6402.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v6410 ON v6410.EventId=ce.EventId and v6410.VarName='AvvikForslag'
-    LEFT OUTER JOIN dbo.ClinObservation v8507 ON v8507.EventId=ce.EventId and v8507.VarName='AvvikAlvorlighet'
+    LEFT OUTER JOIN dbo.ClinDataPoint v6410 ON v6410.EventId=ce.EventId and v6410.ItemId = 6410
+    LEFT OUTER JOIN dbo.ClinDataPoint v8507 ON v8507.EventId=ce.EventId and v8507.ItemId = 8507
       LEFT OUTER JOIN dbo.MetaItemAnswer a8507 ON a8507.ItemId=8507 and v8507.EnumVal=a8507.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v8508 ON v8508.EventId=ce.EventId and v8508.VarName='AvvikOpplaering'
+    LEFT OUTER JOIN dbo.ClinDataPoint v8508 ON v8508.EventId=ce.EventId and v8508.ItemId = 8508
       LEFT OUTER JOIN dbo.MetaItemAnswer a8508 ON a8508.ItemId=8508 and v8508.EnumVal=a8508.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v8509 ON v8509.EventId=ce.EventId and v8509.VarName='AvvikRutiner'
+    LEFT OUTER JOIN dbo.ClinDataPoint v8509 ON v8509.EventId=ce.EventId and v8509.ItemId = 8509
       LEFT OUTER JOIN dbo.MetaItemAnswer a8509 ON a8509.ItemId=8509 and v8509.EnumVal=a8509.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v8510 ON v8510.EventId=ce.EventId and v8510.VarName='AvvikOppfoelging'
+    LEFT OUTER JOIN dbo.ClinDataPoint v8510 ON v8510.EventId=ce.EventId and v8510.ItemId = 8510
       LEFT OUTER JOIN dbo.MetaItemAnswer a8510 ON a8510.ItemId=8510 and v8510.EnumVal=a8510.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v8511 ON v8511.EventId=ce.EventId and v8511.VarName='AvvikSikring'
+    LEFT OUTER JOIN dbo.ClinDataPoint v8511 ON v8511.EventId=ce.EventId and v8511.ItemId = 8511
       LEFT OUTER JOIN dbo.MetaItemAnswer a8511 ON a8511.ItemId=8511 and v8511.EnumVal=a8511.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v8512 ON v8512.EventId=ce.EventId and v8512.VarName='AvvikStatus'
+    LEFT OUTER JOIN dbo.ClinDataPoint v8512 ON v8512.EventId=ce.EventId and v8512.ItemId = 8512
       LEFT OUTER JOIN dbo.MetaItemAnswer a8512 ON a8512.ItemId=8512 and v8512.EnumVal=a8512.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v8513 ON v8513.EventId=ce.EventId and v8513.VarName='AvvikLukketAv'
-    LEFT OUTER JOIN dbo.ClinObservation v8514 ON v8514.EventId=ce.EventId and v8514.VarName='AvvikType'
+    LEFT OUTER JOIN dbo.ClinDataPoint v8513 ON v8513.EventId=ce.EventId and v8513.ItemId = 8513
+    LEFT OUTER JOIN dbo.ClinDataPoint v8514 ON v8514.EventId=ce.EventId and v8514.ItemId = 8514
       LEFT OUTER JOIN dbo.MetaItemAnswer a8514 ON a8514.ItemId=8514 and v8514.EnumVal=a8514.OrderNumber
-    LEFT OUTER JOIN dbo.ClinObservation v8518 ON v8518.EventId=ce.EventId and v8518.VarName='AvvikStikkord'
-    LEFT OUTER JOIN dbo.ClinObservation v8519 ON v8519.EventId=ce.EventId and v8519.VarName='AvvikRespons'
-    LEFT OUTER JOIN dbo.ClinObservation v9105 ON v9105.EventId=ce.EventId and v9105.VarName='AvvikHovedarsak'
+    LEFT OUTER JOIN dbo.ClinDataPoint v8518 ON v8518.EventId=ce.EventId and v8518.ItemId = 8518
+    LEFT OUTER JOIN dbo.ClinDataPoint v8519 ON v8519.EventId=ce.EventId and v8519.ItemId = 8519
+    LEFT OUTER JOIN dbo.ClinDataPoint v9105 ON v9105.EventId=ce.EventId and v9105.ItemId = 9105
       LEFT OUTER JOIN dbo.MetaItemAnswer a9105 ON a9105.ItemId=9105 and v9105.EnumVal=a9105.OrderNumber
   WHERE ( cf.DeletedAt IS NULL )
     AND ( mf.FormName='GbdAvvik' )
@@ -3354,7 +3369,8 @@ BEGIN
     SELECT * FROM #temp ORDER BY T8512, EventTime;
   IF @OrderBy=4
     SELECT * FROM #temp ORDER BY E8507, EventTime;
-END]]>
+END
+]]>
 	</row>
 	<row ProcId="1002" StudyName="GBD" ProcName="GBD.RapportBeslutninger" ProcDesc="Beslutninger" ProcParams=":StudyId" ListId="FR" GrantTo="public" ChkSum="-436620943" LastUpdate="2019-01-03T08:59:51.247Z">
 		<![CDATA[CREATE PROCEDURE GBD.RapportBeslutninger( @StudyId INT ) AS
@@ -4809,6 +4825,50 @@ BEGIN
   ORDER BY v.GroupName, RoomNumber.TextVal, v.FullName;
 END
 ]]>
+	</row>
+	<row ProcId="1049" StudyName="*" ProcName="Report.RapportBrukereLogging" ProcDesc="Rapport som viser brukere logging" ProcParams=":StudyId" ListId="FR" GrantTo="Administrator" MinVersion="19017" ChkSum="-2018055953" LastUpdate="2019-10-04T13:59:12.113Z">
+		<![CDATA[CREATE PROCEDURE Report.RapportBrukereLogging (@StudyId INT, @StartAt DATETIME, @StopAt DATETIME, @UserName SYSNAME, @StudyCenterId INT, @PersonId INT) AS
+BEGIN
+	SELECT *
+	FROM (SELECT ca.RowId,
+			ca.PersonId,
+			ca.CreatedAt,
+			aat.AccessTypeText,
+			CASE
+				WHEN ca.OpenInSeconds > 300 THEN CONCAT(ca.OpenInSeconds / 60, ' m')
+				WHEN ca.OpenInSeconds > 18000 THEN CONCAT(ca.OpenInSeconds / 3600, ' t')
+				WHEN ca.OpenInSeconds IS NULL THEN '(ukjent)'
+				ELSE CONCAT(ca.OpenInSeconds, ' s')
+			END AS OpenDuration,
+			CASE
+				WHEN CONVERT(DATE, ca.CreatedAt) = CONVERT(DATE, GETDATE()) THEN 'i dag'
+                        ELSE CONVERT(VARCHAR, CONVERT(DATE, ca.CreatedAt, 4))
+                END AS CreatedAtDay,
+                ROW_NUMBER() OVER (PARTITION BY ca.RowId ORDER BY csl.ChangedAt DESC) AS rnk,
+                csl.NewGroupId,
+                p.FullName,
+                sg.GroupName,
+                sc1.CenterId,
+                sc1.CenterName,
+                ul.UserName,
+                SUBSTRING( ul.UserName, CHARINDEX('\', ul.UserName, 0) + 1, LEN(ul.UserName) - CHARINDEX('\', ul.UserName,0)) AS UserNameShort
+        FROM AuditLog.CaseAccess ca
+        JOIN AuditLog.AccessType aat ON aat.AccessTypeId = ca.AccessTypeId
+        JOIN dbo.StudCase sc ON sc.PersonId = ca.PersonId AND sc.StudyId = @StudyId
+        JOIN dbo.Person p ON p.PersonId = sc.PersonId
+        JOIN dbo.StudCaseLog csl ON csl.StudCaseId = sc.StudCaseId
+        JOIN dbo.StudyGroup sg ON sg.GroupId = csl.NewGroupId AND sg.StudyId = sc.StudyId
+        JOIN dbo.StudyCenter sc1 ON sc1.CenterId = sg.CenterId
+        JOIN dbo.UserList ul ON ul.UserId = ca.CreatedBy
+        JOIN dbo.StudyStatus ss        ON ss.StudyId = sc.StudyId
+        WHERE ca.CreatedAt >= csl.ChangedAt) a
+    WHERE a.rnk = 1
+    AND (a.CreatedAt >= @StartAt AND a.CreatedAt < @StopAt)
+    AND (a.UserName LIKE CONCAT('%', @UserName, '%') OR ISNULL(@UserName, '') = '')
+    AND (a.PersonId = @PersonId OR ISNULL(@PersonId, '') = '')
+    AND (a.CenterId = @StudyCenterId OR ISNULL(@StudyCenterId, '') = '')
+    ORDER BY a.RowId DESC
+END;]]>
 	</row>
 	<row ProcId="1101" StudyName="LANGTID" ProcName="dbo.GetCaseListFocused" ProcDesc="101. Overvåket status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1416404730" LastUpdate="2019-01-12T07:04:44.503Z">
 		<![CDATA[]]>
