@@ -4826,32 +4826,31 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="1049" StudyName="*" ProcName="Report.RapportBrukereLogging" ProcDesc="Rapport som viser brukere logging" ProcParams=":StudyId" ListId="FR" GrantTo="Administrator" MinVersion="19017" ChkSum="-2018055953" LastUpdate="2019-10-04T13:59:12.113Z">
-		<![CDATA[CREATE PROCEDURE Report.RapportBrukereLogging (@StudyId INT, @StartAt DATETIME, @StopAt DATETIME, @UserName SYSNAME, @StudyCenterId INT, @PersonId INT) AS
+	<row ProcId="1049" StudyName="*" ProcName="Report.CaseAccessLog" ProcDesc="Innsynslogg, filtrerbar på bruker, arbeidssted og pasient." ProcParams=":StudyId, :StartAt, :StopAt, :UserName, :CenterId, :PersonId" ListId="FR" GrantTo="Administrator" MinVersion="18000" ChkSum="516585249" LastUpdate="2019-10-10T12:19:15.953Z">
+		<![CDATA[CREATE PROCEDURE Report.CaseAccessLog( @StudyId INT, @StartAt DATETIME, @StopAt DATETIME, @UserName SYSNAME, @CenterId INT, @PersonId INT ) AS
 BEGIN
-	SELECT *
-	FROM (SELECT ca.RowId,
-			ca.PersonId,
-			ca.CreatedAt,
-			aat.AccessTypeText,
-			CASE
-				WHEN ca.OpenInSeconds > 300 THEN CONCAT(ca.OpenInSeconds / 60, ' m')
-				WHEN ca.OpenInSeconds > 18000 THEN CONCAT(ca.OpenInSeconds / 3600, ' t')
-				WHEN ca.OpenInSeconds IS NULL THEN '(ukjent)'
-				ELSE CONCAT(ca.OpenInSeconds, ' s')
-			END AS OpenDuration,
-			CASE
-				WHEN CONVERT(DATE, ca.CreatedAt) = CONVERT(DATE, GETDATE()) THEN 'i dag'
-                        ELSE CONVERT(VARCHAR, CONVERT(DATE, ca.CreatedAt, 4))
-                END AS CreatedAtDay,
-                ROW_NUMBER() OVER (PARTITION BY ca.RowId ORDER BY csl.ChangedAt DESC) AS rnk,
-                csl.NewGroupId,
-                p.FullName,
-                sg.GroupName,
-                sc1.CenterId,
-                sc1.CenterName,
-                ul.UserName,
-                SUBSTRING( ul.UserName, CHARINDEX('\', ul.UserName, 0) + 1, LEN(ul.UserName) - CHARINDEX('\', ul.UserName,0)) AS UserNameShort
+    SELECT a.*,             
+
+      SUBSTRING( a.UserName, CHARINDEX('\', a.UserName, 0) + 1, LEN(a.UserName) - CHARINDEX('\', a.UserName,0)) AS UserNameShort
+
+    FROM (SELECT ca.RowId,
+                ca.PersonId,
+                ca.CreatedAt,
+                aat.AccessTypeText,
+                CASE
+                        WHEN ca.OpenInSeconds > 300 THEN CONCAT(ca.OpenInSeconds / 60, ' m')
+                        WHEN ca.OpenInSeconds > 18000 THEN CONCAT(ca.OpenInSeconds / 3600, ' t')
+                        WHEN ca.OpenInSeconds IS NULL THEN '(ukjent)'
+                        ELSE CONCAT(ca.OpenInSeconds, ' s')
+                END AS OpenDuration,
+                CONVERT( DATE, ca.CreatedAt ) AS CreatedAtDay,
+            ROW_NUMBER() OVER (PARTITION BY ca.RowId ORDER BY csl.ChangedAt DESC) AS rnk,
+            csl.NewGroupId,
+            p.FullName,
+            sg.GroupName,
+            sc1.CenterId,
+            sc1.CenterName,
+            ul.UserName
         FROM AuditLog.CaseAccess ca
         JOIN AuditLog.AccessType aat ON aat.AccessTypeId = ca.AccessTypeId
         JOIN dbo.StudCase sc ON sc.PersonId = ca.PersonId AND sc.StudyId = @StudyId
@@ -4860,15 +4859,202 @@ BEGIN
         JOIN dbo.StudyGroup sg ON sg.GroupId = csl.NewGroupId AND sg.StudyId = sc.StudyId
         JOIN dbo.StudyCenter sc1 ON sc1.CenterId = sg.CenterId
         JOIN dbo.UserList ul ON ul.UserId = ca.CreatedBy
-        JOIN dbo.StudyStatus ss        ON ss.StudyId = sc.StudyId
+        JOIN dbo.StudyStatus ss ON ss.StudyId = sc.StudyId
         WHERE ca.CreatedAt >= csl.ChangedAt) a
     WHERE a.rnk = 1
     AND (a.CreatedAt >= @StartAt AND a.CreatedAt < @StopAt)
     AND (a.UserName LIKE CONCAT('%', @UserName, '%') OR ISNULL(@UserName, '') = '')
-    AND (a.PersonId = @PersonId OR ISNULL(@PersonId, '') = '')
-    AND (a.CenterId = @StudyCenterId OR ISNULL(@StudyCenterId, '') = '')
-    ORDER BY a.RowId DESC
-END;]]>
+    AND (a.PersonId = ISNULL(@PersonId,a.PersonId))
+    AND (a.CenterId = ISNULL(@CenterId,a.CenterId))
+    ORDER BY a.RowId DESC;
+END
+]]>
+	</row>
+	<row ProcId="1050" StudyName="NDV" ProcName="NDV.ReportAverageNumberOfConsultationsHbA1c" ProcDesc="Rapport som viser antallet konsultasjoner skilt på HbA1c-nivå." ListId="FR" GrantTo="public" MinVersion="18000" ChkSum="-1743356277" LastUpdate="2019-10-11T12:11:31.783Z">
+		<![CDATA[CREATE PROCEDURE NDV.ReportAverageNumberOfConsultationsHbA1c AS
+BEGIN
+  DECLARE @Population TABLE (PersonId INT, CenterId INT, HbA1c2016 FLOAT)--, CenterName VARCHAR(40))
+  DECLARE @Consultations TABLE (PersonId INT, In2017 INT, In2018 INT)
+  DECLARE @LabData2016 TABLE (PersonId INT, LabDate DATETIME, LabName VARCHAR(40), NumResult FLOAT)
+  DECLARE @GroupBelow TABLE (CenterId INT, CenterName VARCHAR(40), nInPopulation INT, nWithConsultation2017 INT, AvgConsultations2017 FLOAT, nWithConsultation2018 INT, AvgConsultations2018 FLOAT, GroupHbA1c VARCHAR(5))
+  DECLARE @GroupBelowTemp TABLE (CenterId INT, CenterName VARCHAR(40), nInPopulation INT, nWithConsultation2017 INT, AvgConsultations2017 FLOAT, nWithConsultation2018 INT, AvgConsultations2018 FLOAT, GroupHbA1c VARCHAR(5))
+  DECLARE @GroupAboveTemp TABLE (CenterId INT, CenterName VARCHAR(40), nInPopulation INT, nWithConsultation2017 INT, AvgConsultations2017 FLOAT, nWithConsultation2018 INT, AvgConsultations2018 FLOAT, GroupHbA1c VARCHAR(5))
+  DECLARE @GroupAbove TABLE (CenterId INT, CenterName VARCHAR(40), nInPopulation INT, nWithConsultation2017 INT, AvgConsultations2017 FLOAT, nWithConsultation2018 INT, AvgConsultations2018 FLOAT, GroupHbA1c VARCHAR(5))
+  DECLARE @AllTemp TABLE (CenterId INT, CenterName VARCHAR(40), nInPopulation INT, nWithConsultation2017 INT, AvgConsultations2017 FLOAT, nWithConsultation2018 INT, AvgConsultations2018 FLOAT, GroupHbA1c VARCHAR(5))
+  DECLARE @All TABLE (CenterId INT, CenterName VARCHAR(40), nInPopulation INT, nWithConsultation2017 INT, AvgConsultations2017 FLOAT, nWithConsultation2018 INT, AvgConsultations2018 FLOAT, GroupHbA1c VARCHAR(5))
+
+
+  -- status HbA1c 31.12.2016
+  INSERT @LabData2016
+  SELECT PersonId, LabDate, LabName, NumResult
+  FROM (SELECT ld.PersonId, ld.LabDate, lc.LabName, ld.NumResult, RANK()
+    OVER (
+      PARTITION BY ld.PersonId
+        ORDER BY ld.LabDate DESC, ResultId DESC ) AS OrderNo
+      FROM dbo.LabData ld
+      JOIN dbo.LabCode lc 
+        ON lc.LabCodeId=ld.LabCodeId
+      WHERE lc.LabClassId = 1058
+        AND ld.LabDate <= '2016-12-31'
+      AND ISNULL(ld.NumResult, -1) >= 0) a
+    WHERE OrderNo = 1;
+
+
+  -- populasjon
+  INSERT @Population
+  SELECT DISTINCT ce.PersonId, sg.CenterId, LabData2016.NumResult HbA1c2016 FROM dbo.ClinDataPoint cdp
+  JOIN dbo.ClinEvent ce ON ce.EventId = cdp.EventId
+  JOIN Study s ON s.StudyId = ce.StudyId AND s.StudName IN ('NDV', 'ENDO', 'Barnediabetes')
+  JOIN dbo.StudyGroup sg ON sg.StudyId = ce.StudyId AND sg.GroupId=ce.GroupId
+  JOIN dbo.MyStudyCenters msc ON sg.CenterId = msc.CenterId
+  JOIN dbo.StudyCenter sc ON sc.CenterId = sg.CenterId
+  JOIN dbo.GetLastEnumValuesTable(3196, NULL) LastDiabetesType ON ce.PersonId = LastDiabetesType.PersonId
+  JOIN @LabData2016 LabData2016 ON LabData2016.PersonId = ce.PersonId
+  WHERE cdp.ItemId = 3196 
+    AND ce.EventTime > DATEADD( MONTH, -15, '2017-01-01' ) AND ce.EventTime < '2017-01-01'
+    AND LastDiabetesType.EnumVal = 1 -- sjekk at sist registrerte diagnose er diabetes type 1
+    AND sc.CenterActive = 1 -- ikkje ta med DIPS AS i uttaket
+
+
+  -- konsultasjon
+  INSERT @Consultations
+  SELECT ISNULL(In2017.PersonId, In2018.PersonId), ISNULL(In2017.n, 0), ISNULL(In2018.n, 0)  FROM 
+  (
+    SELECT PersonId, COUNT(*) AS n FROM
+      ( 
+        SELECT ce.PersonId, CONVERT(DATE, ce.EventTime) EventDate FROM ClinEvent ce 
+        JOIN ClinDataPoint cdp ON cdp.EventId = ce.EventId AND cdp.ItemId = 3196
+        WHERE ce.EventTime BETWEEN '2017-01-01' AND '2017-12-31'
+      ) sq
+    GROUP BY PersonId
+  ) In2017
+
+  FULL JOIN
+
+  (
+    SELECT PersonId, COUNT(*) AS n FROM
+    (
+      SELECT ce.PersonId, CONVERT(DATE, ce.EventTime) EventDate FROM ClinEvent ce 
+      JOIN ClinDataPoint cdp ON cdp.EventId = ce.EventId AND cdp.ItemId = 3196
+      WHERE ce.EventTime BETWEEN '2018-01-01' AND '2018-12-31'
+    ) sq
+    GROUP BY PersonId
+  ) In2018
+  ON In2018.PersonId = In2017.PersonId
+
+
+  -- gruppe under
+  INSERT @GroupBelowTemp
+  SELECT msc.CenterId, msc.CenterName, n, 
+    sq.n2017, ISNULL(sq.AvgConsultations2017, 0),
+    sq.n2018, ISNULL(sq.AvgConsultations2018, 0), 'below'
+  FROM 
+    (
+      SELECT Pop.CenterId, COUNT(*) AS n,
+        SUM((CASE WHEN Consultations.In2017 > 0 THEN 1 ELSE 0 END)) AS n2017, AVG(CONVERT(FLOAT, Consultations.In2017)) AS AvgConsultations2017,
+        SUM((CASE WHEN Consultations.In2018 > 0 THEN 1 ELSE 0 END)) AS n2018, AVG(CONVERT(FLOAT, Consultations.In2018)) AS AvgConsultations2018
+      FROM @Population Pop
+      JOIN @Consultations Consultations ON Consultations.PersonId = Pop.PersonId
+      LEFT JOIN @LabData2016 lab ON pop.PersonId = lab.PersonId
+      WHERE lab.NumResult < 75
+      GROUP BY Pop.CenterId
+    ) sq
+  JOIN MyStudyCenters msc ON msc.CenterId = sq.CenterId
+
+
+  INSERT @GroupBelow
+  SELECT * FROM @GroupBelowTemp
+  UNION ALL
+  SELECT NULL, 'Totalt', n,
+    sq.n2017, ISNULL(sq.AvgConsultations2017, 0),
+    sq.n2018, ISNULL(sq.AvgConsultations2018, 0), 'below'
+  FROM 
+    (
+      SELECT COUNT(*) AS n,
+        SUM((CASE WHEN Consultations.In2017 > 0 THEN 1 ELSE 0 END)) AS n2017, AVG(CONVERT(FLOAT, Consultations.In2017)) AS AvgConsultations2017,
+        SUM((CASE WHEN Consultations.In2018 > 0 THEN 1 ELSE 0 END)) AS n2018, AVG(CONVERT(FLOAT, Consultations.In2018)) AS AvgConsultations2018
+      FROM @Population Pop
+      JOIN @Consultations Consultations ON Consultations.PersonId = Pop.PersonId
+      LEFT JOIN @LabData2016 lab ON pop.PersonId = lab.PersonId
+      WHERE lab.NumResult < 75
+    ) sq
+
+
+  -- gruppe over
+  INSERT @GroupAboveTemp
+  SELECT msc.CenterId, msc.CenterName, n,
+    sq.n2017, ISNULL(sq.AvgConsultations2017, 0),
+    sq.n2018, ISNULL(sq.AvgConsultations2018, 0), 'above'
+  FROM 
+    (
+      SELECT Pop.CenterId, COUNT(*) AS n,
+        SUM((CASE WHEN Consultations.In2017 > 0 THEN 1 ELSE 0 END)) AS n2017, AVG(CONVERT(FLOAT, Consultations.In2017)) AS AvgConsultations2017,
+        SUM((CASE WHEN Consultations.In2018 > 0 THEN 1 ELSE 0 END)) AS n2018, AVG(CONVERT(FLOAT, Consultations.In2018)) AS AvgConsultations2018
+      FROM @Population Pop
+      JOIN @Consultations Consultations ON Consultations.PersonId = Pop.PersonId
+      LEFT JOIN @LabData2016 lab ON pop.PersonId = lab.PersonId
+      WHERE lab.NumResult >= 75
+      GROUP BY Pop.CenterId
+    ) sq
+  JOIN MyStudyCenters msc ON msc.CenterId = sq.CenterId
+
+  INSERT @GroupAbove
+  SELECT * FROM @GroupAboveTemp
+  UNION ALL
+  SELECT NULL, 'Totalt', n,
+    sq.n2017, ISNULL(sq.AvgConsultations2017, 0),
+    sq.n2018, ISNULL(sq.AvgConsultations2018, 0), 'above'
+  FROM 
+  (
+    SELECT COUNT(*) AS n,
+      SUM((CASE WHEN Consultations.In2017 > 0 THEN 1 ELSE 0 END)) AS n2017, AVG(CONVERT(FLOAT, Consultations.In2017)) AS AvgConsultations2017,
+      SUM((CASE WHEN Consultations.In2018 > 0 THEN 1 ELSE 0 END)) AS n2018, AVG(CONVERT(FLOAT, Consultations.In2018)) AS AvgConsultations2018
+    FROM @Population Pop
+    JOIN @Consultations Consultations ON Consultations.PersonId = Pop.PersonId
+    LEFT JOIN @LabData2016 lab ON pop.PersonId = lab.PersonId
+    WHERE lab.NumResult >= 75
+  ) sq
+
+
+  -- totalar
+  INSERT @AllTemp
+  SELECT msc.CenterId, msc.CenterName, n,
+    sq.n2017, ISNULL(sq.AvgConsultations2017, 0),
+    sq.n2018, ISNULL(sq.AvgConsultations2018, 0), 'all'
+  FROM 
+  (
+    SELECT Pop.CenterId, COUNT(*) AS n,
+      SUM((CASE WHEN Consultations.In2017 > 0 THEN 1 ELSE 0 END)) AS n2017, AVG(CONVERT(FLOAT, Consultations.In2017)) AS AvgConsultations2017,
+      SUM((CASE WHEN Consultations.In2018 > 0 THEN 1 ELSE 0 END)) AS n2018, AVG(CONVERT(FLOAT, Consultations.In2018)) AS AvgConsultations2018
+    FROM @Population Pop
+    JOIN @Consultations Consultations ON Consultations.PersonId = Pop.PersonId
+    GROUP BY Pop.CenterId
+  ) sq
+  JOIN MyStudyCenters msc ON msc.CenterId = sq.CenterId
+
+
+  INSERT @All
+  SELECT * FROM @AllTemp
+  UNION ALL
+  SELECT NULL, 'Totalt', n,
+    sq.n2017, ISNULL(sq.AvgConsultations2017, 0),
+    sq.n2018, ISNULL(sq.AvgConsultations2018, 0), 'all'
+  FROM 
+    (
+      SELECT COUNT(*) AS n,
+        SUM((CASE WHEN Consultations.In2017 > 0 THEN 1 ELSE 0 END)) AS n2017, AVG(CONVERT(FLOAT, Consultations.In2017)) AS AvgConsultations2017,
+        SUM((CASE WHEN Consultations.In2018 > 0 THEN 1 ELSE 0 END)) AS n2018, AVG(CONVERT(FLOAT, Consultations.In2018)) AS AvgConsultations2018
+      FROM @Population Pop
+      JOIN @Consultations Consultations ON Consultations.PersonId = Pop.PersonId
+    ) sq
+
+  -- endeleg resultat
+  SELECT * FROM @GroupBelow 
+  UNION ALL
+ SELECT * FROM @GroupAbove
+  UNION ALL
+  SELECT * FROM @All
+END]]>
 	</row>
 	<row ProcId="1101" StudyName="LANGTID" ProcName="dbo.GetCaseListFocused" ProcDesc="101. Overvåket status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1416404730" LastUpdate="2019-01-12T07:04:44.503Z">
 		<![CDATA[]]>
