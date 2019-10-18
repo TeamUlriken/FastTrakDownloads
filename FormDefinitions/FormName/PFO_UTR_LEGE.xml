@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
-  <Form FormId="1087" FormName="PFO_UTR_LEGE" FormTitle="Utredning Lege">
+  <Form FormId="1131" FormName="PFO_UTR_LEGE" FormTitle="Utredning Lege (Copy)">
     <Page PageTitle="Hereditet">
       <Item ItemId="3342" ItemType="2" VarName="NDV_FAM_CHD" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Tidlig koronarsykdom hos foreldre/søsken" ItemHelp="Før 55/65 år hos menn/kvinner, kun biologiske foreldre/søsken" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
@@ -215,14 +215,6 @@
           <Answer AnswerId="39012" OrderNumber="1" OptionText="Ja" VerboseText="Tar syrehemmende midler mot dyspepsi." ShortCode="J" ICD10="K30"/>
         </FormItem>
       </Item>
-      <Item ItemId="5333" ItemType="2" VarName="PFO_IBD" LoincScale="ORD">
-        <FormItem ItemText="Inflammatorisk tarmsykdom" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12578" OrderNumber="1" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="12579" OrderNumber="2" OptionText="Crohns sykdom" VerboseText="Crohns sykdom." ShortCode="CD" ICD10="K50"/>
-          <Answer AnswerId="12580" OrderNumber="3" OptionText="Ulcerøs kolitt" VerboseText="Ulcerøs kolitt." ShortCode="UC" ICD10="K51"/>
-          <Answer AnswerId="12581" OrderNumber="4" OptionText="Annet / usikker" ShortCode="A"/>
-        </FormItem>
-      </Item>
       <Item ItemId="5334" ItemType="2" VarName="PFO_IBS" LoincScale="ORD">
         <FormItem ItemText="Irritabel tarmsykdom (IBS)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="12582" OrderNumber="1" OptionText="Ja" VerboseText="Irritabel tarmsyndrom." ShortCode="J" ICD10="K58"/>
@@ -242,6 +234,11 @@
         <FormItem ItemHeader="Artrose i vektbærende ledd" ItemText="Har du slitasjegikt i hofte, knær eller ankler, bekreftet på røntgen eller av spesialist?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="12632" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="12633" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3392" ItemType="4" VarName="DP_DIAGNOSER_TEKST" LoincScale="NAR" DisplayFormat="" Multiline="1">
+        <FormItem ItemHeader="Kronisk sykdom*" ItemText="Andre kroniske sykdommer" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="5571" ItemType="4" VarName="PFO_SOMATISK_ANNET" LoincScale="NAR" DisplayFormat="" Multiline="1">
@@ -351,23 +348,6 @@
       </Item>
     </Page>
     <Page PageTitle="Mål og motivasjon">
-      <Item ItemId="5554" ItemType="2" VarName="PFO_MOTIV_SOMATISK" LoincScale="ORD">
-        <FormItem ItemHeader="Somatisk helse" ItemText="Er bedre kroppslig helse en viktig motivasjonsfaktor for deg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61697" OrderNumber="1" OptionText="Ja" VerboseText="Motivert av kroppslig helse." ShortCode="J"/>
-          <Answer AnswerId="61698" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="5553" ItemType="2" VarName="PFO_MOTIV_PSYKISK" LoincScale="ORD">
-        <FormItem ItemHeader="Psykisk helse" ItemText="Er bedre psykisk helse en viktig motivasjonsfaktor for deg?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12623" OrderNumber="1" OptionText="Ja" VerboseText="Motivert av psykisk helse." ShortCode="J"/>
-          <Answer AnswerId="12624" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="5572" ItemType="4" VarName="PFO_MOTIV_TEKST" LoincScale="NAR" Multiline="1">
-        <FormItem ItemHeader="Annen motivasjon" ItemText="Beskriv pasientens motivasjon for vektreduksjon" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
       <Item ItemId="5552" ItemType="1" VarName="PFO_VEKT_MAAL_PASIENT" LoincScale="QN" UnitStr="kg">
         <FormItem ItemHeader="Langsiktig vektmål" ItemText="Hva er ditt langsiktige vektmål?" ItemHelp="" MinExpression="40" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
@@ -602,26 +582,26 @@
   </Form>
   <Actions>
     <PageAction MasterId="3397">
-      <Activate EnumVal="1" PageConditionId="8054" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8341" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="3398">
-      <Activate EnumVal="1" PageConditionId="8051" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8342" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="7114">
-      <Activate EnumVal="1" PageConditionId="8055" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8343" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9801">
-      <Activate EnumVal="1" PageConditionId="8045" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="3" PageConditionId="8046" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8344" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="8345" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="7113">
-      <Activate EnumVal="1" PageConditionId="8047" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8346" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="7061">
-      <Activate EnumVal="1" PageConditionId="8052" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8347" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="5432">
-      <Activate EnumVal="1" PageConditionId="8056" PageNumber="24" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8348" PageNumber="24" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
