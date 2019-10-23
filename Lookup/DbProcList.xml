@@ -3279,7 +3279,7 @@ BEGIN
   WHERE sf.StudyId = @StudyId;
 END;]]>
 	</row>
-	<row ProcId="1001" StudyName="GBD" ProcName="GBD.RapportAvvik" ProcDesc="Avviksrapport" ProcParams=":StudyId, :StartAt, :StopAt, :OrderBy" ListId="FR" GrantTo="public" MinVersion="18000" ChkSum="2109548261" LastUpdate="2019-10-23T18:39:17.427Z">
+	<row ProcId="1001" StudyName="GBD" ProcName="GBD.RapportAvvik" ProcDesc="Avviksrapport" ProcParams=":StudyId, :StartAt, :StopAt, :OrderBy" ListId="FR" GrantTo="public" MinVersion="18000" ChkSum="1425453663" LastUpdate="2019-10-23T19:11:15.320Z">
 		<![CDATA[CREATE PROCEDURE GBD.RapportAvvik ( @StudyId INT, @StartAt DateTime = NULL, @StopAt DateTime = NULL, @OrderBy INT = 0 ) AS
 BEGIN
   SET LANGUAGE Norwegian;                     
@@ -3367,7 +3367,7 @@ BEGIN
     AND ( ( su.GroupId = sg.GroupId ) OR ( su.ShowMyGroup = 0 ) ) 
     AND ( sg.CenterId = my.CenterId ) 
     AND ( sc.StudyId = @StudyId ) 
-    AND ( ce.EventNum >= @StartEventNum ) AND ( ce.EventTime < @StopEventNum );
+    AND ( ce.EventNum >= @StartEventNum ) AND ( ce.EventNum < @StopEventNum );
     
   /* Select final dataset from temp table */
   
