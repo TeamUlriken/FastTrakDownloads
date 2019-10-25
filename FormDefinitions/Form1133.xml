@@ -66,27 +66,25 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Kliniske nøkkeldata">
-      <Item ItemId="1530" ItemType="2" VarName="NEWS01" LoincScale="ORD">
-        <FormItem ItemText="Respirasjonsfrekvens:" ItemHelp="" Expression="ISPOS (SP_RESP_FREKVENS - 24) +  ISPOS (SP_RESP_FREKVENS - 20) + ISPOS (SP_RESP_FREKVENS - 11) + ISPOS (SP_RESP_FREKVENS - 8) + ISPOS (SP_RESP_FREKVENS - 2)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="10465" OrderNumber="1" OptionText="&lt;= 8 /min" ShortCode="3p" Score="3.00"/>
-          <Answer AnswerId="10650" OrderNumber="2" OptionText="9 - 11 /min" ShortCode="1p" Score="1.00"/>
-          <Answer AnswerId="10651" OrderNumber="3" OptionText="12 - 20 /min" ShortCode="0p" Score="0.00"/>
-          <Answer AnswerId="10652" OrderNumber="4" OptionText="21 - 24 /min" ShortCode="2p" Score="2.00"/>
-          <Answer AnswerId="10653" OrderNumber="5" OptionText="25 + /min" ShortCode="3p" Score="3.00"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="186" ItemType="1" VarName="PULSE_RATE" LoincScale="QN" UnitStr="slag/min" DisplayFormat="">
-        <FormItem ItemText="Puls" ItemHelp="" MinExpression="25" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+    <Page PageTitle="Anamnese">
+      <Item ItemId="2013" ItemType="4" VarName="VAR2013" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Anamnese" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageTitle="Kliniske funn">
       <Item ItemId="3554" ItemType="2" VarName="ALLMENNTILSTAND" LoincScale="ORD" DisplayFormat="Vertical">
         <FormItem ItemHeader="Allmenntilstanden" ItemText="Hvordan vurderer du allmenntilstanden?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="18264" OrderNumber="1" OptionText="er god."/>
           <Answer AnswerId="18265" OrderNumber="2" OptionText="er lett redusert."/>
           <Answer AnswerId="18266" OrderNumber="3" OptionText="er svært redusert."/>
           <Answer AnswerId="18267" OrderNumber="4" OptionText="Pasienten er moribund."/>
+        </FormItem>
+      </Item>
+      <Item ItemId="186" ItemType="1" VarName="PULSE_RATE" LoincScale="QN" UnitStr="slag/min" DisplayFormat="">
+        <FormItem ItemText="Puls" ItemHelp="" MinExpression="25" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3556" ItemType="1" VarName="SBP_UNSPEC" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
@@ -99,11 +97,18 @@
           <Answer/>
         </FormItem>
       </Item>
+      <Item ItemId="8943" ItemType="1" VarName="SP_RESP_FREKVENS" LoincScale="QN" UnitStr="per minutt" DisplayFormat="">
+        <FormItem ItemText="Respirasjonsfrekvens" ItemHelp="" MinExpression="3" MaxExpression="60" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
       <Item ItemId="188" ItemType="1" VarName="BODY_TEMP" LoincScale="QN" UnitStr="°C" DisplayFormat="">
         <FormItem ItemText="Temperatur" ItemHelp="" MinExpression="32" MaxExpression="42" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageTitle="Andre funn">
       <Item ItemId="273" ItemType="1" VarName="CRP" LoincScale="QN" UnitStr="mg/L" DisplayFormat="">
         <FormItem ItemText="S-CRP" ItemHelp="Høye verdier ved aktive inflammatoriske prosesser. Bakterielle prosesser gir gjerne høyere verdier enn virusinfeksjoner. CRP er det mest følsomme av akutt fase proteinene. Det kan stige til 2000 ganger utgangsverdien i løpet av 24 timer ved en akutt aktiv prosess. Ved tilbakegang av prosessen synker CRP fortere enn de øvrige akutt fase proteinene." MinExpression="0" MaxExpression="500" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
@@ -111,6 +116,16 @@
       </Item>
       <Item ItemId="3558" ItemType="4" VarName="USTIX" LoincScale="NAR" DisplayFormat="" Multiline="0">
         <FormItem ItemText="U-Stix" ItemHelp="Eks: Prot 3+, Glu: 0, Ery: 1+, Nit: 0, eventuelt &quot;Neg&quot;." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3134" ItemType="1" VarName="B_HB" LoincScale="QN" UnitStr="g/100mL" DisplayFormat="">
+        <FormItem ItemText="B-Hb" ItemHelp="Høye verdier ved polycytemi. Lave ved anemi. Nedsatt hemoglobin i fullblod med normalt hemoglobininnhold i en normal erytrocyttmasse kan ses i svangerskapet, etter splenektomi og undertiden ved makroglobulinemi. Årsaken er økt plasmavolum." MinExpression="5" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="4330" ItemType="1" VarName="B_GLUCOSE" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
+        <FormItem ItemText="B-Glukose" ItemHelp="" MinExpression="2" MaxExpression="50" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -124,14 +139,14 @@
     </Page>
     <Page PageTitle="Plan videre">
       <Item ItemId="2950" ItemType="4" VarName="OH_PLAN" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemHeader="Plan" ItemText="Eventuelle planer eller tiltak" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Plan" ItemText="Skriv kort om hva som er planlagt/avtalt videre" ItemHelp="" Expression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Kontaktinformasjon">
       <Item ItemId="2829" ItemType="4" VarName="SYKEHJEM_AVDELING" LoincScale="NAR" Multiline="0">
-        <FormItem ItemHeader="Avdeling/Gruppe" ItemText="Avdeling/gruppe pasienten kommer fra" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Avdeling/Gruppe" ItemText="Avdeling/gruppe pasienten kommer fra" ItemHelp="" Expression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
