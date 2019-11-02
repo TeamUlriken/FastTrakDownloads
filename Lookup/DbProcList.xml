@@ -2634,6 +2634,12 @@ END]]>
 	<row ProcId="404" StudyName="BAR" ProcName="dbo.GetCaseListGroupId" ProcDesc="Gruppe: Perimesencefal" ProcParams=":StudyId, 6" ListId="CASE" GrantTo="public" MinVersion="18214" HelpText="Gjelder bare arbeidssted Haukeland Sykehus" ChkSum="477173402" LastUpdate="2018-09-04T07:50:53.877Z">
 		<![CDATA[]]>
 	</row>
+	<row ProcId="419" StudyName="BAR" ProcName="BAR.GetCaseListRapid" ProcDesc="Delstudie: RAPID" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" ChkSum="-204067191" LastUpdate="2019-10-31T13:05:58.610Z">
+		<![CDATA[CREATE PROCEDURE BAR.GetCaseListRapid( @StudyId INT ) AS
+BEGIN
+  EXEC dbo.GetCaseListByFormName @StudyId, 'BAR_RAPID';
+END]]>
+	</row>
 	<row ProcId="500" StudyName="NDV" ProcName="NDV.GetType1Age18to65WithHbA1c" ProcDesc="Type 1: Alder 18-65 etter fallende HbA1c" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6320" ChkSum="851896506" LastUpdate="2018-10-03T15:38:27.460Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetType1Age18to65WithHbA1c( @StudyId INT ) AS
 BEGIN
