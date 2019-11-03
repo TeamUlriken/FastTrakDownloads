@@ -3,7 +3,7 @@
   <Form FormId="1126" FormName="BDIA_INSULIN" FormTitle="Insulinbehandling">
     <Page PageTitle="Behandlingsopplegg">
       <Item ItemId="3196" ItemType="2" VarName="NDV_TYPE" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Diabetes type" ItemHelp="" Expression="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Diabetes type" ItemHelp="" Expression="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
           <Answer AnswerId="15986" OrderNumber="1" OptionText="Type 1 (inkl. LADA)" VerboseText="Type 1 diabetes." ShortCode="1" ICD10="E10"/>
           <Answer AnswerId="15987" OrderNumber="2" OptionText="Type 2" VerboseText="Type 2 diabetes." ShortCode="2" ICD10="E11"/>
           <Answer AnswerId="15988" OrderNumber="3" OptionText="Annen diabetestype (inkl. pankreatitt, MODY)." ShortCode="A"/>
@@ -12,18 +12,18 @@
         </FormItem>
       </Item>
       <Item ItemId="3322" ItemType="2" VarName="NDV_TREATMENT_TYPE" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Behandlingsstrategi" ItemText="Diabetes behandles ved hjelp av" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemHeader="Behandlingsstrategi" ItemText="Diabetes behandles ved hjelp av" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
           <Answer AnswerId="16425" OrderNumber="1" OptionText="Kun kost/aktivitet."/>
           <Answer AnswerId="16426" OrderNumber="2" OptionText="Andre blodsukkersenkende midler enn insulin."/>
           <Answer AnswerId="16427" OrderNumber="3" OptionText="Kun insulinbehandlet."/>
           <Answer AnswerId="16479" OrderNumber="4" OptionText="Insulin pluss andre blodsukkersenkende midler."/>
-          <Answer AnswerId="16480" OrderNumber="5" OptionText="Ukjent"/>
+          <Answer AnswerId="16480" OrderNumber="5" OptionText="Ukjent" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Insulinadministrasjon*">
       <Item ItemId="4056" ItemType="2" VarName="NDV_INSULIN_DEVICE" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Insulinadministrasjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Insulinadministrasjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1">
           <Answer AnswerId="21306" OrderNumber="1" OptionText="Insulinpenn/sprøyte."/>
           <Answer AnswerId="21307" OrderNumber="2" OptionText="Insulinpumpe."/>
         </FormItem>
@@ -31,21 +31,21 @@
     </Page>
     <Page PageTitle="New*">
       <Item ItemId="4207" ItemType="2" VarName="NDV_NONPHARMA_ONLY" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Kun kost/aktivitet" ItemHelp="" Expression="ISNULL(NDV_TREATMENT_TYPE-1)+2*ISPOS(NDV_TREATMENT_TYPE-1)+ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Kun kost/aktivitet" ItemHelp="" Expression="ISNULL(NDV_TREATMENT_TYPE-1)+2*ISPOS(NDV_TREATMENT_TYPE-1)+ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Highlight="1" Optional="1">
           <Answer AnswerId="22300" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="22301" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="22302" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
         </FormItem>
       </Item>
       <Item ItemId="3332" ItemType="2" VarName="ATC_A10A" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Injeksjonsbehandling med insulin" ItemHelp="" Expression="ISPOS(ISNULL(NDV_TREATMENT_TYPE-3)+ISNULL(NDV_TREATMENT_TYPE-4)) + 2*ISNEG(NDV_TREATMENT_TYPE-3) + 3*ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Injeksjonsbehandling med insulin" ItemHelp="" Expression="ISPOS(ISNULL(NDV_TREATMENT_TYPE-3)+ISNULL(NDV_TREATMENT_TYPE-4)) + 2*ISNEG(NDV_TREATMENT_TYPE-3) + 3*ISNULL(NDV_TREATMENT_TYPE-5)" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="0" Highlight="1" Optional="1">
           <Answer AnswerId="16524" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="16525" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="16526" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="4726" ItemType="2" VarName="NDV_INSULINADM" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Insulinbruker" ItemHelp="" Expression="1*ISNULL(ATC_A10A-2) + 2*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-1) + 3*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-2) + 4*ISNULL(ATC_A10A-3)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Insulinbruker" ItemHelp="" Expression="1*ISNULL(ATC_A10A-2) + 2*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-1) + 3*ISNULL(ATC_A10A-1)*ISNULL(NDV_INSULIN_DEVICE-2) + 4*ISNULL(ATC_A10A-3)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Highlight="1" Optional="1">
           <Answer AnswerId="25473" OrderNumber="1" OptionText="Nei"/>
           <Answer AnswerId="25474" OrderNumber="2" OptionText="Sprøyte/penn"/>
           <Answer AnswerId="25475" OrderNumber="3" OptionText="Pumpe"/>
@@ -55,20 +55,20 @@
     </Page>
     <Page PageTitle="Egenmåling">
       <Item ItemId="1310" ItemType="2" VarName="NDV_GLUCMON" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Egenmåling av glukose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Egenmåling av glukose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
           <Answer AnswerId="59269" OrderNumber="1" OptionText="CGM" VerboseText="Bruker vevsglukose (CGM)." Score="1.00" PromText="Kontinuerlig måling"/>
           <Answer AnswerId="59270" OrderNumber="2" OptionText="Freestyle Libre 1" VerboseText="Bruker Freestyle Libre 1." Score="1.00" PromText="Flash Libre"/>
           <Answer AnswerId="59271" OrderNumber="3" OptionText="daglig (glukometer)" VerboseText="Måler kapillær glukose daglig." Score="1.00" PromText="Glukometer daglig"/>
           <Answer AnswerId="59272" OrderNumber="4" OptionText="ukentlig eller oftere (glukometer)" VerboseText="Måler kapillær glukose ukentlig eller oftere." Score="1.00" PromText="Glukometer ukentlig"/>
           <Answer AnswerId="59273" OrderNumber="5" OptionText="sjeldnere enn ukentlig (glukometer)" VerboseText="Måler kapillær glukose sjeldnere enn ukentlig." Score="2.00" PromText="Glukometer sjeldnere enn ukentlig"/>
           <Answer AnswerId="59274" OrderNumber="6" OptionText="Nei" VerboseText="Måler ikke glukose selv." Score="3.00" PromText="Måler ikke glukose selv"/>
-          <Answer AnswerId="59275" OrderNumber="7" OptionText="Vet ikke*" Score="4.00" PromText="Jeg er usikker"/>
+          <Answer AnswerId="59275" OrderNumber="7" OptionText="Vet ikke*" Score="4.00" PromText="Jeg er usikker" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Tildelt apparat*">
       <Item ItemId="5166" ItemType="2" VarName="VAR5166" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="CGM apparat" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="CGM apparat" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="61612" OrderNumber="1" OptionText="FreeStyle Navigator II"/>
           <Answer AnswerId="61613" OrderNumber="2" OptionText="DexCom G4"/>
           <Answer AnswerId="61614" OrderNumber="3" OptionText="DexCom G5"/>
@@ -85,17 +85,17 @@
     </Page>
     <Page PageTitle="Insulinpumpe">
       <Item ItemId="3996" ItemType="5" VarName="INSPUMP_LEVERT" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Dato for utlevering av insulinpumpe" ItemHelp="Mener vi første gang, eller denne?" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Dato for utlevering av insulinpumpe" ItemHelp="Mener vi første gang, eller denne?" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6774" ItemType="5" VarName="INSPUMP_START_FIRST" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemHeader="Første pumpe" ItemText="Når begynte du med insulinpumpe første gang?" ItemHelp="" MinExpression="Patient.DOB + 365" MaxExpression="FORM.Date" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemHeader="Første pumpe" ItemText="Når begynte du med insulinpumpe første gang?" ItemHelp="" MinExpression="Patient.DOB + 365" MaxExpression="FORM.Date" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6775" ItemType="5" VarName="INSPUMP_START_CURRENT" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemHeader="Denne pumpen" ItemText="Utleveringsdato for aktuell insulinpumpe" ItemHelp="" MinExpression="Patient.DOB + 365" MaxExpression="FORM.Date" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemHeader="Denne pumpen" ItemText="Utleveringsdato for aktuell insulinpumpe" ItemHelp="" MinExpression="Patient.DOB + 365" MaxExpression="FORM.Date" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -115,122 +115,122 @@
     </Page>
     <Page PageTitle="Basalinsulin enh/time" PageIntroduction="Tips: Du kan kopiere forrige linje ved å trykke på F4">
       <Item ItemId="3924" ItemType="1" VarName="INS_PUMP_00" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="00-01" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="00-01" ItemHelp="" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3923" ItemType="1" VarName="INS_PUMP_01" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="01-02" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="01-02" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3922" ItemType="1" VarName="INS_PUMP_02" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="02-03" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="02-03" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3921" ItemType="1" VarName="INS_PUMP_03" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="03-04" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="03-04" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3920" ItemType="1" VarName="INS_PUMP_04" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="04-05" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="04-05" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3919" ItemType="1" VarName="INS_PUMP_05" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="05-06" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="05-06" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3918" ItemType="1" VarName="INS_PUMP_06" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="06-07" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="06-07" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3917" ItemType="1" VarName="INS_PUMP_07" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="07-08" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="07-08" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3916" ItemType="1" VarName="INS_PUMP_08" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="08-09" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="08-09" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3915" ItemType="1" VarName="INS_PUMP_09" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="09-10" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="09-10" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3914" ItemType="1" VarName="INS_PUMP_10" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="10-11" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="10-11" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3913" ItemType="1" VarName="INS_PUMP_11" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="11-12" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="11-12" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3912" ItemType="1" VarName="INS_PUMP_12" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="12-13" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="12-13" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3911" ItemType="1" VarName="INS_PUMP_13" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="13-14" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="13-14" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3910" ItemType="1" VarName="INS_PUMP_14" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="14-15" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="14-15" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3925" ItemType="1" VarName="INS_PUMP_15" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="15-16" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="15-16" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3926" ItemType="1" VarName="INS_PUMP_16" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="16-17" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="16-17" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3927" ItemType="1" VarName="INS_PUMP_17" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="17-18" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="17-18" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3928" ItemType="1" VarName="INS_PUMP_18" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="18-19" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="18-19" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3929" ItemType="1" VarName="INS_PUMP_19" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="19-20" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="19-20" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3930" ItemType="1" VarName="INS_PUMP_20" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="20-21" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="20-21" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3931" ItemType="1" VarName="INS_PUMP_21" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="21-22" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="21-22" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3932" ItemType="1" VarName="INS_PUMP_22" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="22-23" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="22-23" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3909" ItemType="1" VarName="INS_PUMP_23" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="23-24" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="3">
+        <FormItem ItemText="23-24" ItemHelp="Trykk F4 for å kopiere forrige linje" MinExpression="0" MaxExpression="10" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="3">
           <Answer/>
         </FormItem>
       </Item>
@@ -242,7 +242,7 @@
     </Page>
     <Page PageTitle="Basalinsulin">
       <Item ItemId="3209" ItemType="2" VarName="INS_BASAL_YN" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Bruker basalinsulin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Bruker basalinsulin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="16014" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="16015" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
@@ -250,7 +250,7 @@
     </Page>
     <Page PageTitle="Langsomtvirkende insulin*">
       <Item ItemId="2121" ItemType="2" VarName="ATC_A10ACnn_OR_A10AEnn" LoincScale="ORD">
-        <FormItem ItemText="Langsomtvirkende insulin" ItemHelp="A10AC: Insulin og analoger til injeksjon, middels lang virketid.&#xA;A10AE: Insulin og analoger til injeksjon, langtidsvirkende." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Langsomtvirkende insulin" ItemHelp="A10AC: Insulin og analoger til injeksjon, middels lang virketid.&#xA;A10AE: Insulin og analoger til injeksjon, langtidsvirkende." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="1">
           <Answer AnswerId="11112" OrderNumber="1" OptionText="Humulin." ShortCode="C01a"/>
           <Answer AnswerId="11113" OrderNumber="2" OptionText="Insulatard." ShortCode="C01b"/>
           <Answer AnswerId="11114" OrderNumber="3" OptionText="Abasaglar." ShortCode="E04a"/>
@@ -262,17 +262,17 @@
         </FormItem>
       </Item>
       <Item ItemId="3207" ItemType="1" VarName="INS_BASAL_MORNING" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="Morgen" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+        <FormItem ItemText="Morgen" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3208" ItemType="1" VarName="INS_BASAL_NOON" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="Middag" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+        <FormItem ItemText="Middag" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3210" ItemType="1" VarName="INS_BASAL_EVENING" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="Kveld" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+        <FormItem ItemText="Kveld" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -284,7 +284,7 @@
     </Page>
     <Page PageTitle="Måltid-/korreksjonsinsulin">
       <Item ItemId="3206" ItemType="2" VarName="INS_MEAL_YN" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Bruker måltidsinsulin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Bruker måltidsinsulin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="16010" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="16011" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
@@ -292,7 +292,7 @@
     </Page>
     <Page PageTitle="Hurtigvirkende insulin*">
       <Item ItemId="2122" ItemType="2" VarName="ATC_A10ABnn" LoincScale="ORD">
-        <FormItem ItemText="Hurtigvirkende insulin" ItemHelp="A10AB: Insulin og analoger til injeksjon, hurtigvirkende." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Hurtigvirkende insulin" ItemHelp="A10AB: Insulin og analoger til injeksjon, hurtigvirkende." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="1">
           <Answer AnswerId="11119" OrderNumber="1" OptionText="Actrapid." ShortCode="B01a"/>
           <Answer AnswerId="11120" OrderNumber="2" OptionText="Insuman Rapid." ShortCode="B01b"/>
           <Answer AnswerId="11121" OrderNumber="3" OptionText="Humalog." ShortCode="B04a"/>
@@ -348,7 +348,7 @@
     </Page>
     <Page PageTitle="Premix insulin">
       <Item ItemId="3201" ItemType="2" VarName="INS_PREMIX_YN" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Bruker premix-insulin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Bruker premix-insulin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="16006" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="16007" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
@@ -356,23 +356,23 @@
     </Page>
     <Page PageTitle="Premix insulin*">
       <Item ItemId="2123" ItemType="2" VarName="ATC_A10ADnn" LoincScale="ORD">
-        <FormItem ItemText="Insulin kombinasjoner" ItemHelp="A10AD: Insulin og analoger til injeksjon, middels eller lang virketid i kombinasjon med hurtigvirkende." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Insulin kombinasjoner" ItemHelp="A10AD: Insulin og analoger til injeksjon, middels eller lang virketid i kombinasjon med hurtigvirkende." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="11126" OrderNumber="1" OptionText="Humalog Mix." ShortCode="D04a"/>
           <Answer AnswerId="11127" OrderNumber="2" OptionText="NovoMix." ShortCode="D05a"/>
         </FormItem>
       </Item>
       <Item ItemId="3221" ItemType="1" VarName="INS_PREMIX_MORNING" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="Morgen" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+        <FormItem ItemText="Morgen" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3904" ItemType="1" VarName="INS_PREMIX_NOON" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="Midt på dagen" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+        <FormItem ItemText="Midt på dagen" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3205" ItemType="1" VarName="INS_PREMIX_EVENING" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="Kveld" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1">
+        <FormItem ItemText="Kveld" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -384,7 +384,7 @@
     </Page>
     <Page PageTitle="Totalsum">
       <Item ItemId="3908" ItemType="1" VarName="INS_ALL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="Døgndose" ItemHelp="" Expression="INS_MEAL_SUM + INS_MEAL_SUM_MANUAL * ISPOS(INS_MEAL_SUM_MANUAL) + INS_BASAL_SUM + INS_PREMIX_SUM + INS_PUMP_SUM *ISNULL (NDV_INSULIN_DEVICE-2)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+        <FormItem ItemText="Døgndose" ItemHelp="" Expression="INS_MEAL_SUM + INS_MEAL_SUM_MANUAL * ISPOS(INS_MEAL_SUM_MANUAL) + INS_BASAL_SUM + INS_PREMIX_SUM + INS_PUMP_SUM *ISNULL (NDV_INSULIN_DEVICE-2)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -418,7 +418,7 @@
     </Page>
     <Page PageTitle="Følingsmat">
       <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        <FormItem ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+        <FormItem ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>

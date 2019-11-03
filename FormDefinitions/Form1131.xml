@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
-  <Form FormId="1131" FormName="PFO_UTR_LEGE" FormTitle="Utredning Lege (Copy)">
+  <Form FormId="1131" FormName="PFO_UTR_LEGE" FormTitle="Utredning Lege">
     <Page PageTitle="Hereditet">
       <Item ItemId="3342" ItemType="2" VarName="NDV_FAM_CHD" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Tidlig koronarsykdom hos foreldre/søsken" ItemHelp="Før 55/65 år hos menn/kvinner, kun biologiske foreldre/søsken" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
@@ -49,9 +49,9 @@
     </Page>
     <Page PageTitle="Karsykdom*">
       <Item ItemId="7121" ItemType="2" VarName="BASEREG_PREVIOUSDVT" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Tidligere DVT eller PE" ItemHelp="Har pasienten hatt dyp trombose (DVT) eller lungeemboli (PE)" Expression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Tidligere DVT eller PE" ItemHelp="Har pasienten hatt dyp trombose (DVT) eller lungeemboli (PE)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="39019" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="39020" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="39020" OrderNumber="1" OptionText="Ja" VerboseText="Har hatt tromboembolisk sykdom (DVT og/eller PE)." ShortCode="J"/>
         </FormItem>
       </Item>
       <Item ItemId="3398" ItemType="2" VarName="NDV_STROKE" LoincScale="ORD" DisplayFormat="Vertical">
@@ -181,7 +181,7 @@
       <Item ItemId="7115" ItemType="2" VarName="BASEREG_DYSLIPAEMIA" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Dyslipidemi" ItemHelp="Farmakologisk behandlet dyslipidemi" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="39009" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="39010" OrderNumber="1" OptionText="Ja" VerboseText="Behandles for hyperlipidemi." ShortCode="J" ICD10="E789"/>
+          <Answer AnswerId="39010" OrderNumber="1" OptionText="Ja" VerboseText="Behandles for dyslipidemi." ShortCode="J" ICD10="E789"/>
         </FormItem>
       </Item>
       <Item ItemId="1825" ItemType="2" VarName="ATC_H03AA" LoincScale="ORD">
@@ -248,53 +248,20 @@
       </Item>
     </Page>
     <Page PageTitle="Psykisk helse">
-      <Item ItemId="5528" ItemType="2" VarName="PFO_PSYKISK_HELSEVERN" LoincScale="ORD">
-        <FormItem ItemHeader="Psykisk helsevern" ItemText="Har du noen gang fått behandling fra psykisk helsevern?" ItemHelp="Uansett årsak.  Detaljer kan evt. føres under avsnittet Vurdering." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12615" OrderNumber="1" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="12616" OrderNumber="2" OptionText="Ja, nå" VerboseText="Har oppfølgning fra psykisk helsevern." ShortCode="J"/>
-          <Answer AnswerId="12617" OrderNumber="3" OptionText="Tidligere" VerboseText="Tidligere fulgt opp av psykisk helsevern." ShortCode="T"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="4987" ItemType="2" VarName="PFO_ANGST_DEPRESJON" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Behandlet for angst/depresion" ItemText="Har du blitt behandlet for depresjon eller angst med medisiner noen gang?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61777" OrderNumber="1" OptionText="Nei*" ShortCode="N" Score="0.00"/>
-          <Answer AnswerId="61778" OrderNumber="2" OptionText="Ja, nå" VerboseText="Behandles med medisiner for angst/depresjon nå." ShortCode="J" Score="2.00"/>
-          <Answer AnswerId="61779" OrderNumber="3" OptionText="Tidligere" VerboseText="Behandlet med medisiner for angst/depresjon tidligere." ShortCode="T" Score="1.00"/>
-          <Answer AnswerId="61780" OrderNumber="4" OptionText="Ukjent*" ShortCode="U" Score="0.00"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="5546" ItemType="2" VarName="PFO_BULIMI" LoincScale="ORD">
-        <FormItem ItemHeader="Behandlet for bulimi" ItemText="Har du noengang fått behandling for bulimi fra helsevesenet?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61693" OrderNumber="1" OptionText="Nei" ShortCode="N" Score="0.00"/>
-          <Answer AnswerId="61694" OrderNumber="2" OptionText="Ja, nå" VerboseText="Behandles for bulimi." ShortCode="J" Score="2.00"/>
-          <Answer AnswerId="61695" OrderNumber="3" OptionText="Tidligere" VerboseText="Tidligere behandlet for bulimi." ShortCode="T" Score="1.00"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="5529" ItemType="2" VarName="PFO_ANOREKSI" LoincScale="ORD">
-        <FormItem ItemHeader="Anorexia Nervosa" ItemText="Har du noengang hatt anoreksi?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12618" OrderNumber="1" OptionText="Ja" VerboseText="Har hatt anoreksi tidligere." ShortCode="J" Score="1.00"/>
-          <Answer AnswerId="12619" OrderNumber="2" OptionText="Nei" ShortCode="N" Score="0.00"/>
-        </FormItem>
-      </Item>
       <Item ItemId="5558" ItemType="2" VarName="VAR5558" LoincScale="ORD">
         <FormItem ItemText="Har du vært behandlet med vektøkende antidepressiva?" ItemHelp="Tri- og tetrasykliske antidepressiva m.fl." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61700" OrderNumber="1" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="61701" OrderNumber="2" OptionText="Ja, nå" ShortCode="J"/>
-          <Answer AnswerId="61702" OrderNumber="3" OptionText="Tidligere" ShortCode="T"/>
-          <Answer AnswerId="61703" OrderNumber="4" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="61700" OrderNumber="1" OptionText="Nei" VerboseText="Ikke fått vektøkende antidepressiva." ShortCode="N"/>
+          <Answer AnswerId="61701" OrderNumber="2" OptionText="Ja, nå" VerboseText="Bruker vektøkende antidepressiva nå." ShortCode="J"/>
+          <Answer AnswerId="61702" OrderNumber="3" OptionText="Tidligere" VerboseText="Tidligere brukt vektøkende antidepressiva." ShortCode="T"/>
+          <Answer AnswerId="61703" OrderNumber="4" OptionText="Usikker" VerboseText="Usikker på bruk av vektøkende antidepressiva." ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="5557" ItemType="2" VarName="VAR5557" LoincScale="ORD">
         <FormItem ItemText="Har du vært behandlet med vektøkende antipsykotika?" ItemHelp="Gjelder stort sett alle unntatt aripiprazol/Abilify" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12628" OrderNumber="1" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="12629" OrderNumber="2" OptionText="Ja, nå" ShortCode="J"/>
-          <Answer AnswerId="12630" OrderNumber="3" OptionText="Tidligere" ShortCode="T"/>
-          <Answer AnswerId="12631" OrderNumber="4" OptionText="Usikker" ShortCode="U"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="5560" ItemType="4" VarName="PFO_PSYKISK_ANNET" LoincScale="NAR" Multiline="1">
-        <FormItem ItemText="Andre psykiske sykdommer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer/>
+          <Answer AnswerId="12628" OrderNumber="1" OptionText="Nei" VerboseText="Ikke brukt vektøkende antipsykotika." ShortCode="N"/>
+          <Answer AnswerId="12629" OrderNumber="2" OptionText="Ja, nå" VerboseText="Bruker vektøkende antipsykotika." ShortCode="J"/>
+          <Answer AnswerId="12630" OrderNumber="3" OptionText="Tidligere" VerboseText="Tidligere brukt vektøkende antipsykotika." ShortCode="T"/>
+          <Answer AnswerId="12631" OrderNumber="4" OptionText="Usikker" VerboseText="Usikker på bruk av vektøkende antipsykotika." ShortCode="U"/>
         </FormItem>
       </Item>
     </Page>
@@ -347,14 +314,48 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Mål og motivasjon">
+    <Page PageTitle="Mål og motivasjon*">
       <Item ItemId="5552" ItemType="1" VarName="PFO_VEKT_MAAL_PASIENT" LoincScale="QN" UnitStr="kg">
         <FormItem ItemHeader="Langsiktig vektmål" ItemText="Hva er ditt langsiktige vektmål?" ItemHelp="" MinExpression="40" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="5570" ItemType="1" VarName="PFO_VEKT_MAAL_MEDISINSK" LoincScale="QN" UnitStr="kg">
-        <FormItem ItemText="Medisinsk vektmål" ItemHelp="Viser til metodeboken, avhenger av komorbiditeter etc." MinExpression="40" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+    </Page>
+    <Page PageTitle="Undersøkelse" PageIntroduction="Høyde, vekt etc. hentes fra forrige skjema og kan ikke redigeres her.  Hvis det skal registreres på nytt, lag et eget skjema for legeundersøkelse.">
+      <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        <FormItem ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
+        <FormItem ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
+        <FormItem ItemText="BMI" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3230" ItemType="1" VarName="SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+        <FormItem ItemText="Systolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1" FormatStr="Blodtrykk %s">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3231" ItemType="1" VarName="DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
+        <FormItem ItemText="Diastolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1" FormatStr="¬/%s mmHg.">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5523" ItemType="2" VarName="PFO_CUSH_MISTANKE" LoincScale="ORD">
+        <FormItem ItemText="Klinisk mistanke om Cushing?" ItemHelp="Abdominal/trunkal fettfordeling, lilla striae, hirsutisme" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12606" OrderNumber="1" OptionText="Ja" VerboseText="Klinisk mistanke om Cushing." ShortCode="J"/>
+          <Answer AnswerId="12607" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="12608" OrderNumber="3" OptionText="Usikker" VerboseText="Muligens mistanke om Cushing." ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5524" ItemType="4" VarName="PFO_KLINISK_US" LoincScale="NAR" Multiline="1">
+        <FormItem ItemHeader="Undersøkelse lege" ItemText="Kort beskrivelse av funn ved klinisk undersøkelse gjort avlege" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -377,59 +378,13 @@
           <Answer AnswerId="12639" OrderNumber="3" OptionText="Høy"/>
         </FormItem>
       </Item>
-    </Page>
-    <Page PageTitle="Undersøkelse" PageIntroduction="Høyde, vekt etc. hentes fra forrige skjema og kan ikke redigeres her.  Hvis det skal registreres på nytt, lag et eget skjema for legeundersøkelse.">
-      <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        <FormItem ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        <FormItem ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1" Decimals="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3310" ItemType="1" VarName="BMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-        <FormItem ItemText="BMI" ItemHelp="Beregnes automatisk" Expression="WEIGHT/((HEIGHT/100)*(HEIGHT/100)) * ISPOS(WEIGHT)*ISPOS(HEIGHT)" MinExpression="5" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3230" ItemType="1" VarName="SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem ItemText="Systolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="3231" ItemType="1" VarName="DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem ItemText="Diastolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
-          <Answer/>
-        </FormItem>
-      </Item>
-      <Item ItemId="5523" ItemType="2" VarName="PFO_CUSH_MISTANKE" LoincScale="ORD">
-        <FormItem ItemText="Klinisk mistanke om Cushing?" ItemHelp="Abdominal/trunkal fettfordeling, lilla striae, hirsutisme" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12606" OrderNumber="1" OptionText="Ja" VerboseText="Klinisk mistanke om Cushing." ShortCode="J"/>
-          <Answer AnswerId="12607" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="12608" OrderNumber="3" OptionText="Usikker" VerboseText="Muligens mistanke om Cushing." ShortCode="U"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="5524" ItemType="4" VarName="PFO_KLINISK_US" LoincScale="NAR" Multiline="1">
-        <FormItem ItemHeader="Undersøkelse lege" ItemText="Kort beskrivelse av funn ved klinisk undersøkelse gjort avlege" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="5570" ItemType="1" VarName="PFO_VEKT_MAAL_MEDISINSK" LoincScale="QN" UnitStr="kg">
+        <FormItem ItemText="Medisinsk vektmål" ItemHelp="Viser til metodeboken, avhenger av komorbiditeter etc." Expression="" MinExpression="40" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Tiltak - utredning">
-      <Item ItemId="5508" ItemType="2" VarName="VAR5508" LoincScale="ORD">
-        <FormItem ItemText="Kontroll blodprøver" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12600" OrderNumber="1" OptionText="Ja" VerboseText="Kontroll blodprøver." ShortCode="J"/>
-          <Answer AnswerId="12601" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="5509" ItemType="2" VarName="VAR5509" LoincScale="ORD">
-        <FormItem ItemText="Kontroll blodtrykk hos fastlege" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61666" OrderNumber="1" OptionText="Ja" VerboseText="Kontroll blodtrykk hos fastlege." ShortCode="J"/>
-          <Answer AnswerId="61667" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-        </FormItem>
-      </Item>
       <Item ItemId="5510" ItemType="2" VarName="VAR5510" LoincScale="ORD">
         <FormItem ItemText="Biokjemisk utredning sekundær hypertensjon" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="61669" OrderNumber="1" OptionText="Ja" VerboseText="Utredes biokjemisk for sekundær hypertensjon." ShortCode="J"/>
@@ -437,26 +392,26 @@
         </FormItem>
       </Item>
       <Item ItemId="5511" ItemType="2" VarName="VAR5511" LoincScale="ORD">
-        <FormItem ItemText="Henvist 24t blodtrykksmåling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61672" OrderNumber="1" OptionText="Ja" VerboseText="Henvist 24t blodtrykksmåling." ShortCode="J"/>
+        <FormItem ItemText="Henvises 24t blodtrykksmåling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61672" OrderNumber="1" OptionText="Ja" VerboseText="Henvises 24t blodtrykksmåling." ShortCode="J"/>
           <Answer AnswerId="61673" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>
       <Item ItemId="5512" ItemType="2" VarName="VAR5512" LoincScale="ORD">
-        <FormItem ItemText="Kort DXM-test" ItemHelp="Ved kliniske tegn Cushing eller rask vektoppgang" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61675" OrderNumber="1" OptionText="Ja" VerboseText="Henvist kort DXM-test." ShortCode="J"/>
+        <FormItem ItemText="Utredning hyperkortisolisme" ItemHelp="Ved kliniske tegn Cushing eller rask vektoppgang" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61675" OrderNumber="1" OptionText="Ja" VerboseText="Henvises utredning hyperkortisolisme." ShortCode="J"/>
           <Answer AnswerId="61676" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>
       <Item ItemId="5513" ItemType="2" VarName="VAR5513" LoincScale="ORD">
-        <FormItem ItemText="Henvist lungeavdeling" ItemHelp="Ved mistanke om OSAS" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61678" OrderNumber="1" OptionText="Ja" VerboseText="Henvist lungeavdeling." ShortCode="J"/>
+        <FormItem ItemText="Henvises utredning OSAS" ItemHelp="Ved mistanke om OSAS" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61678" OrderNumber="1" OptionText="Ja" VerboseText="Henvises utredning OSAS." ShortCode="J"/>
           <Answer AnswerId="61679" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>
       <Item ItemId="5514" ItemType="2" VarName="VAR5514" LoincScale="ORD">
-        <FormItem ItemText="Henvist lipidklinikken" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61681" OrderNumber="1" OptionText="Ja" VerboseText="Henvist lipidklinikken." ShortCode="J"/>
+        <FormItem ItemText="Henvises utredning dyslipidemi ved lipidklinikk" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61681" OrderNumber="1" OptionText="Ja" VerboseText="Henvises utredning dyslipidemi ved lipidklinikk." ShortCode="J"/>
           <Answer AnswerId="61682" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>

@@ -51,7 +51,7 @@
       <Item ItemId="7121" ItemType="2" VarName="BASEREG_PREVIOUSDVT" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Tidligere DVT eller PE" ItemHelp="Har pasienten hatt dyp trombose (DVT) eller lungeemboli (PE)" Expression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="39019" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="39020" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="39020" OrderNumber="1" OptionText="Ja" VerboseText="Har hatt tromboembolisk sykdom (DVT og/eller PE)." ShortCode="J"/>
         </FormItem>
       </Item>
       <Item ItemId="3398" ItemType="2" VarName="NDV_STROKE" LoincScale="ORD" DisplayFormat="Vertical">
@@ -181,7 +181,7 @@
       <Item ItemId="7115" ItemType="2" VarName="BASEREG_DYSLIPAEMIA" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Dyslipidemi" ItemHelp="Farmakologisk behandlet dyslipidemi" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="39009" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="39010" OrderNumber="1" OptionText="Ja" VerboseText="Behandles for hyperlipidemi." ShortCode="J" ICD10="E789"/>
+          <Answer AnswerId="39010" OrderNumber="1" OptionText="Ja" VerboseText="Behandles for dyslipidemi." ShortCode="J" ICD10="E789"/>
         </FormItem>
       </Item>
       <Item ItemId="1825" ItemType="2" VarName="ATC_H03AA" LoincScale="ORD">
@@ -281,18 +281,18 @@
       </Item>
       <Item ItemId="5558" ItemType="2" VarName="VAR5558" LoincScale="ORD">
         <FormItem ItemText="Har du vært behandlet med vektøkende antidepressiva?" ItemHelp="Tri- og tetrasykliske antidepressiva m.fl." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61700" OrderNumber="1" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="61701" OrderNumber="2" OptionText="Ja, nå" ShortCode="J"/>
-          <Answer AnswerId="61702" OrderNumber="3" OptionText="Tidligere" ShortCode="T"/>
-          <Answer AnswerId="61703" OrderNumber="4" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="61700" OrderNumber="1" OptionText="Nei" VerboseText="Ikke fått vektøkende antidepressiva." ShortCode="N"/>
+          <Answer AnswerId="61701" OrderNumber="2" OptionText="Ja, nå" VerboseText="Bruker vektøkende antidepressiva nå." ShortCode="J"/>
+          <Answer AnswerId="61702" OrderNumber="3" OptionText="Tidligere" VerboseText="Tidligere brukt vektøkende antidepressiva." ShortCode="T"/>
+          <Answer AnswerId="61703" OrderNumber="4" OptionText="Usikker" VerboseText="Usikker på bruk av vektøkende antidepressiva." ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="5557" ItemType="2" VarName="VAR5557" LoincScale="ORD">
         <FormItem ItemText="Har du vært behandlet med vektøkende antipsykotika?" ItemHelp="Gjelder stort sett alle unntatt aripiprazol/Abilify" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="12628" OrderNumber="1" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="12629" OrderNumber="2" OptionText="Ja, nå" ShortCode="J"/>
-          <Answer AnswerId="12630" OrderNumber="3" OptionText="Tidligere" ShortCode="T"/>
-          <Answer AnswerId="12631" OrderNumber="4" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="12628" OrderNumber="1" OptionText="Nei" VerboseText="Ikke brukt vektøkende antipsykotika." ShortCode="N"/>
+          <Answer AnswerId="12629" OrderNumber="2" OptionText="Ja, nå" VerboseText="Bruker vektøkende antipsykotika." ShortCode="J"/>
+          <Answer AnswerId="12630" OrderNumber="3" OptionText="Tidligere" VerboseText="Tidligere brukt vektøkende antipsykotika." ShortCode="T"/>
+          <Answer AnswerId="12631" OrderNumber="4" OptionText="Usikker" VerboseText="Usikker på bruk av vektøkende antipsykotika." ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="5560" ItemType="4" VarName="PFO_PSYKISK_ANNET" LoincScale="NAR" Multiline="1">
@@ -415,12 +415,12 @@
         </FormItem>
       </Item>
       <Item ItemId="3230" ItemType="1" VarName="SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem ItemText="Systolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" MaxCarryDays="28.00" ReadOnly="1" Optional="1">
+        <FormItem ItemText="Systolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" MaxCarryDays="28.00" ReadOnly="1" Optional="1" FormatStr="Blodtrykk %s">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3231" ItemType="1" VarName="DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem ItemText="Diastolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" MaxCarryDays="28.00" ReadOnly="1" Optional="1">
+        <FormItem ItemText="Diastolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" MaxCarryDays="28.00" ReadOnly="1" Optional="1" FormatStr="¬/%s mmHg.">
           <Answer/>
         </FormItem>
       </Item>
@@ -457,26 +457,26 @@
         </FormItem>
       </Item>
       <Item ItemId="5511" ItemType="2" VarName="VAR5511" LoincScale="ORD">
-        <FormItem ItemText="Henvist 24t blodtrykksmåling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61672" OrderNumber="1" OptionText="Ja" VerboseText="Henvist 24t blodtrykksmåling." ShortCode="J"/>
+        <FormItem ItemText="Henvises 24t blodtrykksmåling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61672" OrderNumber="1" OptionText="Ja" VerboseText="Henvises 24t blodtrykksmåling." ShortCode="J"/>
           <Answer AnswerId="61673" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>
       <Item ItemId="5512" ItemType="2" VarName="VAR5512" LoincScale="ORD">
-        <FormItem ItemText="Kort DXM-test" ItemHelp="Ved kliniske tegn Cushing eller rask vektoppgang" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61675" OrderNumber="1" OptionText="Ja" VerboseText="Henvist kort DXM-test." ShortCode="J"/>
+        <FormItem ItemText="Utredning hyperkortisolisme" ItemHelp="Ved kliniske tegn Cushing eller rask vektoppgang" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61675" OrderNumber="1" OptionText="Ja" VerboseText="Henvises utredning hyperkortisolisme." ShortCode="J"/>
           <Answer AnswerId="61676" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>
       <Item ItemId="5513" ItemType="2" VarName="VAR5513" LoincScale="ORD">
-        <FormItem ItemText="Henvist lungeavdeling" ItemHelp="Ved mistanke om OSAS" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61678" OrderNumber="1" OptionText="Ja" VerboseText="Henvist lungeavdeling." ShortCode="J"/>
+        <FormItem ItemText="Henvises utredning OSAS" ItemHelp="Ved mistanke om OSAS" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61678" OrderNumber="1" OptionText="Ja" VerboseText="Henvises utredning OSAS." ShortCode="J"/>
           <Answer AnswerId="61679" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>
       <Item ItemId="5514" ItemType="2" VarName="VAR5514" LoincScale="ORD">
-        <FormItem ItemText="Henvist lipidklinikken" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61681" OrderNumber="1" OptionText="Ja" VerboseText="Henvist lipidklinikken." ShortCode="J"/>
+        <FormItem ItemText="Henvises utredning dyslipidemi ved lipidklinikk" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61681" OrderNumber="1" OptionText="Ja" VerboseText="Henvises utredning dyslipidemi ved lipidklinikk." ShortCode="J"/>
           <Answer AnswerId="61682" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>

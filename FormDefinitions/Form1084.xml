@@ -72,11 +72,11 @@
         </FormItem>
       </Item>
       <Item ItemId="4051" ItemType="2" VarName="UNDER_UTDANNING" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem ItemText="Under utdanning" ItemHelp="Skal denne være med uansett alder?  Det er kanskje mest aktuelt mellom 16 og 30?" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemHeader="Under utdanning" ItemText="Er du under utdanning nå?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="21206" OrderNumber="1" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="21207" OrderNumber="2" OptionText="Grunnskole"/>
-          <Answer AnswerId="21208" OrderNumber="3" OptionText="Videregående skole"/>
-          <Answer AnswerId="21209" OrderNumber="4" OptionText="Universitet"/>
+          <Answer AnswerId="21207" OrderNumber="2" OptionText="Grunnskole" VerboseText="Skoleelev."/>
+          <Answer AnswerId="21208" OrderNumber="3" OptionText="Videregående skole" VerboseText="Går på videregående skole."/>
+          <Answer AnswerId="21209" OrderNumber="4" OptionText="Universitet" VerboseText="Tar høyere utdanning."/>
         </FormItem>
       </Item>
     </Page>
@@ -117,7 +117,7 @@
       <Item ItemId="7115" ItemType="2" VarName="BASEREG_DYSLIPAEMIA" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Dyslipidemi" ItemHelp="Farmakologisk behandlet dyslipidemi" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="39009" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="39010" OrderNumber="1" OptionText="Ja" VerboseText="Behandles for hyperlipidemi." ShortCode="J" ICD10="E789"/>
+          <Answer AnswerId="39010" OrderNumber="1" OptionText="Ja" VerboseText="Behandles for dyslipidemi." ShortCode="J" ICD10="E789"/>
         </FormItem>
       </Item>
       <Item ItemId="5527" ItemType="2" VarName="PFO_SOVNAPNE" LoincScale="ORD">
@@ -281,12 +281,12 @@
         </FormItem>
       </Item>
       <Item ItemId="3230" ItemType="1" VarName="SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem ItemText="Systolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Systolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" FormatStr="Blodtrykk %s">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3231" ItemType="1" VarName="DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem ItemText="Diastolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Diastolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" FormatStr="¬/%s mmHg.">
           <Answer/>
         </FormItem>
       </Item>
