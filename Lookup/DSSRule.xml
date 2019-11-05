@@ -1202,7 +1202,7 @@ BEGIN
   EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'QUALID',180,2
 END;]]>
 	</row>
-	<row RuleId="33" RuleClass="NDVBIOLAB" RuleType="M" RuleProc="NDV.RuleBiobankLabtest" MinVersion="18000" Title="Prøve til biobank" Description="Påminnelse om å ta prøve til biobanken for de som har samtykket" ChkSum="-1684697763" LastUpdate="2019-09-11T11:24:00.267Z">
+	<row RuleId="33" RuleClass="NDVBIOLAB" RuleType="M" RuleProc="NDV.RuleBiobankLabtest" MinVersion="18000" Title="Prøve til biobank" Description="Påminnelse om å ta prøve til biobanken for de som har samtykket" ChkSum="-541136557" LastUpdate="2019-11-05T19:51:55.377Z">
 		<![CDATA[CREATE PROCEDURE NDV.RuleBiobankLabtest( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @AlertLevel INT = 0;
@@ -1235,5 +1235,12 @@ BEGIN
   IF DB_NAME() = 'EQUALEDC' SET @AlertLevel = 0;
   EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, @AlertLevel, 'NDVBIOLAB', @AlertFacet;
 END]]>
+	</row>
+	<row RuleId="34" RuleClass="NEWS2" RuleType="M" RuleProc="GBD.RuleNEWS2" MinVersion="18000" Description="Fyll ut NEWS2 med maks 30 dagers intervall" ChkSum="-1876884125" LastUpdate="2019-11-05T19:55:21.860Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleNEWS2( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  EXEC dbo.RulePeriodicForm @StudyId, @PersonId, 'NEWS2', 30, 2;
+END
+]]>
 	</row>
 </DSSRule>

@@ -7199,4 +7199,11 @@ BEGIN
   EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, @AlertLevel, 'NDVBIOLAB', @AlertFacet;
 END]]>
 	</row>
+	<row ProcId="10034" StudyName="GBD" ProcName="GBD.RuleNEWS2" ProcDesc="Fyll ut NEWS2 med maks 30 dagers intervall" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="18000" ChkSum="-1876884125" LastUpdate="2019-11-05T19:53:20.390Z">
+		<![CDATA[CREATE PROCEDURE GBD.RuleNEWS2( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  EXEC dbo.RulePeriodicForm @StudyId, @PersonId, 'NEWS2', 30, 2;
+END
+]]>
+	</row>
 </DbProcList>
