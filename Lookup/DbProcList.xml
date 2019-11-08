@@ -644,7 +644,7 @@ BEGIN
   ORDER BY wd.LastWeightDate;
 END]]>
 	</row>
-	<row ProcId="120" StudyName="GBD.OLD" ProcName="GBD.GetCaseListMust" ProcDesc="Ernæring: MUST score" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MaxVersion="19008" ChkSum="986485555" LastUpdate="2019-11-08T08:15:09.470Z">
+	<row ProcId="120" StudyName="GBD.OLD" ProcName="GBD.GetCaseListMust" ProcDesc="Ernæring: MUST score" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MaxVersion="20000" ChkSum="986247987" LastUpdate="2019-11-08T08:25:38.347Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListMUST (@StudyId INT ) AS
 BEGIN
   SET NOCOUNT ON;
@@ -5767,7 +5767,7 @@ BEGIN
   EXEC Dash.BdrHbA1cAboveInPeriod 75, 6, 6, 5;
 END]]>
 	</row>
-	<row ProcId="5001" StudyName="GBD" ProcName="GBD.UpdateMustScoreForAll" ProcDesc="Oppdatering av MUST for alle, trenger GBD.RuleMust på plass" ProcParams=":StudyId" ListId="UTIL" GrantTo="public" ChkSum="-1790760205" LastUpdate="2019-01-03T09:00:00.933Z">
+	<row ProcId="5001" StudyName="GBD.OLD" ProcName="GBD.UpdateMustScoreForAll" ProcDesc="Oppdatering av MUST for alle, trenger GBD.RuleMust på plass" ProcParams=":StudyId" ListId="UTIL" GrantTo="public" MaxVersion="20000" ChkSum="-964671126" LastUpdate="2019-11-08T08:25:42.033Z">
 		<![CDATA[CREATE PROCEDURE GBD.UpdateMustScoreForAll( @StudyId INT ) AS
 BEGIN
     SET NOCOUNT ON;
@@ -6267,7 +6267,7 @@ BEGIN
       'Ingen eksterne labdata fra siste 6 mnd.  Labprøver bør tas regelmessig, bl.a. for å overvåke nyrefunksjon.';
 END]]>
 	</row>
-	<row ProcId="10010" StudyName="*" ProcName="GBD.RuleMUST" ProcDesc="Automatisk beregning av MUST score, med tilhørende varsling ved " ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" CompatibilityLevel="100" ChkSum="-338712236" LastUpdate="2019-05-24T13:08:11.060Z">
+	<row ProcId="10010" StudyName="*" ProcName="GBD.RuleMUST" ProcDesc="Automatisk beregning av MUST score, med tilhørende varsling ved " ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MaxVersion="20000" CompatibilityLevel="100" ChkSum="343832107" LastUpdate="2019-11-08T08:25:46.580Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleMUST( @StudyId INT, @PersonId INT ) AS
 BEGIN
   SET NOCOUNT ON;
