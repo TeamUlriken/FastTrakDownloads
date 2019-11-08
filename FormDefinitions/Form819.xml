@@ -21,7 +21,7 @@
     </Page>
     <Page PageTitle="Svangerskapshistorie">
       <Item ItemId="9355" ItemType="1" VarName="GRAV_GRAVIDA" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Gravida" ItemText="Antall graviditeter" ItemHelp="Inkluderer aktuell graviditet" MinExpression="1" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
+        <FormItem ItemHeader="Gravida" ItemText="Antall graviditeter" ItemHelp="Inkluderer aktuell graviditet" MinExpression="1" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -34,7 +34,7 @@
     </Page>
     <Page PageTitle="Fødsler*" PageIntroduction="Tidligere fødsler og komplikasjoner, hvis multigravida.">
       <Item ItemId="7640" ItemType="1" VarName="GRAV_PARA" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Para" ItemText="Antall tidligere levende fødsler" ItemHelp="" MinExpression="0" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem ItemHeader="Para" ItemText="Antall tidligere levende fødsler" ItemHelp="" MinExpression="0" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -59,7 +59,7 @@
         </FormItem>
       </Item>
       <Item ItemId="7645" ItemType="1" VarName="GRAV_NORMALVEKT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        <FormItem ItemText="Pregravid vekt" ItemHelp="" MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0" Decimals="1">
+        <FormItem ItemText="Pregravid vekt" ItemHelp="" MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -76,7 +76,7 @@
     </Page>
     <Page PageTitle="Prekonsepsjonell veiledning*">
       <Item ItemId="4224" ItemType="2" VarName="DP_PLANLAGT_GRAVID" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Prekonsepsjonell veiledning med diabetesrådgiver" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Prekonsepsjonell veiledning med diabetesrådgiver" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="22647" OrderNumber="1" OptionText="Ja" VerboseText="Planlagt i samråd med diabetesrådgiver." ShortCode="J"/>
           <Answer AnswerId="22648" OrderNumber="2" OptionText="Nei" VerboseText="Ikke planlagt i samråd med diabetesrådgiver." ShortCode="N"/>
         </FormItem>
@@ -106,12 +106,12 @@
     </Page>
     <Page PageTitle="Om svangerskapet">
       <Item ItemId="4222" ItemType="5" VarName="DP_SISTE_MENS" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Siste menstruasjon" ItemHelp="" MinExpression="DOB+3650" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1">
+        <FormItem ItemText="Siste menstruasjon" ItemHelp="" MinExpression="Patient.DOB + 3653" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4221" ItemType="5" VarName="DP_TERMIN_UL" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Termin ultralyd" ItemHelp="Skriv 0 hvis ukjent." MinExpression="DOB" MaxExpression="NOW+280" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1">
+        <FormItem ItemText="Termin ultralyd" ItemHelp="Skriv 0 hvis ukjent." MinExpression="Patient.DOB" MaxExpression="NOW+280" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -134,7 +134,7 @@
     </Page>
     <Page PageTitle="Komplikasjoner">
       <Item ItemId="3354" ItemType="5" VarName="NDV_EYECHECK_DATE" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Siste besøk hos øyelege" ItemHelp="Beste estimat ved usikker dato." MinExpression="DOB" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem ItemText="Siste besøk hos øyelege" ItemHelp="Beste estimat ved usikker dato." MinExpression="Patient.DOB" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -159,14 +159,14 @@
     </Page>
     <Page PageTitle="Årstall for laserbehandling*">
       <Item ItemId="4205" ItemType="1" VarName="NDV_LASER_FIRST" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemText="Årstall for første laserbehandling" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem ItemText="Årstall for første laserbehandling" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Makroalbuminuri*">
       <Item ItemId="7520" ItemType="2" VarName="NDV_MACROALBUMINURIA" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Betydelig forhøyet albuminuri?" ItemHelp="For diagnose kreves kvantifisering dvs. alb/kreatininratio &gt; 30 mg/mmol (eller U-albumin &gt;200 µg/min, eller &gt; 300 mg/24t)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Betydelig forhøyet albuminuri?" ItemHelp="For diagnose kreves kvantifisering dvs. alb/kreatininratio &gt; 30 mg/mmol (eller U-albumin &gt;200 µg/min, eller &gt; 300 mg/24t)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="40536" OrderNumber="1" OptionText="Ja" VerboseText="Betydelig forhøyet albuminuri." ShortCode="J"/>
           <Answer AnswerId="40537" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="40539" OrderNumber="3" OptionText="Ukjent"/>
@@ -175,7 +175,7 @@
     </Page>
     <Page PageTitle="Mikroalbuminuri*">
       <Item ItemId="7519" ItemType="2" VarName="NDV_MICROALBUMINURIA" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Moderat forhøyet albuminuri?" ItemHelp="For diagnose kreves kvantifisering der to av tre prøver skal være positive dvs. alb/kreatininratio 3-30 mg/mmol (eller U-albumin 20-200 µg/min, eller 20-300 mg/24t)." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Moderat forhøyet albuminuri?" ItemHelp="For diagnose kreves kvantifisering der to av tre prøver skal være positive dvs. alb/kreatininratio 3-30 mg/mmol (eller U-albumin 20-200 µg/min, eller 20-300 mg/24t)." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="40509" OrderNumber="1" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="40510" OrderNumber="2" OptionText="Tidligere" VerboseText="Tidligere moderat forhøyet albuminuri." ShortCode="T"/>
           <Answer AnswerId="40511" OrderNumber="3" OptionText="Ja" VerboseText="Moderat forhøyet albuminuri." ShortCode="J"/>
@@ -185,7 +185,7 @@
     </Page>
     <Page PageTitle="Nyrefunksjon*">
       <Item ItemId="7517" ItemType="2" VarName="NDV_RENAL_FUNCTION" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Nedsatt nyrefunksjon" ItemText="Er nyrefunksjonen redusert?" ItemHelp="Velg &quot;Redusert nyrefunksjon&quot; ved eGFR &lt; 60 ml/min/1.73m2. Velg &quot;Nyretransplantert&quot; også ved dialysebehandling etter transplantasjon." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem ItemHeader="Nedsatt nyrefunksjon" ItemText="Er nyrefunksjonen redusert?" ItemHelp="Velg &quot;Redusert nyrefunksjon&quot; ved eGFR &lt; 60 ml/min/1.73m2. Velg &quot;Nyretransplantert&quot; også ved dialysebehandling etter transplantasjon." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1">
           <Answer AnswerId="40495" OrderNumber="1" OptionText="Nei*" ShortCode="N"/>
           <Answer AnswerId="40496" OrderNumber="2" OptionText="Redusert nyrefunksjon." ShortCode="R"/>
           <Answer AnswerId="40497" OrderNumber="3" OptionText="Dialysebehandlet (ikke transplantert)." ShortCode="D" ICD10="N185"/>
@@ -272,7 +272,7 @@
     </Page>
     <Page PageTitle="Plan">
       <Item ItemId="4088" ItemType="4" VarName="DP_AVTALER" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemHeader="Vurdering" ItemText="Vurdering og plan videre" ItemHelp="Inkludert eventuelle avtaler gjort med pasienten, unntatt timeavtale som er eget punkt." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemHeader="Vurdering" ItemText="Vurdering og plan videre" ItemHelp="Inkludert eventuelle avtaler gjort med pasienten, unntatt timeavtale som er eget punkt." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>

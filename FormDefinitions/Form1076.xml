@@ -2,19 +2,19 @@
 <StudyForm>
   <Form FormId="1076" FormName="FORM1076" FormTitle="Cushing - Not sampled">
     <Page PageTitle="Timeline">
-      <Item ItemId="3267" ItemType="5" VarName="CushSurgeryDate" LoincScale="DATE">
-        <FormItem ItemText="Date of surgery" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="0">
+      <Item ItemId="3267" ItemType="5" VarName="CUSH_SURG_DATE" LoincScale="DATE">
+        <FormItem ItemText="Date of surgery" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="3518" ItemType="1" VarName="CushSurgeryMonthsAgo" LoincScale="QN" UnitStr="month(s)">
-        <FormItem ItemText="Months after surgery (calculated)" ItemHelp="" Expression="( Form.Date - CushSurgeryDate ) / 30" MinExpression="0" MaxExpression="99" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+      <Item ItemId="3518" ItemType="1" VarName="CUSH_SURG_MONTHS_AGO" LoincScale="QN" UnitStr="month(s)">
+        <FormItem ItemText="Months after surgery (calculated)" ItemHelp="" Expression="( FORM.DATE - CUSH_SURG_DATE ) / 30" MinExpression="0" MaxExpression="99" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Reason">
-      <Item ItemId="4310" ItemType="2" VarName="VAR4310" LoincScale="ORD">
+      <Item ItemId="4310" ItemType="2" VarName="CUSH_NOSAMPLE_REASON" LoincScale="ORD">
         <FormItem ItemText="Reason for non-sampling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="12350" OrderNumber="1" OptionText="Lost to follow-up"/>
           <Answer AnswerId="12436" OrderNumber="2" OptionText="Patient request"/>
@@ -22,7 +22,7 @@
           <Answer AnswerId="12438" OrderNumber="4" OptionText="Other"/>
         </FormItem>
       </Item>
-      <Item ItemId="4319" ItemType="4" VarName="VAR4319" LoincScale="NAR" Multiline="1">
+      <Item ItemId="4319" ItemType="4" VarName="CUSH_NOSAMPLE_COMMENT" LoincScale="NAR" Multiline="1">
         <FormItem ItemText="Comments" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>

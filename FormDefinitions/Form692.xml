@@ -9,7 +9,7 @@
         </FormItem>
       </Item>
       <Item ItemId="6377" ItemType="2" VarName="ChildBearingAge" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Kvinne i fertil alder" ItemHelp="" Expression="2-ISNULL(Patient.GenderId-2)*ISPOS(Patient.Age-15)*ISNEG(Patient.Age-55)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Kvinne i fertil alder" ItemHelp="" Expression="2 - ISNULL(Patient.GenderId-2) * ISPOS(AGE-15) * ISNEG(AGE-55)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer AnswerId="33731" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="33732" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
@@ -21,7 +21,7 @@
           <Answer AnswerId="35432" OrderNumber="1" OptionText="Ja" VerboseText="Samtykke ROAS gitt." ShortCode="J"/>
           <Answer AnswerId="35433" OrderNumber="2" OptionText="Nei" VerboseText="Samtykke ROAS ikke gitt.." ShortCode="N"/>
           <Answer AnswerId="35434" OrderNumber="3" OptionText="Trukket tilbake" VerboseText="Samtykke ROAS trukket tilbake."/>
-          <Answer AnswerId="35435" OrderNumber="4" OptionText="Ukjent"/>
+          <Answer AnswerId="35435" OrderNumber="4" OptionText="Ukjent" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -34,11 +34,18 @@
           <Answer AnswerId="35471" OrderNumber="3" OptionText="APS III." ShortCode="III"/>
         </FormItem>
       </Item>
+      <Item ItemId="5069" ItemType="2" VarName="APSI_VERIFIED" LoincScale="ORD">
+        <FormItem ItemText="Verifisert APS-I diagnose" ItemHelp="Manuelt verifisert APS-I diagnose av ROAS" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="61770" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="61771" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="61772" OrderNumber="3" OptionText="Usikker" CarryException="1"/>
+        </FormItem>
+      </Item>
       <Item ItemId="6807" ItemType="2" VarName="VAR6807" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Positiv interferon-omega-antistoff" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="37183" OrderNumber="1" OptionText="Ja" VerboseText="Positiv interferon-omega-antistoff." ShortCode="J"/>
           <Answer AnswerId="37184" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="37185" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+          <Answer AnswerId="37185" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="6641" ItemType="2" VarName="AIRE_MUTATION" LoincScale="ORD" DisplayFormat="">
@@ -48,13 +55,20 @@
           <Answer AnswerId="35593" OrderNumber="3" OptionText="ikke utført."/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageTitle="Polyendokrint syndrom forts*">
+      <Item ItemId="5170" ItemType="4" VarName="VAR5170" LoincScale="NAR" Multiline="0">
+        <FormItem ItemText="Mutasjon" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
       <Item ItemId="6808" ItemType="2" VarName="FAM_APSI" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="APS I i familien" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="37218" OrderNumber="0" OptionText="Nei*"/>
           <Answer AnswerId="37219" OrderNumber="1" OptionText="Foreldre/søsken/barn (førstegrads slektning)" VerboseText="APS I hos førstegrads slektning."/>
           <Answer AnswerId="37220" OrderNumber="2" OptionText="Besteforeldre/barnebarn/halvsøsken/onkel/tante/niese/nevø (andregrads slektning)" VerboseText="APS I hos andregrads slektning."/>
           <Answer AnswerId="37221" OrderNumber="3" OptionText="Andre lenger ute"/>
-          <Answer AnswerId="37222" OrderNumber="4" OptionText="Ukjent*"/>
+          <Answer AnswerId="37222" OrderNumber="4" OptionText="Ukjent*" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -70,7 +84,7 @@
         <FormItem ItemText="Addisons sykdom" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="33330" OrderNumber="1" OptionText="Ja" VerboseText="Primær binyrebarksvikt." ShortCode="J" ICD10="E271"/>
           <Answer AnswerId="33331" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          <Answer AnswerId="33464" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig binyrebarksvikt."/>
+          <Answer AnswerId="33464" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig binyrebarksvikt." CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -97,21 +111,21 @@
         <FormItem ItemText="Høy ACTH, lav kortisol" ItemHelp="Svar Ja hvis dette noen gang har vært tilfelle" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="33334" OrderNumber="1" OptionText="Ja" VerboseText="Høy ACTH, lav kortisol." ShortCode="J"/>
           <Answer AnswerId="33335" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="33467" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+          <Answer AnswerId="33467" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="6301" ItemType="2" VarName="VAR6301" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Patologisk synacthen test" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="33338" OrderNumber="1" OptionText="Ja" VerboseText="Patologisk synacthentest." ShortCode="J"/>
           <Answer AnswerId="33339" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="33470" OrderNumber="3" OptionText="Ukjent / Ikke utført" ShortCode="U"/>
+          <Answer AnswerId="33470" OrderNumber="3" OptionText="Ukjent / Ikke utført" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="6302" ItemType="2" VarName="VAR6302" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Kronisk bruk av kortison og fludrokortison" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="33344" OrderNumber="1" OptionText="Ja" VerboseText="Kronisk bruk av kortison/fludrokortison." ShortCode="J"/>
           <Answer AnswerId="33345" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="33473" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+          <Answer AnswerId="33473" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -120,7 +134,7 @@
         <FormItem ItemText="Positiv for 21-hydroksylase antistoff" ItemHelp="Svar Ja hvis den har vært positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="37161" OrderNumber="1" OptionText="Ja" VerboseText="Positiv 21-hydroksylase antistoff." ShortCode="J"/>
           <Answer AnswerId="37162" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="37163" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+          <Answer AnswerId="37163" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -129,7 +143,7 @@
         <FormItem ItemText="Hypoparatyreoidisme" ItemHelp="Subnormal calcium and supranormal plasma phosphate concentration and normal renal function. Mg-deficiency manifests as painful convulsions during normocalcemia and only relieved by Mg-replacement (cf. Perheentupa JCEM 2006; 91,2843-50)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="33452" OrderNumber="1" OptionText="Ja" VerboseText="Hypoparatyreoidisme." ShortCode="J" ICD10="E20"/>
           <Answer AnswerId="33453" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          <Answer AnswerId="35865" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig hypoparatyreoidisme."/>
+          <Answer AnswerId="35865" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig hypoparatyreoidisme." CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -145,7 +159,7 @@
         <FormItem ItemText="Positiv NALP5 antistoff" ItemHelp="Svar Ja hvis den har vært positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="37167" OrderNumber="1" OptionText="Ja" VerboseText="Positiv NALP5 antistoff." ShortCode="J"/>
           <Answer AnswerId="37168" OrderNumber="2" OptionText="Nei" VerboseText="Negativ NALP5 antistoff." ShortCode="N"/>
-          <Answer AnswerId="37169" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+          <Answer AnswerId="37169" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -154,7 +168,7 @@
         <FormItem ItemText="Kronisk mukokutan candidiasis" ItemHelp="Candida infections in the oral mucosa, skin or nails for more than 3 months. If oesophagus is involved, this is indicated separately." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="33458" OrderNumber="1" OptionText="Ja" VerboseText="Kronisk mukokutan candidiasis." ShortCode="J"/>
           <Answer AnswerId="33459" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          <Answer AnswerId="46012" OrderNumber="3" OptionText="Usikker*" ShortCode="U"/>
+          <Answer AnswerId="46012" OrderNumber="3" OptionText="Usikker*" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -168,28 +182,28 @@
         <FormItem ItemText="Hud- eller neglesopp" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47595" OrderNumber="1" OptionText="Ja" VerboseText="Hud- eller neglesopp." ShortCode="J"/>
           <Answer AnswerId="47596" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47597" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47597" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="8536" ItemType="2" VarName="VAR8536" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Sopp i munnhulen" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47598" OrderNumber="1" OptionText="Ja" VerboseText="Oral kandidiasis." ShortCode="J"/>
           <Answer AnswerId="47599" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47600" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47600" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="8537" ItemType="2" VarName="VAR8537" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Kandidaøsofagitt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47601" OrderNumber="1" OptionText="Ja" VerboseText="Kandidaøsofagitt." ShortCode="J"/>
           <Answer AnswerId="47602" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47603" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47603" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="8538" ItemType="2" VarName="VAR8538" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Sopp i genital- og/eller analområdet" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47604" OrderNumber="1" OptionText="Ja" VerboseText="Sopp i underlivet." ShortCode="J"/>
           <Answer AnswerId="47605" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47606" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47606" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="8539" ItemType="1" VarName="VAR8539" LoincScale="QN" DisplayFormat="">
@@ -217,7 +231,7 @@
         <FormItem ItemText="Autoimmun hypotyreose" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="33386" OrderNumber="1" OptionText="Ja" VerboseText="Autoimmun hypotyreose." ShortCode="J" ICD10="E063"/>
           <Answer AnswerId="33387" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          <Answer AnswerId="37246" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig autoimmun hypotyreose." ShortCode="U"/>
+          <Answer AnswerId="37246" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig autoimmun hypotyreose." ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -233,7 +247,7 @@
         <FormItem ItemText="Positiv TPO-antistoff" ItemHelp="Svar Ja hvis den har vært positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="37174" OrderNumber="1" OptionText="Ja" VerboseText="Positiv TPO-antistoff." ShortCode="J"/>
           <Answer AnswerId="37175" OrderNumber="2" OptionText="Nei" VerboseText="Negativ TPO-antistoff." ShortCode="N"/>
-          <Answer AnswerId="37176" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+          <Answer AnswerId="37176" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -242,7 +256,7 @@
         <FormItem ItemText="Autoimmun hypertyreose" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="33390" OrderNumber="1" OptionText="Ja" VerboseText="Autoimmun hypertyreose." ShortCode="J" ICD10="E063"/>
           <Answer AnswerId="33391" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          <Answer AnswerId="37252" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig autoimmun hypotyreose." ShortCode="U"/>
+          <Answer AnswerId="37252" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig autoimmun hypotyreose." ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -258,7 +272,7 @@
         <FormItem ItemText="Positiv TSH-reseptorantistoff" ItemHelp="TRAS. Svar Ja hvis den har vært positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="37177" OrderNumber="1" OptionText="Ja" VerboseText="Positiv TSH-reseptorantistoff." ShortCode="J"/>
           <Answer AnswerId="37178" OrderNumber="2" OptionText="Nei" VerboseText="Negativ TSH-reseptorantistoff." ShortCode="N"/>
-          <Answer AnswerId="37179" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+          <Answer AnswerId="37179" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -267,7 +281,7 @@
         <FormItem ItemText="Diabetes mellitus type 1" ItemHelp="WHO criteria for type 1 diabetes." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="33396" OrderNumber="1" OptionText="Ja" VerboseText="Diabetes mellitus type 1." ShortCode="J" ICD10="E10"/>
           <Answer AnswerId="33397" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="37249" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="37249" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -283,7 +297,7 @@
         <FormItem ItemHeader="Diabetesantistoffer" ItemText="Har pasienten fått påvist diabetesantistoffer?" ItemHelp="F.eks. GAD, IA2, insulin-antistoff eller anti-ZnT8.  Det er nok at én er positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="20696" OrderNumber="1" OptionText="Ja" VerboseText="Positive antistoffer mot beta-celler." ShortCode="Pos"/>
           <Answer AnswerId="20697" OrderNumber="2" OptionText="Nei" VerboseText="Negative antistoffer mot beta-celler." ShortCode="Neg"/>
-          <Answer AnswerId="20698" OrderNumber="3" OptionText="Ukjent" ShortCode="Ukj"/>
+          <Answer AnswerId="20698" OrderNumber="3" OptionText="Ukjent" ShortCode="Ukj" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -292,7 +306,7 @@
         <FormItem ItemText="Primær testikkelsvikt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="47940" OrderNumber="1" OptionText="Ja" VerboseText="Primær testikkelsvikt." ShortCode="J" ICD10="E291"/>
           <Answer AnswerId="47941" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47942" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig primær testikkelsvikt." ShortCode="U"/>
+          <Answer AnswerId="47942" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig primær testikkelsvikt." ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -333,7 +347,7 @@
         <FormItem ItemText="Hypofysitt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47619" OrderNumber="1" OptionText="Ja" VerboseText="Hypofysitt." ShortCode="J"/>
           <Answer AnswerId="47620" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47621" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig hypofysitt." ShortCode="U"/>
+          <Answer AnswerId="47621" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig hypofysitt." ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -349,7 +363,7 @@
         <FormItem ItemText="Plateepitelcarcinom i munnhulen" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47613" OrderNumber="1" OptionText="Ja" VerboseText="Plateepitelcarcinom i munnhulen." ShortCode="J"/>
           <Answer AnswerId="47614" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47615" OrderNumber="3" OptionText="Ukjent"/>
+          <Answer AnswerId="47615" OrderNumber="3" OptionText="Ukjent" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -365,7 +379,7 @@
         <FormItem ItemText="Vitamin B12-mangel" ItemHelp="Tegn til funksjonell B12-mangel (lav normal eller subnormal serum kobalamin og høy homocystein og/eller metylmalonsyre)." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="33418" OrderNumber="1" OptionText="Ja" VerboseText="Vitamin B-12 mangel." ShortCode="J"/>
           <Answer AnswerId="33419" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47585" OrderNumber="3" OptionText="Ukjent/Usikker"/>
+          <Answer AnswerId="47585" OrderNumber="3" OptionText="Ukjent/Usikker" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -381,7 +395,7 @@
         <FormItem ItemText="Autoimmun atrofisk gastritt" ItemHelp="Atrofisk gastritt verifisert med biopsi som viser isolert gastritt i fundus (Type A autoimmun gastritt)." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="33412" OrderNumber="1" OptionText="Ja" VerboseText="Atrofisk gastritt." ShortCode="J"/>
           <Answer AnswerId="33413" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47588" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47588" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -397,7 +411,7 @@
         <FormItem ItemText="Positiv for antistoffer mot parietalceller eller intrinsic faktor" ItemHelp="Svar Ja hvis én har vært positiv én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="42515" OrderNumber="1" OptionText="Ja" VerboseText="Positiv antistoffer mot parietalceller/IF." ShortCode="J"/>
           <Answer AnswerId="42516" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="42517" OrderNumber="3" OptionText="Ukjent"/>
+          <Answer AnswerId="42517" OrderNumber="3" OptionText="Ukjent" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -406,7 +420,7 @@
         <FormItem ItemText="Autoimmun hepatitt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47622" OrderNumber="1" OptionText="Ja" VerboseText="Autoimmun hepatitt." ShortCode="J"/>
           <Answer AnswerId="47623" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47624" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47624" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -420,7 +434,7 @@
         <FormItem ItemHeader="Verifisert" ItemText="Histologisk verifisert autoimmun hepatitt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47676" OrderNumber="1" OptionText="Ja" VerboseText="Histologisk verifisert." ShortCode="J"/>
           <Answer AnswerId="47677" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47678" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47678" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -429,7 +443,7 @@
         <FormItem ItemText="Malabsorpsjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47625" OrderNumber="1" OptionText="Ja" VerboseText="Malabsorbsjon." ShortCode="J"/>
           <Answer AnswerId="47626" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47627" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47627" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -443,21 +457,21 @@
         <FormItem ItemText="Histologisk verifisert tarmbetennelse" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47682" OrderNumber="1" OptionText="Ja" VerboseText="Histologisk verifisert." ShortCode="J"/>
           <Answer AnswerId="47683" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47684" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47684" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="8567" ItemType="2" VarName="VAR8567" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Positive AADC-antistoffer" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47685" OrderNumber="1" OptionText="Ja" VerboseText="Positive AADC-antistoffer." ShortCode="J"/>
           <Answer AnswerId="47686" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47687" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47687" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="8568" ItemType="2" VarName="VAR8568" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Positive TPH-antistoffer" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47688" OrderNumber="1" OptionText="Ja" VerboseText="Positive TPH-antistoffer." ShortCode="J"/>
           <Answer AnswerId="47689" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47690" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47690" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -466,7 +480,7 @@
         <FormItem ItemText="Cøliaki" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="16962" OrderNumber="1" OptionText="Ja" VerboseText="Cøliaki." ShortCode="J" ICD10="K900"/>
           <Answer AnswerId="16963" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="16964" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+          <Answer AnswerId="16964" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -480,7 +494,7 @@
         <FormItem ItemText="Positiv transglutaminase antistoff" ItemHelp="Svar Ja hvis IgA- eller IgG-antistoff har vært positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="42506" OrderNumber="1" OptionText="Ja" VerboseText="Positiv transglutaminase-antistoff." ShortCode="J"/>
           <Answer AnswerId="42507" OrderNumber="2" OptionText="Nei" VerboseText="Negativ transglutaminase-antistoff." ShortCode="N"/>
-          <Answer AnswerId="42508" OrderNumber="3" OptionText="Ukjent"/>
+          <Answer AnswerId="42508" OrderNumber="3" OptionText="Ukjent" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -489,7 +503,7 @@
         <FormItem ItemText="Eksokrin pankreassvikt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47640" OrderNumber="1" OptionText="Ja" VerboseText="Eksokrin pankreassvikt." ShortCode="J"/>
           <Answer AnswerId="47641" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47642" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47642" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -505,7 +519,7 @@
         <FormItem ItemText="Gallestein" ItemHelp="Her må vi spørre Eystein om definisjon." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47637" OrderNumber="1" OptionText="Ja" VerboseText="Gallesteinsykdom." ShortCode="J"/>
           <Answer AnswerId="47638" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47639" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47639" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -521,7 +535,7 @@
         <FormItem ItemText="Keratokonjunktivitt" ItemHelp="Spørre Eystein om definisjon her" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47646" OrderNumber="1" OptionText="Ja" VerboseText="Keratokonjunktivitt." ShortCode="J"/>
           <Answer AnswerId="47647" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47648" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47648" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -537,7 +551,7 @@
         <FormItem ItemText="Iridocyklitt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47649" OrderNumber="1" OptionText="Ja" VerboseText="Iridocyclitt." ShortCode="J"/>
           <Answer AnswerId="47650" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47651" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47651" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -553,7 +567,7 @@
         <FormItem ItemText="Retinaaffeksjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47652" OrderNumber="1" OptionText="Ja" VerboseText="Retinaaffeksjon." ShortCode="J"/>
           <Answer AnswerId="47653" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47654" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47654" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -569,7 +583,7 @@
         <FormItem ItemText="Neglepitting" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47655" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="47656" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47657" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47657" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -583,7 +597,7 @@
         <FormItem ItemText="Vitiligo" ItemHelp="Har hatt noen gang" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="16968" OrderNumber="1" OptionText="Ja" VerboseText="Vitiligo." ShortCode="J" ICD10="L80"/>
           <Answer AnswerId="16969" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="16970" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+          <Answer AnswerId="16970" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="6330" ItemType="1" VarName="VAR6330" LoincScale="QN" DisplayFormat="">
@@ -595,7 +609,7 @@
         <FormItem ItemText="Alopeci" ItemHelp="Delvis eller totalt hårtap på hodet eller kroppen." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="33444" OrderNumber="1" OptionText="Ja" VerboseText="Alopeci." ShortCode="J" ICD10="L63"/>
           <Answer AnswerId="33445" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          <Answer AnswerId="37255" OrderNumber="3" OptionText="Usikker*" ShortCode="U"/>
+          <Answer AnswerId="37255" OrderNumber="3" OptionText="Usikker*" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="6331" ItemType="1" VarName="VAR6331" LoincScale="QN" DisplayFormat="">
@@ -607,14 +621,14 @@
         <FormItem ItemText="Alopecia totalis" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47658" OrderNumber="1" OptionText="Ja" VerboseText="Alopecia totalis." ShortCode="J"/>
           <Answer AnswerId="47659" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47660" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47660" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="8558" ItemType="2" VarName="VAR8558" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Emaljehypoplasi" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47661" OrderNumber="1" OptionText="Ja" VerboseText="Emaljehypoplasi." ShortCode="J"/>
           <Answer AnswerId="47662" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47663" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47663" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="8559" ItemType="1" VarName="VAR8559" LoincScale="QN" DisplayFormat="">
@@ -626,7 +640,7 @@
         <FormItem ItemText="Tannlegeverifisert emaljehypolasi" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47664" OrderNumber="1" OptionText="Ja" VerboseText="Verifisert av tannlege." ShortCode="J"/>
           <Answer AnswerId="47665" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47666" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47666" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -635,7 +649,7 @@
         <FormItem ItemText="Periodisk utslett med feber" ItemHelp="Her bør vi ha litt hjelpetekst." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47667" OrderNumber="1" OptionText="Ja" VerboseText="Periodisk utslett med feber." ShortCode="J"/>
           <Answer AnswerId="47668" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47669" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47669" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -651,7 +665,7 @@
         <FormItem ItemText="Asplenisme" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47643" OrderNumber="1" OptionText="Ja" VerboseText="Asplenisme." ShortCode="J"/>
           <Answer AnswerId="47644" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47645" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47645" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -677,7 +691,7 @@
         <FormItem ItemText="Nefritt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47628" OrderNumber="1" OptionText="Ja" VerboseText="Nefritt." ShortCode="J"/>
           <Answer AnswerId="47629" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47630" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47630" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -691,7 +705,7 @@
         <FormItem ItemText="Histologisk verifisert nefritt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47691" OrderNumber="1" OptionText="Ja" VerboseText="Histologisk verifisert." ShortCode="J"/>
           <Answer AnswerId="47692" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47693" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47693" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -700,7 +714,7 @@
         <FormItem ItemText="Hypertensjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47631" OrderNumber="1" OptionText="Ja" VerboseText="Hypertensjon." ShortCode="J"/>
           <Answer AnswerId="47632" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47633" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47633" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -716,7 +730,7 @@
         <FormItem ItemText="Tilsynelatende mineralokortikoidoverskudd" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="47634" OrderNumber="1" OptionText="Ja" VerboseText="Tilsynelatende mineralkortikoidoverskudd (AME)." ShortCode="J"/>
           <Answer AnswerId="47635" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47636" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="47636" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -901,109 +915,112 @@
     </Page>
   </Form>
   <Actions>
+    <PageAction MasterId="6641">
+      <Activate EnumVal="1" PageConditionId="8036" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
     <PageAction MasterId="6299">
-      <Activate EnumVal="1" PageConditionId="3610" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="3649" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3610" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3649" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6321">
-      <Activate EnumVal="1" PageConditionId="3611" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3611" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6322">
-      <Activate EnumVal="1" PageConditionId="3645" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3645" PageNumber="15" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6312">
-      <Activate EnumVal="1" PageConditionId="3650" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3650" PageNumber="19" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6313">
-      <Activate EnumVal="1" PageConditionId="3651" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3651" PageNumber="23" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6314">
-      <Activate EnumVal="1" PageConditionId="3652" PageNumber="24" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3652" PageNumber="26" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="4255">
-      <Activate EnumVal="1" PageConditionId="3726" PageNumber="26" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3726" PageNumber="28" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8594">
-      <Activate EnumVal="1" PageConditionId="3725" PageNumber="27" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3725" PageNumber="29" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="4255">
-      <Activate EnumVal="2" PageConditionId="3667" PageNumber="28" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="3667" PageNumber="30" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6318">
-      <Activate EnumVal="1" PageConditionId="3727" PageNumber="29" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3727" PageNumber="31" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="4255">
-      <Activate EnumVal="2" PageConditionId="3656" PageNumber="31" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="3656" PageNumber="33" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8543">
-      <Activate EnumVal="1" PageConditionId="3658" PageNumber="33" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3658" PageNumber="35" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8541">
-      <Activate EnumVal="1" PageConditionId="3646" PageNumber="35" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3646" PageNumber="37" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6317">
-      <Activate EnumVal="1" PageConditionId="3660" PageNumber="37" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="3705" PageNumber="38" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3660" PageNumber="39" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3705" PageNumber="40" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6316">
-      <Activate EnumVal="1" PageConditionId="3659" PageNumber="39" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3659" PageNumber="41" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8545">
-      <Activate EnumVal="1" PageConditionId="3661" PageNumber="42" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3661" PageNumber="44" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8546">
-      <Activate EnumVal="1" PageConditionId="3662" PageNumber="44" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="3665" PageNumber="45" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3662" PageNumber="46" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3665" PageNumber="47" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="3410">
-      <Activate EnumVal="1" PageConditionId="3663" PageNumber="49" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3663" PageNumber="51" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8551">
-      <Activate EnumVal="1" PageConditionId="3676" PageNumber="52" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3676" PageNumber="54" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8550">
-      <Activate EnumVal="1" PageConditionId="3666" PageNumber="54" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3666" PageNumber="56" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8553">
-      <Activate EnumVal="1" PageConditionId="3669" PageNumber="56" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3669" PageNumber="58" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8554">
-      <Activate EnumVal="1" PageConditionId="3675" PageNumber="58" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3675" PageNumber="60" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8555">
-      <Activate EnumVal="1" PageConditionId="3674" PageNumber="60" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3674" PageNumber="62" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8556">
-      <Activate EnumVal="1" PageConditionId="3707" PageNumber="62" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3707" PageNumber="64" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="3411">
-      <Activate EnumVal="1" PageConditionId="3708" PageNumber="64" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3708" PageNumber="66" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6320">
-      <Activate EnumVal="1" PageConditionId="3721" PageNumber="66" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="3722" PageNumber="67" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3721" PageNumber="68" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3722" PageNumber="69" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8558">
-      <Activate EnumVal="1" PageConditionId="3709" PageNumber="69" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="3710" PageNumber="70" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3709" PageNumber="71" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3710" PageNumber="72" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8561">
-      <Activate EnumVal="1" PageConditionId="3670" PageNumber="72" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3670" PageNumber="74" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8552">
-      <Activate EnumVal="1" PageConditionId="3671" PageNumber="74" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3671" PageNumber="76" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8547">
-      <Activate EnumVal="1" PageConditionId="3668" PageNumber="76" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3668" PageNumber="78" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8548">
-      <Activate EnumVal="1" PageConditionId="3673" PageNumber="78" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3673" PageNumber="80" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8549">
-      <Activate EnumVal="1" PageConditionId="3672" PageNumber="80" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3672" PageNumber="82" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="6674">
-      <Activate EnumVal="1" PageConditionId="3612" PageNumber="88" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="3612" PageNumber="90" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>

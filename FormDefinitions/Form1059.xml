@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
   <Form FormId="1059" FormName="DBUPGRADE_REQUEST" FormTitle="Databaseoppdatering bestilling">
-    <Page PageTitle="Planlagt dato for databaseoppgradering*">
+    <Page PageTitle="Planlagte datoer">
       <Item ItemId="3678" ItemType="5" VarName="DB_UPGRADE_PLANNED_DATE" LoincScale="DATE">
         <FormItem ItemText="Planlagt oppdatering av DB" ItemHelp="Når er det planlagt oppdatering av DB og Metadata?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
@@ -18,8 +18,8 @@
     <Page PageTitle="Varslet oppdatering">
       <Item ItemId="1488" ItemType="2" VarName="VAR1488" LoincScale="ORD">
         <FormItem ItemText="Er oppdateringen varslet forvalter?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="10430" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="10431" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="10430" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="10431" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>
     </Page>
@@ -31,8 +31,8 @@
       </Item>
       <Item ItemId="3679" ItemType="2" VarName="VAR3679" LoincScale="ORD">
         <FormItem ItemText="Er dato bekreftet" ItemHelp="Har forvalter meldt tilbake og bekreftet dato?" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="12291" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="12292" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="12291" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="12292" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>
       <Item ItemId="3837" ItemType="1" VarName="DB_UPGRADE_PLANNED_TIME" LoincScale="QN">
@@ -53,41 +53,36 @@
         </FormItem>
       </Item>
       <Item ItemId="1491" ItemType="1" VarName="DB_VERSION_BEFORE" LoincScale="QN">
-        <FormItem ItemText="Versjon før oppdateringen" ItemHelp="" MinExpression="521" MaxExpression="18227" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Versjon før oppdateringen" ItemHelp="" MinExpression="521" MaxExpression="19017" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="1493" ItemType="1" VarName="DB_VERSION_AFTER" LoincScale="QN">
-        <FormItem ItemText="Planlagt versjon etter oppdateringen" ItemHelp="" MinExpression="600" MaxExpression="18228" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Planlagt versjon etter oppdateringen" ItemHelp="" MinExpression="6400" MaxExpression="19018" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Programfil">
-      <Item ItemId="3772" ItemType="4" VarName="VAR3772" LoincScale="NAR" Multiline="0">
-        <FormItem ItemText="Versjon før oppdatering" ItemHelp="Programversjon før oppdatering" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer/>
-        </FormItem>
-      </Item>
       <Item ItemId="3774" ItemType="4" VarName="VAR3774" LoincScale="NAR" Multiline="0">
-        <FormItem ItemText="Versjon etter oppdatering" ItemHelp="Programversjon etter oppdatering" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Versjon etter oppdatering" ItemHelp="Programversjon etter oppdatering" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Forvalter">
       <Item ItemId="3675" ItemType="4" VarName="VAR3675" LoincScale="NAR" Multiline="0">
-        <FormItem ItemText="Navn forvalter" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="0">
+        <FormItem ItemText="Navn forvalter" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3676" ItemType="4" VarName="VAR3676" LoincScale="NAR" Multiline="0">
-        <FormItem ItemText="Telefonnummer forvalter" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="0">
+        <FormItem ItemText="Telefonnummer forvalter" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3677" ItemType="4" VarName="VAR3677" LoincScale="NAR" Multiline="0">
-        <FormItem ItemText="Epostadresse forvalter" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="0">
+        <FormItem ItemText="Epostadresse forvalter" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>

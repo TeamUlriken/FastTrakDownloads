@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
-  <Form FormId="926" FormName="HofteGamma" FormTitle="Margnagling">
+  <Form FormId="926" FormName="HofteGamma" FormTitle="Margnagling" FormDateItemId="8195">
     <Page PageTitle="Margnagling">
       <Item ItemId="8483" ItemType="8" VarName="VAR8483" LoincScale="MSG" DisplayFormat="">
         <FormItem ItemHeader="Arbeidsflyt" ItemText="Innkomstnotat skal være utfylt før dette skjemaet.  Skjemaet skal bare brukes på primæroperasjoner.  Skjemadato skal være lik operasjonsdato." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
@@ -39,16 +39,16 @@
       <Item ItemId="8500" ItemType="2" VarName="HrAntiKoag" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Fast tromboseprofylakse" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="47264" OrderNumber="0" OptionText="Nei*" ShortCode="N"/>
-          <Answer AnswerId="47265" OrderNumber="1" OptionText="Warfarin (Marevan)" VerboseText="Warfarin." ShortCode="Mar"/>
-          <Answer AnswerId="47266" OrderNumber="2" OptionText="Acetylsalisylsyre (Albyl-E)" VerboseText="Acetylsalicylsyre." ShortCode="ASA"/>
-          <Answer AnswerId="47267" OrderNumber="3" OptionText="Klopidogrel (Plavix)" VerboseText="Klopidogrel." ShortCode="Klo"/>
-          <Answer AnswerId="47268" OrderNumber="9" OptionText="Annet eller kombinasjoner*" ShortCode="Ann"/>
+          <Answer AnswerId="47265" OrderNumber="1" OptionText="Warfarin (Marevan)" VerboseText="Bruker warfarin fast." ShortCode="Mar"/>
+          <Answer AnswerId="47266" OrderNumber="2" OptionText="Acetylsalisylsyre (Albyl-E)" VerboseText="Bruker acetylsalicylsyre fast." ShortCode="ASA"/>
+          <Answer AnswerId="47267" OrderNumber="3" OptionText="Klopidogrel (Plavix)" VerboseText="Bruker klopidogrel fast." ShortCode="Klo"/>
+          <Answer AnswerId="47268" OrderNumber="9" OptionText="Annet eller kombinasjoner" VerboseText="Fast tromboseprofylakse:" ShortCode="Ann"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Annen fast antikoagulasjon*">
       <Item ItemId="8257" ItemType="4" VarName="HrAntiKoagAnnet" LoincScale="NAR" DisplayFormat="" Multiline="0">
-        <FormItem ItemText="Hvilke" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemHeader="Spesifiser" ItemText="Hvilken tromboseprofylakse brukes fast?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -56,14 +56,14 @@
     <Page PageTitle="Klassifikasjon av brudd">
       <Item ItemId="8202" ItemType="2" VarName="VAR8202" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Type primærbrudd" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="43902" OrderNumber="1" OptionText="Lårhalsbrudd udislokert" VerboseText="Udislokert" ICD10="S720"/>
-          <Answer AnswerId="43903" OrderNumber="2" OptionText="Lårhalsbrudd dislokert" VerboseText="Dislokert" ICD10="S720"/>
-          <Answer AnswerId="43904" OrderNumber="3" OptionText="Lateralt lårhalsbrudd" VerboseText="Lateralt" ICD10="S720"/>
-          <Answer AnswerId="43905" OrderNumber="4" OptionText="Pertrokantært tofragment" VerboseText="Pertrokantært tofragment" ICD10="S721"/>
-          <Answer AnswerId="43906" OrderNumber="5" OptionText="Pertrokantært flerfragment" VerboseText="Pertrokantært flerfragment" ICD10="S721"/>
-          <Answer AnswerId="43908" OrderNumber="6" OptionText="Subtrokantært" VerboseText="Subtrokantært" ICD10="S722"/>
-          <Answer AnswerId="43909" OrderNumber="7" OptionText="Annet*" ICD10="S720"/>
-          <Answer AnswerId="43907" OrderNumber="9" OptionText="Intertrokantært" VerboseText="Intertrokantært" ICD10="S721"/>
+          <Answer AnswerId="43902" OrderNumber="1" OptionText="Lårhalsbrudd udislokert" VerboseText="Udislokert" Score="0.00" ICD10="S720"/>
+          <Answer AnswerId="43903" OrderNumber="2" OptionText="Lårhalsbrudd dislokert" VerboseText="Dislokert" Score="0.00" ICD10="S720"/>
+          <Answer AnswerId="43904" OrderNumber="3" OptionText="Lateralt lårhalsbrudd" VerboseText="Lateralt" Score="0.00" ICD10="S720"/>
+          <Answer AnswerId="43905" OrderNumber="4" OptionText="Pertrokantært tofragment" VerboseText="Pertrokantært tofragment" Score="1.00" ICD10="S721"/>
+          <Answer AnswerId="43906" OrderNumber="5" OptionText="Pertrokantært flerfragment" VerboseText="Pertrokantært flerfragment" Score="1.00" ICD10="S721"/>
+          <Answer AnswerId="43908" OrderNumber="6" OptionText="Subtrokantært" VerboseText="Subtrokantært" Score="2.00" ICD10="S722"/>
+          <Answer AnswerId="43909" OrderNumber="7" OptionText="Annet*" Score="3.00" ICD10="S720"/>
+          <Answer AnswerId="43907" OrderNumber="9" OptionText="Intertrokantært" VerboseText="Intertrokantært" Score="1.00" ICD10="S721"/>
         </FormItem>
       </Item>
     </Page>
@@ -136,7 +136,7 @@
     </Page>
     <Page PageTitle="Inngrepets start" PageIntroduction="Flytt skjemaet under &quot;Skjema&quot; til venstre hvis datoen ikke er riktig.">
       <Item ItemId="8195" ItemType="5" VarName="HrOprDato" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemHeader="Dato" ItemText="Dato for operasjon" ItemHelp="" Expression="TRUNC(FORM.Date)" MinExpression="DOB" MaxExpression="NOW + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemHeader="Dato" ItemText="Dato for operasjon" ItemHelp="" Expression="TRUNC(FORM.Date)" MinExpression="Patient.DOB" MaxExpression="NOW + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>

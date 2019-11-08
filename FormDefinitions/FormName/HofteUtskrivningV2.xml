@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
-  <Form FormId="1053" FormName="HofteUtskrivningV2" FormTitle="Utskriving">
+  <Form FormId="799" FormName="HofteUtskrivningV2" FormTitle="Utskriving" FormDateItemId="8753">
     <Page PageTitle="Innkomst">
       <Item ItemId="9695" ItemType="5" VarName="HofteAdmissionDate" LoincScale="DATE" DisplayFormat="">
         <FormItem ItemText="Innleggelsesdato" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
@@ -13,9 +13,25 @@
         </FormItem>
       </Item>
     </Page>
+    <Page PageTitle="Fra innkomstjournalen*">
+      <Item ItemId="8200" ItemType="2" VarName="HrDemens" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Kognitiv svikt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="1" Optional="1">
+          <Answer AnswerId="43891" OrderNumber="0" OptionText="Nei" VerboseText="Ikke kognitiv svikt." ShortCode="N"/>
+          <Answer AnswerId="43892" OrderNumber="1" OptionText="Ja" VerboseText="Kognitiv svikt." ShortCode="J" ICD10="F0[0123]*"/>
+          <Answer AnswerId="43893" OrderNumber="2" OptionText="Usikker" VerboseText="Mulig kognitiv svikt." ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="8271" ItemType="2" VarName="VAR8271" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Diabetes" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="1" Optional="1">
+          <Answer AnswerId="44256" OrderNumber="1" OptionText="Ja" VerboseText="Diabetes." ShortCode="J"/>
+          <Answer AnswerId="44257" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="44258" OrderNumber="3" OptionText="Usikker*" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
     <Page PageTitle="Utskrivning">
       <Item ItemId="8753" ItemType="5" VarName="HofteDischargeDate" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Utskrivningsdato" ItemHelp="Tips: Bruk &quot;td&quot; for i dag, &quot;-1&quot; for igår." Expression="TRUNC(FORM.Date)" MinExpression="DOB" MaxExpression="NOW + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Utskrivningsdato" ItemHelp="Tips: Bruk &quot;td&quot; for i dag, &quot;-1&quot; for igår." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -377,85 +393,85 @@
   </Form>
   <Actions>
     <PageAction MasterId="8755">
-      <Activate EnumVal="1" PageConditionId="7769" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="7796" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4663" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4704" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9721">
-      <Activate EnumVal="1" PageConditionId="7795" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4689" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9021">
-      <Activate EnumVal="1" PageConditionId="7770" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4664" PageNumber="9" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9699">
-      <Activate EnumVal="1" PageConditionId="7779" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4673" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9698">
-      <Activate EnumVal="1" PageConditionId="7774" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4668" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9699">
-      <Activate EnumVal="1" PageConditionId="7780" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4674" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9700">
-      <Activate EnumVal="1" PageConditionId="7775" PageNumber="13" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4669" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9699">
-      <Activate EnumVal="1" PageConditionId="7781" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4675" PageNumber="15" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9701">
-      <Activate EnumVal="1" PageConditionId="7776" PageNumber="15" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4670" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9699">
-      <Activate EnumVal="1" PageConditionId="7782" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4676" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9702">
-      <Activate EnumVal="1" PageConditionId="7777" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4671" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9699">
-      <Activate EnumVal="1" PageConditionId="7783" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4677" PageNumber="19" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9703">
-      <Activate EnumVal="1" PageConditionId="7778" PageNumber="19" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4672" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9699">
-      <Activate EnumVal="1" PageConditionId="7784" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4678" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9704">
-      <Activate EnumVal="1" PageConditionId="7773" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4667" PageNumber="22" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9696">
-      <Activate EnumVal="1" PageConditionId="7790" PageNumber="23" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4684" PageNumber="24" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8752">
-      <Activate EnumVal="1" PageConditionId="7791" PageNumber="25" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4685" PageNumber="26" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8750">
-      <Activate EnumVal="1" PageConditionId="7792" PageNumber="27" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4686" PageNumber="28" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8751">
-      <Activate EnumVal="1" PageConditionId="7793" PageNumber="29" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4687" PageNumber="30" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9697">
-      <Activate EnumVal="1" PageConditionId="7794" PageNumber="31" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4688" PageNumber="32" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8749">
-      <Activate EnumVal="1" PageConditionId="7771" PageNumber="33" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4665" PageNumber="34" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8755">
-      <Activate EnumVal="1" PageConditionId="7797" PageNumber="35" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="7785" PageNumber="36" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4705" PageNumber="36" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4679" PageNumber="37" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9713">
-      <Activate EnumVal="2" PageConditionId="7789" PageNumber="37" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="4683" PageNumber="38" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8755">
-      <Activate EnumVal="1" PageConditionId="7798" PageNumber="38" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="7786" PageNumber="40" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4706" PageNumber="39" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4680" PageNumber="41" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9711">
-      <Activate EnumVal="1" PageConditionId="7787" PageNumber="41" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4681" PageNumber="42" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="8755">
-      <Activate EnumVal="1" PageConditionId="7788" PageNumber="42" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="4682" PageNumber="43" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>

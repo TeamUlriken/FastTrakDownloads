@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <StudyForm>
-  <Form FormId="1053" FormName="HofteUtskrivningV2" FormTitle="Utskriving">
+  <Form FormId="1053" FormName="HofteUtskrivningV2" FormTitle="Utskriving" FormDateItemId="8753">
     <Page PageTitle="Innkomst">
       <Item ItemId="9695" ItemType="5" VarName="HofteAdmissionDate" LoincScale="DATE" DisplayFormat="">
         <FormItem ItemText="Innleggelsesdato" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
@@ -15,7 +15,7 @@
     </Page>
     <Page PageTitle="Utskrivning">
       <Item ItemId="8753" ItemType="5" VarName="HofteDischargeDate" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Utskrivningsdato" ItemHelp="Tips: Bruk &quot;td&quot; for i dag, &quot;-1&quot; for igår." Expression="TRUNC(FORM.Date)" MinExpression="DOB" MaxExpression="NOW + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Utskrivningsdato" ItemHelp="Tips: Bruk &quot;td&quot; for i dag, &quot;-1&quot; for igår." Expression="TRUNC(FORM.Date)" MinExpression="Patient.DOB" MaxExpression="NOW + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>

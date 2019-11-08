@@ -10,6 +10,7 @@ git clone https://bitbucket.org/emetra/langtid.git LANGTID
 git clone https://bitbucket.org/emetra/lipid.git LIPID
 git clone https://bitbucket.org/emetra/ndv.git NDV
 git clone https://bitbucket.org/emetra/overvekt.git OVERVEKT
+git clone https://bitbucket.org/emetra/pfo.git PFO
 git clone https://bitbucket.org/emetra/roas.git ROAS
 git clone https://bitbucket.org/emetra/slag.git SLAG
 rem git clone https://bitbucket.org/emetra/soreg.git SOREG

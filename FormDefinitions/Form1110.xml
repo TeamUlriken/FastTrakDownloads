@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="1110" FormName="FORM1110" FormTitle="Forbehandling">
+    <Page PageTitle="Forbehandling" PageIntroduction="Sjekkpunkter tre/fem dager før pasientene kommer">
+      <Item ItemId="5582" ItemType="2" VarName="VAR5582" LoincScale="ORD">
+        <FormItem ItemText="Mottatt bekreftelse på oppmøte" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12644" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="12645" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Dato for bekreftelse*" PageIntroduction="Pasienten returnerer en bekreftelse og svarer på spørsmål">
+      <Item ItemId="5583" ItemType="5" VarName="VAR5583" LoincScale="DATE">
+        <FormItem ItemText="Dato for bekreftelse" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5584" ItemType="2" VarName="VAR5584" LoincScale="ORD">
+        <FormItem ItemText="Mottatt kartleggingspakke" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12646" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="12647" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="12648" OrderNumber="3" OptionText="Ubesvart"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="New*">
+      <Item ItemId="5585" ItemType="2" VarName="VAR5585" LoincScale="ORD">
+        <FormItem ItemHeader="Ledig kapasitet" ItemText="Er det ledig kapasitet som kan benyttes til pasienter på venteliste?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12649" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="12650" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5614" ItemType="2" VarName="VAR5614" LoincScale="ORD">
+        <FormItem ItemText="Er pasienten kontaktet?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12651" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="12652" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Pasient kontaktet*">
+      <Item ItemId="5615" ItemType="5" VarName="VAR5615" LoincScale="DATE">
+        <FormItem ItemText="Kontaktet dato" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5616" ItemType="4" VarName="VAR5616" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Tilbakemelding fra pasient" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Sjekkliste">
+      <Item ItemId="5580" ItemType="2" VarName="VAR5580" LoincScale="ORD">
+        <FormItem ItemText="Relevante data overført til DIPS" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12642" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="12643" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="5581" ItemType="2" VarName="VAR5581" LoincScale="ORD">
+        <FormItem ItemText="Korrekt kode ført i DIPS" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61705" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="61706" OrderNumber="2" OptionText="Nei"/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="5582">
+      <Activate EnumVal="1" PageConditionId="8058" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="5614">
+      <Activate EnumVal="1" PageConditionId="8059" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

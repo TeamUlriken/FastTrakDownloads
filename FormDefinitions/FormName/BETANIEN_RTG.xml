@@ -10,7 +10,7 @@
     </Page>
     <Page PageTitle="Type undersøkelse">
       <Item ItemId="6377" ItemType="2" VarName="ChildBearingAge" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Kvinne i fertil alder" ItemHelp="" Expression="2-ISNULL(Patient.GenderId-2)*ISPOS(Patient.Age-15)*ISNEG(Patient.Age-55)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Kvinne i fertil alder" ItemHelp="" Expression="2 - ISNULL(Patient.GenderId-2) * ISPOS(AGE-15) * ISNEG(AGE-55)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer AnswerId="33731" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="33732" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
@@ -22,64 +22,64 @@
       </Item>
       <Item ItemId="8932" ItemType="2" VarName="VAR8932" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Ultralyd" ItemText="Skal det gjøres ultralydundersøkelse?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50118" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="50119" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="50118" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="50119" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>
       <Item ItemId="8933" ItemType="2" VarName="VAR8933" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Røntgen" ItemText="Skal det tas røntgen?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50124" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="50125" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="50124" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="50125" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>
       <Item ItemId="8931" ItemType="2" VarName="VAR8931" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="CT" ItemText="Skal det tas CT?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50112" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="50113" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="50112" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="50113" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>
       <Item ItemId="8919" ItemType="2" VarName="VAR8919" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="MR" ItemText="Skal det tas MR?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50044" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="50045" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="50044" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="50045" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Forsiktighetsregler">
       <Item ItemId="8914" ItemType="2" VarName="VAR8914" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Kommunikasjonsevne" ItemText="Kan pasienten kommunisere" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50024" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="50025" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="50024" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="50025" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>
       <Item ItemId="8915" ItemType="2" VarName="VAR8915" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Ryggleie" ItemText="Kan pasienten ligge på rygg" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50028" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="50029" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="50028" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="50029" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>
       <Item ItemId="8916" ItemType="2" VarName="VAR8916" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Thyroideasykdom" ItemText="Har pasienten thyroideasykdom?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50032" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="50033" OrderNumber="2" OptionText="Nei"/>
+        <FormItem ItemHeader="Thyroideasykdom" ItemText="Har pasienten thyroideasykdom?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="50032" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="50033" OrderNumber="2" OptionText="Nei" ShortCode="N" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="8917" ItemType="2" VarName="VAR8917" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Diabetes" ItemText="Har pasienten diabetes?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50036" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="50037" OrderNumber="2" OptionText="Nei"/>
+        <FormItem ItemHeader="Diabetes" ItemText="Har pasienten diabetes?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="50036" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="50037" OrderNumber="2" OptionText="Nei" ShortCode="N" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="8918" ItemType="2" VarName="VAR8918" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Har pasienten kjente allergier?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50040" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="50041" OrderNumber="2" OptionText="Nei" VerboseText="Ingen allergier."/>
+        <FormItem ItemText="Har pasienten kjente allergier?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="50040" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="50041" OrderNumber="2" OptionText="Nei" VerboseText="Ingen allergier." ShortCode="N" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Allergier*">
       <Item ItemId="8965" ItemType="4" VarName="AnAllergier" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemText="Allergier" ItemHelp="Kjente allergier, spesielt medikamentreaksjoner. Type reaksjon og alvorlighetsgrad må også angis." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Allergier" ItemHelp="Kjente allergier, spesielt medikamentreaksjoner. Type reaksjon og alvorlighetsgrad må også angis." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -94,59 +94,59 @@
     </Page>
     <Page PageTitle="Kontraindikasjoner for MR" PageIntroduction="Har pasienten">
       <Item ItemId="8920" ItemType="2" VarName="VAR8920" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="V/P shunt (type)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50048" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="50049" OrderNumber="2" OptionText="Nei"/>
+        <FormItem ItemText="V/P shunt (type)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="50048" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="50049" OrderNumber="2" OptionText="Nei" ShortCode="N" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="8921" ItemType="2" VarName="VAR8921" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Hjerteklaff (type)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50052" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="50053" OrderNumber="2" OptionText="Nei"/>
+        <FormItem ItemText="Hjerteklaff (type)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="50052" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="50053" OrderNumber="2" OptionText="Nei" ShortCode="N" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="8922" ItemType="2" VarName="VAR8922" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Øreimplantat (type)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50056" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="50057" OrderNumber="2" OptionText="Nei"/>
+        <FormItem ItemText="Øreimplantat (type)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="50056" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="50057" OrderNumber="2" OptionText="Nei" ShortCode="N" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="8923" ItemType="2" VarName="VAR8923" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Klaustrofobi" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50060" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="50061" OrderNumber="2" OptionText="Nei"/>
+        <FormItem ItemText="Klaustrofobi" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="50060" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="50061" OrderNumber="2" OptionText="Nei" ShortCode="N" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="8924" ItemType="2" VarName="VAR8924" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Pacemaker / ledninger" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50064" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="50065" OrderNumber="2" OptionText="Nei"/>
+        <FormItem ItemText="Pacemaker / ledninger" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="50064" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="50065" OrderNumber="2" OptionText="Nei" ShortCode="N" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="8925" ItemType="2" VarName="VAR8925" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Intracranielle vasculære klips" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50092" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="50093" OrderNumber="2" OptionText="Nei"/>
+        <FormItem ItemText="Intracranielle vasculære klips" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="50092" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="50093" OrderNumber="2" OptionText="Nei" ShortCode="N" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="8926" ItemType="2" VarName="VAR8926" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Fremmedlegeme i øye (metall)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50098" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="50099" OrderNumber="2" OptionText="Nei"/>
+        <FormItem ItemText="Fremmedlegeme i øye (metall)" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="50098" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="50099" OrderNumber="2" OptionText="Nei" ShortCode="N" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Timeavtale">
       <Item ItemId="8934" ItemType="2" VarName="VAR8934" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="ØH" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50128" OrderNumber="1" OptionText="Ja" VerboseText="Bestilt som ØH."/>
-          <Answer AnswerId="50129" OrderNumber="2" OptionText="Nei" VerboseText="Vanlig hastegrad."/>
+          <Answer AnswerId="50128" OrderNumber="1" OptionText="Ja" VerboseText="Bestilt som ØH." ShortCode="J"/>
+          <Answer AnswerId="50129" OrderNumber="2" OptionText="Nei" VerboseText="Vanlig hastegrad." ShortCode="N"/>
         </FormItem>
       </Item>
       <Item ItemId="8938" ItemType="2" VarName="DshRtgHarTime" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Har fått time" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="50130" OrderNumber="1" OptionText="Ja" VerboseText="Har fått time."/>
-          <Answer AnswerId="50131" OrderNumber="2" OptionText="Nei" VerboseText="Ikke fått time."/>
+          <Answer AnswerId="50130" OrderNumber="1" OptionText="Ja" VerboseText="Har fått time." ShortCode="J"/>
+          <Answer AnswerId="50131" OrderNumber="2" OptionText="Nei" VerboseText="Ikke fått time." ShortCode="N"/>
         </FormItem>
       </Item>
     </Page>
@@ -171,17 +171,17 @@
     </Page>
     <Page PageTitle="Kopi av svar bes sendt til">
       <Item ItemId="8927" ItemType="4" VarName="VAR8927" LoincScale="NAR" DisplayFormat="" Multiline="0">
-        <FormItem ItemText="Navn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Navn" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="8928" ItemType="4" VarName="VAR8928" LoincScale="NAR" DisplayFormat="" Multiline="0">
-        <FormItem ItemText="Adresse" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Adresse" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="8929" ItemType="4" VarName="VAR8929" LoincScale="NAR" DisplayFormat="" Multiline="0">
-        <FormItem ItemText="Postnr./sted" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Postnr./sted" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>

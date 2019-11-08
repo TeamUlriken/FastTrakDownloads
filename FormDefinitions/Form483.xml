@@ -25,7 +25,7 @@
         </FormItem>
       </Item>
       <Item ItemId="3342" ItemType="2" VarName="NDV_FAM_CHD" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Tidlig koronarsykdom hos foreldre/søsken" ItemHelp="Før 55/65 år hos menn/kvinner, kun biologiske foreldre/søsken" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem ItemText="Tidlig koronarsykdom hos foreldre/søsken" ItemHelp="Før 55/65 år hos menn/kvinner, kun biologiske foreldre/søsken" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1">
           <Answer AnswerId="16605" OrderNumber="1" OptionText="Ja" VerboseText="Tidlig koronarsykdom i familien." ShortCode="J"/>
           <Answer AnswerId="16606" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="16607" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
@@ -40,7 +40,7 @@
     </Page>
     <Page PageTitle="Komplikasjoner">
       <Item ItemId="3415" ItemType="2" VarName="NDV_NEPHROPATHY" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Nyrestatus" ItemText="Albuminuri eller nefropati?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem ItemHeader="Nyrestatus" ItemText="Albuminuri eller nefropati?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1">
           <Answer AnswerId="17090" OrderNumber="1" OptionText="Normal nyrestatus."/>
           <Answer AnswerId="17091" OrderNumber="2" OptionText="Tidligere mikroalbuminuri."/>
           <Answer AnswerId="17092" OrderNumber="3" OptionText="Mikroalbuminuri." ICD10="N083"/>
@@ -70,7 +70,7 @@
         </FormItem>
       </Item>
       <Item ItemId="4521" ItemType="2" VarName="NEVROPATI_KLINISK" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Nevropati" ItemText="Perifer eller autonom nevropati" ItemHelp="Behandlende leges vurdering" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemHeader="Nevropati" ItemText="Perifer eller autonom nevropati" ItemHelp="Behandlende leges vurdering" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="24014" OrderNumber="1" OptionText="Ja" VerboseText="Nevropati." ShortCode="J" ICD10="G632"/>
           <Answer AnswerId="24015" OrderNumber="2" OptionText="Nei" VerboseText="Ingen nevropati." ShortCode="N"/>
           <Answer AnswerId="24016" OrderNumber="3" OptionText="Ukjent*" ShortCode="U"/>
@@ -128,7 +128,7 @@
         </FormItem>
       </Item>
       <Item ItemId="6377" ItemType="2" VarName="ChildBearingAge" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Kvinne i fertil alder" ItemHelp="" Expression="2-ISNULL(Patient.GenderId-2)*ISPOS(Patient.Age-15)*ISNEG(Patient.Age-55)" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Kvinne i fertil alder" ItemHelp="" Expression="2 - ISNULL(Patient.GenderId-2) * ISPOS(AGE-15) * ISNEG(AGE-55)" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer AnswerId="33731" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="33732" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
@@ -144,7 +144,7 @@
     </Page>
     <Page PageTitle="">
       <Item ItemId="6378" ItemType="2" VarName="ICD10_O24" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Klassifikasjon etter ICD-10, O24.X" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Klassifikasjon etter ICD-10, O24.X" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="33735" OrderNumber="0" OptionText="Foruteksisterende diabetes mellitus, type I." ICD10="O240"/>
           <Answer AnswerId="33736" OrderNumber="1" OptionText="Foruteksisterende diabetes mellitus, type II." ICD10="O241"/>
           <Answer AnswerId="33737" OrderNumber="2" OptionText="Foruteksisterende underernæringsrelatert diabetes mellitus." ICD10="O242"/>
@@ -154,7 +154,7 @@
         </FormItem>
       </Item>
       <Item ItemId="4221" ItemType="5" VarName="DP_TERMIN_UL" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Termin ultralyd" ItemHelp="Skriv 0 hvis ukjent." MinExpression="DOB" MaxExpression="NOW+280" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1">
+        <FormItem ItemText="Termin ultralyd" ItemHelp="Skriv 0 hvis ukjent." MinExpression="Patient.DOB" MaxExpression="NOW+280" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -194,12 +194,12 @@
     </Page>
     <Page PageTitle="Stående blodtrykk*">
       <Item ItemId="573" ItemType="1" VarName="SBP_UPRIGHT" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem ItemText="Systolisk BT stående" ItemHelp="" MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="0" FormatStr="Stående BT %s">
+        <FormItem ItemText="Systolisk BT stående" ItemHelp="" MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="1" FormatStr="Stående BT %s">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="600" ItemType="1" VarName="DBP_UPRIGHT" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem ItemText="Diastolisk BT stående" ItemHelp="" MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="0" FormatStr="¬/%s mmHg.">
+        <FormItem ItemText="Diastolisk BT stående" ItemHelp="" MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="0" Optional="1" FormatStr="¬/%s mmHg.">
           <Answer/>
         </FormItem>
       </Item>
@@ -245,7 +245,7 @@
     </Page>
     <Page PageTitle="Behandlingsmål">
       <Item ItemId="4526" ItemType="2" VarName="INDIVIDUAL_GOALS" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Individuelle behandlingsmål" ItemText="Vil du angi individuelle behandlingsmål for denne pasienten?" ItemHelp="Blodtrykk, HbA1c og LDL-kolesterol" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemHeader="Individuelle behandlingsmål" ItemText="Vil du angi individuelle behandlingsmål for denne pasienten?" ItemHelp="Blodtrykk, HbA1c og LDL-kolesterol" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="24020" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="24021" OrderNumber="2" OptionText="Nei" VerboseText="Standard mål." ShortCode="N"/>
         </FormItem>
@@ -253,34 +253,34 @@
     </Page>
     <Page PageTitle="Individuelle behandlingsmål*">
       <Item ItemId="3938" ItemType="1" VarName="GOAL_SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem ItemText="Mål systolisk trykk" ItemHelp="" MinExpression="110" MaxExpression="180" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" FormatStr="Blodtrykksmål %s">
+        <FormItem ItemText="Mål systolisk trykk" ItemHelp="" MinExpression="110" MaxExpression="180" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" FormatStr="Blodtrykksmål %s">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3939" ItemType="1" VarName="GOAL_DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem ItemText="Mål diastolisk trykk" ItemHelp="" MinExpression="60" MaxExpression="120" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" FormatStr="¬/%s mmHg.">
+        <FormItem ItemText="Mål diastolisk trykk" ItemHelp="" MinExpression="60" MaxExpression="120" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" FormatStr="¬/%s mmHg.">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4081" ItemType="1" VarName="GOAL_HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        <FormItem ItemText="Mål HbA1c" ItemHelp="" MinExpression="6" MaxExpression="12" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1" DefaultValue="7">
+        <FormItem ItemText="Mål HbA1c" ItemHelp="" MinExpression="6" MaxExpression="12" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1" DefaultValue="7">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4083" ItemType="1" VarName="GOAL_LDL" LoincScale="QN" UnitStr="mmol/L" DisplayFormat="">
-        <FormItem ItemText="Mål LDL-kolesterol" ItemHelp="" MinExpression="1" MaxExpression="5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" Decimals="1" DefaultValue="3">
+        <FormItem ItemText="Mål LDL-kolesterol" ItemHelp="" MinExpression="1" MaxExpression="5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1" Decimals="1" DefaultValue="3">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Standard behandlingsmål*">
       <Item ItemId="4522" ItemType="1" VarName="STDGOAL_SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem ItemText="Mål systolisk blodtrykk" ItemHelp="" Expression="135" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" FormatStr="Blodtrykksmål %s">
+        <FormItem ItemText="Mål systolisk blodtrykk" ItemHelp="" Expression="135" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" FormatStr="Blodtrykksmål %s">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4523" ItemType="1" VarName="STDGOAL_DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem ItemText="Mål diastolisk blodtrykk" ItemHelp="" Expression="80" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" FormatStr="¬/%s mmHg.">
+        <FormItem ItemText="Mål diastolisk blodtrykk" ItemHelp="" Expression="80" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" FormatStr="¬/%s mmHg.">
           <Answer/>
         </FormItem>
       </Item>
@@ -290,7 +290,7 @@
         </FormItem>
       </Item>
       <Item ItemId="4525" ItemType="1" VarName="STDGOAL_HBA1C" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        <FormItem ItemText="Mål HbA1c" ItemHelp="Fast verdi, ikke påvirket av alder eller kjønn." Expression="7" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
+        <FormItem ItemText="Mål HbA1c" ItemHelp="Fast verdi, ikke påvirket av alder eller kjønn." Expression="7" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -302,7 +302,7 @@
         </FormItem>
       </Item>
       <Item ItemId="7513" ItemType="1" VarName="ActualHbA1c" LoincScale="QN" UnitStr="%" DisplayFormat="">
-        <FormItem ItemText="Beregnet aktuell verdi for HbA1c" ItemHelp="Bruker HbA1c-verdi fra dette skjemaet, alternativt hentes det fra autoklassifiserte journaldata,&#xA;kun til vurdering av måloppnåelse.  Skal ikke lagres i database.  Hidden og ReadOnly." Expression="ISPOS(HBA1C)*HBA1C + ISNEG(HBA1C)*VMR.LAB.HBA1C" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
+        <FormItem ItemText="Beregnet aktuell verdi for HbA1c" ItemHelp="Bruker HbA1c-verdi fra dette skjemaet, alternativt hentes det fra autoklassifiserte journaldata,&#xA;kun til vurdering av måloppnåelse.  Skal ikke lagres i database.  Hidden og ReadOnly." Expression="ISPOS(HBA1C)*HBA1C + ISNEG(HBA1C)*LabData.HBA1C" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -326,7 +326,7 @@
         </FormItem>
       </Item>
       <Item ItemId="4225" ItemType="2" VarName="LDL_GOAL_REACHED" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="LDL-mål nådd" ItemHelp="" Expression="ISPOS( VMR.LAB.LDL ) * ( 1 + ISNEG( ActualLDLGoal - VMR.LAB.LDL ) ) + 3 * ( 1 - ISPOS( VMR.LAB.LDL ) )" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="LDL-mål nådd" ItemHelp="" Expression="ISPOS( LabData.LDL ) * ( 1 + ISNEG( ActualLDLGoal - LabData.LDL ) ) + 3 * ( 1 - ISPOS( LabData.LDL ) )" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer AnswerId="22651" OrderNumber="1" OptionText="Mål nådd."/>
           <Answer AnswerId="22652" OrderNumber="2" OptionText="Ikke nådd mål."/>
           <Answer AnswerId="40491" OrderNumber="3" OptionText="Ukjent LDL."/>

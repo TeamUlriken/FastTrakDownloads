@@ -3,25 +3,25 @@
   <Form FormId="255" FormName="DIAPOL_EYE" FormTitle="Øyestatus" Copyright="Norsk diabetesregister for Voksne">
     <Page PageTitle="Sist hos øyelege">
       <Item ItemId="3354" ItemType="5" VarName="NDV_EYECHECK_DATE" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Siste besøk hos øyelege" ItemHelp="Beste estimat ved usikker dato." MinExpression="DOB" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem ItemText="Siste besøk hos øyelege" ItemHelp="Beste estimat ved usikker dato." MinExpression="Patient.DOB" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Beste visus">
       <Item ItemId="3274" ItemType="1" VarName="VISUS_RIGHT" LoincScale="QN" UnitStr="visus" DisplayFormat="">
-        <FormItem ItemText="Visus høyre" ItemHelp="Evt. med egen brille" MinExpression="0" MaxExpression="1.5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0" Decimals="1" DefaultValue="1.0">
+        <FormItem ItemText="Visus høyre" ItemHelp="Evt. med egen brille" MinExpression="0" MaxExpression="1.5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1" DefaultValue="1.0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3275" ItemType="1" VarName="VISUS_LEFT" LoincScale="QN" UnitStr="visus" DisplayFormat="">
-        <FormItem ItemText="Visus venstre" ItemHelp="Evt. med egen brille" MinExpression="0" MaxExpression="1.5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Highlight="1" Optional="0" Decimals="1" DefaultValue="1.0">
+        <FormItem ItemText="Visus venstre" ItemHelp="Evt. med egen brille" MinExpression="0" MaxExpression="1.5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1" DefaultValue="1.0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4294" ItemType="2" VarName="VISUS_CORRECTED" LoincScale="ORD" DisplayFormat="Vertical">
         <FormItem ItemText="Brukes korreksjon?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          <Answer AnswerId="23077" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="23077" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="23078" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>
@@ -50,7 +50,7 @@
     </Page>
     <Page PageTitle="Retinopati">
       <Item ItemId="3276" ItemType="2" VarName="RETINA_RIGHT" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem ItemText="Retinopati høyre øye" ItemHelp="Glassøye ol.l. kodes som ukjent." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Retinopati høyre øye" ItemHelp="Glassøye ol.l. kodes som ukjent." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="16309" OrderNumber="1" OptionText="Ingen retinopati høyre øye."/>
           <Answer AnswerId="16310" OrderNumber="2" OptionText="Retinopati høyre øye, ubehandlet."/>
           <Answer AnswerId="16311" OrderNumber="3" OptionText="Behandlet retinopati høyre øye."/>
@@ -58,7 +58,7 @@
         </FormItem>
       </Item>
       <Item ItemId="3277" ItemType="2" VarName="RETINA_LEFT" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem ItemText="Retinopati venstre øye" ItemHelp="Glassøye ol.l. kodes som ukjent." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Retinopati venstre øye" ItemHelp="Glassøye ol.l. kodes som ukjent." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="16316" OrderNumber="1" OptionText="Ingen retinopati venstre øye."/>
           <Answer AnswerId="16317" OrderNumber="2" OptionText="Retinopati venstre øye, ubehandlet."/>
           <Answer AnswerId="16318" OrderNumber="3" OptionText="Behandlet retinopati venstre øye."/>
@@ -75,7 +75,7 @@
         </FormItem>
       </Item>
       <Item ItemId="4087" ItemType="2" VarName="NDV_RETINOPATHY" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Retinopati" ItemHelp="Behandling inkluderer laserbehandling, injeksjonsbehandling og kirurgi." Expression="ISNEG(RETINA_LEFT)*IS0(RETINA_RIGHT-1)*1+ISNEG(RETINA_LEFT)*IS0(RETINA_RIGHT-2)*2+ISNEG(RETINA_LEFT)*IS0(RETINA_RIGHT-3)*3+ISNEG(RETINA_LEFT)*IS0(RETINA_RIGHT-4)*4+IS0(RETINA_LEFT-1)*ISNEG(RETINA_RIGHT)*1+IS0(RETINA_LEFT-1)*IS0(RETINA_RIGHT-1)*1+IS0(RETINA_LEFT-1)*IS0(RETINA_RIGHT-2)*2+IS0(RETINA_LEFT-1)*IS0(RETINA_RIGHT-3)*3+IS0(RETINA_LEFT-1)*IS0(RETINA_RIGHT-4)*1+IS0(RETINA_LEFT-2)*ISNEG(RETINA_RIGHT)*2+IS0(RETINA_LEFT-2)*IS0(RETINA_RIGHT-1)*2+IS0(RETINA_LEFT-2)*IS0(RETINA_RIGHT-2)*2+IS0(RETINA_LEFT-2)*IS0(RETINA_RIGHT-3)*3+IS0(RETINA_LEFT-2)*IS0(RETINA_RIGHT-4)*2+IS0(RETINA_LEFT-3)*ISNEG(RETINA_RIGHT)*3+IS0(RETINA_LEFT-3)*IS0(RETINA_RIGHT-1)*3+IS0(RETINA_LEFT-3)*IS0(RETINA_RIGHT-2)*3+IS0(RETINA_LEFT-3)*IS0(RETINA_RIGHT-3)*3+IS0(RETINA_LEFT-3)*IS0(RETINA_RIGHT-4)*3+IS0(RETINA_LEFT-4)*ISNEG(RETINA_RIGHT)*4+IS0(RETINA_LEFT-4)*IS0(RETINA_RIGHT-1)*1+IS0(RETINA_LEFT-4)*IS0(RETINA_RIGHT-2)*2+IS0(RETINA_LEFT-4)*IS0(RETINA_RIGHT-3)*3+IS0(RETINA_LEFT-4)*IS0(RETINA_RIGHT-4)*4" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="1">
+        <FormItem ItemText="Retinopati" ItemHelp="Behandling inkluderer laserbehandling, injeksjonsbehandling og kirurgi." Expression="ISNEG(RETINA_LEFT)*IS0(RETINA_RIGHT-1)*1+ISNEG(RETINA_LEFT)*IS0(RETINA_RIGHT-2)*2+ISNEG(RETINA_LEFT)*IS0(RETINA_RIGHT-3)*3+ISNEG(RETINA_LEFT)*IS0(RETINA_RIGHT-4)*4+IS0(RETINA_LEFT-1)*ISNEG(RETINA_RIGHT)*1+IS0(RETINA_LEFT-1)*IS0(RETINA_RIGHT-1)*1+IS0(RETINA_LEFT-1)*IS0(RETINA_RIGHT-2)*2+IS0(RETINA_LEFT-1)*IS0(RETINA_RIGHT-3)*3+IS0(RETINA_LEFT-1)*IS0(RETINA_RIGHT-4)*1+IS0(RETINA_LEFT-2)*ISNEG(RETINA_RIGHT)*2+IS0(RETINA_LEFT-2)*IS0(RETINA_RIGHT-1)*2+IS0(RETINA_LEFT-2)*IS0(RETINA_RIGHT-2)*2+IS0(RETINA_LEFT-2)*IS0(RETINA_RIGHT-3)*3+IS0(RETINA_LEFT-2)*IS0(RETINA_RIGHT-4)*2+IS0(RETINA_LEFT-3)*ISNEG(RETINA_RIGHT)*3+IS0(RETINA_LEFT-3)*IS0(RETINA_RIGHT-1)*3+IS0(RETINA_LEFT-3)*IS0(RETINA_RIGHT-2)*3+IS0(RETINA_LEFT-3)*IS0(RETINA_RIGHT-3)*3+IS0(RETINA_LEFT-3)*IS0(RETINA_RIGHT-4)*3+IS0(RETINA_LEFT-4)*ISNEG(RETINA_RIGHT)*4+IS0(RETINA_LEFT-4)*IS0(RETINA_RIGHT-1)*1+IS0(RETINA_LEFT-4)*IS0(RETINA_RIGHT-2)*2+IS0(RETINA_LEFT-4)*IS0(RETINA_RIGHT-3)*3+IS0(RETINA_LEFT-4)*IS0(RETINA_RIGHT-4)*4" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
           <Answer AnswerId="21836" OrderNumber="1" OptionText="Nei*" ShortCode="N"/>
           <Answer AnswerId="21837" OrderNumber="2" OptionText="Retinopati, ubehandlet." ICD10="H360"/>
           <Answer AnswerId="21838" OrderNumber="3" OptionText="Behandlet retinopati." ICD10="H360"/>

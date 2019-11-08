@@ -16,7 +16,7 @@
         </FormItem>
       </Item>
       <Item ItemId="6377" ItemType="2" VarName="ChildBearingAge" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Kvinne i fertil alder" ItemHelp="" Expression="2-ISNULL(Patient.GenderId-2)*ISPOS(Patient.Age-15)*ISNEG(Patient.Age-55)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Kvinne i fertil alder" ItemHelp="" Expression="2 - ISNULL(Patient.GenderId-2) * ISPOS(AGE-15) * ISNEG(AGE-55)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer AnswerId="33731" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="33732" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
@@ -27,7 +27,7 @@
         <FormItem ItemHeader="Hypotyreose etter behandling" ItemText="Skyldes hypotyreosen tidligere behandling (E89.0)?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="56676" OrderNumber="1" OptionText="Ja" VerboseText="Hypotyreose etter behandling (E89.0)." ShortCode="J" ICD10="E890"/>
           <Answer AnswerId="56677" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="56684" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="56684" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -36,7 +36,7 @@
         <FormItem ItemHeader="Operert tyreoidea" ItemText="Har pasienten operert tyreoidea?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="56647" OrderNumber="1" OptionText="Ja" VerboseText="Operert tyreoidea." ShortCode="J"/>
           <Answer AnswerId="56648" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="56654" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="56654" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -52,7 +52,7 @@
         <FormItem ItemHeader="Radiojodbehandling" ItemText="Har pasienten fått radiojodbehandling?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="56649" OrderNumber="1" OptionText="Ja" VerboseText="Radiojodbehandlet." ShortCode="J"/>
           <Answer AnswerId="56650" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="56651" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="56651" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -86,14 +86,14 @@
         <FormItem ItemText="Positiv TPO-antistoff" ItemHelp="Svar Ja hvis den har vært positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="37174" OrderNumber="1" OptionText="Ja" VerboseText="Positiv TPO-antistoff." ShortCode="J"/>
           <Answer AnswerId="37175" OrderNumber="2" OptionText="Nei" VerboseText="Negativ TPO-antistoff." ShortCode="N"/>
-          <Answer AnswerId="37176" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+          <Answer AnswerId="37176" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="6805" ItemType="2" VarName="VAR6805" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Positiv TSH-reseptorantistoff" ItemHelp="TRAS. Svar Ja hvis den har vært positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="37177" OrderNumber="1" OptionText="Ja" VerboseText="Positiv TSH-reseptorantistoff." ShortCode="J"/>
           <Answer AnswerId="37178" OrderNumber="2" OptionText="Nei" VerboseText="Negativ TSH-reseptorantistoff." ShortCode="N"/>
-          <Answer AnswerId="37179" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+          <Answer AnswerId="37179" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -130,7 +130,7 @@
           <Answer AnswerId="38076" OrderNumber="1" OptionText="Aldri vært gravid."/>
           <Answer AnswerId="38077" OrderNumber="2" OptionText="Gravid nå."/>
           <Answer AnswerId="38078" OrderNumber="3" OptionText="Tidligere vært gravid."/>
-          <Answer AnswerId="42250" OrderNumber="4" OptionText="Ukjent"/>
+          <Answer AnswerId="42250" OrderNumber="4" OptionText="Ukjent" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>

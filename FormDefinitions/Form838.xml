@@ -117,7 +117,7 @@
         <FormItem ItemText="Bildediagnostikk utført" ItemHelp="" MinExpression="" MaxExpression="" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="35662" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="35663" OrderNumber="2" OptionText="Nei" VerboseText="Bildediagnostikk ikke utført." ShortCode="N"/>
-          <Answer AnswerId="38272" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+          <Answer AnswerId="38272" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -128,7 +128,7 @@
         </FormItem>
       </Item>
       <Item ItemId="6655" ItemType="2" VarName="VAR6655" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Scintigrafi utført" ItemHelp="" Expression="2-HASDATA(VAR6651)*ISNULL(VAR6650-1)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Scintigrafi utført" ItemHelp="" Expression="2-ISPOS(VAR6651)*ISNULL(VAR6650-1)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer AnswerId="35701" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="35702" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
@@ -161,7 +161,7 @@
         </FormItem>
       </Item>
       <Item ItemId="6656" ItemType="2" VarName="VAR6656" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Ultralyd tyreoidea utført" ItemHelp="" Expression="2-HASDATA(VAR6653)*ISNULL(VAR6650-1)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Ultralyd tyreoidea utført" ItemHelp="" Expression="2-ISPOS(VAR6653)*ISNULL(VAR6650-1)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer AnswerId="35707" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="35708" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
@@ -190,7 +190,7 @@
         <FormItem ItemText="Finnålspunksjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="35801" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="35802" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="35803" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="35803" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -211,7 +211,7 @@
         <FormItem ItemText="Tyreoiditt" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="57024" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="57025" OrderNumber="2" OptionText="Nei"/>
-          <Answer AnswerId="57026" OrderNumber="3" OptionText="Usikker"/>
+          <Answer AnswerId="57026" OrderNumber="3" OptionText="Usikker" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -231,19 +231,19 @@
         <FormItem ItemText="Positiv TPO-antistoff" ItemHelp="Svar Ja hvis den har vært positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="37174" OrderNumber="1" OptionText="Ja" VerboseText="Positiv TPO-antistoff." ShortCode="J"/>
           <Answer AnswerId="37175" OrderNumber="2" OptionText="Nei" VerboseText="Negativ TPO-antistoff." ShortCode="N"/>
-          <Answer AnswerId="37176" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+          <Answer AnswerId="37176" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="6805" ItemType="2" VarName="VAR6805" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Positiv TSH-reseptorantistoff" ItemHelp="TRAS. Svar Ja hvis den har vært positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="37177" OrderNumber="1" OptionText="Ja" VerboseText="Positiv TSH-reseptorantistoff." ShortCode="J"/>
           <Answer AnswerId="37178" OrderNumber="2" OptionText="Nei" VerboseText="Negativ TSH-reseptorantistoff." ShortCode="N"/>
-          <Answer AnswerId="37179" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+          <Answer AnswerId="37179" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Struma klassifikasjon*">
-      <Item ItemId="8001" ItemType="2" VarName="ICD10.E04" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="8001" ItemType="2" VarName="ICD10_E04" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Struma" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="42689" OrderNumber="1" OptionText="Ikke-toksisk diffust struma (E04.0)." ICD10="E040"/>
           <Answer AnswerId="42690" OrderNumber="2" OptionText="Ikke-toksisk enkel knute i skjoldbruskkjertel (E04.1)." ICD10="E041"/>
@@ -254,11 +254,11 @@
       </Item>
     </Page>
     <Page PageTitle="Malignitet tyreoidea*">
-      <Item ItemId="7982" ItemType="2" VarName="ICD10.C73" LoincScale="ORD" DisplayFormat="">
+      <Item ItemId="7982" ItemType="2" VarName="ICD10_C73" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Malign tyreoideatumor" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="42526" OrderNumber="1" OptionText="Ja" ShortCode="J" ICD10="C73"/>
           <Answer AnswerId="42527" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="42528" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="42528" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -274,7 +274,7 @@
     </Page>
     <Page PageTitle="Behandling aktuelt*">
       <Item ItemId="10238" ItemType="2" VarName="ctrTyrTreat" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Behandling aktuelt" ItemHelp="" Expression="2-ISPOS(ISPOS(ICD10.E04+1)+ISPOS(ICD10.C73))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Behandling aktuelt" ItemHelp="" Expression="2-ISPOS(ISPOS(ICD10_E04+1)+ISPOS(ICD10_C73))" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer AnswerId="57095" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="57096" OrderNumber="2" OptionText="Nei"/>
         </FormItem>

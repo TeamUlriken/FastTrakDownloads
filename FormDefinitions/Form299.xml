@@ -17,14 +17,14 @@
         </FormItem>
       </Item>
       <Item ItemId="3981" ItemType="2" VarName="NDV_ANTIBODY" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Positive diabetes-antistoffer" ItemText="Positive auto-antistoffer mot beta-cellene i pankreas" ItemHelp="F.eks. GAD, IA2, insulin-antistoff eller anti-ZnT8.  Det er nok at én er positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemHeader="Positive diabetes-antistoffer" ItemText="Positive auto-antistoffer mot beta-cellene i pankreas" ItemHelp="F.eks. GAD, IA2, insulin-antistoff eller anti-ZnT8.  Det er nok at én er positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="20696" OrderNumber="1" OptionText="Ja" VerboseText="Positive antistoffer mot beta-celler." ShortCode="Pos"/>
           <Answer AnswerId="20697" OrderNumber="2" OptionText="Nei" VerboseText="Negative antistoffer mot beta-celler." ShortCode="Neg"/>
           <Answer AnswerId="20698" OrderNumber="3" OptionText="Ukjent" ShortCode="Ukj"/>
         </FormItem>
       </Item>
       <Item ItemId="3998" ItemType="2" VarName="NDV_STARTKURS" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Gjennomgått startkurs" ItemHelp="Kurs arrangert av sykehus" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem ItemText="Gjennomgått startkurs" ItemHelp="Kurs arrangert av sykehus" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="1">
           <Answer AnswerId="20768" OrderNumber="1" OptionText="Ja" VerboseText="Gjennomgått startkurs." ShortCode="J"/>
           <Answer AnswerId="20769" OrderNumber="2" OptionText="Nei" VerboseText="Ikke gjennomgått startkurs." ShortCode="N"/>
           <Answer AnswerId="20770" OrderNumber="3" OptionText="Vet ikke*" ShortCode="V"/>
@@ -50,14 +50,14 @@
         </FormItem>
       </Item>
       <Item ItemId="3229" ItemType="2" VarName="DP_FORELDRE_BARN_DM" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Diabetes hos foreldre eller barn" ItemHelp="Biologiske foreldre/barn" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem ItemText="Diabetes hos foreldre eller barn" ItemHelp="Biologiske foreldre/barn" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="16168" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="16169" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="16170" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
         </FormItem>
       </Item>
       <Item ItemId="3195" ItemType="2" VarName="DP_SOSKEN_DM" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Diabetes hos søsken" ItemHelp="Biologiske søsken" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Highlight="1" Optional="0">
+        <FormItem ItemText="Diabetes hos søsken" ItemHelp="Biologiske søsken" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="15971" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="15972" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="15973" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
@@ -81,11 +81,11 @@
     </Page>
     <Page PageTitle="Sosialt forts*">
       <Item ItemId="4051" ItemType="2" VarName="UNDER_UTDANNING" LoincScale="ORD" DisplayFormat="Vertical">
-        <FormItem ItemText="Under utdanning" ItemHelp="Skal denne være med uansett alder?  Det er kanskje mest aktuelt mellom 16 og 30?" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="0" CarryForward="1" Optional="1">
+        <FormItem ItemHeader="Under utdanning" ItemText="Er du under utdanning nå?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="0" CarryForward="1" Optional="1">
           <Answer AnswerId="21206" OrderNumber="1" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="21207" OrderNumber="2" OptionText="Grunnskole"/>
-          <Answer AnswerId="21208" OrderNumber="3" OptionText="Videregående skole"/>
-          <Answer AnswerId="21209" OrderNumber="4" OptionText="Universitet"/>
+          <Answer AnswerId="21207" OrderNumber="2" OptionText="Grunnskole" VerboseText="Skoleelev."/>
+          <Answer AnswerId="21208" OrderNumber="3" OptionText="Videregående skole" VerboseText="Går på videregående skole."/>
+          <Answer AnswerId="21209" OrderNumber="4" OptionText="Universitet" VerboseText="Tar høyere utdanning."/>
         </FormItem>
       </Item>
       <Item ItemId="3984" ItemType="2" VarName="SIVILSTAND_8415" LoincScale="ORD" DisplayFormat="">
@@ -112,7 +112,7 @@
         </FormItem>
       </Item>
       <Item ItemId="3985" ItemType="1" VarName="ANTALL_BARN" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemText="Barn" ItemHelp="" MinExpression="0" MaxExpression="15" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem ItemHeader="Barn" ItemText="Antall barn" ItemHelp="" MinExpression="0" MaxExpression="15" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -176,7 +176,7 @@
     </Page>
     <Page PageTitle="Kommentar spiseforstyrrelser*">
       <Item ItemId="3394" ItemType="4" VarName="DP_SPISE_TEKST" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemText="Kommentar" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="1" Optional="0">
+        <FormItem ItemText="Kommentar" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="0" CarryForward="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>

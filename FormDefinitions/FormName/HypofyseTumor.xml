@@ -9,7 +9,7 @@
         </FormItem>
       </Item>
       <Item ItemId="6377" ItemType="2" VarName="ChildBearingAge" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Kvinne i fertil alder" ItemHelp="" Expression="2-ISNULL(Patient.GenderId-2)*ISPOS(Patient.Age-15)*ISNEG(Patient.Age-55)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Kvinne i fertil alder" ItemHelp="" Expression="2 - ISNULL(Patient.GenderId-2) * ISPOS(AGE-15) * ISNEG(AGE-55)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer AnswerId="33731" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="33732" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
@@ -63,28 +63,28 @@
         <FormItem ItemText="ACTH-produserende" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="30656" OrderNumber="1" OptionText="Ja" VerboseText="ACTH-produserende." ShortCode="J"/>
           <Answer AnswerId="30657" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="55076" OrderNumber="3" OptionText="Usikker"/>
+          <Answer AnswerId="55076" OrderNumber="3" OptionText="Usikker" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="5737" ItemType="2" VarName="VAR5737" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Prolaktinproduserende" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="30658" OrderNumber="1" OptionText="Ja" VerboseText="Prolaktinom." ShortCode="J"/>
           <Answer AnswerId="30659" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="30665" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="30665" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="5741" ItemType="2" VarName="ICD10_E220" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Akromegali" ItemText="Veksthormonproduserende" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="30677" OrderNumber="1" OptionText="Ja" VerboseText="Akromegali." ShortCode="J" ICD10="E220"/>
           <Answer AnswerId="30678" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="30679" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="30679" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="5738" ItemType="2" VarName="VAR5738" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="TSH-produserende" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="30660" OrderNumber="1" OptionText="Ja" VerboseText="TSH-produserende." ShortCode="J"/>
           <Answer AnswerId="30661" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="30662" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="30662" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -326,7 +326,7 @@
         <FormItem ItemText="Bildediagnostikk hypofyse utført" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="38658" OrderNumber="1" OptionText="Ja" VerboseText="Bildediagnostikk hypofyse utført." ShortCode="J"/>
           <Answer AnswerId="38659" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="38660" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
+          <Answer AnswerId="38660" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -367,7 +367,7 @@
         <FormItem ItemText="Stråleknivbehandlet" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer AnswerId="38816" OrderNumber="1" OptionText="Ja" VerboseText="Stråleknivbehandlet." ShortCode="J"/>
           <Answer AnswerId="38817" OrderNumber="2" OptionText="Nei" VerboseText="Ikke stråleknivbehandlet." ShortCode="N"/>
-          <Answer AnswerId="38818" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+          <Answer AnswerId="38818" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
