@@ -10,12 +10,12 @@
     </Page>
     <Page PageTitle="Fra innkomstnotat">
       <Item ItemId="8194" ItemType="5" VarName="HrBruddDato" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemHeader="Dato" ItemText="Dato da bruddet skjedde" ItemHelp="" MinExpression="Patient.DOB" MaxExpression="FORM.Date" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemHeader="Dato" ItemText="Dato da bruddet skjedde" ItemHelp="" MinExpression="Patient.DOB" MaxExpression="FORM.Date" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" FormatStr="Skaden skjedde %s">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="8196" ItemType="1" VarName="HrBruddTidspunkt" LoincScale="QN" UnitStr="klokketime" DisplayFormat="">
-        <FormItem ItemText="Tidspunkt" ItemHelp="" MinExpression="0" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Tidspunkt" ItemHelp="" MinExpression="0" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0" FormatStr="kl %s.">
           <Answer/>
         </FormItem>
       </Item>
@@ -106,7 +106,7 @@
           <Answer AnswerId="46954" OrderNumber="1" OptionText="Cefalotin (Keflin)" VerboseText="Cefalotin"/>
           <Answer AnswerId="46955" OrderNumber="2" OptionText="Kloksacillin (Ekvacillin)" VerboseText="Kloksacillin"/>
           <Answer AnswerId="46960" OrderNumber="3" OptionText="Cefuroksim (Zinacef, Cefuroxim, Lifurox)" VerboseText="Cefuroksim"/>
-          <Answer AnswerId="46964" OrderNumber="4" OptionText="Klindamycin (Dalacin, Clindamycin" VerboseText="Klindamycin"/>
+          <Answer AnswerId="46964" OrderNumber="4" OptionText="Klindamycin (Dalacin, Clindamycin)" VerboseText="Klindamycin"/>
           <Answer AnswerId="46971" OrderNumber="5" OptionText="Dikloksacillin (Diclocil)" VerboseText="Dikloksacillin"/>
           <Answer AnswerId="46989" OrderNumber="6" OptionText="Gentamicin (Garamycin, Gensumycin)" VerboseText="Gentamicin"/>
           <Answer AnswerId="46990" OrderNumber="7" OptionText="Cefotaksim (Claforan)" VerboseText="Cefotaksim"/>
@@ -150,12 +150,12 @@
     </Page>
     <Page PageTitle="Inngrepets start" PageIntroduction="Flytt skjemaet under Hendelser hvis datoen ikke er riktig.">
       <Item ItemId="8195" ItemType="5" VarName="HrOprDato" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemHeader="Dato" ItemText="Dato for operasjon" ItemHelp="" Expression="TRUNC(FORM.Date)" MinExpression="Patient.DOB" MaxExpression="NOW + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemHeader="Dato" ItemText="Dato for operasjon" ItemHelp="" Expression="TRUNC(FORM.Date)" MinExpression="Patient.DOB" MaxExpression="NOW + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" FormatStr="Operert %s">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="8197" ItemType="1" VarName="HrOprTidspunkt" LoincScale="QN" UnitStr="klokketime" DisplayFormat="">
-        <FormItem ItemText="Tidspunkt" ItemHelp="" MinExpression="0" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Tidspunkt" ItemHelp="" MinExpression="0" MaxExpression="23" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" FormatStr="kl %s.">
           <Answer/>
         </FormItem>
       </Item>
