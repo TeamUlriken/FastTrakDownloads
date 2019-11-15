@@ -505,7 +505,7 @@ BEGIN
   FROM dbo.ViewCaseListStub WHERE StudyId = @StudyId AND GroupId = @GroupId;
 END]]>
 	</row>
-	<row ProcId="101" StudyName="GBD" ProcName="dbo.GetCaseListFocused" ProcDesc="101. Overvåket status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1961799733" LastUpdate="2019-01-12T07:11:38.457Z">
+	<row ProcId="101" StudyName="GBD" ProcName="dbo.GetCaseListFocused" ProcDesc="Overvåket status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="756359421" LastUpdate="2019-11-15T12:26:12.987Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListFocused( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId,v.DOB,v.FullName,v.GroupName,p.CAVE as InfoText
@@ -515,7 +515,7 @@ BEGIN
   WHERE v.StudyId=@StudyId AND sc.FinState = 2;
 END]]>
 	</row>
-	<row ProcId="102" StudyName="GBD" ProcName="dbo.GetCaseListNextINR" ProcDesc="102. Marevandosering" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Sykepleier, Vernepleier" InfoCaption="Neste dosering" ChkSum="-827732675" LastUpdate="2019-01-17T15:24:34.500Z">
+	<row ProcId="102" StudyName="GBD" ProcName="dbo.GetCaseListNextINR" ProcDesc="Marevandosering" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Sykepleier, Vernepleier" InfoCaption="Neste dosering" ChkSum="-1890421244" LastUpdate="2019-11-15T12:26:22.657Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListNextINR( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, 
@@ -4847,7 +4847,7 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="1049" StudyName="*" ProcName="Report.CaseAccessLog" ProcDesc="Innsynslogg, filtrerbar på bruker, arbeidssted og pasient." ProcParams=":StudyId, :StartAt, :StopAt, :UserName, :CenterId, :PersonId" ListId="FR" GrantTo="Administrator" MinVersion="18000" ChkSum="516585249" LastUpdate="2019-10-10T12:19:15.953Z">
+	<row ProcId="1049" StudyName="*" ProcName="Report.CaseAccessLog" ProcDesc="Innsynslogg, filtrerbar på bruker, arbeidssted og pasient." ProcParams=":StudyId, :StartAt, :StopAt, :UserName, :CenterId, :PersonId" ListId="FR" GrantTo="Administrator, Support, Leder, Avdelingsleder" MinVersion="18000" ChkSum="-132480605" LastUpdate="2019-11-15T13:16:24.653Z">
 		<![CDATA[CREATE PROCEDURE Report.CaseAccessLog( @StudyId INT, @StartAt DATETIME, @StopAt DATETIME, @UserName SYSNAME, @CenterId INT, @PersonId INT ) AS
 BEGIN
     SELECT a.*,             
@@ -5097,10 +5097,26 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="1101" StudyName="LANGTID" ProcName="dbo.GetCaseListFocused" ProcDesc="101. Overvåket status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1416404730" LastUpdate="2019-01-12T07:04:44.503Z">
+	<row ProcId="1052" StudyName="*" ProcName="Report.UserListByTempSite" ProcDesc="Rapport over tidsavgrenset tilgang til arbeidssteder" ListId="FR" GrantTo="Administrator, Support, Leder, Avdelingsleder" MinVersion="18000" ChkSum="-1901872106" LastUpdate="2019-11-15T13:28:59.060Z">
+		<![CDATA[CREATE PROCEDURE Report.UserListByTempSite AS
+BEGIN
+  SELECT 
+    subj.UserId, USER_NAME(subj.UserId) AS UserName, subjPrs.ReverseName AS GrantedTo, sc.CenterName, subjMp.ProfName, 
+    uca.StartAt, uca.StopAt, uca.Comment, admPrs.ReverseName AS GrantedBy
+  FROM dbo.Person AS admPrs 
+    RIGHT OUTER JOIN dbo.MetaProfession AS subjMp 
+    INNER JOIN dbo.UserCenterAccess AS uca 
+    INNER JOIN dbo.UserList AS subj ON uca.UserId = subj.UserId 
+    INNER JOIN dbo.StudyCenter AS sc ON uca.CenterId = sc.CenterId ON subjMp.ProfId = subj.ProfId 
+    LEFT OUTER JOIN dbo.UserList AS administrator ON uca.GrantedBy = administrator.UserId ON admPrs.PersonId = administrator.PersonId 
+    LEFT OUTER JOIN dbo.Person AS subjPrs ON subj.PersonId = subjPrs.PersonId
+  ORDER BY sc.CenterName;
+END]]>
+	</row>
+	<row ProcId="1101" StudyName="LANGTID" ProcName="dbo.GetCaseListFocused" ProcDesc="Overvåket status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="228003376" LastUpdate="2019-11-15T12:26:17.300Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="1102" StudyName="LANGTID" ProcName="dbo.GetCaseListNextINR" ProcDesc="102. Marevandosering" ProcParams=":StudyId" ListId="CASE" GrantTo="public" InfoCaption="Neste dosering" ChkSum="-968536187" LastUpdate="2019-01-12T07:04:49.563Z">
+	<row ProcId="1102" StudyName="LANGTID" ProcName="dbo.GetCaseListNextINR" ProcDesc="Marevandosering" ProcParams=":StudyId" ListId="CASE" GrantTo="public" InfoCaption="Neste dosering" ChkSum="-2017528644" LastUpdate="2019-11-15T12:26:33.140Z">
 		<![CDATA[]]>
 	</row>
 	<row ProcId="1103" StudyName="LANGTID" ProcName="dbo.GetCaseListH03AA" ProcDesc="Medikamentbruk: Thyroideasubstitusjon (H03AA)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="425743413" LastUpdate="2019-01-12T07:04:53.830Z">
