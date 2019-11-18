@@ -753,7 +753,7 @@ BEGIN
   END;
 END;]]>
 	</row>
-	<row RuleId="19" RuleClass="TVANG" RuleType="M" RuleProc="GBD.RuleTvangsvedtak" Title="Tvangsvedtak" Description="Fornyelse av tvangsvedtak" ChkSum="-1976837309" LastUpdate="2019-01-03T09:03:18.140Z">
+	<row RuleId="19" RuleClass="TVANG" RuleType="M" RuleProc="GBD.RuleTvangsvedtak" Title="Tvangsvedtak" Description="Fornyelse av tvangsvedtak" ChkSum="-1712985285" LastUpdate="2019-11-18T20:02:06.147Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleTvangsvedtak( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @EventTime DateTime;
@@ -773,7 +773,7 @@ BEGIN
   FETCH NEXT FROM cur_vedtak INTO @EventTime,@StopDate,@StopAction,@DaysPastDue,@ClinFormId;
   WHILE @@FETCH_STATUS = 0
   BEGIN            
-    SET @AlertMessage = '<a href="SelectForm='+CONVERT(VARCHAR,@ClinFormId)+'">Tvangsvedtak</a> ' + CONVERT(VARCHAR,@EventTime,4);
+    SET @AlertMessage = '<a href="about://SelectForm?ClinFormId='+CONVERT(VARCHAR,@ClinFormId)+'">Tvangsvedtak</a> ' + CONVERT(VARCHAR,@EventTime,4);
     SET @AlertClass = 'TVANG#' + CONVERT(VARCHAR,@ClinFormId);
     IF @StopAction <> 1  
     BEGIN                   
