@@ -6673,7 +6673,7 @@ BEGIN
   EXEC dbo.AddAlertForPerson @StudyId, @PersonId, @AlertLevel,'CARBCOUNT', @AlertFacet, @AlertHeader, @AlertMessage;    
 END]]>
 	</row>
-	<row ProcId="10017" StudyName="*" ProcName="NDV.RuleConsent" ProcDesc="Manglende samtykke-erklæring." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="773715923" LastUpdate="2019-01-03T09:03:17.447Z">
+	<row ProcId="10017" StudyName="*" ProcName="NDV.RuleConsent" ProcDesc="Manglende samtykke-erklæring." ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-496406392" LastUpdate="2019-11-19T10:22:09.710Z">
 		<![CDATA[CREATE PROCEDURE NDV.RuleConsent( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @AlertFacet VARCHAR(16);
@@ -6692,7 +6692,7 @@ BEGIN
   ELSE
   BEGIN
     SET @NdvConsent = dbo.GetLastEnumVal( @PersonId, 'NDV_CONSENT' );
-    IF @NdvConsent IN  (1,2) 
+    IF @NdvConsent IN  (1,2,3) 
     BEGIN
       SET @AlertFacet = 'DataFound';
       SET @AlertLevel = 0;
@@ -6959,7 +6959,7 @@ BEGIN
   EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, @ActualLevel, 'LMG', @AlertFacet;
 END]]>
 	</row>
-	<row ProcId="10024" StudyName="*" ProcName="NDV.RuleBiobank" ProcDesc="Samtykke til biobank" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-968131333" LastUpdate="2019-01-03T09:03:23.153Z">
+	<row ProcId="10024" StudyName="*" ProcName="NDV.RuleBiobank" ProcDesc="Samtykke til biobank" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="365679438" LastUpdate="2019-11-19T10:22:31.770Z">
 		<![CDATA[CREATE PROCEDURE NDV.RuleBiobank( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @AlertFacet VARCHAR(16);
@@ -6978,7 +6978,7 @@ BEGIN
   ELSE
   BEGIN
     SET @NdvConsent = dbo.GetLastEnumVal( @PersonId, 'NDV_CONSENT_BIOBANK' );
-    IF @NdvConsent IN  (1,2) 
+    IF @NdvConsent IN  (1,2,3) 
     BEGIN
       SET @AlertFacet = 'DataFound';
       SET @AlertLevel = 0;
