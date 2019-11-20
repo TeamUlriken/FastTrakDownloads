@@ -3276,6 +3276,19 @@ BEGIN
 END;
 ]]>
 	</row>
+	<row ProcId="757" StudyName="ROAs" ProcName="ROAS.GetCaseListFamily" ProcDesc="Familier: Pasienter i familegrupper" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="18000" ChkSum="2010401531" LastUpdate="2019-11-20T09:37:06.427Z">
+		<![CDATA[CREATE PROCEDURE ROAS.GetCaseListFamily( @StudyId INT ) AS
+BEGIN
+  SELECT p.PersonId,p.DOB, p.ReverseName AS FullName, CONCAT( 'Familie #',CONVERT(INT,q1484.Quantity),'.') AS GroupName, p.GenderId,
+  q1485.TextVal AS InfoText
+  FROM dbo.Person p
+  JOIN dbo.GetLastQuantityTable( 1484, NULL ) q1484 ON q1484.PersonId = p.PersonId
+  LEFT JOIN dbo.GetLastTextValuesTable( 1485,NULL) q1485 ON q1485.PersonId = p.PersonId
+  ORDER BY q1484.Quantity, p.DOB;
+END;
+
+]]>
+	</row>
 	<row ProcId="800" StudyName="HOFTE" ProcName="dbo.GetCaseListLastGamma" ProcDesc="Operasjon: Gammanagling" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1506179999" LastUpdate="2013-09-03T11:41:34.540Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListLastGamma( @StudyId INT ) AS
 BEGIN
@@ -5131,6 +5144,17 @@ BEGIN
     LEFT OUTER JOIN dbo.Person AS subjPrs ON subj.PersonId = subjPrs.PersonId
   ORDER BY sc.CenterName;
 END]]>
+	</row>
+	<row ProcId="1053" StudyName="ROAS" ProcName="ROAS.ReportFamilyGroup" ProcDesc="Rapport knyttet til enkeltskjema" ProcParams=":PersonId" ListId="FR" GrantTo="public" MinVersion="18000" ChkSum="-1873731438" LastUpdate="2019-11-20T10:26:11.010Z">
+		<![CDATA[CREATE PROCEDURE ROAS.ReportFamilyGroup( @PersonId INT ) AS 
+BEGIN
+  SELECT p.*, q1485.TextVal 
+  FROM dbo.Person p
+  JOIN dbo.GetLastQuantityTable( 1484, NULL ) q1484 ON q1484.PersonId = p.PersonId
+  LEFT JOIN dbo.GetLastTextValuesTable( 1485, NULL ) q1485 ON q1485.PersonId = p.PersonId
+  WHERE q1484.Quantity = dbo.GetLastQuantityInThePast( @PersonId, 1484, GETDATE() );
+END
+]]>
 	</row>
 	<row ProcId="1101" StudyName="LANGTID" ProcName="dbo.GetCaseListFocused" ProcDesc="Overvåket status" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="228003376" LastUpdate="2019-11-15T12:26:17.300Z">
 		<![CDATA[]]>
