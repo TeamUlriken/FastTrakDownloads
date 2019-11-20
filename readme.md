@@ -10,8 +10,8 @@ Lookup folder
 =============
 The lookup folder can be populated in two ways:
 
-  # Using the build script for zip-packages.  It uses http get.
-  # Using FastTrakUpdate.exe.  It will "prettify" the xml, so it will be slightly different from a http get.
+  * Using the build script for zip-packages.  It uses http get.
+  * Using FastTrakUpdate.exe.  It will "prettify" the xml, so it will be slightly different from a http get.
 
 Todo
 ====
