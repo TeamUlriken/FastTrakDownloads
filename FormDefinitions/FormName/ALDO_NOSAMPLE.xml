@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="1144" FormName="ALDO_NOSAMPLE" FormTitle="PHA - Not sampled">
+    <Page PageTitle="Timeline">
+      <Item ItemId="3540" ItemType="5" VarName="ALDO_SURG_DATE" LoincScale="DATE">
+        <FormItem ItemText="Surgery date" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9117" ItemType="1" VarName="ALDO_SURG_MONTHS_AGO" LoincScale="QN" UnitStr="month(s)">
+        <FormItem ItemText="Months after surgery (calculated)" ItemHelp="" Expression="( FORM.DATE - ALDO_SURG_DATE ) / 30" MinExpression="0" MaxExpression="99" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9079" ItemType="2" VarName="ALDO_HIST_DX" LoincScale="ORD">
+        <FormItem ItemText="Histological diagnosis" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="13235" OrderNumber="1" OptionText="Adenoma"/>
+          <Answer AnswerId="13236" OrderNumber="2" OptionText="Carcinoma"/>
+          <Answer AnswerId="13237" OrderNumber="3" OptionText="Hyperplasia"/>
+          <Answer AnswerId="13238" OrderNumber="4" OptionText="Other"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Reason">
+      <Item ItemId="9106" ItemType="2" VarName="ALDO_NOSAMPLE_REASON" LoincScale="ORD">
+        <FormItem ItemText="Reason for non-sampling" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="13239" OrderNumber="1" OptionText="Lost to follow-up"/>
+          <Answer AnswerId="13240" OrderNumber="2" OptionText="Patient request"/>
+          <Answer AnswerId="13241" OrderNumber="3" OptionText="Clinical state"/>
+          <Answer AnswerId="13242" OrderNumber="4" OptionText="Other"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9113" ItemType="4" VarName="ALDO_NOSAMPLE_COMMENT" LoincScale="NAR" Multiline="1">
+        <FormItem ItemText="Comments" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+	</Actions>
+</StudyForm>

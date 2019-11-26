@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StudyForm>
+  <Form FormId="121" FormName="POI_TELEFONINTERVJU" FormTitle="POI Telefonintervju">
+    <Page PageTitle="Bakgrunn">
+      <Item ItemId="6090" ItemType="2" VarName="RoasAddisonType" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Addison type" ItemHelp="" Expression="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
+          <Answer AnswerId="32200" OrderNumber="1" OptionText="Autoimmun/idiopatisk" VerboseText="Addisons sykdom." ICD10="E271"/>
+          <Answer AnswerId="32201" OrderNumber="2" OptionText="Enzymdefekt" VerboseText="Medfødt binyrebarkhyperplasi."/>
+          <Answer AnswerId="32202" OrderNumber="3" OptionText="Adrenalektomi" VerboseText="Fjernet binyrer."/>
+          <Answer AnswerId="32203" OrderNumber="4" OptionText="Infeksjon" VerboseText="Binyrebarksvikt etter infeksjon."/>
+          <Answer AnswerId="32204" OrderNumber="5" OptionText="Andre (ikke bruk, skal rekodes til 6 eller 99)"/>
+          <Answer AnswerId="11155" OrderNumber="6" OptionText="Blødning" VerboseText="Blødning."/>
+          <Answer AnswerId="11156" OrderNumber="99" OptionText="Andre (heller ikke blødning)"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6089" ItemType="1" VarName="RoasAddisonYear" LoincScale="QN" DisplayFormat="">
+        <FormItem ItemHeader="Diagnostisert" ItemText="Diagnoseår Addisons sykdom" ItemHelp="" Expression="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Fertilitet">
+      <Item ItemId="9776" ItemType="1" VarName="VAR9776" LoincScale="QN" UnitStr="år" DisplayFormat="">
+        <FormItem ItemText="Alder ved menarche" ItemHelp="" MinExpression="6" MaxExpression="TRUNC(Patient.Age)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3985" ItemType="1" VarName="ANTALL_BARN" LoincScale="QN" DisplayFormat="">
+        <FormItem ItemHeader="Barn" ItemText="Antall barn" ItemHelp="" MinExpression="0" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="9355" ItemType="1" VarName="GRAV_GRAVIDA" LoincScale="QN" DisplayFormat="">
+        <FormItem ItemHeader="Gravida" ItemText="Antall graviditeter" ItemHelp="Inkluderer aktuell graviditet" MinExpression="1" MaxExpression="15" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2969" ItemType="2" VarName="POI_FAMILIE" LoincScale="ORD">
+        <FormItem ItemHeader="Familiær belastning" ItemText="Primær ovarialinsuffisiens hos 1. gradsslektning?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="11953" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="11954" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="11955" OrderNumber="3" OptionText="Usikker"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Kommentar*">
+      <Item ItemId="2970" ItemType="4" VarName="VAR2970" LoincScale="NAR" Multiline="1">
+        <FormItem ItemHeader="Kommentar" ItemText="Kommentar til familiær belastning" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Overgangsalder">
+      <Item ItemId="9069" ItemType="2" VarName="Menopause" LoincScale="ORD">
+        <FormItem ItemText="Har du kommer i overgangsalderen?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="13232" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="13233" OrderNumber="2" OptionText="Nei"/>
+          <Answer AnswerId="13234" OrderNumber="3" OptionText="Usikker"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Alder ved menopause*">
+      <Item ItemId="6334" ItemType="1" VarName="MenopauseAge" LoincScale="QN" UnitStr="år" DisplayFormat="">
+        <FormItem ItemText="Alder ved menopause" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6329" ItemType="1" VarName="MenopauseYear" LoincScale="QN" DisplayFormat="">
+        <FormItem ItemHeader="Diagnoseår" ItemText="Diagnoseår prematur menopause" ItemHelp="" MinExpression="DOB_YYYY+10" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Primær ovarialsvikt">
+      <Item ItemId="6318" ItemType="2" VarName="ICD10_E283" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Primær ovarialsvikt" ItemHelp="Amenore med forhøyede gonadotropin-nivåer, Svarer til ICD-10 E28.3." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="33432" OrderNumber="1" OptionText="Ja" VerboseText="Primær ovarialsvikt." ShortCode="J" ICD10="E283"/>
+          <Answer AnswerId="33433" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="36170" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig primær ovarialsvikt." ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="2969">
+      <Activate EnumVal="1" PageConditionId="8435" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="9069">
+      <Activate EnumVal="1" PageConditionId="8436" PageNumber="5" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>
