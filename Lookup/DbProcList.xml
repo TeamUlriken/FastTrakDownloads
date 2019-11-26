@@ -853,7 +853,7 @@ BEGIN
   ORDER BY a.NumResult DESC
 END]]>
 	</row>
-	<row ProcId="141" StudyName="GBD" ProcName="GBD.GetCaseListTvangsvedtak" ProcDesc="Tvang: Aktive vedtak" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Sykepleier, Vernepleier, Gruppeleder" MinVersion="512" ChkSum="680247815" LastUpdate="2019-01-17T15:25:10.093Z">
+	<row ProcId="141" StudyName="GBD" ProcName="GBD.GetCaseListTvangsvedtak" ProcDesc="Tvang: Aktive vedtak" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Sykepleier, Vernepleier, Gruppeleder" MinVersion="515" ChkSum="680260103" LastUpdate="2019-11-26T18:02:01.243Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListTvangsvedtak( @StudyId INT ) AS
 BEGIN
   SELECT p.PersonId,p.DOB,p.FullName,p.GroupName,
@@ -5258,7 +5258,7 @@ END
 	<row ProcId="1139" StudyName="LANGTID" ProcName="dbo.GetCaseListC03" ProcDesc="Medikamentbruk: Diuretika (C03)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1973731914" LastUpdate="2019-01-12T07:06:57.673Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="1141" StudyName="LANGTID" ProcName="GBD.GetCaseListTvangsvedtak" ProcDesc="Tvang: Aktive vedtak" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="512" ChkSum="1127099461" LastUpdate="2018-06-21T11:57:24.283Z">
+	<row ProcId="1141" StudyName="LANGTID" ProcName="GBD.GetCaseListTvangsvedtak" ProcDesc="Tvang: Aktive vedtak" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="515" ChkSum="1127095365" LastUpdate="2019-11-26T18:02:02.447Z">
 		<![CDATA[]]>
 	</row>
 	<row ProcId="1142" StudyName="LANGTID" ProcName="GBD.GetCaseListNoMMSELastYear" ProcDesc="Prosess: Ikke MMSE-NR3 siste år" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-943529128" LastUpdate="2018-06-21T11:57:24.283Z">
@@ -6798,7 +6798,7 @@ BEGIN
   END;
 END;]]>
 	</row>
-	<row ProcId="10019" StudyName="*" ProcName="GBD.RuleTvangsvedtak" ProcDesc="Fornyelse av tvangsvedtak" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" ChkSum="-1712985285" LastUpdate="2019-11-18T20:02:06.147Z">
+	<row ProcId="10019" StudyName="*" ProcName="GBD.RuleTvangsvedtak" ProcDesc="Fornyelse av tvangsvedtak" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MinVersion="515" ChkSum="18786864" LastUpdate="2019-11-26T18:01:36.353Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleTvangsvedtak( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @EventTime DateTime;
@@ -6811,6 +6811,7 @@ BEGIN
   DECLARE @AlertHeader VARCHAR(64);
   DECLARE @AlertMessage VARCHAR(512);    
   DECLARE @AlertLevel INT;
+  DECLARE @HiddenAlertModifier VARCHAR(30);
   DECLARE cur_vedtak CURSOR FAST_FORWARD FOR   
     SELECT EventTime,StopDate, StopAction,DaysPastDue, ClinFormId FROM GBD.Tvangsvedtak
     WHERE StudyId=@StudyId AND PersonId=@PersonId;
@@ -6823,6 +6824,10 @@ BEGIN
     IF @StopAction <> 1  
     BEGIN                   
       SET @AlertLevel = 0;
+      IF @DaysPastDue > 0
+        SET @HiddenAlertModifier = 'er avsluttet.';
+      ELSE
+        SET @HiddenAlertModifier = 'er aktivt.';
       SELECT @AlertHeader = 
       CASE @StopAction 
         WHEN 2 THEN 'Automatisk avslutning'
@@ -6830,7 +6835,7 @@ BEGIN
         WHEN 4 THEN 'Fornyet vedtak'
         ELSE 'Ukjent håndtering'
       END;
-      SET @AlertMessage = @AlertMessage + ' er avsluttet og det er ikke bedt om påminnelser i den forbindelse.';
+      SET @AlertMessage = @AlertMessage + ' ' + @HiddenAlertModifier + ' Det er ikke bedt om påminnelser i forbindelse med avslutning av dette vedtaket.'; -- meldingstekst endra
     END
     ELSE        
     BEGIN
@@ -6842,11 +6847,17 @@ BEGIN
         SET @AlertMessage = @AlertMessage + ' utløp ' + @StopDateText + '.  ' + 
           'Dette vedtaket er ikke eksplisitt avsluttet.  Du bør gjenåpne skjemaet og avslutte vedtaket.'; 
       END
-      ELSE
+      ELSE IF @DaysPastDue >= -21 -- nytt vilkår
       BEGIN                       
         SET @AlertLevel = 2;
         SET @AlertHeader = 'Forny tvangsvedtak';
         SET @AlertMessage = @AlertMessage + ' utløper ' + @StopDateText + '!  Du bør aktivt avslutte dette eller fornye det.';
+      END
+      ELSE -- ny skjult påminning
+      BEGIN
+        SET @AlertLevel = 0;
+        SET @AlertHeader = 'Aktivt tvangsvedtak';
+        SET @AlertMessage = @AlertMessage + ' utløper ' + @StopDateText + '. Du vil få en påminnelse tre uker før utløpsdato.';
       END
     END;    
     EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@ALertLevel,@AlertClass,'Include',@AlertHeader,@AlertMessage,'TWF';

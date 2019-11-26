@@ -753,7 +753,7 @@ BEGIN
   END;
 END;]]>
 	</row>
-	<row RuleId="19" RuleClass="TVANG" RuleType="M" RuleProc="GBD.RuleTvangsvedtak" Title="Tvangsvedtak" Description="Fornyelse av tvangsvedtak" ChkSum="-1712985285" LastUpdate="2019-11-18T20:02:06.147Z">
+	<row RuleId="19" RuleClass="TVANG" RuleType="M" RuleProc="GBD.RuleTvangsvedtak" Title="Tvangsvedtak" Description="Fornyelse av tvangsvedtak" ChkSum="-20877873" LastUpdate="2019-11-26T17:58:09.447Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleTvangsvedtak( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @EventTime DateTime;
@@ -766,6 +766,7 @@ BEGIN
   DECLARE @AlertHeader VARCHAR(64);
   DECLARE @AlertMessage VARCHAR(512);    
   DECLARE @AlertLevel INT;
+  DECLARE @HiddenAlertModifier VARCHAR(30);
   DECLARE cur_vedtak CURSOR FAST_FORWARD FOR   
     SELECT EventTime,StopDate, StopAction,DaysPastDue, ClinFormId FROM GBD.Tvangsvedtak
     WHERE StudyId=@StudyId AND PersonId=@PersonId;
@@ -778,6 +779,10 @@ BEGIN
     IF @StopAction <> 1  
     BEGIN                   
       SET @AlertLevel = 0;
+      IF @DaysPastDue > 0
+        SET @HiddenAlertModifier = 'er avsluttet.';
+      ELSE
+        SET @HiddenAlertModifier = 'er aktivt.';
       SELECT @AlertHeader = 
       CASE @StopAction 
         WHEN 2 THEN 'Automatisk avslutning'
@@ -785,7 +790,7 @@ BEGIN
         WHEN 4 THEN 'Fornyet vedtak'
         ELSE 'Ukjent håndtering'
       END;
-      SET @AlertMessage = @AlertMessage + ' er avsluttet og det er ikke bedt om påminnelser i den forbindelse.';
+      SET @AlertMessage = @AlertMessage + ' ' + @HiddenAlertModifier + ' Det er ikke bedt om påminnelser i forbindelse med avslutning av dette vedtaket.'; -- meldingstekst endra
     END
     ELSE        
     BEGIN
@@ -797,11 +802,17 @@ BEGIN
         SET @AlertMessage = @AlertMessage + ' utløp ' + @StopDateText + '.  ' + 
           'Dette vedtaket er ikke eksplisitt avsluttet.  Du bør gjenåpne skjemaet og avslutte vedtaket.'; 
       END
-      ELSE
+      ELSE IF @DaysPastDue >= -21 -- nytt vilkår
       BEGIN                       
         SET @AlertLevel = 2;
         SET @AlertHeader = 'Forny tvangsvedtak';
         SET @AlertMessage = @AlertMessage + ' utløper ' + @StopDateText + '!  Du bør aktivt avslutte dette eller fornye det.';
+      END
+      ELSE -- ny skjult påminning
+      BEGIN
+        SET @AlertLevel = 0;
+        SET @AlertHeader = 'Aktivt tvangsvedtak';
+        SET @AlertMessage = @AlertMessage + ' utløper ' + @StopDateText + '. Du vil få en påminnelse tre uker før utløpsdato.';
       END
     END;    
     EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@ALertLevel,@AlertClass,'Include',@AlertHeader,@AlertMessage,'TWF';
