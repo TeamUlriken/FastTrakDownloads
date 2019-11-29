@@ -2,6 +2,12 @@
 <StudyForm>
   <Form FormId="1117" FormName="DIAPOL_KEF" FormTitle="KEF Konsultasjon">
     <Page PageTitle="Ernæringsdiagnose">
+      <Item ItemId="4255" ItemType="2" VarName="SEX" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Kjønn" ItemHelp="Skjult" Expression="Patient.GenderId" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Optional="1">
+          <Answer AnswerId="22860" OrderNumber="1" OptionText="Mann" ShortCode="M"/>
+          <Answer AnswerId="22861" OrderNumber="2" OptionText="Kvinne" ShortCode="K"/>
+        </FormItem>
+      </Item>
       <Item ItemId="6825" ItemType="4" VarName="VAR6825" LoincScale="NAR" Multiline="1">
         <FormItem ItemText="Problem" ItemHelp="Ernæringsdiagnosen fra eNCPT" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
@@ -170,8 +176,8 @@
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="2326" ItemType="1" VarName="BMR" LoincScale="QN" UnitStr="kcal/24h">
-        <FormItem ItemText="Basal metabolic rate" ItemHelp="" Expression="" MinExpression="100" MaxExpression="6000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="4727" ItemType="1" VarName="RMR" LoincScale="QN" UnitStr="kcal/24h">
+        <FormItem ItemText="Energibehov basalmetabolisme" ItemHelp="" Expression="10 * WEIGHT + 6.25 * HEIGHT - 5 * AGE - ISNULL(SEX-2) * 161" MinExpression="1000" MaxExpression="8000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
