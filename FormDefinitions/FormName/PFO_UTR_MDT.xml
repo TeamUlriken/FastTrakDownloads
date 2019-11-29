@@ -120,7 +120,7 @@
     </Page>
     <Page PageTitle="MDT møte konklusjon">
       <Item ItemId="8347" ItemType="4" VarName="VAR8347" LoincScale="NAR" Multiline="1">
-        <FormItem ItemText="Konklusjon" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Konklusjon fra MDT-møtet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -140,10 +140,12 @@
           <Answer AnswerId="62108" OrderNumber="2" OptionText="Nei" VerboseText="Ikke livsstilskurs."/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageTitle="Individuell oppfølging*" PageIntroduction="Dette gjelder de som ikke skal delta på livsstilskurs.">
       <Item ItemId="7986" ItemType="2" VarName="VAR7986" LoincScale="ORD">
         <FormItem ItemText="Individuell oppfølging" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="62113" OrderNumber="1" OptionText="Ja" VerboseText="Individuell oppføging."/>
-          <Answer AnswerId="62114" OrderNumber="2" OptionText="Nei" VerboseText="Gruppebehandling."/>
+          <Answer AnswerId="62113" OrderNumber="1" OptionText="Ja" VerboseText="Individuell oppfølging."/>
+          <Answer AnswerId="62114" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
     </Page>
@@ -177,6 +179,9 @@
   <Actions>
     <PageAction MasterId="7002">
       <Activate EnumVal="2" PageConditionId="8443" PageNumber="7" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="7001">
+      <Activate EnumVal="2" PageConditionId="8446" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
