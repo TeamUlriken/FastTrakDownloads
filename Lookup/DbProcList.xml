@@ -337,7 +337,7 @@ BEGIN
   WHERE (sg.GroupActive=0 );
 END]]>
 	</row>
-	<row ProcId="28" StudyName="BASE" ProcName="dbo.GetCaseListLastForm" ProcDesc="Personer: Aktive med skjemadato" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" HelpText="Brukes av andre populasjoner, ikke til frittstående bruk." ChkSum="-235775250" LastUpdate="2019-01-22T16:16:17.903Z">
+	<row ProcId="28" StudyName="BASE" ProcName="dbo.GetCaseListLastForm" ProcDesc="Personer: Aktive med skjemadato" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" HelpText="Brukes av andre populasjoner, ikke til frittstående bruk." ChkSum="1024320528" LastUpdate="2019-12-02T11:47:08.120Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListLastForm( @StudyId INT, @FormName VARCHAR(24), @IgnoreDays FLOAT = 0 ) AS
 BEGIN
   DECLARE @IgnoreFormsAfter DateTime;
@@ -349,8 +349,8 @@ BEGIN
     (
       SELECT ce.PersonId, MAX(ce.EventTime) AS LastFormDate
       FROM dbo.ClinEvent ce
-      JOIN dbo.ClinForm cf ON cf.EventId=ce.EventId
-      JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId AND mf.FormName=@FormName
+      JOIN dbo.ClinForm cf ON cf.EventId = ce.EventId AND cf.DeletedAt IS NULL
+      JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId AND mf.FormName = @FormName
       GROUP BY ce.PersonId 
     ) forms ON forms.PersonId = v.PersonId
   WHERE v.StudyId = @StudyId AND ( ( forms.LastFormDate <= @IgnoreFormsAfter ) OR ( forms.LastFormDate IS NULL ) )
@@ -2483,25 +2483,26 @@ BEGIN
   ORDER BY NumResult DESC;
 END]]>
 	</row>
-	<row ProcId="318" StudyName="NDV" ProcName="NDV.GetPregnantInPeriod" ProcDesc="Gravide: Svangerskapskjema i periode" ProcParams=":StudyId, :StartDate, :StopDate" ListId="CASE" GrantTo="public" ChkSum="1759106862" LastUpdate="2018-03-06T11:18:38.260Z">
+	<row ProcId="318" StudyName="NDV" ProcName="NDV.GetPregnantInPeriod" ProcDesc="Gravide: Svangerskapskjema i periode" ProcParams=":StudyId, :StartDate, :StopDate" ListId="CASE" GrantTo="public" ChkSum="1882214725" LastUpdate="2019-12-02T11:36:01.590Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPregnantInPeriod( @StudyId INT, @StartDate DateTime, @StopDate DateTime ) AS
 BEGIN
    SELECT 
-     v.PersonId, v.DOB, v.FullName, v.GroupName, 
+     v.PersonId, v.DOB, v.FullName, v.GroupName, v.GenderId, p.NationalId, 
      REPLACE(ISNULL(mia.OptionText, 'Uspesifisert'),'.','') + '; ' + CONVERT(VARCHAR,agg.Antall) + ' kontroller.' AS InfoText 
   FROM 
     (
-      SELECT ce.PersonId,COUNT(*) as Antall 
+      SELECT ce.PersonId,COUNT(*) AS Antall 
       FROM dbo.ClinEvent ce
-      JOIN dbo.ClinForm cf ON cf.EventId=ce.EventId AND cf.DeletedAt IS NULL
-      JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId 
+      JOIN dbo.ClinForm cf ON cf.EventId = ce.EventId AND cf.DeletedAt IS NULL
+      JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId 
       WHERE mf.FormName = 'DIAPOL_GRAVIDE'
       AND ce.EventTime BETWEEN @StartDate AND @StopDate
       GROUP BY ce.PersonId
      ) agg
-  JOIN dbo.ViewCaseListStub v ON agg.PersonId=v.PersonId
+  JOIN dbo.ViewCaseListStub v ON agg.PersonId = v.PersonId
+  JOIN dbo.Person p ON p.PersonId = v.PersonId
   LEFT JOIN dbo.MetaItemAnswer mia ON mia.ItemId = 3196 AND mia.OrderNumber = dbo.GetLastEnumValInThePast( v.PersonId, 'NDV_TYPE', @StopDate )
-  WHERE v.StudyId=@StudyId;
+  WHERE v.StudyId = @StudyId;
 END]]>
 	</row>
 	<row ProcId="319" StudyName="NDV" ProcName="NDV.GetCaseListKiosk" ProcDesc="Prosjekter: PROMS fra Kiosk" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6600" ChkSum="-2126140237" LastUpdate="2018-04-17T21:21:22.010Z">
