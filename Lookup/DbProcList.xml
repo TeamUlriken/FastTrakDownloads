@@ -779,15 +779,15 @@ BEGIN
   EXECUTE dbo.GetCaseListProblem @StudyId,'I48%'
 END]]>
 	</row>
-	<row ProcId="131" StudyName="GBD.OLD" ProcName="dbo.GetCaseListLastBerger" ProcDesc="Prosess: Siste Berger" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-827484412" LastUpdate="2019-01-12T07:09:26.250Z">
-		<![CDATA[CREATE PROCEDURE dbo.GetCaseListLastBerger( @StudyId INT ) AS
+	<row ProcId="131" StudyName="GBD.OLD" ProcName="GBD.GetCaseListLastBerger" ProcDesc="Prosess: Siste Berger" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1353445125" LastUpdate="2019-12-02T18:50:46.863Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListLastBerger( @StudyId INT ) AS
 BEGIN
   EXEC GetCaseListLastForm @StudyId, 'BERGER'
 END
 ]]>
 	</row>
-	<row ProcId="132" StudyName="GBD" ProcName="dbo.GetCaseListLastHulten" ProcDesc="Prosess: Siste Hulten" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1528258888" LastUpdate="2019-01-12T07:09:22.627Z">
-		<![CDATA[CREATE PROCEDURE dbo.GetCaseListLastHulten( @StudyId INT ) AS
+	<row ProcId="132" StudyName="GBD" ProcName="GBD.GetCaseListLastHulten" ProcDesc="Prosess: Siste Hulten" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="988735161" LastUpdate="2019-12-02T18:47:03.610Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListLastHulten( @StudyId INT ) AS
 BEGIN
   EXEC GetCaseListLastForm @StudyId, 'HULTEN'
 END
@@ -869,7 +869,7 @@ BEGIN
   EXEC GetCaseListLastForm @StudyId, 'MMSE_NR3',365
 END]]>
 	</row>
-	<row ProcId="143" StudyName="GBD.OLD" ProcName="GBD.GetCaseListNoBergerSixMonths" ProcDesc="Prosess: Ikke Berger siste 6 mnd" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MaxVersion="6300" ChkSum="-803443408" LastUpdate="2018-06-11T12:58:20.080Z">
+	<row ProcId="143" StudyName="GBD.OLD" ProcName="GBD.GetCaseListNoBergerSixMonths" ProcDesc="Prosess: Ikke Berger siste 6 mnd" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MaxVersion="6300" ChkSum="-803443408" LastUpdate="2019-12-02T18:52:55.830Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListNoBergerSixMonths( @StudyId INT ) AS
 BEGIN
   EXEC GetCaseListLastForm @StudyId,'BERGER',180
@@ -5238,7 +5238,7 @@ END
 	<row ProcId="1129" StudyName="LANGTID" ProcName="dbo.GetCaseListWarfarinNSAID" ProcDesc="Kontraindikasjoner: Warfarin/DOAK + NSAIDs" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-519768046" LastUpdate="2018-06-21T11:57:24.283Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="1132" StudyName="LANGTID" ProcName="dbo.GetCaseListLastHulten" ProcDesc="Prosess: Siste Hulten" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="2048621945" LastUpdate="2019-01-12T07:06:36.267Z">
+	<row ProcId="1132" StudyName="LANGTID" ProcName="GBD.GetCaseListLastHulten" ProcDesc="Prosess: Siste Hulten" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-467960456" LastUpdate="2019-12-02T18:46:49.503Z">
 		<![CDATA[]]>
 	</row>
 	<row ProcId="1133" StudyName="LANGTID" ProcName="dbo.GetCaseListOldLab" ProcDesc="Prosess: Siste labdata (eksterne)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="1508692031" LastUpdate="2019-01-12T07:06:39.890Z">
@@ -6046,7 +6046,7 @@ BEGIN
   WHERE FormName IN ('Addison','Autoimmunitet','APS1','Hypopara','AddisonHRQoL') OR ( FormId IN ( 964 ) );
 END]]>
 	</row>
-	<row ProcId="10001" StudyName="*" ProcName="GBD.RuleBerger" ProcDesc="Registere Bergers skala med 180 dagers intervall" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MaxVersion="18207" ChkSum="976234660" LastUpdate="2019-01-03T09:03:08.607Z">
+	<row ProcId="10001" StudyName="GBD.OLD" ProcName="GBD.RuleBerger" ProcDesc="Registere Bergers skala med 180 dagers intervall" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MaxVersion="18207" ChkSum="-708061249" LastUpdate="2019-12-02T18:52:47.377Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleBerger( @StudyId INT, @PersonId INT ) AS
 BEGIN
   EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'BERGER',180,2
