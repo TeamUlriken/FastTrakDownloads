@@ -1619,6 +1619,18 @@ END
 	<row ProcId="194" StudyName="LANGTID" ProcName="GBD.GetCaseListFalltiltak" ProcDesc="Prosess: Høy fallrisiko og tiltaksplan for fallforebygging" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19000" HelpText="Siste tiltaksplan for fallforebygging for pasienter med høy risiko for fall ifølge utfylt skjema «Fallrisiko - Stratify» (skår 2 eller høyere)." ChkSum="897240470" LastUpdate="2019-09-12T09:12:52.360Z">
 		<![CDATA[]]>
 	</row>
+	<row ProcId="195" StudyName="GBD" ProcName="GBD.GetCaseListNoNEWS230Days" ProcDesc="Prosess: Ikke NEWS2 siste mnd" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19000" HelpText="Alle aktive pasienter som ikke har utfylt NEWS2-skjema siste måned." ChkSum="1541169874" LastUpdate="2019-12-03T08:10:16.903Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListNoNEWS230Days( @StudyId INT ) AS
+BEGIN
+  EXEC dbo.GetCaseListLastForm @StudyId, 'NEWS2', 30;
+END]]>
+	</row>
+	<row ProcId="196" StudyName="GBD" ProcName="GBD.GetCaseListLastNEWS2" ProcDesc="Prosess: Siste NEWS2" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19000" HelpText="Alle aktive pasienter med dato for siste utfylling av NEWS2-skjema." ChkSum="-808670667" LastUpdate="2019-12-03T08:10:11.327Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListLastNEWS2( @StudyId INT ) AS
+BEGIN
+  EXEC dbo.GetCaseListLastForm @StudyId, 'NEWS2';
+END]]>
+	</row>
 	<row ProcId="201" StudyName="NDV.BASE" ProcName="NDV.GetPumpWithHighHbA1c" ProcDesc="Utvalg av Type-1 m/pumpe basert på alder og HbA1c-verdier" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1281890130" LastUpdate="2018-10-03T14:50:45.213Z">
 		<![CDATA[CREATE PROCEDURE NDV.GetPumpWithHighHbA1c( @StudyId INT, @AgeMin FLOAT, @AgeMax FLOAT, @HbA1cCutoff FLOAT ) AS
 BEGIN
