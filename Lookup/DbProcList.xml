@@ -6058,6 +6058,22 @@ BEGIN
   WHERE FormName IN ('Addison','Autoimmunitet','APS1','Hypopara','AddisonHRQoL') OR ( FormId IN ( 964 ) );
 END]]>
 	</row>
+	<row ProcId="9000" StudyName="*" ProcName="Report.ColLabQuarters" ProcDesc="Labdata kvartalsvis" ProcParams=":LabClassId" ListId="COLS" GrantTo="public" MinVersion="19000" ChkSum="1986167104" LastUpdate="2019-12-06T14:47:57.400Z">
+		<![CDATA[CREATE PROCEDURE Report.ColLabQuarters( @LabClassId INT ) AS 
+BEGIN
+  SELECT agg.PersonId, CONCAT('HBA1C', agg.y,'Q',agg.q ) AS VarName, NumResult, LabDate, ResultId
+  FROM 
+  (
+    SELECT PersonId, DATEPART( YEAR, LabDate ) AS y, DATEPART( QUARTER, LabDate ) AS q, NumResult, ld.LabDate, ld.ResultId, 
+      ROW_NUMBER () OVER ( PARTITION BY PersonId, DATEPART( YEAR, LabDate ), DATEPART( QUARTER, LabDate ) ORDER BY LabDate DESC ) AS ReverseOrder
+    FROM LabData ld
+    JOIN LabCode lc ON lc.LabCodeId = ld.LabCodeId
+    WHERE lc.LabClassId = @LabClassId AND ld.LabDate > GETDATE()-365
+  ) agg 
+  WHERE ReverseOrder = 1
+  ORDER BY LabDate;
+END]]>
+	</row>
 	<row ProcId="10001" StudyName="GBD.OLD" ProcName="GBD.RuleBerger" ProcDesc="Registere Bergers skala med 180 dagers intervall" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MaxVersion="18207" ChkSum="-708061249" LastUpdate="2019-12-02T18:52:47.377Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleBerger( @StudyId INT, @PersonId INT ) AS
 BEGIN
