@@ -6058,21 +6058,35 @@ BEGIN
   WHERE FormName IN ('Addison','Autoimmunitet','APS1','Hypopara','AddisonHRQoL') OR ( FormId IN ( 964 ) );
 END]]>
 	</row>
-	<row ProcId="9000" StudyName="*" ProcName="Report.ColLabQuarters" ProcDesc="Labdata kvartalsvis" ProcParams=":LabClassId" ListId="COLS" GrantTo="public" MinVersion="19000" ChkSum="1986167104" LastUpdate="2019-12-06T14:47:57.400Z">
+	<row ProcId="9000" StudyName="(BARNEDIABETESI" ProcName="Report.ColLabQuarters" ProcDesc="Labdata kvartalsvis" ProcParams=":LabClassId" ListId="COLS" GrantTo="public" MinVersion="19000" ChkSum="1342584648" LastUpdate="2019-12-06T19:15:20.713Z">
 		<![CDATA[CREATE PROCEDURE Report.ColLabQuarters( @LabClassId INT ) AS 
 BEGIN
-  SELECT agg.PersonId, CONCAT('HBA1C', agg.y,'Q',agg.q ) AS VarName, NumResult, LabDate, ResultId
+  SELECT agg.PersonId, CONCAT(agg.NLK, '.', agg.y,'.Q',agg.q ) AS VarName, NumResult, LabDate, ResultId
   FROM 
   (
-    SELECT PersonId, DATEPART( YEAR, LabDate ) AS y, DATEPART( QUARTER, LabDate ) AS q, NumResult, ld.LabDate, ld.ResultId, 
+    SELECT ld.PersonId, cl.NLK, DATEPART( YEAR, ld.LabDate ) AS y, DATEPART( QUARTER, ld.LabDate ) AS q, ld.NumResult, ld.LabDate, ld.ResultId, 
       ROW_NUMBER () OVER ( PARTITION BY PersonId, DATEPART( YEAR, LabDate ), DATEPART( QUARTER, LabDate ) ORDER BY LabDate DESC ) AS ReverseOrder
-    FROM LabData ld
-    JOIN LabCode lc ON lc.LabCodeId = ld.LabCodeId
-    WHERE lc.LabClassId = @LabClassId AND ld.LabDate > GETDATE()-365
+    FROM dbo.LabData ld
+    JOIN dbo.LabCode lc ON lc.LabCodeId = ld.LabCodeId
+    JOIN dbo.LabClass cl ON cl.LabClassId = lc.LabClassId
+    WHERE lc.LabClassId = @LabClassId AND ld.LabDate > GETDATE() - 365
   ) agg 
   WHERE ReverseOrder = 1
   ORDER BY LabDate;
 END]]>
+	</row>
+	<row ProcId="9001" StudyName="(GBD)" ProcName="Report.ColGbdTvangsvedtak" ProcDesc="Siste tvangsvedtak" ListId="COLS" GrantTo="public" MinVersion="19000" ChkSum="-2043681880" LastUpdate="2019-12-06T18:09:29.957Z">
+		<![CDATA[CREATE PROCEDURE Report.ColGbdTvangsvedtak AS
+BEGIN
+  SELECT 
+    PersonId, 'TVANG_REST' AS VarName, 
+    MAX(DATEDIFF(DD,GETDATE(),EventTime)) AS DpValue, 
+    MAX(EventTime) AS MaxEventTime, 
+    MAX(ClinFormId) AS MaxClinFormId
+  FROM GBD.Tvangsvedtak
+  GROUP BY PersonId;
+END
+]]>
 	</row>
 	<row ProcId="10001" StudyName="GBD.OLD" ProcName="GBD.RuleBerger" ProcDesc="Registere Bergers skala med 180 dagers intervall" ProcParams=":StudyId,:PersonId" ListId="RULE" GrantTo="public" MaxVersion="18207" ChkSum="-708061249" LastUpdate="2019-12-02T18:52:47.377Z">
 		<![CDATA[CREATE PROCEDURE GBD.RuleBerger( @StudyId INT, @PersonId INT ) AS
