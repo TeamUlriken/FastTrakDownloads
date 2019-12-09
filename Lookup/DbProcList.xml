@@ -4783,18 +4783,33 @@ BEGIN
     ) PivotTable
 END;]]>
 	</row>
-	<row ProcId="1044" StudyName="BARNEDIABETES" ProcName="BDR.RapportHbA1cSnittPerLege" ProcDesc="Rapport som viser gjennomsnittlig HbA1c-verdi per lege, basert p" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="19004" ChkSum="1759654173" LastUpdate="2019-06-13T19:07:24.700Z">
+	<row ProcId="1044" StudyName="BARNEDIABETES" ProcName="BDR.RapportHbA1cSnittPerLege" ProcDesc="Rapport som viser gjennomsnittlig HbA1c-verdi per lege, basert p" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="19004" ChkSum="1819236333" LastUpdate="2019-12-09T14:49:10.113Z">
 		<![CDATA[CREATE PROCEDURE BDR.RapportHbA1cSnittPerLege( @StudyId INT ) AS
 BEGIN
-  SELECT ISNULL(gltvt.TextVal,'(ingen lege)') AS Doc, COUNT(v.PersonId) AS n, AVG(glqt.Quantity) AS Mean 
-  FROM dbo.ViewActiveCaseListStub v
-  JOIN dbo.GetLastQuantityTable( 3018, NULL ) glqt ON v.PersonId = glqt.PersonId  
-  LEFT JOIN dbo.GetLastTextValuesTable( 3844, NULL ) gltvt ON v.PersonId = gltvt.PersonId
-  WHERE v.StudyId = @StudyId
-  GROUP BY gltvt.TextVal
-  ORDER BY Mean;
-END
-]]>
+  DECLARE @MsgText VARCHAR(50);
+  BEGIN TRY
+    EXEC NDV.MergeHba1cToLabdata;
+    SET @MsgText = 'Totalt';
+  END TRY
+  BEGIN CATCH
+    SET @MsgText = 'Totalt (NB: Duplikater i skjemadata)';
+  END CATCH;
+  -- Merk at denne nå bare bruker HbA1c fra labtabellen.
+  SELECT * FROM
+  (
+    SELECT 1 AS OrderNo, v.GroupName AS Doc, COUNT(v.PersonId) AS n, AVG(glab.NumResult) AS Mean
+      FROM dbo.ViewActiveCaseListStub v
+      JOIN dbo.GetLastLabDataTable( 1058, NULL ) glab ON glab.PersonId = v.PersonId
+      WHERE v.StudyId = @StudyId
+      GROUP BY v.GroupName
+    UNION
+    SELECT 2, @MsgText AS GroupName, COUNT(v.PersonId) AS n, AVG(glab.NumResult) AS Mean
+      FROM dbo.ViewActiveCaseListStub v
+      JOIN dbo.GetLastLabDataTable( 1058, NULL ) glab ON glab.PersonId = v.PersonId
+      WHERE v.StudyId = @StudyId 
+ ) a
+ ORDER by a.OrderNo;
+END]]>
 	</row>
 	<row ProcId="1045" StudyName="ROAS" ProcName="Report.PromForms" ProcDesc="Nedlastede PROM-skjema" ProcParams=":StartAt, :StopAt" ListId="FR" GrantTo="public" MinVersion="18201" CompatibilityLevel="100" ChkSum="-1630385935" LastUpdate="2019-07-25T11:22:43.673Z">
 		<![CDATA[CREATE PROCEDURE Report.PromForms( @StartAt DATE, @StopAt DATE ) AS
