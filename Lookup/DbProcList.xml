@@ -4783,7 +4783,7 @@ BEGIN
     ) PivotTable
 END;]]>
 	</row>
-	<row ProcId="1044" StudyName="BARNEDIABETES" ProcName="BDR.RapportHbA1cSnittPerLege" ProcDesc="Rapport som viser gjennomsnittlig HbA1c-verdi per lege, basert p" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="19004" ChkSum="1819236333" LastUpdate="2019-12-09T14:49:10.113Z">
+	<row ProcId="1044" StudyName="BARNEDIABETES" ProcName="BDR.RapportHbA1cSnittPerLege" ProcDesc="Rapport som viser gjennomsnittlig HbA1c-verdi per lege, basert p" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="19004" ChkSum="1414398562" LastUpdate="2019-12-09T15:06:05.880Z">
 		<![CDATA[CREATE PROCEDURE BDR.RapportHbA1cSnittPerLege( @StudyId INT ) AS
 BEGIN
   DECLARE @MsgText VARCHAR(50);
@@ -4799,13 +4799,13 @@ BEGIN
   (
     SELECT 1 AS OrderNo, v.GroupName AS Doc, COUNT(v.PersonId) AS n, AVG(glab.NumResult) AS Mean
       FROM dbo.ViewActiveCaseListStub v
-      JOIN dbo.GetLastLabDataTable( 1058, NULL ) glab ON glab.PersonId = v.PersonId
+      JOIN dbo.GetLastLabDataTable( 1058, GETDATE() ) glab ON glab.PersonId = v.PersonId
       WHERE v.StudyId = @StudyId
       GROUP BY v.GroupName
     UNION
     SELECT 2, @MsgText AS GroupName, COUNT(v.PersonId) AS n, AVG(glab.NumResult) AS Mean
       FROM dbo.ViewActiveCaseListStub v
-      JOIN dbo.GetLastLabDataTable( 1058, NULL ) glab ON glab.PersonId = v.PersonId
+      JOIN dbo.GetLastLabDataTable( 1058, GETDATE() ) glab ON glab.PersonId = v.PersonId
       WHERE v.StudyId = @StudyId 
  ) a
  ORDER by a.OrderNo;
