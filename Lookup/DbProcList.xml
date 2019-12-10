@@ -4783,33 +4783,69 @@ BEGIN
     ) PivotTable
 END;]]>
 	</row>
-	<row ProcId="1044" StudyName="BARNEDIABETES" ProcName="BDR.RapportHbA1cSnittPerLege" ProcDesc="Rapport som viser gjennomsnittlig HbA1c-verdi per lege, basert p" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="19004" HelpText="Rapporten viser snitt av siste HbA1c for alle pasienter fordelt per lege, forutsatt at lege er brukt som gruppebegrep." ChkSum="1071632226" LastUpdate="2019-12-09T15:51:49.837Z">
+	<row ProcId="1044" StudyName="BARNEDIABETES" ProcName="BDR.RapportHbA1cSnittPerLege" ProcDesc="Rapport som viser gjennomsnittlig HbA1c-verdi per lege, basert p" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="19004" HelpText="Rapporten viser snitt av siste HbA1c for alle pasienter fordelt per lege, forutsatt at lege er brukt som gruppebegrep." ChkSum="-1581708301" LastUpdate="2019-12-10T12:13:47.967Z">
 		<![CDATA[CREATE PROCEDURE BDR.RapportHbA1cSnittPerLege( @StudyId INT ) AS
 BEGIN
-  DECLARE @MsgText VARCHAR(50);
+
+  DECLARE @TotalGroupName VARCHAR(50) = 'Totalt';
+
   BEGIN TRY
     EXEC NDV.MergeHba1cToLabdata;
-    SET @MsgText = 'Totalt';
   END TRY
   BEGIN CATCH
-    SET @MsgText = 'Totalt (NB: Duplikater i skjemadata)';
+    SET @TotalGroupName = 'Totalt (NB: Duplikater i skjemadata)';
   END CATCH;
-  -- Merk at denne nå bare bruker HbA1c fra labtabellen.
-  SELECT * FROM
+
+-- Retrieve the latest HbA1c-values first
+
+  SELECT v.PersonId, v.GroupId, v.GroupName, ld.NumResult
+  INTO #labdata
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.GetLastLabDataTable( 1058, GETDATE()) ld ON ld.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId;
+
+-- Calculate percentiles per GroupId (doctor)
+
+  SELECT GroupId, GroupName,
+    PERCENTILE_DISC(0.25) WITHIN GROUP( ORDER BY NumResult ) OVER ( PARTITION BY GroupId ) AS P25,
+    PERCENTILE_DISC(0.50) WITHIN GROUP( ORDER BY NumResult ) OVER ( PARTITION BY GroupId ) AS P50,
+    PERCENTILE_DISC(0.75) WITHIN GROUP( ORDER BY NumResult ) OVER ( PARTITION BY GroupId ) AS P75
+  INTO #percentiles
+  FROM #labdata
+  UNION 
+  SELECT 999999, @TotalGroupName,
+    PERCENTILE_DISC(0.25) WITHIN GROUP( ORDER BY NumResult ) OVER (),
+    PERCENTILE_DISC(0.50) WITHIN GROUP( ORDER BY NumResult ) OVER (),
+    PERCENTILE_DISC(0.75) WITHIN GROUP( ORDER BY NumResult ) OVER ()
+  FROM #labdata;
+
+-- Do standard aggregations
+
+  SELECT * 
+  INTO #minmax
+  FROM
   (
-    SELECT 1 AS OrderNo, v.GroupName AS Doc, COUNT(v.PersonId) AS n, AVG(glab.NumResult) AS Mean
-      FROM dbo.ViewActiveCaseListStub v
-      JOIN dbo.GetLastLabDataTable( 1058, GETDATE() ) glab ON glab.PersonId = v.PersonId
-      WHERE v.StudyId = @StudyId
-      GROUP BY v.GroupName
+    SELECT GroupId, GroupName, COUNT(PersonId) AS n, 
+        MIN(NumResult) AS MinHbA1c, MAX(NumResult) AS MaxHbA1c, AVG(NumResult) AS MeanHbA1c
+      FROM #labdata
+      GROUP BY GroupId, GroupName
     UNION
-    SELECT 2, @MsgText AS GroupName, COUNT(v.PersonId) AS n, AVG(glab.NumResult) AS Mean
-      FROM dbo.ViewActiveCaseListStub v
-      JOIN dbo.GetLastLabDataTable( 1058, GETDATE() ) glab ON glab.PersonId = v.PersonId
-      WHERE v.StudyId = @StudyId 
- ) a
- ORDER by a.OrderNo;
-END]]>
+    SELECT 999999, @TotalGroupName, COUNT(PersonId), 
+        MIN(NumResult), MAX(NumResult), AVG(NumResult)
+      FROM #labdata
+  )  agg;
+
+-- Combine the results
+
+  SELECT m.GroupId, m.GroupName, m.n, m.MinHbA1c,p.P25, p.P50, p.P75, m.MaxHbA1c, m.MeanHbA1c
+  FROM #minmax m
+  JOIN #percentiles p ON p.GroupId = m.GroupId
+  ORDER BY m.GroupId;
+
+END
+
+
+]]>
 	</row>
 	<row ProcId="1045" StudyName="ROAS" ProcName="Report.PromForms" ProcDesc="Nedlastede PROM-skjema" ProcParams=":StartAt, :StopAt" ListId="FR" GrantTo="public" MinVersion="18201" CompatibilityLevel="100" ChkSum="-1630385935" LastUpdate="2019-07-25T11:22:43.673Z">
 		<![CDATA[CREATE PROCEDURE Report.PromForms( @StartAt DATE, @StopAt DATE ) AS
