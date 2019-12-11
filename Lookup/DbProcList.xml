@@ -4783,7 +4783,7 @@ BEGIN
     ) PivotTable
 END;]]>
 	</row>
-	<row ProcId="1044" StudyName="BARNEDIABETES" ProcName="BDR.RapportHbA1cSnittPerLege" ProcDesc="Rapport som viser gjennomsnittlig HbA1c-verdi per lege, basert p" ProcParams=":StudyId, :DiaType, :ExcludeNew" ListId="FR" GrantTo="public" MinVersion="19004" HelpText="Rapporten viser snitt av siste HbA1c for alle pasienter fordelt per lege, forutsatt at lege er brukt som gruppebegrep." ChkSum="-55868653" LastUpdate="2019-12-11T22:24:48.750Z">
+	<row ProcId="1044" StudyName="BARNEDIABETES" ProcName="BDR.RapportHbA1cSnittPerLege" ProcDesc="Rapport som viser gjennomsnittlig HbA1c-verdi per lege, basert p" ProcParams=":StudyId, :DiaType, :ExcludeNew" ListId="FR" GrantTo="public" MinVersion="19004" HelpText="Rapporten viser snitt av siste HbA1c for alle pasienter fordelt per lege, forutsatt at lege er brukt som gruppebegrep." ChkSum="463747042" LastUpdate="2019-12-11T22:44:34.300Z">
 		<![CDATA[CREATE PROCEDURE BDR.RapportHbA1cSnittPerLege( @StudyId INT, @DiaType INT = 0, @ExcludeNew INT = 2 ) AS
 BEGIN
 
@@ -4802,11 +4802,11 @@ BEGIN
   INTO #labdata
   FROM dbo.ViewActiveCaseListStub v
   JOIN dbo.GetLastLabDataTable( 1058, GETDATE()) ld ON ld.PersonId = v.PersonId
+  JOIN dbo.GetLastDateTable( 3323, NULL ) dxdate ON dxdate.PersonId = v.PersonId
   LEFT JOIN dbo.GetLastEnumValuesTable( 3196, NULL ) diatype ON diatype.PersonId = ld.PersonId
-  LEFT JOIN dbo.GetLastDateTable( 3323, NULL ) dxdate ON dxdate.PersonId = ld.PersonId
   WHERE ( v.StudyId = @StudyId ) 
     AND ( diatype.EnumVal = @DiaType OR @DiaType IS NULL OR @DiaType < 1 ) 
-    AND ( dxdate.DTVal < GETDATE() - 30.5 * @ExcludeNew );
+    AND ( ld.LabDate > dxdate.DTVal + 30.5 * @ExcludeNew );
 
 -- Calculate percentiles per GroupId (doctor)
 
