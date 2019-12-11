@@ -4783,8 +4783,8 @@ BEGIN
     ) PivotTable
 END;]]>
 	</row>
-	<row ProcId="1044" StudyName="BARNEDIABETES" ProcName="BDR.RapportHbA1cSnittPerLege" ProcDesc="Rapport som viser gjennomsnittlig HbA1c-verdi per lege, basert p" ProcParams=":StudyId, :DiaType, :ExcludeNew" ListId="FR" GrantTo="public" MinVersion="19004" HelpText="Rapporten viser snitt av siste HbA1c for alle pasienter fordelt per lege, forutsatt at lege er brukt som gruppebegrep." ChkSum="-1328648270" LastUpdate="2019-12-11T22:01:12.967Z">
-		<![CDATA[CREATE PROCEDURE BDR.RapportHbA1cSnittPerLege( @StudyId INT, @DiaType INT = 0, @ExcludeNew INT = 0 ) AS
+	<row ProcId="1044" StudyName="BARNEDIABETES" ProcName="BDR.RapportHbA1cSnittPerLege" ProcDesc="Rapport som viser gjennomsnittlig HbA1c-verdi per lege, basert p" ProcParams=":StudyId, :DiaType, :ExcludeNew" ListId="FR" GrantTo="public" MinVersion="19004" HelpText="Rapporten viser snitt av siste HbA1c for alle pasienter fordelt per lege, forutsatt at lege er brukt som gruppebegrep." ChkSum="-55868653" LastUpdate="2019-12-11T22:24:48.750Z">
+		<![CDATA[CREATE PROCEDURE BDR.RapportHbA1cSnittPerLege( @StudyId INT, @DiaType INT = 0, @ExcludeNew INT = 2 ) AS
 BEGIN
 
   DECLARE @TotalGroupName VARCHAR(50) = 'Totalt';
@@ -4806,21 +4806,21 @@ BEGIN
   LEFT JOIN dbo.GetLastDateTable( 3323, NULL ) dxdate ON dxdate.PersonId = ld.PersonId
   WHERE ( v.StudyId = @StudyId ) 
     AND ( diatype.EnumVal = @DiaType OR @DiaType IS NULL OR @DiaType < 1 ) 
-    AND ( dxdate.DTVal < GETDATE() - 180 OR @ExcludeNew = 0 );
+    AND ( dxdate.DTVal < GETDATE() - 30.5 * @ExcludeNew );
 
 -- Calculate percentiles per GroupId (doctor)
 
   SELECT GroupId, GroupName,
-    PERCENTILE_DISC(0.25) WITHIN GROUP( ORDER BY NumResult ) OVER ( PARTITION BY GroupId ) AS P25,
+    PERCENTILE_DISC(0.10) WITHIN GROUP( ORDER BY NumResult ) OVER ( PARTITION BY GroupId ) AS P10,
     PERCENTILE_DISC(0.50) WITHIN GROUP( ORDER BY NumResult ) OVER ( PARTITION BY GroupId ) AS P50,
-    PERCENTILE_DISC(0.75) WITHIN GROUP( ORDER BY NumResult ) OVER ( PARTITION BY GroupId ) AS P75
+    PERCENTILE_DISC(0.90) WITHIN GROUP( ORDER BY NumResult ) OVER ( PARTITION BY GroupId ) AS P90
   INTO #percentiles
   FROM #labdata
   UNION 
   SELECT 999999, @TotalGroupName,
-    PERCENTILE_DISC(0.25) WITHIN GROUP( ORDER BY NumResult ) OVER (),
+    PERCENTILE_DISC(0.10) WITHIN GROUP( ORDER BY NumResult ) OVER (),
     PERCENTILE_DISC(0.50) WITHIN GROUP( ORDER BY NumResult ) OVER (),
-    PERCENTILE_DISC(0.75) WITHIN GROUP( ORDER BY NumResult ) OVER ()
+    PERCENTILE_DISC(0.90) WITHIN GROUP( ORDER BY NumResult ) OVER ()
   FROM #labdata;
 
 -- Do standard aggregations
@@ -4841,7 +4841,7 @@ BEGIN
 
 -- Combine the results
 
-  SELECT m.GroupId, m.GroupName, m.n, m.MinHbA1c, p.P25, p.P50, p.P75, m.MaxHbA1c, m.MeanHbA1c
+  SELECT m.GroupId, m.GroupName, m.n, m.MinHbA1c, p.P10, p.P50, p.P90, m.MaxHbA1c, m.MeanHbA1c
   FROM #minmax m
   JOIN #percentiles p ON p.GroupId = m.GroupId
   ORDER BY m.GroupId;
