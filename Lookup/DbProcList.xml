@@ -2781,18 +2781,17 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="511" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListCGMDevice" ProcDesc="CGM: Egenmåling av glukose" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" InfoCaption="Målemetode og evt. CGM-type" HelpText="Aktive brukere sortert først på Egenmåling av glukose (1310) og deretter Tildelt apparat (10296)" ChkSum="-403839313" LastUpdate="2019-12-12T22:27:55.070Z">
+	<row ProcId="511" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListCGMDevice" ProcDesc="CGM: Egenmåling av glukose" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" InfoCaption="Målemetode og evt. CGM-type" HelpText="Aktive brukere sortert først på Egenmåling av glukose (1310) og deretter evt. CGM apparat (5166)." ChkSum="-327283913" LastUpdate="2019-12-12T22:45:10.400Z">
 		<![CDATA[CREATE PROCEDURE BDR.GetCaseListCGMDevice ( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId, v.DOB, v.FullName, v.GenderId, v.GroupName,
-    ISNULL ( mia.OptionText, '(egenmåling mangler)' ) + ISNULL( ', ' + device.OptionText, '' ) AS InfoText,
-    ISNULL( cgmtype.EnumVal, 7 ) AS OrderBy
+    ISNULL ( measure.OptionText, '(egenmåling mangler)' ) + ISNULL( ', ' + cgm.OptionText, '' ) AS InfoText,
+    ISNULL( measure.EnumVal, 7 ) AS OrderBy
   FROM dbo.ViewActiveCaseListStub v
-  LEFT JOIN dbo.GetLastEnumValuesTable( 1310, NULL ) cgmtype ON v.PersonId = cgmtype.PersonId
-  LEFT JOIN dbo.GetLastEnumValuesTable( 5166, NULL ) device ON v.PersonId = device.PersonId
-  LEFT JOIN dbo.MetaItemAnswer mia ON cgmtype.EnumVal = mia.OrderNumber
-  WHERE v.StudyId = @StudyId AND ( mia.ItemId = 1310 OR mia.ItemId IS NULL )
-  ORDER BY OrderBy, device.OptionText, v.FullName;
+  LEFT JOIN dbo.GetLastEnumValuesTable( 1310, NULL ) measure ON measure.PersonId = v.PersonId
+  LEFT JOIN dbo.GetLastEnumValuesTable( 5166, NULL ) cgm ON cgm.PersonId = v.PersonId
+  WHERE v.StudyId = @StudyId
+  ORDER BY OrderBy, cgm.OptionText, v.FullName;
 END]]>
 	</row>
 	<row ProcId="512" StudyName="BARNEDIABETES" ProcName="DIA.GetCaseListAntibodies" ProcDesc="Antistoff: Status for antistoff med kommentar" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" ChkSum="-757091367" LastUpdate="2019-07-31T09:28:07.570Z">
