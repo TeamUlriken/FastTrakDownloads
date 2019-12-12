@@ -2739,30 +2739,31 @@ BEGIN
   ORDER BY DOB;
 END]]>
 	</row>
-	<row ProcId="507" StudyName="BARNEDIABETES" ProcName="DIA.GetCaseListPump" ProcDesc="Behandling: Insulinpumpe" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" ChkSum="-398958066" LastUpdate="2019-09-24T10:03:26.660Z">
+	<row ProcId="507" StudyName="BARNEDIABETES" ProcName="DIA.GetCaseListPump" ProcDesc="Behandling: Insulinpumpe" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" InfoCaption="Navn på pumpe" ChkSum="2040240056" LastUpdate="2019-12-12T22:12:21.410Z">
 		<![CDATA[CREATE PROCEDURE DIA.GetCaseListPump ( @StudyId INT ) AS
 BEGIN
   SELECT v.PersonId, v.DOB, v.FullName, v.GenderId, v.GroupName, 
-    'Apparat:' + ISNULL(gltvt.TextVal, ' (uoppgitt)') AS InfoText
+    ISNULL(pump.OptionText, ' (Ikke ooppgitt)') AS InfoText
   FROM dbo.ViewActiveCaseListStub v
-  JOIN dbo.GetLastEnumValuesTable(4056, NULL) glevt ON v.PersonId = glevt.PersonId -- administrasjonsmåte
-  LEFT JOIN dbo.GetLastTextValuesTable(3997, NULL) gltvt ON v.PersonId = gltvt.PersonId -- pumpetype
-  WHERE v.StudyId=@StudyId AND glevt.EnumVal = 2
-  ORDER BY v.FullName;
+  JOIN dbo.GetLastEnumValuesTable(4056, NULL) adm ON v.PersonId = adm.PersonId -- administrasjonsmåte
+  LEFT JOIN dbo.GetLastEnumValuesTable(5162, NULL) pump ON v.PersonId = pump.PersonId -- pumpetype
+  WHERE v.StudyId = @StudyId AND adm.EnumVal = 2
+  ORDER BY pump.OptionText, v.FullName;
 END
 ]]>
 	</row>
-	<row ProcId="508" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListCGM" ProcDesc="CGM: Aktive CGM brukere" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" HelpText="-" ChkSum="-1119133399" LastUpdate="2019-06-13T10:19:39.870Z">
+	<row ProcId="508" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListCGM" ProcDesc="CGM: Aktive CGM brukere" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" InfoCaption="CGM Type" HelpText="-" ChkSum="536837800" LastUpdate="2019-12-12T22:18:32.193Z">
 		<![CDATA[CREATE PROCEDURE BDR.GetCaseListCGM( @StudyId INT ) AS 
 BEGIN   
-  SELECT p.PersonId, p.DOB, p.FullName, p.GenderId,     
+  SELECT v.PersonId, v.DOB, v.FullName, v.GenderId,     
     diatype.OptionText AS GroupName, 
-    ISNULL(cgmtype.OptionText, '(ukjent apparat)' ) AS InfoText   
-  FROM dbo.ViewActiveCaseListStub p   
-  JOIN dbo.GetLastEnumValuesTable( 3196, NULL ) diatype ON diatype.PersonId = p.PersonId     
-  JOIN dbo.GetLastEnumValuesTable( 10296, NULL ) cgmtype ON cgmtype.PersonId = p.PersonId     
-  WHERE p.StudyId = @StudyId   
-  ORDER BY FullName;
+    ISNULL(cgmtype.OptionText, '(CGM ikke oppgitt)') AS InfoText   
+  FROM dbo.ViewActiveCaseListStub v   
+  JOIN dbo.GetLastEnumValuesTable( 3196, NULL ) diatype ON diatype.PersonId = v.PersonId     
+  JOIN dbo.GetLastEnumValuesTable( 1310, NULL ) glucmon ON glucmon.PersonId = v.PersonId     
+  LEFT JOIN dbo.GetLastEnumValuesTable( 5166, NULL ) cgmtype ON cgmtype.PersonId = v.PersonId     
+  WHERE v.StudyId = @StudyId AND glucmon.EnumVal = 1
+  ORDER BY cgmtype.OptionText, v.FullName;
 END  ]]>
 	</row>
 	<row ProcId="509" StudyName="BARNEDIABETES" ProcName="NDV.GetCaseListCGMTraining" ProcDesc="CGM: Opplæring siste år" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6000" ChkSum="-1632508216" LastUpdate="2019-05-22T19:46:38.247Z">
@@ -2780,19 +2781,18 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="511" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListCGMDevice" ProcDesc="CGM: Egenmåling av glukose" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" HelpText="Aktive brukere sortert først på Egenmåling av glukose (1310) og deretter Tildelt apparat (10296)" ChkSum="313460066" LastUpdate="2019-06-17T16:09:51.380Z">
+	<row ProcId="511" StudyName="BARNEDIABETES" ProcName="BDR.GetCaseListCGMDevice" ProcDesc="CGM: Egenmåling av glukose" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" InfoCaption="Målemetode og evt. CGM-type" HelpText="Aktive brukere sortert først på Egenmåling av glukose (1310) og deretter Tildelt apparat (10296)" ChkSum="-403839313" LastUpdate="2019-12-12T22:27:55.070Z">
 		<![CDATA[CREATE PROCEDURE BDR.GetCaseListCGMDevice ( @StudyId INT ) AS
 BEGIN
- SELECT v.PersonId, v.DOB, v.FullName, v.GenderId, doc.TextVal AS GroupName,
-   ISNULL ( mia.VerboseText, 'Egenmåling ikke oppgitt.' ) + ISNULL(' Apparat: ' + device.OptionText, '') AS InfoText,
-   ISNULL(cgmtype.EnumVal, 7) AS OrderBy
- FROM dbo.ViewActiveCaseListStub v
- LEFT JOIN dbo.GetLastEnumValuesTable( 1310, NULL ) cgmtype ON v.PersonId = cgmtype.PersonId
- LEFT JOIN dbo.GetLastEnumValuesTable( 10296, NULL ) device ON v.PersonId = device.PersonId
- LEFT JOIN dbo.MetaItemAnswer mia ON cgmtype.EnumVal = mia.OrderNumber
- LEFT JOIN dbo.GetLastTextValuesTable( 3844, NULL ) doc ON doc.PersonId = v.PersonId
-WHERE v.StudyId = @StudyId AND (mia.ItemId = 1310 OR mia.ItemId IS NULL)
-ORDER BY OrderBy, device.OptionText, v.FullName;
+  SELECT v.PersonId, v.DOB, v.FullName, v.GenderId, v.GroupName,
+    ISNULL ( mia.OptionText, '(egenmåling mangler)' ) + ISNULL( ', ' + device.OptionText, '' ) AS InfoText,
+    ISNULL( cgmtype.EnumVal, 7 ) AS OrderBy
+  FROM dbo.ViewActiveCaseListStub v
+  LEFT JOIN dbo.GetLastEnumValuesTable( 1310, NULL ) cgmtype ON v.PersonId = cgmtype.PersonId
+  LEFT JOIN dbo.GetLastEnumValuesTable( 5166, NULL ) device ON v.PersonId = device.PersonId
+  LEFT JOIN dbo.MetaItemAnswer mia ON cgmtype.EnumVal = mia.OrderNumber
+  WHERE v.StudyId = @StudyId AND ( mia.ItemId = 1310 OR mia.ItemId IS NULL )
+  ORDER BY OrderBy, device.OptionText, v.FullName;
 END]]>
 	</row>
 	<row ProcId="512" StudyName="BARNEDIABETES" ProcName="DIA.GetCaseListAntibodies" ProcDesc="Antistoff: Status for antistoff med kommentar" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19004" ChkSum="-757091367" LastUpdate="2019-07-31T09:28:07.570Z">
