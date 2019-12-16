@@ -973,17 +973,14 @@ BEGIN
   ORDER BY ac.AlertLevel, FullName;
 END]]>
 	</row>
-	<row ProcId="152" StudyName="GBD" ProcName="GBD.GetCaseListOppholdstype" ProcDesc="Personer: Oppholdstype" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1247152397" LastUpdate="2013-01-22T12:27:10.913Z">
+	<row ProcId="152" StudyName="GBD" ProcName="GBD.GetCaseListOppholdstype" ProcDesc="Personer: Oppholdstype" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1686006059" LastUpdate="2019-12-16T13:17:00.187Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListOppholdstype( @StudyId INT ) AS
 BEGIN
-  SELECT p.PersonId,p.DOB,p.ReverseName as FullName,sg.GroupName,ss.StatusText as InfoText, p.BestId
-  FROM Person p
-  JOIN StudCase sc ON sc.PersonId=p.PersonId
-  JOIN StudyStatus ss ON ss.StudyId=sc.StudyId AND ss.StatusId=sc.StatusId AND ss.StatusActive=1
-  JOIN StudyGroup sg ON sg.StudyId=sc.StudyId AND sg.GroupId=sc.GroupId AND sg.GroupActive=1
-  JOIN UserList ul ON ul.UserId=USER_ID() AND ul.CenterId=sg.CenterId
-  WHERE sc.StudyId=@StudyId
-  ORDER BY p.ReverseName
+  SELECT v.*, v.Status AS InfoText, p.BestId
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.Person p ON p.PersonId = v.PersonId
+  WHERE v.StudyId=@StudyId
+  ORDER BY v.ReverseName;
 END]]>
 	</row>
 	<row ProcId="153" StudyName="GBD" ProcName="dbo.GetCaseListA10A" ProcDesc="Medikamentbruk: Insulin (A10A)" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Farmasøyt, Sykepleier, Vernepleier, Gruppeleder" ChkSum="-866523225" LastUpdate="2019-08-21T09:57:42.210Z">
@@ -1305,21 +1302,15 @@ BEGIN
     AND ( ce.StudyId = @StudyId ) AND (( su.GroupId = ce.GroupId ) OR (su.UserId IS NULL) OR (su.GroupId IS NULL) OR (su.ShowMyGroup = 0));
 END;]]>
 	</row>
-	<row ProcId="173" StudyName="GBD" ProcName="GBD.GetCaseListFormBeslutninger" ProcDesc="Beslutninger: Siste beslutninger" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Sykepleier, Vernepleier, Gruppeleder" MinVersion="18020" ChkSum="-1210074235" LastUpdate="2019-01-17T15:26:33.233Z">
+	<row ProcId="173" StudyName="GBD" ProcName="GBD.GetCaseListFormBeslutninger" ProcDesc="Beslutninger: Siste beslutninger" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Sykepleier, Vernepleier, Gruppeleder" MinVersion="18020" ChkSum="503681760" LastUpdate="2019-12-16T13:23:57.123Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormBeslutninger (@StudyId INT) AS
 BEGIN
-    SELECT lf.PersonId, p.FullName, p.DOB, sg.GroupName, p.GenderId, p.NationalId,
-        ss.StatusText + '. Dato: ' + dbo.ShortTime( lf.EventTime) AS InfoText
-    FROM dbo.GetLastFormTableByName( 'GBD_BESLUTNINGER', GETDATE() + 1 ) lf
-    JOIN dbo.Person p ON p.PersonId = lf.PersonId
-    JOIN dbo.StudCase sc ON sc.PersonId = lf.PersonId
-    JOIN dbo.StudyStatus ss ON ss.StatusId = sc.FinState AND ss.StudyId = sc.StudyId
-    JOIN dbo.StudyGroup sg ON sg.GroupId = sc.GroupId AND sg.StudyId = sc.StudyId AND sg.GroupActive = 1
-	JOIN dbo.UserList ul ON ul.UserId = USER_ID() AND ul.CenterId = sg.CenterId
-    LEFT JOIN dbo.StudyUser su ON su.UserId = USER_ID() AND su.StudyId = sc.StudyId
-    WHERE ( sc.StudyId = @StudyId )
-    AND    ( ( su.GroupId = sc.GroupId ) OR ( su.UserId IS NULL ) OR ( su.GroupId IS NULL ) OR ( su.ShowMyGroup = 0 ) );
-END;]]>
+  SELECT v.*, 
+    v.StatusText + '. Dato: ' + dbo.ShortTime( frm.EventTime) AS InfoText
+  FROM dbo.GetLastFormTableByName( 'GBD_BESLUTNINGER', GETDATE() + 1 ) frm
+  JOIN dbo.ViewActiveCaseListStub v ON v.PersonId = frm.PersonId
+  WHERE v.StudyId = @StudyId;
+END]]>
 	</row>
 	<row ProcId="174" StudyName="GBD" ProcName="GBD.GetCaseListNoFormBeslutninger" ProcDesc="Beslutninger: Uten beslutninger" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Sykepleier, Vernepleier, Gruppeleder" MinVersion="18020" ChkSum="-608786643" LastUpdate="2019-01-17T15:26:36.263Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListNoFormBeslutninger (@StudyId INT) AS
