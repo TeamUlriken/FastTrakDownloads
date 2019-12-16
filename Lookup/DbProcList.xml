@@ -1158,7 +1158,7 @@ BEGIN
   EXEC dbo.GetCaseListDrug @StudyId,'B01AF%'
 END]]>
 	</row>
-	<row ProcId="166" StudyName="GBD" ProcName="GBD.GetCaseListFormVaccine" ProcDesc="Prosess: Vaksinering" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Sykepleier, Vernepleier, Gruppeleder" MinVersion="6630" HelpText="Aktive pasienter ved institusjonen/avdelingen som har skjema av typen &quot;Vaksine&quot;, med opplysninger om og dato for siste vaksinering." CompatibilityLevel="100" ChkSum="-777877211" LastUpdate="2019-12-16T14:04:58.190Z">
+	<row ProcId="166" StudyName="GBD" ProcName="GBD.GetCaseListFormVaccine" ProcDesc="Prosess: Vaksinering" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Sykepleier, Vernepleier, Gruppeleder" MinVersion="6630" HelpText="Aktive pasienter ved institusjonen/avdelingen som har skjema av typen &quot;Vaksine&quot;, med opplysninger om og dato for siste vaksinering." CompatibilityLevel="100" ChkSum="-1460229987" LastUpdate="2019-12-16T14:08:52.707Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormVaccine( @StudyId INT ) AS
 BEGIN
   SELECT v.*,
@@ -1169,7 +1169,7 @@ BEGIN
       WHEN cdp1.ItemId IS NOT NULL 
         THEN REPLACE(cdp1.ItemId, 7051, 'Pneumokokkvaksine ')
       WHEN cdp2.ItemId IS NOT NULL THEN REPLACE(cdp2.ItemId, 7052, 'Influensavaksine ')
-    END, '(' + CONVERT(VARCHAR, frm.EventTime, 104), ')' ) AS InfoText
+    END, 'gitt ' + CONVERT(VARCHAR, frm.EventTime, 104), '.' ) AS InfoText
   FROM dbo.GetLastFormTableByName('GbdVaksine', GETDATE() + 1) frm
   JOIN dbo.ViewActiveCaseListStub v ON v.PersonId = frm.PersonId
   LEFT JOIN dbo.ClinDataPoint cdp1 ON cdp1.EventId = frm.EventId AND cdp1.ItemId = 7051 AND cdp1.EnumVal = 1
