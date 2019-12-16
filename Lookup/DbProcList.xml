@@ -1161,28 +1161,23 @@ BEGIN
   EXEC dbo.GetCaseListDrug @StudyId,'B01AF%'
 END]]>
 	</row>
-	<row ProcId="166" StudyName="GBD" ProcName="GBD.GetCaseListFormVaccine" ProcDesc="Prosess: Vaksinering" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Sykepleier, Vernepleier, Gruppeleder" MinVersion="6630" CompatibilityLevel="100" ChkSum="-690855177" LastUpdate="2019-01-17T15:26:00.297Z">
-		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormVaccine (@StudyId INT) AS
+	<row ProcId="166" StudyName="GBD" ProcName="GBD.GetCaseListFormVaccine" ProcDesc="Prosess: Vaksinering" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Sykepleier, Vernepleier, Gruppeleder" MinVersion="6630" CompatibilityLevel="100" ChkSum="2105033641" LastUpdate="2019-12-16T11:55:11.940Z">
+		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormVaccine( @StudyId INT ) AS
 BEGIN
-    SELECT lf.PersonId,
-        p.FullName,
-        p.DOB,
-        sg.GroupName,
-        CONCAT(
-        CASE
-                WHEN cdp1.ItemId IS NOT NULL AND
-                        cdp2.ItemId IS NOT NULL THEN REPLACE(cdp1.ItemId, 7051, 'Pneumokokkvaksine, ') +
-                        REPLACE(cdp2.ItemId, 7052, 'Influensavaksine. ')
-                WHEN cdp1.ItemId IS NOT NULL THEN REPLACE(cdp1.ItemId, 7051, 'Pneumokokkvaksine. ')
-                WHEN cdp2.ItemId IS NOT NULL THEN REPLACE(cdp2.ItemId, 7052, 'Influensavaksine. ')
-        END, 'Skjemadato: ' + CONVERT(VARCHAR, lf.CreatedAt, 104)) AS InfoText
-    FROM dbo.GetLastFormTableByName('GbdVaksine', GETDATE() + 1) lf
-    JOIN dbo.Person p ON p.PersonId = lf.PersonId
-    JOIN dbo.StudCase sc ON sc.PersonId = lf.PersonId
-    JOIN dbo.StudyGroup sg ON sg.GroupId = sc.GroupId AND sg.StudyId = sc.StudyId AND sg.GroupActive = 1
-    LEFT JOIN dbo.ClinDataPoint cdp1 ON cdp1.EventId = lf.EventId AND cdp1.ItemId = 7051 AND cdp1.EnumVal = 1
-    LEFT JOIN dbo.ClinDataPoint cdp2 ON cdp2.EventId = lf.EventId AND cdp2.ItemId = 7052 AND cdp2.EnumVal = 1
-    WHERE sc.StudyId = @StudyId;
+  SELECT v.*,
+    CONCAT(
+    CASE
+      WHEN cdp1.ItemId IS NOT NULL AND cdp2.ItemId IS NOT NULL 
+        THEN REPLACE(cdp1.ItemId, 7051, 'Pneumokokkvaksine, ') + REPLACE(cdp2.ItemId, 7052, 'Influensavaksine. ')
+      WHEN cdp1.ItemId IS NOT NULL 
+        THEN REPLACE(cdp1.ItemId, 7051, 'Pneumokokkvaksine. ')
+      WHEN cdp2.ItemId IS NOT NULL THEN REPLACE(cdp2.ItemId, 7052, 'Influensavaksine. ')
+    END, 'Skjemadato: ' + CONVERT(VARCHAR, lf.CreatedAt, 104)) AS InfoText
+  FROM dbo.GetLastFormTableByName('GbdVaksine', GETDATE() + 1) lf
+  JOIN dbo.ViewActiveCaseListStub v ON v.PersonId = lf.PersonId
+  LEFT JOIN dbo.ClinDataPoint cdp1 ON cdp1.EventId = lf.EventId AND cdp1.ItemId = 7051 AND cdp1.EnumVal = 1
+  LEFT JOIN dbo.ClinDataPoint cdp2 ON cdp2.EventId = lf.EventId AND cdp2.ItemId = 7052 AND cdp2.EnumVal = 1
+  WHERE v.StudyId = @StudyId;
 END]]>
 	</row>
 	<row ProcId="167" StudyName="GBD" ProcName="dbo.GetCaseListProBNPgt1522" ProcDesc="Forskning: ProBNP &gt; 1522 ng/L (noen gang)" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege" MinVersion="18001" HelpText="Rapporten brukes til forskning/statistikk for å identifisere pasienter med hjertesvikt." ChkSum="-171799795" LastUpdate="2019-01-17T15:06:55.030Z">
