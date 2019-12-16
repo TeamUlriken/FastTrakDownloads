@@ -270,7 +270,7 @@ BEGIN
   ORDER BY v.FullName;
 END]]>
 	</row>
-	<row ProcId="23" StudyName="*" ProcName="dbo.GetAndRemoveStudyCasesWithoutForms" ProcDesc="Admin: Fjern alle uten skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="Superuser" HelpText="Fjerner personer fra protokollen hvis de ikke finnes noen aktive skjema. Personen fjernes ikke fra databasen, og ingen andre data slettes. Se også #10." ChkSum="-751546171" LastUpdate="2019-01-22T17:06:17.893Z">
+	<row ProcId="23" StudyName="*" ProcName="dbo.GetAndRemoveStudyCasesWithoutForms" ProcDesc="Admin: Fjern alle uten skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="Administrator" HelpText="Fjerner personer fra protokollen hvis de ikke finnes noen aktive skjema. Personen fjernes ikke fra databasen, og ingen andre data slettes. Se også #10." ChkSum="1806241158" LastUpdate="2019-12-16T13:28:42.983Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetAndRemoveStudyCasesWithoutForms( @StudyId INT ) AS
 BEGIN
   SELECT sc.StudCaseId, sc.PersonId, COUNT( EventId ) AS Antall
@@ -1100,7 +1100,7 @@ BEGIN
   EXEC GBD.GetCaseListAvvikMine @StudyId, @StartAt, @StopAt; 
 END]]>
 	</row>
-	<row ProcId="162" StudyName="GBD" ProcName="GBD.GetCaseListUnsignedInfectionForms" ProcDesc="Infeksjoner: Usignerte infeksjonsregistreringer" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Sykepleier, Vernepleier, Gruppeleder" MinVersion="18000" ChkSum="-1884851407" LastUpdate="2019-11-05T19:22:05.497Z">
+	<row ProcId="162" StudyName="GBD" ProcName="GBD.GetCaseListUnsignedInfectionForms" ProcDesc="Infeksjoner: Usignerte infeksjonsregistreringer" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Sykepleier, Vernepleier, Gruppeleder" MinVersion="18000" HelpText="Usignerte infeksjonsregistrering bør følges opp regelmessig for å registrere utfall av infeksjon." ChkSum="1753742654" LastUpdate="2019-12-16T13:29:36.920Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListUnsignedInfectionForms( @StudyId INT ) AS
 BEGIN
   SELECT 
@@ -1302,7 +1302,7 @@ BEGIN
     AND ( ce.StudyId = @StudyId ) AND (( su.GroupId = ce.GroupId ) OR (su.UserId IS NULL) OR (su.GroupId IS NULL) OR (su.ShowMyGroup = 0));
 END;]]>
 	</row>
-	<row ProcId="173" StudyName="GBD" ProcName="GBD.GetCaseListFormBeslutninger" ProcDesc="Beslutninger: Siste beslutninger" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Sykepleier, Vernepleier, Gruppeleder" MinVersion="18020" ChkSum="503681760" LastUpdate="2019-12-16T13:23:57.123Z">
+	<row ProcId="173" StudyName="GBD" ProcName="GBD.GetCaseListFormBeslutninger" ProcDesc="Beslutninger: Siste beslutninger" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Sykepleier, Vernepleier, Gruppeleder" MinVersion="18020" ChkSum="503681760" LastUpdate="2019-12-16T13:25:42.513Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListFormBeslutninger (@StudyId INT) AS
 BEGIN
   SELECT v.*, 
@@ -1470,7 +1470,7 @@ BEGIN
     ORDER BY p.PersonId;
 END;]]>
 	</row>
-	<row ProcId="184" StudyName="GBD" ProcName="dbo.GetCaseListGlobalDeceased" ProcDesc="Forskning: Alle døde beboere" ProcParams=":StudyId" ListId="CASE" GrantTo="QuickStat" MinVersion="18000" ChkSum="-2123958471" LastUpdate="2019-07-23T11:58:58.450Z">
+	<row ProcId="184" StudyName="GBD" ProcName="dbo.GetCaseListGlobalDeceased" ProcDesc="Forskning: Alle døde beboere" ProcParams=":StudyId" ListId="CASE" GrantTo="QuickStat" MinVersion="18000" HelpText="Alle personer som har registrert dødsdato.  Dette oppdateres normalt fra folkeregisteret." ChkSum="1492561728" LastUpdate="2019-12-16T13:30:11.453Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListGlobalDeceased( @StudyId INT ) AS
 BEGIN
   SELECT p.PersonId, p.DOB,
