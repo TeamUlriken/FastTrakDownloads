@@ -3202,7 +3202,7 @@ END
 	<row ProcId="748" StudyName="ROAS" ProcName="ENDO.GetAddisonOvaryFailure" ProcDesc="Addison: Ovarialsvikt" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6400" InfoCaption="Diagnoseår og type" ChkSum="137229807" LastUpdate="2017-01-17T07:39:28.613Z">
 		<![CDATA[]]>
 	</row>
-	<row ProcId="749" StudyName="ROAS" ProcName="ROAS.GetAddisonPatientsAlive" ProcDesc="Addison: Levende (folkeregister)" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6400" ChkSum="1698448136" LastUpdate="2019-01-03T08:59:46.790Z">
+	<row ProcId="749" StudyName="ROAS" ProcName="ROAS.GetAddisonPatientsAlive" ProcDesc="Addison: Levende med diagnoseår og subtype" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6400" HelpText="Alle levende personer med Addisons sykdom, basert på en kombinasjon av variabel 6089 (diagnoseår), 6090 (type) og 6299 (kategorisk ja/nei). " ChkSum="-1686660352" LastUpdate="2019-12-17T17:52:16.960Z">
 		<![CDATA[CREATE PROCEDURE ROAS.GetAddisonPatientsAlive (@StudyId INT) AS
 BEGIN
   SELECT v.PersonId, v.DOB, v.FullName, v.GroupName, v.GenderId,
@@ -3213,21 +3213,24 @@ BEGIN
   LEFT JOIN dbo.GetLastEnumValuesTable( 6090, NULL ) AS T6090 ON T6090.PersonId = v.PersonId
   LEFT JOIN dbo.GetLastEnumValuesTable( 6299, NULL ) AS T6299 ON T6299.PersonId = v.PersonId
   LEFT JOIN dbo.GetLastQuantities( 6089 ) AS T6089 ON T6089.PersonId = v.PersonId
-  WHERE v.StudyId = @StudyId AND (T6090.EnumVal = 1 OR T6299.EnumVal = 1 OR T6089.Quantity > 1900)
-  AND p.DeceasedDate IS NULL
+  WHERE ( v.StudyId = @StudyId ) 
+  AND ( T6090.EnumVal > 0 OR T6299.EnumVal = 1 OR T6089.Quantity > 1900 ) 
+  AND ( NOT ISNULL( T6299. EnumVal, 0 ) IN (2,3) )
+  AND p.DeceasedDate IS NULL;
 END]]>
 	</row>
-	<row ProcId="750" StudyName="ROAS" ProcName="ROAS.GetAddisonPatientsWithStatus" ProcDesc="Addison: Alle med status folkeregister" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6602" ChkSum="-2135717702" LastUpdate="2017-05-23T14:11:33.270Z">
+	<row ProcId="750" StudyName="ROAS" ProcName="ROAS.GetAddisonPatientsWithStatus" ProcDesc="Addison: Alle med status folkeregister" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6602" HelpText="Alle med Addisons sykdom, levende og døde." ChkSum="-1313896090" LastUpdate="2019-12-17T18:32:19.010Z">
 		<![CDATA[CREATE PROCEDURE ROAS.GetAddisonPatientsWithStatus( @StudyId INT ) AS
 BEGIN
-  SELECT p.PersonId,p.DOB,p.ReverseName,p.DeceasedInd,p.NationalId,p.GenderId,
-  CASE DeceasedInd 
-  WHEN 0 THEN 'Levende'
-  WHEN 1 THEN 'Død' END AS GroupName,
-  CONVERT(VARCHAR,p.DeceasedDate,106) AS InfoText
-  FROM Diagnose.AddisonInferred a
-  JOIN dbo.Person p ON p.PersonId = a.PersonId
-  ORDER BY p.PersonId
+  SELECT p.PersonId, p.DOB, p.ReverseName AS FullName, p.DeceasedInd, p.NationalId, p.GenderId,
+    CASE p.DeceasedInd 
+      WHEN 0 THEN 'Levende'
+      WHEN 1 THEN 'Død' 
+    END AS GroupName,
+    'Dødsdato: ' + CONVERT( VARCHAR, p.DeceasedDate, 104 ) AS InfoText
+  FROM Diagnose.AddisonInferred ai
+  JOIN dbo.Person p ON p.PersonId = ai.PersonId
+  ORDER BY p.PersonId;
 END]]>
 	</row>
 	<row ProcId="751" StudyName="ROAS" ProcName="PROM.GetCaseListMyPendingProms" ProcDesc="PROM: Mine ventende PROM-skjema" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="6631" ChkSum="734854758" LastUpdate="2017-11-18T08:49:31.130Z">
@@ -3286,6 +3289,19 @@ BEGIN
 END;
 
 ]]>
+	</row>
+	<row ProcId="758" StudyName="ROAS" ProcName="ROAS.GetAddisonPatientsUnspecifiedType" ProcDesc="Addison: Uspesifisert og andre typer" ProcParams=":StudyId" ListId="CASE" GrantTo="public" MinVersion="19000" HelpText="Populasjonen er laget for å gjøre det lett finne fram til pasienter som kan reklassifiseres til spesifikke Addison subtyper." ChkSum="-1848473364" LastUpdate="2019-12-17T18:38:50.967Z">
+		<![CDATA[CREATE PROCEDURE ROAS.GetAddisonPatientsUnspecifiedType( @StudyId INT ) AS
+BEGIN
+  SELECT v.*,
+  CASE ai.T6090 
+    WHEN 99 THEN 'Andre typer'
+    ELSE 'Uoppgitt type'
+  END AS InfoText
+  FROM Diagnose.AddisonInferred ai
+  JOIN dbo.ViewActiveCaseListStub v ON v.PersonId = ai.PersonId
+  WHERE ISNULL(ai.T6090,0) IN ( 0,99 ) AND v.StudyId = @StudyId;
+END]]>
 	</row>
 	<row ProcId="800" StudyName="HOFTE" ProcName="dbo.GetCaseListLastGamma" ProcDesc="Operasjon: Gammanagling" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1506179999" LastUpdate="2013-09-03T11:41:34.540Z">
 		<![CDATA[CREATE PROCEDURE dbo.GetCaseListLastGamma( @StudyId INT ) AS
