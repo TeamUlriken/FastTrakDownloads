@@ -1,26 +1,26 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0"?>
 <StudyForm>
   <Form FormId="121" FormName="POI_TELEFONINTERVJU" FormTitle="POI Telefonintervju">
     <Page PageTitle="Bakgrunn">
       <Item ItemId="6090" ItemType="2" VarName="RoasAddisonType" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Addison type" ItemHelp="" Expression="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
-          <Answer AnswerId="32200" OrderNumber="1" OptionText="Autoimmun/idiopatisk" VerboseText="Addisons sykdom." ICD10="E271"/>
-          <Answer AnswerId="32201" OrderNumber="2" OptionText="Enzymdefekt" VerboseText="Medfødt binyrebarkhyperplasi."/>
-          <Answer AnswerId="32202" OrderNumber="3" OptionText="Adrenalektomi" VerboseText="Fjernet binyrer."/>
-          <Answer AnswerId="32203" OrderNumber="4" OptionText="Infeksjon" VerboseText="Binyrebarksvikt etter infeksjon."/>
+        <FormItem ItemText="Addison type" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
+          <Answer AnswerId="32200" OrderNumber="1" OptionText="Autoimmun/idiopatisk" VerboseText="Addisons sykdom (autoimmun)." ICD10="E271"/>
+          <Answer AnswerId="32201" OrderNumber="2" OptionText="Enzymdefekt" VerboseText="MedfÃ¸dt binyrebarkhyperplasi." ICD10="E250"/>
+          <Answer AnswerId="32202" OrderNumber="3" OptionText="Adrenalektomi" VerboseText="Fjernet binyrer." ICD10="E896"/>
+          <Answer AnswerId="32203" OrderNumber="4" OptionText="Infeksjon" VerboseText="Binyrebarksvikt etter infeksjon." ICD10="E187"/>
           <Answer AnswerId="32204" OrderNumber="5" OptionText="Andre (ikke bruk, skal rekodes til 6 eller 99)"/>
-          <Answer AnswerId="11155" OrderNumber="6" OptionText="Blødning" VerboseText="Blødning."/>
-          <Answer AnswerId="11156" OrderNumber="99" OptionText="Andre (heller ikke blødning)"/>
+          <Answer AnswerId="11155" OrderNumber="6" OptionText="BlÃ¸dning" VerboseText="BlÃ¸dning." ICD10="E274"/>
+          <Answer AnswerId="11156" OrderNumber="99" OptionText="Andre (heller ikke blÃ¸dning)"/>
         </FormItem>
       </Item>
       <Item ItemId="6089" ItemType="1" VarName="RoasAddisonYear" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Diagnostisert" ItemText="Diagnoseår Addisons sykdom" ItemHelp="" Expression="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
+        <FormItem ItemHeader="Diagnostisert" ItemText="DiagnoseÃ¥r Addisons sykdom" ItemHelp="" Expression="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Fertilitet">
-      <Item ItemId="9776" ItemType="1" VarName="VAR9776" LoincScale="QN" UnitStr="år" DisplayFormat="">
+      <Item ItemId="9776" ItemType="1" VarName="VAR9776" LoincScale="QN" UnitStr="Ã¥r" DisplayFormat="">
         <FormItem ItemText="Alder ved menarche" ItemHelp="" MinExpression="6" MaxExpression="TRUNC(Patient.Age)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
@@ -36,7 +36,7 @@
         </FormItem>
       </Item>
       <Item ItemId="2969" ItemType="2" VarName="POI_FAMILIE" LoincScale="ORD">
-        <FormItem ItemHeader="Familiær belastning" ItemText="Primær ovarialinsuffisiens hos 1. gradsslektning?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="FamiliÃ¦r belastning" ItemText="PrimÃ¦r ovarialinsuffisiens hos 1. gradsslektning?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="11953" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="11954" OrderNumber="2" OptionText="Nei"/>
           <Answer AnswerId="11955" OrderNumber="3" OptionText="Usikker"/>
@@ -45,7 +45,7 @@
     </Page>
     <Page PageTitle="Kommentar*">
       <Item ItemId="2970" ItemType="4" VarName="VAR2970" LoincScale="NAR" Multiline="1">
-        <FormItem ItemHeader="Kommentar" ItemText="Kommentar til familiær belastning" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Kommentar" ItemText="Kommentar til familiÃ¦r belastning" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -60,23 +60,23 @@
       </Item>
     </Page>
     <Page PageTitle="Alder ved menopause*">
-      <Item ItemId="6334" ItemType="1" VarName="MenopauseAge" LoincScale="QN" UnitStr="år" DisplayFormat="">
+      <Item ItemId="6334" ItemType="1" VarName="MenopauseAge" LoincScale="QN" UnitStr="Ã¥r" DisplayFormat="">
         <FormItem ItemText="Alder ved menopause" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6329" ItemType="1" VarName="MenopauseYear" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Diagnoseår" ItemText="Diagnoseår prematur menopause" ItemHelp="" MinExpression="DOB_YYYY+10" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="DiagnoseÃ¥r" ItemText="DiagnoseÃ¥r prematur menopause" ItemHelp="" MinExpression="DOB_YYYY+10" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Primær ovarialsvikt">
+    <Page PageTitle="PrimÃ¦r ovarialsvikt">
       <Item ItemId="6318" ItemType="2" VarName="ICD10_E283" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Primær ovarialsvikt" ItemHelp="Amenore med forhøyede gonadotropin-nivåer, Svarer til ICD-10 E28.3." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="33432" OrderNumber="1" OptionText="Ja" VerboseText="Primær ovarialsvikt." ShortCode="J" ICD10="E283"/>
+        <FormItem ItemText="PrimÃ¦r ovarialsvikt" ItemHelp="Amenore med forhÃ¸yede gonadotropin-nivÃ¥er, Svarer til ICD-10 E28.3." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="33432" OrderNumber="1" OptionText="Ja" VerboseText="PrimÃ¦r ovarialsvikt." ShortCode="J" ICD10="E283"/>
           <Answer AnswerId="33433" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="36170" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig primær ovarialsvikt." ShortCode="U"/>
+          <Answer AnswerId="36170" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig primÃ¦r ovarialsvikt." ShortCode="U"/>
         </FormItem>
       </Item>
     </Page>

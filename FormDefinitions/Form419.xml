@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0"?>
 <StudyForm>
   <Form FormId="419" FormName="FASTTRAK_INSTALLASJON" FormTitle="Installasjonsopplysninger">
     <Page PageTitle="Start dato">
@@ -15,7 +15,7 @@
         </FormItem>
       </Item>
       <Item ItemId="5117" ItemType="2" VarName="DbVersion" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Versjon" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Versjon" ItemHelp="Compatibility level" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="28230" OrderNumber="1" OptionText="MSDE 2000" ShortCode="MSDE"/>
           <Answer AnswerId="28231" OrderNumber="2" OptionText="SQL Server 2000" ShortCode="2000"/>
           <Answer AnswerId="28232" OrderNumber="3" OptionText="SQL Server 2005" ShortCode="2005"/>
@@ -23,6 +23,8 @@
           <Answer AnswerId="10427" OrderNumber="5" OptionText="SQL Server 2012" ShortCode="2012"/>
           <Answer AnswerId="10428" OrderNumber="6" OptionText="SQL Server 2014" ShortCode="2014"/>
           <Answer AnswerId="10429" OrderNumber="7" OptionText="SQL Server 2016" ShortCode="2016"/>
+          <Answer AnswerId="12685" OrderNumber="8" OptionText="SQL Server 2017 (140)"/>
+          <Answer AnswerId="12686" OrderNumber="9" OptionText="SQL Server 2019 (150)"/>
         </FormItem>
       </Item>
       <Item ItemId="5118" ItemType="4" VarName="ServerName" LoincScale="NAR" DisplayFormat="" Multiline="0">
@@ -64,7 +66,7 @@
     </Page>
     <Page PageTitle="Oracle Client*">
       <Item ItemId="4212" ItemType="2" VarName="VAR4212" LoincScale="ORD">
-        <FormItem ItemText="Oracle Client på server?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Oracle Client pÃ¥ server?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="12428" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="12429" OrderNumber="2" OptionText="Nei"/>
           <Answer AnswerId="12446" OrderNumber="3" OptionText="Ikke relevant"/>
@@ -87,14 +89,14 @@
       <Item ItemId="5121" ItemType="2" VarName="RemoteAccess" LoincScale="ORD" DisplayFormat="Vertical">
         <FormItem ItemText="Fjerntilgang mulig" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="28243" OrderNumber="1" OptionText="Alltid"/>
-          <Answer AnswerId="28244" OrderNumber="2" OptionText="På forespørsel"/>
+          <Answer AnswerId="28244" OrderNumber="2" OptionText="PÃ¥ forespÃ¸rsel"/>
           <Answer AnswerId="28245" OrderNumber="3" OptionText="Aldri"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Fjerntilgang*">
       <Item ItemId="5122" ItemType="4" VarName="RemoteTools" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemText="Verktøy og framgangsmåte" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem ItemText="VerktÃ¸y og framgangsmÃ¥te" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -111,7 +113,7 @@
     </Page>
     <Page PageTitle="Internett">
       <Item ItemId="3805" ItemType="2" VarName="VAR3805" LoincScale="ORD">
-        <FormItem ItemHeader="Internett-tilgang ved oppdatering" ItemText="Har du internett på den maskinen du skal kjøre oppdateringen fra?" ItemHelp="Hvis du ikke har internett må du også laste ned en metadata-pakke og få den inn i produksjonsmiljøet" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem ItemHeader="Internett-tilgang ved oppdatering" ItemText="Har du internett pÃ¥ den maskinen du skal kjÃ¸re oppdateringen fra?" ItemHelp="Hvis du ikke har internett mÃ¥ du ogsÃ¥ laste ned en metadata-pakke og fÃ¥ den inn i produksjonsmiljÃ¸et" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="61490" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="61491" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
@@ -132,7 +134,7 @@
         </FormItem>
       </Item>
       <Item ItemId="4458" ItemType="2" VarName="VAR4458" LoincScale="ORD">
-        <FormItem ItemText="EventScale" ItemHelp="Event scale skal være 1 for poliklinisk bruk, og 86400 for inneliggende pasienter" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="EventScale" ItemHelp="Event scale skal vÃ¦re 1 for poliklinisk bruk, og 86400 for inneliggende pasienter" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="12452" OrderNumber="1" OptionText="1 - Dag" ShortCode="D"/>
           <Answer AnswerId="12453" OrderNumber="24" OptionText="24 - Time" ShortCode="H"/>
           <Answer AnswerId="12454" OrderNumber="48" OptionText="48 - Halvtime" ShortCode="Hx2"/>
