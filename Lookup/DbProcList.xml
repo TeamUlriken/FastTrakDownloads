@@ -973,14 +973,14 @@ BEGIN
   ORDER BY ac.AlertLevel, FullName;
 END]]>
 	</row>
-	<row ProcId="152" StudyName="GBD" ProcName="GBD.GetCaseListOppholdstype" ProcDesc="Personer: Oppholdstype" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1686006059" LastUpdate="2019-12-16T13:17:00.187Z">
+	<row ProcId="152" StudyName="GBD" ProcName="GBD.GetCaseListOppholdstype" ProcDesc="Personer: Oppholdstype" ProcParams=":StudyId" ListId="CASE" GrantTo="public" ChkSum="-1374418984" LastUpdate="2019-12-17T19:00:49.813Z">
 		<![CDATA[CREATE PROCEDURE GBD.GetCaseListOppholdstype( @StudyId INT ) AS
 BEGIN
-  SELECT v.*, v.Status AS InfoText, p.BestId
+  SELECT v.*, v.StatusText AS InfoText, p.BestId
   FROM dbo.ViewActiveCaseListStub v
   JOIN dbo.Person p ON p.PersonId = v.PersonId
-  WHERE v.StudyId=@StudyId
-  ORDER BY v.ReverseName;
+  WHERE v.StudyId = @StudyId
+  ORDER BY v.FullName;
 END]]>
 	</row>
 	<row ProcId="153" StudyName="GBD" ProcName="dbo.GetCaseListA10A" ProcDesc="Medikamentbruk: Insulin (A10A)" ProcParams=":StudyId" ListId="CASE" GrantTo="Lege, Farmasøyt, Sykepleier, Vernepleier, Gruppeleder" ChkSum="-866523225" LastUpdate="2019-08-21T09:57:42.210Z">
