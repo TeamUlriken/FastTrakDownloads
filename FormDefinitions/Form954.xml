@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0"?>
 <StudyForm>
   <Form FormId="954" FormName="AddisonRest" FormTitle="Addison restfunksjon (prosjekt)">
-    <Page PageTitle="Kjønn (skjult)*">
+    <Page PageTitle="KjÃ¸nn (skjult)*">
       <Item ItemId="4255" ItemType="2" VarName="SEX" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Kjønn" ItemHelp="Skjult" Expression="Patient.GenderId" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="KjÃ¸nn" ItemHelp="Skjult" Expression="Patient.GenderId" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="22860" OrderNumber="1" OptionText="Mann" ShortCode="M"/>
           <Answer AnswerId="22861" OrderNumber="2" OptionText="Kvinne" ShortCode="K"/>
         </FormItem>
@@ -17,17 +17,17 @@
       </Item>
       <Item ItemId="6090" ItemType="2" VarName="RoasAddisonType" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Addison type" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="32200" OrderNumber="1" OptionText="Autoimmun/idiopatisk" VerboseText="Addisons sykdom." ICD10="E271"/>
-          <Answer AnswerId="32201" OrderNumber="2" OptionText="Enzymdefekt" VerboseText="Medfødt binyrebarkhyperplasi."/>
-          <Answer AnswerId="32202" OrderNumber="3" OptionText="Adrenalektomi" VerboseText="Fjernet binyrer."/>
-          <Answer AnswerId="32203" OrderNumber="4" OptionText="Infeksjon" VerboseText="Binyrebarksvikt etter infeksjon."/>
+          <Answer AnswerId="32200" OrderNumber="1" OptionText="Autoimmun/idiopatisk" VerboseText="Addisons sykdom (autoimmun)." ICD10="E271"/>
+          <Answer AnswerId="32201" OrderNumber="2" OptionText="Enzymdefekt" VerboseText="MedfÃ¸dt binyrebarkhyperplasi." ICD10="E250"/>
+          <Answer AnswerId="32202" OrderNumber="3" OptionText="Adrenalektomi" VerboseText="Fjernet binyrer." ICD10="E896"/>
+          <Answer AnswerId="32203" OrderNumber="4" OptionText="Infeksjon" VerboseText="Binyrebarksvikt etter infeksjon." ICD10="E187"/>
           <Answer AnswerId="32204" OrderNumber="5" OptionText="Andre (ikke bruk, skal rekodes til 6 eller 99)"/>
-          <Answer AnswerId="11155" OrderNumber="6" OptionText="Blødning" VerboseText="Blødning."/>
-          <Answer AnswerId="11156" OrderNumber="99" OptionText="Andre (heller ikke blødning)"/>
+          <Answer AnswerId="11155" OrderNumber="6" OptionText="BlÃ¸dning" VerboseText="BlÃ¸dning." ICD10="E274"/>
+          <Answer AnswerId="11156" OrderNumber="99" OptionText="Andre (heller ikke blÃ¸dning)"/>
         </FormItem>
       </Item>
       <Item ItemId="6089" ItemType="1" VarName="RoasAddisonYear" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Diagnostisert" ItemText="Diagnoseår Addisons sykdom" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Diagnostisert" ItemText="DiagnoseÃ¥r Addisons sykdom" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -42,8 +42,8 @@
     </Page>
     <Page PageTitle="Diagnosekriterier">
       <Item ItemId="6300" ItemType="2" VarName="VAR6300" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Høy ACTH, lav kortisol" ItemHelp="Svar Ja hvis dette noen gang har vært tilfelle" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="33334" OrderNumber="1" OptionText="Ja" VerboseText="Høy ACTH, lav kortisol." ShortCode="J"/>
+        <FormItem ItemText="HÃ¸y ACTH, lav kortisol" ItemHelp="Svar Ja hvis dette noen gang har vÃ¦rt tilfelle" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="33334" OrderNumber="1" OptionText="Ja" VerboseText="HÃ¸y ACTH, lav kortisol." ShortCode="J"/>
           <Answer AnswerId="33335" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="33467" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
@@ -52,7 +52,7 @@
         <FormItem ItemText="Patologisk synacthentest" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="33338" OrderNumber="1" OptionText="Ja" VerboseText="Patologisk synacthentest." ShortCode="J"/>
           <Answer AnswerId="33339" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="33470" OrderNumber="3" OptionText="Ukjent / Ikke utført" ShortCode="U" CarryException="1"/>
+          <Answer AnswerId="33470" OrderNumber="3" OptionText="Ukjent / Ikke utfÃ¸rt" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="6302" ItemType="2" VarName="VAR6302" LoincScale="ORD" DisplayFormat="">
@@ -63,7 +63,7 @@
         </FormItem>
       </Item>
       <Item ItemId="6802" ItemType="2" VarName="VAR6802" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Positiv for 21-hydroksylase antistoff" ItemHelp="Svar Ja hvis den har vært positiv minst én gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Positiv for 21-hydroksylase antistoff" ItemHelp="Svar Ja hvis den har vÃ¦rt positiv minst Ã©n gang." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="37161" OrderNumber="1" OptionText="Ja" VerboseText="Positiv 21-hydroksylase antistoff." ShortCode="J"/>
           <Answer AnswerId="37162" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="37163" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
@@ -79,9 +79,9 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Diabetes diagnostisert år*">
+    <Page PageTitle="Diabetes diagnostisert Ã¥r*">
       <Item ItemId="3486" ItemType="1" VarName="NDV_DIAGNOSE_YYYY" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Debut" ItemText="Diabetes diagnostisert år" ItemHelp="Angi årstall.  Svangerskapsdiabetes unntas." MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Debut" ItemText="Diabetes diagnostisert Ã¥r" ItemHelp="Angi Ã¥rstall.  Svangerskapsdiabetes unntas." MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -95,9 +95,9 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Diagnoseår hypotyreose*">
+    <Page PageTitle="DiagnoseÃ¥r hypotyreose*">
       <Item ItemId="6323" ItemType="1" VarName="VAR6323" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Diagnostisert" ItemText="Diagnoseår hypotyreose" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Diagnostisert" ItemText="DiagnoseÃ¥r hypotyreose" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -111,9 +111,9 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Diagnoseår hypertyreose*">
+    <Page PageTitle="DiagnoseÃ¥r hypertyreose*">
       <Item ItemId="6324" ItemType="1" VarName="VAR6324" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Diagnostisert" ItemText="Diagnoseår hypertyreose" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Diagnostisert" ItemText="DiagnoseÃ¥r hypertyreose" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -127,41 +127,41 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Diagnoseår hypoparathyroidisme*">
+    <Page PageTitle="DiagnoseÃ¥r hypoparathyroidisme*">
       <Item ItemId="6332" ItemType="1" VarName="VAR6332" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Diagnostisert" ItemText="Diagnoseår hypoparathyroidisme" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Diagnostisert" ItemText="DiagnoseÃ¥r hypoparathyroidisme" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Cøliaki*">
+    <Page PageTitle="CÃ¸liaki*">
       <Item ItemId="3410" ItemType="2" VarName="ICD10_K900" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Cøliaki" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="16962" OrderNumber="1" OptionText="Ja" VerboseText="Cøliaki." ShortCode="J" ICD10="K900"/>
+        <FormItem ItemText="CÃ¸liaki" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="16962" OrderNumber="1" OptionText="Ja" VerboseText="CÃ¸liaki." ShortCode="J" ICD10="K900"/>
           <Answer AnswerId="16963" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="16964" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Diagnoseår cøliaki*">
+    <Page PageTitle="DiagnoseÃ¥r cÃ¸liaki*">
       <Item ItemId="6328" ItemType="1" VarName="VAR6328" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Diagnostisert" ItemText="Diagnoseår cøliaki" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Diagnostisert" ItemText="DiagnoseÃ¥r cÃ¸liaki" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Vitamin B12-mangel*">
       <Item ItemId="6317" ItemType="2" VarName="VAR6317" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Vitamin B12-mangel" ItemHelp="Tegn til funksjonell B12-mangel (lav normal eller subnormal serum kobalamin og høy homocystein og/eller metylmalonsyre)." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Vitamin B12-mangel" ItemHelp="Tegn til funksjonell B12-mangel (lav normal eller subnormal serum kobalamin og hÃ¸y homocystein og/eller metylmalonsyre)." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="33418" OrderNumber="1" OptionText="Ja" VerboseText="Vitamin B-12 mangel." ShortCode="J"/>
           <Answer AnswerId="33419" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="47585" OrderNumber="3" OptionText="Ukjent/Usikker" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Diagnoseår B12-mangel*">
+    <Page PageTitle="DiagnoseÃ¥r B12-mangel*">
       <Item ItemId="6327" ItemType="1" VarName="VAR6327" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Diagnostisert" ItemText="Diagnoseår B12-mangel" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Diagnostisert" ItemText="DiagnoseÃ¥r B12-mangel" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -175,46 +175,46 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Diagnoseår autoimmun gastritt*">
+    <Page PageTitle="DiagnoseÃ¥r autoimmun gastritt*">
       <Item ItemId="6326" ItemType="1" VarName="VAR6326" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Diagnostisert" ItemText="Diagnoseår autoimmun gastritt" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Diagnostisert" ItemText="DiagnoseÃ¥r autoimmun gastritt" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="For menn*">
       <Item ItemId="8594" ItemType="2" VarName="VAR8594" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Primær testikkelsvikt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="47940" OrderNumber="1" OptionText="Ja" VerboseText="Primær testikkelsvikt." ShortCode="J" ICD10="E291"/>
+        <FormItem ItemText="PrimÃ¦r testikkelsvikt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="47940" OrderNumber="1" OptionText="Ja" VerboseText="PrimÃ¦r testikkelsvikt." ShortCode="J" ICD10="E291"/>
           <Answer AnswerId="47941" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="47942" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig primær testikkelsvikt." ShortCode="U" CarryException="1"/>
+          <Answer AnswerId="47942" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig primÃ¦r testikkelsvikt." ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Diagnoseår for testikkelsvikt*">
+    <Page PageTitle="DiagnoseÃ¥r for testikkelsvikt*">
       <Item ItemId="6680" ItemType="1" VarName="VAR6680" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Diagnoseår" ItemText="Diagnoseår for testikkelsvikt" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="DiagnoseÃ¥r" ItemText="DiagnoseÃ¥r for testikkelsvikt" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="For kvinner*">
       <Item ItemId="6318" ItemType="2" VarName="ICD10_E283" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Primær ovarialsvikt" ItemHelp="Amenore med forhøyede gonadotropin-nivåer, Svarer til ICD-10 E28.3." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="33432" OrderNumber="1" OptionText="Ja" VerboseText="Primær ovarialsvikt." ShortCode="J" ICD10="E283"/>
+        <FormItem ItemText="PrimÃ¦r ovarialsvikt" ItemHelp="Amenore med forhÃ¸yede gonadotropin-nivÃ¥er, Svarer til ICD-10 E28.3." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="33432" OrderNumber="1" OptionText="Ja" VerboseText="PrimÃ¦r ovarialsvikt." ShortCode="J" ICD10="E283"/>
           <Answer AnswerId="33433" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
-          <Answer AnswerId="36170" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig primær ovarialsvikt." ShortCode="U" CarryException="1"/>
+          <Answer AnswerId="36170" OrderNumber="3" OptionText="Usikker" VerboseText="Mulig primÃ¦r ovarialsvikt." ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Alder ved menopause*">
-      <Item ItemId="6334" ItemType="1" VarName="MenopauseAge" LoincScale="QN" UnitStr="år" DisplayFormat="">
+      <Item ItemId="6334" ItemType="1" VarName="MenopauseAge" LoincScale="QN" UnitStr="Ã¥r" DisplayFormat="">
         <FormItem ItemText="Alder ved menopause" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6329" ItemType="1" VarName="MenopauseYear" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Diagnoseår" ItemText="Diagnoseår prematur menopause" ItemHelp="" Expression="DOB_YYYY + MenopauseAge" MinExpression="DOB_YYYY+10" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="DiagnoseÃ¥r" ItemText="DiagnoseÃ¥r prematur menopause" ItemHelp="" Expression="DOB_YYYY + MenopauseAge" MinExpression="DOB_YYYY+10" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -228,25 +228,25 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Diagnoseår vitiligo*">
+    <Page PageTitle="DiagnoseÃ¥r vitiligo*">
       <Item ItemId="6330" ItemType="1" VarName="VAR6330" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Diagnostisert" ItemText="Diagnoseår vitiligo" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Diagnostisert" ItemText="DiagnoseÃ¥r vitiligo" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Alopeci*">
       <Item ItemId="6320" ItemType="2" VarName="ICD10_L63" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Alopeci" ItemHelp="Delvis eller totalt hårtap på hodet eller kroppen." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Alopeci" ItemHelp="Delvis eller totalt hÃ¥rtap pÃ¥ hodet eller kroppen." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="33444" OrderNumber="1" OptionText="Ja" VerboseText="Alopeci." ShortCode="J" ICD10="L63"/>
           <Answer AnswerId="33445" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
           <Answer AnswerId="37255" OrderNumber="3" OptionText="Usikker*" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Diagnoseår alopeci*">
+    <Page PageTitle="DiagnoseÃ¥r alopeci*">
       <Item ItemId="6331" ItemType="1" VarName="VAR6331" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Diagnostisert" ItemText="Diagnoseår alopeci" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Diagnostisert" ItemText="DiagnoseÃ¥r alopeci" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -260,9 +260,9 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Diagnoseår kronisk mukokoutan kandidiasis*">
+    <Page PageTitle="DiagnoseÃ¥r kronisk mukokoutan kandidiasis*">
       <Item ItemId="8534" ItemType="1" VarName="VAR8534" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Diagnostisert" ItemText="Diagnoseår kronisk mukokoutan kandidiasis" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Diagnostisert" ItemText="DiagnoseÃ¥r kronisk mukokoutan kandidiasis" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -276,9 +276,9 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Diagnoseår hypofysitt*">
+    <Page PageTitle="DiagnoseÃ¥r hypofysitt*">
       <Item ItemId="8544" ItemType="1" VarName="VAR8544" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Diagnostisert" ItemText="Diagnoseår hypofysitt" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Diagnostisert" ItemText="DiagnoseÃ¥r hypofysitt" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -302,7 +302,7 @@
     </Page>
     <Page PageTitle="Binyrekriser">
       <Item ItemId="7989" ItemType="2" VarName="VAR7989" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Binyrekrise noensinne" ItemHelp="Definert som innleggelse i sykehus med behov for hydrokortison og væske intravenøst" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Binyrekrise noensinne" ItemHelp="Definert som innleggelse i sykehus med behov for hydrokortison og vÃ¦ske intravenÃ¸st" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="42571" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="42572" OrderNumber="2" OptionText="Nei" VerboseText="Aldri hatt binyrekrise." ShortCode="N"/>
           <Answer AnswerId="42573" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
@@ -311,37 +311,37 @@
     </Page>
     <Page PageTitle="Tidligere binyrekriser*">
       <Item ItemId="7988" ItemType="2" VarName="VAR7988" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Binyrekrise ved debut" ItemHelp="Definert som innleggelse i sykehus med behov for hydrokortison og væske intravenøst" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="42565" OrderNumber="1" OptionText="Ja" VerboseText="Binyrekrise på diagnosetidspunktet." ShortCode="J"/>
+        <FormItem ItemText="Binyrekrise ved debut" ItemHelp="Definert som innleggelse i sykehus med behov for hydrokortison og vÃ¦ske intravenÃ¸st" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="42565" OrderNumber="1" OptionText="Ja" VerboseText="Binyrekrise pÃ¥ diagnosetidspunktet." ShortCode="J"/>
           <Answer AnswerId="42566" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="42567" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="7990" ItemType="2" VarName="VAR7990" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Binyrekriser siste året" ItemHelp="Definert som innleggelse i sykehus med behov for hydrokortison og væske intravenøst" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Binyrekriser siste Ã¥ret" ItemHelp="Definert som innleggelse i sykehus med behov for hydrokortison og vÃ¦ske intravenÃ¸st" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="42586" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-          <Answer AnswerId="42587" OrderNumber="2" OptionText="Nei" VerboseText="Ingen binyrekriser siste året." ShortCode="N"/>
+          <Answer AnswerId="42587" OrderNumber="2" OptionText="Nei" VerboseText="Ingen binyrekriser siste Ã¥ret." ShortCode="N"/>
           <Answer AnswerId="42588" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Årsak til binyrekriser*">
+    <Page PageTitle="Ã…rsak til binyrekriser*">
       <Item ItemId="2907" ItemType="4" VarName="VAR2907" LoincScale="NAR" Multiline="1">
-        <FormItem ItemText="Årsak til binyrekriser siste året" ItemHelp="Eks. Oppkast/diaré, febersykdom, emosjonell belastning, fysisk belastning, kirurgi, traume, andre." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Ã…rsak til binyrekriser siste Ã¥ret" ItemHelp="Eks. Oppkast/diarÃ©, febersykdom, emosjonell belastning, fysisk belastning, kirurgi, traume, andre." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Doseøkning/infeksjoner*">
+    <Page PageTitle="DoseÃ¸kning/infeksjoner*">
       <Item ItemId="7992" ItemType="2" VarName="VAR7992" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Doseøkninger av kortison" ItemText="Er kortisondosen forbigående økt (stressdosering) siste året" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="DoseÃ¸kninger av kortison" ItemText="Er kortisondosen forbigÃ¥ende Ã¸kt (stressdosering) siste Ã¥ret" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="42595" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
-          <Answer AnswerId="42596" OrderNumber="2" OptionText="Nei" VerboseText="Ikke tatt ekstra kortison siste år." ShortCode="N"/>
+          <Answer AnswerId="42596" OrderNumber="2" OptionText="Nei" VerboseText="Ikke tatt ekstra kortison siste Ã¥r." ShortCode="N"/>
           <Answer AnswerId="42597" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="2908" ItemType="1" VarName="VAR2908" LoincScale="QN" UnitStr="stk">
-        <FormItem ItemText="Antall infeksjoner siste år" ItemHelp="Diagnostiske krav: Minst 2 av disse 5: 1. Feber &gt; 38,5, 2. Behov for å oppsøke lege, 3. Antibiotikabehandlet, 4. Borte fra jobb, 5. Ikke mulig å gjennomføre daglige aktiviteter." MinExpression="0" MaxExpression="52" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Antall infeksjoner siste Ã¥r" ItemHelp="Diagnostiske krav: Minst 2 av disse 5: 1. Feber &gt; 38,5, 2. Behov for Ã¥ oppsÃ¸ke lege, 3. Antibiotikabehandlet, 4. Borte fra jobb, 5. Ikke mulig Ã¥ gjennomfÃ¸re daglige aktiviteter." MinExpression="0" MaxExpression="52" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -360,16 +360,16 @@
         </FormItem>
       </Item>
       <Item ItemId="8297" ItemType="2" VarName="VAR8297" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Kortisonsprøyte forordnet" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
-          <Answer AnswerId="44593" OrderNumber="1" OptionText="Ja" VerboseText="Kortisonsprøyte forordnet." ShortCode="J"/>
+        <FormItem ItemText="KortisonsprÃ¸yte forordnet" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+          <Answer AnswerId="44593" OrderNumber="1" OptionText="Ja" VerboseText="KortisonsprÃ¸yte forordnet." ShortCode="J"/>
           <Answer AnswerId="44594" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
-          <Answer AnswerId="44595" OrderNumber="3" OptionText="Ikke aktuelt" VerboseText="Kortisonsprøyte ikke aktuelt."/>
+          <Answer AnswerId="44595" OrderNumber="3" OptionText="Ikke aktuelt" VerboseText="KortisonsprÃ¸yte ikke aktuelt."/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Opplæring kortisonsprøyte*">
+    <Page PageTitle="OpplÃ¦ring kortisonsprÃ¸yte*">
       <Item ItemId="2897" ItemType="2" VarName="VAR2897" LoincScale="ORD">
-        <FormItem ItemHeader="Opplæring kortisonsprøyte" ItemText="Er det gitt opplæring i bruk av kortisonsprøyte?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="OpplÃ¦ring kortisonsprÃ¸yte" ItemText="Er det gitt opplÃ¦ring i bruk av kortisonsprÃ¸yte?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="11884" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="11885" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="11886" OrderNumber="3" OptionText="Usikker" ShortCode="U" CarryException="1"/>
@@ -387,7 +387,7 @@
     </Page>
     <Page PageTitle="Debut av koronar hjertesykdom*">
       <Item ItemId="4055" ItemType="1" VarName="NDV_CHD_DEBUT" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemText="Debut av koronar hjertesykdom" ItemHelp="Årstall for første tilfelle av enten angina/hjerteinfarkt/bypass /PCI" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Debut av koronar hjertesykdom" ItemHelp="Ã…rstall for fÃ¸rste tilfelle av enten angina/hjerteinfarkt/bypass /PCI" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -406,7 +406,7 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Symptomer" PageIntroduction="Svar Ja hvis symptomet er tilstede minst halvparten av dagene siste måned">
+    <Page PageTitle="Symptomer" PageIntroduction="Svar Ja hvis symptomet er tilstede minst halvparten av dagene siste mÃ¥ned">
       <Item ItemId="5670" ItemType="2" VarName="SaltHunger" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Salthunger" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="30325" OrderNumber="1" OptionText="Ja" VerboseText="Salthunger." ShortCode="J"/>
@@ -450,8 +450,8 @@
         </FormItem>
       </Item>
       <Item ItemId="5675" ItemType="2" VarName="SovnForstyrrelser" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Søvnforstyrrelser" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="30337" OrderNumber="1" OptionText="Ja" VerboseText="Søvnproblemer." ShortCode="J"/>
+        <FormItem ItemText="SÃ¸vnforstyrrelser" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="30337" OrderNumber="1" OptionText="Ja" VerboseText="SÃ¸vnproblemer." ShortCode="J"/>
           <Answer AnswerId="30338" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="36115" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
         </FormItem>
@@ -464,14 +464,14 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Klinisk undersøkelse">
+    <Page PageTitle="Klinisk undersÃ¸kelse">
       <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        <FormItem ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="HÃ¸yde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        <FormItem ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
+        <FormItem ItemText="Vekt" ItemHelp="Uten sko og yttertÃ¸y." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -481,45 +481,45 @@
         </FormItem>
       </Item>
       <Item ItemId="3230" ItemType="1" VarName="SYSBP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem ItemText="Systolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" FormatStr="Blodtrykk %s">
+        <FormItem ItemText="Systolisk blodtrykk" ItemHelp="Standard BT-mÃ¥ling, dvs. gj.snittet av de to siste av tre mÃ¥linger med 1 min. mellom." MinExpression="50" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" FormatStr="Blodtrykk %s">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3231" ItemType="1" VarName="DIABP" LoincScale="QN" UnitStr="mmHg" DisplayFormat="">
-        <FormItem ItemText="Diastolisk blodtrykk" ItemHelp="Standard BT-måling, dvs. gj.snittet av de to siste av tre målinger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" FormatStr="¬/%s mmHg.">
+        <FormItem ItemText="Diastolisk blodtrykk" ItemHelp="Standard BT-mÃ¥ling, dvs. gj.snittet av de to siste av tre mÃ¥linger med 1 min. mellom." MinExpression="30" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" FormatStr="Â¬/%s mmHg.">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6025" ItemType="2" VarName="Pigmentering" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Økt pigmentering" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="32089" OrderNumber="1" OptionText="Ja" VerboseText="Økt pigmentering." ShortCode="J"/>
-          <Answer AnswerId="32090" OrderNumber="2" OptionText="Nei" VerboseText="Ikke økt pigmentering." ShortCode="N"/>
+        <FormItem ItemText="Ã˜kt pigmentering" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="32089" OrderNumber="1" OptionText="Ja" VerboseText="Ã˜kt pigmentering." ShortCode="J"/>
+          <Answer AnswerId="32090" OrderNumber="2" OptionText="Nei" VerboseText="Ikke Ã¸kt pigmentering." ShortCode="N"/>
           <Answer AnswerId="36112" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Familie/sosialt">
       <Item ItemId="7135" ItemType="2" VarName="BASEREG_EDUCATION" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Utdanningsnivå" ItemHelp="Angi antall år som pasienten har gått på skole. Tell bare med heltidsstudier der opp til og med 10 år=grunnskole, 11-13 = videregående skole og over 13 år skole = høgskole/universitet. Ta ikke med førskole, deltidsstudier eller kortere kurs som ikke leder til eksamen." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="39024" OrderNumber="1" OptionText="10 års skolegang eller mindre"/>
-          <Answer AnswerId="39025" OrderNumber="2" OptionText="11-13 års skolegang"/>
-          <Answer AnswerId="39026" OrderNumber="3" OptionText="Mer enn 13 års skolegang"/>
+        <FormItem ItemText="UtdanningsnivÃ¥" ItemHelp="Angi antall Ã¥r som pasienten har gÃ¥tt pÃ¥ skole. Tell bare med heltidsstudier der opp til og med 10 Ã¥r=grunnskole, 11-13 = videregÃ¥ende skole og over 13 Ã¥r skole = hÃ¸gskole/universitet. Ta ikke med fÃ¸rskole, deltidsstudier eller kortere kurs som ikke leder til eksamen." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="39024" OrderNumber="1" OptionText="10 Ã¥rs skolegang eller mindre"/>
+          <Answer AnswerId="39025" OrderNumber="2" OptionText="11-13 Ã¥rs skolegang"/>
+          <Answer AnswerId="39026" OrderNumber="3" OptionText="Mer enn 13 Ã¥rs skolegang"/>
         </FormItem>
       </Item>
       <Item ItemId="8264" ItemType="2" VarName="OID8416" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Hovedinntektskilde" ItemHelp="Kodeverket inngår i NPR" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
-          <Answer AnswerId="44121" OrderNumber="1" OptionText="Lønnet arbeid"/>
-          <Answer AnswerId="44122" OrderNumber="2" OptionText="Forsørget"/>
-          <Answer AnswerId="44123" OrderNumber="6" OptionText="Uførepensjon"/>
+        <FormItem ItemText="Hovedinntektskilde" ItemHelp="Kodeverket inngÃ¥r i NPR" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="44121" OrderNumber="1" OptionText="LÃ¸nnet arbeid"/>
+          <Answer AnswerId="44122" OrderNumber="2" OptionText="ForsÃ¸rget"/>
+          <Answer AnswerId="44123" OrderNumber="6" OptionText="UfÃ¸repensjon"/>
           <Answer AnswerId="44124" OrderNumber="7" OptionText="Alderspensjon"/>
-          <Answer AnswerId="44125" OrderNumber="8" OptionText="Sosial stønad"/>
+          <Answer AnswerId="44125" OrderNumber="8" OptionText="Sosial stÃ¸nad"/>
           <Answer AnswerId="44126" OrderNumber="9" OptionText="Annet"/>
           <Answer AnswerId="44153" OrderNumber="10" OptionText="Ukjent"/>
-          <Answer AnswerId="44154" OrderNumber="11" OptionText="Studielån/stipend"/>
-          <Answer AnswerId="44155" OrderNumber="12" OptionText="Stønad til enslig forsørger	"/>
+          <Answer AnswerId="44154" OrderNumber="11" OptionText="StudielÃ¥n/stipend"/>
+          <Answer AnswerId="44155" OrderNumber="12" OptionText="StÃ¸nad til enslig forsÃ¸rger	"/>
           <Answer AnswerId="44156" OrderNumber="13" OptionText="Krigspensjon"/>
           <Answer AnswerId="44157" OrderNumber="14" OptionText="AFP - Avtalefestet pensjon"/>
-          <Answer AnswerId="44158" OrderNumber="15" OptionText="Sjømannspensjon"/>
+          <Answer AnswerId="44158" OrderNumber="15" OptionText="SjÃ¸mannspensjon"/>
           <Answer AnswerId="44159" OrderNumber="16" OptionText="Arbeidsavklaringspenger"/>
           <Answer AnswerId="44160" OrderNumber="17" OptionText="Sykepenger"/>
           <Answer AnswerId="44161" OrderNumber="18" OptionText="Dagpenger"/>
@@ -527,9 +527,9 @@
         </FormItem>
       </Item>
       <Item ItemId="1832" ItemType="2" VarName="VAR1832" LoincScale="ORD">
-        <FormItem ItemText="Er du i lønnet arbeid?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Er du i lÃ¸nnet arbeid?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="10896" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="10897" OrderNumber="2" OptionText="Nei" VerboseText="Er ikke i lønnet arbeid."/>
+          <Answer AnswerId="10897" OrderNumber="2" OptionText="Nei" VerboseText="Er ikke i lÃ¸nnet arbeid."/>
         </FormItem>
       </Item>
     </Page>
@@ -540,14 +540,14 @@
         </FormItem>
       </Item>
       <Item ItemId="3983" ItemType="4" VarName="YRKE" LoincScale="NAR" DisplayFormat="" Multiline="0">
-        <FormItem ItemHeader="Yrke*" ItemText="Pasientens yrke og evt. arbeidssted" ItemHelp="F.eks: Pensjonert fisker, renholder på sykehuset." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Yrke*" ItemText="Pasientens yrke og evt. arbeidssted" ItemHelp="F.eks: Pensjonert fisker, renholder pÃ¥ sykehuset." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="New*">
       <Item ItemId="4002" ItemType="2" VarName="DP_ALENEBOER" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Aleneboende" ItemText="Bor pasienten alene?" ItemHelp="Definisjon: Vanligvis ikke andre personer over 10 år i huset, ingen som er i stand til å kontakte hjelp i en akuttsituasjon, eks. alvorlig føling/hypoglykemi, lårhalsbrudd, slag etc." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Aleneboende" ItemText="Bor pasienten alene?" ItemHelp="Definisjon: Vanligvis ikke andre personer over 10 Ã¥r i huset, ingen som er i stand til Ã¥ kontakte hjelp i en akuttsituasjon, eks. alvorlig fÃ¸ling/hypoglykemi, lÃ¥rhalsbrudd, slag etc." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="20851" OrderNumber="1" OptionText="Ja" VerboseText="Ingen andre voksne i huset vanligvis." ShortCode="J"/>
           <Answer AnswerId="20852" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="20853" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
@@ -571,7 +571,7 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Hydrokortison" PageIntroduction="Fyll ut 0 på de tidspunktene pasienten ikke bruker den aktuelle medisinen.">
+    <Page PageTitle="Hydrokortison" PageIntroduction="Fyll ut 0 pÃ¥ de tidspunktene pasienten ikke bruker den aktuelle medisinen.">
       <Item ItemId="6304" ItemType="2" VarName="ATC_H02AB09" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Hydrokortison" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="33352" OrderNumber="1" OptionText="Ja" VerboseText="Hydrokortison." ShortCode="J"/>
@@ -602,7 +602,7 @@
         </FormItem>
       </Item>
       <Item ItemId="6613" ItemType="1" VarName="DD_H02AB09" LoincScale="QN" UnitStr="mg" DisplayFormat="">
-        <FormItem ItemText="Døgndose hydrokortison" ItemHelp="" Expression="ISNULL(ATC_H02AB09-1) * (ISPOS(VAR6609)*VAR6609 + ISPOS(VAR6610)*VAR6610 + ISPOS(VAR6611)*VAR6611 + ISPOS(VAR6612)*VAR6612)" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
+        <FormItem ItemText="DÃ¸gndose hydrokortison" ItemHelp="" Expression="ISNULL(ATC_H02AB09-1) * (ISPOS(VAR6609)*VAR6609 + ISPOS(VAR6610)*VAR6610 + ISPOS(VAR6611)*VAR6611 + ISPOS(VAR6612)*VAR6612)" MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -612,7 +612,7 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Kortisonacetat" PageIntroduction="Fyll ut 0 på de tidspunktene pasienten ikke bruker den aktuelle medisinen.">
+    <Page PageTitle="Kortisonacetat" PageIntroduction="Fyll ut 0 pÃ¥ de tidspunktene pasienten ikke bruker den aktuelle medisinen.">
       <Item ItemId="6305" ItemType="2" VarName="ATC_H02AB10" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Kortisonacetat" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="33356" OrderNumber="1" OptionText="Ja" VerboseText="Kortisonacetat." ShortCode="J"/>
@@ -643,7 +643,7 @@
         </FormItem>
       </Item>
       <Item ItemId="6618" ItemType="1" VarName="DD_H02AB10" LoincScale="QN" UnitStr="mg" DisplayFormat="">
-        <FormItem ItemText="Døgndose kortisonacetat" ItemHelp="" Expression="ISNULL(ATC_H02AB10-1) * ( ISPOS(VAR6614) * VAR6614 + ISPOS(VAR6615) * VAR6615 + ISPOS(VAR6616) * VAR6616 + ISPOS(VAR6617) * VAR6617)" MinExpression="0" MaxExpression="99" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="2">
+        <FormItem ItemText="DÃ¸gndose kortisonacetat" ItemHelp="" Expression="ISNULL(ATC_H02AB10-1) * ( ISPOS(VAR6614) * VAR6614 + ISPOS(VAR6615) * VAR6615 + ISPOS(VAR6616) * VAR6616 + ISPOS(VAR6617) * VAR6617)" MinExpression="0" MaxExpression="99" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="2">
           <Answer/>
         </FormItem>
       </Item>
@@ -662,7 +662,7 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Detaljer fludrokortison*" PageIntroduction="Fyll ut 0 på de tidspunktene pasienten ikke bruker den aktuelle medisinen.">
+    <Page PageTitle="Detaljer fludrokortison*" PageIntroduction="Fyll ut 0 pÃ¥ de tidspunktene pasienten ikke bruker den aktuelle medisinen.">
       <Item ItemId="6625" ItemType="1" VarName="VAR6625" LoincScale="QN" UnitStr="mg" DisplayFormat="">
         <FormItem ItemText="Morgen" ItemHelp="" MinExpression="0" MaxExpression="5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="2">
           <Answer/>
@@ -674,7 +674,7 @@
         </FormItem>
       </Item>
       <Item ItemId="6627" ItemType="1" VarName="DD_H02AA02" LoincScale="QN" UnitStr="mg" DisplayFormat="">
-        <FormItem ItemText="Døgndose fludrokortison" ItemHelp="" Expression="ISNULL( ATC_H02AA02 - 1 ) * ( ISPOS(VAR6625)*VAR6625 + ISPOS(VAR6626)*VAR6626 )" MinExpression="0" MaxExpression="5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="2">
+        <FormItem ItemText="DÃ¸gndose fludrokortison" ItemHelp="" Expression="ISNULL( ATC_H02AA02 - 1 ) * ( ISPOS(VAR6625)*VAR6625 + ISPOS(VAR6626)*VAR6626 )" MinExpression="0" MaxExpression="5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="2">
           <Answer/>
         </FormItem>
       </Item>
@@ -690,22 +690,22 @@
     </Page>
     <Page PageTitle="DHEA dosering*">
       <Item ItemId="6631" ItemType="1" VarName="DD_A14AA07" LoincScale="QN" UnitStr="mg" DisplayFormat="">
-        <FormItem ItemText="Døgndose DHEA" ItemHelp="" MinExpression="10" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="DÃ¸gndose DHEA" ItemHelp="" MinExpression="10" MaxExpression="150" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Andre medisiner">
       <Item ItemId="2904" ItemType="2" VarName="VAR2904" LoincScale="ORD">
-        <FormItem ItemText="Bruker SSRI" ItemHelp="Kan påvirke analyseresultatet for metanefriner" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Bruker SSRI" ItemHelp="Kan pÃ¥virke analyseresultatet for metanefriner" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="60977" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="60978" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Østrogener*" PageIntroduction="Kun kvinner">
+    <Page PageTitle="Ã˜strogener*" PageIntroduction="Kun kvinner">
       <Item ItemId="2903" ItemType="2" VarName="VAR2903" LoincScale="ORD">
-        <FormItem ItemText="Bruker P-piller eller østrogen?" ItemHelp="Kan påvirke analyseresultatet for kortisol" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Bruker P-piller eller Ã¸strogen?" ItemHelp="Kan pÃ¥virke analyseresultatet for kortisol" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer AnswerId="11899" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="11900" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
@@ -721,7 +721,7 @@
     </Page>
     <Page PageTitle="Detaljer andre medisiner*">
       <Item ItemId="2905" ItemType="4" VarName="VAR2905" LoincScale="NAR" Multiline="1">
-        <FormItem ItemHeader="Hvilke" ItemText="List opp andre faste medisiner, tilstrekkelig med navn på medikamentet." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemHeader="Hvilke" ItemText="List opp andre faste medisiner, tilstrekkelig med navn pÃ¥ medikamentet." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0"?>
 <StudyForm>
   <Form FormId="1053" FormName="HofteUtskrivningV2" FormTitle="Utskriving" FormDateItemId="8753">
     <Page PageTitle="Innkomst">
@@ -8,20 +8,20 @@
         </FormItem>
       </Item>
       <Item ItemId="8276" ItemType="4" VarName="VAR8276" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemHeader="Beskrivelse*" ItemText="Beskriv hendelsen som førte til bruddet" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem ItemHeader="Beskrivelse*" ItemText="Beskriv hendelsen som fÃ¸rte til bruddet" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Utskrivning">
       <Item ItemId="8753" ItemType="5" VarName="HofteDischargeDate" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Utskrivningsdato" ItemHelp="Tips: Bruk &quot;td&quot; for i dag, &quot;-1&quot; for igår." Expression="TRUNC(FORM.Date)" MinExpression="Patient.DOB" MaxExpression="NOW + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Utskrivningsdato" ItemHelp="Tips: Bruk &quot;td&quot; for i dag, &quot;-1&quot; for igÃ¥r." Expression="TRUNC(Form.Date)" MinExpression="Patient.DOB" MaxExpression="NOW + 1" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="8755" ItemType="2" VarName="HofteDischargedAlive" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Utskrives i live" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          <Answer AnswerId="49217" OrderNumber="0" OptionText="Nei" VerboseText="Døde under oppholdet." ShortCode="N"/>
+          <Answer AnswerId="49217" OrderNumber="0" OptionText="Nei" VerboseText="DÃ¸de under oppholdet." ShortCode="N"/>
           <Answer AnswerId="49218" OrderNumber="1" OptionText="Ja*" ShortCode="J"/>
         </FormItem>
       </Item>
@@ -29,8 +29,8 @@
     <Page PageTitle="Utskrives til*">
       <Item ItemId="8754" ItemType="2" VarName="VAR8754" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Utskrives til" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          <Answer AnswerId="49203" OrderNumber="1" OptionText="Ordinær bolig" VerboseText="Utskrives til hjemmet."/>
-          <Answer AnswerId="49204" OrderNumber="2" OptionText="Bolig som kommunen disponerer til omsorgs- eller pleieformål, men som ikke er institusjon eller omsorgsbolig" VerboseText="Utskrives til kommunal bolig."/>
+          <Answer AnswerId="49203" OrderNumber="1" OptionText="OrdinÃ¦r bolig" VerboseText="Utskrives til hjemmet."/>
+          <Answer AnswerId="49204" OrderNumber="2" OptionText="Bolig som kommunen disponerer til omsorgs- eller pleieformÃ¥l, men som ikke er institusjon eller omsorgsbolig" VerboseText="Utskrives til kommunal bolig."/>
           <Answer AnswerId="49205" OrderNumber="3" OptionText="Omsorgsbolig" VerboseText="Utskrives til omsorgsbolig."/>
           <Answer AnswerId="49206" OrderNumber="4" OptionText="Aldershjem" VerboseText="Utskrives til aldershjem."/>
           <Answer AnswerId="49207" OrderNumber="5" OptionText="Sykehjem" VerboseText="Utskrives til sykehjem."/>
@@ -44,7 +44,7 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Hemoglobin og sårsekresjon*">
+    <Page PageTitle="Hemoglobin og sÃ¥rsekresjon*">
       <Item ItemId="9024" ItemType="1" VarName="VAR9024" LoincScale="QN" UnitStr="g/dL" DisplayFormat="">
         <FormItem ItemText="Hemoglobin ved utreise" ItemHelp="" MinExpression="4" MaxExpression="20" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
@@ -60,24 +60,24 @@
     </Page>
     <Page PageTitle="Komplikasjoner" PageIntroduction="Komplikasjoner under oppholdet, unntatt peroperative.">
       <Item ItemId="9721" ItemType="2" VarName="VAR9721" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Blødning" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          <Answer AnswerId="53178" OrderNumber="0" OptionText="Nei" VerboseText="Ingen blødning." ShortCode="N"/>
+        <FormItem ItemText="BlÃ¸dning" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="53178" OrderNumber="0" OptionText="Nei" VerboseText="Ingen blÃ¸dning." ShortCode="N"/>
           <Answer AnswerId="53179" OrderNumber="1" OptionText="Ja*" ShortCode="J"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Blødning tekst*">
+    <Page PageTitle="BlÃ¸dning tekst*">
       <Item ItemId="9722" ItemType="4" VarName="VAR9722" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemHeader="Beskriv*" ItemText="Beskrivelse av blødning" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemHeader="Beskriv*" ItemText="Beskrivelse av blÃ¸dning" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Blodoverføring*">
+    <Page PageTitle="BlodoverfÃ¸ring*">
       <Item ItemId="9021" ItemType="2" VarName="VAR9021" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Har fått blodoverføring" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          <Answer AnswerId="50399" OrderNumber="0" OptionText="Nei" VerboseText="Har ikke fått blodoverføring." ShortCode="N"/>
-          <Answer AnswerId="50400" OrderNumber="1" OptionText="Ja" VerboseText="Har fått blodoverføring." ShortCode="J"/>
+        <FormItem ItemText="Har fÃ¥tt blodoverfÃ¸ring" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="50399" OrderNumber="0" OptionText="Nei" VerboseText="Har ikke fÃ¥tt blodoverfÃ¸ring." ShortCode="N"/>
+          <Answer AnswerId="50400" OrderNumber="1" OptionText="Ja" VerboseText="Har fÃ¥tt blodoverfÃ¸ring." ShortCode="J"/>
         </FormItem>
       </Item>
     </Page>
@@ -88,15 +88,15 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Kardiovaskulære komplikasjoner*">
+    <Page PageTitle="KardiovaskulÃ¦re komplikasjoner*">
       <Item ItemId="9699" ItemType="2" VarName="VAR9699" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Kardiovaskulære komplikasjoner" ItemText="Har det oppstått kardiovaskulære komplikasjoner under oppholdet?" ItemHelp="Hjerteinfarkt, rytmeforstyrrelse, hjerneslag, DVT, lungeemboli" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemHeader="KardiovaskulÃ¦re komplikasjoner" ItemText="Har det oppstÃ¥tt kardiovaskulÃ¦re komplikasjoner under oppholdet?" ItemHelp="Hjerteinfarkt, rytmeforstyrrelse, hjerneslag, DVT, lungeemboli" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="53091" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="53092" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Kardiovaskulære hendelser*">
+    <Page PageTitle="KardiovaskulÃ¦re hendelser*">
       <Item ItemId="9698" ItemType="2" VarName="VAR9698" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Hjerteinfarkt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="53089" OrderNumber="0" OptionText="Nei*" ShortCode="N"/>
@@ -113,9 +113,9 @@
     </Page>
     <Page PageTitle="Hjerterytmeforstyrrelse*">
       <Item ItemId="9700" ItemType="2" VarName="VAR9700" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Hjerterytmeforstyrrelse, nyoppstått" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Hjerterytmeforstyrrelse, nyoppstÃ¥tt" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="53095" OrderNumber="0" OptionText="Nei*" ShortCode="N"/>
-          <Answer AnswerId="53096" OrderNumber="1" OptionText="Ja" VerboseText="Nyoppstått hjerterytmeforstyrrelse." ShortCode="J"/>
+          <Answer AnswerId="53096" OrderNumber="1" OptionText="Ja" VerboseText="NyoppstÃ¥tt hjerterytmeforstyrrelse." ShortCode="J"/>
         </FormItem>
       </Item>
     </Page>
@@ -171,15 +171,15 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Andre kardiovaskulære hendelser*">
+    <Page PageTitle="Andre kardiovaskulÃ¦re hendelser*">
       <Item ItemId="9704" ItemType="2" VarName="VAR9704" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Andre kardiovaskulære hendelser" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Andre kardiovaskulÃ¦re hendelser" ItemHelp="" ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="53137" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="53138" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
         </FormItem>
       </Item>
       <Item ItemId="9705" ItemType="4" VarName="VAR9705" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemHeader="Beskriv*" ItemText="Beskrivelse av andre kardiovaskulære hendelser" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemHeader="Beskriv*" ItemText="Beskrivelse av andre kardiovaskulÃ¦re hendelser" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -188,7 +188,7 @@
       <Item ItemId="9696" ItemType="2" VarName="VAR9696" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Nytt fall" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="53069" OrderNumber="0" OptionText="Nei*" ShortCode="N"/>
-          <Answer AnswerId="53070" OrderNumber="1" OptionText="Ja" VerboseText="Falt på nytt under oppholdet." ShortCode="J"/>
+          <Answer AnswerId="53070" OrderNumber="1" OptionText="Ja" VerboseText="Falt pÃ¥ nytt under oppholdet." ShortCode="J"/>
         </FormItem>
       </Item>
     </Page>
@@ -244,17 +244,17 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Sårinfeksjon*">
+    <Page PageTitle="SÃ¥rinfeksjon*">
       <Item ItemId="9697" ItemType="2" VarName="VAR9697" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Sårinfeksjon" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          <Answer AnswerId="53075" OrderNumber="0" OptionText="Nei" VerboseText="Ikke sårinfeksjon." ShortCode="N"/>
-          <Answer AnswerId="53076" OrderNumber="1" OptionText="Ja" VerboseText="Sårinfeksjon." ShortCode="J"/>
+        <FormItem ItemText="SÃ¥rinfeksjon" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="53075" OrderNumber="0" OptionText="Nei" VerboseText="Ikke sÃ¥rinfeksjon." ShortCode="N"/>
+          <Answer AnswerId="53076" OrderNumber="1" OptionText="Ja" VerboseText="SÃ¥rinfeksjon." ShortCode="J"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Sårinfeksjon tekst*">
+    <Page PageTitle="SÃ¥rinfeksjon tekst*">
       <Item ItemId="9720" ItemType="4" VarName="VAR9720" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemHeader="Beskriv*" ItemText="Beskrivelse av sårinfeksjon" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemHeader="Beskriv*" ItemText="Beskrivelse av sÃ¥rinfeksjon" ItemHelp="" ExcludeFromText="0" ExcludeCaption="1" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -286,7 +286,7 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Funksjonsnivå ved utreise" PageIntroduction="De tre siste variablene er hentet fra Barthel ADL-Indeks">
+    <Page PageTitle="FunksjonsnivÃ¥ ved utreise" PageIntroduction="De tre siste variablene er hentet fra Barthel ADL-Indeks">
       <Item ItemId="9020" ItemType="2" VarName="VAR9020" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Mobiliseringsgrad" ItemText="Mobiliseringsgrad ved utreise" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="50386" OrderNumber="1" OptionText="Ikke mobilisert."/>
@@ -302,14 +302,14 @@
         <FormItem ItemText="Forflytning mellom seng og stol" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="23224" OrderNumber="1" OptionText="Klarer seg uten hjelp" Score="3.00"/>
           <Answer AnswerId="23225" OrderNumber="2" OptionText="Trenger litt hjelp / tilsyn, klarer seg fint med hjelp av en person." Score="2.00"/>
-          <Answer AnswerId="23226" OrderNumber="3" OptionText="Trenger mye hjelp av én eller to personer, men kan sitte uten hjelp / tilsyn." Score="1.00"/>
-          <Answer AnswerId="23227" OrderNumber="4" OptionText="Kan ikke sitte, må løftes." Score="0.00"/>
+          <Answer AnswerId="23226" OrderNumber="3" OptionText="Trenger mye hjelp av Ã©n eller to personer, men kan sitte uten hjelp / tilsyn." Score="1.00"/>
+          <Answer AnswerId="23227" OrderNumber="4" OptionText="Kan ikke sitte, mÃ¥ lÃ¸ftes." Score="0.00"/>
         </FormItem>
       </Item>
       <Item ItemId="4335" ItemType="2" VarName="BARTHEL_TOALETT" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Toalettbesøk" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          <Answer AnswerId="23215" OrderNumber="1" OptionText="Selvhjulpen ved toalettbesøk eller bruk av toalettstol.  Ordner klær, tørker seg, spyler toalettet eller tømmer bekken." Score="2.00"/>
-          <Answer AnswerId="23216" OrderNumber="2" OptionText="Trenger hjelp til forflytning, klær, tørke seg." Score="1.00"/>
+        <FormItem ItemText="ToalettbesÃ¸k" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="23215" OrderNumber="1" OptionText="Selvhjulpen ved toalettbesÃ¸k eller bruk av toalettstol.  Ordner klÃ¦r, tÃ¸rker seg, spyler toalettet eller tÃ¸mmer bekken." Score="2.00"/>
+          <Answer AnswerId="23216" OrderNumber="2" OptionText="Trenger hjelp til forflytning, klÃ¦r, tÃ¸rke seg." Score="1.00"/>
           <Answer AnswerId="23217" OrderNumber="3" OptionText="Kan ikke bruke toalett." Score="0.00"/>
         </FormItem>
       </Item>
@@ -317,13 +317,13 @@
     <Page PageTitle="Plan">
       <Item ItemId="8430" ItemType="2" VarName="VAR8430" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Belastning" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="1" Optional="1">
-          <Answer AnswerId="46023" OrderNumber="1" OptionText="Full belastning fra dag én." ShortCode="Full"/>
+          <Answer AnswerId="46023" OrderNumber="1" OptionText="Full belastning fra dag Ã©n." ShortCode="Full"/>
           <Answer AnswerId="46024" OrderNumber="2" OptionText="Avlaster med krykker." ShortCode="Red"/>
         </FormItem>
       </Item>
       <Item ItemId="9713" ItemType="2" VarName="VAR9713" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemText="Belastning" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          <Answer AnswerId="53164" OrderNumber="1" OptionText="Full belastning fra dag én."/>
+          <Answer AnswerId="53164" OrderNumber="1" OptionText="Full belastning fra dag Ã©n."/>
           <Answer AnswerId="53165" OrderNumber="2" OptionText="Avlasting med krykker."/>
         </FormItem>
       </Item>
@@ -352,9 +352,9 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Medisiner ved utreise" PageIntroduction="Faste medisiner er kopiert fra innkomstnotat, gjør eventuelle rettelser her.">
+    <Page PageTitle="Medisiner ved utreise" PageIntroduction="Faste medisiner er kopiert fra innkomstnotat, gjÃ¸r eventuelle rettelser her.">
       <Item ItemId="9711" ItemType="2" VarName="VAR9711" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Endring i medisinlisten" ItemText="Er det gjort endringer på faste medisiner under oppholdet?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemHeader="Endring i medisinlisten" ItemText="Er det gjort endringer pÃ¥ faste medisiner under oppholdet?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="53139" OrderNumber="0" OptionText="Nei" VerboseText="Ingen endringer i medisiner." ShortCode="N"/>
           <Answer AnswerId="53140" OrderNumber="1" OptionText="Ja*" ShortCode="J"/>
         </FormItem>

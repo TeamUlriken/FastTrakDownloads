@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0"?>
 <StudyForm>
   <Form FormId="544" FormName="FORM544" FormTitle="Preoperativt">
-    <Page PageTitle="Høyde og vekt">
+    <Page PageTitle="HÃ¸yde og vekt">
       <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        <FormItem ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="HÃ¸yde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -18,22 +18,22 @@
         </FormItem>
       </Item>
       <Item ItemId="6830" ItemType="1" VarName="FirstVisitWeight" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        <FormItem ItemText="Vekt poliklinikk" ItemHelp="Målt ved første polikliniske konsultasjon" MinExpression="50" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="1" Optional="1" Decimals="1">
+        <FormItem ItemText="Vekt poliklinikk" ItemHelp="MÃ¥lt ved fÃ¸rste polikliniske konsultasjon" MinExpression="50" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6834" ItemType="1" VarName="IndexWeight" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        <FormItem ItemText="Indeksvekt" ItemHelp="Høyeste av preoperativ og poliklinisk besøk" Expression="ISPOS(FirstVisitWeight)*FirstVisitWeight * ISPOS(FirstVisitWeight-PreopWeight + 0.01) +&#xA;ISPOS(PreopWeight)*PreopWeight * ISPOS(PreopWeight - FirstVisitWeight)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1" Decimals="1">
+        <FormItem ItemText="Indeksvekt" ItemHelp="HÃ¸yeste av preoperativ og poliklinisk besÃ¸k" Expression="ISPOS(FirstVisitWeight)*FirstVisitWeight * ISPOS(FirstVisitWeight-PreopWeight + 0.01) +&#xA;ISPOS(PreopWeight)*PreopWeight * ISPOS(PreopWeight - FirstVisitWeight)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6831" ItemType="1" VarName="FirstVisitBMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-        <FormItem ItemText="KMI poliklinikk" ItemHelp="Beregnet for første polikliniske konsultasjon" MinExpression="5" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="1" Optional="1" Decimals="1">
+        <FormItem ItemText="KMI poliklinikk" ItemHelp="Beregnet for fÃ¸rste polikliniske konsultasjon" MinExpression="5" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="6835" ItemType="1" VarName="IndexBMI" LoincScale="QN" UnitStr="kg/m2" DisplayFormat="">
-        <FormItem ItemText="Indeks-KMI" ItemHelp="Høyeste av preoperativ og poliklinisk besøk" Expression="FirstVisitBMI*ISPOS(FirstVisitBMI - PreopBMI + 0.001) + PreopBMI*ISPOS(PreopBMI - FirstVisitBMI)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1" Decimals="1">
+        <FormItem ItemText="Indeks-KMI" ItemHelp="HÃ¸yeste av preoperativ og poliklinisk besÃ¸k" Expression="FirstVisitBMI*ISPOS(FirstVisitBMI - PreopBMI + 0.001) + PreopBMI*ISPOS(PreopBMI - FirstVisitBMI)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>

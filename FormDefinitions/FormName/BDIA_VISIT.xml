@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0"?>
 <StudyForm>
   <Form FormId="1143" FormName="BDIA_VISIT" FormTitle="Poliklinisk konsultasjon">
-    <Page PageTitle="Nøkkeldata">
-      <Item ItemId="3843" ItemType="2" VarName="VAR3843" LoincScale="ORD">
+    <Page PageTitle="NÃ¸kkeldata">
+      <Item ItemId="3843" ItemType="2" VarName="BDR_CONSENT" LoincScale="ORD">
         <FormItem ItemText="Samtykke til BDR" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="12354" OrderNumber="1" OptionText="Ja" VerboseText="Samtykke gitt til BDR." ShortCode="J"/>
           <Answer AnswerId="12355" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
@@ -10,9 +10,12 @@
           <Answer AnswerId="12357" OrderNumber="4" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
       </Item>
-      <Item ItemId="3844" ItemType="4" VarName="VAR3844" LoincScale="NAR" Multiline="0">
-        <FormItem ItemText="Diabetesansvarlig lege" ItemHelp="Bruk bare kortkode / brukernavn, ikke fullt navn." ExcludeFromText="1" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer/>
+      <Item ItemId="9454" ItemType="2" VarName="SWEET_CONSENT" LoincScale="ORD">
+        <FormItem ItemText="Samtykke til SWEET" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="62130" OrderNumber="1" OptionText="Ja" VerboseText="Samtykke gitt til SWEET." ShortCode="J"/>
+          <Answer AnswerId="62131" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="62132" OrderNumber="3" OptionText="Trukket tilbake" ShortCode="T"/>
+          <Answer AnswerId="62133" OrderNumber="4" OptionText="Ukjent" ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="3196" ItemType="2" VarName="NDV_TYPE" LoincScale="ORD" DisplayFormat="">
@@ -30,19 +33,19 @@
         </FormItem>
       </Item>
       <Item ItemId="3486" ItemType="1" VarName="NDV_DIAGNOSE_YYYY" LoincScale="QN" DisplayFormat="">
-        <FormItem ItemHeader="Debut" ItemText="Diabetes diagnostisert år" ItemHelp=" " Expression="YearOf( BDR_DIAGNOSE )" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Highlight="1" Optional="0">
+        <FormItem ItemHeader="Debut" ItemText="Diabetes diagnostisert Ã¥r" ItemHelp=" " Expression="YearOf( BDR_DIAGNOSE )" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="1" Highlight="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="1433" ItemType="1" VarName="DIA_YEARS" LoincScale="QN" UnitStr="år">
+      <Item ItemId="1433" ItemType="1" VarName="DIA_YEARS" LoincScale="QN" UnitStr="Ã¥r">
         <FormItem ItemText="Sykdomsvarighet" ItemHelp="" Expression="( FORM.DATE - BDR_DIAGNOSE ) / 365.25" MinExpression="0" MaxExpression="30" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="4204" ItemType="2" VarName="NDV_FAM_DM" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Diabetes hos foreldre/barn/søsken" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="1">
-          <Answer AnswerId="22251" OrderNumber="1" OptionText="Ja" VerboseText="Diabetes i nær familie." ShortCode="J"/>
-          <Answer AnswerId="22252" OrderNumber="2" OptionText="Nei" VerboseText="Ikke diabetes i nærmeste familie." ShortCode="N"/>
+        <FormItem ItemText="Diabetes hos foreldre/barn/sÃ¸sken" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="1">
+          <Answer AnswerId="22251" OrderNumber="1" OptionText="Ja" VerboseText="Diabetes i nÃ¦r familie." ShortCode="J"/>
+          <Answer AnswerId="22252" OrderNumber="2" OptionText="Nei" VerboseText="Ikke diabetes i nÃ¦rmeste familie." ShortCode="N"/>
           <Answer AnswerId="22253" OrderNumber="3" OptionText="Vet ikke*" ShortCode="V" CarryException="1"/>
         </FormItem>
       </Item>
@@ -71,19 +74,19 @@
         </FormItem>
       </Item>
       <Item ItemId="2644" ItemType="2" VarName="NDV_ALBUMINURIA" LoincScale="ORD">
-        <FormItem ItemText="Albuminuri" ItemHelp="Verdi på U-ACR 3-30 er moderat, over 30 regnes som betydelig forhøyet." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Albuminuri" ItemHelp="Verdi pÃ¥ U-ACR 3-30 er moderat, over 30 regnes som betydelig forhÃ¸yet." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="1">
           <Answer AnswerId="11608" OrderNumber="1" OptionText="Ingen" CarryException="1"/>
-          <Answer AnswerId="11609" OrderNumber="2" OptionText="Tidligere" VerboseText="Tidligere forhøyet albuminuri."/>
-          <Answer AnswerId="11610" OrderNumber="3" OptionText="Moderat" VerboseText="Moderat forhøyet albuminuri."/>
-          <Answer AnswerId="11611" OrderNumber="4" OptionText="Betydelig" VerboseText="Betydelig forhøyet albuminuri."/>
+          <Answer AnswerId="11609" OrderNumber="2" OptionText="Tidligere" VerboseText="Tidligere forhÃ¸yet albuminuri."/>
+          <Answer AnswerId="11610" OrderNumber="3" OptionText="Moderat" VerboseText="Moderat forhÃ¸yet albuminuri."/>
+          <Answer AnswerId="11611" OrderNumber="4" OptionText="Betydelig" VerboseText="Betydelig forhÃ¸yet albuminuri."/>
           <Answer AnswerId="11612" OrderNumber="5" OptionText="Nefrotisk syndrom" VerboseText="Nefrotisk syndrom."/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Komorbiditet">
       <Item ItemId="3410" ItemType="2" VarName="ICD10_K900" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Cøliaki" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="16962" OrderNumber="1" OptionText="Ja" VerboseText="Cøliaki." ShortCode="J" ICD10="K900"/>
+        <FormItem ItemText="CÃ¸liaki" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="16962" OrderNumber="1" OptionText="Ja" VerboseText="CÃ¸liaki." ShortCode="J" ICD10="K900"/>
           <Answer AnswerId="16963" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="16964" OrderNumber="3" OptionText="Ukjent" ShortCode="U" CarryException="1"/>
         </FormItem>
@@ -91,7 +94,7 @@
     </Page>
     <Page PageTitle="New*">
       <Item ItemId="3846" ItemType="5" VarName="VAR3846" LoincScale="DATE">
-        <FormItem ItemHeader="Diagnosedato" ItemText="Diagnosedato cøliaki" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem ItemHeader="Diagnosedato" ItemText="Diagnosedato cÃ¸liaki" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -115,7 +118,7 @@
         </FormItem>
       </Item>
       <Item ItemId="10260" ItemType="4" VarName="VAR10260" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemText="Familiære og sosiale forhold" ItemHelp="" ExcludeFromText="1" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+        <FormItem ItemText="FamiliÃ¦re og sosiale forhold" ItemHelp="" ExcludeFromText="1" ExcludeCaption="1" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -129,42 +132,42 @@
     </Page>
     <Page PageTitle="Glykemisk kontroll">
       <Item ItemId="3018" ItemType="1" VarName="HBA1C_MMOL" LoincScale="QN" UnitStr="mmol/mol" DisplayFormat="">
-        <FormItem ItemText="B-HbA1c" ItemHelp="HbA1c-verdien gjenspeiler det gjennomsnittlige blodsukkeret de siste 6 - 8 uker før prøvetakingen. Høye verdier ses derfor ved økt gjennomsnittlig blodglukose. Lave verdier kan ses ved økt hemoglobinomsetning som ved hemolytiske anemier." MinExpression="26" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1">
+        <FormItem ItemText="B-HbA1c" ItemHelp="HbA1c-verdien gjenspeiler det gjennomsnittlige blodsukkeret de siste 6 - 8 uker fÃ¸r prÃ¸vetakingen. HÃ¸ye verdier ses derfor ved Ã¸kt gjennomsnittlig blodglukose. Lave verdier kan ses ved Ã¸kt hemoglobinomsetning som ved hemolytiske anemier." MinExpression="26" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Egenmålinger">
+    <Page PageTitle="EgenmÃ¥linger">
       <Item ItemId="1310" ItemType="2" VarName="NDV_GLUCMON" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Egenmåling av glukose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
-          <Answer AnswerId="59269" OrderNumber="1" OptionText="CGM" VerboseText="Bruker vevsglukose (CGM)." Score="1.00" PromText="Kontinuerlig måling"/>
+        <FormItem ItemText="EgenmÃ¥ling av glukose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="0">
+          <Answer AnswerId="59269" OrderNumber="1" OptionText="CGM" VerboseText="Bruker vevsglukose (CGM)." Score="1.00" PromText="Kontinuerlig mÃ¥ling"/>
           <Answer AnswerId="59270" OrderNumber="2" OptionText="Freestyle Libre 1" VerboseText="Bruker Freestyle Libre 1." Score="1.00" PromText="Flash Libre"/>
-          <Answer AnswerId="59271" OrderNumber="3" OptionText="daglig (glukometer)" VerboseText="Måler kapillær glukose daglig." Score="1.00" PromText="Glukometer daglig"/>
-          <Answer AnswerId="59272" OrderNumber="4" OptionText="ukentlig eller oftere (glukometer)" VerboseText="Måler kapillær glukose ukentlig eller oftere." Score="1.00" PromText="Glukometer ukentlig"/>
-          <Answer AnswerId="59273" OrderNumber="5" OptionText="sjeldnere enn ukentlig (glukometer)" VerboseText="Måler kapillær glukose sjeldnere enn ukentlig." Score="2.00" PromText="Glukometer sjeldnere enn ukentlig"/>
-          <Answer AnswerId="59274" OrderNumber="6" OptionText="Nei" VerboseText="Måler ikke glukose selv." Score="3.00" PromText="Måler ikke glukose selv"/>
+          <Answer AnswerId="59271" OrderNumber="3" OptionText="daglig (glukometer)" VerboseText="MÃ¥ler kapillÃ¦r glukose daglig." Score="1.00" PromText="Glukometer daglig"/>
+          <Answer AnswerId="59272" OrderNumber="4" OptionText="ukentlig eller oftere (glukometer)" VerboseText="MÃ¥ler kapillÃ¦r glukose ukentlig eller oftere." Score="1.00" PromText="Glukometer ukentlig"/>
+          <Answer AnswerId="59273" OrderNumber="5" OptionText="sjeldnere enn ukentlig (glukometer)" VerboseText="MÃ¥ler kapillÃ¦r glukose sjeldnere enn ukentlig." Score="2.00" PromText="Glukometer sjeldnere enn ukentlig"/>
+          <Answer AnswerId="59274" OrderNumber="6" OptionText="Nei" VerboseText="MÃ¥ler ikke glukose selv." Score="3.00" PromText="MÃ¥ler ikke glukose selv"/>
           <Answer AnswerId="59275" OrderNumber="7" OptionText="Vet ikke*" Score="4.00" PromText="Jeg er usikker" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="New*">
-      <Item ItemId="5166" ItemType="2" VarName="VAR5166" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="CGM apparat" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61612" OrderNumber="1" OptionText="FreeStyle Navigator II"/>
-          <Answer AnswerId="61613" OrderNumber="2" OptionText="DexCom G4"/>
-          <Answer AnswerId="61614" OrderNumber="3" OptionText="DexCom G5"/>
-          <Answer AnswerId="61615" OrderNumber="4" OptionText="DexCom G6"/>
-          <Answer AnswerId="61616" OrderNumber="5" OptionText="MiniLink"/>
-          <Answer AnswerId="61617" OrderNumber="6" OptionText="Eversense"/>
-          <Answer AnswerId="61618" OrderNumber="7" OptionText="Guardian"/>
-          <Answer AnswerId="61619" OrderNumber="8" OptionText="Guardian 2"/>
-          <Answer AnswerId="61620" OrderNumber="9" OptionText="Guardian 3"/>
-          <Answer AnswerId="61621" OrderNumber="10" OptionText="Enlite"/>
-          <Answer AnswerId="12544" OrderNumber="11" OptionText="FreeStyle Libre 2"/>
+      <Item ItemId="5166" ItemType="2" VarName="NDV_CGM" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="CGM apparat" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="1">
+          <Answer AnswerId="61612" OrderNumber="1" OptionText="FreeStyle Navigator II" ShortCode="FNa2"/>
+          <Answer AnswerId="61613" OrderNumber="2" OptionText="DexCom G4" ShortCode="DXG4"/>
+          <Answer AnswerId="61614" OrderNumber="3" OptionText="DexCom G5" ShortCode="DXG5"/>
+          <Answer AnswerId="61615" OrderNumber="4" OptionText="DexCom G6" ShortCode="DXG6"/>
+          <Answer AnswerId="61616" OrderNumber="5" OptionText="MiniLink" ShortCode="MiLi"/>
+          <Answer AnswerId="61617" OrderNumber="6" OptionText="Eversense" ShortCode="EvSe"/>
+          <Answer AnswerId="61618" OrderNumber="7" OptionText="Guardian" ShortCode="Gua"/>
+          <Answer AnswerId="61619" OrderNumber="8" OptionText="Guardian 2" ShortCode="Gua2"/>
+          <Answer AnswerId="61620" OrderNumber="9" OptionText="Guardian 3" ShortCode="Gua3"/>
+          <Answer AnswerId="61621" OrderNumber="10" OptionText="Enlite" ShortCode="Enli"/>
+          <Answer AnswerId="12544" OrderNumber="11" OptionText="FreeStyle Libre 2" ShortCode="FLi2"/>
         </FormItem>
       </Item>
       <Item ItemId="3849" ItemType="1" VarName="CGM_TIME_IN_RANGE" LoincScale="QN" UnitStr="%">
-        <FormItem ItemText="Time in range siste 14 dager" ItemHelp="Prosent av glukosemålinger som er i intervallet 3,9-10 mmol/L." MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Time in range siste 14 dager" ItemHelp="Prosent av glukosemÃ¥linger som er i intervallet 3,9-10 mmol/L." MinExpression="0" MaxExpression="100" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Highlight="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -198,9 +201,9 @@
     </Page>
     <Page PageTitle="New*">
       <Item ItemId="2083" ItemType="2" VarName="DP_TILTAK_HBA1C" LoincScale="ORD">
-        <FormItem ItemHeader="Tiltak mot høy HbA1c" ItemText="Er det iverksatt særskilte tiltak mot høy HbA1c?" ItemHelp="Vurder særskilte tiltak fordi HbA1c er på 75 mmol/mol (9%) eller mer." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="1">
+        <FormItem ItemHeader="Tiltak mot hÃ¸y HbA1c" ItemText="Er det iverksatt sÃ¦rskilte tiltak mot hÃ¸y HbA1c?" ItemHelp="Vurder sÃ¦rskilte tiltak fordi HbA1c er pÃ¥ 75 mmol/mol (9%) eller mer." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Highlight="1" Optional="1">
           <Answer AnswerId="11059" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="11060" OrderNumber="2" OptionText="Nei, pasienten ønsker ikke"/>
+          <Answer AnswerId="11060" OrderNumber="2" OptionText="Nei, pasienten Ã¸nsker ikke"/>
           <Answer AnswerId="11061" OrderNumber="3" OptionText="Nei, ikke aktuelt"/>
           <Answer AnswerId="11062" OrderNumber="4" OptionText="Vet ikke / ubesvart" CarryException="1"/>
         </FormItem>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0"?>
 <StudyForm>
   <Form FormId="695" FormName="FORM695" FormTitle="Insulinpenndosering">
     <Page PageTitle="Basalinsulin">
@@ -36,15 +36,15 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Måltidsinsulin">
+    <Page PageTitle="MÃ¥ltidsinsulin">
       <Item ItemId="3206" ItemType="2" VarName="INS_MEAL_YN" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Bruker måltidsinsulin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Bruker mÃ¥ltidsinsulin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer AnswerId="16010" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
           <Answer AnswerId="16011" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Detaljer måltidsinsulin*">
+    <Page PageTitle="Detaljer mÃ¥ltidsinsulin*">
       <Item ItemId="4215" ItemType="4" VarName="INS_MEAL_NAME" LoincScale="NAR" DisplayFormat="" Multiline="0">
         <FormItem ItemHeader="Preparat*" ItemText="Preparatnavn og type penn" ItemHelp="F.eks: Humalog engangspenn, NovoRapid Flexpen, Actrapid Penfill, Apidra SoloStar, Insuman Rapid" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0">
           <Answer/>
@@ -71,7 +71,7 @@
         </FormItem>
       </Item>
       <Item ItemId="3905" ItemType="1" VarName="INS_MEAL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="Sum måltidsinsulin" ItemHelp="" Expression="IS0(INS_MEAL_YN-1) * ( INS_MEAL_BREAKFAST*ISPOS(INS_MEAL_BREAKFAST+1) + INS_MEAL_BRUNCH*ISPOS(INS_MEAL_BRUNCH+1) + INS_MEAL_LUNCH*ISPOS(INS_MEAL_LUNCH+1) + INS_MEAL_DINNER*ISPOS(INS_MEAL_DINNER+1) + INS_MEAL_SUPPER*ISPOS(INS_MEAL_SUPPER+1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
+        <FormItem ItemText="Sum mÃ¥ltidsinsulin" ItemHelp="" Expression="IS0(INS_MEAL_YN-1) * ( INS_MEAL_BREAKFAST*ISPOS(INS_MEAL_BREAKFAST+1) + INS_MEAL_BRUNCH*ISPOS(INS_MEAL_BRUNCH+1) + INS_MEAL_LUNCH*ISPOS(INS_MEAL_LUNCH+1) + INS_MEAL_DINNER*ISPOS(INS_MEAL_DINNER+1) + INS_MEAL_SUPPER*ISPOS(INS_MEAL_SUPPER+1) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -96,7 +96,7 @@
         </FormItem>
       </Item>
       <Item ItemId="3904" ItemType="1" VarName="INS_PREMIX_NOON" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="Midt på dagen" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1">
+        <FormItem ItemText="Midt pÃ¥ dagen" ItemHelp="" MinExpression="0" MaxExpression="300" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -113,7 +113,7 @@
     </Page>
     <Page PageTitle="Totalsum" PageIntroduction="Inkluderer bare dosering i dette skjemaet, ikke evt. pumpe.">
       <Item ItemId="3908" ItemType="1" VarName="INS_ALL_SUM" LoincScale="QN" UnitStr="E" DisplayFormat="">
-        <FormItem ItemText="Døgndose" ItemHelp="" Expression="INS_MEAL_SUM + INS_BASAL_SUM + INS_PREMIX_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
+        <FormItem ItemText="DÃ¸gndose" ItemHelp="" Expression="INS_MEAL_SUM + INS_BASAL_SUM + INS_PREMIX_SUM" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="1" Optional="1" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>

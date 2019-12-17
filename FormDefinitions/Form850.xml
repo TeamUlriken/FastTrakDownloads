@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0"?>
 <StudyForm>
-  <Form FormId="850" FormName="GBD_MATKORTv2" FormTitle="Ernæringsplan">
-    <Page PageTitle="Basisdata" PageIntroduction="MNA screening hentes inn fra siste registrering.  Finnes på kostsamtale ved innkomst eller eget MNA-skjema.">
+  <Form FormId="850" FormName="GBD_MATKORTv2" FormTitle="ErnÃ¦ringsplan">
+    <Page PageTitle="Basisdata" PageIntroduction="MNA screening hentes inn fra siste registrering.  Finnes pÃ¥ kostsamtale ved innkomst eller eget MNA-skjema.">
       <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
-        <FormItem ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="HÃ¸yde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
-        <FormItem ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
+        <FormItem ItemText="Vekt" ItemHelp="Uten sko og yttertÃ¸y." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0" Decimals="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -23,26 +23,26 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Beregninger av behov" PageIntroduction="Beregningene er basert på pasientens vekt og er tommelfingerregler. Ved væskerestriksjon, snakk med lege!">
+    <Page PageTitle="Beregninger av behov" PageIntroduction="Beregningene er basert pÃ¥ pasientens vekt og er tommelfingerregler. Ved vÃ¦skerestriksjon, snakk med lege!">
       <Item ItemId="10222" ItemType="1" VarName="KcalPerDay" LoincScale="QN" UnitStr="kcal/d" DisplayFormat="">
-        <FormItem ItemHeader="Energibehov" ItemText="Energibehov per døgn" ItemHelp="Dette er et anslått minimumsbehov for sengeliggende pasient." Expression="30*WEIGHT*ISPOS(WEIGHT)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemHeader="Energibehov" ItemText="Energibehov per dÃ¸gn" ItemHelp="Dette er et anslÃ¥tt minimumsbehov for sengeliggende pasient." Expression="30*WEIGHT*ISPOS(WEIGHT)" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="10223" ItemType="1" VarName="FluidsPerDay" LoincScale="QN" UnitStr="mL/d" DisplayFormat="">
-        <FormItem ItemHeader="Væskebehov" ItemText="Væskebehov per døgn" ItemHelp="Ved oppkast, feber og diaré er behovet økt." Expression="30 * WEIGHT * ISPOS(WEIGHT) * ISPOS(30*WEIGHT*ISPOS(WEIGHT)-1500) + 1500 * ( 1-ISPOS(30*WEIGHT*ISPOS(WEIGHT)-1500) )" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemHeader="VÃ¦skebehov" ItemText="VÃ¦skebehov per dÃ¸gn" ItemHelp="Ved oppkast, feber og diarÃ© er behovet Ã¸kt." Expression="30 * WEIGHT * ISPOS(WEIGHT) * ISPOS(30*WEIGHT*ISPOS(WEIGHT)-1500) + 1500 * ( 1-ISPOS(30*WEIGHT*ISPOS(WEIGHT)-1500) )" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="10224" ItemType="1" VarName="ProteinPerDay" LoincScale="QN" UnitStr="g/d" DisplayFormat="">
-        <FormItem ItemHeader="Proteinbehov" ItemText="Proteinbehov per døgn" ItemHelp="Proteinbehovet for eldre og syke er 1,2-1,5 g/kg/døgn.  Denne beregningen er basert på 1,2 g/kg/døgn." Expression="WEIGHT*1.2*ISPOS(WEIGHT)" MinExpression="20" MaxExpression="1000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemHeader="Proteinbehov" ItemText="Proteinbehov per dÃ¸gn" ItemHelp="Proteinbehovet for eldre og syke er 1,2-1,5 g/kg/dÃ¸gn.  Denne beregningen er basert pÃ¥ 1,2 g/kg/dÃ¸gn." Expression="WEIGHT*1.2*ISPOS(WEIGHT)" MinExpression="20" MaxExpression="1000" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Bekymring" PageIntroduction="Bekymring vedrørerende ernæringsstatus for pasienten">
+    <Page PageTitle="Bekymring" PageIntroduction="Bekymring vedrÃ¸rerende ernÃ¦ringsstatus for pasienten">
       <Item ItemId="5507" ItemType="2" VarName="KOST_Bekymring" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Bekymring" ItemText="Bekymring vedrørende ernærings-status?" ItemHelp="Bekymring hos beboer selv, pårørende eller andre som kjenner beboer." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemHeader="Bekymring" ItemText="Bekymring vedrÃ¸rende ernÃ¦rings-status?" ItemHelp="Bekymring hos beboer selv, pÃ¥rÃ¸rende eller andre som kjenner beboer." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="29711" OrderNumber="1" OptionText="Ja*" ShortCode="J"/>
           <Answer AnswerId="29712" OrderNumber="2" OptionText="Nei" VerboseText="Ingen spesielle bekymringer." ShortCode="N"/>
         </FormItem>
@@ -50,12 +50,12 @@
     </Page>
     <Page PageTitle="Bekymringer*">
       <Item ItemId="5472" ItemType="4" VarName="MAT_Egenvurdering" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemHeader="Egenvurdering" ItemText="Beboers egen vurdering (ev. pårørendes inntrykk) av hva som skal til for å bedre/opprettholde ernæringstilstanden." ItemHelp="F.eks. Bedre matlyst? Endret måltidssituasjon?" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemHeader="Egenvurdering" ItemText="Beboers egen vurdering (ev. pÃ¥rÃ¸rendes inntrykk) av hva som skal til for Ã¥ bedre/opprettholde ernÃ¦ringstilstanden." ItemHelp="F.eks. Bedre matlyst? Endret mÃ¥ltidssituasjon?" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Faktorer som påvirker matinntaket">
+    <Page PageTitle="Faktorer som pÃ¥virker matinntaket">
       <Item ItemId="5474" ItemType="2" VarName="MAT_Tyggeproblemer" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Tyggeproblemer" ItemText="Har beboer tyggeproblemer?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="29595" OrderNumber="1" OptionText="Ja" VerboseText="Har tyggeproblemer." ShortCode="J"/>
@@ -71,12 +71,12 @@
     </Page>
     <Page PageTitle="Andre faktorer*">
       <Item ItemId="10221" ItemType="4" VarName="VAR10221" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemHeader="Andre faktorer" ItemText="Andre faktorer som kan påvirke matinntaket" ItemHelp="Eks: Sykdom, symptomer, kvalme, smerter, medikamenter, bivirkninger, tann- og munnstatus (sår, protese, tørrhet), psykososiale forhold, familie, ensomhet, sorg, fysisk funksjon, balanse, gangfunksjon, søvn, forstoppelse, diare." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem ItemHeader="Andre faktorer" ItemText="Andre faktorer som kan pÃ¥virke matinntaket" ItemHelp="Eks: Sykdom, symptomer, kvalme, smerter, medikamenter, bivirkninger, tann- og munnstatus (sÃ¥r, protese, tÃ¸rrhet), psykososiale forhold, familie, ensomhet, sorg, fysisk funksjon, balanse, gangfunksjon, sÃ¸vn, forstoppelse, diare." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Preferanser" PageIntroduction="Husk å ta med mengder i teksten, eks. 4 brødskiver.">
+    <Page PageTitle="Preferanser" PageIntroduction="Husk Ã¥ ta med mengder i teksten, eks. 4 brÃ¸dskiver.">
       <Item ItemId="5473" ItemType="2" VarName="MAT_MestSulten" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Mest sulten" ItemText="Tidspunkt beboer er mest sulten" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="29589" OrderNumber="1" OptionText="morgen."/>
@@ -86,44 +86,44 @@
         </FormItem>
       </Item>
       <Item ItemId="5249" ItemType="4" VarName="MAT_Frokost" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemText="Frokost" ItemHelp="Eksempler fast føde: fine eller grove skiver, havre- eller semule-grøt, frokostblanding, egg. Eksempler drikke: melk, juice, vann, kaffe, te." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Frokost" ItemHelp="Eksempler fast fÃ¸de: fine eller grove skiver, havre- eller semule-grÃ¸t, frokostblanding, egg. Eksempler drikke: melk, juice, vann, kaffe, te." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="5250" ItemType="4" VarName="MAT_Lunsj" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemText="Lunsj" ItemHelp="Eksempler fast føde: Fine eller grove skiver, havre- eller semulegrøt, suppe, frukt, egg. Eksempler drikke: melk, juice, vann, kaffe, eller te." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Lunsj" ItemHelp="Eksempler fast fÃ¸de: Fine eller grove skiver, havre- eller semulegrÃ¸t, suppe, frukt, egg. Eksempler drikke: melk, juice, vann, kaffe, eller te." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="5251" ItemType="4" VarName="MAT_Middag" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemText="Middag" ItemHelp="Eksempler fast føde: kjøtt, fisk, grønnsaker, supper, dessert. Eksempler drikke: melk, juice, vann, kaffe, eller te." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Middag" ItemHelp="Eksempler fast fÃ¸de: kjÃ¸tt, fisk, grÃ¸nnsaker, supper, dessert. Eksempler drikke: melk, juice, vann, kaffe, eller te." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="5252" ItemType="4" VarName="MAT_Kvelds" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemText="Kvelds" ItemHelp="Eksempler fast føde: fine eller grove skiver, havre- eller semule-grøt, frokostblanding. Eksempler drikke: melk, juice, kaffe, te, vann." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemText="Kvelds" ItemHelp="Eksempler fast fÃ¸de: fine eller grove skiver, havre- eller semule-grÃ¸t, frokostblanding. Eksempler drikke: melk, juice, kaffe, te, vann." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="10218" ItemType="4" VarName="MAT_Ekstra" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemHeader="Ekstramåltid" ItemText="Reduksjon av nattfaste, tidlig frokost eller sen kvelds" ItemHelp="Eksempler: Beriket drikke, E+, &quot;Rett i koppen&quot; suppe eller kakao. Fine eller grove skiver, havre- eller semule-grøt, frokostblanding." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemHeader="EkstramÃ¥ltid" ItemText="Reduksjon av nattfaste, tidlig frokost eller sen kvelds" ItemHelp="Eksempler: Beriket drikke, E+, &quot;Rett i koppen&quot; suppe eller kakao. Fine eller grove skiver, havre- eller semule-grÃ¸t, frokostblanding." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="10219" ItemType="4" VarName="MAT_Ikke" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemHeader="Ønsker ikke" ItemText="Finnes det matvarer som pasienten ikke ønsker å spise?" ItemHelp="Eksempel: Påleggstyper, middagsretter etc." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemHeader="Ã˜nsker ikke" ItemText="Finnes det matvarer som pasienten ikke Ã¸nsker Ã¥ spise?" ItemHelp="Eksempel: PÃ¥leggstyper, middagsretter etc." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Andre ernæringstiltak">
+    <Page PageTitle="Andre ernÃ¦ringstiltak">
       <Item ItemId="5459" ItemType="4" VarName="MAT_Hensyn" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemText="Miljø- og måltids- hensyn" ItemHelp="Eventuelle tilpasninger i spisesituasjonen, f.eks assistanse, medspising (helsepersonell/pårørende), har skjermingsbehov, liker små porsjoner, eller å spise sent på rommet." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
+        <FormItem ItemText="MiljÃ¸- og mÃ¥ltids- hensyn" ItemHelp="Eventuelle tilpasninger i spisesituasjonen, f.eks assistanse, medspising (helsepersonell/pÃ¥rÃ¸rende), har skjermingsbehov, liker smÃ¥ porsjoner, eller Ã¥ spise sent pÃ¥ rommet." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="5460" ItemType="2" VarName="KOST_Beriket" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Beriket kost" ItemText="Beriket kost, ernæringsdrikker eller mellom-måltider" ItemHelp="Pasienten får tillegg av fløte e.l. i vanlig mat, eller tilbys jevnlig næringsdrikk eller andre mellom-måltid" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemHeader="Beriket kost" ItemText="Beriket kost, ernÃ¦ringsdrikker eller mellom-mÃ¥ltider" ItemHelp="Pasienten fÃ¥r tillegg av flÃ¸te e.l. i vanlig mat, eller tilbys jevnlig nÃ¦ringsdrikk eller andre mellom-mÃ¥ltid" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer AnswerId="29543" OrderNumber="1" OptionText="Ja" VerboseText="Beriket kost." ShortCode="J"/>
           <Answer AnswerId="29544" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
         </FormItem>
@@ -219,51 +219,51 @@
         </FormItem>
       </Item>
       <Item ItemId="10220" ItemType="8" VarName="VAR10220" LoincScale="MSG" DisplayFormat="">
-        <FormItem ItemHeader="Alvorlig reaksjon?" ItemText="Alvorlige reaksjoner på matvarer skal også registreres under CAVE." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemHeader="Alvorlig reaksjon?" ItemText="Alvorlige reaksjoner pÃ¥ matvarer skal ogsÃ¥ registreres under CAVE." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Medisinske ernæringstiltak">
+    <Page PageTitle="Medisinske ernÃ¦ringstiltak">
       <Item ItemId="5466" ItemType="2" VarName="MDS_K4b" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Sonde-ernæring" ItemHelp="Ernæring via enteral sonde, for eksempel nasogastrisk eller PEG." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="29559" OrderNumber="1" OptionText="Ja" VerboseText="Sonde-ernæring." ShortCode="J"/>
+        <FormItem ItemText="Sonde-ernÃ¦ring" ItemHelp="ErnÃ¦ring via enteral sonde, for eksempel nasogastrisk eller PEG." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="29559" OrderNumber="1" OptionText="Ja" VerboseText="Sonde-ernÃ¦ring." ShortCode="J"/>
           <Answer AnswerId="29560" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Beskrivelse sondemat*">
       <Item ItemId="5467" ItemType="4" VarName="MAT_SondeTekst" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemHeader="Type og mengde" ItemText="Type og mengde sonde-ernæring" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemHeader="Type og mengde" ItemText="Type og mengde sonde-ernÃ¦ring" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Intravenøs ernæring*">
+    <Page PageTitle="IntravenÃ¸s ernÃ¦ring*">
       <Item ItemId="5468" ItemType="2" VarName="MDS_K4a" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Intravenøs ernæring" ItemHelp="Parenteral ernæring i perifer eller sentral vene." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
-          <Answer AnswerId="29563" OrderNumber="1" OptionText="Ja" VerboseText="Parenteral ernæring." ShortCode="J"/>
+        <FormItem ItemText="IntravenÃ¸s ernÃ¦ring" ItemHelp="Parenteral ernÃ¦ring i perifer eller sentral vene." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+          <Answer AnswerId="29563" OrderNumber="1" OptionText="Ja" VerboseText="Parenteral ernÃ¦ring." ShortCode="J"/>
           <Answer AnswerId="29564" OrderNumber="2" OptionText="Nei*" ShortCode="N"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Beskrivelse intravenøs ernæring*">
+    <Page PageTitle="Beskrivelse intravenÃ¸s ernÃ¦ring*">
       <Item ItemId="5469" ItemType="4" VarName="MAT_ParenteralTekst" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemHeader="Type og mengde" ItemText="Type og mengde intravenøs ernæring" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
+        <FormItem ItemHeader="Type og mengde" ItemText="Type og mengde intravenÃ¸s ernÃ¦ring" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Andre medisinske ernæringstiltak*">
+    <Page PageTitle="Andre medisinske ernÃ¦ringstiltak*">
       <Item ItemId="10225" ItemType="4" VarName="VAR10225" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemText="Andre medisinske ernæringstiltak" ItemHelp="Næringsdrikker, Calogen (skal stå i medisinkurve), Energipulver, proteinpulver.  Tilskudd av vitamin/mineral/tran (snakk med lege)." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Andre medisinske ernÃ¦ringstiltak" ItemHelp="NÃ¦ringsdrikker, Calogen (skal stÃ¥ i medisinkurve), Energipulver, proteinpulver.  Tilskudd av vitamin/mineral/tran (snakk med lege)." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
     <Page PageTitle="Revisjonsdato">
       <Item ItemId="5586" ItemType="5" VarName="MAT_RevisjonsDato" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Skal vurderes på nytt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Skal vurderes pÃ¥ nytt" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -273,7 +273,7 @@
         </FormItem>
       </Item>
       <Item ItemId="4896" ItemType="2" VarName="KOST_Registrering" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Kostregistrering" ItemText="Skal det gjennomføres kostregistrering?" ItemHelp="Fullstendig registrering av kalori- og væske-inntak på eget skjema, i en avgrenset periode. Standard registreringsperiode er TO dager. Registreringen skal ha et klart mål, og fører automatisk til revurdering av tiltak etter endt registrering." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemHeader="Kostregistrering" ItemText="Skal det gjennomfÃ¸res kostregistrering?" ItemHelp="Fullstendig registrering av kalori- og vÃ¦ske-inntak pÃ¥ eget skjema, i en avgrenset periode. Standard registreringsperiode er TO dager. Registreringen skal ha et klart mÃ¥l, og fÃ¸rer automatisk til revurdering av tiltak etter endt registrering." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="27368" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="27369" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
@@ -281,7 +281,7 @@
     </Page>
     <Page PageTitle="Kostregistrering*">
       <Item ItemId="10227" ItemType="1" VarName="VAR10227" LoincScale="QN" UnitStr="dager" DisplayFormat="">
-        <FormItem ItemHeader="Kostregistrering" ItemText="Hvor mange dager skal kostregistrering gjennomføres?" ItemHelp="" MinExpression="1" MaxExpression="7" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemHeader="Kostregistrering" ItemText="Hvor mange dager skal kostregistrering gjennomfÃ¸res?" ItemHelp="" MinExpression="1" MaxExpression="7" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -293,7 +293,7 @@
     </Page>
     <Page PageTitle="Avledede data*">
       <Item ItemId="5642" ItemType="2" VarName="KOST_KunstigErnaering" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Kunstig ernæring" ItemHelp="" Expression="2-ISPOS( ISNULL( MDS_K4a - 1 ) + ISNULL( MDS_K4b - 1 ) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
+        <FormItem ItemText="Kunstig ernÃ¦ring" ItemHelp="" Expression="2-ISPOS( ISNULL( MDS_K4a - 1 ) + ISNULL( MDS_K4b - 1 ) )" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer AnswerId="30253" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="30254" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>

@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0"?>
 <StudyForm>
   <Form FormId="824" FormName="GbdAvvik" FormTitle="Avvik" FormDateItemId="3746">
     <Page PageTitle="Om avviket">
-      <Item ItemId="3746" ItemType="5" VarName="VAR3746" LoincScale="DATE">
+      <Item ItemId="3746" ItemType="5" VarName="AvvikDato" LoincScale="DATE">
         <FormItem ItemText="Dato for avviket" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="8518" ItemType="4" VarName="AvvikStikkord" LoincScale="NAR" DisplayFormat="" Multiline="0">
-        <FormItem ItemHeader="Stikkord" ItemText="Skriv bare noen få stikkord om avviket her, felt for utfyllende informasjon kommer senere." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemHeader="Stikkord" ItemText="Skriv bare noen fÃ¥ stikkord om avviket her, felt for utfyllende informasjon kommer senere." ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="9993" ItemType="4" VarName="AvvikTekst" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemHeader="Beskrivelse" ItemText="Hva skjedde? Beskriv hendelsesforløpet slik at din leder kan danne seg et godt bilde av hva som har skjedd." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemHeader="Beskrivelse" ItemText="Hva skjedde? Beskriv hendelsesforlÃ¸pet slik at din leder kan danne seg et godt bilde av hva som har skjedd." ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
@@ -21,7 +21,7 @@
         <FormItem ItemText="Type avvik" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="47373" OrderNumber="1" OptionText="Fall"/>
           <Answer AnswerId="47374" OrderNumber="2" OptionText="Legemidler"/>
-          <Answer AnswerId="47375" OrderNumber="3" OptionText="Ernæring"/>
+          <Answer AnswerId="47375" OrderNumber="3" OptionText="ErnÃ¦ring"/>
           <Answer AnswerId="47376" OrderNumber="4" OptionText="Manglende dokumentasjon internt eller hos fastlegen"/>
           <Answer AnswerId="47377" OrderNumber="5" OptionText="Manglende dokumentasjon fra sykehus"/>
           <Answer AnswerId="47378" OrderNumber="6" OptionText="Overgrep"/>
@@ -41,7 +41,7 @@
       <Item ItemId="3580" ItemType="2" VarName="SKADE_FALL" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Fall eller skade" ItemText="Var dette en fallskade eller annen skade?" ItemHelp="" Expression="ISNULL(AvvikType-1)*ISNULL(AvvikSkade-1)+2*ISNULL(AvvikType-8)*ISNULL(AvvikSkade-1)&#xA;+3*ISNULL(AvvikType-1)*ISPOS(AvvikSkade-1)" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" Optional="1">
           <Answer AnswerId="18336" OrderNumber="1" OptionText="Fall med skade."/>
-          <Answer AnswerId="18337" OrderNumber="2" OptionText="Skade av annen årsak enn fall."/>
+          <Answer AnswerId="18337" OrderNumber="2" OptionText="Skade av annen Ã¥rsak enn fall."/>
           <Answer AnswerId="37866" OrderNumber="3" OptionText="Fall uten sikker skade."/>
           <Answer AnswerId="52908" OrderNumber="9" OptionText="Hverken fall eller skade."/>
         </FormItem>
@@ -56,10 +56,10 @@
     </Page>
     <Page PageTitle="Beskrivelse skade/fall" PageIntroduction="For fall og skader skal det registreres litt ekstra informasjon om hva som skjedde.">
       <Item ItemId="3579" ItemType="2" VarName="SKADE_AKTIVITET" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Aktivitet" ItemText="Aktivitet på fall-/skadetidspunkt" ItemHelp="Kategoriene brukes til å lage statistikk og derved muliggjøre forebyggende tiltak." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemHeader="Aktivitet" ItemText="Aktivitet pÃ¥ fall-/skadetidspunkt" ItemHelp="Kategoriene brukes til Ã¥ lage statistikk og derved muliggjÃ¸re forebyggende tiltak." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="18330" OrderNumber="1" OptionText="Ut av og opp i seng"/>
           <Answer AnswerId="18331" OrderNumber="2" OptionText="Bruk av rullestol (f.eks. fall ut av..)"/>
-          <Answer AnswerId="18332" OrderNumber="3" OptionText="Toalettbesøk"/>
+          <Answer AnswerId="18332" OrderNumber="3" OptionText="ToalettbesÃ¸k"/>
           <Answer AnswerId="18333" OrderNumber="4" OptionText="Gange med rullator"/>
           <Answer AnswerId="18334" OrderNumber="5" OptionText="Fri gange"/>
           <Answer AnswerId="18335" OrderNumber="6" OptionText="Opp og ned av stol"/>
@@ -67,13 +67,13 @@
         </FormItem>
       </Item>
       <Item ItemId="3575" ItemType="2" VarName="SKADE_OBSERVERT" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Observert av personalet" ItemText="Så pleiepersonell da fallet/skaden skjedde?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemHeader="Observert av personalet" ItemText="SÃ¥ pleiepersonell da fallet/skaden skjedde?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="18430" OrderNumber="1" OptionText="Ja" VerboseText="Observert." ShortCode="J"/>
           <Answer AnswerId="18431" OrderNumber="2" OptionText="Nei" VerboseText="Ikke observert." ShortCode="N"/>
         </FormItem>
       </Item>
       <Item ItemId="3576" ItemType="2" VarName="SKADE_INVOLVERT" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Personalet involvert" ItemText="Var pleiepersonell direkte involvert i handlingen som medførte fallet/skaden?" ItemHelp="Her krysser du &quot;ja&quot; dersom skaden skjedde i forbindelse med bruk av heis eller annet hjelpemiddel, - at du ikke klarte &quot;å holde&quot; pasienten el.l." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemHeader="Personalet involvert" ItemText="Var pleiepersonell direkte involvert i handlingen som medfÃ¸rte fallet/skaden?" ItemHelp="Her krysser du &quot;ja&quot; dersom skaden skjedde i forbindelse med bruk av heis eller annet hjelpemiddel, - at du ikke klarte &quot;Ã¥ holde&quot; pasienten el.l." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="18438" OrderNumber="1" OptionText="Ja" VerboseText="Personalet involvert." ShortCode="J"/>
           <Answer AnswerId="18439" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
         </FormItem>
@@ -88,17 +88,17 @@
     </Page>
     <Page PageTitle="Brudd*">
       <Item ItemId="3581" ItemType="2" VarName="SKADE_BRUDD" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Brudd" ItemText="Medførte skaden et brudd?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemHeader="Brudd" ItemText="MedfÃ¸rte skaden et brudd?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="18456" OrderNumber="1" OptionText="Ja" VerboseText="Brudd." ShortCode="J"/>
           <Answer AnswerId="18457" OrderNumber="2" OptionText="Nei" VerboseText="Ikke brudd." ShortCode="N"/>
           <Answer AnswerId="37968" OrderNumber="3" OptionText="Vet ikke" VerboseText="Mulig brudd?" ShortCode="V"/>
         </FormItem>
       </Item>
       <Item ItemId="3578" ItemType="2" VarName="SKADE_BEHANDSTED" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Behandlet" ItemText="Hvor ble fallet/skaden behandlet?" ItemHelp="Velg høyeste behandlingsnivå.  Hvis pasienten ble innlagt fra legevakt til sykehus velger du Sykehus." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
-          <Answer AnswerId="18364" OrderNumber="1" OptionText="Her" VerboseText="Pasienten ble bare tatt hånd om her."/>
-          <Answer AnswerId="18365" OrderNumber="2" OptionText="Legevakten" VerboseText="Pasienten ble behandlet på Legevakten."/>
-          <Answer AnswerId="18366" OrderNumber="3" OptionText="Sykehus" VerboseText="Pasienten ble innlagt på sykehus."/>
+        <FormItem ItemHeader="Behandlet" ItemText="Hvor ble fallet/skaden behandlet?" ItemHelp="Velg hÃ¸yeste behandlingsnivÃ¥.  Hvis pasienten ble innlagt fra legevakt til sykehus velger du Sykehus." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+          <Answer AnswerId="18364" OrderNumber="1" OptionText="Her" VerboseText="Pasienten ble bare tatt hÃ¥nd om her."/>
+          <Answer AnswerId="18365" OrderNumber="2" OptionText="Legevakten" VerboseText="Pasienten ble behandlet pÃ¥ Legevakten."/>
+          <Answer AnswerId="18366" OrderNumber="3" OptionText="Sykehus" VerboseText="Pasienten ble innlagt pÃ¥ sykehus."/>
         </FormItem>
       </Item>
     </Page>
@@ -106,11 +106,11 @@
       <Item ItemId="6402" ItemType="2" VarName="EVENT_SEVERITY" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Alvorlighetsgrad" ItemText="Vurdering av alvorlighetsgrad" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="33896" OrderNumber="1" OptionText="Ingen skade skjedd."/>
-          <Answer AnswerId="33897" OrderNumber="2" OptionText="Mild: En hendelse som vanligvis er forbigående og krever minimal behandling.  Påvirker normalt ikke dagliglivet."/>
-          <Answer AnswerId="33898" OrderNumber="3" OptionText="Moderat: En hendelse som krever tilleggsbehandling.  Den påvirker vanlige aktiviteter i dagliglivet og gir ubehag, men uten vesentlig eller varig risiko for pasienten."/>
-          <Answer AnswerId="33899" OrderNumber="4" OptionText="Betydelig: En hendelse som krever intensiv tilleggsbehandling.  Dagliglivet eller klinisk status er betydelig endret.  Betydelig risiko for skade, sykehusinnleggelse kan være nødvendig."/>
+          <Answer AnswerId="33897" OrderNumber="2" OptionText="Mild: En hendelse som vanligvis er forbigÃ¥ende og krever minimal behandling.  PÃ¥virker normalt ikke dagliglivet."/>
+          <Answer AnswerId="33898" OrderNumber="3" OptionText="Moderat: En hendelse som krever tilleggsbehandling.  Den pÃ¥virker vanlige aktiviteter i dagliglivet og gir ubehag, men uten vesentlig eller varig risiko for pasienten."/>
+          <Answer AnswerId="33899" OrderNumber="4" OptionText="Betydelig: En hendelse som krever intensiv tilleggsbehandling.  Dagliglivet eller klinisk status er betydelig endret.  Betydelig risiko for skade, sykehusinnleggelse kan vÃ¦re nÃ¸dvendig."/>
           <Answer AnswerId="33900" OrderNumber="5" OptionText="Livstruende/invalidiserende: En hendelse som krever stor eller akutt intervensjon og truer patientens liv.  Hendelsen kan gi varig skade og kan forstyrre patientens mulighet for vanlige aktiviteter."/>
-          <Answer AnswerId="33921" OrderNumber="6" OptionText="Død: Pasienten døde i relasjon til hendelsen."/>
+          <Answer AnswerId="33921" OrderNumber="6" OptionText="DÃ¸d: Pasienten dÃ¸de i relasjon til hendelsen."/>
         </FormItem>
       </Item>
       <Item ItemId="8507" ItemType="2" VarName="AvvikAlvorlighet" LoincScale="ORD" DisplayFormat="">
@@ -128,52 +128,52 @@
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Årsaker til avvik" PageIntroduction="Mer enn én årsak kan velges.  Mangelfull sikring brukes for årsaker som ikke passer i de tre første kategoriene.">
+    <Page PageTitle="Ã…rsaker til avvik" PageIntroduction="Mer enn Ã©n Ã¥rsak kan velges.  Mangelfull sikring brukes for Ã¥rsaker som ikke passer i de tre fÃ¸rste kategoriene.">
       <Item ItemId="8509" ItemType="2" VarName="AvvikRutiner" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Mangelfulle rutiner" ItemText="Var mangelfulle rutiner medvirkende til at avviket oppstod?" ItemHelp="Tjenestemottaker ble skadelidende som følge av feil i eller mangler ved eksisterende rutiner, eller manglende rutiner." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemHeader="Mangelfulle rutiner" ItemText="Var mangelfulle rutiner medvirkende til at avviket oppstod?" ItemHelp="Tjenestemottaker ble skadelidende som fÃ¸lge av feil i eller mangler ved eksisterende rutiner, eller manglende rutiner." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="47333" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="47334" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="47335" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="8508" ItemType="2" VarName="AvvikOpplaering" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Mangelfull opplæring" ItemText="Var mangelfull opplæring medvirkende til at avviket oppstod?" ItemHelp="Tjenestemottaker ble skadelidende som følge av at medarbeider utførte en handling uten opplæring." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
-          <Answer AnswerId="47328" OrderNumber="1" OptionText="Ja" VerboseText="Mangelfull opplæring." ShortCode="J"/>
+        <FormItem ItemHeader="Mangelfull opplÃ¦ring" ItemText="Var mangelfull opplÃ¦ring medvirkende til at avviket oppstod?" ItemHelp="Tjenestemottaker ble skadelidende som fÃ¸lge av at medarbeider utfÃ¸rte en handling uten opplÃ¦ring." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+          <Answer AnswerId="47328" OrderNumber="1" OptionText="Ja" VerboseText="Mangelfull opplÃ¦ring." ShortCode="J"/>
           <Answer AnswerId="47329" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="47330" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="8510" ItemType="2" VarName="AvvikOppfoelging" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Mangelfull oppfølging" ItemText="Var mangelfull oppfølging av rutine/retningslinje medvirkende til at avviket oppstod?" ItemHelp="Tjenestemottaker ble skadelidende som følge av at medarbeider ikke fulgte eksisterende rutiner/arbeidsoppgaver." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemHeader="Mangelfull oppfÃ¸lging" ItemText="Var mangelfull oppfÃ¸lging av rutine/retningslinje medvirkende til at avviket oppstod?" ItemHelp="Tjenestemottaker ble skadelidende som fÃ¸lge av at medarbeider ikke fulgte eksisterende rutiner/arbeidsoppgaver." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="47347" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="47348" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="47349" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="8511" ItemType="2" VarName="AvvikSikring" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Mangelfull sikring / tiltak / annet" ItemText="Var mangelfull sikring/tiltak medvirkende til at avviket oppstod?" ItemHelp="Tjenestemottaker ble skadelidende som følge av en uønsket hendelse" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
+        <FormItem ItemHeader="Mangelfull sikring / tiltak / annet" ItemText="Var mangelfull sikring/tiltak medvirkende til at avviket oppstod?" ItemHelp="Tjenestemottaker ble skadelidende som fÃ¸lge av en uÃ¸nsket hendelse" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer AnswerId="47355" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="47356" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="47357" OrderNumber="3" OptionText="Usikker" ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="9105" ItemType="2" VarName="AvvikHovedarsak" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemHeader="Hovedårsak" ItemText="Av disse, hvilken årsak var viktigst?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemHeader="HovedÃ¥rsak" ItemText="Av disse, hvilken Ã¥rsak var viktigst?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="50810" OrderNumber="1" OptionText="Mangelfulle rutiner"/>
-          <Answer AnswerId="50811" OrderNumber="2" OptionText="Mangelfull opplæring"/>
-          <Answer AnswerId="50812" OrderNumber="3" OptionText="Mangelfull oppfølging av rutine/retningslinje"/>
+          <Answer AnswerId="50811" OrderNumber="2" OptionText="Mangelfull opplÃ¦ring"/>
+          <Answer AnswerId="50812" OrderNumber="3" OptionText="Mangelfull oppfÃ¸lging av rutine/retningslinje"/>
           <Answer AnswerId="50813" OrderNumber="4" OptionText="Mangelfull sikring / Annet"/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Forslag" PageIntroduction="Den som registrerer avviket kan foreslå tiltak for å hindre gjentagelse.">
+    <Page PageTitle="Forslag" PageIntroduction="Den som registrerer avviket kan foreslÃ¥ tiltak for Ã¥ hindre gjentagelse.">
       <Item ItemId="6410" ItemType="4" VarName="AvvikForslag" LoincScale="NAR" DisplayFormat="" Multiline="1">
         <FormItem ItemText="Forslag til korrigerende tiltak" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
     </Page>
-    <Page PageTitle="Status" PageIntroduction="Endring av status skal bare gjøres av den som er ansvarlig for behandling av avviket, typisk avdelingsleder.">
+    <Page PageTitle="Status" PageIntroduction="Endring av status skal bare gjÃ¸res av den som er ansvarlig for behandling av avviket, typisk avdelingsleder.">
       <Item ItemId="8512" ItemType="2" VarName="AvvikStatus" LoincScale="ORD" DisplayFormat="">
         <FormItem ItemHeader="Status" ItemText="Status for avviket" ItemHelp="Velg &quot;Registrert&quot; hvis du ikke selv skal behandle avviket." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="47361" OrderNumber="1" OptionText="Registrert"/>

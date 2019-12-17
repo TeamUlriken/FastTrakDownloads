@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0"?>
 <StudyForm>
   <Form FormId="814" FormName="FORM814" FormTitle="Basisregistrering kirurg">
     <Page PageTitle="Operasjonsbeslutning">
       <Item ItemId="7065" ItemType="5" VarName="BASEREG_OPDECISIONDATE" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Datoen der operasjon blir bestemt" ItemHelp="Datoen der operasjon blir bestemt. All preoperativ utredning og eventuell behandling, utenom preoperativ vektreduksjon er utført." MinExpression="Patient.DOB" MaxExpression="FORM.DATE" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Datoen der operasjon blir bestemt" ItemHelp="Datoen der operasjon blir bestemt. All preoperativ utredning og eventuell behandling, utenom preoperativ vektreduksjon er utfÃ¸rt." MinExpression="Patient.DOB" MaxExpression="FORM.DATE" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="9794" ItemType="2" VarName="BASEREG_PATIENTOPERATION" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Hvordan finansieres pasientens operasjon?" ItemHelp="Hvor kommer pengene fra som betaler for pasientens operasjon? Med offentlige midler menes all finansiering som kommer fra skattemidler, uavhengig om klinikken som utfører inngrepet er privat eller offentlig. Med helseforsikring menes alle typer forsikringer, både der pasienten har betalt premien selv og der premien betales av feks arbeidsgiver. Om flere alternativ er aktuelle angi den hovedsaklige finansieringsformen." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Hvordan finansieres pasientens operasjon?" ItemHelp="Hvor kommer pengene fra som betaler for pasientens operasjon? Med offentlige midler menes all finansiering som kommer fra skattemidler, uavhengig om klinikken som utfÃ¸rer inngrepet er privat eller offentlig. Med helseforsikring menes alle typer forsikringer, bÃ¥de der pasienten har betalt premien selv og der premien betales av feks arbeidsgiver. Om flere alternativ er aktuelle angi den hovedsaklige finansieringsformen." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="53695" OrderNumber="1" OptionText="Offentlige midler"/>
           <Answer AnswerId="53696" OrderNumber="2" OptionText="Helseforsikring (privat eller via ansettelsesforhold etc)"/>
           <Answer AnswerId="53697" OrderNumber="3" OptionText="Pasienten betaler selv"/>
@@ -34,7 +34,7 @@
         </FormItem>
       </Item>
       <Item ItemId="7119" ItemType="2" VarName="BASEREG_OTHERDISEASE" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Annen sykdom som bidrar til operasjonsbeslutningen" ItemHelp="Annen sykdom som kan betraktes som komorbiditet eller sykdom som forverres av overvekt og som har bidratt til beslutninga om å operere pasienten. Feks artrose, infertilitet." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Annen sykdom som bidrar til operasjonsbeslutningen" ItemHelp="Annen sykdom som kan betraktes som komorbiditet eller sykdom som forverres av overvekt og som har bidratt til beslutninga om Ã¥ operere pasienten. Feks artrose, infertilitet." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer AnswerId="39017" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
           <Answer AnswerId="39018" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
         </FormItem>
@@ -42,12 +42,12 @@
     </Page>
     <Page PageTitle="">
       <Item ItemId="7120" ItemType="4" VarName="BASEREG_OTHERDISEASEWHAT" LoincScale="NAR" DisplayFormat="" Multiline="1">
-        <FormItem ItemText="Hva" ItemHelp="Skriv diagnosen(e) så kortfattet som mulig" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
+        <FormItem ItemText="Hva" ItemHelp="Skriv diagnosen(e) sÃ¥ kortfattet som mulig" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
       <Item ItemId="7122" ItemType="1" VarName="BASEREG_OSMRS" LoincScale="QN" UnitStr="poeng" DisplayFormat="">
-        <FormItem ItemText="OS-MRS, Obesity Surgery Mortality Risk Score" ItemHelp="Utregningen gjøres av systemet.&#xA;OS-MRS er en risikoscore for kirurgi på fedmepasienter.&#xA;Minst risiko = 0 poeng. Høyest risiko = 5 poeng.&#xA;Beregnes som følger: Kjønn. Kvinne = 0 Mann = 1&#xA;Alder. &lt;45år = 0 &gt;45 år = 1&#xA;Hypertoni. Nei = 0 Ja = 1&#xA;BMI. &lt;50 = 0 &gt;50 = 1&#xA;Tidligere DVT/PE. Nei = 0 Ja = 1" Expression="ISNULL( Patient.GenderId - 1 ) + ISPOS( AGE - 45 ) + ISPOS( BASEREG_HYPERTENSION ) + ISPOS( BASEREG_BMI - 49.999 ) + ISPOS( BASEREG_PREVIOUSDVT )" MinExpression="0" MaxExpression="5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="OS-MRS, Obesity Surgery Mortality Risk Score" ItemHelp="Utregningen gjÃ¸res av systemet.&#xA;OS-MRS er en risikoscore for kirurgi pÃ¥ fedmepasienter.&#xA;Minst risiko = 0 poeng. HÃ¸yest risiko = 5 poeng.&#xA;Beregnes som fÃ¸lger: KjÃ¸nn. Kvinne = 0 Mann = 1&#xA;Alder. &lt;45Ã¥r = 0 &gt;45 Ã¥r = 1&#xA;Hypertoni. Nei = 0 Ja = 1&#xA;BMI. &lt;50 = 0 &gt;50 = 1&#xA;Tidligere DVT/PE. Nei = 0 Ja = 1" Expression="ISNULL( Patient.GenderId - 1 ) + ISPOS( AGE - 45 ) + ISPOS( BASEREG_HYPERTENSION ) + ISPOS( BASEREG_BMI - 49.999 ) + ISPOS( BASEREG_PREVIOUSDVT )" MinExpression="0" MaxExpression="5" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
