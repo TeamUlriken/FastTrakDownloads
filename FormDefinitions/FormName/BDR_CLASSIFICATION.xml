@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<StudyForm>
+  <Form FormId="1159" FormName="BDR_CLASSIFICATION" FormTitle="BDR - Diabetesklassifikasjon">
+    <Page PageTitle="Klassifikasjon">
+      <Item ItemId="3323" ItemType="5" VarName="BDR_DIAGNOSE" LoincScale="DATE">
+        <FormItem ItemText="Diagnosedato" ItemHelp="" MinExpression="Patient.DOB + 1" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="1" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10512" ItemType="2" VarName="diabetes_Type1" LoincScale="ORD">
+        <FormItem ItemText="Diabetes type 1" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="13363" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="13364" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="13365" OrderNumber="888" OptionText="Vet ikke"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10529" ItemType="2" VarName="diabetes_Type1Antistoffe" LoincScale="ORD">
+        <FormItem ItemText="Antistoffer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="13368" OrderNumber="1" OptionText="1"/>
+          <Answer AnswerId="13369" OrderNumber="2" OptionText="2"/>
+          <Answer AnswerId="13370" OrderNumber="3" OptionText="3"/>
+          <Answer AnswerId="13371" OrderNumber="4" OptionText="4"/>
+          <Answer AnswerId="13372" OrderNumber="5" OptionText="5"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10513" ItemType="2" VarName="diabetes_Type2" LoincScale="ORD">
+        <FormItem ItemText="Diabetes type 2" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="62306" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="62307" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="62308" OrderNumber="888" OptionText="Vet ikke"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Type 2 detaljer*">
+      <Item ItemId="10525" ItemType="2" VarName="diabetes_Type2Alt" LoincScale="ORD">
+        <FormItem ItemText="Hvilken metode er brukt til å diagnostisere type 2?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="13366" OrderNumber="1" OptionText="Peroral glukosebelastning"/>
+          <Answer AnswerId="13367" OrderNumber="2" OptionText="HbA1c"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Type 2 glukoseverdi*">
+      <Item ItemId="10526" ItemType="1" VarName="diabetes_Type2Glukose" LoincScale="QN">
+        <FormItem ItemText="2-timers glukoseverdi" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="HbA1c ved diagnose*">
+      <Item ItemId="10527" ItemType="1" VarName="diabetes_Type2HbA1c" LoincScale="QN" UnitStr="%">
+        <FormItem ItemText="HbA1c verdi" ItemHelp="" MinExpression="5" MaxExpression="25" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10528" ItemType="1" VarName="diabetes_type2hba1c_mol" LoincScale="QN" UnitStr="mmol/mol">
+        <FormItem ItemText="HbA1c verdi" ItemHelp="" MinExpression="25" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Mody*">
+      <Item ItemId="10514" ItemType="2" VarName="diabetes_Mody" LoincScale="ORD">
+        <FormItem ItemText="Mody" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="62310" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="62311" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="62312" OrderNumber="888" OptionText="Vet ikke"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Mody detaljer*">
+      <Item ItemId="10524" ItemType="4" VarName="diabetes_ModyNr" LoincScale="NAR" Multiline="0">
+        <FormItem ItemText="Mody nummer og gen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10519" ItemType="5" VarName="diabetes_ModyDato" LoincScale="DATE">
+        <FormItem ItemText="Dato for Mody gentesting" ItemHelp="" MinExpression="Patient.DOB + 1" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Kir 6.2*">
+      <Item ItemId="10517" ItemType="2" VarName="diabetes_Kir62" LoincScale="ORD">
+        <FormItem ItemText="Kir 6.2 diabetes" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="62322" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="62323" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="62324" OrderNumber="888" OptionText="Vet ikke"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Kir 6.2 detaljer*">
+      <Item ItemId="10518" ItemType="5" VarName="diabetes_Kir62Dato" LoincScale="DATE">
+        <FormItem ItemText="Dato for Kir 6.2. diagnose" ItemHelp="" MinExpression="Patient.DOB + 1" MaxExpression="NOW" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="New*">
+      <Item ItemId="10515" ItemType="2" VarName="diabetes_SekDiabetes" LoincScale="ORD">
+        <FormItem ItemText="Sekundær diabetes" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="62314" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="62315" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="62316" OrderNumber="888" OptionText="Vet ikke"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10520" ItemType="4" VarName="diabetes_SekDiabetesTeks" LoincScale="NAR" Multiline="0">
+        <FormItem ItemText="Telst for type/kommentar" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10516" ItemType="2" VarName="diabetes_AnnenDiabetes" LoincScale="ORD">
+        <FormItem ItemText="Annen type diabetes" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="62318" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="62319" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="62320" OrderNumber="888" OptionText="Vet ikke"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10521" ItemType="4" VarName="diabetes_AnnenDiabetesTe" LoincScale="NAR" Multiline="0">
+        <FormItem ItemText="Tekst for type/kommentar" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10522" ItemType="2" VarName="diabetes_UkjentDiabetes" LoincScale="ORD">
+        <FormItem ItemText="Annen type diabetes" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="62326" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="62327" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="62328" OrderNumber="888" OptionText="Vet ikke"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10523" ItemType="4" VarName="diabetes_UkjentDiabetesT" LoincScale="NAR" Multiline="0">
+        <FormItem ItemText="Tekst for type/kommentar" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="10513">
+      <Activate EnumVal="1" PageConditionId="8572" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="10525">
+      <Activate EnumVal="1" PageConditionId="8573" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="2" PageConditionId="8574" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="10514">
+      <Activate EnumVal="1" PageConditionId="8570" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="10517">
+      <Activate EnumVal="1" PageConditionId="8571" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="10515">
+      <Activate EnumVal="1" PageConditionId="8577" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="10516">
+      <Activate EnumVal="1" PageConditionId="8576" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="10522">
+      <Activate EnumVal="1" PageConditionId="8575" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>

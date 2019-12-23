@@ -1,0 +1,335 @@
+<?xml version="1.0"?>
+<StudyForm>
+  <Form FormId="1138" FormName="NDV_PROM_PASIENTINIT" FormTitle="Pasientinitiert PROMs">
+    <Page PageTitle="Bakgrunn">
+      <Item ItemId="3389" ItemType="2" VarName="NDV_CONSENT" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Samtykke for diabetesregisteret" ItemHelp="Norsk diabetesregister for voksne. Kontaktperson Karianne Fjeld Løvaas." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="16869" OrderNumber="1" OptionText="Ja" VerboseText="Samtykke gitt til diabetesregisteret." ShortCode="J"/>
+          <Answer AnswerId="16870" OrderNumber="2" OptionText="Nei" VerboseText="Ikke samtykke til diabetesregisteret." ShortCode="N"/>
+          <Answer AnswerId="19223" OrderNumber="3" OptionText="Trukket tilbake" VerboseText="Samtykke til diabetesregisteret trukket tilbake." ShortCode="Tr"/>
+          <Answer AnswerId="20850" OrderNumber="4" OptionText="Ukjent*" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3196" ItemType="2" VarName="NDV_TYPE" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Diabetes type" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="15986" OrderNumber="1" OptionText="Type 1 (inkl. LADA)" VerboseText="Type 1 diabetes." ShortCode="1" ICD10="E10"/>
+          <Answer AnswerId="15987" OrderNumber="2" OptionText="Type 2" VerboseText="Type 2 diabetes." ShortCode="2" ICD10="E11"/>
+          <Answer AnswerId="15988" OrderNumber="3" OptionText="Annen diabetestype (inkl. pankreatitt, MODY)." ShortCode="A"/>
+          <Answer AnswerId="16137" OrderNumber="4" OptionText="er ikke avklart." ShortCode="U" ICD10="E14"/>
+          <Answer AnswerId="40942" OrderNumber="5" OptionText="Svangerskapsdiabetes." ShortCode="S" ICD10="O24"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3486" ItemType="1" VarName="NDV_DIAGNOSE_YYYY" LoincScale="QN" DisplayFormat="">
+        <FormItem ItemHeader="Debut" ItemText="Diabetes diagnostisert år" ItemHelp="Angi årstall.  Svangerskapsdiabetes unntas." MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Familie / sosialt">
+      <Item ItemId="4204" ItemType="2" VarName="NDV_FAM_DM" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Diabetes hos foreldre/barn/søsken" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="22251" OrderNumber="1" OptionText="Ja" VerboseText="Diabetes i nær familie." ShortCode="J"/>
+          <Answer AnswerId="22252" OrderNumber="2" OptionText="Nei" VerboseText="Ikke diabetes i nærmeste familie." ShortCode="N"/>
+          <Answer AnswerId="22253" OrderNumber="3" OptionText="Vet ikke*" ShortCode="V"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3982" ItemType="2" VarName="NDV_ETHNICITY" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Etnisk opprinnelse" ItemHelp="Angi f.eks. asiatisk dersom begge foreldre er asiatiske; ved f.eks. europeisk mor og asiatisk far anføres ”annen”" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="20702" OrderNumber="1" OptionText="Europeisk." ShortCode="E"/>
+          <Answer AnswerId="20703" OrderNumber="2" OptionText="Afrikansk." ShortCode="Afr"/>
+          <Answer AnswerId="20704" OrderNumber="3" OptionText="Asiatisk." ShortCode="As"/>
+          <Answer AnswerId="20705" OrderNumber="4" OptionText="Annen" ShortCode="An"/>
+          <Answer AnswerId="21984" OrderNumber="5" OptionText="Vet ikke" ShortCode="Ukj"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2303" ItemType="2" VarName="KKS_16" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem ItemText="Yrkesstatus" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="6781" OrderNumber="1" OptionText="Utenfor arbeidsmarkedet og ikke under utdanning." Score="0.00"/>
+          <Answer AnswerId="6782" OrderNumber="2" OptionText="Heltidsjobb." Score="1.00"/>
+          <Answer AnswerId="6783" OrderNumber="3" OptionText="Deltidsjobb." Score="2.00"/>
+          <Answer AnswerId="6784" OrderNumber="4" OptionText="Under utdanning." Score="3.00"/>
+          <Answer AnswerId="6785" OrderNumber="5" OptionText="Deltidsjobb og under utdanning." Score="4.00"/>
+          <Answer AnswerId="6786" OrderNumber="6" OptionText="Ukjent" Score="9.00"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="6279" ItemType="2" VarName="SSB_UTDANNING" LoincScale="ORD">
+        <FormItem ItemText="Utdanningsnivå" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12599" OrderNumber="1" OptionText="Ikke fullført grunnskole"/>
+          <Answer AnswerId="12668" OrderNumber="2" OptionText="Grunnskole"/>
+          <Answer AnswerId="12669" OrderNumber="3" OptionText="Videregående skole"/>
+          <Answer AnswerId="12670" OrderNumber="4" OptionText="Fagskole"/>
+          <Answer AnswerId="12671" OrderNumber="5" OptionText="Kort universitets-/høgskolesutdannelse (til og med 4 år)"/>
+          <Answer AnswerId="12672" OrderNumber="6" OptionText="Lang universitets-/høgskoleutdannelse (mer enn 4 år)"/>
+          <Answer AnswerId="12673" OrderNumber="9" OptionText="Ukjent"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3998" ItemType="2" VarName="NDV_STARTKURS" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Gjennomgått startkurs" ItemHelp="Kurs arrangert av sykehus" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="20768" OrderNumber="1" OptionText="Ja" VerboseText="Gjennomgått startkurs." ShortCode="J"/>
+          <Answer AnswerId="20769" OrderNumber="2" OptionText="Nei" VerboseText="Ikke gjennomgått startkurs." ShortCode="N"/>
+          <Answer AnswerId="20770" OrderNumber="3" OptionText="Vet ikke*" ShortCode="V"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3225" ItemType="1" VarName="HEIGHT" LoincScale="QN" UnitStr="cm" DisplayFormat="">
+        <FormItem ItemText="Høyde" ItemHelp="Uten sko." MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3224" ItemType="1" VarName="WEIGHT" LoincScale="QN" UnitStr="kg" DisplayFormat="">
+        <FormItem ItemText="Vekt" ItemHelp="Uten sko og yttertøy." MinExpression="10" MaxExpression="400" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0" Decimals="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3018" ItemType="1" VarName="HBA1C_MMOL" LoincScale="QN" UnitStr="mmol/mol" DisplayFormat="">
+        <FormItem ItemText="B-HbA1c" ItemHelp="HbA1c-verdien gjenspeiler det gjennomsnittlige blodsukkeret de siste 6 - 8 uker før prøvetakingen. Høye verdier ses derfor ved økt gjennomsnittlig blodglukose. Lave verdier kan ses ved økt hemoglobinomsetning som ved hemolytiske anemier." MinExpression="26" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Behandling">
+      <Item ItemId="3322" ItemType="2" VarName="NDV_TREATMENT_TYPE" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemHeader="Behandlingsstrategi" ItemText="Diabetes behandles ved hjelp av" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="16425" OrderNumber="1" OptionText="Kun kost/aktivitet."/>
+          <Answer AnswerId="16426" OrderNumber="2" OptionText="Andre blodsukkersenkende midler enn insulin."/>
+          <Answer AnswerId="16427" OrderNumber="3" OptionText="Kun insulinbehandlet."/>
+          <Answer AnswerId="16479" OrderNumber="4" OptionText="Insulin pluss andre blodsukkersenkende midler."/>
+          <Answer AnswerId="16480" OrderNumber="5" OptionText="Ukjent"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Insulinadministrasjon*">
+      <Item ItemId="4056" ItemType="2" VarName="NDV_INSULIN_DEVICE" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Insulinadministrasjon" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="21306" OrderNumber="1" OptionText="Insulinpenn/sprøyte."/>
+          <Answer AnswerId="21307" OrderNumber="2" OptionText="Insulinpumpe."/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Andre medisiner*">
+      <Item ItemId="4639" ItemType="2" VarName="NDV_BPDRUG_YN" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem ItemText="Bruker blodtrykksmedisin" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="25229" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="25230" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="25231" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3337" ItemType="2" VarName="ATC_C10A" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem ItemText="Lipidsenkende behandling" ItemHelp="Cholestagel&amp;reg;, Crestor&amp;reg;, Ezetrol&amp;reg;, Inegy&amp;reg;, Lescol&amp;reg;, Lestid&amp;reg;, Lipitor&amp;reg;, Lovastatin, Mevacor&amp;reg;, Niaspan&amp;reg;, Omacor&amp;reg;, Pravachol&amp;reg;, Pravastatin, Questran&amp;reg;, Simvastatin, Sortis&amp;reg;, Tredaptive&amp;reg;, Zocor&amp;reg;," MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="16548" OrderNumber="1" OptionText="Ja" VerboseText="Bruker lipidsenkende." ShortCode="J"/>
+          <Answer AnswerId="16549" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16550" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="1310" ItemType="2" VarName="NDV_GLUCMON" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Egenmåling av glukose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="59269" OrderNumber="1" OptionText="CGM" VerboseText="Bruker vevsglukose (CGM)." Score="1.00" PromText="Kontinuerlig måling"/>
+          <Answer AnswerId="59270" OrderNumber="2" OptionText="Freestyle Libre 1" VerboseText="Bruker Freestyle Libre 1." Score="1.00" PromText="Flash Libre"/>
+          <Answer AnswerId="59271" OrderNumber="3" OptionText="daglig (glukometer)" VerboseText="Måler kapillær glukose daglig." Score="1.00" PromText="Glukometer daglig"/>
+          <Answer AnswerId="59272" OrderNumber="4" OptionText="ukentlig eller oftere (glukometer)" VerboseText="Måler kapillær glukose ukentlig eller oftere." Score="1.00" PromText="Glukometer ukentlig"/>
+          <Answer AnswerId="59273" OrderNumber="5" OptionText="sjeldnere enn ukentlig (glukometer)" VerboseText="Måler kapillær glukose sjeldnere enn ukentlig." Score="2.00" PromText="Glukometer sjeldnere enn ukentlig"/>
+          <Answer AnswerId="59274" OrderNumber="6" OptionText="Nei" VerboseText="Måler ikke glukose selv." Score="3.00" PromText="Måler ikke glukose selv"/>
+          <Answer AnswerId="59275" OrderNumber="7" OptionText="Vet ikke*" Score="4.00" PromText="Jeg er usikker"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Egenmålinger*">
+      <Item ItemId="4059" ItemType="1" VarName="NDV_SELFMON_COUNT" LoincScale="QN" UnitStr="ganger/uke" DisplayFormat="">
+        <FormItem ItemText="Antall egenmålinger per uke" ItemHelp="" MinExpression="0" MaxExpression="140" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="New*">
+      <Item ItemId="5840" ItemType="2" VarName="NP_HYPO_LASTYEAR_YNU" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemHeader="Alvorlig hypoglykemi siste år" ItemText="Har du noen gang i løpet av det siste året hatt så lavt blodsukker (alvorlig &quot;føling&quot;) at du måtte ha hjelp av andre for å komme over det?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="31174" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="31175" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="31176" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Antall hypoglykemier*">
+      <Item ItemId="4235" ItemType="1" VarName="NDV_HYPOGLYC_YEAR" LoincScale="QN" UnitStr="ganger siste år" DisplayFormat="">
+        <FormItem ItemHeader="Alvorlig hypoglykemi" ItemText="Antall ganger hjelpetrengende for hypoglykemi siste år" ItemHelp="" MinExpression="0" MaxExpression="366" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Livsstil">
+      <Item ItemId="3340" ItemType="2" VarName="NDV_EXERCISE" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem ItemText="Mosjonerer regelmessig" ItemHelp="30 minutter rask gange eller tilsvarende minst en gang i uken" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="16575" OrderNumber="1" OptionText="Ja*" ShortCode="J"/>
+          <Answer AnswerId="16576" OrderNumber="2" OptionText="Nei" VerboseText="Mosjonerer ikke." ShortCode="N"/>
+          <Answer AnswerId="16577" OrderNumber="3" OptionText="Fysisk umulig å mosjonere."/>
+          <Answer AnswerId="21939" OrderNumber="4" OptionText="Vet ikke*"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Mosjon*">
+      <Item ItemId="3197" ItemType="1" VarName="NDV_EXERCISE_DAYS" LoincScale="QN" UnitStr="dager/uke" DisplayFormat="">
+        <FormItem ItemHeader="Mosjonerer" ItemText="Ukedager med mosjon" ItemHelp="30 minutter rask gange eller tilsvarende" MinExpression="1" MaxExpression="7" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Røyking*">
+      <Item ItemId="5721" ItemType="2" VarName="SMOKER_YN" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Røyker du daglig nå" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="30630" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="30631" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Røykeslutt*">
+      <Item ItemId="5722" ItemType="2" VarName="SMOKER_3M" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Er det mer enn 3 mnd siden du sluttet å røyke?" ItemHelp="" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="30632" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="30633" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="30634" OrderNumber="3" OptionText="Har aldri røykt daglig"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Komplikasjoner">
+      <Item ItemId="3353" ItemType="2" VarName="NDV_EYECHECK" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Øyenbunnsundersøkelse" ItemHelp="øyelege eller øyefoto" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="16727" OrderNumber="1" OptionText="Ja" ShortCode="J"/>
+          <Answer AnswerId="16728" OrderNumber="2" OptionText="Nei" VerboseText="Ikke undersøkt øyebunn." ShortCode="N"/>
+          <Answer AnswerId="16731" OrderNumber="3" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Siste besøk hos øyelege*">
+      <Item ItemId="3354" ItemType="5" VarName="NDV_EYECHECK_DATE" LoincScale="DATE" DisplayFormat="">
+        <FormItem ItemText="Siste besøk hos øyelege" ItemHelp="Beste estimat ved usikker dato." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Koronarsykdom*">
+      <Item ItemId="3397" ItemType="2" VarName="NDV_CHD" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Koronarsykdom" ItemHelp="angina, hjerteinfarkt eller PCI/bypass" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="16884" OrderNumber="1" OptionText="Ja" VerboseText="Koronarsyk." ShortCode="J"/>
+          <Answer AnswerId="16885" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16886" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Debut koronarsykdom*">
+      <Item ItemId="4055" ItemType="1" VarName="NDV_CHD_DEBUT" LoincScale="QN" DisplayFormat="">
+        <FormItem ItemText="Debut av koronar hjertesykdom" ItemHelp="Årstall for første tilfelle av enten angina/hjerteinfarkt/bypass /PCI" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Hjerneslag*">
+      <Item ItemId="3398" ItemType="2" VarName="NDV_STROKE" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem ItemText="Hjerneslag" ItemHelp="Unntatt TIA" MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="16887" OrderNumber="1" OptionText="Ja" VerboseText="Hjerneslag." ShortCode="J"/>
+          <Answer AnswerId="16888" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="16889" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Første hjerneslag*">
+      <Item ItemId="4062" ItemType="1" VarName="NDV_STROKE_DEBUT" LoincScale="QN" DisplayFormat="">
+        <FormItem ItemText="Første hjerneslag" ItemHelp="Årstall for første tilfelle av hjerneslag" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Nyretransplantasjon*">
+      <Item ItemId="1134" ItemType="2" VarName="ICD10_Z940" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Nyretransplantert" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="59001" OrderNumber="1" OptionText="Ja" VerboseText="Nyretransplantert." ShortCode="J" ICD10="Z940"/>
+          <Answer AnswerId="59002" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="10030" OrderNumber="3" OptionText="Vet ikke" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Årstall transplantasjon*">
+      <Item ItemId="7521" ItemType="1" VarName="NDV_RENAL_TRANSPL_YYYY" LoincScale="QN" DisplayFormat="">
+        <FormItem ItemText="Årstall for nyretransplantasjon" ItemHelp="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Dialyse og amputasjon*">
+      <Item ItemId="1135" ItemType="2" VarName="ICD10_N185" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Dialysebehandlet" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="59005" OrderNumber="1" OptionText="Ja" VerboseText="Dialysebehandlet." ShortCode="J" ICD10="N185"/>
+          <Answer AnswerId="59006" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="59007" OrderNumber="3" OptionText="Vet ikke" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3414" ItemType="2" VarName="NDV_AMPUTATION" LoincScale="ORD" DisplayFormat="Vertical">
+        <FormItem ItemHeader="Amputasjon" ItemText="Amputasjon (ikke traumatisk)" ItemHelp="Dersom amputasjon på begge føtter, velg høyeste nivå." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="17084" OrderNumber="1" OptionText="Nei*" ShortCode="N"/>
+          <Answer AnswerId="17085" OrderNumber="2" OptionText="fot t.o.m. ankelledd."/>
+          <Answer AnswerId="17086" OrderNumber="3" OptionText="over ankelnivå."/>
+          <Answer AnswerId="21285" OrderNumber="4" OptionText="Ukjent*"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Amputasjon årstall*">
+      <Item ItemId="4054" ItemType="1" VarName="NDV_AMPUTATION_FIRST" LoincScale="QN" DisplayFormat="">
+        <FormItem ItemText="Første større amputasjon" ItemHelp="Amputasjon over ankelledd, ikke gjennom!" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Retinopati*">
+      <Item ItemId="5726" ItemType="2" VarName="NP_LASER" LoincScale="ORD" DisplayFormat="">
+        <FormItem ItemText="Har du hatt laserbehandling, injeksjoner i glasslegemet eller annen kirurgisk behandling på grunn av alvorlige diabetesforandringer i netthinnen?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="30638" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="30639" OrderNumber="2" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="30640" OrderNumber="3" OptionText="Vet ikke" ShortCode="V"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Første øyebehandling*">
+      <Item ItemId="4205" ItemType="1" VarName="NDV_LASER_FIRST" LoincScale="QN" DisplayFormat="">
+        <FormItem ItemText="Årstall for første behandling" ItemHelp="Laserbehandling, injeksjon eller annen behandling for retinopati." MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+  </Form>
+  <Actions>
+    <PageAction MasterId="3322">
+      <Activate EnumVal="3" PageConditionId="8389" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="8390" PageNumber="4" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="1310">
+      <Activate EnumVal="2" PageConditionId="8392" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="3" PageConditionId="8393" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="4" PageConditionId="8394" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="5840">
+      <Activate EnumVal="1" PageConditionId="8391" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3340">
+      <Activate EnumVal="1" PageConditionId="8395" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="5721">
+      <Activate EnumVal="2" PageConditionId="8388" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3353">
+      <Activate EnumVal="1" PageConditionId="8381" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3397">
+      <Activate EnumVal="1" PageConditionId="8382" PageNumber="16" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3398">
+      <Activate EnumVal="1" PageConditionId="8383" PageNumber="18" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="1134">
+      <Activate EnumVal="1" PageConditionId="8384" PageNumber="20" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="3414">
+      <Activate EnumVal="3" PageConditionId="8386" PageNumber="22" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="5726">
+      <Activate EnumVal="1" PageConditionId="8387" PageNumber="24" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
+</StudyForm>
