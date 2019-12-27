@@ -5264,6 +5264,54 @@ BEGIN
 END
 ]]>
 	</row>
+	<row ProcId="1054" StudyName="BARNEDIABETES" ProcName="BDR.ReportHbA1cGroupSummary" ProcDesc="Rapporten skal legges til i samme som RapportHbA1cSnittPerLege" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="19000" ChkSum="-1806929887" LastUpdate="2019-12-27T12:14:28.820Z">
+		<![CDATA[CREATE PROCEDURE BDR.ReportHbA1cGroupSummary (@StudyId INT) AS
+BEGIN
+
+  SET NOCOUNT ON;
+  
+  -- Find patients and their latest HbA1c - values
+  
+  SELECT ld.PersonId, ld.NumResult, sc.GroupId, sc.StudyId
+  INTO #Everybody
+  FROM dbo.GetLastLabDataTable(1058, GETDATE()) ld
+  JOIN dbo.StudCase sc ON sc.PersonId = ld.PersonId
+    AND sc.StudyId = @StudyId;
+        
+  -- Group by physician and various levels
+  
+  SELECT alle.GroupId, sg.GroupName, alle.n, b53.n, b58.n, a75.n, 
+    100.0 * b53.n / alle.n AS b53p, 
+    100.0 * b58.n / alle.n AS b58p, 
+    100.0 * a75.n / alle.n AS a75p
+  FROM (
+    SELECT StudyId, GroupId, COUNT(*) n
+    FROM #Everybody
+    GROUP BY StudyId, GroupId
+    ) alle
+  JOIN (
+    SELECT GroupId, COUNT(*) n
+    FROM #Everybody
+    WHERE NumResult < 53
+    GROUP BY GroupId
+    ) b53 ON b53.GroupId = alle.GroupId
+  JOIN (
+    SELECT GroupId, COUNT(*) n
+    FROM #Everybody
+    WHERE NumResult < 58
+    GROUP BY GroupId
+    ) b58 ON b58.GroupId = alle.GroupId
+  JOIN (
+    SELECT GroupId, COUNT(*) n
+    FROM #Everybody
+    WHERE NumResult >= 75
+    GROUP BY GroupId
+    ) a75 ON a75.GroupId = alle.GroupId
+  JOIN dbo.StudyGroup sg ON sg.StudyId = alle.StudyId
+    AND sg.GroupId = alle.GroupId;
+    
+END]]>
+	</row>
 	<row ProcId="1101" StudyName="LANGTID" ProcName="dbo.GetCaseListFocused" ProcDesc="Overvåket status" ProcParams=":StudyId" ListId="CASE" GrantTo="FastTrak" ChkSum="167890443" LastUpdate="2019-12-19T12:26:22.267Z">
 		<![CDATA[]]>
 	</row>
