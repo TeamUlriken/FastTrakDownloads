@@ -1,82 +1,90 @@
 <?xml version="1.0"?>
 <StudyForm>
   <Form FormId="111" FormName="BDR_FAMILY" FormTitle="BDR - Familieanamnese">
-    <Page PageTitle="Familie">
-      <Item ItemId="2019" ItemType="2" VarName="fam_Sp_1&#xA;" LoincScale="ORD">
-        <FormItem ItemText="Type-1 diabetes i familien" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+    <Page PageTitle="Familie" PageIntroduction="Har noen i familien hatt følgende tilstander?">
+      <Item ItemId="2019" ItemType="2" VarName="fam_Sp_1" LoincScale="ORD">
+        <FormItem ItemText="Type-1 diabetes" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="11065" OrderNumber="0" OptionText="Nei"/>
           <Answer AnswerId="11066" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="11279" OrderNumber="888" OptionText="Vet ikke"/>
         </FormItem>
       </Item>
-      <Item ItemId="2020" ItemType="2" VarName="fam_Sp_2&#xA;" LoincScale="ORD">
-        <FormItem ItemText="Type-2 diabetes i familien" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="2020" ItemType="2" VarName="fam_Sp_2" LoincScale="ORD">
+        <FormItem ItemText="Type-2 diabetes" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="61224" OrderNumber="0" OptionText="Nei"/>
           <Answer AnswerId="61225" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="61226" OrderNumber="888" OptionText="Vet ikke"/>
         </FormItem>
       </Item>
-      <Item ItemId="2046" ItemType="2" VarName="fam_Sp_3&#xA;" LoincScale="ORD">
-        <FormItem ItemText="Annen type diabetes i familien" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="10530" ItemType="2" VarName="fam_Sp_11" LoincScale="ORD">
+        <FormItem ItemText="Mody i familien" ItemHelp="" Expression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="62330" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="62331" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="62332" OrderNumber="888" OptionText="Vet ikke"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2046" ItemType="2" VarName="fam_Sp_3" LoincScale="ORD">
+        <FormItem ItemText="Annen type diabetes" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="61228" OrderNumber="0" OptionText="Nei"/>
           <Answer AnswerId="61229" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="61230" OrderNumber="888" OptionText="Vet ikke"/>
         </FormItem>
       </Item>
-      <Item ItemId="2290" ItemType="2" VarName="fam_Sp_4" LoincScale="ORD">
-        <FormItem ItemText="Hjerteinfarkt før 60 års alder i familien" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61232" OrderNumber="0" OptionText="Nei"/>
-          <Answer AnswerId="61233" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="61234" OrderNumber="888" OptionText="Vet ikke"/>
+      <Item ItemId="10531" ItemType="2" VarName="BDR_DM_FAM" LoincScale="ORD">
+        <FormItem ItemText="Diabetes i familien" ItemHelp="" Expression="2 - ISPOS( ISNULL( fam_Sp_1 - 1 ) + ISNULL( fam_Sp_2 - 1 ) + ISNULL( fam_Sp_3 - 1 ) + ISNULL( fam_Sp_11 - 1 ) )" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="13373" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="13374" OrderNumber="2" OptionText="Nei"/>
         </FormItem>
       </Item>
-      <Item ItemId="2294" ItemType="2" VarName="fam_Sp_5" LoincScale="ORD">
-        <FormItem ItemText="Hjerneslag før 60 års alder i familien" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61236" OrderNumber="0" OptionText="Nei"/>
-          <Answer AnswerId="61237" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="61238" OrderNumber="888" OptionText="Vet ikke"/>
-        </FormItem>
-      </Item>
+    </Page>
+    <Page PageTitle="New*">
       <Item ItemId="2335" ItemType="2" VarName="fam_Sp_6" LoincScale="ORD">
-        <FormItem ItemText="Amputasjon i forbindelse med diabetes i familien" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Amputasjon i forbindelse med diabetes" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="61240" OrderNumber="0" OptionText="Nei"/>
           <Answer AnswerId="61241" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="61242" OrderNumber="888" OptionText="Vet ikke"/>
         </FormItem>
       </Item>
       <Item ItemId="2338" ItemType="2" VarName="fam_Sp_7" LoincScale="ORD">
-        <FormItem ItemText="Laser behandling i forbindelse med diabetes i familien" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Laserbehandling i forbindelse med diabetes" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="61244" OrderNumber="0" OptionText="Nei"/>
           <Answer AnswerId="61245" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="61246" OrderNumber="888" OptionText="Vet ikke"/>
         </FormItem>
       </Item>
       <Item ItemId="2344" ItemType="2" VarName="fam_Sp_8" LoincScale="ORD">
-        <FormItem ItemText="Diabetes nyreskader i familien" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Behandling for diabetes nyreskader" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="61248" OrderNumber="0" OptionText="Nei"/>
           <Answer AnswerId="61249" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="61250" OrderNumber="888" OptionText="Vet ikke"/>
         </FormItem>
       </Item>
+      <Item ItemId="2290" ItemType="2" VarName="fam_Sp_4" LoincScale="ORD">
+        <FormItem ItemText="Hjerteinfarkt før 60 års alder" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61232" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="61233" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="61234" OrderNumber="888" OptionText="Vet ikke"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="2294" ItemType="2" VarName="fam_Sp_5" LoincScale="ORD">
+        <FormItem ItemText="Hjerneslag før 60 års alder" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61236" OrderNumber="0" OptionText="Nei"/>
+          <Answer AnswerId="61237" OrderNumber="1" OptionText="Ja"/>
+          <Answer AnswerId="61238" OrderNumber="888" OptionText="Vet ikke"/>
+        </FormItem>
+      </Item>
       <Item ItemId="2466" ItemType="2" VarName="fam_Sp_9" LoincScale="ORD">
-        <FormItem ItemText="Høyt blodtrykk i familien" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Behandling for høyt blodtrykk" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="61252" OrderNumber="0" OptionText="Nei"/>
           <Answer AnswerId="61253" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="61254" OrderNumber="888" OptionText="Vet ikke"/>
         </FormItem>
       </Item>
       <Item ItemId="2473" ItemType="2" VarName="fam_Sp_10" LoincScale="ORD">
-        <FormItem ItemText="Høyt kolesterol i familien" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Behandling for høyt kolesterol" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="61256" OrderNumber="0" OptionText="Nei"/>
           <Answer AnswerId="61257" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="61258" OrderNumber="888" OptionText="Vet ikke"/>
-        </FormItem>
-      </Item>
-      <Item ItemId="10530" ItemType="2" VarName="fam_Sp_11" LoincScale="ORD">
-        <FormItem ItemText="Mody i familien" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="62330" OrderNumber="0" OptionText="Nei"/>
-          <Answer AnswerId="62331" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="62332" OrderNumber="888" OptionText="Vet ikke"/>
         </FormItem>
       </Item>
       <Item ItemId="2495" ItemType="2" VarName="fam_Sp_12" LoincScale="ORD">
@@ -87,7 +95,7 @@
         </FormItem>
       </Item>
       <Item ItemId="2615" ItemType="2" VarName="fam_Sp_13" LoincScale="ORD">
-        <FormItem ItemText="Hypothyreose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Hypotyreose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="61264" OrderNumber="0" OptionText="Nei"/>
           <Answer AnswerId="61265" OrderNumber="1" OptionText="Ja"/>
           <Answer AnswerId="61266" OrderNumber="888" OptionText="Vet ikke"/>
@@ -103,25 +111,58 @@
     </Page>
     <Page PageTitle="Befolkningsgruppe">
       <Item ItemId="2709" ItemType="2" VarName="VAR2709" LoincScale="ORD">
-        <FormItem ItemText="Pasienten" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="11280" OrderNumber="1" OptionText="Norge"/>
+        <FormItem ItemText="Pasientens fødeland" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="11280" OrderNumber="1" OptionText="Norge" VerboseText="Født i Norge."/>
           <Answer AnswerId="11281" OrderNumber="2" OptionText="Annet land"/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageTitle="Fødeland pasient*">
+      <Item ItemId="3400" ItemType="4" VarName="Fodeland" LoincScale="NAR" Multiline="0">
+        <FormItem ItemHeader="Fødeland" ItemText="I hvilket land er pasienten født?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Fødeland mor*">
       <Item ItemId="2847" ItemType="2" VarName="VAR2847" LoincScale="ORD">
-        <FormItem ItemText="Mor" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61272" OrderNumber="1" OptionText="Norge"/>
+        <FormItem ItemText="Mors fødeland" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61272" OrderNumber="1" OptionText="Norge" VerboseText="Mor født i Norge."/>
           <Answer AnswerId="61273" OrderNumber="2" OptionText="Annet land"/>
         </FormItem>
       </Item>
+      <Item ItemId="3324" ItemType="4" VarName="fodelandMor" LoincScale="NAR" Multiline="0">
+        <FormItem ItemHeader="Fødeland mor" ItemText="I hvilket land er mor født?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Fødeland far*">
       <Item ItemId="2859" ItemType="2" VarName="VAR2859" LoincScale="ORD">
-        <FormItem ItemText="Far" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="61275" OrderNumber="1" OptionText="Norge"/>
+        <FormItem ItemText="Fars fødeland" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61275" OrderNumber="1" OptionText="Norge" VerboseText="Far født i Norge."/>
           <Answer AnswerId="61276" OrderNumber="2" OptionText="Annet land"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3325" ItemType="4" VarName="fodelandFar" LoincScale="NAR" Multiline="0">
+        <FormItem ItemHeader="Fødeland far" ItemText="I hvilket land er far født?" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer/>
         </FormItem>
       </Item>
     </Page>
   </Form>
   <Actions>
-	</Actions>
+    <PageAction MasterId="10531">
+      <Activate EnumVal="1" PageConditionId="8580" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2709">
+      <Activate EnumVal="2" PageConditionId="8581" PageNumber="6" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2847">
+      <Activate EnumVal="2" PageConditionId="8582" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+    <PageAction MasterId="2859">
+      <Activate EnumVal="2" PageConditionId="8583" PageNumber="10" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
+  </Actions>
 </StudyForm>

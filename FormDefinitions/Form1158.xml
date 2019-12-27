@@ -8,12 +8,12 @@
           <Answer AnswerId="22861" OrderNumber="2" OptionText="Kvinne" ShortCode="K"/>
         </FormItem>
       </Item>
-      <Item ItemId="10507" ItemType="1" VarName="inn_lengde" LoincScale="QN">
+      <Item ItemId="10507" ItemType="1" VarName="inn_Lengde" LoincScale="QN" UnitStr="cm">
         <FormItem ItemText="Høyde" ItemHelp="" MinExpression="50" MaxExpression="220" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="10508" ItemType="1" VarName="inn_Vekt" LoincScale="QN">
+      <Item ItemId="10508" ItemType="1" VarName="inn_Vekt" LoincScale="QN" UnitStr="kg">
         <FormItem ItemText="Vekt" ItemHelp="" MinExpression="2" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
@@ -41,13 +41,13 @@
       </Item>
     </Page>
     <Page PageTitle="2d. Blodtrykk">
-      <Item ItemId="10503" ItemType="1" VarName="inn_Blodtrykk_s" LoincScale="QN">
-        <FormItem ItemText="Systolisk" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="10503" ItemType="1" VarName="inn_Blodtrykk_s" LoincScale="QN" UnitStr="mmHg">
+        <FormItem ItemText="Systolisk" ItemHelp="" MinExpression="70" MaxExpression="250" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
-      <Item ItemId="10504" ItemType="1" VarName="inn_Blodtrykk_d" LoincScale="QN">
-        <FormItem ItemText="Diastolisk" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+      <Item ItemId="10504" ItemType="1" VarName="inn_Blodtrykk_d" LoincScale="QN" UnitStr="mmHg">
+        <FormItem ItemText="Diastolisk" ItemHelp="" MinExpression="30" MaxExpression="180" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -149,6 +149,8 @@
           <Answer AnswerId="13339" OrderNumber="2" OptionText="Annet"/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageTitle="New*">
       <Item ItemId="10449" ItemType="4" VarName="lab_HbA1cSykehus" LoincScale="NAR" Multiline="0">
         <FormItem ItemText="HbA1c analysert ved" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer/>
@@ -830,9 +832,9 @@
     <Page PageTitle="6a. Andre kjente sykdommer">
       <Item ItemId="9478" ItemType="2" VarName="und_syk_col" LoincScale="ORD">
         <FormItem ItemText="Cøliaki" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="13281" OrderNumber="0" OptionText="Nei"/>
-          <Answer AnswerId="13282" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="13283" OrderNumber="888" OptionText="Vet ikke"/>
+          <Answer AnswerId="13281" OrderNumber="0" OptionText="Nei" CarryException="1"/>
+          <Answer AnswerId="13282" OrderNumber="1" OptionText="Ja" ICD10="K900"/>
+          <Answer AnswerId="13283" OrderNumber="888" OptionText="Vet ikke" CarryException="1"/>
         </FormItem>
       </Item>
     </Page>
@@ -845,49 +847,49 @@
     </Page>
     <Page PageTitle="Andre sykdommer*">
       <Item ItemId="9479" ItemType="2" VarName="und_syk_hypo" LoincScale="ORD">
-        <FormItem ItemText="Hypothyreose&#xA;" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="62135" OrderNumber="0" OptionText="Nei"/>
-          <Answer AnswerId="62136" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="62137" OrderNumber="888" OptionText="Vet ikke"/>
+        <FormItem ItemText="Hypothyreose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="62135" OrderNumber="0" OptionText="Nei" CarryException="1"/>
+          <Answer AnswerId="62136" OrderNumber="1" OptionText="Ja" ICD10="E039"/>
+          <Answer AnswerId="62137" OrderNumber="888" OptionText="Vet ikke" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="9480" ItemType="2" VarName="und_syk_hype" LoincScale="ORD">
-        <FormItem ItemText="Hyperthyreose&#xA;" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="62139" OrderNumber="0" OptionText="Nei"/>
-          <Answer AnswerId="62140" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="62141" OrderNumber="888" OptionText="Vet ikke"/>
+        <FormItem ItemText="Hyperthyreose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="62139" OrderNumber="0" OptionText="Nei" CarryException="1"/>
+          <Answer AnswerId="62140" OrderNumber="1" OptionText="Ja" ICD10="E059"/>
+          <Answer AnswerId="62141" OrderNumber="888" OptionText="Vet ikke" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="9481" ItemType="2" VarName="und_syk_adhd" LoincScale="ORD">
-        <FormItem ItemText="ADHD" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="62143" OrderNumber="0" OptionText="Nei"/>
-          <Answer AnswerId="62144" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="62145" OrderNumber="888" OptionText="Vet ikke"/>
+        <FormItem ItemText="ADHD" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="62143" OrderNumber="0" OptionText="Nei" CarryException="1"/>
+          <Answer AnswerId="62144" OrderNumber="1" OptionText="Ja" ICD10="F909"/>
+          <Answer AnswerId="62145" OrderNumber="888" OptionText="Vet ikke" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="9482" ItemType="2" VarName="und_syk_down" LoincScale="ORD">
-        <FormItem ItemText="Downs syndrom&#xA;" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Downs syndrom" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="62147" OrderNumber="0" OptionText="Nei"/>
-          <Answer AnswerId="62148" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="62149" OrderNumber="888" OptionText="Vet ikke"/>
+          <Answer AnswerId="62148" OrderNumber="1" OptionText="Ja" ICD10="Q909"/>
+          <Answer AnswerId="62149" OrderNumber="888" OptionText="Vet ikke" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="9483" ItemType="2" VarName="und_syk_epi" LoincScale="ORD">
-        <FormItem ItemText="Epilepsi&#xA;" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="62151" OrderNumber="0" OptionText="Nei"/>
-          <Answer AnswerId="62152" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="62153" OrderNumber="888" OptionText="Vet ikke"/>
+        <FormItem ItemText="Epilepsi" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="62151" OrderNumber="0" OptionText="Nei" CarryException="1"/>
+          <Answer AnswerId="62152" OrderNumber="1" OptionText="Ja" ICD10="G409"/>
+          <Answer AnswerId="62153" OrderNumber="888" OptionText="Vet ikke" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="9484" ItemType="2" VarName="und_syk_cys" LoincScale="ORD">
-        <FormItem ItemText="Cystisk fibrose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Cystisk fibrose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer AnswerId="62155" OrderNumber="0" OptionText="Nei"/>
-          <Answer AnswerId="62156" OrderNumber="1" OptionText="Ja"/>
-          <Answer AnswerId="62157" OrderNumber="888" OptionText="Vet ikke"/>
+          <Answer AnswerId="62156" OrderNumber="1" OptionText="Ja" ICD10="E849"/>
+          <Answer AnswerId="62157" OrderNumber="888" OptionText="Vet ikke" CarryException="1"/>
         </FormItem>
       </Item>
       <Item ItemId="9485" ItemType="4" VarName="und_syk_annet" LoincScale="NAR" Multiline="1">
-        <FormItem ItemText="Andre sykdommer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Andre sykdommer" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
           <Answer/>
         </FormItem>
       </Item>
@@ -984,70 +986,74 @@
     <PageAction MasterId="10501">
       <Activate EnumVal="1" PageConditionId="8567" PageNumber="8" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
+    <PageAction MasterId="10436">
+      <Activate EnumVal="2" PageConditionId="8584" PageNumber="11" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8585" PageNumber="12" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
     <PageAction MasterId="9963">
-      <Activate EnumVal="1" PageConditionId="8540" PageNumber="14" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8540" PageNumber="17" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10045">
-      <Activate EnumVal="1" PageConditionId="8539" PageNumber="15" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
-      <Activate EnumVal="2" PageConditionId="8538" PageNumber="16" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
-      <Activate EnumVal="3" PageConditionId="8537" PageNumber="17" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
-      <Activate EnumVal="4" PageConditionId="8536" PageNumber="18" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
-      <Activate EnumVal="5" PageConditionId="8535" PageNumber="19" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
+      <Activate EnumVal="1" PageConditionId="8539" PageNumber="18" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
+      <Activate EnumVal="2" PageConditionId="8538" PageNumber="19" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
+      <Activate EnumVal="3" PageConditionId="8537" PageNumber="20" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
+      <Activate EnumVal="4" PageConditionId="8536" PageNumber="21" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
+      <Activate EnumVal="5" PageConditionId="8535" PageNumber="22" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
     </PageAction>
     <PageAction MasterId="9547">
-      <Activate EnumVal="1" PageConditionId="8546" PageNumber="21" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8546" PageNumber="24" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9549">
-      <Activate EnumVal="1" PageConditionId="8541" PageNumber="22" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
-      <Activate EnumVal="2" PageConditionId="8542" PageNumber="23" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
-      <Activate EnumVal="3" PageConditionId="8543" PageNumber="24" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
-      <Activate EnumVal="4" PageConditionId="8544" PageNumber="25" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
-      <Activate EnumVal="5" PageConditionId="8545" PageNumber="26" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
+      <Activate EnumVal="1" PageConditionId="8541" PageNumber="25" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
+      <Activate EnumVal="2" PageConditionId="8542" PageNumber="26" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
+      <Activate EnumVal="3" PageConditionId="8543" PageNumber="27" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
+      <Activate EnumVal="4" PageConditionId="8544" PageNumber="28" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
+      <Activate EnumVal="5" PageConditionId="8545" PageNumber="29" ComparisonType="5" ComparisonDescription="Greater than or equal to"/>
     </PageAction>
     <PageAction MasterId="9793">
-      <Activate EnumVal="1" PageConditionId="8563" PageNumber="28" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8563" PageNumber="31" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9487">
-      <Activate EnumVal="1" PageConditionId="8560" PageNumber="31" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8560" PageNumber="34" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9490">
-      <Activate EnumVal="1" PageConditionId="8561" PageNumber="32" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8561" PageNumber="35" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9499">
-      <Activate EnumVal="1" PageConditionId="8562" PageNumber="34" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8562" PageNumber="37" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10496">
-      <Activate EnumVal="1" PageConditionId="8559" PageNumber="37" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8559" PageNumber="40" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10456">
-      <Activate EnumVal="1" PageConditionId="8555" PageNumber="39" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8555" PageNumber="42" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10270">
-      <Activate EnumVal="5" PageConditionId="8554" PageNumber="40" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="5" PageConditionId="8554" PageNumber="43" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10456">
-      <Activate EnumVal="1" PageConditionId="8556" PageNumber="41" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8556" PageNumber="44" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10491">
-      <Activate EnumVal="1" PageConditionId="8557" PageNumber="43" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8557" PageNumber="46" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10492">
-      <Activate EnumVal="5" PageConditionId="8558" PageNumber="44" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="5" PageConditionId="8558" PageNumber="47" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10362">
-      <Activate EnumVal="1" PageConditionId="8551" PageNumber="47" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8551" PageNumber="50" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9478">
-      <Activate EnumVal="1" PageConditionId="8550" PageNumber="50" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8550" PageNumber="53" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10365">
-      <Activate EnumVal="1" PageConditionId="8548" PageNumber="53" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8548" PageNumber="56" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10369">
-      <Activate EnumVal="1" PageConditionId="8549" PageNumber="55" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8549" PageNumber="58" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9985">
-      <Activate EnumVal="1" PageConditionId="8547" PageNumber="58" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8547" PageNumber="61" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
