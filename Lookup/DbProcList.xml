@@ -4826,69 +4826,96 @@ BEGIN
     ) PivotTable
 END;]]>
 	</row>
-	<row ProcId="1044" StudyName="BARNEDIABETES" ProcName="BDR.RapportHbA1cSnittPerLege" ProcDesc="Rapport som viser gjennomsnittlig HbA1c-verdi per lege, basert p" ProcParams=":StudyId, :DiaType, :ExcludeNew" ListId="FR" GrantTo="public" MinVersion="19004" HelpText="Rapporten viser snitt av siste HbA1c for alle pasienter fordelt per lege, forutsatt at lege er brukt som gruppebegrep." ChkSum="463747042" LastUpdate="2019-12-11T22:44:34.300Z">
-		<![CDATA[CREATE PROCEDURE BDR.RapportHbA1cSnittPerLege( @StudyId INT, @DiaType INT = 0, @ExcludeNew INT = 2 ) AS
+	<row ProcId="1044" StudyName="BARNEDIABETES" ProcName="BDR.RapportHbA1cSnittPerLege" ProcDesc="Rapport som viser gjennomsnittlig HbA1c-verdi per lege, basert p" ProcParams=":StudyId, :DiaType, :ExcludeNew" ListId="FR" GrantTo="public" MinVersion="19004" HelpText="Rapporten viser snitt av siste HbA1c for alle pasienter fordelt per lege, forutsatt at lege er brukt som gruppebegrep." ChkSum="309228357" LastUpdate="2020-01-03T15:26:22.920Z">
+		<![CDATA[CREATE PROCEDURE BDR.ReportHbA1cGroupSummary( @StudyId INT ) AS
 BEGIN
 
-  DECLARE @TotalGroupName VARCHAR(50) = 'Totalt';
+  SET NOCOUNT ON;
+  
+  -- Find patients and their latest HbA1c - values
+  
+  SELECT ld.PersonId, ld.NumResult, sc.GroupId
+  INTO #Everybody
+  FROM dbo.GetLastLabDataTable(1058, GETDATE()) ld
+  JOIN dbo.StudCase sc ON sc.PersonId = ld.PersonId
+  JOIN dbo.StudyGroup sg ON sg.StudyId = sc.StudyId AND sg.GroupId = sc.GroupId AND sg.GroupActive = 1
+  JOIN dbo.UserList ul ON ul.CenterId = sg.CenterId AND ul.UserId = USER_ID()
+  WHERE sc.StudyId = @StudyId;
+        
+  -- Group by physician and various levels
+  
+  SELECT alle.GroupId, sg.GroupName, alle.n AS nAll, 
+    b50.n AS n50, b53.n AS n53, b58.n AS n58, a75.n AS n75, 
+    100.0 * b50.n / alle.n AS b50p, 
+    100.0 * b53.n / alle.n AS b53p, 
+    100.0 * b58.n / alle.n AS b58p, 
+    100.0 * a75.n / alle.n AS a75p
+  FROM (
+    SELECT GroupId, COUNT(*) n
+    FROM #Everybody
+    GROUP BY GroupId
+    ) alle
+  LEFT JOIN (
+    SELECT GroupId, COUNT(*) n
+    FROM #Everybody
+    WHERE NumResult < 50
+    GROUP BY GroupId
+    ) b50 ON b50.GroupId = alle.GroupId
+  LEFT JOIN (
+    SELECT GroupId, COUNT(*) n
+    FROM #Everybody
+    WHERE NumResult < 53
+    GROUP BY GroupId
+    ) b53 ON b53.GroupId = alle.GroupId
+  LEFT JOIN (
+    SELECT GroupId, COUNT(*) n
+    FROM #Everybody
+    WHERE NumResult < 58
+    GROUP BY GroupId
+    ) b58 ON b58.GroupId = alle.GroupId
+  LEFT JOIN (
+    SELECT GroupId, COUNT(*) n
+    FROM #Everybody
+    WHERE NumResult >= 75
+    GROUP BY GroupId
+    ) a75 ON a75.GroupId = alle.GroupId
+  JOIN dbo.StudyGroup sg ON sg.StudyId = @StudyId
+    AND sg.GroupId = alle.GroupId AND sg.GroupActive = 1
 
-  BEGIN TRY
-    EXEC NDV.MergeHba1cToLabdata;
-  END TRY
-  BEGIN CATCH
-    SET @TotalGroupName = 'Totalt (NB: Duplikater i skjemadata)';
-  END CATCH;
+UNION 
 
--- Retrieve the latest HbA1c-values first
+-- Add a row for all groups put together
 
-  SELECT v.PersonId, v.GroupId, v.GroupName, ld.NumResult, diatype.EnumVal
-  INTO #labdata
-  FROM dbo.ViewActiveCaseListStub v
-  JOIN dbo.GetLastLabDataTable( 1058, GETDATE()) ld ON ld.PersonId = v.PersonId
-  JOIN dbo.GetLastDateTable( 3323, NULL ) dxdate ON dxdate.PersonId = v.PersonId
-  LEFT JOIN dbo.GetLastEnumValuesTable( 3196, NULL ) diatype ON diatype.PersonId = ld.PersonId
-  WHERE ( v.StudyId = @StudyId ) 
-    AND ( diatype.EnumVal = @DiaType OR @DiaType IS NULL OR @DiaType < 1 ) 
-    AND ( ld.LabDate > dxdate.DTVal + 30.5 * @ExcludeNew );
-
--- Calculate percentiles per GroupId (doctor)
-
-  SELECT GroupId, GroupName,
-    PERCENTILE_DISC(0.10) WITHIN GROUP( ORDER BY NumResult ) OVER ( PARTITION BY GroupId ) AS P10,
-    PERCENTILE_DISC(0.50) WITHIN GROUP( ORDER BY NumResult ) OVER ( PARTITION BY GroupId ) AS P50,
-    PERCENTILE_DISC(0.90) WITHIN GROUP( ORDER BY NumResult ) OVER ( PARTITION BY GroupId ) AS P90
-  INTO #percentiles
-  FROM #labdata
-  UNION 
-  SELECT 999999, @TotalGroupName,
-    PERCENTILE_DISC(0.10) WITHIN GROUP( ORDER BY NumResult ) OVER (),
-    PERCENTILE_DISC(0.50) WITHIN GROUP( ORDER BY NumResult ) OVER (),
-    PERCENTILE_DISC(0.90) WITHIN GROUP( ORDER BY NumResult ) OVER ()
-  FROM #labdata;
-
--- Do standard aggregations
-
-  SELECT * 
-  INTO #minmax
-  FROM
-  (
-    SELECT GroupId, GroupName, COUNT(PersonId) AS n, 
-        MIN(NumResult) AS MinHbA1c, MAX(NumResult) AS MaxHbA1c, AVG(NumResult) AS MeanHbA1c
-      FROM #labdata
-      GROUP BY GroupId, GroupName
-    UNION
-    SELECT 999999, @TotalGroupName, COUNT(PersonId), 
-        MIN(NumResult), MAX(NumResult), AVG(NumResult)
-      FROM #labdata
-  )  agg;
-
--- Combine the results
-
-  SELECT m.GroupId, m.GroupName, m.n, m.MinHbA1c, p.P10, p.P50, p.P90, m.MaxHbA1c, m.MeanHbA1c
-  FROM #minmax m
-  JOIN #percentiles p ON p.GroupId = m.GroupId
-  ORDER BY m.GroupId;
-
+  SELECT 999999, 'Alle', alle.n, b50.n, b53.n, b58.n, a75.n, 
+    100.0 * b50.n / alle.n AS b50p, 
+    100.0 * b53.n / alle.n AS b53p, 
+    100.0 * b58.n / alle.n AS b58p, 
+    100.0 * a75.n / alle.n AS a75p
+  FROM (
+    SELECT COUNT(*) n
+    FROM #Everybody
+    ) alle
+  CROSS JOIN (
+    SELECT COUNT(*) n
+    FROM #Everybody
+    WHERE NumResult < 50
+    ) b50
+  CROSS JOIN (
+    SELECT COUNT(*) n
+    FROM #Everybody
+    WHERE NumResult < 53
+    ) b53
+  CROSS JOIN (
+    SELECT COUNT(*) n
+    FROM #Everybody
+    WHERE NumResult < 58
+    ) b58
+  CROSS JOIN (
+    SELECT COUNT(*) n
+    FROM #Everybody
+    WHERE NumResult >= 75
+    ) a75;   
+    
 END]]>
 	</row>
 	<row ProcId="1045" StudyName="ROAS" ProcName="Report.PromForms" ProcDesc="Nedlastede PROM-skjema" ProcParams=":StartAt, :StopAt" ListId="FR" GrantTo="public" MinVersion="18201" CompatibilityLevel="100" ChkSum="-1630385935" LastUpdate="2019-07-25T11:22:43.673Z">
