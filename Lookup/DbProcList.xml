@@ -5264,53 +5264,84 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="1054" StudyName="BARNEDIABETES" ProcName="BDR.ReportHbA1cGroupSummary" ProcDesc="Rapporten skal legges til i samme som RapportHbA1cSnittPerLege" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="19000" ChkSum="-1806929887" LastUpdate="2019-12-27T12:14:28.820Z">
-		<![CDATA[CREATE PROCEDURE BDR.ReportHbA1cGroupSummary (@StudyId INT) AS
+	<row ProcId="1054" StudyName="BARNEDIABETES" ProcName="BDR.ReportHbA1cGroupSummary" ProcDesc="Rapporten skal legges til i samme som RapportHbA1cSnittPerLege" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="19000" ChkSum="767822078" LastUpdate="2019-12-28T12:08:56.413Z">
+		<![CDATA[CREATE PROCEDURE BDR.ReportHbA1cGroupSummary( @StudyId INT ) AS
 BEGIN
 
   SET NOCOUNT ON;
   
   -- Find patients and their latest HbA1c - values
   
-  SELECT ld.PersonId, ld.NumResult, sc.GroupId, sc.StudyId
+  SELECT ld.PersonId, ld.NumResult, sc.GroupId
   INTO #Everybody
   FROM dbo.GetLastLabDataTable(1058, GETDATE()) ld
   JOIN dbo.StudCase sc ON sc.PersonId = ld.PersonId
-    AND sc.StudyId = @StudyId;
+  JOIN dbo.StudyGroup sg ON sg.StudyId = sc.StudyId AND sg.GroupId = sc.GroupId AND sg.GroupActive = 1
+  JOIN dbo.UserList ul ON ul.CenterId = sg.CenterId AND ul.UserId = USER_ID()
+  WHERE sc.StudyId = @StudyId;
         
   -- Group by physician and various levels
   
-  SELECT alle.GroupId, sg.GroupName, alle.n, b53.n, b58.n, a75.n, 
+  SELECT alle.GroupId, sg.GroupName, alle.n AS nAll, b53.n AS n53, b58.n AS n58, a75.n AS n75, 
     100.0 * b53.n / alle.n AS b53p, 
     100.0 * b58.n / alle.n AS b58p, 
     100.0 * a75.n / alle.n AS a75p
   FROM (
-    SELECT StudyId, GroupId, COUNT(*) n
+    SELECT GroupId, COUNT(*) n
     FROM #Everybody
-    GROUP BY StudyId, GroupId
+    GROUP BY GroupId
     ) alle
-  JOIN (
+  LEFT JOIN (
     SELECT GroupId, COUNT(*) n
     FROM #Everybody
     WHERE NumResult < 53
     GROUP BY GroupId
     ) b53 ON b53.GroupId = alle.GroupId
-  JOIN (
+  LEFT JOIN (
     SELECT GroupId, COUNT(*) n
     FROM #Everybody
     WHERE NumResult < 58
     GROUP BY GroupId
     ) b58 ON b58.GroupId = alle.GroupId
-  JOIN (
+  LEFT JOIN (
     SELECT GroupId, COUNT(*) n
     FROM #Everybody
     WHERE NumResult >= 75
     GROUP BY GroupId
     ) a75 ON a75.GroupId = alle.GroupId
-  JOIN dbo.StudyGroup sg ON sg.StudyId = alle.StudyId
-    AND sg.GroupId = alle.GroupId;
+  JOIN dbo.StudyGroup sg ON sg.StudyId = @StudyId
+    AND sg.GroupId = alle.GroupId AND sg.GroupActive = 1
+
+UNION 
+
+-- Add a row for all groups put together
+
+  SELECT 999999, 'Alle', alle.n, b53.n, b58.n, a75.n, 
+    100.0 * b53.n / alle.n AS b53p, 
+    100.0 * b58.n / alle.n AS b58p, 
+    100.0 * a75.n / alle.n AS a75p
+  FROM (
+    SELECT COUNT(*) n
+    FROM #Everybody
+    ) alle
+  CROSS JOIN (
+    SELECT COUNT(*) n
+    FROM #Everybody
+    WHERE NumResult < 53
+    ) b53
+  CROSS JOIN (
+    SELECT COUNT(*) n
+    FROM #Everybody
+    WHERE NumResult < 58
+    ) b58
+  CROSS JOIN (
+    SELECT COUNT(*) n
+    FROM #Everybody
+    WHERE NumResult >= 75
+    ) a75;   
     
-END]]>
+END
+]]>
 	</row>
 	<row ProcId="1101" StudyName="LANGTID" ProcName="dbo.GetCaseListFocused" ProcDesc="Overvåket status" ProcParams=":StudyId" ListId="CASE" GrantTo="FastTrak" ChkSum="167890443" LastUpdate="2019-12-19T12:26:22.267Z">
 		<![CDATA[]]>
