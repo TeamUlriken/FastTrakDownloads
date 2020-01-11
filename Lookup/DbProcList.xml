@@ -4076,15 +4076,13 @@ BEGIN
  ORDER BY NewStatus,ChangedAt desc
 END]]>
 	</row>
-	<row ProcId="1018" StudyName="GBD" ProcName="GBD.RapportErnaeringTiltak" ProcDesc="Ernæringstiltak" ProcParams=":StudyId, :StartIAt, :StopAt" ListId="FR" GrantTo="FastTrak" ChkSum="39408269" LastUpdate="2020-01-07T14:09:45.567Z">
-		<![CDATA[CREATE PROCEDURE GBD.RapportErnaeringTiltak ( @StudyId INT, @StartAt DateTime = NULL, @StopAt DateTime = NULL ) AS
+	<row ProcId="1018" StudyName="GBD" ProcName="GBD.RapportErnaeringTiltak" ProcDesc="Ernæringstiltak" ProcParams=":StudyId, :StartIAt, :StopAt" ListId="FR" GrantTo="FastTrak" ChkSum="-1063909914" LastUpdate="2020-01-09T13:37:55.700Z">
+		<![CDATA[ALTER PROCEDURE [GBD].[RapportErnaeringTiltak] ( @StudyId INT, @StartAt DateTime = NULL, @StopAt DateTime = NULL ) AS
 BEGIN
-  SET LANGUAGE Norwegian; 
   IF @StartAt IS NULL SET @StartAt = GETDATE()-365;
   IF @StopAt IS NULL SET @StopAt = GETDATE();
-  /* Conform to Population field names */
   SELECT 
-    sc.PersonId, p.DOB, p.FullName, p.ReverseName, p.GenderId, p.NationalId, sg.CenterId, sg.GroupId, sg.GroupName, 
+    v.*, v.FullName AS ReverseName, 
     ce.EventId, ce.EventTime, 
     cf.ClinFormId, cf.FormStatus, cf.FormComplete, cf.Comment,
     dbo.MonthYear( ce.EventTime ) AS MonthYear,
@@ -4113,7 +4111,7 @@ BEGIN
     a5466.OptionText AS T5466,
     CONVERT(VARCHAR(16),v5467.TextVal) AS T5467,
     v5468.EnumVal AS E5468,
-    a5468.OptionText as T5468,
+    a5468.OptionText AS T5468,
     CONVERT(VARCHAR(16),v5469.TextVal) AS T5469,
     CONVERT(VARCHAR(16),v5472.TextVal) AS T5472,
     v5478.DTVal AS T5478,
@@ -4121,50 +4119,43 @@ BEGIN
     pcr.Signature AS CreatedBySign, pcr.FullName AS CreatedByName, 
     ROW_NUMBER() OVER ( PARTITION BY ce.PersonId ORDER BY EventTime DESC ) AS OrderNo 
   FROM dbo.ClinForm cf
-  JOIN dbo.ClinEvent ce ON ( ce.EventId = cf.EventId ) 
-  JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId 
-  JOIN dbo.StudCase sc ON ( sc.StudyId = ce.StudyId ) AND ( sc.PersonId = ce.PersonId ) 
-  JOIN dbo.Person p ON ( p.PersonId = sc.PersonId ) 
-  JOIN dbo.StudyGroup sg ON ( sg.StudyId = sc.StudyId ) AND ( sg.GroupId = sc.GroupId ) 
-  JOIN dbo.StudyUser su ON ( su.StudyId = sg.StudyId ) AND ( su.UserId = USER_ID() ) 
-  JOIN dbo.UserList my ON ( my.UserId = USER_ID() ) 
-  JOIN dbo.StudyCenter c ON ( c.CenterId = sg.CenterId ) 
+  JOIN dbo.ClinEvent ce ON ( ce.StudyId = @StudyId ) AND ( ce.EventId = cf.EventId )  
+  JOIN dbo.MetaForm mf ON ( mf.FormId = cf.FormId )
+  JOIN dbo.ViewActiveCaseListStub v ON ( v.StudyId = ce.StudyId ) AND ( v.PersonId = ce.PersonId )
   JOIN dbo.UserList ucr ON ucr.UserId = cf.CreatedBy
-  LEFT OUTER JOIN dbo.Person pcr ON pcr.PersonId = ucr.PersonId 
-    LEFT OUTER JOIN dbo.ClinDataPoint v4357 ON v4357.EventId = ce.EventId AND v4357.ItemId = 4357
-      LEFT OUTER JOIN dbo.MetaItemAnswer a4357 ON a4357.ItemId = 4357 AND v4357.EnumVal = a4357.OrderNumber
-    LEFT OUTER JOIN dbo.ClinDataPoint v4850 ON v4850.EventId = ce.EventId AND v4850.ItemId = 4850
-      LEFT OUTER JOIN dbo.MetaItemAnswer a4850 ON a4850.ItemId = 4850 AND v4850.EnumVal = a4850.OrderNumber
-    LEFT OUTER JOIN dbo.ClinDataPoint v4896 ON v4896.EventId = ce.EventId AND v4896.ItemId = 4896
-      LEFT OUTER JOIN dbo.MetaItemAnswer a4896 ON a4896.ItemId = 4896 AND v4896.EnumVal = a4896.OrderNumber
-    LEFT OUTER JOIN dbo.ClinDataPoint v4897 ON v4897.EventId = ce.EventId AND v4897.ItemId = 4897
-    LEFT OUTER JOIN dbo.ClinDataPoint v5206 ON v5206.EventId = ce.EventId AND v5206.ItemId = 5206
-    LEFT OUTER JOIN dbo.ClinDataPoint v5207 ON v5207.EventId = ce.EventId AND v5207.ItemId = 5207
-      LEFT OUTER JOIN dbo.MetaItemAnswer a5207 ON a5207.ItemId = 5207 AND v5207.EnumVal = a5207.OrderNumber
-    LEFT OUTER JOIN dbo.ClinDataPoint v5459 ON v5459.EventId = ce.EventId AND v5459.ItemId = 5459
-    LEFT OUTER JOIN dbo.ClinDataPoint v5460 ON v5460.EventId = ce.EventId AND v5460.ItemId = 5460
-      LEFT OUTER JOIN dbo.MetaItemAnswer a5460 ON a5460.ItemId = 5460 AND v5460.EnumVal = a5460.OrderNumber
-    LEFT OUTER JOIN dbo.ClinDataPoint v5461 ON v5461.EventId = ce.EventId AND v5461.ItemId = 5461
-    LEFT OUTER JOIN dbo.ClinDataPoint v5462 ON v5462.EventId = ce.EventId AND v5462.ItemId = 5462
-      LEFT OUTER JOIN dbo.MetaItemAnswer a5462 ON a5462.ItemId = 5462 AND v5462.EnumVal = a5462.OrderNumber
-    LEFT OUTER JOIN dbo.ClinDataPoint v5464 ON v5464.EventId = ce.EventId AND v5464.ItemId = 5464
-      LEFT OUTER JOIN dbo.MetaItemAnswer a5464 ON a5464.ItemId = 5464 AND v5464.EnumVal = a5464.OrderNumber
-    LEFT OUTER JOIN dbo.ClinDataPoint v5466 ON v5466.EventId = ce.EventId AND v5466.ItemId = 5466
-      LEFT OUTER JOIN dbo.MetaItemAnswer a5466 ON a5466.ItemId = 5466 AND v5466.ItemId = 5466
-    LEFT OUTER JOIN dbo.ClinDataPoint v5467 ON v5467.EventId = ce.EventId AND v5467.ItemId = 5467
-    LEFT OUTER JOIN dbo.ClinDataPoint v5468 ON v5468.EventId = ce.EventId AND v5468.ItemId = 5468
-      LEFT OUTER JOIN dbo.MetaItemAnswer a5468 ON a5468.ItemId = 5468 AND v5468.EnumVal = a5468.OrderNumber
-    LEFT OUTER JOIN dbo.ClinDataPoint v5469 ON v5469.EventId=ce.EventId AND v5469.ItemId = 5469
-    LEFT OUTER JOIN dbo.ClinDataPoint v5472 ON v5472.EventId=ce.EventId AND v5472.ItemId = 5472
-    LEFT OUTER JOIN dbo.ClinDataPoint v5478 ON v5478.EventId=ce.EventId AND v5478.ItemId = 5478
+  LEFT JOIN dbo.Person pcr ON pcr.PersonId = ucr.PersonId 
+    LEFT JOIN dbo.ClinDataPoint v4357 ON v4357.EventId = ce.EventId AND v4357.ItemId = 4357
+      LEFT JOIN dbo.MetaItemAnswer a4357 ON a4357.ItemId = 4357 AND v4357.EnumVal = a4357.OrderNumber
+    LEFT JOIN dbo.ClinDataPoint v4850 ON v4850.EventId = ce.EventId AND v4850.ItemId = 4850
+      LEFT JOIN dbo.MetaItemAnswer a4850 ON a4850.ItemId = 4850 AND v4850.EnumVal = a4850.OrderNumber
+    LEFT JOIN dbo.ClinDataPoint v4896 ON v4896.EventId = ce.EventId AND v4896.ItemId = 4896
+      LEFT JOIN dbo.MetaItemAnswer a4896 ON a4896.ItemId = 4896 AND v4896.EnumVal = a4896.OrderNumber
+    LEFT JOIN dbo.ClinDataPoint v4897 ON v4897.EventId = ce.EventId AND v4897.ItemId = 4897
+    LEFT JOIN dbo.ClinDataPoint v5206 ON v5206.EventId = ce.EventId AND v5206.ItemId = 5206
+    LEFT JOIN dbo.ClinDataPoint v5207 ON v5207.EventId = ce.EventId AND v5207.ItemId = 5207
+      LEFT JOIN dbo.MetaItemAnswer a5207 ON a5207.ItemId = 5207 AND v5207.EnumVal = a5207.OrderNumber
+    LEFT JOIN dbo.ClinDataPoint v5459 ON v5459.EventId = ce.EventId AND v5459.ItemId = 5459
+    LEFT JOIN dbo.ClinDataPoint v5460 ON v5460.EventId = ce.EventId AND v5460.ItemId = 5460
+      LEFT JOIN dbo.MetaItemAnswer a5460 ON a5460.ItemId = 5460 AND v5460.EnumVal = a5460.OrderNumber
+    LEFT JOIN dbo.ClinDataPoint v5461 ON v5461.EventId = ce.EventId AND v5461.ItemId = 5461
+    LEFT JOIN dbo.ClinDataPoint v5462 ON v5462.EventId = ce.EventId AND v5462.ItemId = 5462
+      LEFT JOIN dbo.MetaItemAnswer a5462 ON a5462.ItemId = 5462 AND v5462.EnumVal = a5462.OrderNumber
+    LEFT JOIN dbo.ClinDataPoint v5464 ON v5464.EventId = ce.EventId AND v5464.ItemId = 5464
+      LEFT JOIN dbo.MetaItemAnswer a5464 ON a5464.ItemId = 5464 AND v5464.EnumVal = a5464.OrderNumber
+    LEFT JOIN dbo.ClinDataPoint v5466 ON v5466.EventId = ce.EventId AND v5466.ItemId = 5466
+      LEFT JOIN dbo.MetaItemAnswer a5466 ON a5466.ItemId = 5466 AND v5466.EnumVal = a5466.OrderNumber
+    LEFT JOIN dbo.ClinDataPoint v5467 ON v5467.EventId = ce.EventId AND v5467.ItemId = 5467
+    LEFT JOIN dbo.ClinDataPoint v5468 ON v5468.EventId = ce.EventId AND v5468.ItemId = 5468
+      LEFT JOIN dbo.MetaItemAnswer a5468 ON a5468.ItemId = 5468 AND v5468.EnumVal = a5468.OrderNumber
+    LEFT JOIN dbo.ClinDataPoint v5469 ON v5469.EventId=ce.EventId AND v5469.ItemId = 5469
+    LEFT JOIN dbo.ClinDataPoint v5472 ON v5472.EventId=ce.EventId AND v5472.ItemId = 5472
+    LEFT JOIN dbo.ClinDataPoint v5478 ON v5478.EventId=ce.EventId AND v5478.ItemId = 5478
   WHERE ( cf.DeletedAt IS NULL )
-    AND ( mf.FormName='GbdErnaeringTiltak' )
-    AND ( ( su.GroupId=sg.GroupId ) OR ( su.ShowMyGroup = 0 ) ) 
-    AND ( sg.CenterId=my.CenterId ) 
-    AND ( sc.StudyId=@StudyId ) 
     AND ( ce.EventTime >= @StartAt ) AND ( ce.EventTime < @StopAt )
-  ORDER BY ce.EventTime DESC
-END]]>
+    AND ( mf.FormName='GbdErnaeringTiltak' )
+  ORDER BY ce.EventTime DESC;
+END
+]]>
 	</row>
 	<row ProcId="1019" StudyName="*" ProcName="Report.LabClassList" ProcDesc="Oversikt over labklasser" ProcParams=":MinCount" ListId="FR" GrantTo="public" MinVersion="19004" ChkSum="38525022" LastUpdate="2019-06-13T19:03:16.263Z">
 		<![CDATA[CREATE PROCEDURE Report.LabClassList( @MinCount INT = 0 ) AS
@@ -4835,10 +4826,11 @@ BEGIN
     ) PivotTable
 END;]]>
 	</row>
-	<row ProcId="1044" StudyName="BARNEDIABETES" ProcName="BDR.RapportHbA1cSnittPerLege" ProcDesc="Rapport som viser gjennomsnittlig HbA1c-verdi per lege, basert p" ProcParams=":StudyId, :DiaType, :ExcludeNew" ListId="FR" GrantTo="public" MinVersion="19004" HelpText="Rapporten viser snitt av siste HbA1c for alle pasienter fordelt per lege, forutsatt at lege er brukt som gruppebegrep." ChkSum="463747042" LastUpdate="2020-01-06T09:15:30.427Z">
-		<![CDATA[CREATE PROCEDURE BDR.RapportHbA1cSnittPerLege( @StudyId INT, @DiaType INT = 0, @ExcludeNew INT = 2 ) AS
+	<row ProcId="1044" StudyName="BARNEDIABETES" ProcName="BDR.ReportHbA1cGroupPercentiles" ProcDesc="Rapport som viser gjennomsnittlig HbA1c-verdi per lege, basert p" ProcParams=":StudyId, :DiaType, :ExcludeNew" ListId="FR" GrantTo="public" MinVersion="19004" HelpText="Rapporten viser snitt av siste HbA1c for alle pasienter fordelt per lege, forutsatt at lege er brukt som gruppebegrep." ChkSum="-1796641294" LastUpdate="2020-01-11T12:42:52.977Z">
+		<![CDATA[CREATE PROCEDURE BDR.ReportHbA1cGroupPercentiles( @StudyId INT, @DiaType INT, @ExcludeNew INT ) AS
 BEGIN
 
+  SET NOCOUNT ON;
   DECLARE @TotalGroupName VARCHAR(50) = 'Totalt';
 
   BEGIN TRY
@@ -4898,7 +4890,8 @@ BEGIN
   JOIN #percentiles p ON p.GroupId = m.GroupId
   ORDER BY m.GroupId;
 
-END]]>
+END
+]]>
 	</row>
 	<row ProcId="1045" StudyName="ROAS" ProcName="Report.PromForms" ProcDesc="Nedlastede PROM-skjema" ProcParams=":StartAt, :StopAt" ListId="FR" GrantTo="public" MinVersion="18201" CompatibilityLevel="100" ChkSum="-1630385935" LastUpdate="2019-07-25T11:22:43.673Z">
 		<![CDATA[CREATE PROCEDURE Report.PromForms( @StartAt DATE, @StopAt DATE ) AS
@@ -5273,22 +5266,34 @@ BEGIN
 END
 ]]>
 	</row>
-	<row ProcId="1054" StudyName="BARNEDIABETES" ProcName="BDR.ReportHbA1cGroupSummary" ProcDesc="Rapporten skal legges til i samme som RapportHbA1cSnittPerLege" ProcParams=":StudyId" ListId="FR" GrantTo="public" MinVersion="19000" ChkSum="1590015981" LastUpdate="2020-01-06T09:12:08.927Z">
-		<![CDATA[CREATE PROCEDURE BDR.ReportHbA1cGroupSummary( @StudyId INT ) AS
+	<row ProcId="1054" StudyName="BARNEDIABETES" ProcName="BDR.ReportHbA1cGroupSummary" ProcDesc="Rapporten skal legges til i samme som RapportHbA1cSnittPerLege" ProcParams=":StudyId, :DiaType, :ExcludeNew" ListId="FR" GrantTo="public" MinVersion="19000" ChkSum="1681138138" LastUpdate="2020-01-11T12:44:38.413Z">
+		<![CDATA[CREATE PROCEDURE BDR.[ReportHbA1cGroupSummary]( @StudyId INT, @DiaType INT, @ExcludeNew INT ) AS
 BEGIN
 
   SET NOCOUNT ON;
+  DECLARE @TotalGroupName VARCHAR(50) = 'Totalt';
+
+  BEGIN TRY
+    EXEC NDV.MergeHba1cToLabdata;
+  END TRY
+  BEGIN CATCH
+    SET @TotalGroupName = 'Totalt (NB: Duplikater i skjemadata)';
+  END CATCH;
   
   -- Find patients and their latest HbA1c - values
   
-  SELECT ld.PersonId, ld.NumResult, sc.GroupId
-  INTO #Everybody
-  FROM dbo.GetLastLabDataTable(1058, GETDATE()) ld
-  JOIN dbo.StudCase sc ON sc.PersonId = ld.PersonId
-  JOIN dbo.StudyGroup sg ON sg.StudyId = sc.StudyId AND sg.GroupId = sc.GroupId AND sg.GroupActive = 1
-  JOIN dbo.UserList ul ON ul.CenterId = sg.CenterId AND ul.UserId = USER_ID()
-  WHERE sc.StudyId = @StudyId;
-        
+-- Retrieve the latest HbA1c-values first
+
+  SELECT v.PersonId, v.GroupId, ld.NumResult
+  INTO #labdata
+  FROM dbo.ViewActiveCaseListStub v
+  JOIN dbo.GetLastLabDataTable( 1058, GETDATE()) ld ON ld.PersonId = v.PersonId
+  JOIN dbo.GetLastDateTable( 3323, NULL ) dxdate ON dxdate.PersonId = v.PersonId
+  LEFT JOIN dbo.GetLastEnumValuesTable( 3196, NULL ) diatype ON diatype.PersonId = ld.PersonId
+  WHERE ( v.StudyId = @StudyId ) 
+    AND ( diatype.EnumVal = @DiaType OR @DiaType IS NULL OR @DiaType < 1 ) 
+    AND ( ld.LabDate > dxdate.DTVal + 30.5 * @ExcludeNew );
+
   -- Group by physician and various levels
   
   SELECT alle.GroupId, sg.GroupName, alle.n AS nAll, 
@@ -5299,30 +5304,30 @@ BEGIN
     100.0 * a75.n / alle.n AS a75p
   FROM (
     SELECT GroupId, COUNT(*) n
-    FROM #Everybody
+    FROM #labdata
     GROUP BY GroupId
     ) alle
   LEFT JOIN (
     SELECT GroupId, COUNT(*) n
-    FROM #Everybody
+    FROM #labdata
     WHERE NumResult < 50
     GROUP BY GroupId
     ) b50 ON b50.GroupId = alle.GroupId
   LEFT JOIN (
     SELECT GroupId, COUNT(*) n
-    FROM #Everybody
+    FROM #labdata
     WHERE NumResult < 53
     GROUP BY GroupId
     ) b53 ON b53.GroupId = alle.GroupId
   LEFT JOIN (
     SELECT GroupId, COUNT(*) n
-    FROM #Everybody
+    FROM #labdata
     WHERE NumResult < 58
     GROUP BY GroupId
     ) b58 ON b58.GroupId = alle.GroupId
   LEFT JOIN (
     SELECT GroupId, COUNT(*) n
-    FROM #Everybody
+    FROM #labdata
     WHERE NumResult >= 75
     GROUP BY GroupId
     ) a75 ON a75.GroupId = alle.GroupId
@@ -5333,33 +5338,33 @@ UNION
 
 -- Add a row for all groups put together
 
-  SELECT 999999, 'Alle', alle.n, b50.n, b53.n, b58.n, a75.n, 
+  SELECT 999999, @TotalGroupName, alle.n, b50.n, b53.n, b58.n, a75.n, 
     100.0 * b50.n / alle.n AS b50p, 
     100.0 * b53.n / alle.n AS b53p, 
     100.0 * b58.n / alle.n AS b58p, 
     100.0 * a75.n / alle.n AS a75p
   FROM (
     SELECT COUNT(*) n
-    FROM #Everybody
+    FROM #labdata
     ) alle
   CROSS JOIN (
     SELECT COUNT(*) n
-    FROM #Everybody
+    FROM #labdata
     WHERE NumResult < 50
     ) b50
   CROSS JOIN (
     SELECT COUNT(*) n
-    FROM #Everybody
+    FROM #labdata
     WHERE NumResult < 53
     ) b53
   CROSS JOIN (
     SELECT COUNT(*) n
-    FROM #Everybody
+    FROM #labdata
     WHERE NumResult < 58
     ) b58
   CROSS JOIN (
     SELECT COUNT(*) n
-    FROM #Everybody
+    FROM #labdata
     WHERE NumResult >= 75
     ) a75;   
     
