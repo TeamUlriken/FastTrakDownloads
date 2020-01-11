@@ -3,7 +3,7 @@
   <Form FormId="1138" FormName="NDV_PROM_PASIENTINIT" FormTitle="Pasientinitiert PROMs">
     <Page PageTitle="Bakgrunn">
       <Item ItemId="3389" ItemType="2" VarName="NDV_CONSENT" LoincScale="ORD" DisplayFormat="">
-        <FormItem ItemText="Samtykke for diabetesregisteret" ItemHelp="Norsk diabetesregister for voksne. Kontaktperson Karianne Fjeld Løvaas." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Samtykke for diabetesregisteret" ItemHelp="Norsk diabetesregister for voksne. Kontaktperson Karianne Fjeld Løvaas." MinExpression="" MaxExpression="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="1" ReadOnly="1" Optional="1">
           <Answer AnswerId="16869" OrderNumber="1" OptionText="Ja" VerboseText="Samtykke gitt til diabetesregisteret." ShortCode="J"/>
           <Answer AnswerId="16870" OrderNumber="2" OptionText="Nei" VerboseText="Ikke samtykke til diabetesregisteret." ShortCode="N"/>
           <Answer AnswerId="19223" OrderNumber="3" OptionText="Trukket tilbake" VerboseText="Samtykke til diabetesregisteret trukket tilbake." ShortCode="Tr"/>
@@ -199,8 +199,30 @@
       </Item>
     </Page>
     <Page PageTitle="Siste besøk hos øyelege*">
+      <Item ItemId="10551" ItemType="1" VarName="NDV_EYECHECK_YEAR" LoincScale="QN" DisplayFormat="">
+        <FormItem ItemText="Årstall siste øyenbunnsundersøkelse" ItemHelp="" Expression="" MinExpression="DOB_YYYY" MaxExpression="NOW_YYYY" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer/>
+        </FormItem>
+      </Item>
+      <Item ItemId="10552" ItemType="2" VarName="NDV_EYECHECK_MONTH" LoincScale="ORD">
+        <FormItem ItemText="Måned" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+          <Answer AnswerId="13389" OrderNumber="0" OptionText="Usikker" Score="182.00"/>
+          <Answer AnswerId="13390" OrderNumber="1" OptionText="Januar" Score="15.00"/>
+          <Answer AnswerId="13391" OrderNumber="2" OptionText="Februar" Score="45.00"/>
+          <Answer AnswerId="13392" OrderNumber="3" OptionText="Mars" Score="75.00"/>
+          <Answer AnswerId="13393" OrderNumber="4" OptionText="April" Score="105.00"/>
+          <Answer AnswerId="13394" OrderNumber="5" OptionText="Mai" Score="136.00"/>
+          <Answer AnswerId="13395" OrderNumber="6" OptionText="Juni" Score="167.00"/>
+          <Answer AnswerId="13396" OrderNumber="7" OptionText="Juli" Score="197.00"/>
+          <Answer AnswerId="13397" OrderNumber="8" OptionText="August" Score="228.00"/>
+          <Answer AnswerId="13398" OrderNumber="9" OptionText="September" Score="259.00"/>
+          <Answer AnswerId="13399" OrderNumber="10" OptionText="Oktober" Score="289.00"/>
+          <Answer AnswerId="13400" OrderNumber="11" OptionText="November" Score="320.00"/>
+          <Answer AnswerId="13401" OrderNumber="12" OptionText="Desember" Score="350.00"/>
+        </FormItem>
+      </Item>
       <Item ItemId="3354" ItemType="5" VarName="NDV_EYECHECK_DATE" LoincScale="DATE" DisplayFormat="">
-        <FormItem ItemText="Siste besøk hos øyelege" ItemHelp="Beste estimat ved usikker dato." ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="0">
+        <FormItem ItemText="Siste besøk hos øyelege" ItemHelp="Beste estimat ved usikker dato." ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="0">
           <Answer/>
         </FormItem>
       </Item>
