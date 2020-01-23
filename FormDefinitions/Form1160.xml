@@ -1,12 +1,63 @@
 <?xml version="1.0"?>
 <StudyForm>
   <Form FormId="1160" FormName="BDR_COMORBIDITY" FormTitle="BDR - Komorbiditet">
-    <Page PageTitle="Komorbiditet">
+    <Page PageTitle="Komorbiditet på diagnosetidspunktet" PageIntroduction="Hvilke andre sykdommer hadde pasienten før han/hun fikk diabetes?">
+      <Item ItemId="3347" ItemType="2" VarName="Inn_Coliaki" LoincScale="ORD">
+        <FormItem ItemHeader="Cøliaki" ItemText="Har pasienten cøliaki ved diagnosen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="12172" OrderNumber="0" OptionText="Nei" ShortCode="N" ICD10="K900"/>
+          <Answer AnswerId="12173" OrderNumber="1" OptionText="Ja" VerboseText="Cøliaki ved diagnosen." ShortCode="J"/>
+          <Answer AnswerId="12174" OrderNumber="8" OptionText="Vet ikke" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3348" ItemType="2" VarName="Inn_Hypothyreose" LoincScale="ORD">
+        <FormItem ItemHeader="Hypotyreose" ItemText="Har pasienten Hypothyreose ved diagnosen&#xA;" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61372" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="61373" OrderNumber="1" OptionText="Ja" VerboseText="Hypotyreose ved diagnosen." ShortCode="J" ICD10="E039"/>
+          <Answer AnswerId="61374" OrderNumber="8" OptionText="Vet ikke" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3349" ItemType="2" VarName="Inn_Hyperthyreose" LoincScale="ORD">
+        <FormItem ItemHeader="Hypertyreose" ItemText="Har pasienten Hypertyreose ved diagnosen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61376" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="61377" OrderNumber="1" OptionText="Ja" VerboseText="Hypertyreose ved diagnosen." ShortCode="J" ICD10="E059"/>
+          <Answer AnswerId="61378" OrderNumber="8" OptionText="Vet ikke" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3350" ItemType="2" VarName="Inn_ADHD" LoincScale="ORD">
+        <FormItem ItemHeader="ADHD" ItemText="Har pasienten ADHD ved diagnosen&#xA;" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61380" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="61381" OrderNumber="1" OptionText="Ja" VerboseText="ADHD ved diagnosen." ShortCode="J"/>
+          <Answer AnswerId="61382" OrderNumber="8" OptionText="Vet ikke" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3355" ItemType="2" VarName="Inn_Downs" LoincScale="ORD">
+        <FormItem ItemHeader="Downs syndrom" ItemText="Har pasienten Downs ved diagnosen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61384" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="61385" OrderNumber="1" OptionText="Ja" VerboseText="Downs syndrom." ShortCode="J" ICD10="Q909"/>
+          <Answer AnswerId="61386" OrderNumber="8" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3356" ItemType="2" VarName="Inn_Epilepsi" LoincScale="ORD">
+        <FormItem ItemHeader="Epilepsi" ItemText="Har pasienten Epilepsi ved diagnosen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61388" OrderNumber="0" OptionText="Nei" ShortCode="J"/>
+          <Answer AnswerId="61389" OrderNumber="1" OptionText="Ja" VerboseText="Epiliepsi ved diagnosen." ShortCode="N" ICD10="G409"/>
+          <Answer AnswerId="61390" OrderNumber="8" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+      <Item ItemId="3357" ItemType="2" VarName="Inn_CystiskFibrose" LoincScale="ORD">
+        <FormItem ItemHeader="Cystisk fibrose" ItemText="Har pasienten CF ved diagnosen" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="61392" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="61393" OrderNumber="1" OptionText="Ja" VerboseText="Cystisk fibrose." ShortCode="J" ICD10="E849"/>
+          <Answer AnswerId="61394" OrderNumber="8" OptionText="Ukjent" ShortCode="U"/>
+        </FormItem>
+      </Item>
+    </Page>
+    <Page PageTitle="Komorbiditet nå">
       <Item ItemId="9478" ItemType="2" VarName="und_syk_col" LoincScale="ORD">
         <FormItem ItemText="Cøliaki" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="13281" OrderNumber="0" OptionText="Nei" CarryException="1"/>
-          <Answer AnswerId="13282" OrderNumber="1" OptionText="Ja" ICD10="K900"/>
-          <Answer AnswerId="13283" OrderNumber="8" OptionText="Vet ikke"/>
+          <Answer AnswerId="13281" OrderNumber="0" OptionText="Nei" ShortCode="N" CarryException="1"/>
+          <Answer AnswerId="13282" OrderNumber="1" OptionText="Ja" ShortCode="J" ICD10="K900"/>
+          <Answer AnswerId="13283" OrderNumber="8" OptionText="Vet ikke" ShortCode="U"/>
         </FormItem>
       </Item>
     </Page>
@@ -20,44 +71,44 @@
     <Page PageTitle="Forts*">
       <Item ItemId="9479" ItemType="2" VarName="und_syk_hypo" LoincScale="ORD">
         <FormItem ItemText="Hypothyreose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="62135" OrderNumber="0" OptionText="Nei" CarryException="1"/>
-          <Answer AnswerId="62136" OrderNumber="1" OptionText="Ja" ICD10="E039"/>
-          <Answer AnswerId="62137" OrderNumber="8" OptionText="Vet ikke"/>
+          <Answer AnswerId="62135" OrderNumber="0" OptionText="Nei" ShortCode="N" CarryException="1"/>
+          <Answer AnswerId="62136" OrderNumber="1" OptionText="Ja" ShortCode="J" ICD10="E039"/>
+          <Answer AnswerId="62137" OrderNumber="8" OptionText="Vet ikke" ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="9480" ItemType="2" VarName="und_syk_hype" LoincScale="ORD">
         <FormItem ItemText="Hyperthyreose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="62139" OrderNumber="0" OptionText="Nei" CarryException="1"/>
-          <Answer AnswerId="62140" OrderNumber="1" OptionText="Ja" ICD10="E059"/>
-          <Answer AnswerId="62141" OrderNumber="8" OptionText="Vet ikke"/>
+          <Answer AnswerId="62139" OrderNumber="0" OptionText="Nei" ShortCode="N" CarryException="1"/>
+          <Answer AnswerId="62140" OrderNumber="1" OptionText="Ja" ShortCode="J" ICD10="E059"/>
+          <Answer AnswerId="62141" OrderNumber="8" OptionText="Vet ikke" ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="9481" ItemType="2" VarName="und_syk_adhd" LoincScale="ORD">
         <FormItem ItemText="ADHD" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="62143" OrderNumber="0" OptionText="Nei" CarryException="1"/>
-          <Answer AnswerId="62144" OrderNumber="1" OptionText="Ja" ICD10="F909"/>
-          <Answer AnswerId="62145" OrderNumber="8" OptionText="Vet ikke"/>
+          <Answer AnswerId="62143" OrderNumber="0" OptionText="Nei" ShortCode="N" CarryException="1"/>
+          <Answer AnswerId="62144" OrderNumber="1" OptionText="Ja" ShortCode="J" ICD10="F909"/>
+          <Answer AnswerId="62145" OrderNumber="8" OptionText="Vet ikke" ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="9482" ItemType="2" VarName="und_syk_down" LoincScale="ORD">
-        <FormItem ItemText="Downs syndrom" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="62147" OrderNumber="0" OptionText="Nei"/>
-          <Answer AnswerId="62148" OrderNumber="1" OptionText="Ja" ICD10="Q909"/>
-          <Answer AnswerId="62149" OrderNumber="8" OptionText="Vet ikke"/>
+        <FormItem ItemText="Downs syndrom" ItemHelp="" Expression="Inn_Downs" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
+          <Answer AnswerId="62147" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="62148" OrderNumber="1" OptionText="Ja" ShortCode="J" ICD10="Q909"/>
+          <Answer AnswerId="62149" OrderNumber="8" OptionText="Vet ikke" ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="9483" ItemType="2" VarName="und_syk_epi" LoincScale="ORD">
         <FormItem ItemText="Epilepsi" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="62151" OrderNumber="0" OptionText="Nei" CarryException="1"/>
-          <Answer AnswerId="62152" OrderNumber="1" OptionText="Ja" ICD10="G409"/>
-          <Answer AnswerId="62153" OrderNumber="8" OptionText="Vet ikke"/>
+          <Answer AnswerId="62151" OrderNumber="0" OptionText="Nei" ShortCode="N" CarryException="1"/>
+          <Answer AnswerId="62152" OrderNumber="1" OptionText="Ja" ShortCode="J" ICD10="G409"/>
+          <Answer AnswerId="62153" OrderNumber="8" OptionText="Vet ikke" ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="9484" ItemType="2" VarName="und_syk_cys" LoincScale="ORD">
         <FormItem ItemText="Cystisk fibrose" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="1" ReadOnly="0" Optional="1">
-          <Answer AnswerId="62155" OrderNumber="0" OptionText="Nei"/>
-          <Answer AnswerId="62156" OrderNumber="1" OptionText="Ja" ICD10="E849"/>
-          <Answer AnswerId="62157" OrderNumber="8" OptionText="Vet ikke"/>
+          <Answer AnswerId="62155" OrderNumber="0" OptionText="Nei" ShortCode="N"/>
+          <Answer AnswerId="62156" OrderNumber="1" OptionText="Ja" ShortCode="J" ICD10="E849"/>
+          <Answer AnswerId="62157" OrderNumber="8" OptionText="Vet ikke" ShortCode="U"/>
         </FormItem>
       </Item>
       <Item ItemId="9485" ItemType="4" VarName="und_syk_annet" LoincScale="NAR" Multiline="1">
@@ -69,7 +120,7 @@
   </Form>
   <Actions>
     <PageAction MasterId="9478">
-      <Activate EnumVal="1" PageConditionId="8579" PageNumber="2" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8579" PageNumber="3" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>

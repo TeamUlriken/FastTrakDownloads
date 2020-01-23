@@ -686,6 +686,8 @@
           <Answer AnswerId="13318" OrderNumber="8" OptionText="Vet ikke"/>
         </FormItem>
       </Item>
+    </Page>
+    <Page PageTitle="Bruk av boluskalkulator*">
       <Item ItemId="10361" ItemType="2" VarName="beh_ins_boluswizzard_fre" LoincScale="ORD">
         <FormItem ItemText="Hvor ofte bruker pasienten boluskalkulator" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="62235" OrderNumber="1" OptionText="&lt;50% av tiden"/>
@@ -705,17 +707,29 @@
     </Page>
     <Page PageTitle="Detaljer om CGM*">
       <Item ItemId="10364" ItemType="2" VarName="beh_ins_kont_bs_reg_frek" LoincScale="ORD">
-        <FormItem ItemText="Hvor ofte bruker pasienten kontinuerlig glukosemåler&#xA;" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+        <FormItem ItemText="Hvor ofte bruker pasienten kontinuerlig glukosemåler" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
           <Answer AnswerId="62243" OrderNumber="1" OptionText="&lt;50% av tiden"/>
           <Answer AnswerId="62244" OrderNumber="2" OptionText="&gt;50% av tiden"/>
-          <Answer AnswerId="62245" OrderNumber="3" OptionText="Vet ikke"/>
+          <Answer AnswerId="62245" OrderNumber="888" OptionText="Vet ikke"/>
         </FormItem>
       </Item>
       <Item ItemId="10360" ItemType="2" VarName="beh_ins_kont_bs_reg_type" LoincScale="ORD">
-        <FormItem ItemText="Hvilken type kontinuerlig blodsukkermåler&#xA;&#xA;" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="-1" CarryForward="0" ReadOnly="0" Optional="1">
-          <Answer AnswerId="62231" OrderNumber="1" OptionText="1"/>
-          <Answer AnswerId="62232" OrderNumber="2" OptionText="2"/>
-          <Answer AnswerId="62233" OrderNumber="3" OptionText="3"/>
+        <FormItem ItemText="Hvilken type kontinuerlig blodsukkermåler" ItemHelp="" ExcludeFromText="0" ExcludeCaption="0" Visibility="1" CarryForward="0" ReadOnly="0" Optional="1">
+          <Answer AnswerId="62231" OrderNumber="1" OptionText="Medtronic"/>
+          <Answer AnswerId="62232" OrderNumber="2" OptionText="Abbott"/>
+          <Answer AnswerId="62233" OrderNumber="3" OptionText="Dexcom"/>
+          <Answer AnswerId="13406" OrderNumber="4" OptionText="Guardian Real Time"/>
+          <Answer AnswerId="13407" OrderNumber="5" OptionText="Guardian Connect"/>
+          <Answer AnswerId="13408" OrderNumber="6" OptionText="Guardian 2link"/>
+          <Answer AnswerId="13409" OrderNumber="7" OptionText="Freestyle Navigator"/>
+          <Answer AnswerId="13410" OrderNumber="8" OptionText="Freestyle Libre Flash"/>
+          <Answer AnswerId="13411" OrderNumber="9" OptionText="Dexcom G4"/>
+          <Answer AnswerId="13412" OrderNumber="10" OptionText="Dexcom G5"/>
+          <Answer AnswerId="13413" OrderNumber="11" OptionText="Dexcom G6"/>
+          <Answer AnswerId="13414" OrderNumber="12" OptionText="Eversense"/>
+          <Answer AnswerId="13415" OrderNumber="13" OptionText="Guardian 3link"/>
+          <Answer AnswerId="13416" OrderNumber="14" OptionText="Freestyle Libre 2"/>
+          <Answer AnswerId="13417" OrderNumber="777" OptionText="Annet"/>
         </FormItem>
       </Item>
       <Item ItemId="10363" ItemType="4" VarName="beh_ins_kont_bs_reg_type" LoincScale="NAR" Multiline="0">
@@ -933,21 +947,24 @@
     <PageAction MasterId="10492">
       <Activate EnumVal="5" PageConditionId="8558" PageNumber="49" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
+    <PageAction MasterId="10340">
+      <Activate EnumVal="1" PageConditionId="8682" PageNumber="51" ComparisonType="1" ComparisonDescription="Equal to"/>
+    </PageAction>
     <PageAction MasterId="10362">
-      <Activate EnumVal="1" PageConditionId="8551" PageNumber="52" ComparisonType="1" ComparisonDescription="Equal to"/>
-      <Activate EnumVal="1" PageConditionId="8653" PageNumber="53" ComparisonType="6" ComparisonDescription="Not Equal"/>
+      <Activate EnumVal="1" PageConditionId="8551" PageNumber="53" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8653" PageNumber="54" ComparisonType="6" ComparisonDescription="Not Equal"/>
     </PageAction>
     <PageAction MasterId="9478">
-      <Activate EnumVal="1" PageConditionId="8550" PageNumber="55" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8550" PageNumber="56" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10365">
-      <Activate EnumVal="1" PageConditionId="8548" PageNumber="58" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8548" PageNumber="59" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="10369">
-      <Activate EnumVal="1" PageConditionId="8549" PageNumber="60" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8549" PageNumber="61" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
     <PageAction MasterId="9985">
-      <Activate EnumVal="1" PageConditionId="8547" PageNumber="63" ComparisonType="1" ComparisonDescription="Equal to"/>
+      <Activate EnumVal="1" PageConditionId="8547" PageNumber="64" ComparisonType="1" ComparisonDescription="Equal to"/>
     </PageAction>
   </Actions>
 </StudyForm>
